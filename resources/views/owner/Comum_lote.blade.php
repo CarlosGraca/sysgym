@@ -1,0 +1,5568 @@
+
+<dados>
+ <lote>
+ 	<id>3</id>
+ 	<proprietario_id>67</proprietario_id>
+ 	<comunidade_id>5</comunidade_id>
+ 	<descricao>2,3-Dados de agricultor</descricao>
+ 	<codigo>220</codigo>
+ </lote> 
+	<lote>
+ <id>4</id>
+ <proprietario_id>67</proprietario_id>
+ <comunidade_id>5</comunidade_id>
+ <descricao>2/3-xxxxx</descricao>
+ <codigo>220</codigo>
+</lote> 
+<lote>
+ <id>5</id>
+ <proprietario_id>68</proprietario_id>
+ <comunidade_id>5</comunidade_id>
+ <descricao>47-2.3</descricao>
+ <codigo>221</codigo>
+</lote> 
+<lote>
+ <id>6</id>
+ <proprietario_id>69</proprietario_id>
+ <comunidade_id>5</comunidade_id>
+ <descricao>13-xxxxx</descricao>
+ <codigo>222</codigo>
+</lote> 
+<lote>
+ <id>7</id>
+ <proprietario_id>70</proprietario_id>
+ <comunidade_id>5</comunidade_id>
+ <descricao>13-xxxxx</descricao>
+ <codigo>223</codigo>
+</lote> 
+<lote>
+ <id>8</id>
+ <proprietario_id>71</proprietario_id>
+ <comunidade_id>5</comunidade_id>
+ <descricao>55.61-xxxxx</descricao>
+ <codigo>224</codigo>
+</lote> 
+<lote>
+ <id>9</id>
+ <proprietario_id>71</proprietario_id>
+ <comunidade_id>5</comunidade_id>
+ <descricao>44-2.5</descricao>
+ <codigo>225</codigo>
+</lote> 
+<lote>
+ <id>10</id>
+ <proprietario_id>72</proprietario_id>
+ <comunidade_id>5</comunidade_id>
+ <descricao>27-xxxxx</descricao>
+ <codigo>226</codigo>
+</lote> 
+<lote>
+ <id>11</id>
+ <proprietario_id>73</proprietario_id>
+ <comunidade_id>5</comunidade_id>
+ <descricao>12,15-xxxxx</descricao>
+ <codigo>226</codigo>
+</lote> 
+<lote>
+ <id>12</id>
+ <proprietario_id>74</proprietario_id>
+ <comunidade_id>5</comunidade_id>
+ <descricao>36,39-xxxxx</descricao>
+ <codigo>227</codigo>
+</lote> 
+<lote>
+ <id>13</id>
+ <proprietario_id>73</proprietario_id>
+ <comunidade_id>5</comunidade_id>
+ <descricao>12.15-xxxxx</descricao>
+ <codigo>226</codigo>
+</lote> 
+<lote>
+ <id>14</id>
+ <proprietario_id>75</proprietario_id>
+ <comunidade_id>5</comunidade_id>
+ <descricao>8,1-xxxxx</descricao>
+ <codigo>228</codigo>
+</lote> 
+<lote>
+ <id>15</id>
+ <proprietario_id>76</proprietario_id>
+ <comunidade_id>5</comunidade_id>
+ <descricao>18-xxx</descricao>
+ <codigo>229</codigo>
+</lote> 
+<lote>
+ <id>16</id>
+ <proprietario_id>77</proprietario_id>
+ <comunidade_id>5</comunidade_id>
+ <descricao>65-xxxxx</descricao>
+ <codigo>230</codigo>
+</lote> 
+<lote>
+ <id>17</id>
+ <proprietario_id>78</proprietario_id>
+ <comunidade_id>5</comunidade_id>
+ <descricao>40-xxxxx</descricao>
+ <codigo>231</codigo>
+</lote> 
+<lote>
+ <id>18</id>
+ <proprietario_id>79</proprietario_id>
+ <comunidade_id>5</comunidade_id>
+ <descricao>66-xxxxx</descricao>
+ <codigo>232</codigo>
+</lote> 
+<lote>
+ <id>19</id>
+ <proprietario_id>80</proprietario_id>
+ <comunidade_id>5</comunidade_id>
+ <descricao>44-xxx</descricao>
+ <codigo>233</codigo>
+</lote> 
+<lote>
+ <id>20</id>
+ <proprietario_id>81</proprietario_id>
+ <comunidade_id>5</comunidade_id>
+ <descricao>72-xxxxx</descricao>
+ <codigo>234</codigo>
+</lote> 
+<lote>
+ <id>21</id>
+ <proprietario_id>82</proprietario_id>
+ <comunidade_id>5</comunidade_id>
+ <descricao>58 , 57-xxxxx</descricao>
+ <codigo>235</codigo>
+</lote> 
+<lote>
+ <id>22</id>
+ <proprietario_id>83</proprietario_id>
+ <comunidade_id>5</comunidade_id>
+ <descricao>21,31-xxxxx</descricao>
+ <codigo>236</codigo>
+</lote> 
+<lote>
+ <id>23</id>
+ <proprietario_id>84</proprietario_id>
+ <comunidade_id>5</comunidade_id>
+ <descricao>34-xxxxx</descricao>
+ <codigo>237</codigo>
+</lote> 
+<lote>
+ <id>24</id>
+ <proprietario_id>85</proprietario_id>
+ <comunidade_id>5</comunidade_id>
+ <descricao>14,17-xxxxx</descricao>
+ <codigo>238</codigo>
+</lote> 
+<lote>
+ <id>25</id>
+ <proprietario_id>86</proprietario_id>
+ <comunidade_id>5</comunidade_id>
+ <descricao>11-xxxxx</descricao>
+ <codigo>239</codigo>
+</lote> 
+<lote>
+ <id>26</id>
+ <proprietario_id>87</proprietario_id>
+ <comunidade_id>5</comunidade_id>
+ <descricao>28,29-xxxxx</descricao>
+ <codigo>240</codigo>
+</lote> 
+<lote>
+ <id>27</id>
+ <proprietario_id>88</proprietario_id>
+ <comunidade_id>5</comunidade_id>
+ <descricao>46-xxxxx</descricao>
+ <codigo>241</codigo>
+</lote> 
+<lote>
+ <id>28</id>
+ <proprietario_id>89</proprietario_id>
+ <comunidade_id>5</comunidade_id>
+ <descricao>28,29-xxxxx</descricao>
+ <codigo>231</codigo>
+</lote> 
+<lote>
+ <id>29</id>
+ <proprietario_id>90</proprietario_id>
+ <comunidade_id>5</comunidade_id>
+ <descricao>42-xxxxx</descricao>
+ <codigo>243</codigo>
+</lote> 
+<lote>
+ <id>30</id>
+ <proprietario_id>91</proprietario_id>
+ <comunidade_id>5</comunidade_id>
+ <descricao>54-xxxxx</descricao>
+ <codigo>244</codigo>
+</lote> 
+<lote>
+ <id>31</id>
+ <proprietario_id>91</proprietario_id>
+ <comunidade_id>5</comunidade_id>
+ <descricao>54-xxxxx</descricao>
+ <codigo>244</codigo>
+</lote> 
+<lote>
+ <id>32</id>
+ <proprietario_id>92</proprietario_id>
+ <comunidade_id>5</comunidade_id>
+ <descricao>24-xxxxx</descricao>
+ <codigo>245</codigo>
+</lote> 
+<lote>
+ <id>33</id>
+ <proprietario_id>93</proprietario_id>
+ <comunidade_id>5</comunidade_id>
+ <descricao>37,38-xxxxx</descricao>
+ <codigo>246</codigo>
+</lote> 
+<lote>
+ <id>34</id>
+ <proprietario_id>94</proprietario_id>
+ <comunidade_id>5</comunidade_id>
+ <descricao>7-xxxxx</descricao>
+ <codigo>247</codigo>
+</lote> 
+<lote>
+ <id>35</id>
+ <proprietario_id>95</proprietario_id>
+ <comunidade_id>5</comunidade_id>
+ <descricao>70-xxxxx</descricao>
+ <codigo>248</codigo>
+</lote> 
+<lote>
+ <id>36</id>
+ <proprietario_id>96</proprietario_id>
+ <comunidade_id>5</comunidade_id>
+ <descricao>43-xxxxx</descricao>
+ <codigo>249</codigo>
+</lote> 
+<lote>
+ <id>37</id>
+ <proprietario_id>97</proprietario_id>
+ <comunidade_id>5</comunidade_id>
+ <descricao>45-xxxxx</descricao>
+ <codigo>250</codigo>
+</lote> 
+<lote>
+ <id>38</id>
+ <proprietario_id>98</proprietario_id>
+ <comunidade_id>5</comunidade_id>
+ <descricao>25/26-xxxxx</descricao>
+ <codigo>251</codigo>
+</lote> 
+<lote>
+ <id>39</id>
+ <proprietario_id>99</proprietario_id>
+ <comunidade_id>5</comunidade_id>
+ <descricao>32/33-xxxxx</descricao>
+ <codigo>252</codigo>
+</lote> 
+<lote>
+ <id>40</id>
+ <proprietario_id>100</proprietario_id>
+ <comunidade_id>5</comunidade_id>
+ <descricao>4951-xxxxx</descricao>
+ <codigo>253</codigo>
+</lote> 
+<lote>
+ <id>41</id>
+ <proprietario_id>101</proprietario_id>
+ <comunidade_id>5</comunidade_id>
+ <descricao>7-xxxxx</descricao>
+ <codigo>254</codigo>
+</lote> 
+<lote>
+ <id>42</id>
+ <proprietario_id>102</proprietario_id>
+ <comunidade_id>5</comunidade_id>
+ <descricao>6869-xxxxx</descricao>
+ <codigo>255</codigo>
+</lote> 
+<lote>
+ <id>43</id>
+ <proprietario_id>103</proprietario_id>
+ <comunidade_id>5</comunidade_id>
+ <descricao>64/71-xxxxx</descricao>
+ <codigo>256</codigo>
+</lote> 
+<lote>
+ <id>44</id>
+ <proprietario_id>104</proprietario_id>
+ <comunidade_id>5</comunidade_id>
+ <descricao>6,90-xxxxx</descricao>
+ <codigo>257</codigo>
+</lote> 
+<lote>
+ <id>45</id>
+ <proprietario_id>105</proprietario_id>
+ <comunidade_id>5</comunidade_id>
+ <descricao>62,63-xxxxx</descricao>
+ <codigo>258</codigo>
+</lote> 
+<lote>
+ <id>46</id>
+ <proprietario_id>106</proprietario_id>
+ <comunidade_id>5</comunidade_id>
+ <descricao>16/20-xxxxx</descricao>
+ <codigo>259</codigo>
+</lote> 
+<lote>
+ <id>47</id>
+ <proprietario_id>107</proprietario_id>
+ <comunidade_id>5</comunidade_id>
+ <descricao>53/52-xxxxx</descricao>
+ <codigo>260</codigo>
+</lote> 
+<lote>
+ <id>48</id>
+ <proprietario_id>108</proprietario_id>
+ <comunidade_id>5</comunidade_id>
+ <descricao>19 /22-xxxxx</descricao>
+ <codigo>261</codigo>
+</lote> 
+<lote>
+ <id>49</id>
+ <proprietario_id>109</proprietario_id>
+ <comunidade_id>5</comunidade_id>
+ <descricao>2-xxxxx</descricao>
+ <codigo>262</codigo>
+</lote> 
+<lote>
+ <id>50</id>
+ <proprietario_id>110</proprietario_id>
+ <comunidade_id>5</comunidade_id>
+ <descricao>4-xxxxx</descricao>
+ <codigo>263</codigo>
+</lote> 
+<lote>
+ <id>51</id>
+ <proprietario_id>111</proprietario_id>
+ <comunidade_id>5</comunidade_id>
+ <descricao>48-xxxxx</descricao>
+ <codigo>264</codigo>
+</lote> 
+<lote>
+ <id>52</id>
+ <proprietario_id>112</proprietario_id>
+ <comunidade_id>5</comunidade_id>
+ <descricao>47-xxxxx</descricao>
+ <codigo>265</codigo>
+</lote> 
+<lote>
+ <id>53</id>
+ <proprietario_id>113</proprietario_id>
+ <comunidade_id>5</comunidade_id>
+ <descricao>36A-xxxxx</descricao>
+ <codigo>266</codigo>
+</lote> 
+<lote>
+ <id>54</id>
+ <proprietario_id>114</proprietario_id>
+ <comunidade_id>5</comunidade_id>
+ <descricao>47/48-xxxxx</descricao>
+ <codigo>927</codigo>
+</lote> 
+<lote>
+ <id>55</id>
+ <proprietario_id>769</proprietario_id>
+ <comunidade_id>768</comunidade_id>
+ <descricao>3-xxxxx</descricao>
+ <codigo>781</codigo>
+</lote> 
+<lote>
+ <id>56</id>
+ <proprietario_id>770</proprietario_id>
+ <comunidade_id>768</comunidade_id>
+ <descricao>41,42..43-xxxxx</descricao>
+ <codigo>782</codigo>
+</lote> 
+<lote>
+ <id>57</id>
+ <proprietario_id>771</proprietario_id>
+ <comunidade_id>768</comunidade_id>
+ <descricao>51-xxxxx</descricao>
+ <codigo>783</codigo>
+</lote> 
+<lote>
+ <id>58</id>
+ <proprietario_id>772</proprietario_id>
+ <comunidade_id>768</comunidade_id>
+ <descricao>10-xxxxx</descricao>
+ <codigo>784</codigo>
+</lote> 
+<lote>
+ <id>59</id>
+ <proprietario_id>773</proprietario_id>
+ <comunidade_id>768</comunidade_id>
+ <descricao>72-xxxxx</descricao>
+ <codigo>785</codigo>
+</lote> 
+<lote>
+ <id>60</id>
+ <proprietario_id>774</proprietario_id>
+ <comunidade_id>768</comunidade_id>
+ <descricao>30-xxxxx</descricao>
+ <codigo>786</codigo>
+</lote> 
+<lote>
+ <id>61</id>
+ <proprietario_id>775</proprietario_id>
+ <comunidade_id>768</comunidade_id>
+ <descricao>50-xxxxx</descricao>
+ <codigo>787</codigo>
+</lote> 
+<lote>
+ <id>62</id>
+ <proprietario_id>776</proprietario_id>
+ <comunidade_id>768</comunidade_id>
+ <descricao>60-xxxxx</descricao>
+ <codigo>788</codigo>
+</lote> 
+<lote>
+ <id>63</id>
+ <proprietario_id>777</proprietario_id>
+ <comunidade_id>768</comunidade_id>
+ <descricao>56-xxxxx</descricao>
+ <codigo>789</codigo>
+</lote> 
+<lote>
+ <id>64</id>
+ <proprietario_id>778</proprietario_id>
+ <comunidade_id>768</comunidade_id>
+ <descricao>57-xxxxx</descricao>
+ <codigo>790</codigo>
+</lote> 
+<lote>
+ <id>65</id>
+ <proprietario_id>779</proprietario_id>
+ <comunidade_id>768</comunidade_id>
+ <descricao>37-xxxxx</descricao>
+ <codigo>791</codigo>
+</lote> 
+<lote>
+ <id>66</id>
+ <proprietario_id>780</proprietario_id>
+ <comunidade_id>768</comunidade_id>
+ <descricao>63-xxxxx</descricao>
+ <codigo>793</codigo>
+</lote> 
+<lote>
+ <id>67</id>
+ <proprietario_id>781</proprietario_id>
+ <comunidade_id>768</comunidade_id>
+ <descricao>12-xxxxx</descricao>
+ <codigo>793</codigo>
+</lote> 
+<lote>
+ <id>68</id>
+ <proprietario_id>782</proprietario_id>
+ <comunidade_id>768</comunidade_id>
+ <descricao>11-xxxxx</descricao>
+ <codigo>796</codigo>
+</lote> 
+<lote>
+ <id>69</id>
+ <proprietario_id>783</proprietario_id>
+ <comunidade_id>768</comunidade_id>
+ <descricao>31-xxxxx</descricao>
+ <codigo>795</codigo>
+</lote> 
+<lote>
+ <id>70</id>
+ <proprietario_id>784</proprietario_id>
+ <comunidade_id>768</comunidade_id>
+ <descricao>11-xxxxx</descricao>
+ <codigo>796</codigo>
+</lote> 
+<lote>
+ <id>71</id>
+ <proprietario_id>785</proprietario_id>
+ <comunidade_id>768</comunidade_id>
+ <descricao>11-xxxxx</descricao>
+ <codigo>797</codigo>
+</lote> 
+<lote>
+ <id>72</id>
+ <proprietario_id>786</proprietario_id>
+ <comunidade_id>768</comunidade_id>
+ <descricao>16-xxxxx</descricao>
+ <codigo>798</codigo>
+</lote> 
+<lote>
+ <id>73</id>
+ <proprietario_id>787</proprietario_id>
+ <comunidade_id>768</comunidade_id>
+ <descricao>39-xxxxx</descricao>
+ <codigo>799</codigo>
+</lote> 
+<lote>
+ <id>74</id>
+ <proprietario_id>788</proprietario_id>
+ <comunidade_id>768</comunidade_id>
+ <descricao>15-xxxxx</descricao>
+ <codigo>800</codigo>
+</lote> 
+<lote>
+ <id>75</id>
+ <proprietario_id>789</proprietario_id>
+ <comunidade_id>768</comunidade_id>
+ <descricao>25,26.27-xxxxx</descricao>
+ <codigo>801</codigo>
+</lote> 
+<lote>
+ <id>76</id>
+ <proprietario_id>790</proprietario_id>
+ <comunidade_id>768</comunidade_id>
+ <descricao>8-xxxxx</descricao>
+ <codigo>802</codigo>
+</lote> 
+<lote>
+ <id>77</id>
+ <proprietario_id>791</proprietario_id>
+ <comunidade_id>768</comunidade_id>
+ <descricao>21-xxxxx</descricao>
+ <codigo>803</codigo>
+</lote> 
+<lote>
+ <id>78</id>
+ <proprietario_id>792</proprietario_id>
+ <comunidade_id>768</comunidade_id>
+ <descricao>45.46.49-xxxxx</descricao>
+ <codigo>804</codigo>
+</lote> 
+<lote>
+ <id>79</id>
+ <proprietario_id>793</proprietario_id>
+ <comunidade_id>768</comunidade_id>
+ <descricao>104-xxxxx</descricao>
+ <codigo>805</codigo>
+</lote> 
+<lote>
+ <id>80</id>
+ <proprietario_id>794</proprietario_id>
+ <comunidade_id>768</comunidade_id>
+ <descricao>68-xxxxx</descricao>
+ <codigo>806</codigo>
+</lote> 
+<lote>
+ <id>81</id>
+ <proprietario_id>796</proprietario_id>
+ <comunidade_id>768</comunidade_id>
+ <descricao>022-xxxxx</descricao>
+ <codigo>808</codigo>
+</lote> 
+<lote>
+ <id>82</id>
+ <proprietario_id>797</proprietario_id>
+ <comunidade_id>768</comunidade_id>
+ <descricao>69-xxxxx</descricao>
+ <codigo>809</codigo>
+</lote> 
+<lote>
+ <id>83</id>
+ <proprietario_id>798</proprietario_id>
+ <comunidade_id>768</comunidade_id>
+ <descricao>54-xxxxx</descricao>
+ <codigo>810</codigo>
+</lote> 
+<lote>
+ <id>84</id>
+ <proprietario_id>799</proprietario_id>
+ <comunidade_id>768</comunidade_id>
+ <descricao>47-xxxxx</descricao>
+ <codigo>811</codigo>
+</lote> 
+<lote>
+ <id>85</id>
+ <proprietario_id>800</proprietario_id>
+ <comunidade_id>768</comunidade_id>
+ <descricao>18-xxxxx</descricao>
+ <codigo>812</codigo>
+</lote> 
+<lote>
+ <id>86</id>
+ <proprietario_id>801</proprietario_id>
+ <comunidade_id>768</comunidade_id>
+ <descricao>14-xxxxx</descricao>
+ <codigo>813</codigo>
+</lote> 
+<lote>
+ <id>87</id>
+ <proprietario_id>803</proprietario_id>
+ <comunidade_id>768</comunidade_id>
+ <descricao>97-xxxxx</descricao>
+ <codigo>814</codigo>
+</lote> 
+<lote>
+ <id>88</id>
+ <proprietario_id>804</proprietario_id>
+ <comunidade_id>768</comunidade_id>
+ <descricao>29-xxxxx</descricao>
+ <codigo>816</codigo>
+</lote> 
+<lote>
+ <id>89</id>
+ <proprietario_id>805</proprietario_id>
+ <comunidade_id>768</comunidade_id>
+ <descricao>22-xxxxx</descricao>
+ <codigo>817</codigo>
+</lote> 
+<lote>
+ <id>90</id>
+ <proprietario_id>806</proprietario_id>
+ <comunidade_id>768</comunidade_id>
+ <descricao>52-xxxxx</descricao>
+ <codigo>818</codigo>
+</lote> 
+<lote>
+ <id>91</id>
+ <proprietario_id>807</proprietario_id>
+ <comunidade_id>768</comunidade_id>
+ <descricao>62-xxxxx</descricao>
+ <codigo>819</codigo>
+</lote> 
+<lote>
+ <id>92</id>
+ <proprietario_id>808</proprietario_id>
+ <comunidade_id>768</comunidade_id>
+ <descricao>5-xxxxx</descricao>
+ <codigo>820</codigo>
+</lote> 
+<lote>
+ <id>93</id>
+ <proprietario_id>808</proprietario_id>
+ <comunidade_id>768</comunidade_id>
+ <descricao>5-xxxxx</descricao>
+ <codigo>820</codigo>
+</lote> 
+<lote>
+ <id>94</id>
+ <proprietario_id>809</proprietario_id>
+ <comunidade_id>768</comunidade_id>
+ <descricao>9-xxxxx</descricao>
+ <codigo>821</codigo>
+</lote> 
+<lote>
+ <id>95</id>
+ <proprietario_id>810</proprietario_id>
+ <comunidade_id>768</comunidade_id>
+ <descricao>55-xxxxx</descricao>
+ <codigo>822</codigo>
+</lote> 
+<lote>
+ <id>96</id>
+ <proprietario_id>811</proprietario_id>
+ <comunidade_id>768</comunidade_id>
+ <descricao>6-xxxxx</descricao>
+ <codigo>823</codigo>
+</lote> 
+<lote>
+ <id>97</id>
+ <proprietario_id>812</proprietario_id>
+ <comunidade_id>768</comunidade_id>
+ <descricao>90-xxxxx</descricao>
+ <codigo>824</codigo>
+</lote> 
+<lote>
+ <id>98</id>
+ <proprietario_id>730</proprietario_id>
+ <comunidade_id>16</comunidade_id>
+ <descricao>36/37-xxxxx</descricao>
+ <codigo>825</codigo>
+</lote> 
+<lote>
+ <id>99</id>
+ <proprietario_id>731</proprietario_id>
+ <comunidade_id>16</comunidade_id>
+ <descricao>5/6-xxxxx</descricao>
+ <codigo>826</codigo>
+</lote> 
+<lote>
+ <id>100</id>
+ <proprietario_id>732</proprietario_id>
+ <comunidade_id>16</comunidade_id>
+ <descricao>05-xxxxx</descricao>
+ <codigo>827</codigo>
+</lote> 
+<lote>
+ <id>101</id>
+ <proprietario_id>733</proprietario_id>
+ <comunidade_id>16</comunidade_id>
+ <descricao>49-xxx</descricao>
+ <codigo>828</codigo>
+</lote> 
+<lote>
+ <id>102</id>
+ <proprietario_id>734</proprietario_id>
+ <comunidade_id>16</comunidade_id>
+ <descricao>59/63-xxxxx</descricao>
+ <codigo>829</codigo>
+</lote> 
+<lote>
+ <id>103</id>
+ <proprietario_id>735</proprietario_id>
+ <comunidade_id>16</comunidade_id>
+ <descricao>010-xxxxx</descricao>
+ <codigo>830</codigo>
+</lote> 
+<lote>
+ <id>104</id>
+ <proprietario_id>737</proprietario_id>
+ <comunidade_id>16</comunidade_id>
+ <descricao>45/46/48-xxxxx</descricao>
+ <codigo>831</codigo>
+</lote> 
+<lote>
+ <id>105</id>
+ <proprietario_id>738</proprietario_id>
+ <comunidade_id>16</comunidade_id>
+ <descricao>9/10-xxxxx</descricao>
+ <codigo>832</codigo>
+</lote> 
+<lote>
+ <id>106</id>
+ <proprietario_id>739</proprietario_id>
+ <comunidade_id>16</comunidade_id>
+ <descricao>06-xxxxx</descricao>
+ <codigo>833</codigo>
+</lote> 
+<lote>
+ <id>107</id>
+ <proprietario_id>740</proprietario_id>
+ <comunidade_id>16</comunidade_id>
+ <descricao>06-xxxxx</descricao>
+ <codigo>834</codigo>
+</lote> 
+<lote>
+ <id>108</id>
+ <proprietario_id>741</proprietario_id>
+ <comunidade_id>16</comunidade_id>
+ <descricao>08-xxxxx</descricao>
+ <codigo>835</codigo>
+</lote> 
+<lote>
+ <id>109</id>
+ <proprietario_id>742</proprietario_id>
+ <comunidade_id>16</comunidade_id>
+ <descricao>020-xxxxx</descricao>
+ <codigo>836</codigo>
+</lote> 
+<lote>
+ <id>110</id>
+ <proprietario_id>744</proprietario_id>
+ <comunidade_id>16</comunidade_id>
+ <descricao>4-xxxxx</descricao>
+ <codigo>838</codigo>
+</lote> 
+<lote>
+ <id>111</id>
+ <proprietario_id>745</proprietario_id>
+ <comunidade_id>16</comunidade_id>
+ <descricao>57/58-xxxxx</descricao>
+ <codigo>839</codigo>
+</lote> 
+<lote>
+ <id>112</id>
+ <proprietario_id>744</proprietario_id>
+ <comunidade_id>16</comunidade_id>
+ <descricao>4-xxxxx</descricao>
+ <codigo>838</codigo>
+</lote> 
+<lote>
+ <id>113</id>
+ <proprietario_id>746</proprietario_id>
+ <comunidade_id>16</comunidade_id>
+ <descricao>09-xxxxx</descricao>
+ <codigo>840</codigo>
+</lote> 
+<lote>
+ <id>114</id>
+ <proprietario_id>748</proprietario_id>
+ <comunidade_id>16</comunidade_id>
+ <descricao>51/52-xxxxx</descricao>
+ <codigo>841</codigo>
+</lote> 
+<lote>
+ <id>115</id>
+ <proprietario_id>749</proprietario_id>
+ <comunidade_id>16</comunidade_id>
+ <descricao>030-xxxxx</descricao>
+ <codigo>843</codigo>
+</lote> 
+<lote>
+ <id>116</id>
+ <proprietario_id>750</proprietario_id>
+ <comunidade_id>16</comunidade_id>
+ <descricao>044-xxxxx</descricao>
+ <codigo>844</codigo>
+</lote> 
+<lote>
+ <id>117</id>
+ <proprietario_id>751</proprietario_id>
+ <comunidade_id>16</comunidade_id>
+ <descricao>39-xxxxx</descricao>
+ <codigo>845</codigo>
+</lote> 
+<lote>
+ <id>118</id>
+ <proprietario_id>752</proprietario_id>
+ <comunidade_id>16</comunidade_id>
+ <descricao>50-xxxxx</descricao>
+ <codigo>846</codigo>
+</lote> 
+<lote>
+ <id>119</id>
+ <proprietario_id>753</proprietario_id>
+ <comunidade_id>16</comunidade_id>
+ <descricao>22/23-xxxxx</descricao>
+ <codigo>847</codigo>
+</lote> 
+<lote>
+ <id>120</id>
+ <proprietario_id>754</proprietario_id>
+ <comunidade_id>16</comunidade_id>
+ <descricao>28,29-xxxxx</descricao>
+ <codigo>848</codigo>
+</lote> 
+<lote>
+ <id>121</id>
+ <proprietario_id>755</proprietario_id>
+ <comunidade_id>16</comunidade_id>
+ <descricao>48/82-xxxxx</descricao>
+ <codigo>849</codigo>
+</lote> 
+<lote>
+ <id>122</id>
+ <proprietario_id>756</proprietario_id>
+ <comunidade_id>16</comunidade_id>
+ <descricao>05-xxxxx</descricao>
+ <codigo>850</codigo>
+</lote> 
+<lote>
+ <id>123</id>
+ <proprietario_id>757</proprietario_id>
+ <comunidade_id>16</comunidade_id>
+ <descricao>012-xxxxx</descricao>
+ <codigo>851</codigo>
+</lote> 
+<lote>
+ <id>124</id>
+ <proprietario_id>758</proprietario_id>
+ <comunidade_id>16</comunidade_id>
+ <descricao>034-xxxxx</descricao>
+ <codigo>852</codigo>
+</lote> 
+<lote>
+ <id>125</id>
+ <proprietario_id>759</proprietario_id>
+ <comunidade_id>16</comunidade_id>
+ <descricao>76/81-xxxxx</descricao>
+ <codigo>853</codigo>
+</lote> 
+<lote>
+ <id>126</id>
+ <proprietario_id>760</proprietario_id>
+ <comunidade_id>16</comunidade_id>
+ <descricao>3-xxxxx</descricao>
+ <codigo>854</codigo>
+</lote> 
+<lote>
+ <id>127</id>
+ <proprietario_id>761</proprietario_id>
+ <comunidade_id>16</comunidade_id>
+ <descricao>07-xxxxx</descricao>
+ <codigo>855</codigo>
+</lote> 
+<lote>
+ <id>128</id>
+ <proprietario_id>762</proprietario_id>
+ <comunidade_id>16</comunidade_id>
+ <descricao>44/47-xxxxx</descricao>
+ <codigo>856</codigo>
+</lote> 
+<lote>
+ <id>129</id>
+ <proprietario_id>764</proprietario_id>
+ <comunidade_id>16</comunidade_id>
+ <descricao>33-xxxxx</descricao>
+ <codigo>857</codigo>
+</lote> 
+<lote>
+ <id>130</id>
+ <proprietario_id>765</proprietario_id>
+ <comunidade_id>16</comunidade_id>
+ <descricao>16-xxxxx</descricao>
+ <codigo>858</codigo>
+</lote> 
+<lote>
+ <id>131</id>
+ <proprietario_id>766</proprietario_id>
+ <comunidade_id>16</comunidade_id>
+ <descricao>56-xxxxx</descricao>
+ <codigo>859</codigo>
+</lote> 
+<lote>
+ <id>132</id>
+ <proprietario_id>767</proprietario_id>
+ <comunidade_id>16</comunidade_id>
+ <descricao>37/38/39-xxxxx</descricao>
+ <codigo>860</codigo>
+</lote> 
+<lote>
+ <id>133</id>
+ <proprietario_id>456</proprietario_id>
+ <comunidade_id>11</comunidade_id>
+ <descricao>31.32-xxxxx</descricao>
+ <codigo>132</codigo>
+</lote> 
+<lote>
+ <id>134</id>
+ <proprietario_id>464</proprietario_id>
+ <comunidade_id>11</comunidade_id>
+ <descricao>5-xxxxx</descricao>
+ <codigo>133</codigo>
+</lote> 
+<lote>
+ <id>135</id>
+ <proprietario_id>458</proprietario_id>
+ <comunidade_id>11</comunidade_id>
+ <descricao>58-xxxxx</descricao>
+ <codigo>134</codigo>
+</lote> 
+<lote>
+ <id>136</id>
+ <proprietario_id>459</proprietario_id>
+ <comunidade_id>11</comunidade_id>
+ <descricao>43/44-xxxxx</descricao>
+ <codigo>142</codigo>
+</lote> 
+<lote>
+ <id>137</id>
+ <proprietario_id>460</proprietario_id>
+ <comunidade_id>11</comunidade_id>
+ <descricao>48-xxxxx</descricao>
+ <codigo>152</codigo>
+</lote> 
+<lote>
+ <id>138</id>
+ <proprietario_id>461</proprietario_id>
+ <comunidade_id>11</comunidade_id>
+ <descricao>41.42-xxxxx</descricao>
+ <codigo>165</codigo>
+</lote> 
+<lote>
+ <id>139</id>
+ <proprietario_id>462</proprietario_id>
+ <comunidade_id>11</comunidade_id>
+ <descricao>49.54-xxxxx</descricao>
+ <codigo>159</codigo>
+</lote> 
+<lote>
+ <id>140</id>
+ <proprietario_id>463</proprietario_id>
+ <comunidade_id>11</comunidade_id>
+ <descricao>8-xxxxx</descricao>
+ <codigo>158</codigo>
+</lote> 
+<lote>
+ <id>141</id>
+ <proprietario_id>465</proprietario_id>
+ <comunidade_id>11</comunidade_id>
+ <descricao>23/27-xxxxx</descricao>
+ <codigo>141</codigo>
+</lote> 
+<lote>
+ <id>142</id>
+ <proprietario_id>466</proprietario_id>
+ <comunidade_id>11</comunidade_id>
+ <descricao>3.6-xxxxx</descricao>
+ <codigo>154</codigo>
+</lote> 
+<lote>
+ <id>143</id>
+ <proprietario_id>468</proprietario_id>
+ <comunidade_id>11</comunidade_id>
+ <descricao>20-xxxxx</descricao>
+ <codigo>157</codigo>
+</lote> 
+<lote>
+ <id>144</id>
+ <proprietario_id>469</proprietario_id>
+ <comunidade_id>11</comunidade_id>
+ <descricao>7-xxxxx</descricao>
+ <codigo> 148</codigo>
+</lote> 
+<lote>
+ <id>145</id>
+ <proprietario_id>470</proprietario_id>
+ <comunidade_id>11</comunidade_id>
+ <descricao>24.25-xxxxx</descricao>
+ <codigo>145</codigo>
+</lote> 
+<lote>
+ <id>146</id>
+ <proprietario_id>471</proprietario_id>
+ <comunidade_id>11</comunidade_id>
+ <descricao>30-xxxxx</descricao>
+ <codigo>143</codigo>
+</lote> 
+<lote>
+ <id>147</id>
+ <proprietario_id>472</proprietario_id>
+ <comunidade_id>11</comunidade_id>
+ <descricao>61,62-xxxxx</descricao>
+ <codigo> 155</codigo>
+</lote> 
+<lote>
+ <id>148</id>
+ <proprietario_id>473</proprietario_id>
+ <comunidade_id>11</comunidade_id>
+ <descricao>55-xxxxx</descricao>
+ <codigo>164</codigo>
+</lote> 
+<lote>
+ <id>149</id>
+ <proprietario_id>474</proprietario_id>
+ <comunidade_id>11</comunidade_id>
+ <descricao>60-xxxxx</descricao>
+ <codigo>140</codigo>
+</lote> 
+<lote>
+ <id>150</id>
+ <proprietario_id>475</proprietario_id>
+ <comunidade_id>11</comunidade_id>
+ <descricao>23-xxxxx</descricao>
+ <codigo>144</codigo>
+</lote> 
+<lote>
+ <id>151</id>
+ <proprietario_id>476</proprietario_id>
+ <comunidade_id>11</comunidade_id>
+ <descricao>10/12-xxxxx</descricao>
+ <codigo>139</codigo>
+</lote> 
+<lote>
+ <id>152</id>
+ <proprietario_id>477</proprietario_id>
+ <comunidade_id>11</comunidade_id>
+ <descricao>37/38/39-xxxxx</descricao>
+ <codigo>136</codigo>
+</lote> 
+<lote>
+ <id>153</id>
+ <proprietario_id>478</proprietario_id>
+ <comunidade_id>11</comunidade_id>
+ <descricao>40-xxxxx</descricao>
+ <codigo>138</codigo>
+</lote> 
+<lote>
+ <id>154</id>
+ <proprietario_id>479</proprietario_id>
+ <comunidade_id>11</comunidade_id>
+ <descricao>17/19/21-xxxxx</descricao>
+ <codigo>153</codigo>
+</lote> 
+<lote>
+ <id>155</id>
+ <proprietario_id>480</proprietario_id>
+ <comunidade_id>11</comunidade_id>
+ <descricao>51-xxxxx</descricao>
+ <codigo>166</codigo>
+</lote> 
+<lote>
+ <id>156</id>
+ <proprietario_id>481</proprietario_id>
+ <comunidade_id>11</comunidade_id>
+ <descricao>2/4-xxxxx</descricao>
+ <codigo>146</codigo>
+</lote> 
+<lote>
+ <id>157</id>
+ <proprietario_id>482</proprietario_id>
+ <comunidade_id>11</comunidade_id>
+ <descricao>29-xxxxx</descricao>
+ <codigo>151</codigo>
+</lote> 
+<lote>
+ <id>158</id>
+ <proprietario_id>483</proprietario_id>
+ <comunidade_id>11</comunidade_id>
+ <descricao>13/14-xxxxx</descricao>
+ <codigo>147</codigo>
+</lote> 
+<lote>
+ <id>159</id>
+ <proprietario_id>484</proprietario_id>
+ <comunidade_id>11</comunidade_id>
+ <descricao>92/93-xxxxx</descricao>
+ <codigo>161</codigo>
+</lote> 
+<lote>
+ <id>160</id>
+ <proprietario_id>485</proprietario_id>
+ <comunidade_id>11</comunidade_id>
+ <descricao>70-xxxxx</descricao>
+ <codigo>156</codigo>
+</lote> 
+<lote>
+ <id>161</id>
+ <proprietario_id>486</proprietario_id>
+ <comunidade_id>11</comunidade_id>
+ <descricao>33/34/35-xxxxx</descricao>
+ <codigo>137</codigo>
+</lote> 
+<lote>
+ <id>162</id>
+ <proprietario_id>487</proprietario_id>
+ <comunidade_id>11</comunidade_id>
+ <descricao>45-xxxxx</descricao>
+ <codigo>135</codigo>
+</lote> 
+<lote>
+ <id>163</id>
+ <proprietario_id>487</proprietario_id>
+ <comunidade_id>11</comunidade_id>
+ <descricao>45-xxxxx</descricao>
+ <codigo>135</codigo>
+</lote> 
+<lote>
+ <id>164</id>
+ <proprietario_id>488</proprietario_id>
+ <comunidade_id>11</comunidade_id>
+ <descricao>46-xxxxx</descricao>
+ <codigo>163</codigo>
+</lote> 
+<lote>
+ <id>165</id>
+ <proprietario_id>489</proprietario_id>
+ <comunidade_id>11</comunidade_id>
+ <descricao>9/11-xxxxx</descricao>
+ <codigo>150</codigo>
+</lote> 
+<lote>
+ <id>166</id>
+ <proprietario_id>490</proprietario_id>
+ <comunidade_id>11</comunidade_id>
+ <descricao>14-xxxxx</descricao>
+ <codigo>162</codigo>
+</lote> 
+<lote>
+ <id>167</id>
+ <proprietario_id>491</proprietario_id>
+ <comunidade_id>11</comunidade_id>
+ <descricao>16/17-xxxxx</descricao>
+ <codigo>167</codigo>
+</lote> 
+<lote>
+ <id>168</id>
+ <proprietario_id>492</proprietario_id>
+ <comunidade_id>11</comunidade_id>
+ <descricao>055-xxxxx</descricao>
+ <codigo>160</codigo>
+</lote> 
+<lote>
+ <id>169</id>
+ <proprietario_id>587</proprietario_id>
+ <comunidade_id>1</comunidade_id>
+ <descricao>96.97.98-xxxxx</descricao>
+ <codigo>457</codigo>
+</lote> 
+<lote>
+ <id>170</id>
+ <proprietario_id>588</proprietario_id>
+ <comunidade_id>1</comunidade_id>
+ <descricao>153-xxxxx</descricao>
+ <codigo>458</codigo>
+</lote> 
+<lote>
+ <id>171</id>
+ <proprietario_id>589</proprietario_id>
+ <comunidade_id>1</comunidade_id>
+ <descricao>83.84-xxxxx</descricao>
+ <codigo>459</codigo>
+</lote> 
+<lote>
+ <id>172</id>
+ <proprietario_id>590</proprietario_id>
+ <comunidade_id>1</comunidade_id>
+ <descricao>57-xxxxx</descricao>
+ <codigo>460</codigo>
+</lote> 
+<lote>
+ <id>173</id>
+ <proprietario_id>591</proprietario_id>
+ <comunidade_id>1</comunidade_id>
+ <descricao>130-xxxxx</descricao>
+ <codigo>461</codigo>
+</lote> 
+<lote>
+ <id>174</id>
+ <proprietario_id>595</proprietario_id>
+ <comunidade_id>1</comunidade_id>
+ <descricao>102.101-xxxxx</descricao>
+ <codigo>462</codigo>
+</lote> 
+<lote>
+ <id>175</id>
+ <proprietario_id>598</proprietario_id>
+ <comunidade_id>1</comunidade_id>
+ <descricao>73-xxxxx</descricao>
+ <codigo>467</codigo>
+</lote> 
+<lote>
+ <id>176</id>
+ <proprietario_id>599</proprietario_id>
+ <comunidade_id>1</comunidade_id>
+ <descricao>61-xxxxx</descricao>
+ <codigo>464</codigo>
+</lote> 
+<lote>
+ <id>177</id>
+ <proprietario_id>601</proprietario_id>
+ <comunidade_id>1</comunidade_id>
+ <descricao>72-xxxxx</descricao>
+ <codigo>465</codigo>
+</lote> 
+<lote>
+ <id>178</id>
+ <proprietario_id>601</proprietario_id>
+ <comunidade_id>1</comunidade_id>
+ <descricao>72-xxxxx</descricao>
+ <codigo>465</codigo>
+</lote> 
+<lote>
+ <id>179</id>
+ <proprietario_id>602</proprietario_id>
+ <comunidade_id>1</comunidade_id>
+ <descricao>66-xxxxx</descricao>
+ <codigo>466</codigo>
+</lote> 
+<lote>
+ <id>180</id>
+ <proprietario_id>604</proprietario_id>
+ <comunidade_id>1</comunidade_id>
+ <descricao>107-xxxxx</descricao>
+ <codigo>468</codigo>
+</lote> 
+<lote>
+ <id>181</id>
+ <proprietario_id>605</proprietario_id>
+ <comunidade_id>1</comunidade_id>
+ <descricao>63-xxxxx</descricao>
+ <codigo>469</codigo>
+</lote> 
+<lote>
+ <id>182</id>
+ <proprietario_id>606</proprietario_id>
+ <comunidade_id>1</comunidade_id>
+ <descricao>56-xxxxx</descricao>
+ <codigo>470</codigo>
+</lote> 
+<lote>
+ <id>183</id>
+ <proprietario_id>607</proprietario_id>
+ <comunidade_id>1</comunidade_id>
+ <descricao>51.52-xxxxx</descricao>
+ <codigo>471</codigo>
+</lote> 
+<lote>
+ <id>184</id>
+ <proprietario_id>608</proprietario_id>
+ <comunidade_id>1</comunidade_id>
+ <descricao>180-xxxxx</descricao>
+ <codigo>472</codigo>
+</lote> 
+<lote>
+ <id>185</id>
+ <proprietario_id>609</proprietario_id>
+ <comunidade_id>1</comunidade_id>
+ <descricao>125.126-xxxxx</descricao>
+ <codigo>473</codigo>
+</lote> 
+<lote>
+ <id>186</id>
+ <proprietario_id>610</proprietario_id>
+ <comunidade_id>1</comunidade_id>
+ <descricao>132-xxxxx</descricao>
+ <codigo>474</codigo>
+</lote> 
+<lote>
+ <id>187</id>
+ <proprietario_id>611</proprietario_id>
+ <comunidade_id>1</comunidade_id>
+ <descricao>77-xxxxx</descricao>
+ <codigo>475</codigo>
+</lote> 
+<lote>
+ <id>188</id>
+ <proprietario_id>612</proprietario_id>
+ <comunidade_id>1</comunidade_id>
+ <descricao>155-xxxxx</descricao>
+ <codigo>476</codigo>
+</lote> 
+<lote>
+ <id>189</id>
+ <proprietario_id>613</proprietario_id>
+ <comunidade_id>1</comunidade_id>
+ <descricao>15-xxxxx</descricao>
+ <codigo>477</codigo>
+</lote> 
+<lote>
+ <id>190</id>
+ <proprietario_id>614</proprietario_id>
+ <comunidade_id>1</comunidade_id>
+ <descricao>53-xxxxx</descricao>
+ <codigo>478</codigo>
+</lote> 
+<lote>
+ <id>191</id>
+ <proprietario_id>615</proprietario_id>
+ <comunidade_id>1</comunidade_id>
+ <descricao>93-xxxxx</descricao>
+ <codigo>479</codigo>
+</lote> 
+<lote>
+ <id>192</id>
+ <proprietario_id>616</proprietario_id>
+ <comunidade_id>1</comunidade_id>
+ <descricao>27-xxxxx</descricao>
+ <codigo>480</codigo>
+</lote> 
+<lote>
+ <id>193</id>
+ <proprietario_id>617</proprietario_id>
+ <comunidade_id>1</comunidade_id>
+ <descricao>111/112-xxxxx</descricao>
+ <codigo>481</codigo>
+</lote> 
+<lote>
+ <id>194</id>
+ <proprietario_id>618</proprietario_id>
+ <comunidade_id>1</comunidade_id>
+ <descricao>110-xxxxx</descricao>
+ <codigo>482</codigo>
+</lote> 
+<lote>
+ <id>195</id>
+ <proprietario_id>619</proprietario_id>
+ <comunidade_id>1</comunidade_id>
+ <descricao>175-xxxxx</descricao>
+ <codigo>483</codigo>
+</lote> 
+<lote>
+ <id>196</id>
+ <proprietario_id>620</proprietario_id>
+ <comunidade_id>1</comunidade_id>
+ <descricao>151-xxxxx</descricao>
+ <codigo>484</codigo>
+</lote> 
+<lote>
+ <id>197</id>
+ <proprietario_id>621</proprietario_id>
+ <comunidade_id>1</comunidade_id>
+ <descricao>58-xxxxx</descricao>
+ <codigo>485</codigo>
+</lote> 
+<lote>
+ <id>198</id>
+ <proprietario_id>622</proprietario_id>
+ <comunidade_id>1</comunidade_id>
+ <descricao>20-xxxxx</descricao>
+ <codigo>486</codigo>
+</lote> 
+<lote>
+ <id>199</id>
+ <proprietario_id>623</proprietario_id>
+ <comunidade_id>1</comunidade_id>
+ <descricao>177-xxxxx</descricao>
+ <codigo>487</codigo>
+</lote> 
+<lote>
+ <id>200</id>
+ <proprietario_id>624</proprietario_id>
+ <comunidade_id>1</comunidade_id>
+ <descricao>40-xxxxx</descricao>
+ <codigo>488</codigo>
+</lote> 
+<lote>
+ <id>201</id>
+ <proprietario_id>625</proprietario_id>
+ <comunidade_id>1</comunidade_id>
+ <descricao>40-xxxxx</descricao>
+ <codigo>489</codigo>
+</lote> 
+<lote>
+ <id>202</id>
+ <proprietario_id>626</proprietario_id>
+ <comunidade_id>1</comunidade_id>
+ <descricao>65-xxxxx</descricao>
+ <codigo>490</codigo>
+</lote> 
+<lote>
+ <id>203</id>
+ <proprietario_id>627</proprietario_id>
+ <comunidade_id>1</comunidade_id>
+ <descricao>000-000</descricao>
+ <codigo>0000</codigo>
+</lote> 
+<lote>
+ <id>204</id>
+ <proprietario_id>628</proprietario_id>
+ <comunidade_id>1</comunidade_id>
+ <descricao>30,31-xxxxx</descricao>
+ <codigo>493</codigo>
+</lote> 
+<lote>
+ <id>205</id>
+ <proprietario_id>629</proprietario_id>
+ <comunidade_id>1</comunidade_id>
+ <descricao>150-xxxxx</descricao>
+ <codigo>495</codigo>
+</lote> 
+<lote>
+ <id>206</id>
+ <proprietario_id>631</proprietario_id>
+ <comunidade_id>1</comunidade_id>
+ <descricao>156-xxxxx</descricao>
+ <codigo>494</codigo>
+</lote> 
+<lote>
+ <id>207</id>
+ <proprietario_id>632</proprietario_id>
+ <comunidade_id>1</comunidade_id>
+ <descricao>150-xxxxx</descricao>
+ <codigo>495</codigo>
+</lote> 
+<lote>
+ <id>208</id>
+ <proprietario_id>633</proprietario_id>
+ <comunidade_id>1</comunidade_id>
+ <descricao>108-xxxxx</descricao>
+ <codigo>496</codigo>
+</lote> 
+<lote>
+ <id>209</id>
+ <proprietario_id>634</proprietario_id>
+ <comunidade_id>1</comunidade_id>
+ <descricao>182-xxxxx</descricao>
+ <codigo>497</codigo>
+</lote> 
+<lote>
+ <id>210</id>
+ <proprietario_id>635</proprietario_id>
+ <comunidade_id>1</comunidade_id>
+ <descricao>26-xxxxx</descricao>
+ <codigo>498</codigo>
+</lote> 
+<lote>
+ <id>211</id>
+ <proprietario_id>636</proprietario_id>
+ <comunidade_id>1</comunidade_id>
+ <descricao>044-xxxxx</descricao>
+ <codigo>499</codigo>
+</lote> 
+<lote>
+ <id>212</id>
+ <proprietario_id>637</proprietario_id>
+ <comunidade_id>1</comunidade_id>
+ <descricao>12-xxxxx</descricao>
+ <codigo>500</codigo>
+</lote> 
+<lote>
+ <id>213</id>
+ <proprietario_id>638</proprietario_id>
+ <comunidade_id>1</comunidade_id>
+ <descricao>121-xxxxx</descricao>
+ <codigo>501</codigo>
+</lote> 
+<lote>
+ <id>214</id>
+ <proprietario_id>639</proprietario_id>
+ <comunidade_id>1</comunidade_id>
+ <descricao>178-xxxxx</descricao>
+ <codigo>502</codigo>
+</lote> 
+<lote>
+ <id>215</id>
+ <proprietario_id>640</proprietario_id>
+ <comunidade_id>1</comunidade_id>
+ <descricao>62-xxxxx</descricao>
+ <codigo>503</codigo>
+</lote> 
+<lote>
+ <id>216</id>
+ <proprietario_id>641</proprietario_id>
+ <comunidade_id>1</comunidade_id>
+ <descricao>45.46-xxxxx</descricao>
+ <codigo>504</codigo>
+</lote> 
+<lote>
+ <id>217</id>
+ <proprietario_id>642</proprietario_id>
+ <comunidade_id>1</comunidade_id>
+ <descricao>125-xxxxx</descricao>
+ <codigo>505</codigo>
+</lote> 
+<lote>
+ <id>218</id>
+ <proprietario_id>643</proprietario_id>
+ <comunidade_id>1</comunidade_id>
+ <descricao>134-xxxxx</descricao>
+ <codigo>506</codigo>
+</lote> 
+<lote>
+ <id>219</id>
+ <proprietario_id>644</proprietario_id>
+ <comunidade_id>1</comunidade_id>
+ <descricao>02-xxxxx</descricao>
+ <codigo>507</codigo>
+</lote> 
+<lote>
+ <id>220</id>
+ <proprietario_id>645</proprietario_id>
+ <comunidade_id>1</comunidade_id>
+ <descricao>28-xxxxx</descricao>
+ <codigo>508</codigo>
+</lote> 
+<lote>
+ <id>221</id>
+ <proprietario_id>646</proprietario_id>
+ <comunidade_id>1</comunidade_id>
+ <descricao>139-xxxxx</descricao>
+ <codigo>509</codigo>
+</lote> 
+<lote>
+ <id>222</id>
+ <proprietario_id>647</proprietario_id>
+ <comunidade_id>1</comunidade_id>
+ <descricao>70-xxxxx</descricao>
+ <codigo>510</codigo>
+</lote> 
+<lote>
+ <id>223</id>
+ <proprietario_id>648</proprietario_id>
+ <comunidade_id>1</comunidade_id>
+ <descricao>5 e 8-xxxxx</descricao>
+ <codigo>511</codigo>
+</lote> 
+<lote>
+ <id>224</id>
+ <proprietario_id>649</proprietario_id>
+ <comunidade_id>1</comunidade_id>
+ <descricao>119-xxxxx</descricao>
+ <codigo>512</codigo>
+</lote> 
+<lote>
+ <id>225</id>
+ <proprietario_id>651</proprietario_id>
+ <comunidade_id>1</comunidade_id>
+ <descricao>116-xxxxx</descricao>
+ <codigo>514</codigo>
+</lote> 
+<lote>
+ <id>226</id>
+ <proprietario_id>652</proprietario_id>
+ <comunidade_id>1</comunidade_id>
+ <descricao>103-xxxxx</descricao>
+ <codigo>515</codigo>
+</lote> 
+<lote>
+ <id>227</id>
+ <proprietario_id>653</proprietario_id>
+ <comunidade_id>1</comunidade_id>
+ <descricao>79.8-xxxxx</descricao>
+ <codigo>516</codigo>
+</lote> 
+<lote>
+ <id>228</id>
+ <proprietario_id>654</proprietario_id>
+ <comunidade_id>1</comunidade_id>
+ <descricao>17.19-xxxxx</descricao>
+ <codigo>517</codigo>
+</lote> 
+<lote>
+ <id>229</id>
+ <proprietario_id>655</proprietario_id>
+ <comunidade_id>1</comunidade_id>
+ <descricao>67-xxxxx</descricao>
+ <codigo>518</codigo>
+</lote> 
+<lote>
+ <id>230</id>
+ <proprietario_id>656</proprietario_id>
+ <comunidade_id>1</comunidade_id>
+ <descricao>154-xxxxx</descricao>
+ <codigo>519</codigo>
+</lote> 
+<lote>
+ <id>231</id>
+ <proprietario_id>657</proprietario_id>
+ <comunidade_id>1</comunidade_id>
+ <descricao>055-xxxxx</descricao>
+ <codigo>520</codigo>
+</lote> 
+<lote>
+ <id>232</id>
+ <proprietario_id>658</proprietario_id>
+ <comunidade_id>1</comunidade_id>
+ <descricao>141-xxxxx</descricao>
+ <codigo>521</codigo>
+</lote> 
+<lote>
+ <id>233</id>
+ <proprietario_id>659</proprietario_id>
+ <comunidade_id>1</comunidade_id>
+ <descricao>179-xxxxx</descricao>
+ <codigo>522</codigo>
+</lote> 
+<lote>
+ <id>234</id>
+ <proprietario_id>660</proprietario_id>
+ <comunidade_id>1</comunidade_id>
+ <descricao>21-xxxxx</descricao>
+ <codigo>523</codigo>
+</lote> 
+<lote>
+ <id>235</id>
+ <proprietario_id>661</proprietario_id>
+ <comunidade_id>1</comunidade_id>
+ <descricao>16-xxxxx</descricao>
+ <codigo>524</codigo>
+</lote> 
+<lote>
+ <id>236</id>
+ <proprietario_id>662</proprietario_id>
+ <comunidade_id>1</comunidade_id>
+ <descricao>31/32-xxxxx</descricao>
+ <codigo>525</codigo>
+</lote> 
+<lote>
+ <id>237</id>
+ <proprietario_id>663</proprietario_id>
+ <comunidade_id>1</comunidade_id>
+ <descricao>105-xxxxx</descricao>
+ <codigo>526</codigo>
+</lote> 
+<lote>
+ <id>238</id>
+ <proprietario_id>664</proprietario_id>
+ <comunidade_id>1</comunidade_id>
+ <descricao>122-xxxxx</descricao>
+ <codigo>527</codigo>
+</lote> 
+<lote>
+ <id>239</id>
+ <proprietario_id>665</proprietario_id>
+ <comunidade_id>1</comunidade_id>
+ <descricao>99-xxxxx</descricao>
+ <codigo>528</codigo>
+</lote> 
+<lote>
+ <id>240</id>
+ <proprietario_id>666</proprietario_id>
+ <comunidade_id>1</comunidade_id>
+ <descricao>7.8-xxxxx</descricao>
+ <codigo>529</codigo>
+</lote> 
+<lote>
+ <id>241</id>
+ <proprietario_id>667</proprietario_id>
+ <comunidade_id>1</comunidade_id>
+ <descricao>011-xxxxx</descricao>
+ <codigo>530</codigo>
+</lote> 
+<lote>
+ <id>242</id>
+ <proprietario_id>668</proprietario_id>
+ <comunidade_id>1</comunidade_id>
+ <descricao>44-xxxxx</descricao>
+ <codigo>531</codigo>
+</lote> 
+<lote>
+ <id>243</id>
+ <proprietario_id>669</proprietario_id>
+ <comunidade_id>1</comunidade_id>
+ <descricao>136.141-xxx</descricao>
+ <codigo>532</codigo>
+</lote> 
+<lote>
+ <id>244</id>
+ <proprietario_id>670</proprietario_id>
+ <comunidade_id>1</comunidade_id>
+ <descricao>94-xxxxx</descricao>
+ <codigo>533</codigo>
+</lote> 
+<lote>
+ <id>245</id>
+ <proprietario_id>671</proprietario_id>
+ <comunidade_id>1</comunidade_id>
+ <descricao>020-xxxxx</descricao>
+ <codigo>534</codigo>
+</lote> 
+<lote>
+ <id>246</id>
+ <proprietario_id>672</proprietario_id>
+ <comunidade_id>1</comunidade_id>
+ <descricao>109-xxxxx</descricao>
+ <codigo>535</codigo>
+</lote> 
+<lote>
+ <id>247</id>
+ <proprietario_id>673</proprietario_id>
+ <comunidade_id>1</comunidade_id>
+ <descricao>90.93-xxxxx</descricao>
+ <codigo>536</codigo>
+</lote> 
+<lote>
+ <id>248</id>
+ <proprietario_id>674</proprietario_id>
+ <comunidade_id>1</comunidade_id>
+ <descricao>60-xxxxx</descricao>
+ <codigo>537</codigo>
+</lote> 
+<lote>
+ <id>249</id>
+ <proprietario_id>675</proprietario_id>
+ <comunidade_id>1</comunidade_id>
+ <descricao>35-xxxxx</descricao>
+ <codigo>538</codigo>
+</lote> 
+<lote>
+ <id>250</id>
+ <proprietario_id>676</proprietario_id>
+ <comunidade_id>1</comunidade_id>
+ <descricao>074-xxxxx</descricao>
+ <codigo>539</codigo>
+</lote> 
+<lote>
+ <id>251</id>
+ <proprietario_id>677</proprietario_id>
+ <comunidade_id>1</comunidade_id>
+ <descricao>158-xxxxx</descricao>
+ <codigo>540</codigo>
+</lote> 
+<lote>
+ <id>252</id>
+ <proprietario_id>678</proprietario_id>
+ <comunidade_id>1</comunidade_id>
+ <descricao>43-xxxxx</descricao>
+ <codigo>541</codigo>
+</lote> 
+<lote>
+ <id>253</id>
+ <proprietario_id>679</proprietario_id>
+ <comunidade_id>1</comunidade_id>
+ <descricao>70A-xxxxx</descricao>
+ <codigo>542</codigo>
+</lote> 
+<lote>
+ <id>254</id>
+ <proprietario_id>680</proprietario_id>
+ <comunidade_id>1</comunidade_id>
+ <descricao>015-xxxxx</descricao>
+ <codigo>543</codigo>
+</lote> 
+<lote>
+ <id>255</id>
+ <proprietario_id>681</proprietario_id>
+ <comunidade_id>1</comunidade_id>
+ <descricao>18.138-xxxxx</descricao>
+ <codigo>544</codigo>
+</lote> 
+<lote>
+ <id>256</id>
+ <proprietario_id>682</proprietario_id>
+ <comunidade_id>1</comunidade_id>
+ <descricao>37/38/39-xxxxx</descricao>
+ <codigo>545</codigo>
+</lote> 
+<lote>
+ <id>257</id>
+ <proprietario_id>683</proprietario_id>
+ <comunidade_id>1</comunidade_id>
+ <descricao>116-xxxxx</descricao>
+ <codigo>546</codigo>
+</lote> 
+<lote>
+ <id>258</id>
+ <proprietario_id>684</proprietario_id>
+ <comunidade_id>1</comunidade_id>
+ <descricao>12-xxxxx</descricao>
+ <codigo>547</codigo>
+</lote> 
+<lote>
+ <id>259</id>
+ <proprietario_id>189</proprietario_id>
+ <comunidade_id>8</comunidade_id>
+ <descricao>57-xxxxx</descricao>
+ <codigo>267</codigo>
+</lote> 
+<lote>
+ <id>260</id>
+ <proprietario_id>189</proprietario_id>
+ <comunidade_id>8</comunidade_id>
+ <descricao>2-xxxxx</descricao>
+ <codigo>268</codigo>
+</lote> 
+<lote>
+ <id>261</id>
+ <proprietario_id>190</proprietario_id>
+ <comunidade_id>8</comunidade_id>
+ <descricao>12-xxxxx</descricao>
+ <codigo>269</codigo>
+</lote> 
+<lote>
+ <id>262</id>
+ <proprietario_id>191</proprietario_id>
+ <comunidade_id>8</comunidade_id>
+ <descricao>23-xxxxx</descricao>
+ <codigo>270</codigo>
+</lote> 
+<lote>
+ <id>263</id>
+ <proprietario_id>192</proprietario_id>
+ <comunidade_id>8</comunidade_id>
+ <descricao>5-xxxxx</descricao>
+ <codigo>271</codigo>
+</lote> 
+<lote>
+ <id>264</id>
+ <proprietario_id>193</proprietario_id>
+ <comunidade_id>8</comunidade_id>
+ <descricao>17-xxxxx</descricao>
+ <codigo>272</codigo>
+</lote> 
+<lote>
+ <id>265</id>
+ <proprietario_id>194</proprietario_id>
+ <comunidade_id>8</comunidade_id>
+ <descricao>16-xxxxx</descricao>
+ <codigo>273</codigo>
+</lote> 
+<lote>
+ <id>266</id>
+ <proprietario_id>950</proprietario_id>
+ <comunidade_id>6</comunidade_id>
+ <descricao>16-xxxxx</descricao>
+ <codigo>274</codigo>
+</lote> 
+<lote>
+ <id>267</id>
+ <proprietario_id>968</proprietario_id>
+ <comunidade_id>6</comunidade_id>
+ <descricao>10-xxxxx</descricao>
+ <codigo>275</codigo>
+</lote> 
+<lote>
+ <id>268</id>
+ <proprietario_id>980</proprietario_id>
+ <comunidade_id>6</comunidade_id>
+ <descricao>17-xxxxx</descricao>
+ <codigo>276</codigo>
+</lote> 
+<lote>
+ <id>269</id>
+ <proprietario_id>985</proprietario_id>
+ <comunidade_id>6</comunidade_id>
+ <descricao>6-xxxxx</descricao>
+ <codigo>277</codigo>
+</lote> 
+<lote>
+ <id>270</id>
+ <proprietario_id>929</proprietario_id>
+ <comunidade_id>6</comunidade_id>
+ <descricao>13-xxxxx</descricao>
+ <codigo>278</codigo>
+</lote> 
+<lote>
+ <id>271</id>
+ <proprietario_id>987</proprietario_id>
+ <comunidade_id>6</comunidade_id>
+ <descricao>13-xxxxx</descricao>
+ <codigo>279</codigo>
+</lote> 
+<lote>
+ <id>272</id>
+ <proprietario_id>934</proprietario_id>
+ <comunidade_id>6</comunidade_id>
+ <descricao>5-xxxxx</descricao>
+ <codigo>280</codigo>
+</lote> 
+<lote>
+ <id>273</id>
+ <proprietario_id>919</proprietario_id>
+ <comunidade_id>6</comunidade_id>
+ <descricao>18-xxxxx</descricao>
+ <codigo>281</codigo>
+</lote> 
+<lote>
+ <id>274</id>
+ <proprietario_id>912</proprietario_id>
+ <comunidade_id>6</comunidade_id>
+ <descricao>4-xxxxx</descricao>
+ <codigo>282</codigo>
+</lote> 
+<lote>
+ <id>275</id>
+ <proprietario_id>962</proprietario_id>
+ <comunidade_id>6</comunidade_id>
+ <descricao>8-xxxxx</descricao>
+ <codigo>284</codigo>
+</lote> 
+<lote>
+ <id>276</id>
+ <proprietario_id>962</proprietario_id>
+ <comunidade_id>6</comunidade_id>
+ <descricao>8-xxxxx</descricao>
+ <codigo>284</codigo>
+</lote> 
+<lote>
+ <id>277</id>
+ <proprietario_id>961</proprietario_id>
+ <comunidade_id>6</comunidade_id>
+ <descricao>24-xxxxx</descricao>
+ <codigo>285</codigo>
+</lote> 
+<lote>
+ <id>278</id>
+ <proprietario_id>933</proprietario_id>
+ <comunidade_id>6</comunidade_id>
+ <descricao>24-xxxxx</descricao>
+ <codigo>286</codigo>
+</lote> 
+<lote>
+ <id>279</id>
+ <proprietario_id>959</proprietario_id>
+ <comunidade_id>6</comunidade_id>
+ <descricao>5-xxxxx</descricao>
+ <codigo>287</codigo>
+</lote> 
+<lote>
+ <id>280</id>
+ <proprietario_id>932</proprietario_id>
+ <comunidade_id>6</comunidade_id>
+ <descricao>25-xxxxx</descricao>
+ <codigo>288</codigo>
+</lote> 
+<lote>
+ <id>281</id>
+ <proprietario_id>979</proprietario_id>
+ <comunidade_id>6</comunidade_id>
+ <descricao>25-xxxxx</descricao>
+ <codigo>289</codigo>
+</lote> 
+<lote>
+ <id>282</id>
+ <proprietario_id>974</proprietario_id>
+ <comunidade_id>6</comunidade_id>
+ <descricao>20-xxxxx</descricao>
+ <codigo>290</codigo>
+</lote> 
+<lote>
+ <id>283</id>
+ <proprietario_id>951</proprietario_id>
+ <comunidade_id>6</comunidade_id>
+ <descricao>15-xxxxx</descricao>
+ <codigo>291</codigo>
+</lote> 
+<lote>
+ <id>284</id>
+ <proprietario_id>936</proprietario_id>
+ <comunidade_id>6</comunidade_id>
+ <descricao>1.2-xxxxx</descricao>
+ <codigo>292</codigo>
+</lote> 
+<lote>
+ <id>285</id>
+ <proprietario_id>916</proprietario_id>
+ <comunidade_id>6</comunidade_id>
+ <descricao>7-xxxxx</descricao>
+ <codigo>293</codigo>
+</lote> 
+<lote>
+ <id>286</id>
+ <proprietario_id>986</proprietario_id>
+ <comunidade_id>6</comunidade_id>
+ <descricao>14-xxxxx</descricao>
+ <codigo>294</codigo>
+</lote> 
+<lote>
+ <id>287</id>
+ <proprietario_id>913</proprietario_id>
+ <comunidade_id>6</comunidade_id>
+ <descricao>42-xxxxx</descricao>
+ <codigo>295</codigo>
+</lote> 
+<lote>
+ <id>288</id>
+ <proprietario_id>937</proprietario_id>
+ <comunidade_id>6</comunidade_id>
+ <descricao>51-xxxxx</descricao>
+ <codigo>296</codigo>
+</lote> 
+<lote>
+ <id>289</id>
+ <proprietario_id>942</proprietario_id>
+ <comunidade_id>6</comunidade_id>
+ <descricao>21-xxxxx</descricao>
+ <codigo>297</codigo>
+</lote> 
+<lote>
+ <id>290</id>
+ <proprietario_id>947</proprietario_id>
+ <comunidade_id>6</comunidade_id>
+ <descricao>0.45-xxxxx</descricao>
+ <codigo>298</codigo>
+</lote> 
+<lote>
+ <id>291</id>
+ <proprietario_id>982</proprietario_id>
+ <comunidade_id>6</comunidade_id>
+ <descricao>7-xxxxx</descricao>
+ <codigo>299</codigo>
+</lote> 
+<lote>
+ <id>292</id>
+ <proprietario_id>934</proprietario_id>
+ <comunidade_id>6</comunidade_id>
+ <descricao>0.19-xxxxx</descricao>
+ <codigo>300</codigo>
+</lote> 
+<lote>
+ <id>293</id>
+ <proprietario_id>977</proprietario_id>
+ <comunidade_id>6</comunidade_id>
+ <descricao>13-xxxxx</descricao>
+ <codigo>301</codigo>
+</lote> 
+<lote>
+ <id>294</id>
+ <proprietario_id>964</proprietario_id>
+ <comunidade_id>6</comunidade_id>
+ <descricao>40-xxxxx</descricao>
+ <codigo>302</codigo>
+</lote> 
+<lote>
+ <id>295</id>
+ <proprietario_id>917</proprietario_id>
+ <comunidade_id>6</comunidade_id>
+ <descricao>41-xxxxx</descricao>
+ <codigo>303</codigo>
+</lote> 
+<lote>
+ <id>296</id>
+ <proprietario_id>976</proprietario_id>
+ <comunidade_id>6</comunidade_id>
+ <descricao>48-xxxxx</descricao>
+ <codigo>304</codigo>
+</lote> 
+<lote>
+ <id>297</id>
+ <proprietario_id>983</proprietario_id>
+ <comunidade_id>6</comunidade_id>
+ <descricao>6-xxxxx</descricao>
+ <codigo>305</codigo>
+</lote> 
+<lote>
+ <id>298</id>
+ <proprietario_id>969</proprietario_id>
+ <comunidade_id>6</comunidade_id>
+ <descricao>019-xxxxx</descricao>
+ <codigo>306</codigo>
+</lote> 
+<lote>
+ <id>299</id>
+ <proprietario_id>927</proprietario_id>
+ <comunidade_id>6</comunidade_id>
+ <descricao>16-xxxxx</descricao>
+ <codigo>307</codigo>
+</lote> 
+<lote>
+ <id>300</id>
+ <proprietario_id>954</proprietario_id>
+ <comunidade_id>6</comunidade_id>
+ <descricao>16-xxxxx</descricao>
+ <codigo>308</codigo>
+</lote> 
+<lote>
+ <id>301</id>
+ <proprietario_id>940</proprietario_id>
+ <comunidade_id>6</comunidade_id>
+ <descricao>23-xxxxx</descricao>
+ <codigo>310</codigo>
+</lote> 
+<lote>
+ <id>302</id>
+ <proprietario_id>978</proprietario_id>
+ <comunidade_id>6</comunidade_id>
+ <descricao>24-xxxxx</descricao>
+ <codigo>311</codigo>
+</lote> 
+<lote>
+ <id>303</id>
+ <proprietario_id>926</proprietario_id>
+ <comunidade_id>6</comunidade_id>
+ <descricao>15-xxxxx</descricao>
+ <codigo>312</codigo>
+</lote> 
+<lote>
+ <id>304</id>
+ <proprietario_id>928</proprietario_id>
+ <comunidade_id>6</comunidade_id>
+ <descricao>15-xxxxx</descricao>
+ <codigo>313</codigo>
+</lote> 
+<lote>
+ <id>305</id>
+ <proprietario_id>941</proprietario_id>
+ <comunidade_id>6</comunidade_id>
+ <descricao>15-xxxxx</descricao>
+ <codigo>314</codigo>
+</lote> 
+<lote>
+ <id>306</id>
+ <proprietario_id>973</proprietario_id>
+ <comunidade_id>6</comunidade_id>
+ <descricao>37-xxxxx</descricao>
+ <codigo>315</codigo>
+</lote> 
+<lote>
+ <id>307</id>
+ <proprietario_id>952</proprietario_id>
+ <comunidade_id>6</comunidade_id>
+ <descricao>16-xxxxx</descricao>
+ <codigo>316</codigo>
+</lote> 
+<lote>
+ <id>308</id>
+ <proprietario_id>958</proprietario_id>
+ <comunidade_id>6</comunidade_id>
+ <descricao>9-xxxxx</descricao>
+ <codigo>317</codigo>
+</lote> 
+<lote>
+ <id>309</id>
+ <proprietario_id>948</proprietario_id>
+ <comunidade_id>6</comunidade_id>
+ <descricao>4-xxxxx</descricao>
+ <codigo>318</codigo>
+</lote> 
+<lote>
+ <id>310</id>
+ <proprietario_id>918</proprietario_id>
+ <comunidade_id>6</comunidade_id>
+ <descricao>4-xxxxx</descricao>
+ <codigo>319</codigo>
+</lote> 
+<lote>
+ <id>311</id>
+ <proprietario_id>939</proprietario_id>
+ <comunidade_id>6</comunidade_id>
+ <descricao>4-xxxxx</descricao>
+ <codigo>320</codigo>
+</lote> 
+<lote>
+ <id>312</id>
+ <proprietario_id>915</proprietario_id>
+ <comunidade_id>6</comunidade_id>
+ <descricao>15-xxxxx</descricao>
+ <codigo>321</codigo>
+</lote> 
+<lote>
+ <id>313</id>
+ <proprietario_id>970</proprietario_id>
+ <comunidade_id>6</comunidade_id>
+ <descricao>8-xxxxx</descricao>
+ <codigo>322</codigo>
+</lote> 
+<lote>
+ <id>314</id>
+ <proprietario_id>930</proprietario_id>
+ <comunidade_id>6</comunidade_id>
+ <descricao>5-xxxxx</descricao>
+ <codigo>323</codigo>
+</lote> 
+<lote>
+ <id>315</id>
+ <proprietario_id>953</proprietario_id>
+ <comunidade_id>6</comunidade_id>
+ <descricao>9-xxxxx</descricao>
+ <codigo>324</codigo>
+</lote> 
+<lote>
+ <id>316</id>
+ <proprietario_id>944</proprietario_id>
+ <comunidade_id>6</comunidade_id>
+ <descricao>12-xxxxx</descricao>
+ <codigo>325</codigo>
+</lote> 
+<lote>
+ <id>317</id>
+ <proprietario_id>925</proprietario_id>
+ <comunidade_id>6</comunidade_id>
+ <descricao>9-xxxxx</descricao>
+ <codigo>326</codigo>
+</lote> 
+<lote>
+ <id>318</id>
+ <proprietario_id>931</proprietario_id>
+ <comunidade_id>6</comunidade_id>
+ <descricao>052-xxxxx</descricao>
+ <codigo>327</codigo>
+</lote> 
+<lote>
+ <id>319</id>
+ <proprietario_id>971</proprietario_id>
+ <comunidade_id>6</comunidade_id>
+ <descricao>1-xxxxx</descricao>
+ <codigo>329</codigo>
+</lote> 
+<lote>
+ <id>320</id>
+ <proprietario_id>924</proprietario_id>
+ <comunidade_id>6</comunidade_id>
+ <descricao>03-xxxxx</descricao>
+ <codigo>329</codigo>
+</lote> 
+<lote>
+ <id>321</id>
+ <proprietario_id>957</proprietario_id>
+ <comunidade_id>6</comunidade_id>
+ <descricao>04-xxxxx</descricao>
+ <codigo>330</codigo>
+</lote> 
+<lote>
+ <id>322</id>
+ <proprietario_id>938</proprietario_id>
+ <comunidade_id>6</comunidade_id>
+ <descricao>07-xxxxx</descricao>
+ <codigo>331</codigo>
+</lote> 
+<lote>
+ <id>323</id>
+ <proprietario_id>955</proprietario_id>
+ <comunidade_id>6</comunidade_id>
+ <descricao>09-xxxxx</descricao>
+ <codigo>332</codigo>
+</lote> 
+<lote>
+ <id>324</id>
+ <proprietario_id>981</proprietario_id>
+ <comunidade_id>6</comunidade_id>
+ <descricao>011-xxxxx</descricao>
+ <codigo>333</codigo>
+</lote> 
+<lote>
+ <id>325</id>
+ <proprietario_id>973</proprietario_id>
+ <comunidade_id>6</comunidade_id>
+ <descricao>012-xxxxx</descricao>
+ <codigo>334</codigo>
+</lote> 
+<lote>
+ <id>326</id>
+ <proprietario_id>984</proprietario_id>
+ <comunidade_id>6</comunidade_id>
+ <descricao>013-xxxxx</descricao>
+ <codigo>335</codigo>
+</lote> 
+<lote>
+ <id>327</id>
+ <proprietario_id>945</proprietario_id>
+ <comunidade_id>6</comunidade_id>
+ <descricao>046-xxxxx</descricao>
+ <codigo>336</codigo>
+</lote> 
+<lote>
+ <id>328</id>
+ <proprietario_id>956</proprietario_id>
+ <comunidade_id>6</comunidade_id>
+ <descricao>015-xxxxx</descricao>
+ <codigo>337</codigo>
+</lote> 
+<lote>
+ <id>329</id>
+ <proprietario_id>943</proprietario_id>
+ <comunidade_id>6</comunidade_id>
+ <descricao>33-xxxxx</descricao>
+ <codigo>338</codigo>
+</lote> 
+<lote>
+ <id>330</id>
+ <proprietario_id>914</proprietario_id>
+ <comunidade_id>6</comunidade_id>
+ <descricao>28-xxxxx</descricao>
+ <codigo>339</codigo>
+</lote> 
+<lote>
+ <id>331</id>
+ <proprietario_id>965</proprietario_id>
+ <comunidade_id>6</comunidade_id>
+ <descricao>044-xxxxx</descricao>
+ <codigo>340</codigo>
+</lote> 
+<lote>
+ <id>332</id>
+ <proprietario_id>923</proprietario_id>
+ <comunidade_id>6</comunidade_id>
+ <descricao>041-xxxxx</descricao>
+ <codigo>341</codigo>
+</lote> 
+<lote>
+ <id>333</id>
+ <proprietario_id>348</proprietario_id>
+ <comunidade_id>13</comunidade_id>
+ <descricao>09-xxxxx</descricao>
+ <codigo>79</codigo>
+</lote> 
+<lote>
+ <id>334</id>
+ <proprietario_id>349</proprietario_id>
+ <comunidade_id>13</comunidade_id>
+ <descricao>41-xxxxx</descricao>
+ <codigo>80</codigo>
+</lote> 
+<lote>
+ <id>335</id>
+ <proprietario_id>351</proprietario_id>
+ <comunidade_id>13</comunidade_id>
+ <descricao>45/77-xxxxx</descricao>
+ <codigo>81</codigo>
+</lote> 
+<lote>
+ <id>336</id>
+ <proprietario_id>352</proprietario_id>
+ <comunidade_id>13</comunidade_id>
+ <descricao>48-xxxxx</descricao>
+ <codigo>82</codigo>
+</lote> 
+<lote>
+ <id>337</id>
+ <proprietario_id>353</proprietario_id>
+ <comunidade_id>13</comunidade_id>
+ <descricao>42-xxxxx</descricao>
+ <codigo>83</codigo>
+</lote> 
+<lote>
+ <id>338</id>
+ <proprietario_id>354</proprietario_id>
+ <comunidade_id>13</comunidade_id>
+ <descricao>76-xxxxx</descricao>
+ <codigo>84</codigo>
+</lote> 
+<lote>
+ <id>339</id>
+ <proprietario_id>355</proprietario_id>
+ <comunidade_id>13</comunidade_id>
+ <descricao>75-xxxxx</descricao>
+ <codigo>85</codigo>
+</lote> 
+<lote>
+ <id>340</id>
+ <proprietario_id>356</proprietario_id>
+ <comunidade_id>13</comunidade_id>
+ <descricao>11-xxxxx</descricao>
+ <codigo>86</codigo>
+</lote> 
+<lote>
+ <id>341</id>
+ <proprietario_id>357</proprietario_id>
+ <comunidade_id>13</comunidade_id>
+ <descricao>56-xxxxx</descricao>
+ <codigo>87</codigo>
+</lote> 
+<lote>
+ <id>342</id>
+ <proprietario_id>358</proprietario_id>
+ <comunidade_id>13</comunidade_id>
+ <descricao>59-xxxxx</descricao>
+ <codigo>88</codigo>
+</lote> 
+<lote>
+ <id>343</id>
+ <proprietario_id>358</proprietario_id>
+ <comunidade_id>13</comunidade_id>
+ <descricao>15-xxxxx</descricao>
+ <codigo>89</codigo>
+</lote> 
+<lote>
+ <id>344</id>
+ <proprietario_id>360</proprietario_id>
+ <comunidade_id>13</comunidade_id>
+ <descricao>034-xxxxx</descricao>
+ <codigo>90</codigo>
+</lote> 
+<lote>
+ <id>345</id>
+ <proprietario_id>361</proprietario_id>
+ <comunidade_id>13</comunidade_id>
+ <descricao>60-xxxxx</descricao>
+ <codigo>91</codigo>
+</lote> 
+<lote>
+ <id>346</id>
+ <proprietario_id>362</proprietario_id>
+ <comunidade_id>13</comunidade_id>
+ <descricao>46-xxxxx</descricao>
+ <codigo>91</codigo>
+</lote> 
+<lote>
+ <id>347</id>
+ <proprietario_id>363</proprietario_id>
+ <comunidade_id>13</comunidade_id>
+ <descricao>61-xxxxx</descricao>
+ <codigo>93</codigo>
+</lote> 
+<lote>
+ <id>348</id>
+ <proprietario_id>364</proprietario_id>
+ <comunidade_id>13</comunidade_id>
+ <descricao>011-xxxxx</descricao>
+ <codigo>94</codigo>
+</lote> 
+<lote>
+ <id>349</id>
+ <proprietario_id>365</proprietario_id>
+ <comunidade_id>13</comunidade_id>
+ <descricao>39-xxxxx</descricao>
+ <codigo>95</codigo>
+</lote> 
+<lote>
+ <id>350</id>
+ <proprietario_id>366</proprietario_id>
+ <comunidade_id>13</comunidade_id>
+ <descricao>62-xxxxx</descricao>
+ <codigo>96</codigo>
+</lote> 
+<lote>
+ <id>351</id>
+ <proprietario_id>367</proprietario_id>
+ <comunidade_id>13</comunidade_id>
+ <descricao>53-xxxxx</descricao>
+ <codigo>97</codigo>
+</lote> 
+<lote>
+ <id>352</id>
+ <proprietario_id>368</proprietario_id>
+ <comunidade_id>13</comunidade_id>
+ <descricao>95-xxxxx</descricao>
+ <codigo>98</codigo>
+</lote> 
+<lote>
+ <id>353</id>
+ <proprietario_id>369</proprietario_id>
+ <comunidade_id>13</comunidade_id>
+ <descricao>5-xxxxx</descricao>
+ <codigo>99</codigo>
+</lote> 
+<lote>
+ <id>354</id>
+ <proprietario_id>370</proprietario_id>
+ <comunidade_id>13</comunidade_id>
+ <descricao>27-xxxxx</descricao>
+ <codigo>100</codigo>
+</lote> 
+<lote>
+ <id>355</id>
+ <proprietario_id>371</proprietario_id>
+ <comunidade_id>13</comunidade_id>
+ <descricao>9-xxxxx</descricao>
+ <codigo>101</codigo>
+</lote> 
+<lote>
+ <id>356</id>
+ <proprietario_id>372</proprietario_id>
+ <comunidade_id>13</comunidade_id>
+ <descricao>91-xxxxx</descricao>
+ <codigo>102</codigo>
+</lote> 
+<lote>
+ <id>357</id>
+ <proprietario_id>373</proprietario_id>
+ <comunidade_id>13</comunidade_id>
+ <descricao>38-xxxxx</descricao>
+ <codigo>103</codigo>
+</lote> 
+<lote>
+ <id>358</id>
+ <proprietario_id>374</proprietario_id>
+ <comunidade_id>13</comunidade_id>
+ <descricao>69-xxxxx</descricao>
+ <codigo>104</codigo>
+</lote> 
+<lote>
+ <id>359</id>
+ <proprietario_id>375</proprietario_id>
+ <comunidade_id>13</comunidade_id>
+ <descricao>6-xxxxx</descricao>
+ <codigo>105</codigo>
+</lote> 
+<lote>
+ <id>360</id>
+ <proprietario_id>376</proprietario_id>
+ <comunidade_id>13</comunidade_id>
+ <descricao>85-xxxxx</descricao>
+ <codigo>106</codigo>
+</lote> 
+<lote>
+ <id>361</id>
+ <proprietario_id>377</proprietario_id>
+ <comunidade_id>13</comunidade_id>
+ <descricao>74-xxxxx</descricao>
+ <codigo>107</codigo>
+</lote> 
+<lote>
+ <id>362</id>
+ <proprietario_id>378</proprietario_id>
+ <comunidade_id>13</comunidade_id>
+ <descricao>44-xxxxx</descricao>
+ <codigo>108</codigo>
+</lote> 
+<lote>
+ <id>363</id>
+ <proprietario_id>379</proprietario_id>
+ <comunidade_id>13</comunidade_id>
+ <descricao>43-xxxxx</descricao>
+ <codigo>109</codigo>
+</lote> 
+<lote>
+ <id>364</id>
+ <proprietario_id>380</proprietario_id>
+ <comunidade_id>13</comunidade_id>
+ <descricao>64-xxxxx</descricao>
+ <codigo>110</codigo>
+</lote> 
+<lote>
+ <id>365</id>
+ <proprietario_id>381</proprietario_id>
+ <comunidade_id>13</comunidade_id>
+ <descricao>28-xxxxx</descricao>
+ <codigo>111</codigo>
+</lote> 
+<lote>
+ <id>366</id>
+ <proprietario_id>382</proprietario_id>
+ <comunidade_id>13</comunidade_id>
+ <descricao>52-xxxxx</descricao>
+ <codigo>112</codigo>
+</lote> 
+<lote>
+ <id>367</id>
+ <proprietario_id>383</proprietario_id>
+ <comunidade_id>13</comunidade_id>
+ <descricao>25-xxxxx</descricao>
+ <codigo>113</codigo>
+</lote> 
+<lote>
+ <id>368</id>
+ <proprietario_id>384</proprietario_id>
+ <comunidade_id>13</comunidade_id>
+ <descricao>030-xxxxx</descricao>
+ <codigo>114</codigo>
+</lote> 
+<lote>
+ <id>369</id>
+ <proprietario_id>385</proprietario_id>
+ <comunidade_id>13</comunidade_id>
+ <descricao>34-xxxxx</descricao>
+ <codigo>115</codigo>
+</lote> 
+<lote>
+ <id>370</id>
+ <proprietario_id>386</proprietario_id>
+ <comunidade_id>13</comunidade_id>
+ <descricao>84-xxxxx</descricao>
+ <codigo>116</codigo>
+</lote> 
+<lote>
+ <id>371</id>
+ <proprietario_id>387</proprietario_id>
+ <comunidade_id>13</comunidade_id>
+ <descricao>70-xxxxx</descricao>
+ <codigo>117</codigo>
+</lote> 
+<lote>
+ <id>372</id>
+ <proprietario_id>388</proprietario_id>
+ <comunidade_id>13</comunidade_id>
+ <descricao>32-xxxxx</descricao>
+ <codigo>118</codigo>
+</lote> 
+<lote>
+ <id>373</id>
+ <proprietario_id>389</proprietario_id>
+ <comunidade_id>13</comunidade_id>
+ <descricao>2-xxxxx</descricao>
+ <codigo>119</codigo>
+</lote> 
+<lote>
+ <id>374</id>
+ <proprietario_id>390</proprietario_id>
+ <comunidade_id>13</comunidade_id>
+ <descricao>68-xxxxx</descricao>
+ <codigo>120</codigo>
+</lote> 
+<lote>
+ <id>375</id>
+ <proprietario_id>391</proprietario_id>
+ <comunidade_id>13</comunidade_id>
+ <descricao>60-xxxxx</descricao>
+ <codigo>121</codigo>
+</lote> 
+<lote>
+ <id>376</id>
+ <proprietario_id>392</proprietario_id>
+ <comunidade_id>13</comunidade_id>
+ <descricao>78-xxxxx</descricao>
+ <codigo>122</codigo>
+</lote> 
+<lote>
+ <id>377</id>
+ <proprietario_id>393</proprietario_id>
+ <comunidade_id>13</comunidade_id>
+ <descricao>81-xxxxx</descricao>
+ <codigo>123</codigo>
+</lote> 
+<lote>
+ <id>378</id>
+ <proprietario_id>394</proprietario_id>
+ <comunidade_id>13</comunidade_id>
+ <descricao>88-xxxxx</descricao>
+ <codigo>124</codigo>
+</lote> 
+<lote>
+ <id>379</id>
+ <proprietario_id>395</proprietario_id>
+ <comunidade_id>13</comunidade_id>
+ <descricao>57-xxxxx</descricao>
+ <codigo>125</codigo>
+</lote> 
+<lote>
+ <id>380</id>
+ <proprietario_id>396</proprietario_id>
+ <comunidade_id>13</comunidade_id>
+ <descricao>40-xxxxx</descricao>
+ <codigo>126</codigo>
+</lote> 
+<lote>
+ <id>381</id>
+ <proprietario_id>397</proprietario_id>
+ <comunidade_id>13</comunidade_id>
+ <descricao>66-xxxxx</descricao>
+ <codigo>127</codigo>
+</lote> 
+<lote>
+ <id>382</id>
+ <proprietario_id>398</proprietario_id>
+ <comunidade_id>13</comunidade_id>
+ <descricao>63-xxxxx</descricao>
+ <codigo>128</codigo>
+</lote> 
+<lote>
+ <id>383</id>
+ <proprietario_id>399</proprietario_id>
+ <comunidade_id>13</comunidade_id>
+ <descricao>88-xxxxx</descricao>
+ <codigo>129</codigo>
+</lote> 
+<lote>
+ <id>384</id>
+ <proprietario_id>400</proprietario_id>
+ <comunidade_id>13</comunidade_id>
+ <descricao>47-xxxxx</descricao>
+ <codigo>130</codigo>
+</lote> 
+<lote>
+ <id>385</id>
+ <proprietario_id>402</proprietario_id>
+ <comunidade_id>13</comunidade_id>
+ <descricao>24-xxxxx</descricao>
+ <codigo>131</codigo>
+</lote> 
+<lote>
+ <id>386</id>
+ <proprietario_id>403</proprietario_id>
+ <comunidade_id>13</comunidade_id>
+ <descricao>54/55-xxxxx</descricao>
+ <codigo>78</codigo>
+</lote> 
+<lote>
+ <id>387</id>
+ <proprietario_id>852</proprietario_id>
+ <comunidade_id>8</comunidade_id>
+ <descricao>20-xxxxx</descricao>
+ <codigo>343</codigo>
+</lote> 
+<lote>
+ <id>388</id>
+ <proprietario_id>901</proprietario_id>
+ <comunidade_id>8</comunidade_id>
+ <descricao>29-xxxxx</descricao>
+ <codigo>344</codigo>
+</lote> 
+<lote>
+ <id>389</id>
+ <proprietario_id>896</proprietario_id>
+ <comunidade_id>8</comunidade_id>
+ <descricao>22-xxxxx</descricao>
+ <codigo>345</codigo>
+</lote> 
+<lote>
+ <id>390</id>
+ <proprietario_id>879</proprietario_id>
+ <comunidade_id>8</comunidade_id>
+ <descricao>41-xxxxx</descricao>
+ <codigo>346</codigo>
+</lote> 
+<lote>
+ <id>391</id>
+ <proprietario_id>825</proprietario_id>
+ <comunidade_id>8</comunidade_id>
+ <descricao>1-xxxxx</descricao>
+ <codigo>347</codigo>
+</lote> 
+<lote>
+ <id>392</id>
+ <proprietario_id>886</proprietario_id>
+ <comunidade_id>8</comunidade_id>
+ <descricao>7-xxxxx</descricao>
+ <codigo>348</codigo>
+</lote> 
+<lote>
+ <id>393</id>
+ <proprietario_id>898</proprietario_id>
+ <comunidade_id>8</comunidade_id>
+ <descricao>13-xxxxx</descricao>
+ <codigo>349</codigo>
+</lote> 
+<lote>
+ <id>394</id>
+ <proprietario_id>909</proprietario_id>
+ <comunidade_id>8</comunidade_id>
+ <descricao>29-xxxxx</descricao>
+ <codigo>350</codigo>
+</lote> 
+<lote>
+ <id>395</id>
+ <proprietario_id>899</proprietario_id>
+ <comunidade_id>8</comunidade_id>
+ <descricao>31-xxxxx</descricao>
+ <codigo>351</codigo>
+</lote> 
+<lote>
+ <id>396</id>
+ <proprietario_id>854</proprietario_id>
+ <comunidade_id>8</comunidade_id>
+ <descricao>46-xxxxx</descricao>
+ <codigo>352</codigo>
+</lote> 
+<lote>
+ <id>397</id>
+ <proprietario_id>867</proprietario_id>
+ <comunidade_id>8</comunidade_id>
+ <descricao>28-xxxxx</descricao>
+ <codigo>353</codigo>
+</lote> 
+<lote>
+ <id>398</id>
+ <proprietario_id>823</proprietario_id>
+ <comunidade_id>8</comunidade_id>
+ <descricao>27-xxxxx</descricao>
+ <codigo>355</codigo>
+</lote> 
+<lote>
+ <id>399</id>
+ <proprietario_id>875</proprietario_id>
+ <comunidade_id>8</comunidade_id>
+ <descricao>26-xxxxx</descricao>
+ <codigo>355</codigo>
+</lote> 
+<lote>
+ <id>400</id>
+ <proprietario_id>890</proprietario_id>
+ <comunidade_id>8</comunidade_id>
+ <descricao>2-xxxxx</descricao>
+ <codigo>356</codigo>
+</lote> 
+<lote>
+ <id>401</id>
+ <proprietario_id>884</proprietario_id>
+ <comunidade_id>8</comunidade_id>
+ <descricao>15.36.67-xxxxx</descricao>
+ <codigo>358</codigo>
+</lote> 
+<lote>
+ <id>402</id>
+ <proprietario_id>866</proprietario_id>
+ <comunidade_id>8</comunidade_id>
+ <descricao>30-xxxxx</descricao>
+ <codigo>359</codigo>
+</lote> 
+<lote>
+ <id>403</id>
+ <proprietario_id>838</proprietario_id>
+ <comunidade_id>8</comunidade_id>
+ <descricao>5-xxxxx</descricao>
+ <codigo>360</codigo>
+</lote> 
+<lote>
+ <id>404</id>
+ <proprietario_id>829</proprietario_id>
+ <comunidade_id>8</comunidade_id>
+ <descricao>24-xxxxx</descricao>
+ <codigo>361</codigo>
+</lote> 
+<lote>
+ <id>405</id>
+ <proprietario_id>856</proprietario_id>
+ <comunidade_id>8</comunidade_id>
+ <descricao>06-xxxxx</descricao>
+ <codigo>362</codigo>
+</lote> 
+<lote>
+ <id>406</id>
+ <proprietario_id>904</proprietario_id>
+ <comunidade_id>8</comunidade_id>
+ <descricao>0.21-xxxxx</descricao>
+ <codigo>363</codigo>
+</lote> 
+<lote>
+ <id>407</id>
+ <proprietario_id>883</proprietario_id>
+ <comunidade_id>8</comunidade_id>
+ <descricao>0.18-xxxxx</descricao>
+ <codigo>364</codigo>
+</lote> 
+<lote>
+ <id>408</id>
+ <proprietario_id>878</proprietario_id>
+ <comunidade_id>8</comunidade_id>
+ <descricao>12-xxxxx</descricao>
+ <codigo>365</codigo>
+</lote> 
+<lote>
+ <id>409</id>
+ <proprietario_id>816</proprietario_id>
+ <comunidade_id>8</comunidade_id>
+ <descricao>036-xxxxx</descricao>
+ <codigo>366</codigo>
+</lote> 
+<lote>
+ <id>410</id>
+ <proprietario_id>862</proprietario_id>
+ <comunidade_id>8</comunidade_id>
+ <descricao>48.49-xxx</descricao>
+ <codigo>367</codigo>
+</lote> 
+<lote>
+ <id>411</id>
+ <proprietario_id>903</proprietario_id>
+ <comunidade_id>8</comunidade_id>
+ <descricao>0.37-xxxxx</descricao>
+ <codigo>368</codigo>
+</lote> 
+<lote>
+ <id>412</id>
+ <proprietario_id>881</proprietario_id>
+ <comunidade_id>8</comunidade_id>
+ <descricao>40.41-xxxxx</descricao>
+ <codigo>369</codigo>
+</lote> 
+<lote>
+ <id>413</id>
+ <proprietario_id>897</proprietario_id>
+ <comunidade_id>8</comunidade_id>
+ <descricao>43-xxxxx</descricao>
+ <codigo>370</codigo>
+</lote> 
+<lote>
+ <id>414</id>
+ <proprietario_id>882</proprietario_id>
+ <comunidade_id>8</comunidade_id>
+ <descricao>21-xxxxx</descricao>
+ <codigo>371</codigo>
+</lote> 
+<lote>
+ <id>415</id>
+ <proprietario_id>871</proprietario_id>
+ <comunidade_id>8</comunidade_id>
+ <descricao>30-xxxxx</descricao>
+ <codigo>372</codigo>
+</lote> 
+<lote>
+ <id>416</id>
+ <proprietario_id>869</proprietario_id>
+ <comunidade_id>8</comunidade_id>
+ <descricao>42.96-xxxxx</descricao>
+ <codigo>373</codigo>
+</lote> 
+<lote>
+ <id>417</id>
+ <proprietario_id>828</proprietario_id>
+ <comunidade_id>8</comunidade_id>
+ <descricao>19-xxxxx</descricao>
+ <codigo>374</codigo>
+</lote> 
+<lote>
+ <id>418</id>
+ <proprietario_id>846</proprietario_id>
+ <comunidade_id>8</comunidade_id>
+ <descricao>38-xxxxx</descricao>
+ <codigo>375</codigo>
+</lote> 
+<lote>
+ <id>419</id>
+ <proprietario_id>892</proprietario_id>
+ <comunidade_id>8</comunidade_id>
+ <descricao>4-xxxxx</descricao>
+ <codigo>377</codigo>
+</lote> 
+<lote>
+ <id>420</id>
+ <proprietario_id>893</proprietario_id>
+ <comunidade_id>8</comunidade_id>
+ <descricao>33-xxxxx</descricao>
+ <codigo>378</codigo>
+</lote> 
+<lote>
+ <id>421</id>
+ <proprietario_id>880</proprietario_id>
+ <comunidade_id>8</comunidade_id>
+ <descricao>25-xxxxx</descricao>
+ <codigo>379</codigo>
+</lote> 
+<lote>
+ <id>422</id>
+ <proprietario_id>821</proprietario_id>
+ <comunidade_id>8</comunidade_id>
+ <descricao>10-xxxxx</descricao>
+ <codigo>380</codigo>
+</lote> 
+<lote>
+ <id>423</id>
+ <proprietario_id>864</proprietario_id>
+ <comunidade_id>8</comunidade_id>
+ <descricao>27-xxxxx</descricao>
+ <codigo>381</codigo>
+</lote> 
+<lote>
+ <id>424</id>
+ <proprietario_id>910</proprietario_id>
+ <comunidade_id>8</comunidade_id>
+ <descricao>17-xxxxx</descricao>
+ <codigo>382</codigo>
+</lote> 
+<lote>
+ <id>425</id>
+ <proprietario_id>848</proprietario_id>
+ <comunidade_id>8</comunidade_id>
+ <descricao>34-xxxxx</descricao>
+ <codigo>383</codigo>
+</lote> 
+<lote>
+ <id>426</id>
+ <proprietario_id>847</proprietario_id>
+ <comunidade_id>8</comunidade_id>
+ <descricao>34-xxxxx</descricao>
+ <codigo>384</codigo>
+</lote> 
+<lote>
+ <id>427</id>
+ <proprietario_id>885</proprietario_id>
+ <comunidade_id>8</comunidade_id>
+ <descricao>9-xxxxx</descricao>
+ <codigo>385</codigo>
+</lote> 
+<lote>
+ <id>428</id>
+ <proprietario_id>858</proprietario_id>
+ <comunidade_id>8</comunidade_id>
+ <descricao>8-xxxxx</descricao>
+ <codigo>386</codigo>
+</lote> 
+<lote>
+ <id>429</id>
+ <proprietario_id>876</proprietario_id>
+ <comunidade_id>8</comunidade_id>
+ <descricao>0.4-xxxxx</descricao>
+ <codigo>387</codigo>
+</lote> 
+<lote>
+ <id>430</id>
+ <proprietario_id>907</proprietario_id>
+ <comunidade_id>8</comunidade_id>
+ <descricao>5-xxxxx</descricao>
+ <codigo>388</codigo>
+</lote> 
+<lote>
+ <id>431</id>
+ <proprietario_id>902</proprietario_id>
+ <comunidade_id>8</comunidade_id>
+ <descricao>0.4-xxxxx</descricao>
+ <codigo>389</codigo>
+</lote> 
+<lote>
+ <id>432</id>
+ <proprietario_id>911</proprietario_id>
+ <comunidade_id>8</comunidade_id>
+ <descricao>0.38-xxxxx</descricao>
+ <codigo>390</codigo>
+</lote> 
+<lote>
+ <id>433</id>
+ <proprietario_id>815</proprietario_id>
+ <comunidade_id>8</comunidade_id>
+ <descricao>56-xxxxx</descricao>
+ <codigo>391</codigo>
+</lote> 
+<lote>
+ <id>434</id>
+ <proprietario_id>859</proprietario_id>
+ <comunidade_id>8</comunidade_id>
+ <descricao>11-xxxxx</descricao>
+ <codigo>393</codigo>
+</lote> 
+<lote>
+ <id>435</id>
+ <proprietario_id>855</proprietario_id>
+ <comunidade_id>8</comunidade_id>
+ <descricao>66-xxxxx</descricao>
+ <codigo>394</codigo>
+</lote> 
+<lote>
+ <id>436</id>
+ <proprietario_id>891</proprietario_id>
+ <comunidade_id>8</comunidade_id>
+ <descricao>42-xxxxx</descricao>
+ <codigo>395</codigo>
+</lote> 
+<lote>
+ <id>437</id>
+ <proprietario_id>874</proprietario_id>
+ <comunidade_id>8</comunidade_id>
+ <descricao>052-xxxxx</descricao>
+ <codigo>396</codigo>
+</lote> 
+<lote>
+ <id>438</id>
+ <proprietario_id>860</proprietario_id>
+ <comunidade_id>8</comunidade_id>
+ <descricao>031-xxxxx</descricao>
+ <codigo>397</codigo>
+</lote> 
+<lote>
+ <id>439</id>
+ <proprietario_id>817</proprietario_id>
+ <comunidade_id>8</comunidade_id>
+ <descricao>033-xxxxx</descricao>
+ <codigo>398</codigo>
+</lote> 
+<lote>
+ <id>440</id>
+ <proprietario_id>851</proprietario_id>
+ <comunidade_id>8</comunidade_id>
+ <descricao>019-xxxxx</descricao>
+ <codigo>399</codigo>
+</lote> 
+<lote>
+ <id>441</id>
+ <proprietario_id>865</proprietario_id>
+ <comunidade_id>8</comunidade_id>
+ <descricao>23-xxxxx</descricao>
+ <codigo>400</codigo>
+</lote> 
+<lote>
+ <id>442</id>
+ <proprietario_id>873</proprietario_id>
+ <comunidade_id>8</comunidade_id>
+ <descricao>2-xxxxx</descricao>
+ <codigo>401</codigo>
+</lote> 
+<lote>
+ <id>443</id>
+ <proprietario_id>895</proprietario_id>
+ <comunidade_id>8</comunidade_id>
+ <descricao>014-xxxxx</descricao>
+ <codigo>402</codigo>
+</lote> 
+<lote>
+ <id>444</id>
+ <proprietario_id>877</proprietario_id>
+ <comunidade_id>8</comunidade_id>
+ <descricao>30-xxxxx</descricao>
+ <codigo>403</codigo>
+</lote> 
+<lote>
+ <id>445</id>
+ <proprietario_id>906</proprietario_id>
+ <comunidade_id>8</comunidade_id>
+ <descricao>57-xxxxx</descricao>
+ <codigo>404</codigo>
+</lote> 
+<lote>
+ <id>446</id>
+ <proprietario_id>905</proprietario_id>
+ <comunidade_id>8</comunidade_id>
+ <descricao>21-xxxxx</descricao>
+ <codigo>405</codigo>
+</lote> 
+<lote>
+ <id>447</id>
+ <proprietario_id>813</proprietario_id>
+ <comunidade_id>8</comunidade_id>
+ <descricao>013-xxxxx</descricao>
+ <codigo>406</codigo>
+</lote> 
+<lote>
+ <id>448</id>
+ <proprietario_id>822</proprietario_id>
+ <comunidade_id>8</comunidade_id>
+ <descricao>39-xxxxx</descricao>
+ <codigo>408</codigo>
+</lote> 
+<lote>
+ <id>449</id>
+ <proprietario_id>894</proprietario_id>
+ <comunidade_id>8</comunidade_id>
+ <descricao>040-xxxxx</descricao>
+ <codigo>409</codigo>
+</lote> 
+<lote>
+ <id>450</id>
+ <proprietario_id>826</proprietario_id>
+ <comunidade_id>8</comunidade_id>
+ <descricao>37-xxxxx</descricao>
+ <codigo>410</codigo>
+</lote> 
+<lote>
+ <id>451</id>
+ <proprietario_id>853</proprietario_id>
+ <comunidade_id>8</comunidade_id>
+ <descricao>30-xxxxx</descricao>
+ <codigo>411</codigo>
+</lote> 
+<lote>
+ <id>452</id>
+ <proprietario_id>850</proprietario_id>
+ <comunidade_id>8</comunidade_id>
+ <descricao>01-xxxxx</descricao>
+ <codigo>412</codigo>
+</lote> 
+<lote>
+ <id>453</id>
+ <proprietario_id>849</proprietario_id>
+ <comunidade_id>8</comunidade_id>
+ <descricao>9-xxxxx</descricao>
+ <codigo>414</codigo>
+</lote> 
+<lote>
+ <id>454</id>
+ <proprietario_id>814</proprietario_id>
+ <comunidade_id>8</comunidade_id>
+ <descricao>038-xxxxx</descricao>
+ <codigo>415</codigo>
+</lote> 
+<lote>
+ <id>455</id>
+ <proprietario_id>861</proprietario_id>
+ <comunidade_id>8</comunidade_id>
+ <descricao>034-xxxxx</descricao>
+ <codigo>416</codigo>
+</lote> 
+<lote>
+ <id>456</id>
+ <proprietario_id>820</proprietario_id>
+ <comunidade_id>8</comunidade_id>
+ <descricao>20-xxxxx</descricao>
+ <codigo>417</codigo>
+</lote> 
+<lote>
+ <id>457</id>
+ <proprietario_id>820</proprietario_id>
+ <comunidade_id>8</comunidade_id>
+ <descricao>20-xxxxx</descricao>
+ <codigo>417</codigo>
+</lote> 
+<lote>
+ <id>458</id>
+ <proprietario_id>870</proprietario_id>
+ <comunidade_id>8</comunidade_id>
+ <descricao>035-xxxxx</descricao>
+ <codigo>418</codigo>
+</lote> 
+<lote>
+ <id>459</id>
+ <proprietario_id>889</proprietario_id>
+ <comunidade_id>8</comunidade_id>
+ <descricao>76-xxxxx</descricao>
+ <codigo>419</codigo>
+</lote> 
+<lote>
+ <id>460</id>
+ <proprietario_id>887</proprietario_id>
+ <comunidade_id>8</comunidade_id>
+ <descricao>03-xxxxx</descricao>
+ <codigo>420</codigo>
+</lote> 
+<lote>
+ <id>461</id>
+ <proprietario_id>888</proprietario_id>
+ <comunidade_id>8</comunidade_id>
+ <descricao>29-xxxxx</descricao>
+ <codigo>421</codigo>
+</lote> 
+<lote>
+ <id>462</id>
+ <proprietario_id>908</proprietario_id>
+ <comunidade_id>8</comunidade_id>
+ <descricao>30-xxxxx</descricao>
+ <codigo>422</codigo>
+</lote> 
+<lote>
+ <id>463</id>
+ <proprietario_id>863</proprietario_id>
+ <comunidade_id>8</comunidade_id>
+ <descricao>75-xxxxx</descricao>
+ <codigo>423</codigo>
+</lote> 
+<lote>
+ <id>464</id>
+ <proprietario_id>900</proprietario_id>
+ <comunidade_id>8</comunidade_id>
+ <descricao>A1-xxxxx</descricao>
+ <codigo>424</codigo>
+</lote> 
+<lote>
+ <id>465</id>
+ <proprietario_id>841</proprietario_id>
+ <comunidade_id>8</comunidade_id>
+ <descricao>04-xxxxx</descricao>
+ <codigo>429</codigo>
+</lote> 
+<lote>
+ <id>466</id>
+ <proprietario_id>152</proprietario_id>
+ <comunidade_id>2</comunidade_id>
+ <descricao>15.16-xxxxx</descricao>
+ <codigo>861</codigo>
+</lote> 
+<lote>
+ <id>467</id>
+ <proprietario_id>153</proprietario_id>
+ <comunidade_id>2</comunidade_id>
+ <descricao>26-xxxxx</descricao>
+ <codigo>862</codigo>
+</lote> 
+<lote>
+ <id>468</id>
+ <proprietario_id>154</proprietario_id>
+ <comunidade_id>2</comunidade_id>
+ <descricao>38.39-xxxxx</descricao>
+ <codigo>863</codigo>
+</lote> 
+<lote>
+ <id>469</id>
+ <proprietario_id>155</proprietario_id>
+ <comunidade_id>2</comunidade_id>
+ <descricao>34-xxxxx</descricao>
+ <codigo> 864</codigo>
+</lote> 
+<lote>
+ <id>470</id>
+ <proprietario_id>156</proprietario_id>
+ <comunidade_id>2</comunidade_id>
+ <descricao>13,.14-xxxxx</descricao>
+ <codigo>865</codigo>
+</lote> 
+<lote>
+ <id>471</id>
+ <proprietario_id>157</proprietario_id>
+ <comunidade_id>2</comunidade_id>
+ <descricao>1-xxxxx</descricao>
+ <codigo>866</codigo>
+</lote> 
+<lote>
+ <id>472</id>
+ <proprietario_id>158</proprietario_id>
+ <comunidade_id>2</comunidade_id>
+ <descricao>9-xxxxx</descricao>
+ <codigo>867</codigo>
+</lote> 
+<lote>
+ <id>473</id>
+ <proprietario_id>159</proprietario_id>
+ <comunidade_id>2</comunidade_id>
+ <descricao>5-xxxxx</descricao>
+ <codigo>868</codigo>
+</lote> 
+<lote>
+ <id>474</id>
+ <proprietario_id>160</proprietario_id>
+ <comunidade_id>2</comunidade_id>
+ <descricao>12-xxxxx</descricao>
+ <codigo>869</codigo>
+</lote> 
+<lote>
+ <id>475</id>
+ <proprietario_id>161</proprietario_id>
+ <comunidade_id>2</comunidade_id>
+ <descricao>33-xxxxx</descricao>
+ <codigo>870</codigo>
+</lote> 
+<lote>
+ <id>476</id>
+ <proprietario_id>162</proprietario_id>
+ <comunidade_id>2</comunidade_id>
+ <descricao>27-xxxxx</descricao>
+ <codigo>871</codigo>
+</lote> 
+<lote>
+ <id>477</id>
+ <proprietario_id>163</proprietario_id>
+ <comunidade_id>2</comunidade_id>
+ <descricao>25-xxxxx</descricao>
+ <codigo>872</codigo>
+</lote> 
+<lote>
+ <id>478</id>
+ <proprietario_id>164</proprietario_id>
+ <comunidade_id>2</comunidade_id>
+ <descricao>18.19-xxxxx</descricao>
+ <codigo>873</codigo>
+</lote> 
+<lote>
+ <id>479</id>
+ <proprietario_id>165</proprietario_id>
+ <comunidade_id>2</comunidade_id>
+ <descricao>22,23-xxxxx</descricao>
+ <codigo>874</codigo>
+</lote> 
+<lote>
+ <id>480</id>
+ <proprietario_id>166</proprietario_id>
+ <comunidade_id>2</comunidade_id>
+ <descricao>11-xxxxx</descricao>
+ <codigo>875</codigo>
+</lote> 
+<lote>
+ <id>481</id>
+ <proprietario_id>167</proprietario_id>
+ <comunidade_id>2</comunidade_id>
+ <descricao>17-xxxxx</descricao>
+ <codigo>876</codigo>
+</lote> 
+<lote>
+ <id>482</id>
+ <proprietario_id>168</proprietario_id>
+ <comunidade_id>2</comunidade_id>
+ <descricao>29-xxxxx</descricao>
+ <codigo>877</codigo>
+</lote> 
+<lote>
+ <id>483</id>
+ <proprietario_id>169</proprietario_id>
+ <comunidade_id>2</comunidade_id>
+ <descricao>6-xxxxx</descricao>
+ <codigo>878</codigo>
+</lote> 
+<lote>
+ <id>484</id>
+ <proprietario_id>170</proprietario_id>
+ <comunidade_id>2</comunidade_id>
+ <descricao>40-xxxxx</descricao>
+ <codigo>879</codigo>
+</lote> 
+<lote>
+ <id>485</id>
+ <proprietario_id>171</proprietario_id>
+ <comunidade_id>2</comunidade_id>
+ <descricao>41-xxxxx</descricao>
+ <codigo>880</codigo>
+</lote> 
+<lote>
+ <id>486</id>
+ <proprietario_id>172</proprietario_id>
+ <comunidade_id>2</comunidade_id>
+ <descricao>30-xxxxx</descricao>
+ <codigo>881</codigo>
+</lote> 
+<lote>
+ <id>487</id>
+ <proprietario_id>173</proprietario_id>
+ <comunidade_id>2</comunidade_id>
+ <descricao>24-xxxxx</descricao>
+ <codigo>882</codigo>
+</lote> 
+<lote>
+ <id>488</id>
+ <proprietario_id>174</proprietario_id>
+ <comunidade_id>2</comunidade_id>
+ <descricao>37-xxxxx</descricao>
+ <codigo>883</codigo>
+</lote> 
+<lote>
+ <id>489</id>
+ <proprietario_id>175</proprietario_id>
+ <comunidade_id>2</comunidade_id>
+ <descricao>48.49.50-xxxxx</descricao>
+ <codigo>884</codigo>
+</lote> 
+<lote>
+ <id>490</id>
+ <proprietario_id>176</proprietario_id>
+ <comunidade_id>2</comunidade_id>
+ <descricao>47-xxxxx</descricao>
+ <codigo>885</codigo>
+</lote> 
+<lote>
+ <id>491</id>
+ <proprietario_id>177</proprietario_id>
+ <comunidade_id>2</comunidade_id>
+ <descricao>16-xxxxx</descricao>
+ <codigo>886</codigo>
+</lote> 
+<lote>
+ <id>492</id>
+ <proprietario_id>178</proprietario_id>
+ <comunidade_id>2</comunidade_id>
+ <descricao>14-xxxxx</descricao>
+ <codigo>887</codigo>
+</lote> 
+<lote>
+ <id>493</id>
+ <proprietario_id>179</proprietario_id>
+ <comunidade_id>2</comunidade_id>
+ <descricao>31-xxxxx</descricao>
+ <codigo>888</codigo>
+</lote> 
+<lote>
+ <id>494</id>
+ <proprietario_id>180</proprietario_id>
+ <comunidade_id>2</comunidade_id>
+ <descricao>31-xxxxx</descricao>
+ <codigo>889</codigo>
+</lote> 
+<lote>
+ <id>495</id>
+ <proprietario_id>181</proprietario_id>
+ <comunidade_id>2</comunidade_id>
+ <descricao>047-xxxxx</descricao>
+ <codigo>890</codigo>
+</lote> 
+<lote>
+ <id>496</id>
+ <proprietario_id>182</proprietario_id>
+ <comunidade_id>2</comunidade_id>
+ <descricao>01-xxxxx</descricao>
+ <codigo>891</codigo>
+</lote> 
+<lote>
+ <id>497</id>
+ <proprietario_id>183</proprietario_id>
+ <comunidade_id>2</comunidade_id>
+ <descricao>04-xxxxx</descricao>
+ <codigo>892</codigo>
+</lote> 
+<lote>
+ <id>498</id>
+ <proprietario_id>184</proprietario_id>
+ <comunidade_id>2</comunidade_id>
+ <descricao>10-xxxxx</descricao>
+ <codigo>893</codigo>
+</lote> 
+<lote>
+ <id>499</id>
+ <proprietario_id>185</proprietario_id>
+ <comunidade_id>2</comunidade_id>
+ <descricao>3.4-xxxxx</descricao>
+ <codigo>894</codigo>
+</lote> 
+<lote>
+ <id>500</id>
+ <proprietario_id>186</proprietario_id>
+ <comunidade_id>2</comunidade_id>
+ <descricao>7.8-xxxxx</descricao>
+ <codigo>895</codigo>
+</lote> 
+<lote>
+ <id>501</id>
+ <proprietario_id>333</proprietario_id>
+ <comunidade_id>12</comunidade_id>
+ <descricao>34-xxxxx</descricao>
+ <codigo>430</codigo>
+</lote> 
+<lote>
+ <id>502</id>
+ <proprietario_id>321</proprietario_id>
+ <comunidade_id>12</comunidade_id>
+ <descricao>30-xxxxx</descricao>
+ <codigo>431</codigo>
+</lote> 
+<lote>
+ <id>503</id>
+ <proprietario_id>323</proprietario_id>
+ <comunidade_id>12</comunidade_id>
+ <descricao>10-xxxxx</descricao>
+ <codigo>432</codigo>
+</lote> 
+<lote>
+ <id>504</id>
+ <proprietario_id>324</proprietario_id>
+ <comunidade_id>12</comunidade_id>
+ <descricao>16-xxxxx</descricao>
+ <codigo>433</codigo>
+</lote> 
+<lote>
+ <id>505</id>
+ <proprietario_id>325</proprietario_id>
+ <comunidade_id>12</comunidade_id>
+ <descricao>2-xxxxx</descricao>
+ <codigo>434</codigo>
+</lote> 
+<lote>
+ <id>506</id>
+ <proprietario_id>328</proprietario_id>
+ <comunidade_id>12</comunidade_id>
+ <descricao>125/126-xxxxx</descricao>
+ <codigo>437</codigo>
+</lote> 
+<lote>
+ <id>507</id>
+ <proprietario_id>326</proprietario_id>
+ <comunidade_id>12</comunidade_id>
+ <descricao>1-xxxxx</descricao>
+ <codigo>435</codigo>
+</lote> 
+<lote>
+ <id>508</id>
+ <proprietario_id>329</proprietario_id>
+ <comunidade_id>12</comunidade_id>
+ <descricao>24-xxxxx</descricao>
+ <codigo>438</codigo>
+</lote> 
+<lote>
+ <id>509</id>
+ <proprietario_id>330</proprietario_id>
+ <comunidade_id>12</comunidade_id>
+ <descricao>17-xxxxx</descricao>
+ <codigo>439</codigo>
+</lote> 
+<lote>
+ <id>510</id>
+ <proprietario_id>331</proprietario_id>
+ <comunidade_id>12</comunidade_id>
+ <descricao>22-xxxxx</descricao>
+ <codigo>440</codigo>
+</lote> 
+<lote>
+ <id>511</id>
+ <proprietario_id>332</proprietario_id>
+ <comunidade_id>12</comunidade_id>
+ <descricao>8-xxxxx</descricao>
+ <codigo>441</codigo>
+</lote> 
+<lote>
+ <id>512</id>
+ <proprietario_id>334</proprietario_id>
+ <comunidade_id>12</comunidade_id>
+ <descricao>3-xxxxx</descricao>
+ <codigo>442</codigo>
+</lote> 
+<lote>
+ <id>513</id>
+ <proprietario_id>335</proprietario_id>
+ <comunidade_id>12</comunidade_id>
+ <descricao>12-xxxxx</descricao>
+ <codigo>444</codigo>
+</lote> 
+<lote>
+ <id>514</id>
+ <proprietario_id>337</proprietario_id>
+ <comunidade_id>12</comunidade_id>
+ <descricao>21-xxxxx</descricao>
+ <codigo>445</codigo>
+</lote> 
+<lote>
+ <id>515</id>
+ <proprietario_id>338</proprietario_id>
+ <comunidade_id>12</comunidade_id>
+ <descricao>29-xxxxx</descricao>
+ <codigo>446</codigo>
+</lote> 
+<lote>
+ <id>516</id>
+ <proprietario_id>339</proprietario_id>
+ <comunidade_id>12</comunidade_id>
+ <descricao>25/26-xxxxx</descricao>
+ <codigo>447</codigo>
+</lote> 
+<lote>
+ <id>517</id>
+ <proprietario_id>340</proprietario_id>
+ <comunidade_id>12</comunidade_id>
+ <descricao>23-xxxxx</descricao>
+ <codigo>448</codigo>
+</lote> 
+<lote>
+ <id>518</id>
+ <proprietario_id>341</proprietario_id>
+ <comunidade_id>12</comunidade_id>
+ <descricao>20-xxxxx</descricao>
+ <codigo>449</codigo>
+</lote> 
+<lote>
+ <id>519</id>
+ <proprietario_id>342</proprietario_id>
+ <comunidade_id>12</comunidade_id>
+ <descricao>31-xxxxx</descricao>
+ <codigo>450</codigo>
+</lote> 
+<lote>
+ <id>520</id>
+ <proprietario_id>343</proprietario_id>
+ <comunidade_id>12</comunidade_id>
+ <descricao>0.2-xxxxx</descricao>
+ <codigo>451</codigo>
+</lote> 
+<lote>
+ <id>521</id>
+ <proprietario_id>344</proprietario_id>
+ <comunidade_id>12</comunidade_id>
+ <descricao>35-xxxxx</descricao>
+ <codigo>452</codigo>
+</lote> 
+<lote>
+ <id>522</id>
+ <proprietario_id>345</proprietario_id>
+ <comunidade_id>12</comunidade_id>
+ <descricao>01-xxxxx</descricao>
+ <codigo>453</codigo>
+</lote> 
+<lote>
+ <id>523</id>
+ <proprietario_id>346</proprietario_id>
+ <comunidade_id>12</comunidade_id>
+ <descricao>27-xxxxx</descricao>
+ <codigo>454</codigo>
+</lote> 
+<lote>
+ <id>524</id>
+ <proprietario_id>404</proprietario_id>
+ <comunidade_id>10</comunidade_id>
+ <descricao>5-xxxxx</descricao>
+ <codigo>170</codigo>
+</lote> 
+<lote>
+ <id>525</id>
+ <proprietario_id>405</proprietario_id>
+ <comunidade_id>10</comunidade_id>
+ <descricao>59/62-xxxxx</descricao>
+ <codigo>171</codigo>
+</lote> 
+<lote>
+ <id>526</id>
+ <proprietario_id>406</proprietario_id>
+ <comunidade_id>10</comunidade_id>
+ <descricao>46-xxxxx</descricao>
+ <codigo>172</codigo>
+</lote> 
+<lote>
+ <id>527</id>
+ <proprietario_id>407</proprietario_id>
+ <comunidade_id>10</comunidade_id>
+ <descricao>106-xxxxx</descricao>
+ <codigo>173</codigo>
+</lote> 
+<lote>
+ <id>528</id>
+ <proprietario_id>408</proprietario_id>
+ <comunidade_id>10</comunidade_id>
+ <descricao>126e127-xxxxx</descricao>
+ <codigo>174</codigo>
+</lote> 
+<lote>
+ <id>529</id>
+ <proprietario_id>410</proprietario_id>
+ <comunidade_id>10</comunidade_id>
+ <descricao>26/27-xxxxx</descricao>
+ <codigo>175</codigo>
+</lote> 
+<lote>
+ <id>530</id>
+ <proprietario_id>411</proprietario_id>
+ <comunidade_id>10</comunidade_id>
+ <descricao>47/48-xxxxx</descricao>
+ <codigo>176</codigo>
+</lote> 
+<lote>
+ <id>531</id>
+ <proprietario_id>412</proprietario_id>
+ <comunidade_id>10</comunidade_id>
+ <descricao>66-xxxxx</descricao>
+ <codigo>177</codigo>
+</lote> 
+<lote>
+ <id>532</id>
+ <proprietario_id>413</proprietario_id>
+ <comunidade_id>10</comunidade_id>
+ <descricao>88-xxxxx</descricao>
+ <codigo>178</codigo>
+</lote> 
+<lote>
+ <id>533</id>
+ <proprietario_id>414</proprietario_id>
+ <comunidade_id>10</comunidade_id>
+ <descricao>122-xxxxx</descricao>
+ <codigo>179</codigo>
+</lote> 
+<lote>
+ <id>534</id>
+ <proprietario_id>415</proprietario_id>
+ <comunidade_id>10</comunidade_id>
+ <descricao>33-xxxxx</descricao>
+ <codigo>180</codigo>
+</lote> 
+<lote>
+ <id>535</id>
+ <proprietario_id>416</proprietario_id>
+ <comunidade_id>10</comunidade_id>
+ <descricao>59-xxxxx</descricao>
+ <codigo>181</codigo>
+</lote> 
+<lote>
+ <id>536</id>
+ <proprietario_id>417</proprietario_id>
+ <comunidade_id>10</comunidade_id>
+ <descricao>106-xxxxx</descricao>
+ <codigo>182</codigo>
+</lote> 
+<lote>
+ <id>537</id>
+ <proprietario_id>418</proprietario_id>
+ <comunidade_id>10</comunidade_id>
+ <descricao>043-xxxxx</descricao>
+ <codigo>183</codigo>
+</lote> 
+<lote>
+ <id>538</id>
+ <proprietario_id>419</proprietario_id>
+ <comunidade_id>10</comunidade_id>
+ <descricao>043-xxxxx</descricao>
+ <codigo>184</codigo>
+</lote> 
+<lote>
+ <id>539</id>
+ <proprietario_id>420</proprietario_id>
+ <comunidade_id>10</comunidade_id>
+ <descricao>10.11-xxxxx</descricao>
+ <codigo>185</codigo>
+</lote> 
+<lote>
+ <id>540</id>
+ <proprietario_id>421</proprietario_id>
+ <comunidade_id>10</comunidade_id>
+ <descricao>19.120.121-xxxxx</descricao>
+ <codigo>186</codigo>
+</lote> 
+<lote>
+ <id>541</id>
+ <proprietario_id>422</proprietario_id>
+ <comunidade_id>10</comunidade_id>
+ <descricao>7.8-xxxxx</descricao>
+ <codigo>187</codigo>
+</lote> 
+<lote>
+ <id>542</id>
+ <proprietario_id>423</proprietario_id>
+ <comunidade_id>10</comunidade_id>
+ <descricao>18-xxxxx</descricao>
+ <codigo>188</codigo>
+</lote> 
+<lote>
+ <id>543</id>
+ <proprietario_id>424</proprietario_id>
+ <comunidade_id>10</comunidade_id>
+ <descricao>19/21/39-xxxxx</descricao>
+ <codigo>189</codigo>
+</lote> 
+<lote>
+ <id>544</id>
+ <proprietario_id>425</proprietario_id>
+ <comunidade_id>10</comunidade_id>
+ <descricao>37/38-xxxxx</descricao>
+ <codigo>190</codigo>
+</lote> 
+<lote>
+ <id>545</id>
+ <proprietario_id>426</proprietario_id>
+ <comunidade_id>10</comunidade_id>
+ <descricao>6-xxxxx</descricao>
+ <codigo>191</codigo>
+</lote> 
+<lote>
+ <id>546</id>
+ <proprietario_id>427</proprietario_id>
+ <comunidade_id>10</comunidade_id>
+ <descricao>130-xxxxx</descricao>
+ <codigo>192</codigo>
+</lote> 
+<lote>
+ <id>547</id>
+ <proprietario_id>428</proprietario_id>
+ <comunidade_id>10</comunidade_id>
+ <descricao>35.36-xxxxx</descricao>
+ <codigo>193</codigo>
+</lote> 
+<lote>
+ <id>548</id>
+ <proprietario_id>429</proprietario_id>
+ <comunidade_id>10</comunidade_id>
+ <descricao>05-xxxxx</descricao>
+ <codigo>194</codigo>
+</lote> 
+<lote>
+ <id>549</id>
+ <proprietario_id>431</proprietario_id>
+ <comunidade_id>10</comunidade_id>
+ <descricao>05-xxxxx</descricao>
+ <codigo>196</codigo>
+</lote> 
+<lote>
+ <id>550</id>
+ <proprietario_id>431</proprietario_id>
+ <comunidade_id>10</comunidade_id>
+ <descricao>9-xxxxx</descricao>
+ <codigo>196</codigo>
+</lote> 
+<lote>
+ <id>551</id>
+ <proprietario_id>432</proprietario_id>
+ <comunidade_id>10</comunidade_id>
+ <descricao>14e15-xxxxx</descricao>
+ <codigo>197</codigo>
+</lote> 
+<lote>
+ <id>552</id>
+ <proprietario_id>433</proprietario_id>
+ <comunidade_id>10</comunidade_id>
+ <descricao>63/123-xxxxx</descricao>
+ <codigo>198</codigo>
+</lote> 
+<lote>
+ <id>553</id>
+ <proprietario_id>434</proprietario_id>
+ <comunidade_id>10</comunidade_id>
+ <descricao>13/16-xxxxx</descricao>
+ <codigo>199</codigo>
+</lote> 
+<lote>
+ <id>554</id>
+ <proprietario_id>435</proprietario_id>
+ <comunidade_id>10</comunidade_id>
+ <descricao>100-xxxxx</descricao>
+ <codigo>200</codigo>
+</lote> 
+<lote>
+ <id>555</id>
+ <proprietario_id>436</proprietario_id>
+ <comunidade_id>10</comunidade_id>
+ <descricao>98/100-xxxxx</descricao>
+ <codigo>201</codigo>
+</lote> 
+<lote>
+ <id>556</id>
+ <proprietario_id>437</proprietario_id>
+ <comunidade_id>10</comunidade_id>
+ <descricao>87-xxxxx</descricao>
+ <codigo>202</codigo>
+</lote> 
+<lote>
+ <id>557</id>
+ <proprietario_id>438</proprietario_id>
+ <comunidade_id>10</comunidade_id>
+ <descricao>54-xxxxx</descricao>
+ <codigo>203</codigo>
+</lote> 
+<lote>
+ <id>558</id>
+ <proprietario_id>439</proprietario_id>
+ <comunidade_id>10</comunidade_id>
+ <descricao>1100-xxxxx</descricao>
+ <codigo>204</codigo>
+</lote> 
+<lote>
+ <id>559</id>
+ <proprietario_id>440</proprietario_id>
+ <comunidade_id>10</comunidade_id>
+ <descricao>33-xxxxx</descricao>
+ <codigo>206</codigo>
+</lote> 
+<lote>
+ <id>560</id>
+ <proprietario_id>441</proprietario_id>
+ <comunidade_id>10</comunidade_id>
+ <descricao>84/86-xxxxx</descricao>
+ <codigo>207</codigo>
+</lote> 
+<lote>
+ <id>561</id>
+ <proprietario_id>442</proprietario_id>
+ <comunidade_id>10</comunidade_id>
+ <descricao>05/107/108-xxxxx</descricao>
+ <codigo>208</codigo>
+</lote> 
+<lote>
+ <id>562</id>
+ <proprietario_id>443</proprietario_id>
+ <comunidade_id>10</comunidade_id>
+ <descricao>04-xxxxx</descricao>
+ <codigo>209</codigo>
+</lote> 
+<lote>
+ <id>563</id>
+ <proprietario_id>444</proprietario_id>
+ <comunidade_id>10</comunidade_id>
+ <descricao>49.53C-xxxxx</descricao>
+ <codigo>210</codigo>
+</lote> 
+<lote>
+ <id>564</id>
+ <proprietario_id>445</proprietario_id>
+ <comunidade_id>10</comunidade_id>
+ <descricao>49.53D-xxxxx</descricao>
+ <codigo>211</codigo>
+</lote> 
+<lote>
+ <id>565</id>
+ <proprietario_id>446</proprietario_id>
+ <comunidade_id>10</comunidade_id>
+ <descricao>20-xxxxx</descricao>
+ <codigo>212</codigo>
+</lote> 
+<lote>
+ <id>566</id>
+ <proprietario_id>448</proprietario_id>
+ <comunidade_id>10</comunidade_id>
+ <descricao>25-xxxxx</descricao>
+ <codigo>213</codigo>
+</lote> 
+<lote>
+ <id>567</id>
+ <proprietario_id>449</proprietario_id>
+ <comunidade_id>10</comunidade_id>
+ <descricao>5-xxxxx</descricao>
+ <codigo>214</codigo>
+</lote> 
+<lote>
+ <id>568</id>
+ <proprietario_id>450</proprietario_id>
+ <comunidade_id>10</comunidade_id>
+ <descricao>06-xxxxx</descricao>
+ <codigo>215</codigo>
+</lote> 
+<lote>
+ <id>569</id>
+ <proprietario_id>451</proprietario_id>
+ <comunidade_id>10</comunidade_id>
+ <descricao>49.53A-xxxxx</descricao>
+ <codigo>216</codigo>
+</lote> 
+<lote>
+ <id>570</id>
+ <proprietario_id>452</proprietario_id>
+ <comunidade_id>10</comunidade_id>
+ <descricao>2/23/24-xxxxx</descricao>
+ <codigo>217</codigo>
+</lote> 
+<lote>
+ <id>571</id>
+ <proprietario_id>453</proprietario_id>
+ <comunidade_id>10</comunidade_id>
+ <descricao>56.58-xxxxx</descricao>
+ <codigo>218</codigo>
+</lote> 
+<lote>
+ <id>572</id>
+ <proprietario_id>454</proprietario_id>
+ <comunidade_id>10</comunidade_id>
+ <descricao>1e2-xxxxx</descricao>
+ <codigo>219</codigo>
+</lote> 
+<lote>
+ <id>573</id>
+ <proprietario_id>284</proprietario_id>
+ <comunidade_id>9</comunidade_id>
+ <descricao>40-xxxxx</descricao>
+ <codigo>689</codigo>
+</lote> 
+<lote>
+ <id>574</id>
+ <proprietario_id>269</proprietario_id>
+ <comunidade_id>9</comunidade_id>
+ <descricao>29-xxxxx</descricao>
+ <codigo>690</codigo>
+</lote> 
+<lote>
+ <id>575</id>
+ <proprietario_id>272</proprietario_id>
+ <comunidade_id>9</comunidade_id>
+ <descricao>54-xxxxx</descricao>
+ <codigo>691</codigo>
+</lote> 
+<lote>
+ <id>576</id>
+ <proprietario_id>273</proprietario_id>
+ <comunidade_id>9</comunidade_id>
+ <descricao>34-xxxxx</descricao>
+ <codigo>694</codigo>
+</lote> 
+<lote>
+ <id>577</id>
+ <proprietario_id>274</proprietario_id>
+ <comunidade_id>9</comunidade_id>
+ <descricao>19-xxxxx</descricao>
+ <codigo>695</codigo>
+</lote> 
+<lote>
+ <id>578</id>
+ <proprietario_id>276</proprietario_id>
+ <comunidade_id>9</comunidade_id>
+ <descricao>105/106/107/108-xxxxx</descricao>
+ <codigo>696</codigo>
+</lote> 
+<lote>
+ <id>579</id>
+ <proprietario_id>277</proprietario_id>
+ <comunidade_id>9</comunidade_id>
+ <descricao>65-xxxxx</descricao>
+ <codigo>698</codigo>
+</lote> 
+<lote>
+ <id>580</id>
+ <proprietario_id>278</proprietario_id>
+ <comunidade_id>9</comunidade_id>
+ <descricao>05.06.07.08-xxxxx</descricao>
+ <codigo>699</codigo>
+</lote> 
+<lote>
+ <id>581</id>
+ <proprietario_id>279</proprietario_id>
+ <comunidade_id>9</comunidade_id>
+ <descricao>18-xxxxx</descricao>
+ <codigo>700</codigo>
+</lote> 
+<lote>
+ <id>582</id>
+ <proprietario_id>280</proprietario_id>
+ <comunidade_id>9</comunidade_id>
+ <descricao>67-xxxxx</descricao>
+ <codigo>701</codigo>
+</lote> 
+<lote>
+ <id>583</id>
+ <proprietario_id>281</proprietario_id>
+ <comunidade_id>9</comunidade_id>
+ <descricao>61/62-xxxxx</descricao>
+ <codigo>702</codigo>
+</lote> 
+<lote>
+ <id>584</id>
+ <proprietario_id>282</proprietario_id>
+ <comunidade_id>9</comunidade_id>
+ <descricao>28-xxxxx</descricao>
+ <codigo>703</codigo>
+</lote> 
+<lote>
+ <id>585</id>
+ <proprietario_id>282</proprietario_id>
+ <comunidade_id>9</comunidade_id>
+ <descricao>28-xxxxx</descricao>
+ <codigo>703</codigo>
+</lote> 
+<lote>
+ <id>586</id>
+ <proprietario_id>283</proprietario_id>
+ <comunidade_id>9</comunidade_id>
+ <descricao>04-xxxxx</descricao>
+ <codigo>704</codigo>
+</lote> 
+<lote>
+ <id>587</id>
+ <proprietario_id>285</proprietario_id>
+ <comunidade_id>9</comunidade_id>
+ <descricao>71-xxxxx</descricao>
+ <codigo>705</codigo>
+</lote> 
+<lote>
+ <id>588</id>
+ <proprietario_id>286</proprietario_id>
+ <comunidade_id>9</comunidade_id>
+ <descricao>35-xxxxx</descricao>
+ <codigo>706</codigo>
+</lote> 
+<lote>
+ <id>589</id>
+ <proprietario_id>287</proprietario_id>
+ <comunidade_id>9</comunidade_id>
+ <descricao>53-xxxxx</descricao>
+ <codigo>707</codigo>
+</lote> 
+<lote>
+ <id>590</id>
+ <proprietario_id>290</proprietario_id>
+ <comunidade_id>9</comunidade_id>
+ <descricao>27-xxxxx</descricao>
+ <codigo>708</codigo>
+</lote> 
+<lote>
+ <id>591</id>
+ <proprietario_id>291</proprietario_id>
+ <comunidade_id>9</comunidade_id>
+ <descricao>123-xxxxx</descricao>
+ <codigo>709</codigo>
+</lote> 
+<lote>
+ <id>592</id>
+ <proprietario_id>292</proprietario_id>
+ <comunidade_id>9</comunidade_id>
+ <descricao>59-xxxxx</descricao>
+ <codigo>710</codigo>
+</lote> 
+<lote>
+ <id>593</id>
+ <proprietario_id>293</proprietario_id>
+ <comunidade_id>9</comunidade_id>
+ <descricao>60-xxxxx</descricao>
+ <codigo>711</codigo>
+</lote> 
+<lote>
+ <id>594</id>
+ <proprietario_id>294</proprietario_id>
+ <comunidade_id>9</comunidade_id>
+ <descricao>63/64-xxxxx</descricao>
+ <codigo>712</codigo>
+</lote> 
+<lote>
+ <id>595</id>
+ <proprietario_id>295</proprietario_id>
+ <comunidade_id>9</comunidade_id>
+ <descricao>135-xxxxx</descricao>
+ <codigo>713</codigo>
+</lote> 
+<lote>
+ <id>596</id>
+ <proprietario_id>296</proprietario_id>
+ <comunidade_id>9</comunidade_id>
+ <descricao>133-xxxxx</descricao>
+ <codigo>714</codigo>
+</lote> 
+<lote>
+ <id>597</id>
+ <proprietario_id>297</proprietario_id>
+ <comunidade_id>9</comunidade_id>
+ <descricao>23-xxxxx</descricao>
+ <codigo>715</codigo>
+</lote> 
+<lote>
+ <id>598</id>
+ <proprietario_id>298</proprietario_id>
+ <comunidade_id>9</comunidade_id>
+ <descricao>125-xxxxx</descricao>
+ <codigo>716</codigo>
+</lote> 
+<lote>
+ <id>599</id>
+ <proprietario_id>299</proprietario_id>
+ <comunidade_id>9</comunidade_id>
+ <descricao>41-xxxxx</descricao>
+ <codigo>717</codigo>
+</lote> 
+<lote>
+ <id>600</id>
+ <proprietario_id>300</proprietario_id>
+ <comunidade_id>9</comunidade_id>
+ <descricao>31-xxxxx</descricao>
+ <codigo>718</codigo>
+</lote> 
+<lote>
+ <id>601</id>
+ <proprietario_id>301</proprietario_id>
+ <comunidade_id>9</comunidade_id>
+ <descricao>76-xxxxx</descricao>
+ <codigo>719</codigo>
+</lote> 
+<lote>
+ <id>602</id>
+ <proprietario_id>302</proprietario_id>
+ <comunidade_id>9</comunidade_id>
+ <descricao>68-xxxxx</descricao>
+ <codigo>720</codigo>
+</lote> 
+<lote>
+ <id>603</id>
+ <proprietario_id>303</proprietario_id>
+ <comunidade_id>9</comunidade_id>
+ <descricao>0.4-xxxxx</descricao>
+ <codigo>721</codigo>
+</lote> 
+<lote>
+ <id>604</id>
+ <proprietario_id>304</proprietario_id>
+ <comunidade_id>9</comunidade_id>
+ <descricao>30-xxxxx</descricao>
+ <codigo>722</codigo>
+</lote> 
+<lote>
+ <id>605</id>
+ <proprietario_id>305</proprietario_id>
+ <comunidade_id>9</comunidade_id>
+ <descricao>101-xxxxx</descricao>
+ <codigo>723</codigo>
+</lote> 
+<lote>
+ <id>606</id>
+ <proprietario_id>306</proprietario_id>
+ <comunidade_id>9</comunidade_id>
+ <descricao>151-xxxxx</descricao>
+ <codigo>724</codigo>
+</lote> 
+<lote>
+ <id>607</id>
+ <proprietario_id>307</proprietario_id>
+ <comunidade_id>9</comunidade_id>
+ <descricao>33-xxxxx</descricao>
+ <codigo>725</codigo>
+</lote> 
+<lote>
+ <id>608</id>
+ <proprietario_id>309</proprietario_id>
+ <comunidade_id>9</comunidade_id>
+ <descricao>37-xxxxx</descricao>
+ <codigo>727</codigo>
+</lote> 
+<lote>
+ <id>609</id>
+ <proprietario_id>310</proprietario_id>
+ <comunidade_id>9</comunidade_id>
+ <descricao>20-xxxxx</descricao>
+ <codigo>728</codigo>
+</lote> 
+<lote>
+ <id>610</id>
+ <proprietario_id>311</proprietario_id>
+ <comunidade_id>9</comunidade_id>
+ <descricao>0.5-xxxxx</descricao>
+ <codigo>729</codigo>
+</lote> 
+<lote>
+ <id>611</id>
+ <proprietario_id>312</proprietario_id>
+ <comunidade_id>9</comunidade_id>
+ <descricao>035-xxxxx</descricao>
+ <codigo>730</codigo>
+</lote> 
+<lote>
+ <id>612</id>
+ <proprietario_id>313</proprietario_id>
+ <comunidade_id>9</comunidade_id>
+ <descricao>010-xxxxx</descricao>
+ <codigo>731</codigo>
+</lote> 
+<lote>
+ <id>613</id>
+ <proprietario_id>314</proprietario_id>
+ <comunidade_id>9</comunidade_id>
+ <descricao>125-xxxxx</descricao>
+ <codigo>732</codigo>
+</lote> 
+<lote>
+ <id>614</id>
+ <proprietario_id>315</proprietario_id>
+ <comunidade_id>9</comunidade_id>
+ <descricao>52-xxxxx</descricao>
+ <codigo>734</codigo>
+</lote> 
+<lote>
+ <id>615</id>
+ <proprietario_id>316</proprietario_id>
+ <comunidade_id>9</comunidade_id>
+ <descricao>56-xxxxx</descricao>
+ <codigo>735</codigo>
+</lote> 
+<lote>
+ <id>616</id>
+ <proprietario_id>317</proprietario_id>
+ <comunidade_id>9</comunidade_id>
+ <descricao>56-xxxxx</descricao>
+ <codigo>735</codigo>
+</lote> 
+<lote>
+ <id>617</id>
+ <proprietario_id>318</proprietario_id>
+ <comunidade_id>9</comunidade_id>
+ <descricao>080-xxxxx</descricao>
+ <codigo>736</codigo>
+</lote> 
+<lote>
+ <id>618</id>
+ <proprietario_id>116</proprietario_id>
+ <comunidade_id>4</comunidade_id>
+ <descricao>9-xxxxx</descricao>
+ <codigo>1</codigo>
+</lote> 
+<lote>
+ <id>619</id>
+ <proprietario_id>116</proprietario_id>
+ <comunidade_id>4</comunidade_id>
+ <descricao>37-xxxxx</descricao>
+ <codigo>2</codigo>
+</lote> 
+<lote>
+ <id>620</id>
+ <proprietario_id>117</proprietario_id>
+ <comunidade_id>4</comunidade_id>
+ <descricao>28-xxxxx</descricao>
+ <codigo>3</codigo>
+</lote> 
+<lote>
+ <id>621</id>
+ <proprietario_id>118</proprietario_id>
+ <comunidade_id>4</comunidade_id>
+ <descricao>36/41-xxxxx</descricao>
+ <codigo>4</codigo>
+</lote> 
+<lote>
+ <id>622</id>
+ <proprietario_id>119</proprietario_id>
+ <comunidade_id>4</comunidade_id>
+ <descricao>15-xxxxx</descricao>
+ <codigo>5</codigo>
+</lote> 
+<lote>
+ <id>623</id>
+ <proprietario_id>120</proprietario_id>
+ <comunidade_id>4</comunidade_id>
+ <descricao>47-xxxxx</descricao>
+ <codigo>6</codigo>
+</lote> 
+<lote>
+ <id>624</id>
+ <proprietario_id>121</proprietario_id>
+ <comunidade_id>4</comunidade_id>
+ <descricao>21-xxxxx</descricao>
+ <codigo>7</codigo>
+</lote> 
+<lote>
+ <id>625</id>
+ <proprietario_id>122</proprietario_id>
+ <comunidade_id>4</comunidade_id>
+ <descricao>7-xxxxx</descricao>
+ <codigo>8</codigo>
+</lote> 
+<lote>
+ <id>626</id>
+ <proprietario_id>123</proprietario_id>
+ <comunidade_id>4</comunidade_id>
+ <descricao>10-xxxxx</descricao>
+ <codigo>9</codigo>
+</lote> 
+<lote>
+ <id>627</id>
+ <proprietario_id>124</proprietario_id>
+ <comunidade_id>4</comunidade_id>
+ <descricao>20-xxxxx</descricao>
+ <codigo>10</codigo>
+</lote> 
+<lote>
+ <id>628</id>
+ <proprietario_id>124</proprietario_id>
+ <comunidade_id>4</comunidade_id>
+ <descricao>17-xxxxx</descricao>
+ <codigo>11</codigo>
+</lote> 
+<lote>
+ <id>629</id>
+ <proprietario_id>126</proprietario_id>
+ <comunidade_id>4</comunidade_id>
+ <descricao>49-xxxxx</descricao>
+ <codigo>12</codigo>
+</lote> 
+<lote>
+ <id>630</id>
+ <proprietario_id>127</proprietario_id>
+ <comunidade_id>4</comunidade_id>
+ <descricao>38-xxxxx</descricao>
+ <codigo>13</codigo>
+</lote> 
+<lote>
+ <id>631</id>
+ <proprietario_id>128</proprietario_id>
+ <comunidade_id>4</comunidade_id>
+ <descricao>29-xxxxx</descricao>
+ <codigo>14</codigo>
+</lote> 
+<lote>
+ <id>632</id>
+ <proprietario_id>129</proprietario_id>
+ <comunidade_id>4</comunidade_id>
+ <descricao>30-xxxxx</descricao>
+ <codigo>15</codigo>
+</lote> 
+<lote>
+ <id>633</id>
+ <proprietario_id>130</proprietario_id>
+ <comunidade_id>4</comunidade_id>
+ <descricao>24-xxxxx</descricao>
+ <codigo>16</codigo>
+</lote> 
+<lote>
+ <id>634</id>
+ <proprietario_id>129</proprietario_id>
+ <comunidade_id>4</comunidade_id>
+ <descricao>34-xxxxx</descricao>
+ <codigo>17</codigo>
+</lote> 
+<lote>
+ <id>635</id>
+ <proprietario_id>129</proprietario_id>
+ <comunidade_id>4</comunidade_id>
+ <descricao>32-xxxxx</descricao>
+ <codigo>18</codigo>
+</lote> 
+<lote>
+ <id>636</id>
+ <proprietario_id>133</proprietario_id>
+ <comunidade_id>4</comunidade_id>
+ <descricao>22-xxxxx</descricao>
+ <codigo>19</codigo>
+</lote> 
+<lote>
+ <id>637</id>
+ <proprietario_id>134</proprietario_id>
+ <comunidade_id>4</comunidade_id>
+ <descricao>48-xxxxx</descricao>
+ <codigo>20</codigo>
+</lote> 
+<lote>
+ <id>638</id>
+ <proprietario_id>135</proprietario_id>
+ <comunidade_id>4</comunidade_id>
+ <descricao>18-xxxxx</descricao>
+ <codigo>21</codigo>
+</lote> 
+<lote>
+ <id>639</id>
+ <proprietario_id>136</proprietario_id>
+ <comunidade_id>4</comunidade_id>
+ <descricao>11-xxxxx</descricao>
+ <codigo>22</codigo>
+</lote> 
+<lote>
+ <id>640</id>
+ <proprietario_id>137</proprietario_id>
+ <comunidade_id>4</comunidade_id>
+ <descricao>16-xxxxx</descricao>
+ <codigo>23</codigo>
+</lote> 
+<lote>
+ <id>641</id>
+ <proprietario_id>138</proprietario_id>
+ <comunidade_id>4</comunidade_id>
+ <descricao>31-xxxxx</descricao>
+ <codigo>24</codigo>
+</lote> 
+<lote>
+ <id>642</id>
+ <proprietario_id>139</proprietario_id>
+ <comunidade_id>4</comunidade_id>
+ <descricao>8-xxxxx</descricao>
+ <codigo>25</codigo>
+</lote> 
+<lote>
+ <id>643</id>
+ <proprietario_id>142</proprietario_id>
+ <comunidade_id>4</comunidade_id>
+ <descricao>27-xxxxx</descricao>
+ <codigo>26</codigo>
+</lote> 
+<lote>
+ <id>644</id>
+ <proprietario_id>143</proprietario_id>
+ <comunidade_id>4</comunidade_id>
+ <descricao>6-xxxxx</descricao>
+ <codigo>27</codigo>
+</lote> 
+<lote>
+ <id>645</id>
+ <proprietario_id>144</proprietario_id>
+ <comunidade_id>4</comunidade_id>
+ <descricao>46-xxxxx</descricao>
+ <codigo>28</codigo>
+</lote> 
+<lote>
+ <id>646</id>
+ <proprietario_id>145</proprietario_id>
+ <comunidade_id>4</comunidade_id>
+ <descricao>43.44-xxxxx</descricao>
+ <codigo>29</codigo>
+</lote> 
+<lote>
+ <id>647</id>
+ <proprietario_id>146</proprietario_id>
+ <comunidade_id>4</comunidade_id>
+ <descricao>42-xxxxx</descricao>
+ <codigo>30</codigo>
+</lote> 
+<lote>
+ <id>648</id>
+ <proprietario_id>147</proprietario_id>
+ <comunidade_id>4</comunidade_id>
+ <descricao>39/40-xxxxx</descricao>
+ <codigo>31</codigo>
+</lote> 
+<lote>
+ <id>649</id>
+ <proprietario_id>148</proprietario_id>
+ <comunidade_id>4</comunidade_id>
+ <descricao>1-xxxxx</descricao>
+ <codigo>32</codigo>
+</lote> 
+<lote>
+ <id>650</id>
+ <proprietario_id>149</proprietario_id>
+ <comunidade_id>4</comunidade_id>
+ <descricao>88-xxxxx</descricao>
+ <codigo>33</codigo>
+</lote> 
+<lote>
+ <id>651</id>
+ <proprietario_id>150</proprietario_id>
+ <comunidade_id>4</comunidade_id>
+ <descricao>15-xxxxx</descricao>
+ <codigo>921</codigo>
+</lote> 
+<lote>
+ <id>652</id>
+ <proprietario_id>151</proprietario_id>
+ <comunidade_id>4</comunidade_id>
+ <descricao>76-xxxxx</descricao>
+ <codigo>922</codigo>
+</lote> 
+<lote>
+ <id>653</id>
+ <proprietario_id>265</proprietario_id>
+ <comunidade_id>7</comunidade_id>
+ <descricao>28-xxxxx</descricao>
+ <codigo>35</codigo>
+</lote> 
+<lote>
+ <id>654</id>
+ <proprietario_id>246</proprietario_id>
+ <comunidade_id>7</comunidade_id>
+ <descricao>78-xxxxx</descricao>
+ <codigo>35</codigo>
+</lote> 
+<lote>
+ <id>655</id>
+ <proprietario_id>228</proprietario_id>
+ <comunidade_id>7</comunidade_id>
+ <descricao>79-xxxxx</descricao>
+ <codigo>36</codigo>
+</lote> 
+<lote>
+ <id>656</id>
+ <proprietario_id>247</proprietario_id>
+ <comunidade_id>7</comunidade_id>
+ <descricao>22-xxxxx</descricao>
+ <codigo>37</codigo>
+</lote> 
+<lote>
+ <id>657</id>
+ <proprietario_id>238</proprietario_id>
+ <comunidade_id>7</comunidade_id>
+ <descricao>11.12-xxxxx</descricao>
+ <codigo>38</codigo>
+</lote> 
+<lote>
+ <id>658</id>
+ <proprietario_id>243</proprietario_id>
+ <comunidade_id>7</comunidade_id>
+ <descricao>63-xxxxx</descricao>
+ <codigo>39</codigo>
+</lote> 
+<lote>
+ <id>659</id>
+ <proprietario_id>258</proprietario_id>
+ <comunidade_id>7</comunidade_id>
+ <descricao>81-xxxxx</descricao>
+ <codigo>40</codigo>
+</lote> 
+<lote>
+ <id>660</id>
+ <proprietario_id>256</proprietario_id>
+ <comunidade_id>7</comunidade_id>
+ <descricao>82-xxxxx</descricao>
+ <codigo>41</codigo>
+</lote> 
+<lote>
+ <id>661</id>
+ <proprietario_id>255</proprietario_id>
+ <comunidade_id>7</comunidade_id>
+ <descricao>7-xxxxx</descricao>
+ <codigo>42</codigo>
+</lote> 
+<lote>
+ <id>662</id>
+ <proprietario_id>227</proprietario_id>
+ <comunidade_id>7</comunidade_id>
+ <descricao>90-xxxxx</descricao>
+ <codigo>43</codigo>
+</lote> 
+<lote>
+ <id>663</id>
+ <proprietario_id>266</proprietario_id>
+ <comunidade_id>7</comunidade_id>
+ <descricao>91-xxxxx</descricao>
+ <codigo>44</codigo>
+</lote> 
+<lote>
+ <id>664</id>
+ <proprietario_id>234</proprietario_id>
+ <comunidade_id>7</comunidade_id>
+ <descricao>16/20-xxxxx</descricao>
+ <codigo>45</codigo>
+</lote> 
+<lote>
+ <id>665</id>
+ <proprietario_id>267</proprietario_id>
+ <comunidade_id>7</comunidade_id>
+ <descricao>jan/00-xxxxx</descricao>
+ <codigo>46</codigo>
+</lote> 
+<lote>
+ <id>666</id>
+ <proprietario_id>237</proprietario_id>
+ <comunidade_id>7</comunidade_id>
+ <descricao>17/19-xxxxx</descricao>
+ <codigo>47</codigo>
+</lote> 
+<lote>
+ <id>667</id>
+ <proprietario_id>249</proprietario_id>
+ <comunidade_id>7</comunidade_id>
+ <descricao>93-xxxxx</descricao>
+ <codigo>49</codigo>
+</lote> 
+<lote>
+ <id>668</id>
+ <proprietario_id>264</proprietario_id>
+ <comunidade_id>7</comunidade_id>
+ <descricao>41/43-xxxxx</descricao>
+ <codigo>50</codigo>
+</lote> 
+<lote>
+ <id>669</id>
+ <proprietario_id>262</proprietario_id>
+ <comunidade_id>7</comunidade_id>
+ <descricao>60-xxxxx</descricao>
+ <codigo>51</codigo>
+</lote> 
+<lote>
+ <id>670</id>
+ <proprietario_id>264</proprietario_id>
+ <comunidade_id>7</comunidade_id>
+ <descricao>18/23-xxxxx</descricao>
+ <codigo>52</codigo>
+</lote> 
+<lote>
+ <id>671</id>
+ <proprietario_id>252</proprietario_id>
+ <comunidade_id>7</comunidade_id>
+ <descricao>51-xxxxx</descricao>
+ <codigo>53</codigo>
+</lote> 
+<lote>
+ <id>672</id>
+ <proprietario_id>224</proprietario_id>
+ <comunidade_id>7</comunidade_id>
+ <descricao>88-xxxxx</descricao>
+ <codigo>54</codigo>
+</lote> 
+<lote>
+ <id>673</id>
+ <proprietario_id>229</proprietario_id>
+ <comunidade_id>7</comunidade_id>
+ <descricao>85-xxxxx</descricao>
+ <codigo>55</codigo>
+</lote> 
+<lote>
+ <id>674</id>
+ <proprietario_id>225</proprietario_id>
+ <comunidade_id>7</comunidade_id>
+ <descricao>83-xxxxx</descricao>
+ <codigo>56</codigo>
+</lote> 
+<lote>
+ <id>675</id>
+ <proprietario_id>259</proprietario_id>
+ <comunidade_id>7</comunidade_id>
+ <descricao>52-xxxxx</descricao>
+ <codigo>57</codigo>
+</lote> 
+<lote>
+ <id>676</id>
+ <proprietario_id>248</proprietario_id>
+ <comunidade_id>7</comunidade_id>
+ <descricao>45-xxxxx</descricao>
+ <codigo>58</codigo>
+</lote> 
+<lote>
+ <id>677</id>
+ <proprietario_id>252</proprietario_id>
+ <comunidade_id>7</comunidade_id>
+ <descricao>74-xxxxx</descricao>
+ <codigo>59</codigo>
+</lote> 
+<lote>
+ <id>678</id>
+ <proprietario_id>250</proprietario_id>
+ <comunidade_id>7</comunidade_id>
+ <descricao>50-xxxxx</descricao>
+ <codigo>60</codigo>
+</lote> 
+<lote>
+ <id>679</id>
+ <proprietario_id>251</proprietario_id>
+ <comunidade_id>7</comunidade_id>
+ <descricao>55-xxxxx</descricao>
+ <codigo>62</codigo>
+</lote> 
+<lote>
+ <id>680</id>
+ <proprietario_id>236</proprietario_id>
+ <comunidade_id>7</comunidade_id>
+ <descricao>89-xxxxx</descricao>
+ <codigo>62</codigo>
+</lote> 
+<lote>
+ <id>681</id>
+ <proprietario_id>260</proprietario_id>
+ <comunidade_id>7</comunidade_id>
+ <descricao>97-xxxxx</descricao>
+ <codigo>63</codigo>
+</lote> 
+<lote>
+ <id>682</id>
+ <proprietario_id>231</proprietario_id>
+ <comunidade_id>7</comunidade_id>
+ <descricao>1-xxxxx</descricao>
+ <codigo>64</codigo>
+</lote> 
+<lote>
+ <id>683</id>
+ <proprietario_id>261</proprietario_id>
+ <comunidade_id>7</comunidade_id>
+ <descricao>76-xxxxx</descricao>
+ <codigo>65</codigo>
+</lote> 
+<lote>
+ <id>684</id>
+ <proprietario_id>240</proprietario_id>
+ <comunidade_id>7</comunidade_id>
+ <descricao>10-xxxxx</descricao>
+ <codigo>66</codigo>
+</lote> 
+<lote>
+ <id>685</id>
+ <proprietario_id>242</proprietario_id>
+ <comunidade_id>7</comunidade_id>
+ <descricao>2-xxxxx</descricao>
+ <codigo>67</codigo>
+</lote> 
+<lote>
+ <id>686</id>
+ <proprietario_id>232</proprietario_id>
+ <comunidade_id>7</comunidade_id>
+ <descricao>16.21.31-xxxxx</descricao>
+ <codigo>68</codigo>
+</lote> 
+<lote>
+ <id>687</id>
+ <proprietario_id>233</proprietario_id>
+ <comunidade_id>7</comunidade_id>
+ <descricao>04-xxxxx</descricao>
+ <codigo>69</codigo>
+</lote> 
+<lote>
+ <id>688</id>
+ <proprietario_id>245</proprietario_id>
+ <comunidade_id>7</comunidade_id>
+ <descricao>36.37-xxxxx</descricao>
+ <codigo>70</codigo>
+</lote> 
+<lote>
+ <id>689</id>
+ <proprietario_id>257</proprietario_id>
+ <comunidade_id>7</comunidade_id>
+ <descricao>124-xxxxx</descricao>
+ <codigo>71</codigo>
+</lote> 
+<lote>
+ <id>690</id>
+ <proprietario_id>226</proprietario_id>
+ <comunidade_id>7</comunidade_id>
+ <descricao>12-xxxxx</descricao>
+ <codigo>72</codigo>
+</lote> 
+<lote>
+ <id>691</id>
+ <proprietario_id>268</proprietario_id>
+ <comunidade_id>7</comunidade_id>
+ <descricao>05-xxxxx</descricao>
+ <codigo>73</codigo>
+</lote> 
+<lote>
+ <id>692</id>
+ <proprietario_id>235</proprietario_id>
+ <comunidade_id>7</comunidade_id>
+ <descricao>06-xxxxx</descricao>
+ <codigo>74</codigo>
+</lote> 
+<lote>
+ <id>693</id>
+ <proprietario_id>254</proprietario_id>
+ <comunidade_id>7</comunidade_id>
+ <descricao>07-xxxxx</descricao>
+ <codigo>75</codigo>
+</lote> 
+<lote>
+ <id>694</id>
+ <proprietario_id>241</proprietario_id>
+ <comunidade_id>7</comunidade_id>
+ <descricao>08-xxxxx</descricao>
+ <codigo>76</codigo>
+</lote> 
+<lote>
+ <id>695</id>
+ <proprietario_id>239</proprietario_id>
+ <comunidade_id>7</comunidade_id>
+ <descricao>014-xxxxx</descricao>
+ <codigo>77</codigo>
+</lote> 
+<lote>
+ <id>696</id>
+ <proprietario_id>493</proprietario_id>
+ <comunidade_id>14</comunidade_id>
+ <descricao>29-xxxxx</descricao>
+ <codigo>549</codigo>
+</lote> 
+<lote>
+ <id>697</id>
+ <proprietario_id>494</proprietario_id>
+ <comunidade_id>14</comunidade_id>
+ <descricao>44/63-xxxxx</descricao>
+ <codigo>550</codigo>
+</lote> 
+<lote>
+ <id>698</id>
+ <proprietario_id>495</proprietario_id>
+ <comunidade_id>14</comunidade_id>
+ <descricao>54-xxxxx</descricao>
+ <codigo>551</codigo>
+</lote> 
+<lote>
+ <id>699</id>
+ <proprietario_id>497</proprietario_id>
+ <comunidade_id>14</comunidade_id>
+ <descricao>05-xxxxx</descricao>
+ <codigo>552</codigo>
+</lote> 
+<lote>
+ <id>700</id>
+ <proprietario_id>498</proprietario_id>
+ <comunidade_id>14</comunidade_id>
+ <descricao>16-xxxxx</descricao>
+ <codigo>553</codigo>
+</lote> 
+<lote>
+ <id>701</id>
+ <proprietario_id>499</proprietario_id>
+ <comunidade_id>14</comunidade_id>
+ <descricao>60/61-xxxxx</descricao>
+ <codigo>554</codigo>
+</lote> 
+<lote>
+ <id>702</id>
+ <proprietario_id>500</proprietario_id>
+ <comunidade_id>14</comunidade_id>
+ <descricao>66/67-xxxxx</descricao>
+ <codigo>555</codigo>
+</lote> 
+<lote>
+ <id>703</id>
+ <proprietario_id>501</proprietario_id>
+ <comunidade_id>14</comunidade_id>
+ <descricao>61/68-xxxxx</descricao>
+ <codigo>556</codigo>
+</lote> 
+<lote>
+ <id>704</id>
+ <proprietario_id>502</proprietario_id>
+ <comunidade_id>14</comunidade_id>
+ <descricao>44/45-xxxxx</descricao>
+ <codigo>557</codigo>
+</lote> 
+<lote>
+ <id>705</id>
+ <proprietario_id>503</proprietario_id>
+ <comunidade_id>14</comunidade_id>
+ <descricao>36/37-xxxxx</descricao>
+ <codigo>558</codigo>
+</lote> 
+<lote>
+ <id>706</id>
+ <proprietario_id>504</proprietario_id>
+ <comunidade_id>14</comunidade_id>
+ <descricao>39-xxxxx</descricao>
+ <codigo>559</codigo>
+</lote> 
+<lote>
+ <id>707</id>
+ <proprietario_id>505</proprietario_id>
+ <comunidade_id>14</comunidade_id>
+ <descricao>13/14/15/57-xxxxx</descricao>
+ <codigo>560</codigo>
+</lote> 
+<lote>
+ <id>708</id>
+ <proprietario_id>506</proprietario_id>
+ <comunidade_id>14</comunidade_id>
+ <descricao>30-xxxxx</descricao>
+ <codigo>561</codigo>
+</lote> 
+<lote>
+ <id>709</id>
+ <proprietario_id>507</proprietario_id>
+ <comunidade_id>14</comunidade_id>
+ <descricao>40-xxxxx</descricao>
+ <codigo>562</codigo>
+</lote> 
+<lote>
+ <id>710</id>
+ <proprietario_id>508</proprietario_id>
+ <comunidade_id>14</comunidade_id>
+ <descricao>55-xxxxx</descricao>
+ <codigo>563</codigo>
+</lote> 
+<lote>
+ <id>711</id>
+ <proprietario_id>509</proprietario_id>
+ <comunidade_id>14</comunidade_id>
+ <descricao>65-xxxxx</descricao>
+ <codigo>564</codigo>
+</lote> 
+<lote>
+ <id>712</id>
+ <proprietario_id>510</proprietario_id>
+ <comunidade_id>14</comunidade_id>
+ <descricao>41-xxxxx</descricao>
+ <codigo>565</codigo>
+</lote> 
+<lote>
+ <id>713</id>
+ <proprietario_id>511</proprietario_id>
+ <comunidade_id>14</comunidade_id>
+ <descricao>3-xxxxx</descricao>
+ <codigo>566</codigo>
+</lote> 
+<lote>
+ <id>714</id>
+ <proprietario_id>512</proprietario_id>
+ <comunidade_id>14</comunidade_id>
+ <descricao>57/58-xxxxx</descricao>
+ <codigo>567</codigo>
+</lote> 
+<lote>
+ <id>715</id>
+ <proprietario_id>513</proprietario_id>
+ <comunidade_id>14</comunidade_id>
+ <descricao>66-xxxxx</descricao>
+ <codigo>568</codigo>
+</lote> 
+<lote>
+ <id>716</id>
+ <proprietario_id>514</proprietario_id>
+ <comunidade_id>14</comunidade_id>
+ <descricao>72/83-xxxxx</descricao>
+ <codigo>569</codigo>
+</lote> 
+<lote>
+ <id>717</id>
+ <proprietario_id>515</proprietario_id>
+ <comunidade_id>14</comunidade_id>
+ <descricao>25-xxxxx</descricao>
+ <codigo>570</codigo>
+</lote> 
+<lote>
+ <id>718</id>
+ <proprietario_id>516</proprietario_id>
+ <comunidade_id>14</comunidade_id>
+ <descricao>47/48/51/52-xxxxx</descricao>
+ <codigo>571</codigo>
+</lote> 
+<lote>
+ <id>719</id>
+ <proprietario_id>517</proprietario_id>
+ <comunidade_id>14</comunidade_id>
+ <descricao>63/29-xxxxx</descricao>
+ <codigo>572</codigo>
+</lote> 
+<lote>
+ <id>720</id>
+ <proprietario_id>518</proprietario_id>
+ <comunidade_id>14</comunidade_id>
+ <descricao>39/48-xxxxx</descricao>
+ <codigo>573</codigo>
+</lote> 
+<lote>
+ <id>721</id>
+ <proprietario_id>519</proprietario_id>
+ <comunidade_id>14</comunidade_id>
+ <descricao>22-xxxxx</descricao>
+ <codigo>574</codigo>
+</lote> 
+<lote>
+ <id>722</id>
+ <proprietario_id>521</proprietario_id>
+ <comunidade_id>14</comunidade_id>
+ <descricao>42-xxxxx</descricao>
+ <codigo>575</codigo>
+</lote> 
+<lote>
+ <id>723</id>
+ <proprietario_id>522</proprietario_id>
+ <comunidade_id>14</comunidade_id>
+ <descricao>24/25/56-xxxxx</descricao>
+ <codigo>576</codigo>
+</lote> 
+<lote>
+ <id>724</id>
+ <proprietario_id>523</proprietario_id>
+ <comunidade_id>14</comunidade_id>
+ <descricao>11/12-xxxxx</descricao>
+ <codigo>577</codigo>
+</lote> 
+<lote>
+ <id>725</id>
+ <proprietario_id>524</proprietario_id>
+ <comunidade_id>14</comunidade_id>
+ <descricao>31/32-xxxxx</descricao>
+ <codigo>578</codigo>
+</lote> 
+<lote>
+ <id>726</id>
+ <proprietario_id>525</proprietario_id>
+ <comunidade_id>14</comunidade_id>
+ <descricao>62-xxxxx</descricao>
+ <codigo>579</codigo>
+</lote> 
+<lote>
+ <id>727</id>
+ <proprietario_id>526</proprietario_id>
+ <comunidade_id>14</comunidade_id>
+ <descricao>32/36-xxxxx</descricao>
+ <codigo>580</codigo>
+</lote> 
+<lote>
+ <id>728</id>
+ <proprietario_id>527</proprietario_id>
+ <comunidade_id>14</comunidade_id>
+ <descricao>69-xxxxx</descricao>
+ <codigo>581</codigo>
+</lote> 
+<lote>
+ <id>729</id>
+ <proprietario_id>528</proprietario_id>
+ <comunidade_id>14</comunidade_id>
+ <descricao>53-xxxxx</descricao>
+ <codigo>582</codigo>
+</lote> 
+<lote>
+ <id>730</id>
+ <proprietario_id>529</proprietario_id>
+ <comunidade_id>14</comunidade_id>
+ <descricao>78/80-xxxxx</descricao>
+ <codigo>583</codigo>
+</lote> 
+<lote>
+ <id>731</id>
+ <proprietario_id>530</proprietario_id>
+ <comunidade_id>14</comunidade_id>
+ <descricao>59/59-xxxxx</descricao>
+ <codigo>584</codigo>
+</lote> 
+<lote>
+ <id>732</id>
+ <proprietario_id>531</proprietario_id>
+ <comunidade_id>14</comunidade_id>
+ <descricao>23-xxxxx</descricao>
+ <codigo>585</codigo>
+</lote> 
+<lote>
+ <id>733</id>
+ <proprietario_id>532</proprietario_id>
+ <comunidade_id>14</comunidade_id>
+ <descricao>4-xxxxx</descricao>
+ <codigo>586</codigo>
+</lote> 
+<lote>
+ <id>734</id>
+ <proprietario_id>533</proprietario_id>
+ <comunidade_id>14</comunidade_id>
+ <descricao>68-xxxxx</descricao>
+ <codigo>587</codigo>
+</lote> 
+<lote>
+ <id>735</id>
+ <proprietario_id>534</proprietario_id>
+ <comunidade_id>14</comunidade_id>
+ <descricao>39-xxxxx</descricao>
+ <codigo>588</codigo>
+</lote> 
+<lote>
+ <id>736</id>
+ <proprietario_id>535</proprietario_id>
+ <comunidade_id>14</comunidade_id>
+ <descricao>8-xxxxx</descricao>
+ <codigo>589</codigo>
+</lote> 
+<lote>
+ <id>737</id>
+ <proprietario_id>536</proprietario_id>
+ <comunidade_id>14</comunidade_id>
+ <descricao>6/7-xxxxx</descricao>
+ <codigo>590</codigo>
+</lote> 
+<lote>
+ <id>738</id>
+ <proprietario_id>537</proprietario_id>
+ <comunidade_id>14</comunidade_id>
+ <descricao>30-xxxxx</descricao>
+ <codigo>591</codigo>
+</lote> 
+<lote>
+ <id>739</id>
+ <proprietario_id>538</proprietario_id>
+ <comunidade_id>14</comunidade_id>
+ <descricao>64-xxxxx</descricao>
+ <codigo>592</codigo>
+</lote> 
+<lote>
+ <id>740</id>
+ <proprietario_id>539</proprietario_id>
+ <comunidade_id>14</comunidade_id>
+ <descricao>9/10-xxxxx</descricao>
+ <codigo>593</codigo>
+</lote> 
+<lote>
+ <id>741</id>
+ <proprietario_id>541</proprietario_id>
+ <comunidade_id>14</comunidade_id>
+ <descricao>37/49-xxxxx</descricao>
+ <codigo>594</codigo>
+</lote> 
+<lote>
+ <id>742</id>
+ <proprietario_id>542</proprietario_id>
+ <comunidade_id>14</comunidade_id>
+ <descricao>17/18/19-xxxxx</descricao>
+ <codigo>595</codigo>
+</lote> 
+<lote>
+ <id>743</id>
+ <proprietario_id>543</proprietario_id>
+ <comunidade_id>14</comunidade_id>
+ <descricao>50-xxxxx</descricao>
+ <codigo>596</codigo>
+</lote> 
+<lote>
+ <id>744</id>
+ <proprietario_id>717</proprietario_id>
+ <comunidade_id>685</comunidade_id>
+ <descricao>71-xxxxx</descricao>
+ <codigo>737</codigo>
+</lote> 
+<lote>
+ <id>745</id>
+ <proprietario_id>686</proprietario_id>
+ <comunidade_id>685</comunidade_id>
+ <descricao>26-xxxxx</descricao>
+ <codigo>738</codigo>
+</lote> 
+<lote>
+ <id>746</id>
+ <proprietario_id>687</proprietario_id>
+ <comunidade_id>685</comunidade_id>
+ <descricao>19-xxxxx</descricao>
+ <codigo>739</codigo>
+</lote> 
+<lote>
+ <id>747</id>
+ <proprietario_id>688</proprietario_id>
+ <comunidade_id>685</comunidade_id>
+ <descricao>34-xxxxx</descricao>
+ <codigo>740</codigo>
+</lote> 
+<lote>
+ <id>748</id>
+ <proprietario_id>689</proprietario_id>
+ <comunidade_id>685</comunidade_id>
+ <descricao>23-xxxxx</descricao>
+ <codigo>741</codigo>
+</lote> 
+<lote>
+ <id>749</id>
+ <proprietario_id>690</proprietario_id>
+ <comunidade_id>685</comunidade_id>
+ <descricao>68-xxxxx</descricao>
+ <codigo>742</codigo>
+</lote> 
+<lote>
+ <id>750</id>
+ <proprietario_id>691</proprietario_id>
+ <comunidade_id>685</comunidade_id>
+ <descricao>96-xxxxx</descricao>
+ <codigo>743</codigo>
+</lote> 
+<lote>
+ <id>751</id>
+ <proprietario_id>692</proprietario_id>
+ <comunidade_id>685</comunidade_id>
+ <descricao>2-xxxxx</descricao>
+ <codigo>744</codigo>
+</lote> 
+<lote>
+ <id>752</id>
+ <proprietario_id>693</proprietario_id>
+ <comunidade_id>685</comunidade_id>
+ <descricao>37-xxxxx</descricao>
+ <codigo>745</codigo>
+</lote> 
+<lote>
+ <id>753</id>
+ <proprietario_id>694</proprietario_id>
+ <comunidade_id>685</comunidade_id>
+ <descricao>20-xxxxx</descricao>
+ <codigo>746</codigo>
+</lote> 
+<lote>
+ <id>754</id>
+ <proprietario_id>695</proprietario_id>
+ <comunidade_id>685</comunidade_id>
+ <descricao>11-xxxxx</descricao>
+ <codigo>747</codigo>
+</lote> 
+<lote>
+ <id>755</id>
+ <proprietario_id>696</proprietario_id>
+ <comunidade_id>685</comunidade_id>
+ <descricao>13-xxxxx</descricao>
+ <codigo>748</codigo>
+</lote> 
+<lote>
+ <id>756</id>
+ <proprietario_id>697</proprietario_id>
+ <comunidade_id>685</comunidade_id>
+ <descricao>11A-xxxxx</descricao>
+ <codigo>749</codigo>
+</lote> 
+<lote>
+ <id>757</id>
+ <proprietario_id>698</proprietario_id>
+ <comunidade_id>685</comunidade_id>
+ <descricao>64-xxxxx</descricao>
+ <codigo>750</codigo>
+</lote> 
+<lote>
+ <id>758</id>
+ <proprietario_id>699</proprietario_id>
+ <comunidade_id>685</comunidade_id>
+ <descricao>94-xxxxx</descricao>
+ <codigo>751</codigo>
+</lote> 
+<lote>
+ <id>759</id>
+ <proprietario_id>700</proprietario_id>
+ <comunidade_id>685</comunidade_id>
+ <descricao>15A-xxxxx</descricao>
+ <codigo>752</codigo>
+</lote> 
+<lote>
+ <id>760</id>
+ <proprietario_id>701</proprietario_id>
+ <comunidade_id>685</comunidade_id>
+ <descricao>10-xxxxx</descricao>
+ <codigo>753</codigo>
+</lote> 
+<lote>
+ <id>761</id>
+ <proprietario_id>702</proprietario_id>
+ <comunidade_id>685</comunidade_id>
+ <descricao>46-xxxxx</descricao>
+ <codigo>754</codigo>
+</lote> 
+<lote>
+ <id>762</id>
+ <proprietario_id>703</proprietario_id>
+ <comunidade_id>685</comunidade_id>
+ <descricao>106-xxxxx</descricao>
+ <codigo>755</codigo>
+</lote> 
+<lote>
+ <id>763</id>
+ <proprietario_id>704</proprietario_id>
+ <comunidade_id>685</comunidade_id>
+ <descricao>66/67-xxxxx</descricao>
+ <codigo>756</codigo>
+</lote> 
+<lote>
+ <id>764</id>
+ <proprietario_id>705</proprietario_id>
+ <comunidade_id>685</comunidade_id>
+ <descricao>8-xxxxx</descricao>
+ <codigo>757</codigo>
+</lote> 
+<lote>
+ <id>765</id>
+ <proprietario_id>706</proprietario_id>
+ <comunidade_id>685</comunidade_id>
+ <descricao>17/18-xxxxx</descricao>
+ <codigo>758</codigo>
+</lote> 
+<lote>
+ <id>766</id>
+ <proprietario_id>707</proprietario_id>
+ <comunidade_id>685</comunidade_id>
+ <descricao>4-xxxxx</descricao>
+ <codigo>759</codigo>
+</lote> 
+<lote>
+ <id>767</id>
+ <proprietario_id>708</proprietario_id>
+ <comunidade_id>685</comunidade_id>
+ <descricao>13-xxxxx</descricao>
+ <codigo>760</codigo>
+</lote> 
+<lote>
+ <id>768</id>
+ <proprietario_id>709</proprietario_id>
+ <comunidade_id>685</comunidade_id>
+ <descricao>62-xxxxx</descricao>
+ <codigo>761</codigo>
+</lote> 
+<lote>
+ <id>769</id>
+ <proprietario_id>710</proprietario_id>
+ <comunidade_id>685</comunidade_id>
+ <descricao>41-xxxxx</descricao>
+ <codigo>762</codigo>
+</lote> 
+<lote>
+ <id>770</id>
+ <proprietario_id>711</proprietario_id>
+ <comunidade_id>685</comunidade_id>
+ <descricao>105-xxxxx</descricao>
+ <codigo>763</codigo>
+</lote> 
+<lote>
+ <id>771</id>
+ <proprietario_id>712</proprietario_id>
+ <comunidade_id>685</comunidade_id>
+ <descricao>43/44-xxxxx</descricao>
+ <codigo>764</codigo>
+</lote> 
+<lote>
+ <id>772</id>
+ <proprietario_id>713</proprietario_id>
+ <comunidade_id>685</comunidade_id>
+ <descricao>30-xxxxx</descricao>
+ <codigo>765</codigo>
+</lote> 
+<lote>
+ <id>773</id>
+ <proprietario_id>714</proprietario_id>
+ <comunidade_id>685</comunidade_id>
+ <descricao>49-xxxxx</descricao>
+ <codigo>766</codigo>
+</lote> 
+<lote>
+ <id>774</id>
+ <proprietario_id>715</proprietario_id>
+ <comunidade_id>685</comunidade_id>
+ <descricao>3-xxxxx</descricao>
+ <codigo>767</codigo>
+</lote> 
+<lote>
+ <id>775</id>
+ <proprietario_id>716</proprietario_id>
+ <comunidade_id>685</comunidade_id>
+ <descricao>5-xxxxx</descricao>
+ <codigo>768</codigo>
+</lote> 
+<lote>
+ <id>776</id>
+ <proprietario_id>718</proprietario_id>
+ <comunidade_id>685</comunidade_id>
+ <descricao>42-xxxxx</descricao>
+ <codigo>769</codigo>
+</lote> 
+<lote>
+ <id>777</id>
+ <proprietario_id>719</proprietario_id>
+ <comunidade_id>685</comunidade_id>
+ <descricao>41-xxxxx</descricao>
+ <codigo>770</codigo>
+</lote> 
+<lote>
+ <id>778</id>
+ <proprietario_id>721</proprietario_id>
+ <comunidade_id>685</comunidade_id>
+ <descricao>103-xxxxx</descricao>
+ <codigo>772</codigo>
+</lote> 
+<lote>
+ <id>779</id>
+ <proprietario_id>722</proprietario_id>
+ <comunidade_id>685</comunidade_id>
+ <descricao>40-xxxxx</descricao>
+ <codigo>773</codigo>
+</lote> 
+<lote>
+ <id>780</id>
+ <proprietario_id>723</proprietario_id>
+ <comunidade_id>685</comunidade_id>
+ <descricao>38-xxxxx</descricao>
+ <codigo>774</codigo>
+</lote> 
+<lote>
+ <id>781</id>
+ <proprietario_id>724</proprietario_id>
+ <comunidade_id>685</comunidade_id>
+ <descricao>45-xxxxx</descricao>
+ <codigo>775</codigo>
+</lote> 
+<lote>
+ <id>782</id>
+ <proprietario_id>725</proprietario_id>
+ <comunidade_id>685</comunidade_id>
+ <descricao>12-xxxxx</descricao>
+ <codigo>776</codigo>
+</lote> 
+<lote>
+ <id>783</id>
+ <proprietario_id>726</proprietario_id>
+ <comunidade_id>685</comunidade_id>
+ <descricao>21-xxxxx</descricao>
+ <codigo>777</codigo>
+</lote> 
+<lote>
+ <id>784</id>
+ <proprietario_id>727</proprietario_id>
+ <comunidade_id>685</comunidade_id>
+ <descricao>20-xxxxx</descricao>
+ <codigo>778</codigo>
+</lote> 
+<lote>
+ <id>785</id>
+ <proprietario_id>728</proprietario_id>
+ <comunidade_id>685</comunidade_id>
+ <descricao>95-xxxxx</descricao>
+ <codigo>779</codigo>
+</lote> 
+<lote>
+ <id>786</id>
+ <proprietario_id>729</proprietario_id>
+ <comunidade_id>685</comunidade_id>
+ <descricao>104-xxxxx</descricao>
+ <codigo>780</codigo>
+</lote> 
+<lote>
+ <id>787</id>
+ <proprietario_id>988</proprietario_id>
+ <comunidade_id>1</comunidade_id>
+ <descricao>33-xxxxx</descricao>
+ <codigo>932</codigo>
+</lote> 
+<lote>
+ <id>788</id>
+ <proprietario_id>989</proprietario_id>
+ <comunidade_id>1</comunidade_id>
+ <descricao>157-xxxxx</descricao>
+ <codigo>927</codigo>
+</lote> 
+<lote>
+ <id>789</id>
+ <proprietario_id>990</proprietario_id>
+ <comunidade_id>1</comunidade_id>
+ <descricao>10-xxxxx</descricao>
+ <codigo>926</codigo>
+</lote> 
+<lote>
+ <id>790</id>
+ <proprietario_id>991</proprietario_id>
+ <comunidade_id>1</comunidade_id>
+ <descricao>4-xxxxx</descricao>
+ <codigo>928</codigo>
+</lote> 
+<lote>
+ <id>791</id>
+ <proprietario_id>992</proprietario_id>
+ <comunidade_id>1</comunidade_id>
+ <descricao>153-xxxxx</descricao>
+ <codigo>929</codigo>
+</lote> 
+<lote>
+ <id>792</id>
+ <proprietario_id>993</proprietario_id>
+ <comunidade_id>1</comunidade_id>
+ <descricao>0403-xxxxx</descricao>
+ <codigo>930</codigo>
+</lote> 
+<lote>
+ <id>793</id>
+ <proprietario_id>994</proprietario_id>
+ <comunidade_id>1</comunidade_id>
+ <descricao>0104-xxxxx</descricao>
+ <codigo>931</codigo>
+</lote> 
+<lote>
+ <id>794</id>
+ <proprietario_id>995</proprietario_id>
+ <comunidade_id>1</comunidade_id>
+ <descricao>32-xxxxx</descricao>
+ <codigo>933</codigo>
+</lote> 
+<lote>
+ <id>795</id>
+ <proprietario_id>996</proprietario_id>
+ <comunidade_id>1</comunidade_id>
+ <descricao>34-xxxxx</descricao>
+ <codigo>934</codigo>
+</lote> 
+<lote>
+ <id>796</id>
+ <proprietario_id>997</proprietario_id>
+ <comunidade_id>1</comunidade_id>
+ <descricao>181-xxxxx</descricao>
+ <codigo>548</codigo>
+</lote> 
+<lote>
+ <id>797</id>
+ <proprietario_id>966</proprietario_id>
+ <comunidade_id>6</comunidade_id>
+ <descricao>2-xxxxx</descricao>
+ <codigo>268</codigo>
+</lote> 
+</dados>

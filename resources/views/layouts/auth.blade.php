@@ -1,0 +1,19 @@
+<?php $system = \App\System::all()->first(); ?>
+<!DOCTYPE html>
+<html>
+
+@include('layouts.partials.htmlheader')
+
+<style>
+    .content-wrapper-login {
+        background: url('{{ asset( $system->background_image ) }}') no-repeat center center fixed;
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+        background-size: cover;
+    }
+</style>
+
+@yield('content')
+
+</html>
