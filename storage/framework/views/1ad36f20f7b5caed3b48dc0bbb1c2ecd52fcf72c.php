@@ -13,6 +13,11 @@
 
 <?php $__env->stopSection(); ?>
 
+<?php
+$status = [trans('adminlte_lang::message.deleted'),trans('adminlte_lang::message.active'),trans('adminlte_lang::message.expired')];
+$status_color = ['danger','success','info'];
+?>
+
 
 <?php $__env->startSection('main-content'); ?>
 	<div class="row">
@@ -59,7 +64,7 @@
 
 					</div>
 
-	                <table id="table-patient" class="table table-bordered table-striped table-design">
+	                <table id="table-patient" class="table table-hover table-design">
 		                <thead>
 		                  <tr>
 		                    
@@ -73,7 +78,7 @@
 		                </thead>
 		                <tbody>
                           <?php $__currentLoopData = $patients; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $patient): $__env->incrementLoopIndices(); $loop = $__env->getFirstLoop(); ?>
-                                <tr>
+                                <tr class="bg-<?php echo e($status_color[$patient->status]); ?> patient-row">
                                     
 									<td><?php echo e($patient->name); ?></td>
                                     <td><?php echo e($patient->email); ?></td>
@@ -81,22 +86,22 @@
                                     <td><?php echo e(trans('adminlte_lang::message.'.$patient->genre)); ?></td>
                                     <td><?php echo e($patient->address); ?></td>
                                     <td>
-										<a href="<?php echo e(route('patients.show',$patient->id)); ?>" data-toggle="tooltip" title="<?php echo e(trans('adminlte_lang::message.show_details')); ?>" data-remote='false'><i class="fa fa-eye"></i>
+										<a href="<?php echo e(route('patients.show',$patient->id)); ?>" data-toggle="tooltip" title="<?php echo e(trans('adminlte_lang::message.show_details')); ?>">
+                                            <i class="fa fa-eye"></i>
 										</a>
 
-										<a href="<?php echo e(route('patients.edit',$patient->id)); ?>" data-toggle="tooltip" title="<?php echo e(trans('adminlte_lang::message.edit')); ?>" data-remote='false'><i class="fa fa-edit"></i>
+										<a href="<?php echo e(route('patients.edit',$patient->id)); ?>" style="display: <?php echo e($patient->status == 1 ? 'initial' :'none'); ?>;" data-toggle="tooltip" id="update-patient" title="<?php echo e(trans('adminlte_lang::message.edit')); ?>" >
+                                            <i class="fa fa-edit"></i>
 										</a>
 
-                                        <a href="#remove" data-toggle="modal" data-target="#confirmDelete" title="<?php echo e(trans('adminlte_lang::message.disable')); ?>" data-product_id="<?php echo e($patient->id); ?>" data-product_name="<?php echo e($patient->id); ?>">
-                                            <i class="fa fa-user-times"></i>
+                                        <a href="#disable" style="display: <?php echo e($patient->status == 1 ? 'initial' :'none'); ?>;" data-toggle="tooltip" id="disable-patient" title="<?php echo e(trans('adminlte_lang::message.disable')); ?>" data-key="<?php echo e($patient->id); ?>" data-name="<?php echo e($patient->name); ?>">
+                                            <i class="fa fa-user-o"></i>
                                         </a>
 
-                                        <!--
-                                            <a href="<?php echo e(url('tests/pdf/')); ?>/<?php echo e($patient->id); ?>" target="_blank" class="btn btn-primary btn-xs", data-toggle="tooltip" title="Pdf" ])>   <i class="fa fa-file-pdf-o"></i>
-                                            </a>
+                                        <a href="#enable" style="display: <?php echo e($patient->status == 0 ? 'initial' :'none'); ?>;" data-toggle="tooltip" id="enable-patient" title="<?php echo e(trans('adminlte_lang::message.enable')); ?>" data-key="<?php echo e($patient->id); ?>" data-name="<?php echo e($patient->name); ?>">
+                                            <i class="fa fa-user"></i>
+                                        </a>
 
-
-                                            -->
                                     </td>
                                 </tr>
                             <?php endforeach; $__env->popLoop(); $loop = $__env->getFirstLoop(); ?>

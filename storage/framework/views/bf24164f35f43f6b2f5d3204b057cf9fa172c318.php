@@ -21,9 +21,9 @@
 
                 <div class="col-lg-12 col-md-12 col-sm-12">
                     <div class="form-group form-group-sm">
-                        <?php echo Form::label('send',trans('adminlte_lang::message.send')); ?>
+                        <?php echo Form::label('send_message',trans('adminlte_lang::message.send')); ?>
 
-                        <?php echo Form::select('send', [ 'daily' => trans('adminlte_lang::message.daily'),'weekly'=>trans('adminlte_lang::message.weekly'),'monthly'=>trans('adminlte_lang::message.monthly')],($type == 'update' ? $campaign_message->send : null), ['class'=>'form-control','placeholder' => trans('adminlte_lang::message.select_send')]); ?>
+                        <?php echo Form::select('send_message', [ 'daily' => trans('adminlte_lang::message.daily'),'weekly'=>trans('adminlte_lang::message.weekly'),'monthly'=>trans('adminlte_lang::message.monthly')],($type == 'update' ? $campaign_message->send : null), ['class'=>'form-control','placeholder' => trans('adminlte_lang::message.select_send')]); ?>
 
                     </div>
                 </div>

@@ -16,6 +16,18 @@
 
 <?php $__env->startSection('main-content'); ?>
     <div class="row">
+
+        <?php if($patient->status == 0): ?>
+            <div class="col-lg-12">
+                <div class="alert alert-info alert-dismissible" role="info">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <strong><i class="fa fa-info-circle"></i></strong> <?php echo e(trans('adminlte_lang::message.msg_disabled_patient')); ?>
+
+                </div>
+            </div>
+
+        <?php endif; ?>
+
         <div class="col-md-3">
 
             <!-- Profile Image -->
@@ -40,24 +52,31 @@
                 <div class="box-header with-border">
                     <h3 class="box-title"><?php echo e(trans('adminlte_lang::message.patient_profile')); ?></h3>
                     <div class="pull-right box-tools">
-                        <a href="<?php echo e(url('patients')); ?>" class="btn btn-primary btn-sm" role="button" data-toggle="tooltip" title="<?php echo e(trans('adminlte_lang::message.list')); ?>">
+                        <a href="<?php echo e(url('patients')); ?>" class="btn btn-primary btn-sm" role="button" data-toggle="tooltip" title="<?php echo e(trans('adminlte_lang::message.patients_list')); ?>">
                             <i class="fa fa-list"></i>
                         </a>
                         <a href="<?php echo e(url('patients')); ?>/<?php echo e($patient->id); ?>/print" class="btn btn-primary btn-sm" target="_blank" role="button" data-toggle="tooltip" title="<?php echo e(trans('adminlte_lang::message.print')); ?>">
                             <i class="fa fa-print"></i>
                         </a>
-                        <a href="<?php echo e(route('patients.edit',$patient->id)); ?>" class="btn btn-primary btn-sm" role="button" data-toggle="tooltip" title="<?php echo e(trans('adminlte_lang::message.edit')); ?>">
-                            <i class="fa fa-edit"></i>
-                        </a>
+                        <?php if($patient->status == 1): ?>
+                            <a href="<?php echo e(route('patients.edit',$patient->id)); ?>" class="btn btn-primary btn-sm" role="button" data-toggle="tooltip" title="<?php echo e(trans('adminlte_lang::message.edit')); ?>">
+                                <i class="fa fa-edit"></i>
+                            </a>
+                        <?php endif; ?>
                     </div>
                 </div>
                 <!-- /.box-header -->
                 <div class="box-body">
                     <div class="nav-tabs-custom">
                             <ul class="nav nav-tabs">
-                                <li class="active"><a href="#personal_data" data-toggle="tab"><?php echo e(trans('adminlte_lang::message.personal_data')); ?></a></li>
-                                <li><a href="#documents" data-toggle="tab"><?php echo e(trans('adminlte_lang::message.documents')); ?></a></li>
-                                <li><a href="#settings" data-toggle="tab">Settings</a></li>
+                                <li class="active"><a href="#personal_data" data-toggle="tab"> <i class="fa fa-address-card-o"></i> <?php echo e(trans('adminlte_lang::message.personal_data')); ?></a></li>
+                                <li><a href="#documents" data-toggle="tab"><i class="fa fa-folder-open-o"></i> <?php echo e(trans('adminlte_lang::message.documents')); ?></a></li>
+                                <li><a href="#agenda" data-toggle="tab"><i class="fa fa-calendar"></i> <?php echo e(trans('adminlte_lang::message.agenda')); ?></a></li>
+                                <li><a href="#consult" data-toggle="tab"><i class="fa fa-heartbeat"></i> <?php echo e(trans('adminlte_lang::message.consult')); ?></a></li>
+                                <li><a href="#odontograma" data-toggle="tab"><img src="<?php echo e(asset('/img/icon/odontograma_teeth.png')); ?>" > <?php echo e(trans('adminlte_lang::message.odontograma')); ?></a></li>
+                                <li><a href="#budget" data-toggle="tab"><img src="<?php echo e(asset('/img/icon/budget-calculator-20.png')); ?>" width="14"> <?php echo e(trans('adminlte_lang::message.budget')); ?></a></li>
+                                <li><a href="#payments" data-toggle="tab"><img src="<?php echo e(asset('/img/icon/credit-card-swipe-20.png')); ?>" width="14"> <?php echo e(trans('adminlte_lang::message.payments')); ?></a></li>
+                                
                             </ul>
 
                             <div class="tab-content">
@@ -209,11 +228,11 @@
                                                 <ul class="list-group list-group-unbordered">
                                                     <li class="list-group-item">
                                                         <i class="fa fa-calendar"></i>  <b><?php echo e(trans('adminlte_lang::message.start_date')); ?>: </b>
-                                                        <a> <?php echo e(\Carbon\Carbon::createFromFormat('Y-m-d', $patient->secure_card->start_date)->format('d-m-Y')); ?> </a>
+                                                        <a> <?php echo e(\Carbon\Carbon::createFromFormat('Y-m-d', $patient->secure_card->start_date)->format('d/m/Y')); ?> </a>
                                                     </li>
                                                     <li class="list-group-item">
                                                         <i class="fa fa-calendar"></i>  <b><?php echo e(trans('adminlte_lang::message.end_date')); ?>: </b>
-                                                        <a> <?php echo e(\Carbon\Carbon::createFromFormat('Y-m-d', $patient->secure_card->end_date)->format('d-m-Y')); ?> </a>
+                                                        <a> <?php echo e(\Carbon\Carbon::createFromFormat('Y-m-d', $patient->secure_card->end_date)->format('d/m/Y')); ?> </a>
                                                     </li>
 
                                                 </ul>
@@ -247,18 +266,20 @@
                                         <thead>
                                           <tr>
 
-                                            <th class="col-md-7"><?php echo e(trans('adminlte_lang::message.file_name')); ?></th>
-                                            <th class="col-md-2" style="text-align: center"><?php echo e(trans('adminlte_lang::message.file_type')); ?></th>
-                                            <th class="col-md-2"></th>
+                                            <th class="col-md-4"><?php echo e(trans('adminlte_lang::message.file_name')); ?></th>
+                                              <th class="col-md-5" style="text-align: center"><?php echo e(trans('adminlte_lang::message.description')); ?></th>
+                                              <th class="col-md-2" style="text-align: center"><?php echo e(trans('adminlte_lang::message.file_type')); ?></th>
+                                            <th class="col-md-1"></th>
                                           </tr>
                                         </thead>
                                         <tbody>
                                             <?php $__currentLoopData = $Files; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $file): $__env->incrementLoopIndices(); $loop = $__env->getFirstLoop(); ?>
                                                 <tr class="file_document" data-key="<?php echo e($file->id); ?>">
                                                     <td class="name_original"><?php echo e($file->name_original); ?> </td>
+                                                    <td class="description"><?php echo e($file->description); ?> </td>
                                                     <td class="media_type" style="text-align: center"><?php echo e($file->media_type); ?></td>
                                                     <td>
-                                                        <a href="#!preview" data-toggle="tooltip" title="<?php echo e(trans('adminlte_lang::message.view')); ?>" class="file-preview" data-url="<?php echo e(url('files')); ?>/<?php echo e($file->id); ?>/preview" style="visibility: <?php echo e($file->media_type != 'doc' ? 'visible':'hidden'); ?>;"><i class="fa fa-eye"></i>
+                                                        <a href="#!preview" data-toggle="tooltip" title="<?php echo e(trans('adminlte_lang::message.preview')); ?>" class="file-preview" data-url="<?php echo e(url('files')); ?>/<?php echo e($file->id); ?>/preview" style="visibility: <?php echo e($file->media_type != 'doc' ? 'visible':'hidden'); ?>;"><i class="fa fa-eye"></i>
                                                         </a>
                                                         <a href="<?php echo e(url('files')); ?>/<?php echo e($file->id); ?>/download" data-toggle="tooltip" title="<?php echo e(trans('adminlte_lang::message.download')); ?>" ><i class="fa fa-download"></i>
                                                         </a>
@@ -273,11 +294,194 @@
                                 </div>
                                 <!-- /.tab-pane -->
 
-                                <div class="tab-pane" id="settings">
+                                <?php
+                                    $status = [trans('adminlte_lang::message.canceled'),trans('adminlte_lang::message.scheduled'),trans('adminlte_lang::message.confirmed'),trans('adminlte_lang::message.expired')];
+                                    $status_color = ['danger','info','success','default'];
+                                ?>
 
+                                <!-- AGENDA OF CONSULT -->
+                                <div class="tab-pane" id="agenda">
+                                    <table id="table-consult_agenda" class="table table-bordered table-striped table-design">
+
+                                        <thead>
+                                            <tr>
+                                                <th class="col-md-2"  align="center"><?php echo e(trans('adminlte_lang::message.date')); ?></th>
+                                                <th class="col-md-2"  align="center"><?php echo e(trans('adminlte_lang::message.time')); ?></th>
+                                                <th class="col-md-2"  align="center"><?php echo e(trans('adminlte_lang::message.consult_type')); ?></th>
+                                                
+                                                
+                                                <th class="col-md-3"  align="center"><?php echo e(trans('adminlte_lang::message.doctor')); ?></th>
+                                                <th class="col-md-2"  align="center"><?php echo e(trans('adminlte_lang::message.status')); ?></th>
+                                                <th class="col-md-1"></th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                        <?php $__currentLoopData = $consult_agenda; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $agenda): $__env->incrementLoopIndices(); $loop = $__env->getFirstLoop(); ?>
+                                            <tr>
+                                                <td  align="center"><?php echo e(\Carbon\Carbon::createFromFormat('Y-m-d', $agenda->date )->format('d/m/Y')); ?></td>
+                                                <td><?php echo e($agenda->start_time); ?> - <?php echo e($agenda->end_time); ?></td>
+                                                <td><?php echo e($agenda->consult_type->name); ?></td>
+                                                
+                                                
+                                                <td><?php echo e($agenda->doctor->name); ?></td>
+                                                <td  align="center"> <span class="label label-<?php echo e($status_color[$agenda->status]); ?>"> <?php echo e($status[$agenda->status]); ?></span> </td>
+
+                                                <td align="center">
+                                                    <a href="#!view" data-url="<?php echo e(route('consult_agenda.show',$agenda->id)); ?>" data-toggle="tooltip"  data-title="<?php echo e(trans('adminlte_lang::message.details_consult_agenda')); ?>" data-placement="left" class="show-agenda-modal" title="<?php echo e(trans('adminlte_lang::message.view')); ?>">
+                                                        <i class="fa fa-eye"></i>
+                                                    </a>
+                                                    
+                                                        
+                                                            
+                                                        
+
+                                                        
+                                                            
+                                                        
+
+                                                        
+                                                            
+                                                        
+
+                                                    
+                                                        
+                                                            
+                                                        
+                                                    
+                                                </td>
+                                            </tr>
+                                        <?php endforeach; $__env->popLoop(); $loop = $__env->getFirstLoop(); ?>
+                                        <tbody>
+                                    </table>
+                                </div>
+                                <!-- /.tab-pane -->
+
+                                
+                                <div class="tab-pane" id="consult">
+
+                                    <table id="table-consult" class="table table-bordered table-striped table-design">
+                                        <thead>
+                                        <tr>
+                                            <th class="col-md-2"><?php echo e(trans('adminlte_lang::message.date')); ?></th>
+                                            <th class="col-md-3" style="text-align: center"><?php echo e(trans('adminlte_lang::message.doctor')); ?></th>
+                                            <th class="col-md-2" style="text-align: center"><?php echo e(trans('adminlte_lang::message.status')); ?></th>
+                                            <th class="col-md-1" style="text-align: center"><?php echo e(trans('adminlte_lang::message.total')); ?></th>
+                                            <th class="col-md-1" style="text-align: center"><?php echo e(trans('adminlte_lang::message.discount')); ?></th>
+                                            <th class="col-md-1" style="text-align: center"><?php echo e(trans('adminlte_lang::message.total_with_desc')); ?></th>
+                                            <th class="col-md-1" style="text-align: center"><?php echo e(trans('adminlte_lang::message.value_exec')); ?></th>
+                                            <th class="col-md-1"></th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+
+                                        </tbody>
+                                    </table>
 
                                 </div>
                                 <!-- /.tab-pane -->
+
+                                
+                                <div class="tab-pane" id="odontograma">
+
+                                    
+                                        
+                                            
+
+                                            
+                                                
+                                                
+                                            
+                                            
+                                        
+                                        <!-- /.box-header -->
+                                        <div class="box-body text-center" style="display: block;">
+                                            <img src="<?php echo e(asset('/img/clinic/odontograma.png')); ?>" alt="">
+                                        </div>
+                                        <!-- /.box-body -->
+                                    
+                                </div>
+                                <!-- /.tab-pane -->
+
+                                
+                                <div class="tab-pane" id="budget">
+                                    <table id="table-budget" class="table table-bordered table-striped table-design">
+                                        <thead>
+                                        <tr>
+                                            <th class="col-md-2"><?php echo e(trans('adminlte_lang::message.date')); ?></th>
+                                            <th class="col-md-5" style="text-align: center"><?php echo e(trans('adminlte_lang::message.creator')); ?></th>
+                                            <th class="col-md-2" style="text-align: center"><?php echo e(trans('adminlte_lang::message.status')); ?></th>
+                                            <th class="col-md-1" style="text-align: center"><?php echo e(trans('adminlte_lang::message.total')); ?></th>
+                                            <th class="col-md-1" style="text-align: center"><?php echo e(trans('adminlte_lang::message.total_with_desc')); ?></th>
+                                            <th class="col-md-1"></th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <!-- /.tab-pane -->
+
+                                
+                                <div class="tab-pane" id="payments">
+
+                                    <table id="table-payment" class="table table-bordered table-striped table-design">
+                                        <thead>
+                                        <tr>
+                                            <th class="col-md-2"><?php echo e(trans('adminlte_lang::message.date')); ?></th>
+                                            <th class="col-md-3" style="text-align: center"><?php echo e(trans('adminlte_lang::message.branch')); ?></th>
+                                            <th class="col-md-2" style="text-align: center"><?php echo e(trans('adminlte_lang::message.payment_method')); ?></th>
+                                            <th class="col-md-3" style="text-align: center"><?php echo e(trans('adminlte_lang::message.note')); ?></th>
+                                            <th class="col-md-1" style="text-align: center"><?php echo e(trans('adminlte_lang::message.value')); ?></th>
+                                            <th class="col-md-1"></th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+
+                                        </tbody>
+                                    </table>
+
+                                </div>
+                                <!-- /.tab-pane -->
+
+                                
+
+                                    
+
+                                        
+                                            
+                                              
+                                                
+                                              
+
+                                            
+                                            
+                                            
+                                            
+                                            
+                                            
+                                                
+                                            
+                                        
+
+                                        
+                                              
+                                                
+                                              
+
+                                            
+                                            
+                                            
+                                                
+                                            
+                                        
+
+                                    
+
+                                
+                                <!-- /.tab-pane -->
+
+
                             </div>
                             <!-- /.tab-content -->
                         </div>

@@ -13,6 +13,11 @@
 
 <?php $__env->stopSection(); ?>
 
+<?php
+$status = [trans('adminlte_lang::message.deleted'),trans('adminlte_lang::message.active'),trans('adminlte_lang::message.expired')];
+$status_color = ['danger','success','info'];
+?>
+
 
 <?php $__env->startSection('main-content'); ?>
 	<div class="row">
@@ -30,20 +35,20 @@
 	            </div><!-- /.box-header -->
 
 	            <div class="box-body">
-	                <table id="table-secure_agency" class="table table-bordered table-striped table-design">
+	                <table id="table-secure_agency" class="table table-hover table-design">
 		                <thead>
 		                  <tr>
 		                    
 		                    <th class="col-md-4"><?php echo e(trans('adminlte_lang::message.name')); ?></th>
 		                    <th class="col-md-2"><?php echo e(trans('adminlte_lang::message.email')); ?></th>
 		                    <th class="col-md-2"><?php echo e(trans('adminlte_lang::message.contacts')); ?></th>
-		                    <th class="col-md-4"><?php echo e(trans('adminlte_lang::message.address')); ?></th>
+		                    <th class="col-md-3"><?php echo e(trans('adminlte_lang::message.address')); ?></th>
 		                    <th class="col-md-1"></th>
 		                  </tr>
 		                </thead>
 		                <tbody>
                           <?php $__currentLoopData = $secure_agency; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $agency): $__env->incrementLoopIndices(); $loop = $__env->getFirstLoop(); ?>
-                                <tr>
+                                <tr class="bg-<?php echo e($status_color[$agency->status]); ?>">
                                     
                                     <td><?php echo e($agency->name); ?></td>
                                     <td><?php echo e($agency->email); ?></td>

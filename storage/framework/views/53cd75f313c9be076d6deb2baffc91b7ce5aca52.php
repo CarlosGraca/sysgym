@@ -68,14 +68,16 @@
 
 				</div>
 			</div>
+
 			<div class="col-lg-6 col-md-4 col-sm-6">
 				<div class="form-group form-group-sm">
 					<?php echo Form::label('timezone',trans('adminlte_lang::message.timezone') ); ?>
 
-                    <?php echo Form::select('timezone', $timezone,($type == 'update' ? $system->timezone_id : 0), ['class'=>'form-control','placeholder' =>trans('adminlte_lang::message.timezone_empty'),'id'=>'timezone']); ?>
+                    <?php echo Form::select('timezone', $timezone,($type == 'update' ? $system->timezone : 0), ['class'=>'form-control','placeholder' =>trans('adminlte_lang::message.timezone_empty'),'id'=>'timezone']); ?>
 
 				</div>
 			</div>
+
 		</div>
 	</div>	
 </div>

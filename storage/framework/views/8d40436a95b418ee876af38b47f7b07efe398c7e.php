@@ -9,16 +9,23 @@
 			  </h3>
 				<div class="pull-right box-tools">
 
-
-					<a href="#!" class="btn btn-primary btn-sm" role="button" data-toggle="tooltip" title="<?php echo e(trans('adminlte_lang::message.edit')); ?>" id="edit-consult_agenda-button" style="display: none;">
-						<i class="fa fa-edit"></i>
+					<a href="#!view" class="btn btn-primary btn-sm show-agenda-modal" data-url="<?php echo e(route('consult_agenda.show',$consult_agenda->id)); ?>" data-toggle="tooltip"  data-title="<?php echo e(trans('adminlte_lang::message.details_consult_agenda')); ?>" data-placement="top" title="<?php echo e(trans('adminlte_lang::message.view')); ?>">
+						<i class="fa fa-eye"></i>
 					</a>
 
-					<a href="#" class="btn btn-primary btn-sm" role="button" data-toggle="tooltip" title="Save" id="edit-consult_agenda">
-						 <i class="fa fa-save"></i>
-					</a>
+                    <?php if($consult_agenda->status == 1): ?>
 
-                    <a href="#" class="btn btn-primary btn-sm" data-dismiss="modal" role="button" data-toggle="tooltip" title="<?php echo e(trans('adminlte_lang::message.close')); ?>">
+                        <a href="#!edit" class="btn btn-primary btn-sm" role="button" data-toggle="tooltip" title="<?php echo e(trans('adminlte_lang::message.edit')); ?>" id="edit-consult_agenda-button" style="display: none;">
+                            <i class="fa fa-edit"></i>
+                        </a>
+
+                        <a href="#!save" class="btn btn-primary btn-sm" role="button" data-toggle="tooltip" title="Save" id="edit-consult_agenda">
+                             <i class="fa fa-save"></i>
+                        </a>
+
+                    <?php endif; ?>
+
+                    <a href="#close" class="btn btn-primary btn-sm" data-dismiss="modal" role="button" data-toggle="tooltip" title="<?php echo e(trans('adminlte_lang::message.close')); ?>">
                         <i class="fa  fa-close"></i>
                     </a>
 				</div><!-- /. tools -->

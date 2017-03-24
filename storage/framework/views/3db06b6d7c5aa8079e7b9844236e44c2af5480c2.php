@@ -1,15 +1,69 @@
 <div class="row">
-	<div class="col-lg-4 col-md-6 col-sm-6 col-xs-12 text-center">
-		<?php echo Form::hidden('consult_id', ($type == 'update' ? $consult_type->id : null), ['class'=>'form-control','id'=>'consult_type_id']); ?>
 
-		<?php echo Form::hidden('user_id', Auth::user()->id, ['class'=>'form-control','id'=>'user_id']); ?>
+    <div class="col-lg-3">
+        
+            
+                
+            
 
-		<span ><strong class="title" style="text-align: left;"><?php echo e(trans('adminlte_lang::message.mouth')); ?></strong></span>
-		<hr class="h-divider" >
-		<?php echo $__env->make('consult.mouth_object', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
-	</div>
-	<div class="col-lg-8 col-md-6 col-sm-6 col-xs-12">
-		<?php echo $__env->make('budget.form', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+            
+                
+            
+        
+
+        <div class="box box-widget widget-user-2 ">
+            <!-- Add the bg color to the header using any of the bg-* classes -->
+            <div class="widget-user-header bg-yellow" >
+                <div class="widget-user-image">
+                    <img class="img-circle" src="<?php echo e(asset(\Auth::user()->avatar)); ?>" alt="User Avatar">
+                </div>
+                <!-- /.widget-user-image -->
+                <h3 class="widget-user-username"><?php echo e(\Auth::user()->name); ?></h3>
+                <h5 class="widget-user-desc"> <?php echo e(\Carbon\Carbon::now()->format('d/m/Y')); ?></h5>
+            </div>
+            <div class="box-footer no-padding">
+                <ul class="nav nav-stacked">
+                    
+                    <li><a href="#"><?php echo e(trans('adminlte_lang::message.odontograma')); ?> </a></li>
+                    <li><a href="#"><?php echo e(trans('adminlte_lang::message.budget')); ?>  </a></li>
+                    <li><a href="#"><?php echo e(trans('adminlte_lang::message.documents')); ?>  </a></li>
+                </ul>
+            </div>
+        </div>
+
+
+        <div class="box box-default box-solid">
+            <div class="box-header with-border">
+                <h3 class="box-title"><?php echo e(trans('adminlte_lang::message.consult_duration')); ?></h3>
+
+                <div class="box-tools pull-right">
+                    <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                    </button>
+                </div>
+                <!-- /.box-tools -->
+            </div>
+            <!-- /.box-header -->
+            <div class="box-body" style="display: block;">
+                <button type="button" class="btn btn-block btn-default btn-lg" id="stopwatch"><img src="<?php echo e(asset('/img/icon/chronometer.png')); ?>" alt=""> <span class="" style="font-size: 32px; vertical-align: middle; color: #3c8dbc;" id="time-container">00 : 00 : 00</span></button>
+                <button type="button" class="btn btn-block btn-default btn-sm" style="background-color: #fff;" id="end-counter"> <i class="fa fa-stop-circle-o"></i> <span>END CONSULT</span></button>
+            </div>
+            <!-- /.box-body -->
+        </div>
+
+
+    </div>
+
+	
+		
+	
+	
+		
+		
+		
+		
+		
+	
+
 	<!--
 		<div class="row">
 			<span ><strong class="title"><?php echo e(trans('adminlte_lang::message.consult_information')); ?></strong></span>
@@ -89,5 +143,4 @@
 			</div>
 		</div>
 -->
-	</div>
 </div>

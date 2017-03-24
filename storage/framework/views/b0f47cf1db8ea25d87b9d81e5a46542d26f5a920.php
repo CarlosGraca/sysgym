@@ -23,29 +23,28 @@
 	              <h3 class="box-title">
 	              	 <strong><?php echo e(trans('adminlte_lang::message.system_user')); ?>: </strong><span><?php echo e(Auth::user()->name); ?></span>
 	              </h3>
-	              <div class="pull-right box-tools">
-	                    <a href="#"  class="btn btn-primary btn-sm" role="button" data-toggle="tooltip" title="Save">
-	                       <i class="fa fa-save"></i>
-	                     </a>
-	              </div><!-- /. tools -->
-
 				<div class="pull-right box-tools">
 						<a href="<?php echo e(\Illuminate\Support\Facades\URL::previous()); ?>" class="btn btn-primary btn-sm" role="button" data-toggle="tooltip" title="<?php echo e(trans('adminlte_lang::message.back')); ?>">
-							 <i class="fa  fa-arrow-left"></i>
+							 <i class="fa fa-arrow-left"></i>
+						</a>
+
+						<a href="#" data-url="<?php echo e(url('patients/create')); ?>" data-title="<?php echo e(trans('adminlte_lang::message.new_patient')); ?>" class="btn btn-primary btn-sm"  data-toggle="tooltip" title="<?php echo e(trans('adminlte_lang::message.new_patient')); ?>" id="tool_bar_button_patients">
+							<i class="fa fa-user-plus"></i>
 						</a>
 
 						<a href="#" class="btn btn-primary btn-sm" role="button" data-toggle="tooltip" title="<?php echo e(trans('adminlte_lang::message.reset')); ?>" id="reset-budget">
-							<i class="fa  fa-repeat"></i>
+							<i class="fa fa-repeat"></i>
 						</a>
 
-						<a href="#" class="btn btn-primary btn-sm" role="button" data-toggle="tooltip" title="<?php echo e(trans('adminlte_lang::message.save')); ?>" id="add-budget">
+						<a href="#" class="btn btn-primary btn-sm" role="button" data-toggle="tooltip" title="<?php echo e(trans('adminlte_lang::message.save')); ?>" id="save-budget">
 							 <i class="fa fa-save"></i>
 						</a>
 
-						<a href="#" class="btn btn-primary btn-sm" role="button" data-toggle="tooltip" title="<?php echo e(trans('adminlte_lang::message.print')); ?>" id="print-budget">
-							<i class="fa fa-print"></i>
+						<a href="#" class="btn btn-primary btn-sm" role="button" data-toggle="tooltip" title="<?php echo e(trans('adminlte_lang::message.end_budget')); ?>" id="end-budget">
+							<i class="fa fa-check"></i>
 						</a>
 				</div><!-- /. tools -->
+
 	            </div><!-- /.box-header -->
 
 	            <div class="box-body">
@@ -59,5 +58,4 @@
 	    </div>
 	</div>
 <?php $__env->stopSection(); ?>
-
 <?php echo $__env->make('layouts.app', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

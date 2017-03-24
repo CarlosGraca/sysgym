@@ -29,14 +29,14 @@
                             </a>
 
                             <a href="<?php echo e(route('patients.show',$patient->id)); ?>" class="btn btn-primary btn-sm" role="button" data-toggle="tooltip" title="<?php echo e(trans('adminlte_lang::message.show_details')); ?>")>
-                                <i class="fa fa-address-card"></i>
+                                <i class="fa fa-eye"></i>
                             </a>
 
-                            <a href="#!" class="btn btn-primary btn-sm" role="button" data-toggle="tooltip" title="<?php echo e(trans('adminlte_lang::message.edit')); ?>" id="edit-patient-button" style="display: none;">
+                            <a href="#!edit" class="btn btn-primary btn-sm" role="button" data-toggle="tooltip" title="<?php echo e(trans('adminlte_lang::message.edit')); ?>" id="edit-patient-button" style="display: none;">
                                 <i class="fa fa-edit"></i>
                             </a>
 
-                            <a href="#" class="btn btn-primary btn-sm" role="button" data-toggle="tooltip" title="<?php echo e(trans('adminlte_lang::message.save')); ?>" id="edit-patient">
+                            <a href="#!save" class="btn btn-primary btn-sm" role="button" data-toggle="tooltip" title="<?php echo e(trans('adminlte_lang::message.save')); ?>" id="edit-patient">
                                  <i class="fa fa-save"></i>
                             </a>
                     </div><!-- /. tools -->

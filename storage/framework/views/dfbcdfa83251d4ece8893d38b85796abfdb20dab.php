@@ -2,7 +2,7 @@
     $system = \App\System::all()->first();
     $defaults = new App\Http\Controllers\Defaults();
     $weeks = $defaults->getOldWeeks();
-    $today = \Carbon\Carbon::now()->addHours($system->timezone->value);
+    $today = \Carbon\Carbon::now()->addHours($system->timezone);
     $workTime = null;
     $WT = [];
     if (\Auth::user() != null){
@@ -54,6 +54,7 @@
 
 <!-- DATE RANGE PICKER PLUGIN -->
 <script src="<?php echo e(asset('/plugins/moment.js/moment-with-locales.js')); ?>" type="text/javascript"></script>
+<script src="<?php echo e(asset('/plugins/moment.js/moment-timezone-with-data.min.js')); ?>" type="text/javascript"></script>
 
 
 <script src="<?php echo e(asset('/plugins/daterangepicker/daterangepicker.js')); ?>" type="text/javascript"></script>
@@ -80,9 +81,9 @@
 
 <!-- FULLCALENDAR PLUGIN -->
 <script src="<?php echo e(asset('/plugins/fullcalendar/fullcalendar.min.js')); ?>" type="text/javascript"></script>
-<script src="<?php echo e(asset('/plugins/fullcalendar/locale-all.js')); ?>" type="text/javascript"></script>
+
 <!-- MOMENT-->
-<script src="<?php echo e(asset('/plugins/fullcalendar/moment.min.js')); ?>" type="text/javascript"></script>
+
 
 
 <!-- WIZARD PLUGIN -->
@@ -94,9 +95,9 @@
 <!-- JQUERY CONTEXT MENU PLUGIN -->
 <script src="<?php echo e(asset('/plugins/jquery-contextmenu/dist/jquery.contextMenu.min.js')); ?>" type="text/javascript"></script>
 
-<!-- VALIDATOR
-    <script src="<?php echo e(asset('/js/validator.min.js')); ?>" type="text/javascript"></script>
--->
+
+    
+
 
 <!-- SLIMSCROLL PLUGIN -->
 <script src="<?php echo e(asset('/plugins/slimScroll/jquery.slimscroll.min.js')); ?>" type="text/javascript"></script>
@@ -109,22 +110,18 @@
 <script src="<?php echo e(asset('/plugins/input-mask/jquery.inputmask.date.extensions.js')); ?>"></script>
 <script src="<?php echo e(asset('/plugins/input-mask/jquery.inputmask.extensions.js')); ?>"></script>
 
+
+<script src="<?php echo e(asset('/js/bootbox.js')); ?>" type="text/javascript"></script>
+
+
+<script src="<?php echo e(asset('/plugins/croppie/js/croppie.js')); ?>"></script>
+
+
 <!-- SCRIPT IN DEVELOPMENT MODE -->
-<!--
-<script src="<?php echo e(asset('/js/loadRemoteContent.js')); ?>" type="text/javascript"></script>
-<script src="<?php echo e(asset('/js/physical_test.js')); ?>" type="text/javascript"></script>
-<script src="<?php echo e(asset('/js/handout_training.js')); ?>" type="text/javascript"></script>
--->
 
 <script type="text/javascript">
     var localName = '<?php echo e($system->lang); ?>';
 
-            <?php if($system->lang == 'pt'): ?>
-    var months = {'January':'Janeiro','February':'Fevereiro','March':'Março','April':'Abril','May':'Maio','June':'Junho','July':'Julho','August':'Agosto','September':'Setembro','October':'Outubro','November':'Novembro','December':'Dezembro'};
-            <?php endif; ?>
-            <?php if($system->lang == 'en'): ?>
-    var months = {'January':'January','February':'February','March':'March','April':'April','May':'May','June':'June','July':'July','August':'August','September':'September','October':'October','November':'November','December':'December'};
-    <?php endif; ?>
 
     $(":file").filestyle({
         input: true,
@@ -146,6 +143,7 @@
     $('#category').select2();
     $('#branch').select2();
     $('#employee_id').select2();
+    $('#doctor').select2();
 
     var _select_html = "<select name='status'>" +
             "<option value selected>SELECT OPTION</option>" +
@@ -175,29 +173,104 @@
 
     $('.slimscroll').slimScroll();
     $('.menu').slimScroll({
-        height: 100,
+        height: 100
     });
 
 
+    var _file_url = '<?php echo e(url('files')); ?>';
 
-    //DEFINE LANGUAGE MESSAGES
+    //LANGUAGE TRANSLATE
     var _copy_text = '<?php echo e(trans('adminlte_lang::message.copy')); ?>';
     var _confirm_alert_text = '<?php echo e(trans('adminlte_lang::message.are_sure')); ?>';
     var _edit_text = '<?php echo e(trans('adminlte_lang::message.edit')); ?>';
     var _remove_text = '<?php echo e(trans('adminlte_lang::message.remove')); ?>';
     var _required_field_text = '<?php echo e(trans('adminlte_lang::message.required_field')); ?>';
     var _view_text = '<?php echo e(trans('adminlte_lang::message.view')); ?>';
+    var _preview_text = '<?php echo e(trans('adminlte_lang::message.preview')); ?>';
     var _download_text = '<?php echo e(trans('adminlte_lang::message.download')); ?>';
-    var _file_url = '<?php echo e(url('files')); ?>';
+    var _yes_text = '<?php echo e(trans('adminlte_lang::message.yes')); ?>';
+    var _no_text = '<?php echo e(trans('adminlte_lang::message.not')); ?>';
+    var _edit_consult_text = '<?php echo e(trans('adminlte_lang::message.update_consult_agenda')); ?>';
+    var _details_consult_text = '<?php echo e(trans('adminlte_lang::message.details_consult_agenda')); ?>';
+    var _add_consult_text = '<?php echo e(trans('adminlte_lang::message.new_consult_agenda')); ?>';
+    var _disable_text = '<?php echo e(trans('adminlte_lang::message.disable')); ?>';
+
+
+    var _today = '<?php echo e(trans('adminlte_lang::message.today')); ?>';
+    var _week = '<?php echo e(trans('adminlte_lang::message.week')); ?>';
+    var _day = '<?php echo e(trans('adminlte_lang::message.day')); ?>';
+    var _month = '<?php echo e(trans('adminlte_lang::message.month')); ?>';
+
+    var months = {
+        'January':'<?php echo e(trans('adminlte_lang::message.january')); ?>',
+        'February':'<?php echo e(trans('adminlte_lang::message.february')); ?>',
+        'March':'<?php echo e(trans('adminlte_lang::message.march')); ?>',
+        'April':'<?php echo e(trans('adminlte_lang::message.april')); ?>',
+        'May':'<?php echo e(trans('adminlte_lang::message.may')); ?>',
+        'June':'<?php echo e(trans('adminlte_lang::message.june')); ?>',
+        'July':'<?php echo e(trans('adminlte_lang::message.july')); ?>',
+        'August':'<?php echo e(trans('adminlte_lang::message.august')); ?>',
+        'September':'<?php echo e(trans('adminlte_lang::message.september')); ?>',
+        'October':'<?php echo e(trans('adminlte_lang::message.october')); ?>',
+        'November':'<?php echo e(trans('adminlte_lang::message.november')); ?>',
+        'December':'<?php echo e(trans('adminlte_lang::message.december')); ?>'
+    };
+
+    var _monthNames = ['<?php echo e(trans('adminlte_lang::message.january')); ?>',
+        '<?php echo e(trans('adminlte_lang::message.february')); ?>',
+        '<?php echo e(trans('adminlte_lang::message.march')); ?>',
+        '<?php echo e(trans('adminlte_lang::message.april')); ?>',
+        '<?php echo e(trans('adminlte_lang::message.may')); ?>',
+        '<?php echo e(trans('adminlte_lang::message.june')); ?>',
+        '<?php echo e(trans('adminlte_lang::message.july')); ?>',
+        '<?php echo e(trans('adminlte_lang::message.august')); ?>',
+        '<?php echo e(trans('adminlte_lang::message.september')); ?>',
+        '<?php echo e(trans('adminlte_lang::message.october')); ?>',
+        '<?php echo e(trans('adminlte_lang::message.november')); ?>',
+        '<?php echo e(trans('adminlte_lang::message.december')); ?>'
+    ];
+
+    var _monthNamesShort = ['<?php echo e(trans('adminlte_lang::message.jan')); ?>',
+        '<?php echo e(trans('adminlte_lang::message.feb')); ?>',
+        '<?php echo e(trans('adminlte_lang::message.mar')); ?>',
+        '<?php echo e(trans('adminlte_lang::message.apr')); ?>',
+        '<?php echo e(trans('adminlte_lang::message.may')); ?>',
+        '<?php echo e(trans('adminlte_lang::message.jun')); ?>',
+        '<?php echo e(trans('adminlte_lang::message.jul')); ?>',
+        '<?php echo e(trans('adminlte_lang::message.aug')); ?>',
+        '<?php echo e(trans('adminlte_lang::message.sep')); ?>',
+        '<?php echo e(trans('adminlte_lang::message.oct')); ?>',
+        '<?php echo e(trans('adminlte_lang::message.nov')); ?>',
+        '<?php echo e(trans('adminlte_lang::message.dec')); ?>'
+    ];
+
+    var _dayNames = ['<?php echo e(trans('adminlte_lang::message.sunday')); ?>',
+        '<?php echo e(trans('adminlte_lang::message.monday')); ?>',
+        '<?php echo e(trans('adminlte_lang::message.tuesday')); ?>',
+        '<?php echo e(trans('adminlte_lang::message.thursday')); ?>',
+        '<?php echo e(trans('adminlte_lang::message.wednesday')); ?>',
+        '<?php echo e(trans('adminlte_lang::message.friday')); ?>',
+        '<?php echo e(trans('adminlte_lang::message.saturday')); ?>'
+    ];
+
+    var _dayNamesShort = ['<?php echo e(trans('adminlte_lang::message.sun')); ?>',
+        '<?php echo e(trans('adminlte_lang::message.mon')); ?>',
+        '<?php echo e(trans('adminlte_lang::message.tue')); ?>',
+        '<?php echo e(trans('adminlte_lang::message.thu')); ?>',
+        '<?php echo e(trans('adminlte_lang::message.wed')); ?>',
+        '<?php echo e(trans('adminlte_lang::message.fri')); ?>',
+        '<?php echo e(trans('adminlte_lang::message.sat')); ?>'
+    ];
 
     //BRANCH WORK TIME
     var _min_time = '<?php echo e($workTime != null ?  $workTime->start : '09:00:00'); ?>';
     var _max_time = '<?php echo e($workTime  != null ?  $workTime->end : '18:00:00'); ?>';
 
-    var timezone = parseInt('<?php echo e($system->timezone->value); ?>');
+    var timezone = '<?php echo $system->timezone; ?>';
 
     function update() {
-        $('#clock').html(moment().utcOffset(timezone).format('- DD-MM-YYYY HH:mm:ss'));
+        var time = moment().tz(timezone).format('- DD-MM-YYYY HH:mm:ss');
+        $('#clock').html(time);
     }
     $(function () {
         setInterval(update, 1000);
@@ -205,7 +278,6 @@
 
     var _str = '<?php echo json_encode($WT, true); ?>';
     var _businessHours = $.parseJSON(_str);
-    //console.log(_businessHours);
 
 </script>
 
@@ -228,5 +300,6 @@
 <script src="<?php echo e(asset('/js/budget.js')); ?>" type="text/javascript"></script>
 <script src="<?php echo e(asset('/js/license.js')); ?>" type="text/javascript"></script>
 <script src="<?php echo e(asset('/js/files.js')); ?>" type="text/javascript"></script>
+<script src="<?php echo e(asset('/js/consult.js')); ?>" type="text/javascript"></script>
 
 

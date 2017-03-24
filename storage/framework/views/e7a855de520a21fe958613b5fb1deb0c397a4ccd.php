@@ -50,7 +50,7 @@
 			<div class="form-group form-group-sm">
 				<?php echo Form::label('start_time','(*)'.trans('adminlte_lang::message.start_time') ); ?>
 
-				<?php echo Form::time('start_time', ($type == 'update' ? $consult_agenda->start_time : null) , ['class'=>'form-control']); ?>
+				<?php echo Form::time('start_time', ($type == 'update' ? $consult_agenda->start_time : null) , ['class'=>'form-control','step'=>'1']); ?>
 
 			</div>
 		</div>
@@ -59,7 +59,7 @@
 			<div class="form-group form-group-sm">
 				<?php echo Form::label('end_time','(*)'.trans('adminlte_lang::message.end_time') ); ?>
 
-				<?php echo Form::time('end_time', ($type == 'update' ? $consult_agenda->end_time : null) , ['class'=>'form-control']); ?>
+				<?php echo Form::time('end_time', ($type == 'update' ? $consult_agenda->end_time : null) , ['class'=>'form-control','step'=>'1']); ?>
 
 			</div>
 		</div>

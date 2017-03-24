@@ -8,10 +8,12 @@
 			<div class="modal-body"></div>
 			<div class="modal-footer">
                 <span class="pull-left">
-                &copy <?php echo e(date('Y')); ?> - <a href="<?php echo e(url('/')); ?>"><?php echo e(trans('adminlte_lang::message.app_name')); ?></a> - Todos os Direitos Reservados
+                &copy <?php echo e(date('Y')); ?> - <a href="<?php echo e(url('/')); ?>"><?php echo e(trans('adminlte_lang::message.app_name')); ?></a> - <?php echo e(trans('adminlte_lang::message.copyright')); ?>
+
                 </span>
                     <span class="pull-right">
-                    Versão: 1.0
+                    <?php echo e(trans('adminlte_lang::message.version')); ?>:  <?php echo e(config('app.version')); ?>
+
                 </span>
 			</div>
 		</div>

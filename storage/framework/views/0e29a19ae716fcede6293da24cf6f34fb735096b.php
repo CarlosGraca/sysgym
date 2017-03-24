@@ -11,9 +11,9 @@
 			<hr class="h-divider" >
 			<div class="col-lg-3 col-md-4 col-sm-6 text-center">
 				<div class="form-group form-group-sm">
-					<?php echo Form::label('patient_avatar',trans('adminlte_lang::message.photo'),['style'=>'visibility: hidden;']); ?>
-
-					<img  src="<?php echo e(url('/')); ?>/<?php echo e(($type == 'update' ? $patient->avatar : 'img/avatar.png')); ?>" class="img-circle avatar-patient" alt="Cinque Terre" width="150" height="150" id="patient_avatar">
+					
+					
+					<img  src="<?php echo e(url('/')); ?>/<?php echo e(($type == 'update' ? $patient->avatar : 'img/avatar.png')); ?>" class="img-thumbnail avatar-patient" alt="Cinque Terre" width="200" id="patient_avatar">
 				</div>
 			</div>
 			<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
@@ -72,6 +72,42 @@
 
 		</div>
 
+		
+		<div class="row">
+			<span ><strong class="title"><?php echo e(trans('adminlte_lang::message.budget_information')); ?></strong></span>
+			<hr class="h-divider" >
+
+            <div class="col-md-2 col-sm-6 col-xs-12">
+                <div class="form-group form-group-sm">
+                    <?php echo Form::label('created_at',trans('adminlte_lang::message.create_date') ); ?>
+
+                    <?php echo Form::date('created_at', ($type == 'update' ? $budget->created_at : \Carbon\Carbon::now()->subDay(0)->format('Y-m-d')) , ['class'=>'form-control','readonly'=>'readonly']); ?>
+
+                </div>
+            </div>
+
+			<div class="col-md-4 col-sm-6 col-xs-12">
+				<div class="form-group form-group-sm">
+					<?php echo Form::label('doctor_id','(*)'.trans('adminlte_lang::message.doctor') ); ?>
+
+					<?php echo Form::select('doctor_id', $doctor, ($type == 'update' ? $consult_agenda->doctor_id : null) , ['class'=>'form-control','id'=>'doctor','placeholder' => ' (SELECT DOCTOR) ']); ?>
+
+				</div>
+			</div>
+
+
+            <div class="col-md-6 col-sm-6 col-xs-12">
+                <div class="form-group form-group-sm">
+                    <?php echo Form::label('note',trans('adminlte_lang::message.note') ); ?>
+
+                    <?php echo Form::textarea('note', ($type == 'update' ? $budget->note : null) , ['class'=>'form-control']); ?>
+
+                </div>
+            </div>
+
+		</div>
+
+        
 		<div class="row">
 			<span ><strong class="title"><?php echo e(trans('adminlte_lang::message.procedure_consult')); ?></strong></span>
 			<hr class="h-divider" >
@@ -84,14 +120,14 @@
 				</div>
 			</div>
 			<div class="col-md-1 col-sm-1 col-xs-2">
-				<div class="form-group form-group-sm">
-					<?php echo Form::label('','Add',['style'=>'visibility: hidden;'] ); ?>
+                <div class="form-group form-group-sm">
+                    <?php echo Form::label('','Add',['style'=>'visibility: hidden;'] ); ?>
 
-					<?php echo Form::button('<i class="fa fa-plus"></i>', ['class'=>'form-control btn btn-primary btn-sm disabled','id'=>'add-budget_consult']); ?>
+                    <?php echo Form::button('<i class="fa fa-plus"></i>', ['class'=>'form-control btn btn-primary btn-sm disabled','id'=>'add-budget_consult']); ?>
 
 
-				</div>
-			</div>
+                </div>
+            </div>
 			<div class="col-md-12 col-sm-12 col-xs-12">
 				<div class="box box-default">
 					<div class="box-header with-border">
@@ -105,16 +141,16 @@
 						<table id="table-budget" class="table table-bordered table-striped">
 
 							<thead id="budget_with_secure" style="display: none;">
-								<th class="col-md-4"><?php echo e(trans('adminlte_lang::message.consult_type')); ?></th>
-								<th class="col-md-4"><?php echo e(trans('adminlte_lang::message.price')); ?></th>
-								<th class="col-md-2"><?php echo e(trans('adminlte_lang::message.secure_service_price')); ?></th>
+								<th class="col-md-3"><?php echo e(trans('adminlte_lang::message.consult_type')); ?></th>
+								<th class="col-md-3"><?php echo e(trans('adminlte_lang::message.price')); ?></th>
+								<th class="col-md-3"><?php echo e(trans('adminlte_lang::message.secure_service_price')); ?></th>
 								<th class="col-md-2"><?php echo e(trans('adminlte_lang::message.total')); ?></th>
 								<th class="col-md-1"></th>
 							</thead>
 
 							<thead id="budget_without_secure" style="display: none;">
 								<th class="col-md-4"><?php echo e(trans('adminlte_lang::message.consult_type')); ?></th>
-								<th class="col-md-4"><?php echo e(trans('adminlte_lang::message.price')); ?></th>
+								<th class="col-md-3"><?php echo e(trans('adminlte_lang::message.price')); ?></th>
 								<th class="col-md-4"><?php echo e(trans('adminlte_lang::message.total')); ?></th>
 								<th class="col-md-1"></th>
 							</thead>
@@ -127,5 +163,7 @@
 				</div>
 			</div>
 		</div>
+
+
 	</div>
 </div>

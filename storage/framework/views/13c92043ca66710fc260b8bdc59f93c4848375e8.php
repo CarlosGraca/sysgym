@@ -7,7 +7,7 @@
 
 		</div>
 	</div>
-
+	<!--
 	<div class="col-lg-5 col-md-5 col-sm-5 col-xs-10">
 		<div class="form-group form-group-sm">
 			<?php echo Form::label('file_type','(*) '.trans('adminlte_lang::message.file_type') ); ?>
@@ -17,7 +17,16 @@
 
 		</div>
 	</div>
+-->
+	<div class="col-lg-5 col-md-5 col-sm-5 col-xs-10">
+		<div class="form-group form-group-sm">
+			<?php echo Form::label('description', trans('adminlte_lang::message.description') ); ?>
 
+			<?php echo Form::textarea('description', null, ['class'=>'form-control', 'placeholder' => trans('adminlte_lang::message.description')]); ?>
+
+
+		</div>
+	</div>
 	<div class="col-md-1 col-sm-1 col-xs-2">
 		<div class="form-group form-group-sm">
 			<?php echo Form::label('','Add',['style'=>'visibility: hidden;'] ); ?>

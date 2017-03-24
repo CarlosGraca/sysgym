@@ -13,6 +13,11 @@
 
 <?php $__env->stopSection(); ?>
 
+<?php
+$status = [trans('adminlte_lang::message.deleted'),trans('adminlte_lang::message.active'),trans('adminlte_lang::message.expired')];
+$status_color = ['danger','success','info'];
+?>
+
 
 <?php $__env->startSection('main-content'); ?>
 	<div class="row">
@@ -30,7 +35,7 @@
 	            </div><!-- /.box-header -->
 
 	            <div class="box-body">
-	                <table id="table-branches" class="table table-bordered table-striped table-design">
+	                <table id="table-branches" class="table table-hover table-design">
 		                <thead>
 		                  <tr>
 		                    
@@ -43,7 +48,7 @@
 		                </thead>
 		                <tbody>
                           <?php $__currentLoopData = $branches; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $branch): $__env->incrementLoopIndices(); $loop = $__env->getFirstLoop(); ?>
-                                <tr>
+                                <tr class="bg-<?php echo e($status_color[$branch->status]); ?>">
                                     
                                     <td><?php echo e($branch->name); ?></td>
                                     <td><?php echo e($branch->email); ?></td>

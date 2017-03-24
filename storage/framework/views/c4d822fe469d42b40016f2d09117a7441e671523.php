@@ -6,7 +6,20 @@
 		<div class="row">
 			<span ><strong class="title"><?php echo e(trans('adminlte_lang::message.personal_information')); ?></strong></span>
 			<hr class="h-divider" >
-			<div class="col-md-6 col-sm-6 col-xs-12">
+
+			<div class="col-md-4 col-sm-6 text-center">
+				<img  src="<?php echo e(url('/')); ?>/<?php echo e(($type == 'update' ? $branch->avatar : 'img/avatar.png')); ?>" class="img-circle avatar-branch" alt="Cinque Terre" width="150" height="150">
+				<div style="margin-top: 10px">
+					<div class="col-xs-12 text-center">
+						<div class="form-group" data-type='branch'>
+							<?php echo Form::file('avatar', '', ['class' =>  'filestyle upload_image','data-input'=>'false', 'data-buttonText'=>'Select Image', 'accept'=>'image/*', 'data-placeholder'=> trans('adminlte_lang::message.browser_avatar') ]); ?>
+
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="col-md-8 col-sm-6 col-xs-12">
 				<div class="form-group form-group-sm">
 					<?php echo Form::label('name',trans('adminlte_lang::message.name')); ?>
 
@@ -15,7 +28,7 @@
 				</div>
 			</div>
 
-			<div class="col-md-6 col-sm-6 col-xs-12">
+			<div class="col-md-8 col-sm-6 col-xs-12">
 				<div class="form-group form-group-sm">
 					<?php echo Form::label('manager',trans('adminlte_lang::message.manager')); ?>
 
@@ -29,7 +42,7 @@
 			<span ><strong class="title"><?php echo e(trans('adminlte_lang::message.contact_information')); ?></strong></span>
 			<hr class="h-divider" >
 
-			<div class="col-md-6 col-sm-6 col-xs-12">
+			<div class="col-md-4 col-sm-6 col-xs-12">
 				<div class="form-group form-group-sm">
 					<?php echo Form::label('email',trans('adminlte_lang::message.email')); ?>
 
@@ -38,7 +51,7 @@
 				</div>
 			</div>
 
-			<div class="col-md-6 col-sm-6 col-xs-12">
+			<div class="col-md-4 col-sm-6 col-xs-12">
 				<div class="form-group form-group-sm">
 					<?php echo Form::label('phone',trans('adminlte_lang::message.phone')); ?>
 
@@ -47,7 +60,7 @@
 				</div>
 			</div>
 
-			<div class="col-md-6 col-sm-6 col-xs-12">
+			<div class="col-md-4 col-sm-6 col-xs-12">
 				<div class="form-group form-group-sm">
 					<?php echo Form::label('fax',trans('adminlte_lang::message.fax')); ?>
 
@@ -55,7 +68,7 @@
 
 				</div>
 			</div>
-			<div class="col-md-6 col-sm-6 col-xs-12">
+			<div class="col-md-4 col-sm-6 col-xs-12">
 				<div class="form-group form-group-sm">
 					<?php echo Form::label('address',trans('adminlte_lang::message.address')); ?>
 
@@ -64,7 +77,7 @@
 				</div>
 			</div>
 
-			<div class="col-lg-6 col-md-6 col-sm-6">
+			<div class="col-lg-4 col-md-6 col-sm-6">
 				<div class="form-group form-group-sm">
 					<?php echo Form::label('city',trans('adminlte_lang::message.city') ); ?>
 
@@ -73,7 +86,7 @@
 				</div>
 			</div>
 
-			<div class="col-lg-6 col-md-6 col-sm-6">
+			<div class="col-lg-4 col-md-6 col-sm-6">
 				<div class="form-group form-group-sm">
 					<?php echo Form::label('island',trans('adminlte_lang::message.island') ); ?>
 
@@ -95,7 +108,7 @@
 				<div class="form-group form-group-sm">
 					<?php echo Form::label('week_day',trans('adminlte_lang::message.week_day') ); ?>
 
-					<?php echo Form::select('week_day', $weeks, ($type == 'update' ? $branch->island_id : null) , ['class'=>'form-control','id'=>'branch_week','placeholder'=>' (SELECT CONSULT TYPE) ']); ?>
+					<?php echo Form::select('week_day', $weeks, ($type == 'update' ? null : null) , ['class'=>'form-control','id'=>'branch_week','placeholder'=>' (SELECT WEEK DAY) ']); ?>
 
 				</div>
 			</div>
@@ -143,7 +156,7 @@
 							<tbody>
                             <?php if(isset($schedules)): ?>
                                 <?php $__currentLoopData = $schedules; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $schedule): $__env->incrementLoopIndices(); $loop = $__env->getFirstLoop(); ?>
-                                    <tr class="office_hours_table" data-key="<?php echo e($schedule->id); ?>">
+                                    <tr class="office_hours_table" data-key="<?php echo e($schedule->id); ?>"  data-week="<?php echo e($schedule->week_day); ?>">
                                         <td class="week_name" data-value="<?php echo e($schedule->week_day); ?>"><?php echo e(trans('adminlte_lang::message.'.$schedule->week_day)); ?></td>
                                         <td class="start_time" ><?php echo e($schedule->start_time); ?></td>
                                         <td class="end_time" ><?php echo e($schedule->end_time); ?></td>

@@ -50,7 +50,7 @@
 
             </a>
 
-            <a class="btn btn-app">
+            <a class="btn btn-app" href="<?php echo e(url('payments/create')); ?>">
                 <i class="fa"><img src="<?php echo e(asset('img/icon/credit-card-swipe-20.png')); ?>"></i>  <?php echo e(trans('adminlte_lang::message.payments')); ?>
 
             </a>

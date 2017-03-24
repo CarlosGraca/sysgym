@@ -40,7 +40,6 @@
 	            <div class="box-body">               
 		            <div class="row">
 		        		<div class="col-lg-3 text-center">
-							<b> <?php echo e(trans('adminlte_lang::message.logo')); ?>: </b>
 	        		       <?php if(isset($company->logo)): ?>
 		        		    	<img  src="<?php echo e(asset($company->logo)); ?>" class="img-thumbnail" alt="Cinque Terre" width="300" height="150">
 		        		    <?php else: ?>

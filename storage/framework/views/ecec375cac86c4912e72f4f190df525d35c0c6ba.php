@@ -69,7 +69,7 @@
 									<i class="fa fa-tv"></i> <b> <?php echo e(trans('adminlte_lang::message.layout')); ?>: </b><span class="nif"><?php echo e($system ? $system->layout : null); ?></span>
 			                    </li>
 								<li class="list-group-item">
-									<i class="fa fa-clock-o"></i> <b> <?php echo e(trans('adminlte_lang::message.timezone')); ?>: </b><span class="timezone"><?php echo e($system ? $system->timezone->name : null); ?></span>
+									<i class="fa fa-clock-o"></i> <b> <?php echo e(trans('adminlte_lang::message.timezone')); ?>: </b><span class="timezone"><?php echo e($system ? $timezone[$system->timezone] : null); ?></span>
 								</li>
 			                </ul>
 		        		</div>

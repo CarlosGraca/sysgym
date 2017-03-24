@@ -1,15 +1,17 @@
 <div class="row">
 	<?php echo Form::hidden('patient_id', ($type == 'update' ? $patient->id : null), ['class'=>'form-control','id'=>'patient_id']); ?>
 
+	<?php echo Form::hidden('avatar_crop', null , ['class'=>'form-control','id'=>'avatar_crop']); ?>
+
 	<span style="display: none;"> </span>
 	<span ><strong class="title"><?php echo e(trans('adminlte_lang::message.personal_information')); ?></strong></span>
     <hr class="h-divider" >
 	<div class="col-lg-3 col-md-4 col-sm-6 text-center">
-		<img  src="<?php echo e(url('/')); ?>/<?php echo e(($type == 'update' ? $patient->avatar : 'img/avatar.png')); ?>" class="img-circle avatar-patient" alt="Cinque Terre" width="150" height="150">
+		<img  src="<?php echo e(url('/')); ?>/<?php echo e(($type == 'update' ? $patient->avatar : 'img/avatar.png')); ?>" class="img-thumbnail avatar-crop" alt="Cinque Terre" width="150" height="150">
 		<div style="margin-top: 10px">
 			<div class="col-xs-12 text-center">
-				<div class="form-group" data-type='patient'>
-					<?php echo Form::file('avatar', '', ['class' =>  'filestyle upload_image','data-input'=>'false', 'data-buttonText'=>'Select Image', 'accept'=>'image/*', 'data-placeholder'=> trans('adminlte_lang::message.browser_avatar') ]); ?>
+				<div class="form-group" data-type='patient' data-crop="true">
+					<?php echo Form::file('avatar', '', ['class' =>  'filestyle upload_image','data-input'=>'false', 'data-buttonText'=>'Select Image', 'data-placeholder'=> trans('adminlte_lang::message.browser_avatar') ]); ?>
 
 				</div>
 			</div>
@@ -82,11 +84,11 @@
 		</div>
 	</div>
 
-	<div class="col-lg-3 col-md-4 col-sm-6">
+	<div class="col-lg-6 col-md-8 col-sm-12">
 		<div class="form-group form-group-sm">
 			<?php echo Form::label('parents',trans('adminlte_lang::message.parents') ); ?>
 
-			<?php echo Form::text('parents', ($type == 'update' ? $patient->parents : null) , ['class'=>'form-control']); ?>
+			<?php echo Form::textarea('parents', ($type == 'update' ? $patient->parents : null) , ['class'=>'form-control']); ?>
 
 		</div>
 	</div>

@@ -1,4 +1,7 @@
-<?php $system = \App\System::all()->first(); ?>
+<?php
+    $system = \App\System::all()->first();
+    \Carbon\Carbon::setLocale($system->lang)
+?>
 <!DOCTYPE html>
 <!--
 This is a starter template page. Use this page to start your new project from
@@ -84,7 +87,9 @@ desired effect
     <?php echo $__env->make('layouts.partials.sidebar', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
 
     <!-- Content Wrapper. Contains page content -->
-    <div class="content-wrapper">
+    <div class="content-wrapper"
+         
+    >
 
         <?php echo $__env->make('layouts.partials.contentheader', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
 
@@ -99,6 +104,9 @@ desired effect
 
     <?php echo $__env->make('layouts.shared.modal', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
     <?php echo $__env->make('layouts.shared.modal_del', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+
+    <?php echo $__env->make('layouts.shared.croppie_modal', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+
 
     <?php echo $__env->make('layouts.partials.footer', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
 

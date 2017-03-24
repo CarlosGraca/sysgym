@@ -4,3 +4,6 @@
 <script src="<?php echo e(asset('/js/bootstrap.min.js')); ?>" type="text/javascript"></script>
 <!-- iCheck -->
 <script src="<?php echo e(asset('/plugins/iCheck/icheck.min.js')); ?>" type="text/javascript"></script>
+
+<!-- iCheck -->
+

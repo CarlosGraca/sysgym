@@ -14,6 +14,10 @@
 <?php $__env->stopSection(); ?>
 
 <?php $EmployeeController = app('App\Http\Controllers\EmployeeController'); ?>
+<?php
+$status = [trans('adminlte_lang::message.deleted'),trans('adminlte_lang::message.active'),trans('adminlte_lang::message.expired')];
+$status_color = ['danger','success','info'];
+?>
 
 
 <?php $__env->startSection('main-content'); ?>
@@ -32,7 +36,7 @@
 	            </div><!-- /.box-header -->
 
 	            <div class="box-body">
-	                <table id="table-employee" class="table table-bordered table-striped table-design">
+	                <table id="table-employee" class="table table-hover table-design">
 		                <thead>
 		                  <tr>
 		                    
@@ -47,7 +51,7 @@
 		                </thead>
 		                <tbody>
                           <?php $__currentLoopData = $employees; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $employee): $__env->incrementLoopIndices(); $loop = $__env->getFirstLoop(); ?>
-                                <tr>
+                                <tr class="bg-<?php echo e($status_color[$employee->status]); ?>">
                                     
 									<td><?php echo e($employee->category->name); ?></td>
 									<td><?php echo e($employee->name); ?></td>
@@ -66,17 +70,14 @@
 											</a>
 										<?php endif; ?>
 
-										<a href="#" data-toggle="tooltip" title="<?php echo e(trans('adminlte_lang::message.disable')); ?>" data-product_id="<?php echo e($employee->id); ?>" data-product_name="<?php echo e($employee->id); ?>">
-											<i class="fa fa-user-times"></i>
+										<a href="#disable" style="display: <?php echo e($employee->status == 1 ? 'initial' :'none'); ?>;" data-toggle="tooltip" id="disable-employee" title="<?php echo e(trans('adminlte_lang::message.disable')); ?>" data-key="<?php echo e($employee->id); ?>" data-name="<?php echo e($employee->name); ?>">
+											<i class="fa fa-user-o"></i>
 										</a>
 
-                                        <!--
-                                            <a href="<?php echo e(url('tests/pdf/')); ?>/<?php echo e($employee->id); ?>" target="_blank" class="btn btn-primary btn-xs", data-toggle="tooltip" title="Pdf" ])>   <i class="fa fa-file-pdf-o"></i>
-                                            </a>
+										<a href="#enable" style="display: <?php echo e($employee->status == 0 ? 'initial' :'none'); ?>;" data-toggle="tooltip" id="enable-employee" title="<?php echo e(trans('adminlte_lang::message.enable')); ?>" data-key="<?php echo e($employee->id); ?>" data-name="<?php echo e($employee->name); ?>">
+											<i class="fa fa-user"></i>
+										</a>
 
-                                        <a href="<?php echo e(route('employees.edit',$employee->id)); ?>" class="btn btn-primary btn-xs", data-toggle="tooltip" title="Email" data-remote='true'])>   <i class="fa fa-send"></i>
-                                        </a>
-                                            -->
                                     </td>
                                 </tr>
                             <?php endforeach; $__env->popLoop(); $loop = $__env->getFirstLoop(); ?>

@@ -1,5 +1,5 @@
 <?php $__env->startSection('htmlheader_title'); ?>
-	<?php echo e(trans('adminlte_lang::message.category')); ?>
+	<?php echo e(trans('adminlte_lang::message.campaign_message')); ?>
 
 <?php $__env->stopSection(); ?>
 
@@ -9,7 +9,7 @@
 <?php $__env->stopSection(); ?>
 
 <?php $__env->startSection('contentheader_description'); ?>
-  <?php echo e(trans('adminlte_lang::message.category')); ?>
+  <?php echo e(trans('adminlte_lang::message.campaign_message')); ?>
 
 <?php $__env->stopSection(); ?>
 
@@ -22,15 +22,16 @@
 	            <div class="box-header with-border">
 	              <h3 class="box-title"></h3>
 	              <div class="pull-left box-tools">
-	                  <a href="<?php echo e(url('campaign_messages/create')); ?>" class="btn btn-primary btn-sm" role="button" data-toggle="tooltip" title="<?php echo e(trans('adminlte_lang::message.new_test')); ?>">
-	                       <i class="fa fa-plus"></i>
+	                  <a href="<?php echo e(url('campaign_messages/create')); ?>" class="btn btn-primary btn-sm" role="button" data-toggle="tooltip" title="<?php echo e(trans('adminlte_lang::message.new_campaign_message')); ?>">
+	                       <i class="fa fa-plus"></i> <?php echo e(trans('adminlte_lang::message.new_campaign_message')); ?>
+
 	                  </a>
 
 	              </div><!-- /. tools -->
 	            </div><!-- /.box-header -->
 
 	            <div class="box-body">
-	                <table id="table-category" class="table table-bordered table-striped table-design">
+	                <table id="table-category" class="table table-bordered table-striped">
 		                <thead>
 		                  <tr>
 		                    <th style="width: 10px" class="col-md-1">#</th>
@@ -40,27 +41,27 @@
 		                  </tr>
 		                </thead>
 		                <tbody>
-                          <?php $__currentLoopData = $categories; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $category): $__env->incrementLoopIndices(); $loop = $__env->getFirstLoop(); ?>
-                                <tr>
-                                    <td><?php echo e($category->id); ?></td>
-                                    <td><?php echo e($category->name); ?></td>
-                                    <td><?php echo e($Defaults->currency($category->salary_base)); ?></td>
-                                    <td>
-                                        <button type="button" class="btn btn-xs btn-warning btn-flat" data-toggle="modal" data-target="#confirmDelete" data-toggle="tooltip" title="Delete" data-product_id="<?php echo e($category->id); ?>" data-product_name="<?php echo e($category->id); ?>">
-                                            <i class="fa fa-trash"></i>
-                                        </button>
-                                        <a href="<?php echo e(route('category.edit',$category->id)); ?>" class="btn btn-primary btn-xs", data-toggle="tooltip" title="Editar" data-remote='false'])>   <i class="fa fa-edit"></i>
-                                            </a>
-                                        <!--
-                                            <a href="<?php echo e(url('tests/pdf/')); ?>/<?php echo e($category->id); ?>" target="_blank" class="btn btn-primary btn-xs", data-toggle="tooltip" title="Pdf" ])>   <i class="fa fa-file-pdf-o"></i>
-                                            </a>
+                          
+                                
+                                    
+                                    
+                                    
+                                    
+                                        
+                                            
+                                        
+                                        
+                                            
+                                        
+                                            
+                                            
 
-                                        <a href="<?php echo e(route('category.edit',$category->id)); ?>" class="btn btn-primary btn-xs", data-toggle="tooltip" title="Email" data-remote='true'])>   <i class="fa fa-send"></i>
-                                        </a>
-                                            -->
-                                    </td>
-                                </tr>
-                            <?php endforeach; $__env->popLoop(); $loop = $__env->getFirstLoop(); ?>
+                                        
+                                        
+                                            
+                                    
+                                
+                            
 		                <tbody>
                     </table>
 	            </div>

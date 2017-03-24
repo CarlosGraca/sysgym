@@ -1,5 +1,5 @@
 <?php $__env->startSection('htmlheader_title'); ?>
-    <?php echo e(trans('adminlte_lang::message.patient')); ?>
+    <?php echo e(trans('adminlte_lang::message.branch')); ?>
 
 <?php $__env->stopSection(); ?>
 
@@ -22,7 +22,7 @@
             <div class="box box-primary">
                 <div class="box-body box-profile">
                     <div class="text-center">
-                        <img class="thumbnail" src="<?php echo e(asset($company->logo)); ?>" style="max-width: 100%; width: 250px; margin: 0 auto; z-index: -1;">
+                        <img class="thumbnail" src="<?php echo e(asset($branch->avatar)); ?>" style="max-width: 100%; width: 250px; margin: 0 auto; z-index: -1;">
                         <i class="fa fa-camera" style="  position: absolute; left: 0; top: 50%; width: 100%; text-align: center;   font-size: 18px; display: none;"></i>
                     </div>
 
@@ -126,61 +126,77 @@
 
                                 <!-- OFFICE HOURS TABLE-->
                                 <div class="tab-pane" id="officeHours">
-                                <!--
-                                    <table id="table-office_hours" class="table table-bordered table-striped">
+                                
+                                    
 
-                                        <thead>
-                                        <th class="col-md-4"><?php echo e(trans('adminlte_lang::message.week_day')); ?></th>
-                                        <th class="col-md-4"><?php echo e(trans('adminlte_lang::message.start_time')); ?></th>
-                                        <th class="col-md-2"><?php echo e(trans('adminlte_lang::message.end_time')); ?></th>
-                                        </thead>
+                                        
+                                        
+                                        
+                                        
+                                        
 
-                                        <tbody>
-                                        <?php if(isset($schedules)): ?>
-                                            <?php $__currentLoopData = $schedules; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $schedule): $__env->incrementLoopIndices(); $loop = $__env->getFirstLoop(); ?>
-                                                <tr class="office_hours_tables" data-key="<?php echo e($schedule->id); ?>">
-                                                    <td class="week_name" data-value="<?php echo e($schedule->week_day); ?>"><?php echo e(trans('adminlte_lang::message.'.$schedule->week_day)); ?></td>
-                                                    <td class="start_time" ><?php echo e($schedule->start_time); ?></td>
-                                                    <td class="end_time" ><?php echo e($schedule->end_time); ?></td>
-                                                </tr>
-                                            <?php endforeach; $__env->popLoop(); $loop = $__env->getFirstLoop(); ?>
-                                        <?php endif; ?>
-                                        </tbody>
-                                    </table>
-                                    -->
+                                        
+                                        
+                                            
+                                                
+                                                    
+                                                    
+                                                    
+                                                
+                                            
+                                        
+                                        
+                                    
+                                    
 
 
-                                    <table id="table-office_hours" class="table table-bordered table-striped">
 
-                                        <thead>
-                                            <th class="col-md-1" style="text-align: center"><?php echo e(trans('adminlte_lang::message.monday')); ?></th>
-                                            <th class="col-md-1" style="text-align: center"><?php echo e(trans('adminlte_lang::message.tuesday')); ?></th>
-                                            <th class="col-md-1" style="text-align: center"><?php echo e(trans('adminlte_lang::message.wednesday')); ?></th>
-                                            <th class="col-md-1" style="text-align: center"><?php echo e(trans('adminlte_lang::message.thursday')); ?></th>
-                                            <th class="col-md-1" style="text-align: center"><?php echo e(trans('adminlte_lang::message.friday')); ?></th>
-                                            <th class="col-md-1" style="text-align: center"><?php echo e(trans('adminlte_lang::message.saturday')); ?></th>
-                                            <th class="col-md-1" style="text-align: center"><?php echo e(trans('adminlte_lang::message.sunday')); ?></th>
-                                        </thead>
-                                        <tbody>
+                                    
+                                        
+                                            
+                                            
+                                                
+                                                    
+                                                
+                                            
+                                        
 
-                                        <?php if(isset($aux)): ?>
-                                            <tr>
-                                                <?php $__currentLoopData = $aux; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $key => $item): $__env->incrementLoopIndices(); $loop = $__env->getFirstLoop(); ?>
-                                                    <td style="text-align: center; padding: 2px;">
-                                                        <?php $__currentLoopData = $item; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $i): $__env->incrementLoopIndices(); $loop = $__env->getFirstLoop(); ?>
-                                                            <span> <?php echo e($i['start_time']); ?> </span>
-                                                            <hr>
-                                                            <span> <?php echo e($i['end_time']); ?> </span>
-                                                            <hr>
+                                        
+
+                                            <table id="table-office_hours" class="table table-bordered table-striped">
+
+                                                <thead>
+                                                    <th class="col-md-1" style="text-align: center"><?php echo e(trans('adminlte_lang::message.monday')); ?></th>
+                                                    <th class="col-md-1" style="text-align: center"><?php echo e(trans('adminlte_lang::message.tuesday')); ?></th>
+                                                    <th class="col-md-1" style="text-align: center"><?php echo e(trans('adminlte_lang::message.wednesday')); ?></th>
+                                                    <th class="col-md-1" style="text-align: center"><?php echo e(trans('adminlte_lang::message.thursday')); ?></th>
+                                                    <th class="col-md-1" style="text-align: center"><?php echo e(trans('adminlte_lang::message.friday')); ?></th>
+                                                    <th class="col-md-1" style="text-align: center"><?php echo e(trans('adminlte_lang::message.saturday')); ?></th>
+                                                    <th class="col-md-1" style="text-align: center"><?php echo e(trans('adminlte_lang::message.sunday')); ?></th>
+                                                </thead>
+                                                <tbody>
+
+                                                <?php if(isset($aux)): ?>
+                                                    <tr>
+                                                        <?php $__currentLoopData = $aux; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $key => $item): $__env->incrementLoopIndices(); $loop = $__env->getFirstLoop(); ?>
+                                                            <td style="text-align: center; padding: 2px;">
+                                                                <hr style="margin-top: 0; border: 0px">
+                                                                <?php $__currentLoopData = $item; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $i): $__env->incrementLoopIndices(); $loop = $__env->getFirstLoop(); ?>
+                                                                    <span> <?php echo e($i['start_time']); ?> </span>
+                                                                    <hr>
+                                                                    <span> <?php echo e($i['end_time']); ?> </span>
+                                                                    <hr>
+                                                                <?php endforeach; $__env->popLoop(); $loop = $__env->getFirstLoop(); ?>
+                                                            </td>
                                                         <?php endforeach; $__env->popLoop(); $loop = $__env->getFirstLoop(); ?>
-                                                    </td>
-                                                <?php endforeach; $__env->popLoop(); $loop = $__env->getFirstLoop(); ?>
-                                            </tr>
-                                        <?php endif; ?>
+                                                    </tr>
+                                                <?php endif; ?>
 
 
-                                        </tbody>
-                                    </table>
+                                                </tbody>
+                                            </table>
+                                        
+                                    
 
 
                                 </div>

@@ -10,20 +10,33 @@
             <a href="<?php echo e(url('/home')); ?>"><b>Odont</b>Soft</a>
         </div><!-- /.login-logo -->
 
-    <?php if(count($errors) > 0): ?>
-        <div class="alert alert-danger">
-            <strong>Whoops!</strong> <?php echo e(trans('adminlte_lang::message.someproblems')); ?><br><br>
-            <ul>
-                <?php $__currentLoopData = $errors->all(); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $error): $__env->incrementLoopIndices(); $loop = $__env->getFirstLoop(); ?>
-                    <li><?php echo e($error); ?></li>
-                <?php endforeach; $__env->popLoop(); $loop = $__env->getFirstLoop(); ?>
-            </ul>
-        </div>
-    <?php endif; ?>
+
+        <?php if(count($errors) > 0): ?>
+            <div class="alert alert-danger">
+                <strong>Whoops!</strong> <?php echo e(trans('adminlte_lang::message.someproblems')); ?><br><br>
+                <ul>
+                    <?php $__currentLoopData = $errors->all(); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $error): $__env->incrementLoopIndices(); $loop = $__env->getFirstLoop(); ?>
+                        <li><?php echo e($error); ?></li>
+                    <?php endforeach; $__env->popLoop(); $loop = $__env->getFirstLoop(); ?>
+                </ul>
+            </div>
+        <?php endif; ?>
+
+        <?php if( session('status') ): ?>
+            <div class="alert alert-info alert-dismissible" role="info">
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <strong><i class="fa fa-info-circle"></i></strong> <?php echo e(session('status')); ?>
+
+            </div>
+
+            
+                
+            
+        <?php endif; ?>
 
     <div class="login-box-body">
     <p class="login-box-msg"> <?php echo e(trans('adminlte_lang::message.siginsession')); ?> </p>
-    <form action="<?php echo e(url('/login')); ?>" method="post">
+    <form action="<?php echo e(url('/login')); ?>" method="post" id="form-login">
         <input type="hidden" name="_token" value="<?php echo e(csrf_token()); ?>">
         <div class="form-group has-feedback">
             <input type="email" class="form-control" placeholder="<?php echo e(trans('adminlte_lang::message.email')); ?>" name="email"/>
@@ -47,7 +60,7 @@
                 </div>
             </div><!-- /.col -->
             <div class="col-xs-5">
-                <button type="submit" class="btn btn-primary btn-block btn-flat"><?php echo e(trans('adminlte_lang::message.buttonsign')); ?> <i class="fa fa-sign-in"></i></button>
+                <button type="submit" class="btn btn-primary btn-block btn-flat submit"><?php echo e(trans('adminlte_lang::message.buttonsign')); ?> <i class="fa fa-sign-in"></i></button>
             </div><!-- /.col -->
         </div>
     </form>

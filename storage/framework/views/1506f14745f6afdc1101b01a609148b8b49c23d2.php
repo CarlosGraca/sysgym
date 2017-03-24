@@ -1,5 +1,5 @@
 <?php $__env->startSection('htmlheader_title'); ?>
-	<?php echo e(trans('adminlte_lang::message.new_consult_type')); ?>
+	<?php echo e(trans('adminlte_lang::message.new_consult')); ?>
 
 <?php $__env->stopSection(); ?>
 
@@ -9,7 +9,7 @@
 <?php $__env->stopSection(); ?>
 
 <?php $__env->startSection('contentheader_description'); ?>
-  <?php echo e(trans('adminlte_lang::message.new_consult_type')); ?>
+  <?php echo e(trans('adminlte_lang::message.new_consult')); ?>
 
 <?php $__env->stopSection(); ?>
 
@@ -34,22 +34,23 @@
 							 <i class="fa  fa-arrow-left"></i>
 						</a>
 
-						<a href="#" class="btn btn-primary btn-sm" role="button" data-toggle="tooltip" title="Save" id="add-consult_type">
+						<a href="#" class="btn btn-primary btn-sm" role="button" data-toggle="tooltip" title="Save" id="add-consult">
 							 <i class="fa fa-save"></i>
 						</a>
 				</div><!-- /. tools -->
-	            </div><!-- /.box-header -->
+				</div><!-- /.box-header -->
+			</div>
+		</div>
+		</div>
+		<div class="row">
+			<div class="col-lg-12">
+				<?php echo Form::open(['route'=>'consult.store', 'id'=>'consult-form','files'=>true]); ?>
 
-	            <div class="box-body">
-					<?php echo Form::open(['route'=>'consult.store', 'id'=>'consult-form','files'=>true]); ?>
+					<?php echo $__env->make('consult.form', ['type'=>'create'], array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+				<?php echo Form::close(); ?>
 
-	                 	<?php echo $__env->make('consult.form', ['type'=>'create'], array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
-					<?php echo Form::close(); ?>
-
-				</div>
-	        </div>
-	    </div>
-	</div>
+			</div>
+		</div>
 <?php $__env->stopSection(); ?>
 
 <?php echo $__env->make('layouts.app', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
