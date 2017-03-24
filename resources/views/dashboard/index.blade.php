@@ -16,7 +16,9 @@
       </div>
 
       <button type="button" class="btn btn-primary btn-sm daterange pull-right" style='margin-right:5px;' data-toggle="tooltip" title="Date range">
-        <i class="fa fa-calendar"></i></button>
+        <i class="fa fa-calendar"></i>
+        <span class="range-date"></span>
+      </button>
         <!--
           <button type="button" class="btn btn-primary btn-sm pull-right" data-widget="collapse" data-toggle="tooltip" title="Collapse" style="margin-right: 5px;">
             <i class="fa fa-minus"></i></button>
@@ -30,8 +32,8 @@
     </div>
   </div>
   <!-- /.box-body -->
-  <div class="box-footer text-center">
-    <span class="range-date"></span>
-  </div>
+  {{--<div class="box-footer text-center">--}}
+    {{--<span class="range-date"></span>--}}
+  {{--</div>--}}
 </div>
 <!-- /.box -->

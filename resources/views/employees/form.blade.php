@@ -1,12 +1,14 @@
 <div class="row">
 	{!! Form::hidden('patient_id', ($type == 'update' ? $employee->id : null), ['class'=>'form-control','id'=>'patient_id']) !!}
+	{!! Form::hidden('avatar_crop', null , ['class'=>'form-control','id'=>'avatar_crop']) !!}
+
 	<span ><strong class="title">{{ trans('adminlte_lang::message.personal_information') }}</strong></span>
     <hr class="h-divider" >
 	<div class="col-lg-3 col-md-4 col-sm-6 text-center">
-		<img  src="{{ url('/') }}/{{ ($type == 'update' ? $employee->avatar : 'img/avatar.png') }}" class="img-circle avatar-employee" alt="Cinque Terre" width="150" height="150">
+		<img  src="{{ url('/') }}/{{ ($type == 'update' ? $employee->avatar : 'img/avatar.png') }}" class="img-thumbnail avatar-crop" alt="Cinque Terre" width="150" height="150">
 		<div style="margin-top: 10px">
 			<div class="col-xs-12 text-center">
-				<div class="form-group" data-type='employee'>
+				<div class="form-group" data-type='employee' data-crop="true">
 					{!! Form::file('avatar', '', ['class' =>  'filestyle upload_image','data-input'=>'false', 'data-buttonText'=>'Select Image', 'accept'=>'image/*', 'data-placeholder'=> trans('adminlte_lang::message.browser_avatar') ]) !!}
 				</div>
 			</div>

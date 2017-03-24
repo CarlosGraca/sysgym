@@ -13,6 +13,10 @@
 @endsection
 
 @inject('EmployeeController', 'App\Http\Controllers\EmployeeController')
+<?php
+$status = [trans('adminlte_lang::message.deleted'),trans('adminlte_lang::message.active'),trans('adminlte_lang::message.expired')];
+$status_color = ['danger','success','info'];
+?>
 
 
 @section('main-content')
@@ -30,7 +34,7 @@
 	            </div><!-- /.box-header -->
 
 	            <div class="box-body">
-	                <table id="table-employee" class="table table-bordered table-striped table-design">
+	                <table id="table-employee" class="table table-hover table-design">
 		                <thead>
 		                  <tr>
 		                    {{--<th style="width: 10px" class="col-md-1">#</th>--}}
@@ -45,7 +49,7 @@
 		                </thead>
 		                <tbody>
                           @foreach ($employees as $employee)
-                                <tr>
+                                <tr class="bg-{{ $status_color[$employee->status] }}">
                                     {{--<td>{{$employee->id}}</td>--}}
 									<td>{{$employee->category->name}}</td>
 									<td>{{$employee->name}}</td>
@@ -64,17 +68,14 @@
 											</a>
 										@endif
 
-										<a href="#" data-toggle="tooltip" title="{{ trans('adminlte_lang::message.disable') }}" data-product_id="{{ $employee->id }}" data-product_name="{{ $employee->id }}">
-											<i class="fa fa-user-times"></i>
+										<a href="#disable" style="display: {{ $employee->status == 1 ? 'initial' :'none' }};" data-toggle="tooltip" id="disable-employee" title="{{ trans('adminlte_lang::message.disable') }}" data-key="{{ $employee->id }}" data-name="{{ $employee->name }}">
+											<i class="fa fa-user-o"></i>
 										</a>
 
-                                        <!--
-                                            <a href="{{ url('tests/pdf/') }}/{{$employee->id}}" target="_blank" class="btn btn-primary btn-xs", data-toggle="tooltip" title="Pdf" ])>   <i class="fa fa-file-pdf-o"></i>
-                                            </a>
+										<a href="#enable" style="display: {{ $employee->status == 0 ? 'initial' :'none' }};" data-toggle="tooltip" id="enable-employee" title="{{ trans('adminlte_lang::message.enable') }}" data-key="{{ $employee->id }}" data-name="{{ $employee->name }}">
+											<i class="fa fa-user"></i>
+										</a>
 
-                                        <a href="{{ route('employees.edit',$employee->id) }}" class="btn btn-primary btn-xs", data-toggle="tooltip" title="Email" data-remote='true'])>   <i class="fa fa-send"></i>
-                                        </a>
-                                            -->
                                     </td>
                                 </tr>
                             @endforeach

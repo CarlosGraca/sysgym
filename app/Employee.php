@@ -25,4 +25,13 @@ class Employee extends Model
     public function secure_card(){
         return $this->belongsTo('App\SecureCard');
     }
+
+    public function consult_agenda(){
+        return $this->hasOne('App\ConsultAgenda');
+    }
+
+    public function user(){
+        return $this->hasOne('App\User');
+    }
+
 }

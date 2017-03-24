@@ -21,4 +21,8 @@ class Patient extends Model
     public function patient_file(){
         return $this->belongsTo('App\PatientFiles');
     }
+    
+    public function consult_agenda(){
+        return $this->hasOne('App\ConsultAgenda');
+    }
 }

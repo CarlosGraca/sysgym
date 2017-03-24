@@ -1,22 +1,30 @@
-
 $('.daterange').daterangepicker({
-  locale: {
-      format: 'DD-MM-YYYY'
+    locale: {
+        format: 'DD-MM-YYYY'
     },
-  ranges: {
-    'Today': [moment(), moment()],
-    'Yesterday': [moment().subtract(1, 'days'), moment().subtract(1, 'days')],
-    'Last 7 Days': [moment().subtract(6, 'days'), moment()],
-    'Last 30 Days': [moment().subtract(29, 'days'), moment()],
-    'This Month': [moment().startOf('month'), moment().endOf('month')],
-    'Last Month': [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')],
-    'This Year': [moment().startOf('year'), moment().endOf('year')]
-  },
-  start_time: moment().startOf('year'),
-  endDate: moment().endOf('year')
+    ranges: {
+        'Today': [moment(), moment()],
+        'Yesterday': [moment().subtract(1, 'days'), moment().subtract(1, 'days')],
+        'Last 7 Days': [moment().subtract(6, 'days'), moment()],
+        'Last 30 Days': [moment().subtract(29, 'days'), moment()],
+        'This Month': [moment().startOf('month'), moment().endOf('month')],
+        'Last Month': [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')],
+        'This Year': [moment().startOf('year'), moment().endOf('year')]
+    },
+    start_time: moment().startOf('year'),
+    endDate: moment().endOf('year')
 }, function (start, end) {
-    $('.range-date').text('Start: '+start.format('DD/MM/YYYY')+' - End: '+end.format('DD/MM/YYYY'));
+    // $('.range-date').text('Start: '+start.format('DD/MM/YYYY')+' - End: '+end.format('DD/MM/YYYY'));
+    $('.range-date').text(start.format('DD/MM/YYYY')+' - '+end.format('DD/MM/YYYY'));
+    // $('.daterange').text(start.format('DD/MM/YYYY')+' - '+end.format('DD/MM/YYYY'))
     getDashboardData(start,end);
+});
+
+//Date picker
+$('#datepicker').datepicker({
+    autoclose: true,
+    dateFormat: 'dd/mm/yy',
+    buttonText: "<i class='fa fa-calendar'></i>",
 });
 
 function bar_chart(label, dataAgenda, dataSheets) {
@@ -215,7 +223,24 @@ function getDashboardData(start, end) {
 }
 
 $(function () {
-  startDashboard();
+
+    startDashboard();
+
+  //CHANGE GRAPHIC SHOW!
+  $(document).on('click','#line',function() {
+    $('#barChart').remove();
+    $('.chart').html('<canvas id="lineChart" style="height:230px"></canvas>');
+    $('#chart-title').text($(this).text());
+    startDashboard();
+  });
+
+  $(document).on('click','#bar', function() {
+    $('#barChart').remove();
+    $('.chart').html('<canvas id="barChart" style="height:230px"></canvas>');
+    $('#chart-title').text($(this).text());
+    startDashboard();
+  });
+
 });
 
 function startDashboard() {
@@ -223,23 +248,10 @@ function startDashboard() {
   var start = moment().startOf('year');
   var end = moment().endOf('year');
 
-  $('.range-date').text('Start: '+start.format('DD/MM/YYYY')+' - End: '+end.format('DD/MM/YYYY'));
+  // $('.range-date').text('Start: '+start.format('DD/MM/YYYY')+' - End: '+end.format('DD/MM/YYYY'));
+  $('.range-date').text(start.format('DD/MM/YYYY')+' - '+end.format('DD/MM/YYYY'));
   var chart = $('#barChart').get(0);
   if(chart !== undefined)
     getDashboardData(start,end);
 }
 
-//CHANGE GRAPHIC SHOW!
-$(document).on('click','#line',function() {
-  $('#barChart').remove();
-  $('.chart').html('<canvas id="lineChart" style="height:230px"></canvas>');
-  $('#chart-title').text($(this).text());
-  startDashboard();
-});
-
-$(document).on('click','#bar', function() {
-  $('#barChart').remove();
-  $('.chart').html('<canvas id="barChart" style="height:230px"></canvas>');
-  $('#chart-title').text($(this).text());
-  startDashboard();
-});

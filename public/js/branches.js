@@ -10,11 +10,11 @@ $(function () {
     //console.log(_val);
 
     //BOTÃO ADICIONAR CLIENTE
-    $('#add-branch').click(function(){
+    $(document).on('click','#add-branch',function(){
         save($('#branches-form'),$('#branches-form')[0],'create');
-        //branch_schedule_save();
+
         $(this).css('display', 'none');
-        fieldstatus('disable',$('#branches-form'));
+        field_status_change('disable',$('#branches-form'));
         schedule_button_action('disable');
         $('#edit-branch-button').removeAttr('style');
         branch_schedule_save();
@@ -23,10 +23,10 @@ $(function () {
     });
 
     //BOTÃO EDITAR CLIENTE
-    $('#edit-branch').click(function(){
+    $(document).on('click','#edit-branch',function(){
         save($('#branches-form'),$('#branches-form')[0],'update');
         $(this).css('display', 'none');
-        fieldstatus('disable',$('#branches-form'));
+        field_status_change('disable',$('#branches-form'));
         schedule_button_action('disable');
         $('#edit-branch-button').removeAttr('style');
         branch_schedule_save();
@@ -35,16 +35,16 @@ $(function () {
     });
 
 
-    $('#edit-branch-button').click(function () {
+    $(document).on('click','#edit-branch-button',function () {
         $(this).css('display', 'none');
 
-        fieldstatus('enable',$('#branches-form'));
+        field_status_change('enable',$('#branches-form'));
         schedule_button_action('enable');
 
         $('#edit-branch').removeAttr('style');
     });
 
-    $('#add-office_hours').click(function () {
+    $(document).on('click','#add-office_hours',function () {
         var _id = $('#office_hours_id').val();
         var _exists = validation_shedules();
 
@@ -107,7 +107,7 @@ $(function () {
 
 });
 
-
+//SCHEDULE SET BUTTON ACTIONS
 function schedule_button_action(_action) {
     if (_action == 'enable'){
         $('.action_button').css('visibility','visible');
@@ -119,6 +119,7 @@ function schedule_button_action(_action) {
 
 }
 
+//CLEAR SCHEDULE FIELDS
 function clear_field_schedule() {
     $('#branch_week').val(null);
     $('#start_time').val(null);
@@ -126,6 +127,7 @@ function clear_field_schedule() {
     $('#office_hours_id').val(null);
 }
 
+//REMOVE SCHEDULE TABLE DATA
 function remove_table_schedule_data(_item) {
     var tr_parent = _item.parent().parent();
     var _id = tr_parent.attr('data-key');
@@ -156,6 +158,7 @@ function edit_table_schedule_data(_id) {
     clear_field_schedule();
 }
 
+//PUT VALUE AT SCHEDULE TABLE
 function table_data(value) {
     var table = $('#table-office_hours');
     var week_name = $("#branch_week option:selected").text();
@@ -163,21 +166,145 @@ function table_data(value) {
     var start_time = $('#start_time').val();
     var end_time = $('#end_time').val();
 
-    table.append(
-        '<tr class="office_hours_table" data-key="' + value + '">' +
+    var max = '00:00:00';
+    var min = '23:59:00';
+    var append = null;
+    var type = null;
+    table.find('.office_hours_table').each(function () {
+        //console.log($(this).attr('data-key'));
+        if($(this).attr('data-week') == week_value) {
+            if(start_time > $(this).find('.start_time').text()){
+                if(start_time >= max ){
+                    max = start_time;
+                    append = $(this);
+                    type = 'after';
+                }
+                console.log('max: '+max);
+                // console.log(week_value);
+            }else{
+
+                if(start_time < min ){
+                    min = start_time;
+                    append = $(this);
+                    type = 'before';
+                    console.log('min: '+min);
+                }
+            }
+
+        }
+
+    });
+
+    if(append == null){
+        switch (week_value){
+            case 'monday':
+                type = 'before';
+                append = table.find('.office_hours_table')[0];
+            break;
+            case 'tuesday':
+                table.find('.office_hours_table').each(function () {
+                    if($(this).attr('data-week') == 'monday') {
+                        append = $(this);
+                        type = 'after';
+                    }
+                });
+
+                if(append == null){
+                    type = 'before';
+                    append = table.find('.office_hours_table')[0];
+                }
+
+            break;
+            case 'wednesday':
+                table.find('.office_hours_table').each(function () {
+                    if($(this).attr('data-week') == 'tuesday') {
+                        append = $(this);
+                        type = 'after';
+                    }
+                });
+
+                if(append == null){
+                    type = 'before';
+                    append = table.find('.office_hours_table')[0];
+                }
+            break;
+            case 'thursday':
+                table.find('.office_hours_table').each(function () {
+                    if($(this).attr('data-week') == 'wednesday') {
+                        append = $(this);
+                        type = 'after';
+                    }
+                });
+                if(append == null){
+                    type = 'before';
+                    append = table.find('.office_hours_table')[0];
+                }
+
+            break;
+            case 'friday':
+                table.find('.office_hours_table').each(function () {
+                    if($(this).attr('data-week') == 'thursday') {
+                        append = $(this);
+                        type = 'after';
+                    }
+                });
+
+                if(append == null){
+                    type = 'before';
+                    append = table.find('.office_hours_table')[0];
+                }
+            break;
+            case 'saturday':
+                table.find('.office_hours_table').each(function () {
+                    if($(this).attr('data-week') == 'friday') {
+                        append = $(this);
+                        type = 'after';
+                    }
+                });
+
+                if(append == null){
+                    type = 'before';
+                    append = table.find('.office_hours_table')[0];
+                }
+            break;
+            case 'sunday':
+                table.find('.office_hours_table').each(function () {
+                    if($(this).attr('data-week') == 'saturday') {
+                        append = $(this);
+                        type = 'after';
+                    }
+                });
+                if(append == null){
+                    type = 'before';
+                    append = table.find('.office_hours_table')[0];
+                }
+            break;
+        }
+
+    }
+
+     // console.log(append);
+    // console.log(max);
+    var table_html = $(
+        '<tr class="office_hours_table" data-key="' + value + '" data-week="'+week_value+'">' +
         '<td class="week_name" data-value="'+week_value+'">' + week_name + '</td>' +
         '<td class="start_time" >' + start_time + '</td>' +
         '<td class="end_time" >' + end_time + '</td>' +
         '<td class="action_button"> ' +
-            '<a href="#!copy" class="copy_schedule" data-toggle="tooltip" title="'+_copy_text+'"><i class="fa fa-clone"></i></a> ' +
-            '<a href="#!edit" class="edit_schedule" data-toggle="tooltip" title="'+_edit_text+'"><i class="fa fa-edit"></i></a> ' +
-            '<a href="#!remove" class="remove_schedule" data-toggle="tooltip" title="'+_remove_text+'"><i class="fa fa-trash"></i></a> ' +
+        '<a href="#!copy" class="copy_schedule" data-toggle="tooltip" title="'+_copy_text+'"><i class="fa fa-clone"></i></a> ' +
+        '<a href="#!edit" class="edit_schedule" data-toggle="tooltip" title="'+_edit_text+'"><i class="fa fa-edit"></i></a> ' +
+        '<a href="#!remove" class="remove_schedule" data-toggle="tooltip" title="'+_remove_text+'"><i class="fa fa-trash"></i></a> ' +
         '</td>' +
         '</tr>'
     );
+    // table.append
+   type =='after' ?  table_html.insertAfter(append) : table_html.insertBefore(append);
+
+
 }
 
 
+//SAVE SCHEDULE TO BRANCH
 function branch_schedule_save() {
     getTableScheduleData($('#table-office_hours'));
 
@@ -201,6 +328,7 @@ function branch_schedule_save() {
     }
 }
 
+//GET MAX SCHEDULE ID VALUE
 function getMax() {
     var max = 0;
     var _table =  $('.office_hours_table');
@@ -217,6 +345,7 @@ function getMax() {
 }
 
 
+//GET DATA FROM SCHEDULE TABLE
 function getTableScheduleData(_table) {
     var data =  {};
     all_data = [];
@@ -318,9 +447,30 @@ function edit_schedule(_element) {
 }
 
 function remove_schedule(_element){
-    var _alert = confirm(_confirm_alert_text);
 
-    if (_alert){
-        remove_table_schedule_data(_element);
-    }
+    // var _alert = confirm(_confirm_alert_text);
+    //
+    // if (_alert){
+    bootbox.confirm({
+        title: _confirm_alert_text,
+        message: 'This action can\'t be undone',
+        //size: 'small',
+        buttons: {
+            confirm: {
+                label: _yes_text,
+                className: 'btn-success'
+            },
+            cancel: {
+                label: _no_text,
+                className: 'btn-danger'
+            }
+        },
+        callback: function (result) {
+            if (result == true) {
+                remove_table_schedule_data(_element);
+            }
+        }
+    });
+
+
 }

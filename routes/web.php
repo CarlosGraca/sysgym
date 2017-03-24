@@ -32,6 +32,7 @@ Route::post('setup/password','Auth\UserController@setup_password');
 Route::group(['middleware' => ['web','auth','check_agenda']], function(){
     $system = \App\System::all()->first();
     \App::setLocale($system->lang);
+//    config(['app.timezone' => $system->timezone]);
 
     Route::resource('patients','PatientController');
     Route::resource('auth/profile', 'Auth\ProfileController');
@@ -51,6 +52,7 @@ Route::group(['middleware' => ['web','auth','check_agenda']], function(){
     Route::resource('campaign_messages','CampaignMessageController');
     Route::resource('license_generate','Defaults');
     Route::resource('files','FileController');
+    Route::resource('payments','PaymentController');
 
 });
 
@@ -63,11 +65,20 @@ Route::group(['middleware' => ['license']], function() {
 
 //REPORT TO PATIENTS
 Route::get('/patients/{id}/print','PatientController@_print');
+//PATIENT CHANGE STATUS
+Route::post('patients/enable','PatientController@enable');
+Route::post('patients/disable','PatientController@disable');
+
+
+//EMPLOYEES CHANGE STATUS
+Route::post('employees/enable','EmployeeController@enable');
+Route::post('employees/disable','EmployeeController@disable');
+
 
 //AGENDA
 Route::get('agenda',function (){
    return view('calendar.index');
-})->middleware('auth');
+})->middleware(['auth','check_agenda']);
 
 Route::get('agenda/get_all','ConsultAgendaController@getAllConsultAgenda');
 Route::get('agenda/list_agenda','ConsultAgendaController@getTableData');
@@ -80,6 +91,9 @@ Route::post('consult/confirm','ConsultAgendaController@confirm');
 Route::post('consult/cancel','ConsultAgendaController@cancel');
 Route::post('consult/re_agenda','ConsultAgendaController@re_agenda');
 
+//Getting consult list item
+Route::get('confirm_list','ConsultAgendaController@confirm_consult_list');
+Route::get('cancel_list','ConsultAgendaController@cancel_consult_list');
 
 
 Route::post('consult_procedure/get_consult','SecureComparticipationController@getSecureComparticipation');
@@ -119,6 +133,10 @@ Route::get('build/{id}','Auth\UserController@build');
 //RESET PASSWORD
 Route::get('reset/password/{id}','Auth\UserController@reset_password');
 
+//USER CHANGE STATUS
+Route::post('users/enable','Auth\UserController@enable');
+Route::post('users/disable','Auth\UserController@disable');
+
 //SYSTEM SETUP
 Route::get('setup/system',function(){
     $default = new \App\Http\Controllers\Defaults();
@@ -128,7 +146,8 @@ Route::get('setup/system',function(){
     $lang = $default->getLang();
     $currency = $default->getCurrency();
     $layout = $default->getLayout();
-    $timezone = \App\TimeZone::pluck('name','id');
+    $timezone = $default->getTimezone();
+//    $timezone = \App\TimeZone::pluck('name','id');
 
     return view('system.setup',compact('island','system','theme','lang','currency','layout','timezone'));
 });
@@ -169,19 +188,24 @@ Route::get('files/{id}/preview','FileController@preview');
 //REMOVE FILE
 Route::get('files/{id}/remove','FileController@remove');
 
+Route::post('croppie',function(\Illuminate\Http\Request $request){
+    return view('components.croppie',['type'=>$request->type,'src'=>$request->src]);
+});
+
 //OWN DOCUMENTS
 
-Route::get('/sistema/Comum.do',function(\Illuminate\Http\Request $request)
-{
-  if ($request->get("act") == "loadUsuarioPAD") {
-    return view('owner.Comum_utilizador');
-  }elseif ($request->get("act") == "loadProprietarioPAD") {
-    return view('owner.Comum_proprietario');
-  }elseif ($request->get("act") == "loadLotePAD") {
-    return view('owner.Comum_lote');
-  }elseif ($request->get("act") == "loadComunidadePAD") {
-    return view('owner.Comum_comunidade');
-  }elseif ($request->get("act") == "insertAmanhoPDA") {
-    echo "success";
-  }
-});
+
+//Route::get('/sistema/Comum.do',function(\Illuminate\Http\Request $request)
+//{
+//  if ($request->get("act") == "loadUsuarioPAD") {
+//    return view('owner.Comum_utilizador');
+//  }elseif ($request->get("act") == "loadProprietarioPAD") {
+//    return view('owner.Comum_proprietario');
+//  }elseif ($request->get("act") == "loadLotePAD") {
+//    return view('owner.Comum_lote');
+//  }elseif ($request->get("act") == "loadComunidadePAD") {
+//    return view('owner.Comum_comunidade');
+//  }elseif ($request->get("act") == "insertAmanhoPDA") {
+//    echo "success";
+//  }
+//});

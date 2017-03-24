@@ -1,4 +1,7 @@
-<?php $system = \App\System::all()->first(); ?>
+<?php
+    $system = \App\System::all()->first();
+    \Carbon\Carbon::setLocale($system->lang)
+?>
 <!DOCTYPE html>
 <!--
 This is a starter template page. Use this page to start your new project from
@@ -84,7 +87,9 @@ desired effect
     @include('layouts.partials.sidebar')
 
     <!-- Content Wrapper. Contains page content -->
-    <div class="content-wrapper">
+    <div class="content-wrapper"
+         {{--style="margin-bottom: 50px;"--}}
+    >
 
         @include('layouts.partials.contentheader')
 
@@ -99,6 +104,9 @@ desired effect
 
     @include('layouts.shared.modal')
     @include('layouts.shared.modal_del')
+
+    @include('layouts.shared.croppie_modal')
+
 
     @include('layouts.partials.footer')
 

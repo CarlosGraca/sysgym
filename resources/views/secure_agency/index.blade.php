@@ -12,6 +12,11 @@
   {{ trans('adminlte_lang::message.secure_agency') }}
 @endsection
 
+<?php
+$status = [trans('adminlte_lang::message.deleted'),trans('adminlte_lang::message.active'),trans('adminlte_lang::message.expired')];
+$status_color = ['danger','success','info'];
+?>
+
 
 @section('main-content')
 	<div class="row">
@@ -28,20 +33,20 @@
 	            </div><!-- /.box-header -->
 
 	            <div class="box-body">
-	                <table id="table-secure_agency" class="table table-bordered table-striped table-design">
+	                <table id="table-secure_agency" class="table table-hover table-design">
 		                <thead>
 		                  <tr>
 		                    {{--<th style="width: 10px" class="col-md-1">#</th>--}}
 		                    <th class="col-md-4">{{ trans('adminlte_lang::message.name') }}</th>
 		                    <th class="col-md-2">{{ trans('adminlte_lang::message.email') }}</th>
 		                    <th class="col-md-2">{{ trans('adminlte_lang::message.contacts') }}</th>
-		                    <th class="col-md-4">{{ trans('adminlte_lang::message.address') }}</th>
+		                    <th class="col-md-3">{{ trans('adminlte_lang::message.address') }}</th>
 		                    <th class="col-md-1"></th>
 		                  </tr>
 		                </thead>
 		                <tbody>
                           @foreach ($secure_agency as $agency)
-                                <tr>
+                                <tr class="bg-{{$status_color[$agency->status]}}">
                                     {{--<td>{{$agency->id}}</td>--}}
                                     <td>{{$agency->name}}</td>
                                     <td>{{$agency->email}}</td>

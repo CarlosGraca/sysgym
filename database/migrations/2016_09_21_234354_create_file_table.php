@@ -13,7 +13,7 @@ class CreateFileTable extends Migration {
             $table->string('name_original')->nullable();
 			$table->text('full_path');
 			$table->string('mime_type');
-			$table->enum('media_type', ['video','image','doc','pdf']);
+			$table->string('media_type',10);
 			$table->integer('flag')->default(0);
 			$table->timestamps();
 			$table->softDeletes();

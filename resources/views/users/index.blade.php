@@ -13,6 +13,10 @@
 @endsection
 
 @inject('CategoryController', 'App\Http\Controllers\CategoryController')
+<?php
+$status = [trans('adminlte_lang::message.deleted'),trans('adminlte_lang::message.active'),trans('adminlte_lang::message.expired')];
+$status_color = ['danger','success','info'];
+?>
 
 @section('main-content')
 	<div class="row">
@@ -23,7 +27,7 @@
 	            </div><!-- /.box-header -->
 
 	            <div class="box-body">
-	                <table id="table-users" class="table table-bordered table-striped table-design">
+	                <table id="table-users" class="table table-hover table-design">
 		                <thead>
 		                  <tr>
 		                    {{--<th style="width: 10px" class="col-md-1">#</th>--}}
@@ -35,25 +39,23 @@
 		                </thead>
 		                <tbody>
                           @foreach ($users as $user)
-                                <tr>
+                                <tr class="bg-{{ $status_color[$user->status] }} ">
                                     {{--<td>{{ $user->id }}</td>--}}
 									<td>{{ $user->name }}</td>
 									<td>{{ $user->email }}</td>
 									<td> </td>
                                     <td>
-                                        <a href="#" class="btn btn-xs btn-warning btn-flat" data-toggle="modal" data-target="#confirmDelete" data-toggle="tooltip" title="Delete" data-product_id="{{ $user->id }}" data-product_name="{{ $user->id }}">
-                                            <i class="fa fa-user-times"></i>
-                                        </a>
+										<a href="#disable" style="display: {{ $user->status == 1 ? 'initial' :'none' }};" data-toggle="tooltip" id="disable-user" title="{{ trans('adminlte_lang::message.disable') }}" data-key="{{ $user->id }}" data-name="{{ $user->name }}">
+											<i class="fa fa-user-o"></i>
+										</a>
 
-                                        <a href="#" data-url="{{ url('reset/password') }}/{{$user->id}}" class="btn btn-primary btn-xs" data-toggle="tooltip" title="Reset Password" id="user-reset-password">   <i class="fa fa-repeat"></i>
-                                            </a>
-									<!--
-                                            <a href="{{ url('tests/pdf/') }}/{{$user->id}}" target="_blank" class="btn btn-primary btn-xs", data-toggle="tooltip" title="Pdf" ])>   <i class="fa fa-file-pdf-o"></i>
-                                            </a>
+										<a href="#enable" style="display: {{ $user->status == 0 ? 'initial' :'none' }};" data-toggle="tooltip" id="enable-user" title="{{ trans('adminlte_lang::message.enable') }}" data-key="{{ $user->id }}" data-name="{{ $user->name }}">
+											<i class="fa fa-user"></i>
+										</a>
 
-                                        <a href="{{ route('users.edit',$user->id) }}" class="btn btn-primary btn-xs", data-toggle="tooltip" title="Email" data-remote='true'])>   <i class="fa fa-send"></i>
+                                        <a href="#" data-url="{{ url('reset/password') }}/{{$user->id}}" data-toggle="tooltip" title="{{ trans('adminlte_lang::message.reset_password') }}" id="user-reset-password">
+                                            <i class="fa fa-repeat"></i>
                                         </a>
-                                            -->
                                     </td>
                                 </tr>
                             @endforeach

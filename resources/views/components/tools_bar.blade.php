@@ -43,7 +43,7 @@
                <i class="fa"><img src="{{asset('img/icon/budget-calculator-20.png')}}"></i>  {{ trans('adminlte_lang::message.budget') }}
             </a>
 
-            <a class="btn btn-app">
+            <a class="btn btn-app" href="{{ url('payments/create') }}">
                 <i class="fa"><img src="{{asset('img/icon/credit-card-swipe-20.png')}}"></i>  {{ trans('adminlte_lang::message.payments') }}
             </a>
 

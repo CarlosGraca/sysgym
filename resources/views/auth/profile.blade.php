@@ -22,7 +22,7 @@
 			<div class="box box-primary">
 				<div class="box-body box-profile">
 					<div class="text-center">
-						<img class="avatar thumbnail" src="{{ asset(Auth::user()->avatar) }}" style="max-width: 100%; width: 150px; margin: 0 auto; z-index: -1;">
+						<img class="avatar thumbnail" src="{{ asset(Auth::user()->avatar) }}" style="max-width: 100%; width: 250px; margin: 0 auto; z-index: -1;">
 						<h3 class="profile-username text-center">{{  Auth::user()->name }}</h3>
 					</div>
 

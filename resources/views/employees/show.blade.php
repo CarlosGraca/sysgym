@@ -21,7 +21,7 @@
             <div class="box box-primary">
                 <div class="box-body box-profile">
                     <div class="text-center">
-                        <img class="thumbnail avatar-employee" src="{{ asset($employee->avatar) }}" style="max-width: 100%; width: 150px; margin: 0 auto; z-index: -1;">
+                        <img class="thumbnail avatar-employee" src="{{ asset($employee->avatar) }}" style="max-width: 100%; width: 250px; margin: 0 auto; z-index: -1;">
                         <i class="fa fa-camera" style="  position: absolute; left: 0; top: 50%; width: 100%; text-align: center;   font-size: 18px; display: none;"></i>
                     </div>
 

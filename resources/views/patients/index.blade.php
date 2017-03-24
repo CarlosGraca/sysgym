@@ -12,6 +12,11 @@
   {{ trans('adminlte_lang::message.patients') }}
 @endsection
 
+<?php
+$status = [trans('adminlte_lang::message.deleted'),trans('adminlte_lang::message.active'),trans('adminlte_lang::message.expired')];
+$status_color = ['danger','success','info'];
+?>
+
 
 @section('main-content')
 	<div class="row">
@@ -52,7 +57,7 @@
 
 					</div>
 
-	                <table id="table-patient" class="table table-bordered table-striped table-design">
+	                <table id="table-patient" class="table table-hover table-design">
 		                <thead>
 		                  <tr>
 		                    {{--<th style="width: 10px" class="col-md-1">#</th>--}}
@@ -66,7 +71,7 @@
 		                </thead>
 		                <tbody>
                           @foreach ($patients as $patient)
-                                <tr>
+                                <tr class="bg-{{ $status_color[$patient->status] }} patient-row">
                                     {{--<td>{{$patient->id}}</td>--}}
 									<td>{{$patient->name}}</td>
                                     <td>{{$patient->email}}</td>
@@ -74,22 +79,22 @@
                                     <td>{{trans('adminlte_lang::message.'.$patient->genre)}}</td>
                                     <td>{{$patient->address }}</td>
                                     <td>
-										<a href="{{ route('patients.show',$patient->id) }}" data-toggle="tooltip" title="{{ trans('adminlte_lang::message.show_details') }}" data-remote='false'><i class="fa fa-eye"></i>
+										<a href="{{ route('patients.show',$patient->id) }}" data-toggle="tooltip" title="{{ trans('adminlte_lang::message.show_details') }}">
+                                            <i class="fa fa-eye"></i>
 										</a>
 
-										<a href="{{ route('patients.edit',$patient->id) }}" data-toggle="tooltip" title="{{ trans('adminlte_lang::message.edit') }}" data-remote='false'><i class="fa fa-edit"></i>
+										<a href="{{ route('patients.edit',$patient->id) }}" style="display: {{ $patient->status == 1 ? 'initial' :'none' }};" data-toggle="tooltip" id="update-patient" title="{{ trans('adminlte_lang::message.edit') }}" >
+                                            <i class="fa fa-edit"></i>
 										</a>
 
-                                        <a href="#remove" data-toggle="modal" data-target="#confirmDelete" title="{{ trans('adminlte_lang::message.disable') }}" data-product_id="{{ $patient->id }}" data-product_name="{{ $patient->id }}">
-                                            <i class="fa fa-user-times"></i>
+                                        <a href="#disable" style="display: {{ $patient->status == 1 ? 'initial' :'none' }};" data-toggle="tooltip" id="disable-patient" title="{{ trans('adminlte_lang::message.disable') }}" data-key="{{ $patient->id }}" data-name="{{ $patient->name }}">
+                                            <i class="fa fa-user-o"></i>
                                         </a>
 
-                                        <!--
-                                            <a href="{{ url('tests/pdf/') }}/{{$patient->id}}" target="_blank" class="btn btn-primary btn-xs", data-toggle="tooltip" title="Pdf" ])>   <i class="fa fa-file-pdf-o"></i>
-                                            </a>
+                                        <a href="#enable" style="display: {{ $patient->status == 0 ? 'initial' :'none' }};" data-toggle="tooltip" id="enable-patient" title="{{ trans('adminlte_lang::message.enable') }}" data-key="{{ $patient->id }}" data-name="{{ $patient->name }}">
+                                            <i class="fa fa-user"></i>
+                                        </a>
 
-
-                                            -->
                                     </td>
                                 </tr>
                             @endforeach

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Company;
+use App\ConsultAgenda;
 use App\File;
 use App\Island;
 use App\Patient;
@@ -52,7 +53,9 @@ class PatientController extends Controller
     {
         $island = Island::pluck('name','id');
         $secure_agency = SecureAgency::pluck('name','id');
-        if (Request::ajax()) {
+        if (\Request::ajax()) {
+//            echo "AJAX";
+//            die();
             return view('patients.create_ajax',compact('island','secure_agency'));
         }
         return view('patients.create',compact('island','secure_agency'));
@@ -66,6 +69,7 @@ class PatientController extends Controller
      */
     public function store(PatientRequest $request)
     {
+        $default = new Defaults();
         $patient = new Patient();
         $patient->name = $request->name;
         $patient->email = $request->email;
@@ -91,17 +95,10 @@ class PatientController extends Controller
         $patient->has_secure = $request->has_secure;
 
         if ($request->hasFile('avatar')){
-            $image = $request->file('avatar');
-            $filename  = time() . '.' . $image->getClientOriginalExtension();
-
-            $path = public_path('uploads/' . $filename);
-
-            $image->move($path,$filename);
-            
-            //Image::make($image->getRealPath())->resize(300, 150)->save($path);
-
-            $patient->avatar = 'uploads/' . $filename;
-
+            $img_base64 = $request->avatar_crop;
+            $filename = 'uploads/' .time().'.png';
+            $default->base64_to_png($img_base64, $filename);
+            $patient->avatar = $filename;
         }
 
         if($request->has_secure == 1){
@@ -134,11 +131,12 @@ class PatientController extends Controller
     public function show(Patient $patient)
     {
         $Files = File::where(['item_id'=>$patient->id,'flag'=>1])->get();
+        $consult_agenda = ConsultAgenda::where('patient_id',$patient->id)->orderby('date','desc')->get();
         
         if (Request::wantsJson()){
             return ['name'=>$patient->name,'mobile'=>$patient->mobile,'phone'=>$patient->phone,'has_secure'=>$patient->has_secure,'secure_card_id'=>$patient->secure_card_id,'email'=>$patient->email,'avatar'=>$patient->avatar];
         }else{
-           return view('patients.show',compact('patient','Files'));
+           return view('patients.show',compact('patient','Files','consult_agenda'));
         }
     }
 
@@ -166,6 +164,7 @@ class PatientController extends Controller
     public function update(PatientRequest $request, Patient $patient)
     {
         //
+        $default = new Defaults();
         $patient->name = $request->name;
         $patient->email = $request->email;
         $patient->address = $request->address;
@@ -192,11 +191,10 @@ class PatientController extends Controller
 
 
         if ($request->hasFile('avatar')){
-
-            $image = $request->file('avatar');
-            $filename  = time() . '.' . $image->getClientOriginalExtension();
-
-            $path = public_path('uploads/' . $filename);
+            
+            $img_base64 = $request->avatar_crop;
+            $filename = 'uploads/' .time().'.png';
+            $default->base64_to_png($img_base64, $filename);
 
             if($patient->avatar && $patient->avatar != 'img/avatar.png'){
                 if(file_exists($patient->avatar)){
@@ -204,11 +202,7 @@ class PatientController extends Controller
                 }
             }
 
-            $image->move($path,$filename);
-            
-            //Image::make($image->getRealPath())->save($path);
-
-            $patient->avatar = 'uploads/' . $filename;
+            $patient->avatar = $filename;
         }
 
         $card = SecureCard::where('id',$patient->secure_card_id)->first();
@@ -245,16 +239,41 @@ class PatientController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  Patient $patient
+     * @param  Request $request
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Patient $patient)
+    public function disable(Request $request)
     {
+        if(!$this->can_disable(\Input::get('id'))){
+            $message = trans('adminlte_lang::message.msg_error_disable_patient');
+            return ['status_color'=>'bg-danger','message'=>$message,'form'=>'patient', 'type'=>'error'];
+        }
+
+        $patient = Patient::where('id',\Input::get('id'))->first();
         $patient->status = 0;
-        $deleted = $patient->save();
-        session()->flash('flash_message','Tests was removed with success');
-        if (Request::wantsJson()){
-            return (string) $deleted;
+
+        if (Request::wantsJson() && $patient->save()){
+            $message = trans('adminlte_lang::message.msg_success_disable_patient');
+            return ['status_color'=>'bg-danger','message'=>$message,'form'=>'patient', 'type'=>'success'];
+        }else{
+            return redirect('patients');
+        }
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  Request $request
+     * @return \Illuminate\Http\Response
+     */
+    public function enable(Request $request)
+    {
+        $patient = Patient::where('id',\Input::get('id'))->first();
+        $patient->status = 1;
+
+        if (Request::wantsJson() && $patient->save()){
+            $message = trans('adminlte_lang::message.msg_success_enable_patient');
+            return ['status_color'=>'bg-success','message'=>$message,'form'=>'patient'];
         }else{
             return redirect('patients');
         }
@@ -276,4 +295,20 @@ class PatientController extends Controller
         $card = SecureCard::where('id',$patient->secure_card_id)->first();
         return view('report.profile_print',compact('patient','island','card','secure_agency','company'));
     }
+
+    private function can_disable($id){
+
+        $consult_agenda = \DB::select( \DB::raw("SELECT id FROM consult_agenda WHERE patient_id = $id AND status NOT IN (0,3) ") );
+
+        if(count($consult_agenda) > 0){
+            return false;
+        }
+
+        return true;
+
+    }
+
+    
+
+
 }

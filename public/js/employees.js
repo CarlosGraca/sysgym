@@ -6,20 +6,29 @@ $(function () {
 
 // DEFAULT SAVE USER FUNCTION saveUser(_form,_form_data,form_type,callback)
 //BUTTON EVENT TO SAVE NEW EMPLOYEE
-    $('#add-employee').click(function () {
+    $(document).on('click','#add-employee',function () {
         save($('#employee-form'), $('#employee-form')[0], 'create');
     });
 
 //BOTÃO EDITAR CLIENTE
-    $('#edit-employee').click(function () {
+    $(document).on('click','#edit-employee',function () {
         save($('#employee-form'), $('#employee-form')[0], 'update');
-        fieldstatus('disable',$('#employee-form'));
     });
 
-    $('#edit-employee-button').click(function () {
+    $(document).on('click','#edit-employee-button',function () {
         $(this).css('display', 'none');
-        fieldstatus('enable', $('#employee-form'));
+        field_status_change('enable', $('#employee-form'));
         $('#edit-employee').removeAttr('style');
     });
-//$('#table-employee').dataTable();
+
+    //DISABLE employee
+    $(document).on('click','#disable-employee',function () {
+        change_status($(this).attr('data-key'), 'disable', $(this).attr('data-name'), $(this), 'employees/disable', 'bg-success', 'employee')
+    });
+
+    //ENABLE employee
+    $(document).on('click','#enable-employee',function () {
+        change_status($(this).attr('data-key'), 'enable', $(this).attr('data-name'), $(this), 'employees/enable', 'bg-danger', 'employee');
+    });
+
 });

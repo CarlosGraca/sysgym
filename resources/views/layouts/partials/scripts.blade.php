@@ -2,7 +2,7 @@
     $system = \App\System::all()->first();
     $defaults = new App\Http\Controllers\Defaults();
     $weeks = $defaults->getOldWeeks();
-    $today = \Carbon\Carbon::now()->addHours($system->timezone->value);
+    $today = \Carbon\Carbon::now()->addHours($system->timezone);
     $workTime = null;
     $WT = [];
     if (\Auth::user() != null){
@@ -54,6 +54,7 @@
 
 <!-- DATE RANGE PICKER PLUGIN -->
 <script src="{{ asset('/plugins/moment.js/moment-with-locales.js') }}" type="text/javascript"></script>
+<script src="{{ asset('/plugins/moment.js/moment-timezone-with-data.min.js') }}" type="text/javascript"></script>
 
 
 <script src="{{ asset('/plugins/daterangepicker/daterangepicker.js') }}" type="text/javascript"></script>
@@ -80,9 +81,9 @@
 
 <!-- FULLCALENDAR PLUGIN -->
 <script src="{{asset('/plugins/fullcalendar/fullcalendar.min.js')}}" type="text/javascript"></script>
-<script src="{{asset('/plugins/fullcalendar/locale-all.js')}}" type="text/javascript"></script>
+{{--<script src="{{asset('/plugins/fullcalendar/locale-all.js')}}" type="text/javascript"></script>--}}
 <!-- MOMENT-->
-<script src="{{asset('/plugins/fullcalendar/moment.min.js')}}" type="text/javascript"></script>
+{{--<script src="{{asset('/plugins/fullcalendar/moment.min.js')}}" type="text/javascript"></script>--}}
 
 
 <!-- WIZARD PLUGIN -->
@@ -94,9 +95,9 @@
 <!-- JQUERY CONTEXT MENU PLUGIN -->
 <script src="{{asset('/plugins/jquery-contextmenu/dist/jquery.contextMenu.min.js')}}" type="text/javascript"></script>
 
-<!-- VALIDATOR
-    <script src="{{ asset('/js/validator.min.js') }}" type="text/javascript"></script>
--->
+{{-- VALIDATOR--}}
+    {{--<script src="{{ asset('/js/validator.min.js') }}" type="text/javascript"></script>--}}
+
 
 <!-- SLIMSCROLL PLUGIN -->
 <script src="{{asset('/plugins/slimScroll/jquery.slimscroll.min.js')}}" type="text/javascript"></script>
@@ -109,22 +110,18 @@
 <script src="{{ asset('/plugins/input-mask/jquery.inputmask.date.extensions.js') }}"></script>
 <script src="{{ asset('/plugins/input-mask/jquery.inputmask.extensions.js') }}"></script>
 
+{{--BOOTBOX PLUGIN--}}
+<script src="{{ asset('/js/bootbox.js') }}" type="text/javascript"></script>
+
+{{--CROPPIE PLUGIN--}}
+<script src="{{ asset('/plugins/croppie/js/croppie.js') }}"></script>
+
+
 <!-- SCRIPT IN DEVELOPMENT MODE -->
-<!--
-<script src="{{ asset('/js/loadRemoteContent.js') }}" type="text/javascript"></script>
-<script src="{{ asset('/js/physical_test.js') }}" type="text/javascript"></script>
-<script src="{{ asset('/js/handout_training.js') }}" type="text/javascript"></script>
--->
 
 <script type="text/javascript">
     var localName = '{{$system->lang }}';
 
-            @if($system->lang == 'pt')
-    var months = {'January':'Janeiro','February':'Fevereiro','March':'Março','April':'Abril','May':'Maio','June':'Junho','July':'Julho','August':'Agosto','September':'Setembro','October':'Outubro','November':'Novembro','December':'Dezembro'};
-            @endif
-            @if($system->lang == 'en')
-    var months = {'January':'January','February':'February','March':'March','April':'April','May':'May','June':'June','July':'July','August':'August','September':'September','October':'October','November':'November','December':'December'};
-    @endif
 
     $(":file").filestyle({
         input: true,
@@ -146,6 +143,7 @@
     $('#category').select2();
     $('#branch').select2();
     $('#employee_id').select2();
+    $('#doctor').select2();
 
     var _select_html = "<select name='status'>" +
             "<option value selected>SELECT OPTION</option>" +
@@ -175,29 +173,104 @@
 
     $('.slimscroll').slimScroll();
     $('.menu').slimScroll({
-        height: 100,
+        height: 100
     });
 
 
+    var _file_url = '{{ url('files') }}';
 
-    //DEFINE LANGUAGE MESSAGES
+    //LANGUAGE TRANSLATE
     var _copy_text = '{{ trans('adminlte_lang::message.copy') }}';
     var _confirm_alert_text = '{{ trans('adminlte_lang::message.are_sure') }}';
     var _edit_text = '{{  trans('adminlte_lang::message.edit') }}';
     var _remove_text = '{{  trans('adminlte_lang::message.remove') }}';
     var _required_field_text = '{{  trans('adminlte_lang::message.required_field') }}';
     var _view_text = '{{ trans('adminlte_lang::message.view') }}';
+    var _preview_text = '{{ trans('adminlte_lang::message.preview') }}';
     var _download_text = '{{ trans('adminlte_lang::message.download') }}';
-    var _file_url = '{{ url('files') }}';
+    var _yes_text = '{{ trans('adminlte_lang::message.yes') }}';
+    var _no_text = '{{ trans('adminlte_lang::message.not') }}';
+    var _edit_consult_text = '{{ trans('adminlte_lang::message.update_consult_agenda') }}';
+    var _details_consult_text = '{{ trans('adminlte_lang::message.details_consult_agenda') }}';
+    var _add_consult_text = '{{ trans('adminlte_lang::message.new_consult_agenda') }}';
+    var _disable_text = '{{ trans('adminlte_lang::message.disable') }}';
+
+
+    var _today = '{{ trans('adminlte_lang::message.today') }}';
+    var _week = '{{ trans('adminlte_lang::message.week') }}';
+    var _day = '{{ trans('adminlte_lang::message.day') }}';
+    var _month = '{{ trans('adminlte_lang::message.month') }}';
+
+    var months = {
+        'January':'{{ trans('adminlte_lang::message.january') }}',
+        'February':'{{ trans('adminlte_lang::message.february') }}',
+        'March':'{{ trans('adminlte_lang::message.march') }}',
+        'April':'{{ trans('adminlte_lang::message.april') }}',
+        'May':'{{ trans('adminlte_lang::message.may') }}',
+        'June':'{{ trans('adminlte_lang::message.june') }}',
+        'July':'{{ trans('adminlte_lang::message.july') }}',
+        'August':'{{ trans('adminlte_lang::message.august') }}',
+        'September':'{{ trans('adminlte_lang::message.september') }}',
+        'October':'{{ trans('adminlte_lang::message.october') }}',
+        'November':'{{ trans('adminlte_lang::message.november') }}',
+        'December':'{{ trans('adminlte_lang::message.december') }}'
+    };
+
+    var _monthNames = ['{{ trans('adminlte_lang::message.january') }}',
+        '{{ trans('adminlte_lang::message.february') }}',
+        '{{ trans('adminlte_lang::message.march') }}',
+        '{{ trans('adminlte_lang::message.april') }}',
+        '{{ trans('adminlte_lang::message.may') }}',
+        '{{ trans('adminlte_lang::message.june') }}',
+        '{{ trans('adminlte_lang::message.july') }}',
+        '{{ trans('adminlte_lang::message.august') }}',
+        '{{ trans('adminlte_lang::message.september') }}',
+        '{{ trans('adminlte_lang::message.october') }}',
+        '{{ trans('adminlte_lang::message.november') }}',
+        '{{ trans('adminlte_lang::message.december') }}'
+    ];
+
+    var _monthNamesShort = ['{{ trans('adminlte_lang::message.jan') }}',
+        '{{ trans('adminlte_lang::message.feb') }}',
+        '{{ trans('adminlte_lang::message.mar') }}',
+        '{{ trans('adminlte_lang::message.apr') }}',
+        '{{ trans('adminlte_lang::message.may') }}',
+        '{{ trans('adminlte_lang::message.jun') }}',
+        '{{ trans('adminlte_lang::message.jul') }}',
+        '{{ trans('adminlte_lang::message.aug') }}',
+        '{{ trans('adminlte_lang::message.sep') }}',
+        '{{ trans('adminlte_lang::message.oct') }}',
+        '{{ trans('adminlte_lang::message.nov') }}',
+        '{{ trans('adminlte_lang::message.dec') }}'
+    ];
+
+    var _dayNames = ['{{ trans('adminlte_lang::message.sunday') }}',
+        '{{ trans('adminlte_lang::message.monday') }}',
+        '{{ trans('adminlte_lang::message.tuesday') }}',
+        '{{ trans('adminlte_lang::message.thursday') }}',
+        '{{ trans('adminlte_lang::message.wednesday') }}',
+        '{{ trans('adminlte_lang::message.friday') }}',
+        '{{ trans('adminlte_lang::message.saturday') }}'
+    ];
+
+    var _dayNamesShort = ['{{ trans('adminlte_lang::message.sun') }}',
+        '{{ trans('adminlte_lang::message.mon') }}',
+        '{{ trans('adminlte_lang::message.tue') }}',
+        '{{ trans('adminlte_lang::message.thu') }}',
+        '{{ trans('adminlte_lang::message.wed') }}',
+        '{{ trans('adminlte_lang::message.fri') }}',
+        '{{ trans('adminlte_lang::message.sat') }}'
+    ];
 
     //BRANCH WORK TIME
     var _min_time = '{{ $workTime != null ?  $workTime->start : '09:00:00'}}';
     var _max_time = '{{ $workTime  != null ?  $workTime->end : '18:00:00' }}';
 
-    var timezone = parseInt('{{ $system->timezone->value }}');
+    var timezone = '{!! $system->timezone !!}';
 
     function update() {
-        $('#clock').html(moment().utcOffset(timezone).format('- DD-MM-YYYY HH:mm:ss'));
+        var time = moment().tz(timezone).format('- DD-MM-YYYY HH:mm:ss');
+        $('#clock').html(time);
     }
     $(function () {
         setInterval(update, 1000);
@@ -205,7 +278,6 @@
 
     var _str = '{!! json_encode($WT, true) !!}';
     var _businessHours = $.parseJSON(_str);
-    //console.log(_businessHours);
 
 </script>
 
@@ -228,5 +300,6 @@
 <script src="{{ asset('/js/budget.js')}}" type="text/javascript"></script>
 <script src="{{ asset('/js/license.js')}}" type="text/javascript"></script>
 <script src="{{ asset('/js/files.js')}}" type="text/javascript"></script>
+<script src="{{ asset('/js/consult.js')}}" type="text/javascript"></script>
 
 

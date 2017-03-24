@@ -5,16 +5,16 @@
 $(function () {
 
     //UPDATE SYSTEM DATA
-    $('#edit-system').click(function () {
+    $(document).on('click','#edit-system',function () {
         save($('#system-form'),$('#system-form')[0],'update');
         //$(this).css('display', 'none');
        // $('#edit-system-button').removeAttr('style');
     });
 
 
-    $('#edit-system-button').click(function () {
+    $(document).on('click','#edit-system-button',function () {
         $(this).css('display', 'none');
-        fieldstatus('enable', $('#system-form'));
+        field_status_change('enable', $('#system-form'));
         $('#edit-system').removeAttr('style');
     });
 
@@ -136,7 +136,7 @@ $(function () {
 
 
 
-    $('#send').on('click',function () {
+    $(document).on('click','#send',function () {
         var company_form;
         var user_form;
         var system_form;
@@ -184,7 +184,11 @@ $(function () {
     }
 
     var menu = localStorage.getItem('menu');
+
+
+
     if(menu != undefined){
+        // console.log(menu);
         if(menu == 'active'){
             $('body').addClass('sidebar-collapse');
         }else{
@@ -192,7 +196,7 @@ $(function () {
         }
     }
 
-    $('.sidebar-toggle').click(function () {
+    $('.sidebar-toggle').on('click',function () {
         if($('body').hasClass('sidebar-collapse')){
             localStorage.setItem('menu','inactive');
         }else{
@@ -200,7 +204,7 @@ $(function () {
         }
     });
 
-    $('#has_secure').on('change',function () {
+    $(document).on('change','#has_secure',function () {
         if($(this).val() == 1){
             $('#secure_card').css('display','block');
         }else{
@@ -209,7 +213,7 @@ $(function () {
     });
 
     //ABOUT SYSTEM MODAL POPUP
-    $('#about_system').click(function () {
+    $(document).on('click','#about_system',function () {
         $('#modal').css('overflow','auto');
         console.log(($(window).height() - 100));
         $('#modal').find('.modal-content').css('height',($(window).height() - 100)+'px');
@@ -226,9 +230,9 @@ $(function () {
         $('#modal').find('.modal-body').css('height',($(window).height()-200)+'px');
     });
 
-    $('#modal').on('hidden.bs.modal', function () {
-        $('body').removeAttr('style');
-    });
+    // $('#modal').on('hidden.bs.modal', function () {
+    //     $('body').removeAttr('style');
+    // });
 
     $(".carousel").carousel();
 

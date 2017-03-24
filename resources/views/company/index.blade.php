@@ -39,7 +39,6 @@
 	            <div class="box-body">               
 		            <div class="row">
 		        		<div class="col-lg-3 text-center">
-							<b> {{ trans('adminlte_lang::message.logo') }}: </b>
 	        		       @if(isset($company->logo))
 		        		    	<img  src="{{ asset($company->logo) }}" class="img-thumbnail" alt="Cinque Terre" width="300" height="150">
 		        		    @else

@@ -23,8 +23,7 @@ class CheckAgenda
                 if ($item->date < $today){
                     $item->status = 3;
                     $item->save();
-                }
-                else if($item->date >= $today && $item->status == 3){
+                }else if($item->date >= $today && $item->status == 3){
                     $item->status = 1;
                     $item->save();
                 }

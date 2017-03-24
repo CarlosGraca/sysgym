@@ -49,14 +49,20 @@ class FileController extends Controller
             $file->name_original = $upload_file->getClientOriginalName();
             $file->full_path = 'uploads/'.$filename;
             $file->mime_type = $upload_file->getMimeType();
-            $file->media_type = $request->file_type;
+            $file->media_type = $upload_file->getClientOriginalExtension();
             $file->user_id = \Auth::user()->id;
             $file->flag = $request->flag;
             $file->item_id = $request->item_id;
+            $file->description = $request->description;
 
             //Move Uploaded File
             $destinationPath = 'uploads/';
             $upload_file->move($destinationPath,$filename);
+
+//            if(file_exists($file->full_path)){
+//                echo "Existe File <br>";
+//            die();
+//            }
 
             if($file->save()){
                 /*$patient_files = new PatientFiles();
@@ -73,11 +79,15 @@ class FileController extends Controller
             //echo $file->id;
         }
 
+        //echo $success;
+
         if (\Request::wantsJson() && $success ){
             $message = trans('adminlte_lang::message.msg_success_patient_files');
             return ['values'=>$file,'message'=>$message,'form'=>'files','type'=>'success'];
         }else{
-            $message = trans('adminlte_lang::message.msg_error_patient_files');
+//            print_r();
+//            die();
+            $message = trans('adminlte_lang::message.msg_error_patient_files').' <br> '.$request->file('file')->getErrorMessage();
             return ['values'=>$file,'message'=>$message,'form'=>'files','type'=>'error'];
         }
     }
@@ -183,12 +193,15 @@ class FileController extends Controller
                if(file_exists($file->full_path)) {
                    unlink($file->full_path);
                }
+           }else{
+               $message = trans('adminlte_lang::message.msg_error_deleted_patient_files');
+               return ['message'=>$message,'form'=>'files'];
            }
         //
 
         if (\Request::wantsJson()){
             $message = trans('adminlte_lang::message.msg_success_deleted_patient_files');
-            return ['values'=>$file->name,'message'=>$message,'form'=>'files'];
+            return ['message'=>$message,'form'=>'files'];
         }else{
             $message = trans('adminlte_lang::message.msg_success_deleted_patient_files');
             return ['values'=>$file,'message'=>$message,'form'=>'files'];

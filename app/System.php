@@ -8,9 +8,9 @@ class System extends Model
 {
     protected $table = 'system';
     public $timestamps = true;
-    protected $fillable = ['name','theme','lang','currency','layout','background_image'];
+    protected $fillable = ['name','theme','lang','currency','layout','background_image','timezone'];
 
-    public function timezone(){
-        return $this->belongsTo('App\TimeZone');
-    }
+//    public function timezone(){
+//        return $this->belongsTo('App\TimeZone');
+//    }
 }

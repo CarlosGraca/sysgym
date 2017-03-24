@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('htmlheader_title')
-    {{ trans('adminlte_lang::message.patient') }}
+    {{ trans('adminlte_lang::message.branch') }}
 @endsection
 
 @section('contentheader_title')
@@ -21,7 +21,7 @@
             <div class="box box-primary">
                 <div class="box-body box-profile">
                     <div class="text-center">
-                        <img class="thumbnail" src="{{ asset($company->logo) }}" style="max-width: 100%; width: 250px; margin: 0 auto; z-index: -1;">
+                        <img class="thumbnail" src="{{ asset($branch->avatar) }}" style="max-width: 100%; width: 250px; margin: 0 auto; z-index: -1;">
                         <i class="fa fa-camera" style="  position: absolute; left: 0; top: 50%; width: 100%; text-align: center;   font-size: 18px; display: none;"></i>
                     </div>
 
@@ -125,61 +125,77 @@
 
                                 <!-- OFFICE HOURS TABLE-->
                                 <div class="tab-pane" id="officeHours">
-                                <!--
-                                    <table id="table-office_hours" class="table table-bordered table-striped">
+                                {{--<!----}}
+                                    {{--<table id="table-office_hours" class="table table-bordered table-striped">--}}
 
-                                        <thead>
-                                        <th class="col-md-4">{{ trans('adminlte_lang::message.week_day') }}</th>
-                                        <th class="col-md-4">{{ trans('adminlte_lang::message.start_time') }}</th>
-                                        <th class="col-md-2">{{ trans('adminlte_lang::message.end_time') }}</th>
-                                        </thead>
+                                        {{--<thead>--}}
+                                        {{--<th class="col-md-4">{{ trans('adminlte_lang::message.week_day') }}</th>--}}
+                                        {{--<th class="col-md-4">{{ trans('adminlte_lang::message.start_time') }}</th>--}}
+                                        {{--<th class="col-md-2">{{ trans('adminlte_lang::message.end_time') }}</th>--}}
+                                        {{--</thead>--}}
 
-                                        <tbody>
-                                        @if(isset($schedules))
-                                            @foreach($schedules as $schedule)
-                                                <tr class="office_hours_tables" data-key="{{ $schedule->id }}">
-                                                    <td class="week_name" data-value="{{ $schedule->week_day }}">{{ trans('adminlte_lang::message.'.$schedule->week_day) }}</td>
-                                                    <td class="start_time" >{{ $schedule->start_time }}</td>
-                                                    <td class="end_time" >{{ $schedule->end_time }}</td>
-                                                </tr>
-                                            @endforeach
-                                        @endif
-                                        </tbody>
-                                    </table>
-                                    -->
+                                        {{--<tbody>--}}
+                                        {{--@if(isset($schedules))--}}
+                                            {{--@foreach($schedules as $schedule)--}}
+                                                {{--<tr class="office_hours_tables" data-key="{{ $schedule->id }}">--}}
+                                                    {{--<td class="week_name" data-value="{{ $schedule->week_day }}">{{ trans('adminlte_lang::message.'.$schedule->week_day) }}</td>--}}
+                                                    {{--<td class="start_time" >{{ $schedule->start_time }}</td>--}}
+                                                    {{--<td class="end_time" >{{ $schedule->end_time }}</td>--}}
+                                                {{--</tr>--}}
+                                            {{--@endforeach--}}
+                                        {{--@endif--}}
+                                        {{--</tbody>--}}
+                                    {{--</table>--}}
+                                    {{---->--}}
 
 
-                                    <table id="table-office_hours" class="table table-bordered table-striped">
 
-                                        <thead>
-                                            <th class="col-md-1" style="text-align: center">{{ trans('adminlte_lang::message.monday') }}</th>
-                                            <th class="col-md-1" style="text-align: center">{{ trans('adminlte_lang::message.tuesday') }}</th>
-                                            <th class="col-md-1" style="text-align: center">{{ trans('adminlte_lang::message.wednesday') }}</th>
-                                            <th class="col-md-1" style="text-align: center">{{ trans('adminlte_lang::message.thursday') }}</th>
-                                            <th class="col-md-1" style="text-align: center">{{ trans('adminlte_lang::message.friday') }}</th>
-                                            <th class="col-md-1" style="text-align: center">{{ trans('adminlte_lang::message.saturday') }}</th>
-                                            <th class="col-md-1" style="text-align: center">{{ trans('adminlte_lang::message.sunday') }}</th>
-                                        </thead>
-                                        <tbody>
+                                    {{--<div class="box box-default">--}}
+                                        {{--<div class="box-header with-border">--}}
+                                            {{--<h3 class="box-title"><i class="fa fa-clock-o"></i> {{ trans('adminlte_lang::message.office_hours') }}</h3>--}}
+                                            {{--<div class="pull-right box-tools">--}}
+                                                {{--<a href="#!print" class="btn btn-primary btn-sm" role="button" data-toggle="tooltip" title="{{ trans('adminlte_lang::message.print') }}">--}}
+                                                    {{--<i class="fa fa-print"></i>--}}
+                                                {{--</a>--}}
+                                            {{--</div>--}}
+                                        {{--</div><!-- /.box-header -->--}}
 
-                                        @if(isset($aux))
-                                            <tr>
-                                                @foreach($aux as $key => $item)
-                                                    <td style="text-align: center; padding: 2px;">
-                                                        @foreach($item as $i)
-                                                            <span> {{ $i['start_time'] }} </span>
-                                                            <hr>
-                                                            <span> {{ $i['end_time'] }} </span>
-                                                            <hr>
+                                        {{--<div class="box-body">--}}
+
+                                            <table id="table-office_hours" class="table table-bordered table-striped">
+
+                                                <thead>
+                                                    <th class="col-md-1" style="text-align: center">{{ trans('adminlte_lang::message.monday') }}</th>
+                                                    <th class="col-md-1" style="text-align: center">{{ trans('adminlte_lang::message.tuesday') }}</th>
+                                                    <th class="col-md-1" style="text-align: center">{{ trans('adminlte_lang::message.wednesday') }}</th>
+                                                    <th class="col-md-1" style="text-align: center">{{ trans('adminlte_lang::message.thursday') }}</th>
+                                                    <th class="col-md-1" style="text-align: center">{{ trans('adminlte_lang::message.friday') }}</th>
+                                                    <th class="col-md-1" style="text-align: center">{{ trans('adminlte_lang::message.saturday') }}</th>
+                                                    <th class="col-md-1" style="text-align: center">{{ trans('adminlte_lang::message.sunday') }}</th>
+                                                </thead>
+                                                <tbody>
+
+                                                @if(isset($aux))
+                                                    <tr>
+                                                        @foreach($aux as $key => $item)
+                                                            <td style="text-align: center; padding: 2px;">
+                                                                <hr style="margin-top: 0; border: 0px">
+                                                                @foreach($item as $i)
+                                                                    <span> {{ $i['start_time'] }} </span>
+                                                                    <hr>
+                                                                    <span> {{ $i['end_time'] }} </span>
+                                                                    <hr>
+                                                                @endforeach
+                                                            </td>
                                                         @endforeach
-                                                    </td>
-                                                @endforeach
-                                            </tr>
-                                        @endif
+                                                    </tr>
+                                                @endif
 
 
-                                        </tbody>
-                                    </table>
+                                                </tbody>
+                                            </table>
+                                        {{--</div>--}}
+                                    {{--</div>--}}
 
 
                                 </div>

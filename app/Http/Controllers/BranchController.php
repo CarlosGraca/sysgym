@@ -75,6 +75,16 @@ class BranchController extends Controller
         $branch->company_id = $company->id;
         $branch->user_id = Auth::user()->id;
 
+        if ($request->hasFile('avatar')){
+            $image = $request->file('avatar');
+            $filename  = time() . '.' . $image->getClientOriginalExtension();
+
+            $destinationPath = 'uploads/';
+            $image->move($destinationPath,$filename);
+
+            $company->logo = 'uploads/' . $filename;
+        }
+
         $branch->save();
 
 
@@ -144,8 +154,8 @@ class BranchController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  BranchRequest $request
+     * @param  Branch $branch
      * @return \Illuminate\Http\Response
      */
     public function update(BranchRequest $request, Branch $branch)
@@ -159,6 +169,23 @@ class BranchController extends Controller
         $branch->island_id = $request->island;
         $branch->city = $request->city;
         $branch->user_id = Auth::user()->id;
+
+        if ($request->hasFile('avatar')){
+
+            $image = $request->file('avatar');
+            $filename  = time() . '.' . $image->getClientOriginalExtension();
+
+            $path = 'uploads/';
+
+            if($branch->avatar && $branch->avatar != 'img/round-logo.jpg'){
+                if(file_exists($branch->avatar)){
+                    unlink($branch->avatar);
+                }
+            }
+
+            $image->move($path,$filename);
+            $branch->avatar = 'uploads/' . $filename;
+        }
 
         $branch->save();
 

@@ -8,10 +8,10 @@
 			<div class="modal-body"></div>
 			<div class="modal-footer">
                 <span class="pull-left">
-                &copy {{ date('Y') }} - <a href="{{ url('/') }}">{{ trans('adminlte_lang::message.app_name') }}</a> - Todos os Direitos Reservados
+                &copy {{ date('Y') }} - <a href="{{ url('/') }}">{{ trans('adminlte_lang::message.app_name') }}</a> - {{ trans('adminlte_lang::message.copyright') }}
                 </span>
                     <span class="pull-right">
-                    Versão: 1.0
+                    {{trans('adminlte_lang::message.version')}}:  {{ config('app.version') }}
                 </span>
 			</div>
 		</div>

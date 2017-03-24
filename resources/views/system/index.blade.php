@@ -65,7 +65,7 @@
 									<i class="fa fa-tv"></i> <b> {{ trans('adminlte_lang::message.layout') }}: </b><span class="nif">{{$system ? $system->layout : null}}</span>
 			                    </li>
 								<li class="list-group-item">
-									<i class="fa fa-clock-o"></i> <b> {{ trans('adminlte_lang::message.timezone') }}: </b><span class="timezone">{{$system ? $system->timezone->name : null}}</span>
+									<i class="fa fa-clock-o"></i> <b> {{ trans('adminlte_lang::message.timezone') }}: </b><span class="timezone">{{$system ? $timezone[$system->timezone] : null}}</span>
 								</li>
 			                </ul>
 		        		</div>

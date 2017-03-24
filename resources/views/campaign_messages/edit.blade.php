@@ -22,21 +22,16 @@
 	              <h3 class="box-title">
 	              	 <strong>{{ trans('adminlte_lang::message.category') }}: </strong><span>{{ $category->name }}</span>
 	              </h3>
-	              <div class="pull-right box-tools">
-	                    <a href="#"  class="btn btn-primary btn-sm" role="button" data-toggle="tooltip" title="Save">
-	                       <i class="fa fa-save"></i>
-	                     </a>
-	              </div><!-- /. tools -->
 
-								<div class="pull-right box-tools">
-										<a href="{{ url('category') }}" class="btn btn-primary btn-sm" role="button" data-toggle="tooltip" title="Voltar">
-											 <i class="fa  fa-arrow-left"></i>
-										</a>
+					<div class="pull-right box-tools">
+							<a href="{{ url('category') }}" class="btn btn-primary btn-sm" role="button" data-toggle="tooltip" title="Voltar">
+								 <i class="fa  fa-arrow-left"></i>
+							</a>
 
-										<a href="#" class="btn btn-primary btn-sm" role="button" data-toggle="tooltip" title="Save" id="edit-category">
-											 <i class="fa fa-save"></i>
-										</a>
-								</div><!-- /. tools -->
+							<a href="#" class="btn btn-primary btn-sm" role="button" data-toggle="tooltip" title="Save" id="edit-category">
+								 <i class="fa fa-save"></i>
+							</a>
+					</div><!-- /. tools -->
 	            </div><!-- /.box-header -->
 	            <div class="box-body">
 					{!! Form::model($category, ['method'=>'PATCH','route'=>['category.update', $category->id],'id'=>'category-form','files'=>true])!!}

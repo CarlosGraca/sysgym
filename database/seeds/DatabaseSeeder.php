@@ -14,7 +14,7 @@ class DatabaseSeeder extends Seeder
        // Eloquent::unguard();
         //$this->call(IslandTableSeeder::class);
         // $this->call(SystemSeeder::class);
-        $this->call(TimezoneTableSeeder::class);
+//        $this->call(TimezoneTableSeeder::class);
        
     }
 }

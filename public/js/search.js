@@ -21,13 +21,13 @@ $(function()
 					$.getJSON('/secure_card/'+secure_card_id, function(data){
                         $('#budget_without_secure').css('display','none');
                         $('#secure_agency_id').val(data.secure_agency_id);
-						$('#secure_agency').css('display','block');
-                        $('#budget_with_secure').css('display','block');
+						$('#secure_agency').removeAttr('style');
+                        $('#budget_with_secure').removeAttr('style');
 					});
 				}else{
                     $('#budget_with_secure').css('display','none');
                     $('#secure_agency').css('display','none');
-					$('#budget_without_secure').css('display','block');
+					$('#budget_without_secure').removeAttr('style');
 				}
 
 				$('#add-budget_consult').removeClass('disabled');

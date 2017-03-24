@@ -38,14 +38,14 @@
 		<div class="col-md-6 col-sm-12 col-xs-12">
 			<div class="form-group form-group-sm">
 				{!! Form::label('start_time','(*)'.trans('adminlte_lang::message.start_time') ) !!}
-				{!! Form::time('start_time', ($type == 'update' ? $consult_agenda->start_time : null) , ['class'=>'form-control']) !!}
+				{!! Form::time('start_time', ($type == 'update' ? $consult_agenda->start_time : null) , ['class'=>'form-control','step'=>'1']) !!}
 			</div>
 		</div>
 
 		<div class="col-md-6 col-sm-12 col-xs-12">
 			<div class="form-group form-group-sm">
 				{!! Form::label('end_time','(*)'.trans('adminlte_lang::message.end_time') ) !!}
-				{!! Form::time('end_time', ($type == 'update' ? $consult_agenda->end_time : null) , ['class'=>'form-control']) !!}
+				{!! Form::time('end_time', ($type == 'update' ? $consult_agenda->end_time : null) , ['class'=>'form-control','step'=>'1']) !!}
 			</div>
 		</div>
 	</div>

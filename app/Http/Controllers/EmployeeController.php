@@ -76,6 +76,7 @@ class EmployeeController extends Controller
      */
     public function store(EmployeeRequest $request)
     {
+        $default = new Defaults();
         $employee = new Employee();
         $employee->name = $request->name;
         $employee->email = $request->email;
@@ -104,17 +105,10 @@ class EmployeeController extends Controller
         $employee->doctor = $request->doctor_check;
 
         if ($request->hasFile('avatar')){
-            $image = $request->file('avatar');
-            $filename  = time() . '.' . $image->getClientOriginalExtension();
-
-            $path = public_path('uploads/' . $filename);
-
-            //Image::make($image->getRealPath())->resize(200, 200)->save($path);
-
-            $image->move($path,$filename);
-
-            $employee->avatar = 'uploads/' . $filename;
-
+            $img_base64 = $request->avatar_crop;
+            $filename = 'uploads/' .time().'.png';
+            $default->base64_to_png($img_base64, $filename);
+            $employee->avatar = $filename;
         }
 
         $employee->has_secure = $request->has_secure;
@@ -192,6 +186,7 @@ class EmployeeController extends Controller
      */
     public function update(EmployeeRequest $request, Employee $employee)
     {
+        $default = new Defaults();
         $employee->name = $request->name;
         $employee->email = $request->email;
         $employee->address = $request->address;
@@ -221,10 +216,10 @@ class EmployeeController extends Controller
         $employee->has_secure = $request->has_secure;
 
         if ($request->hasFile('avatar')){
-            $image = $request->file('avatar');
-            $filename  = time() . '.' . $image->getClientOriginalExtension();
 
-            $path = public_path('uploads/' . $filename);
+            $img_base64 = $request->avatar_crop;
+            $filename = 'uploads/' .time().'.png';
+            $default->base64_to_png($img_base64, $filename);
 
 
             if($employee->avatar && $employee->avatar != 'img/avatar.png'){
@@ -233,14 +228,11 @@ class EmployeeController extends Controller
                 }
             }
 
-            //Image::make($image->getRealPath())->resize(200, 200)->save($path);
-            $image->move($path,$filename);
-
-            $employee->avatar = 'uploads/' . $filename;
+            $employee->avatar = $filename;
             $user = User::where('employee_id',$employee->id)->first();
 
             if (isset($user)){
-                $user->avatar = 'uploads/' . $filename;
+                $user->avatar = $filename;
                 $user->save();
             }
         }
@@ -275,21 +267,53 @@ class EmployeeController extends Controller
 
         if (Request::wantsJson()){
             $message = trans('adminlte_lang::message.msg_update_success_employee');
-            return ['values'=>$employee->id,'message'=>$message,'form'=>'employee'];
+            return ['values'=>$employee->id,'message'=>$message,'form'=>'employee','type'=>'success'];
         }else{
             //return view('employees.create');
         }
     }
 
     /**
-     * Remove the specified resource from storage.
+     * Disable the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  Request $request
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function disable(Request $request)
     {
-        //
+        if(!$this->can_disable(\Input::get('id'))){
+            $message = trans('adminlte_lang::message.msg_error_disable_employee');
+            return ['status_color'=>'bg-danger','message'=>$message,'form'=>'employee', 'type'=>'error'];
+        }
+
+        $patient = Employee::where('id',\Input::get('id'))->first();
+        $patient->status = 0;
+
+        if (Request::wantsJson() && $patient->save()){
+            $message = trans('adminlte_lang::message.msg_success_disable_employee');
+            return ['status_color'=>'bg-danger','message'=>$message,'form'=>'employee', 'type'=>'success'];
+        }else{
+            return redirect('employees');
+        }
+    }
+
+    /**
+     * Enable the specified resource from storage.
+     *
+     * @param  Request $request
+     * @return \Illuminate\Http\Response
+     */
+    public function enable(Request $request)
+    {
+        $patient = Employee::where('id',\Input::get('id'))->first();
+        $patient->status = 1;
+
+        if (Request::wantsJson() && $patient->save()){
+            $message = trans('adminlte_lang::message.msg_success_enable_employee');
+            return ['status_color'=>'bg-success','message'=>$message,'form'=>'employee','type'=>'success'];
+        }else{
+            return redirect('employees');
+        }
     }
 
     public function getEmployee($id){
@@ -303,5 +327,18 @@ class EmployeeController extends Controller
             return true;
         }
         return false;
+    }
+
+
+    private function can_disable($id){
+
+        $consult_agenda = \DB::select( \DB::raw("SELECT id FROM consult_agenda WHERE consult_agenda.doctor_id = $id AND status NOT IN (0,3) ") );
+
+        if(count($consult_agenda) > 0){
+            return false;
+        }
+
+        return true;
+
     }
 }

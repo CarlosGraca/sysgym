@@ -58,13 +58,6 @@
                                         </button>
                                         <a href="{{ route('consult_agenda.edit',$agenda->id) }}"  data-toggle="modal" class="btn btn-primary btn-xs" data-toggle="tooltip" title="Editar" data-remote='true'])>   <i class="fa fa-edit"></i>
                                             </a>
-                                        <!--
-                                            <a href="{{ url('tests/pdf/') }}/{{$agenda->id}}" target="_blank" class="btn btn-primary btn-xs", data-toggle="tooltip" title="Pdf" ])>   <i class="fa fa-file-pdf-o"></i>
-                                            </a>
-
-                                        <a href="{{ route('consult_agenda.edit',$agenda->id) }}" class="btn btn-primary btn-xs", data-toggle="tooltip" title="Email" data-remote='true'])>   <i class="fa fa-send"></i>
-                                        </a>
-                                            -->
                                     </td>
                                 </tr>
                             @endforeach

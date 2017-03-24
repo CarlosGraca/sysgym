@@ -23,8 +23,7 @@ class CreateTableSystem extends Migration
             $table->string('background_image')->default('img/photo1.png');
             $table->string('status')->default(1);
             $table->timestamps();
-            $table->integer('timezone_id')->unsigned();
-            $table->foreign('timezone_id')->references('id')->on('timezone');
+            $table->string('timezone')->default('Atlantic/Cape_Verde');
         });
     }
 

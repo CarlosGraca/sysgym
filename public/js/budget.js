@@ -4,7 +4,7 @@
 $(function () {
 
 
-    $('#add-budget_consult').on('click', function () {
+    $(document).on('click','#add-budget_consult', function () {
         var consult_type_id = $('#budget_consult_type_id').val();
         if (consult_type_id == '') {
             toastr.error('SELECT CONSULT TYPE', {timeOut: 5000}).css("width", "500px");
@@ -76,10 +76,29 @@ $(function () {
 //$('#table-budget').dataTable();
 
     $(document).on('click', '.remover_item', function () {
-        var _can = confirm('Are you sure?');
-
-        if(_can)
-            removeBudgetTableValues($(this));
+        // var _can = confirm('Are you sure?');
+        var remove = $(this);
+        bootbox.confirm({
+            title: _confirm_alert_text,
+            message: _confirm_alert_text,
+            //size: 'small',
+            buttons: {
+                confirm: {
+                    label: _yes_text,
+                    className: 'btn-success'
+                },
+                cancel: {
+                    label: _no_text,
+                    className: 'btn-danger'
+                }
+            },
+            callback: function (result) {
+                if (result == true) {
+                    // if(_can)
+                    removeBudgetTableValues(remove);
+                }
+            }
+        });
        /* var tr_parent = $(this).parent().parent();
 
         var total = parseFloat($('#sum-total').attr('data-value')) - parseFloat(tr_parent.attr('data-total'));
@@ -103,23 +122,45 @@ $(function () {
     }
 
 
-    $('#reset-budget').on('click', function () {
+    $(document).on('click','#reset-budget', function () {
 
         var _remover = $('.remover_item');
 
-        _remover.each(function () {
-            removeBudgetTableValues($(this));
+        bootbox.confirm({
+            title: _confirm_alert_text,
+            message: _confirm_alert_text,
+            //size: 'small',
+            buttons: {
+                confirm: {
+                    label: _yes_text,
+                    className: 'btn-success'
+                },
+                cancel: {
+                    label: _no_text,
+                    className: 'btn-danger'
+                }
+            },
+            callback: function (result) {
+                if (result == true) {
+
+                    _remover.each(function () {
+                        removeBudgetTableValues($(this));
+                    });
+
+                    $('#budget-form').trigger('reset');
+                    $('.avatar-patient').attr('src', '/img/avatar.png');
+
+                    $('#secure_agency').css('display', 'none');
+
+                    $('#budget_with_secure').css('display','none');
+                    $('#budget_without_secure').css('display','none');
+
+                }
+            }
         });
-
-        $('#budget-form').trigger('reset');
-        $('.avatar-patient').attr('src','/img/avatar.png');
-
-        $('#secure_agency').css('display','none');
     });
 
-});
-//CONSULT GET TEETH FUNCTIONS
-$(function () {
+    //CONSULT GET TEETH FUNCTIONS
     $.contextMenu({
         selector: '#context-menu-one',
         callback: function(key, options) {
@@ -128,8 +169,8 @@ $(function () {
         },
         items: {
             "edit": {name: "Edit", icon: "edit"},
-             "cut": {name: "Cut", icon: "cut"},
-             copy: {name: "Copy", icon: "copy"},
+            "cut": {name: "Cut", icon: "cut"},
+            copy: {name: "Copy", icon: "copy"},
             "paste": {name: "Paste", icon: "paste"},
             "delete": {name: "Delete", icon: "delete"},
             "sep1": "---------",
@@ -138,6 +179,7 @@ $(function () {
             }}
         }
     });
+
 });
 
 function removeBudgetTableValues(_item) {

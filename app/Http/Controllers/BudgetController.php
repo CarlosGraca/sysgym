@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\ConsultType;
+use App\Employee;
 use App\SecureAgency;
 use Illuminate\Http\Request;
 
@@ -41,7 +42,10 @@ class BudgetController extends Controller
         //CONSULT TYPE ARRAY DATA TO SELECT
         $secure_agency = SecureAgency::pluck('name','id');
 
-        return view('budget.create',compact('consult_type','secure_agency'));
+        //DOCTOR ARRAY DATA TO SELECT
+        $doctor = Employee::where('doctor',1)->pluck('name','id');
+
+        return view('budget.create',compact('consult_type','secure_agency','doctor'));
     }
 
     /**

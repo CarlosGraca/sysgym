@@ -26,7 +26,7 @@ class ConsultAgenda extends Model
         return $this->belongsTo('App\Employee');
     }
 
-    public function type(){
+    public function consult_type(){
         return $this->belongsTo('App\ConsultType');
     }
 

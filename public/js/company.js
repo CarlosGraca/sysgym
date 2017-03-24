@@ -7,13 +7,13 @@ $(function () {
     $('#edit-company').click(function(){
         save($('#company-form'),$('#company-form')[0],'update');
         $(this).css('display', 'none');
-        fieldstatus('disable',$('#company-form'));
+        field_status_change('disable',$('#company-form'));
         $('#edit-company-button').removeAttr('style');
     });
 
     $('#edit-company-button').click(function () {
         $(this).css('display', 'none');
-        fieldstatus('enable',$('#company-form'));
+        field_status_change('enable',$('#company-form'));
         $('#edit-company').removeAttr('style');
     });
 

@@ -120,14 +120,47 @@ class UserController extends Controller
     }
 
     /**
-     * Remove the specified resource from storage.
+     * Disable the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  Request $request
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function disable(Request $request)
     {
-        //
+
+        if(\Input::get('id') == Auth::user()->id){
+            $message = trans('adminlte_lang::message.msg_error_disable_user');
+            return ['message'=>$message,'form'=>'user','type'=>'error'];
+        }
+
+        $user = User::where('id',\Input::get('id'))->first();
+        $user->status = 0;
+
+        if (\Request::wantsJson() && $user->save()){
+            $message = trans('adminlte_lang::message.msg_success_disable_user');
+            return ['status_color'=>'bg-danger','message'=>$message,'form'=>'user'];
+        }else{
+            return redirect('users');
+        }
+    }
+
+    /**
+     * Enable the specified resource from storage.
+     *
+     * @param  Request $request
+     * @return \Illuminate\Http\Response
+     */
+    public function enable(Request $request)
+    {
+        $user = User::where('id',\Input::get('id'))->first();
+        $user->status = 1;
+
+        if (\Request::wantsJson() && $user->save()){
+            $message = trans('adminlte_lang::message.msg_success_enable_user');
+            return ['status_color'=>'bg-success','message'=>$message,'form'=>'user'];
+        }else{
+            return redirect('users');
+        }
     }
 
     /**
@@ -232,6 +265,9 @@ class UserController extends Controller
             }
         }
     }
+
+
+
 
 
 }

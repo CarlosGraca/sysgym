@@ -22,6 +22,7 @@ class SystemSeeder extends Seeder
                 'currency'  => 'CVE',
                 'layout'    => 'fixed',
                 'status'    => '2',
+                'timezone'  => 'Atlantic/Cape_Verde',
             ]);
     }
 }

@@ -24,42 +24,30 @@
 				<div class="col-lg-12">
 					<div class="box box-default">
 						<div class="box-header with-border">
-							<h3 class="box-title">Agenda List</h3>
+							<h3 class="box-title">Consult Agenda List</h3>
+							<div class="pull-right box-tools">
+                                <label for="datepicker" class="add-on"><i class="icon-calendar"></i></label>
+                                {{--<input type="button" class="btn btn-primary btn-sm " value="{{ \Carbon\Carbon::now()->format('d/m/Y') }}" id="datepicker" style='margin-right:5px;' data-toggle="tooltip" title="Date range"/>--}}
+							</div>
 						</div>
 						<div class="box-body no-padding">
 							<!-- Custom tabs -->
 							<div class="nav-tabs-custom">
 								<ul class="nav nav-tabs">
-									<li class="active"><a href="#tab_1" data-toggle="tab">CONSULT TO CONFIRM</a></li>
-									<li><a href="#tab_2" data-toggle="tab">CONSULT CANCELED</a></li>
+									<li class="active"><a href="#consult_confirm" data-toggle="tab"><img src="{{asset('/img/icon/calendar_scheduled.png')}}" alt=""> CONSULT SCHEDULED</a></li>
+									<li><a href="#consult_cancel" data-toggle="tab"><i class="fa fa-calendar-times-o"></i> CONSULT CANCELED</a></li>
 									<li class="pull-right"></li>
 								</ul>
 								<div class="tab-content">
-									<div class="tab-pane active" id="tab_1"  style="position: relative; height: 250px;">
+									<div class="tab-pane active" id="consult_confirm"  style="position: relative; height: 250px;">
 
-										@if(count($agenda) == 0)
-											<div class="text-center">
-												<img src="{{ asset('img/no_agenda_regist.png') }}" alt="" style="margin: 20px 0;">
-												<p>Congratulations! <br>All consult agenda for today is already confirmed.</p>
-											</div>
-
-										@else
-											@include('components.consult_agenda_list',['consult_agenda'=>$agenda,'table_name'=>'table_row_confirm','type'=>'confirm'])
-										@endif
+										@include('consult_agenda.confirm_consult_list')
 
 									</div>
 									<!-- /.tab-pane -->
-									<div class="tab-pane" id="tab_2"  style="position: relative; height: 250px;">
+									<div class="tab-pane" id="consult_cancel"  style="position: relative; height: 250px;">
 
-										@if(count($canceled) == 0)
-											<div class="text-center">
-												<img src="{{ asset('img/no_agenda_regist.png') }}" alt="" style="margin: 20px 0;">
-												<p>Congratulations! <br>No Consult Canceled.</p>
-											</div>
-
-										@else
-											@include('components.consult_agenda_list',['consult_agenda'=>$canceled,'table_name'=>'table_row_cancel','type'=>'cancel'])
-										@endif
+										@include('consult_agenda.cancel_consult_list')
 
 									</div>
 									<!-- /.tab-pane -->

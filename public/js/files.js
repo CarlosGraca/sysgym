@@ -10,9 +10,11 @@ $(function () {
 
         if(_file.val() == ''){
             toastr.error('no file browsed',{timeOut: 5000} ).css("width","500px");
-        }else if($('#file_type').val() == ''){
-            toastr.error('no type file selected',{timeOut: 5000} ).css("width","500px");
-        }else{
+        }
+        // else if($('#file_type').val() == ''){
+        //     toastr.error('no type file selected',{timeOut: 5000} ).css("width","500px");
+        // }
+        else{
             save($('#files-form'), $('#files-form')[0], 'create');
         }
     });
@@ -30,9 +32,7 @@ $(function () {
 
        // $('#modal').find('.modal-body').find('.preview-image').attr('style','max-height: 100%;height: 400px; width: auto; margin: 0 auto; z-index: -1;');
 
-
         $('#modal').modal();
-
 
 
         $('#modal').find('.modal-body').slimScroll({
@@ -43,20 +43,43 @@ $(function () {
     });
 
     $(document).on('click','.file-remove',function () {
-        var _alert = confirm('Are you sure?');
+
+        // var _alert = confirm('Are you sure?');
         var _tr_element = $(this).parent().parent();
+        var _this = $(this);
 
-       // $('#confirmDelete').modal();
+        bootbox.confirm({
+            title: _confirm_alert_text,
+            message: 'This action can not be undone',
+            //size: 'small',
+            buttons: {
+                confirm: {
+                    label: _yes_text,
+                    className: 'btn-success'
+                },
+                cancel: {
+                    label: _no_text,
+                    className: 'btn-danger'
+                }
+            },
+            callback: function (result) {
+                if (result == true) {
 
-        //console.log(_tr_element);
-        if (_alert){
-           // remove_table_schedule_data(_element);
-            $.get($(this).attr('data-url'),function (data) {
-                console.log(_tr_element);
-                _tr_element.remove();
-                toastr.success(data.message,{timeOut: 5000} ).css("width","300px");
-            },"json");
-        }
+                    // console.log(_this.attr('data-url'));
+                    // if (_alert){
+                    // remove_table_schedule_data(_element);
+                    $.get(_this.attr('data-url'), function (data) {
+                        // console.log(data.message);
+                        _tr_element.remove();
+                        toastr.success(data.message, {timeOut: 5000}).css("width", "300px");
+                    }, "json");
+
+                }else{
+
+                }
+            }
+        });
+
 
     });
     
@@ -82,12 +105,18 @@ function file_table_data(value) {
     * 
     * */
 
+    var arr = ['jpeg', 'jpg', 'gif', 'png', 'pdf'];
+
+    // console.log(value["media_type"]);
+    // console.log($.inArray(value["media_type"],arr) );
+
     table.append(
         '<tr class="file_document" data-key="' + value["id"] + '">' +
         '<td class="name_original">' + value["name_original"] + '</td>' +
+        '<td class="description">' + value["description"] + '</td>' +
         '<td class="media_type" style="text-align: center" >' + value["media_type"] + '</td>' +
         '<td class="action_button"> ' +
-            '<a href="#!preview" class="file-preview" data-url="'+_file_url+'/'+value["id"]+'/preview" data-toggle="tooltip" title="'+_view_text+'" style="visibility: ' + (value["media_type"] != "doc" ? "visible" : "hidden") +';" ><i class="fa fa-eye"></i></a> ' +
+            '<a href="#!preview" class="file-preview" data-url="'+_file_url+'/'+value["id"]+'/preview" data-toggle="tooltip" title="'+_preview_text+'" style="visibility: ' + ( $.inArray(value["media_type"],arr)  != -1 ? "visible" : "hidden") +';" ><i class="fa fa-eye"></i></a> ' +
             '<a href="'+_file_url+'/'+value["id"]+'/download" class="edit_schedule" data-toggle="tooltip" title="'+_download_text+'"><i class="fa fa-download"></i></a> ' +
             '<a href="#!remove" class="file-remove" data-url="'+_file_url+'/'+value["id"]+'/remove" data-toggle="tooltip" title="'+_remove_text+'"><i class="fa fa-trash"></i></a> ' +
         '</td>' +

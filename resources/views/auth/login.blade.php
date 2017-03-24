@@ -11,20 +11,32 @@
             <a href="{{ url('/home') }}"><b>Odont</b>Soft</a>
         </div><!-- /.login-logo -->
 
-    @if (count($errors) > 0)
-        <div class="alert alert-danger">
-            <strong>Whoops!</strong> {{ trans('adminlte_lang::message.someproblems') }}<br><br>
-            <ul>
-                @foreach ($errors->all() as $error)
-                    <li>{{ $error }}</li>
-                @endforeach
-            </ul>
-        </div>
-    @endif
+
+        @if (count($errors) > 0)
+            <div class="alert alert-danger">
+                <strong>Whoops!</strong> {{ trans('adminlte_lang::message.someproblems') }}<br><br>
+                <ul>
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
+
+        @if ( session('status') )
+            <div class="alert alert-info alert-dismissible" role="info">
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <strong><i class="fa fa-info-circle"></i></strong> {{ session('status') }}
+            </div>
+
+            {{--<div class="alert alert-info">--}}
+                {{--<i class="fa fa-info-circle"></i> <span class="text-center">{{ session('status') }}</span>--}}
+            {{--</div>--}}
+        @endif
 
     <div class="login-box-body">
     <p class="login-box-msg"> {{ trans('adminlte_lang::message.siginsession') }} </p>
-    <form action="{{ url('/login') }}" method="post">
+    <form action="{{ url('/login') }}" method="post" id="form-login">
         <input type="hidden" name="_token" value="{{ csrf_token() }}">
         <div class="form-group has-feedback">
             <input type="email" class="form-control" placeholder="{{ trans('adminlte_lang::message.email') }}" name="email"/>
@@ -46,7 +58,7 @@
                 </div>
             </div><!-- /.col -->
             <div class="col-xs-5">
-                <button type="submit" class="btn btn-primary btn-block btn-flat">{{ trans('adminlte_lang::message.buttonsign') }} <i class="fa fa-sign-in"></i></button>
+                <button type="submit" class="btn btn-primary btn-block btn-flat submit">{{ trans('adminlte_lang::message.buttonsign') }} <i class="fa fa-sign-in"></i></button>
             </div><!-- /.col -->
         </div>
     </form>

@@ -34,11 +34,12 @@ class SystemController extends Controller
         $default = new Defaults();
         $system = System::All()->first();
         $lang = $default->getLang();
+        $timezone = $default->getTimezone();
 
         if (Request::wantsJson()){
             return $system;
         }else{
-            return view('system.index',compact('system','lang'));
+            return view('system.index',compact('system','lang','timezone'));
         }
     }
 
@@ -54,7 +55,9 @@ class SystemController extends Controller
         $lang = $default->getLang();
         $currency = $default->getCurrency();
         $layout = $default->getLayout();
-        $timezone = TimeZone::pluck('name','id');
+//        $timezone = TimeZone::pluck('name','id');
+        $timezone = $default->getTimezone();
+
         return view('system.create',compact('theme','layout','currency','lang','timezone'));
     }
 
@@ -111,7 +114,8 @@ class SystemController extends Controller
         $lang = $default->getLang();
         $currency = $default->getCurrency();
         $layout = $default->getLayout();
-        $timezone = TimeZone::pluck('name','id');
+//        $timezone = TimeZone::pluck('name','id');
+        $timezone = $default->getTimezone();
         return view('system.edit',compact('theme','layout','currency','lang','system','timezone'));
     }
 
@@ -129,7 +133,7 @@ class SystemController extends Controller
         $system->lang = $request->lang;
         $system->theme = $request->theme;
         $system->layout = $request->layout;
-        $system->timezone_id = $request->timezone;
+        $system->timezone = $request->timezone;
 
         if($request->status != ""){
             $system->status = $request->status;
@@ -159,7 +163,7 @@ class SystemController extends Controller
 
         if (Request::wantsJson()){
             $message = trans('adminlte_lang::message.msg_success_system');
-            return ['values'=>$system->name,'message'=>$message,'form'=>'system','type'=>'success','timezone'=>$system->timezone->value];
+            return ['values'=>$system->name,'message'=>$message,'form'=>'system','type'=>'success','timezone'=>$system->timezone];
         }else{
             return redirect('system');
         }

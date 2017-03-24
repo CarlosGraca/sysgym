@@ -12,6 +12,11 @@
   {{ trans('adminlte_lang::message.branches') }}
 @endsection
 
+<?php
+$status = [trans('adminlte_lang::message.deleted'),trans('adminlte_lang::message.active'),trans('adminlte_lang::message.expired')];
+$status_color = ['danger','success','info'];
+?>
+
 
 @section('main-content')
 	<div class="row">
@@ -28,7 +33,7 @@
 	            </div><!-- /.box-header -->
 
 	            <div class="box-body">
-	                <table id="table-branches" class="table table-bordered table-striped table-design">
+	                <table id="table-branches" class="table table-hover table-design">
 		                <thead>
 		                  <tr>
 		                    {{--<th style="width: 10px" class="col-md-1">#</th>--}}
@@ -41,7 +46,7 @@
 		                </thead>
 		                <tbody>
                           @foreach ($branches as $branch)
-                                <tr>
+                                <tr class="bg-{{$status_color[$branch->status]}}">
                                     {{--<td>{{$branch->id}}</td>--}}
                                     <td>{{$branch->name}}</td>
                                     <td>{{$branch->email}}</td>

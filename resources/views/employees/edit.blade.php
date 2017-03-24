@@ -22,12 +22,6 @@
 	              <h3 class="box-title">
 	              	 <strong>{{ trans('adminlte_lang::message.employee') }}: </strong><span>{{ $employee->name }}</span>
 	              </h3>
-	              <div class="pull-right box-tools">
-	                    <a href="#"  class="btn btn-primary btn-sm" role="button" data-toggle="tooltip" title="Save">
-	                       <i class="fa fa-save"></i>
-	                     </a>
-	              </div><!-- /. tools -->
-
 					<div class="pull-right box-tools">
 							<a href="{{ \Illuminate\Support\Facades\URL::previous() }}" class="btn btn-primary btn-sm" role="button" data-toggle="tooltip" title="{{ trans('adminlte_lang::message.back') }}">
 								 <i class="fa  fa-arrow-left"></i>

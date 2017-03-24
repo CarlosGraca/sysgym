@@ -3,33 +3,6 @@
  */
 
 
-$(document).on('change', ':file', function() {
-    var type = $(this).parent().attr('data-type');
-    var avatar = $('.avatar');
-
-    switch (type){
-        case 'system':
-            changeBackground(this);
-            avatar = $('.avatar-system')
-            break;
-        case 'company':
-            avatar = $('.avatar-company');
-            break;
-        case 'user':
-            avatar = $('.avatar-user');
-            break;
-
-        case 'patient':
-            avatar = $('.avatar-patient');
-            break;
-
-        case 'employee':
-            avatar = $('.avatar-employee');
-            break;
-    }
-    readURL(this,avatar);
-});
-
 //FUNCTION TO GET IMAGE LOCATION AND PUT TO USER SEE
 function readURL(input,preview) {
     if (input.files && input.files[0]) {
@@ -138,30 +111,34 @@ function save(_form,_form_data,form_type,_branches_schedule) {
                             var patient_url = $('#patient_detail').attr('href');
                             $('#patient_detail').attr('href',patient_url+'/'+data.id);
                             $('#patient_detail').removeAttr('style');
-                            fieldstatus('disable',$('#patient-form'));
+                            field_status_change('disable',$('#patient-form'));
                         }else{
-                            fieldstatus('disable',$('#patient-form'));
+                            field_status_change('disable',$('#patient-form'));
                         }
                     
                     break;
 
                 case 'system':
                         $('#edit-system').css('display','none');
-                        fieldstatus('disable',$('#system-form'));
+                        field_status_change('disable',$('#system-form'));
                         $('#edit-system-button').removeAttr('style');
                         timezone = data.timezone;
                     break;
 
                 case 'employee':
-                        $('#add-employee').css('display','none');
-                        $('#edit-employee').css('display','none');
+                    if(data.type=='success') {
+                        $('#add-employee').css('display', 'none');
+                        $('#edit-employee').css('display', 'none');
                         $('#edit-employee-button').removeAttr('style');
-                        if(form_type == 'create'){
+                        if (form_type == 'create') {
                             var employee_url = $('#patient_detail').attr('href');
-                            $('#employee_detail').attr('href',employee_url+'/'+data.values);
+                            $('#employee_detail').attr('href', employee_url + '/' + data.values);
                             $('#employee_detail').removeAttr('style');
-                            fieldstatus('disable',$('#employee-form'));
+                            field_status_change('disable', $('#employee-form'));
+                        } else {
+                            field_status_change('disable', $('#employee-form'));
                         }
+                    }
                     break;
                 case 'category':
                     $('#add-category').css('display','none');
@@ -196,26 +173,33 @@ function save(_form,_form_data,form_type,_branches_schedule) {
                     //$('#modal').find('#add-consult_agenda').css('display','none');
                     //$('#modal').find('#edit-consult_agenda').css('display','none');
                    // $('#modal').modal('hide');
-                    if(form_type=='create'){
-                        $('#add-consult_agenda').css('display', 'none');
-                    }else{
-                        $('#edit-consult_agenda').css('display', 'none');
+                    if(data.type != 'error'){
+
+                        if(form_type=='create'){
+                            $('#add-consult_agenda').css('display', 'none');
+                        }else{
+                            $('#edit-consult_agenda').css('display', 'none');
+                        }
+
+                        field_status_change('disable',$('#consult_agenda-form'));
+                        $('#edit-consult_agenda-button').removeAttr('style');
+
+                        $('#calendar').fullCalendar('refetchEvents');
+                        $('#consult_confirm').load('confirm_list');
+                        $('#consult_cancel').load('cancel_list');
                     }
 
-                    fieldstatus('disable',$('#consult_agenda-form'));
-                    $('#edit-consult_agenda-button').removeAttr('style');
 
-                    $('#calendar').fullCalendar('refetchEvents');
                     break;
 
                 case 'license_generator':
-                        fieldstatus('disable',$('#license-generator-form'));
+                        field_status_change('disable',$('#license-generator-form'));
                         $('#generate-license').css('display','none');
                     break;
 
                 case 'license':
                     if(data.type == 'success'){
-                        fieldstatus('disable',$('#license-form'));
+                        field_status_change('disable',$('#license-form'));
                         $('#add-license').css('display','none');
                     }
                     break;
@@ -265,7 +249,71 @@ function save(_form,_form_data,form_type,_branches_schedule) {
     return false;
 }
 
+
+
+
 $(function () {
+   //  $uploadCrop = $('#image-croppie').croppie(
+   //      {
+   //          enableExif: true,
+   //          viewport: {
+   //              width: 200,
+   //              height: 200,
+   //              type: 'circle'
+   //          },
+   //          boundary: {
+   //              width: 300,
+   //              height: 300
+   //          }
+   //      }
+   //  );
+   // console.log($uploadCrop);
+
+    $(document).on('change', ':file', function() {
+        var type = $(this).parent().attr('data-type');
+        var crop = $(this).parent().attr('data-crop');
+        var avatar = $('.avatar');
+
+
+        switch (type){
+            case 'system':
+                changeBackground(this);
+                avatar = $('.avatar-system')
+                break;
+            case 'company':
+                avatar = $('.avatar-company');
+                break;
+            case 'branch':
+                avatar = $('.avatar-branch');
+                break;
+            case 'user':
+                avatar = $('.avatar-user');
+                break;
+        
+            case 'patient':
+                avatar = $('.avatar-patient');
+                break;
+        
+            case 'employee':
+                avatar = $('.avatar-employee');
+                break;
+        }
+
+        if(crop != undefined) {
+            var reader = new FileReader();
+            reader.onload = function (e) {
+                $('#croppie_modal').modal('show')
+                    .find('.modal-body')
+                    .load('/croppie', {type: type, src: e.target.result});
+            }
+            reader.readAsDataURL(this.files[0]);
+        }else{
+            readURL(this,avatar);
+        }
+        
+
+
+    });
 
     //GET INPUT KEYDOWN VALUE
     $(':input').keyup(function (e) {
@@ -325,7 +373,8 @@ $(function () {
 
 });
     
-function fieldstatus(action,_form) {
+//
+function field_status_change(action,_form) {
     var inputs = _form.find(':input');
     if (action == 'disable') {
         inputs.each(function () {
@@ -339,3 +388,61 @@ function fieldstatus(action,_form) {
         });
     }
 }
+
+
+//FUNCTION TO DISABLE AND ENABLE STATUS
+function change_status(_id, _type, _name_item, _tr, url, _tr_class, _form) {
+    bootbox.confirm({
+        title: ' <i> ' + _type.toUpperCase() + ' '+_form.toUpperCase()+ ' <strong>'+ _name_item.toUpperCase() + '</strong></i> ?',
+        message: _confirm_alert_text,
+        //size: 'small',
+        buttons: {
+            confirm: {
+                label: _yes_text,
+                className: 'btn-success'
+            },
+            cancel: {
+                label: _no_text,
+                className: 'btn-danger'
+            }
+        },
+        callback: function (result) {
+            if(result == true){
+
+                $.ajax({
+                    type: 'POST',
+                    url: url,
+                    data: {id: _id},
+                    dataType: 'json',
+                    success: function (data) {
+                        if (data.type == 'error'){
+                            toastr.error(data.message, {timeOut: 5000}).css("width", "300px");
+                        }else{
+                            toastr.success(data.message, {timeOut: 5000}).css("width", "300px");
+
+                            if(_type == 'enable'){
+                                _tr.parent().find('#update-'+_form).css('display','initial');
+                                _tr.parent().find('#enable-'+_form).css('display','none');
+                                _tr.parent().find('#disable-'+_form).css('display','initial');
+
+                            }else if(_type == 'disable'){
+                                _tr.parent().find('#update-'+_form).css('display','none');
+                                _tr.parent().find('#enable-'+_form).css('display','initial');
+                                _tr.parent().find('#disable-'+_form).css('display','none');
+                            }
+
+                            _tr.parent().parent().removeClass(_tr_class);
+                            _tr.parent().parent().addClass(data.status_color);
+                        }
+
+                    },
+                    error: function () {
+
+                    }
+                });
+            }
+        }
+    });
+}
+
+

@@ -3,6 +3,7 @@
  */
 
 var _event_id = 0;
+var _event_date = null;
 
 $(function () {
 
@@ -20,18 +21,21 @@ $(function () {
         },
         //height: auto,
         buttonText: {
-            today: 'today',
-            month: 'month',
-            week: 'week',
-            day: 'day'
+            today: _today,
+            month: _month,
+            week: _week,
+            day: _day
         },
-       // hiddenDays: [0],
+        monthNames: _monthNames,
+        monthNamesShort: _monthNamesShort,
+        dayNames: _dayNames,
+        dayNamesShort: _dayNamesShort,
         minTime: _min_time ,
         maxTime: _max_time,
         businessHours:_businessHours,
-     //   lang: localName,
-        //HIDE ALL DAY
-        allDaySlot:false,
+        // hiddenDays: [0],
+        //   lang: localName,
+        allDaySlot:false, //HIDE ALL DAY
         //Random default events
         eventSources: [
             // your event source
@@ -42,7 +46,6 @@ $(function () {
                     alert('there was an error while fetching events!');
                 },
                 success: function () {
-                    //$('.fc-scroller').slimScroll();
                     // SUCCESS LOAD DATA
                     startDashboard();
                 },
@@ -79,19 +82,9 @@ $(function () {
 
          },*/
 
-        eventRender: function (event, element) {
-
-            if(event.backgroundColor != 'green'){
-               // console.log(element);
-                element.disableDragging = false;
-                element.disableResizing = false;
-            }
-
-        },
-
         dayClick: function (date) {
 
-            $('#myModalLabel').text('New Consult');
+            $('#myModalLabel').text(_add_consult_text);
             $('#modal').modal('show')
                 .find('.modal-body')
                 .load($('#add-agenda').data('url'), function () {
@@ -99,91 +92,129 @@ $(function () {
                     $(this).find('#consult_agenda-form').find('#start_time').val(date.format('HH:mm:SS'));
                 });
         },
-        timeFormat: 'H(:mm)',
+        timeFormat: 'h:mm',
+        //displayEventTime: true,
         eventClick: function (event, jsEvent, view) {
-            var url = 'consult_agenda/' + event.id + '/edit';
-            $('#myModalLabel').text('Edit Consult');
+            var url = 'consult_agenda/' + event.id;
+            $('#myModalLabel').text(_details_consult_text);
             $('#modal').modal('show')
                 .find('.modal-body')
                 .load(url);
         },
         eventDrop: function (event, delta, revertFunc) {
 
-            var _alert = confirm(_confirm_alert_text);
+            //var _alert = confirm(_confirm_alert_text);
 
-            if(_alert){
-                var start = event.start.format('HH:mm:SS');
-                var end = (event.end == null) ? start : event.end.format('HH:mm:SS');
-                var date = event.start.format('YYYY-MM-DD');
-                var url = 'agenda/drop_agenda';
-                var type = 'post';
-                var formData = {
-                    'start_time': start,
-                    'end_time': end,
-                    'date': date,
-                    'id': event.id
-                };
-
-                $.ajax({
-                    type: type,
-                    url: url,
-                    data: formData,
-                    dataType: 'json',
-                    success: function (data) {
-                        if (data.type == 'error') {
-                            revertFunc();
-                            toastr.error(data.message, {timeOut: 5000}).css("width", "300px");
-                        } else {
-                            $('#calendar').fullCalendar('refetchEvents');
-                            toastr.success(data.message, {timeOut: 5000}).css("width", "300px");
-                            startDashboard();
-                        }
+            //if(_alert){
+            bootbox.confirm({
+                title: _confirm_alert_text,
+                message: _confirm_alert_text,
+                //size: 'small',
+                buttons: {
+                    confirm: {
+                        label: _yes_text,
+                        className: 'btn-success'
+                    },
+                    cancel: {
+                        label: _no_text,
+                        className: 'btn-danger'
                     }
-                });
-            }else{
-                revertFunc();
-            }
+                },
+                callback: function(result) {
+                    if (result == true) {
+                        var start = event.start.format('HH:mm:SS');
+                        var end = (event.end == null) ? start : event.end.format('HH:mm:SS');
+                        var date = event.start.format('YYYY-MM-DD');
+                        var url = 'agenda/drop_agenda';
+                        var type = 'post';
+                        var formData = {
+                            'start_time': start,
+                            'end_time': end,
+                            'date': date,
+                            'id': event.id
+                        };
+
+                        $.ajax({
+                            type: type,
+                            url: url,
+                            data: formData,
+                            dataType: 'json',
+                            success: function (data) {
+                                if (data.type == 'error') {
+                                    revertFunc();
+                                    toastr.error(data.message, {timeOut: 5000}).css("width", "300px");
+                                } else {
+                                    $('#calendar').fullCalendar('refetchEvents');
+                                    toastr.success(data.message, {timeOut: 5000}).css("width", "300px");
+                                    startDashboard();
+                                }
+                            }
+                        });
+                    } else {
+                        revertFunc();
+                    }
+
+                }
+            });
 
         },
         eventResize: function (event, delta, revertFunc) {
-            var _alert = confirm(_confirm_alert_text);
+          //  var _alert = confirm(_confirm_alert_text);
 
-            if(_alert) {
-
-                var start = event.start.format('HH:mm:SS');
-                var end = (event.end == null) ? start : event.end.format('HH:mm:SS');
-                var date = event.start.format('YYYY-MM-DD');
-                var url = 'agenda/drop_agenda';
-                var type = 'post';
-                var formData = {
-                    'start_time': start,
-                    'end_time': end,
-                    'date': date,
-                    'id': event.id
-                };
-
-                $.ajax({
-                    type: type,
-                    url: url,
-                    data: formData,
-                    dataType: 'json',
-                    success: function (data) {
-                        if (data.type == 'error') {
-                            revertFunc();
-                            toastr.error(data.message, {timeOut: 5000}).css("width", "300px");
-                        } else {
-                            startDashboard();
-                        }
+            //if(_alert) {
+            bootbox.confirm({
+                title: _confirm_alert_text,
+                message: _confirm_alert_text,
+                //size: 'small',
+                buttons: {
+                    confirm: {
+                        label: _yes_text,
+                        className: 'btn-success'
+                    },
+                    cancel: {
+                        label: _no_text,
+                        className: 'btn-danger'
                     }
-                });
-            }else{
-                revertFunc();
-            }
+                },
+                callback: function (result) {
+                    if (result == true) {
+                        var start = event.start.format('HH:mm:SS');
+                        var end = (event.end == null) ? start : event.end.format('HH:mm:SS');
+                        var date = event.start.format('YYYY-MM-DD');
+                        var url = 'agenda/drop_agenda';
+                        var type = 'post';
+                        var formData = {
+                            'start_time': start,
+                            'end_time': end,
+                            'date': date,
+                            'id': event.id
+                        };
+
+                        $.ajax({
+                            type: type,
+                            url: url,
+                            data: formData,
+                            dataType: 'json',
+                            success: function (data) {
+                                if (data.type == 'error') {
+                                    revertFunc();
+                                    toastr.error(data.message, {timeOut: 5000}).css("width", "300px");
+                                } else {
+                                    startDashboard();
+                                }
+                            }
+                        });
+                    } else {
+                        revertFunc();
+                    }
+                }
+            });
         },
         //EVENT MOUSEHOVER
         eventMouseover:function (event, jsEvent, view) {
             _event_id = event.id;
-        },
+            _event_date = event.date;
+        }
     });
 
 
@@ -196,28 +227,30 @@ $(function () {
             .load($(this).data('url'));
     });
 
-    $('.show-agenda-modal').on('click', function (e) {
+    $(document).on('click','.show-agenda-modal', function (e) {
         e.preventDefault();
-        $('#myModalLabel').text('Calendar');
+        $('#myModalLabel').text($(this).attr('data-title'));
         $('#modal').modal('show')
             .find('.modal-body')
             .load($(this).data('url'));
        // $('#calendar').fullCalendar({});
     });
+    
+    
 
     $(document).on('click','#add-consult_agenda', function (e) {
-        e.preventDefault();
+        // e.preventDefault();
         save($('#consult_agenda-form'), $('#consult_agenda-form')[0], 'create');
     });
 
     $(document).on('click','#edit-consult_agenda', function (e) {
-        e.preventDefault();
+        // e.preventDefault();
         save($('#consult_agenda-form'), $('#consult_agenda-form')[0], 'update');
     });
 
     $(document).on('click','#edit-consult_agenda-button', function (e) {
         $(this).css('display', 'none');
-        fieldstatus('enable',$('#consult_agenda-form'));
+        field_status_change('enable',$('#consult_agenda-form'));
         $('#edit-consult_agenda').removeAttr('style');
         
         $('#add-consult_agenda').removeAttr('style');
@@ -226,11 +259,18 @@ $(function () {
 
 
     $.contextMenu({
-        selector: '.table_row_confirm',
+        selector: '.table_row_scheduled',
         callback: function(key, options) {
             var _event_id = options.$trigger.attr('data-key');
 
             switch (key){
+                case 'view':
+                    var url = 'consult_agenda/' + _event_id;
+                    $('#myModalLabel').text(_details_consult_text);
+                    $('#modal').modal('show')
+                        .find('.modal-body')
+                        .load(url);
+                    break;
                 case 'confirm':
                     consult_event(key,_event_id);
                     break;
@@ -239,15 +279,15 @@ $(function () {
                     break;
                 case 'edit':
                     var url = 'consult_agenda/' + _event_id + '/edit';
-                    $('#myModalLabel').text('Edit Consult');
+                    $('#myModalLabel').text(_edit_consult_text);
                     $('#modal').modal('show')
                         .find('.modal-body')
                         .load(url);
                     break;
             }
-           // window.console && console.log(m) || alert(m);
         },
         items: {
+            "view": {name: _view_text, icon: "fa-eye"},
             "confirm": {name: "Confirm", icon: "fa-check"},
             "edit": {name: "Edit", icon: "edit"},
             "cancel": {name: "Cancel", icon: "fa-ban"},
@@ -255,14 +295,127 @@ $(function () {
         }
     });
 
+
+    //TABLE TO REAGEND
     $.contextMenu({
-        selector: '.fc-event-container',
+        selector: '.table_row_cancel',
         callback: function(key, options) {
-           // var m = "clicked: " + key;
+            var _event_id = options.$trigger.attr('data-key');
+            var _date = options.$trigger.attr('data-date');
+
             switch (key){
+                case 'view':
+                    var url = 'consult_agenda/' + _event_id;
+                    $('#myModalLabel').text(_details_consult_text);
+                    $('#modal').modal('show')
+                        .find('.modal-body')
+                        .load(url);
+                    break;
+                case 're_agenda':
+                    consult_re_agenda(_event_id, _date);
+                    break;
+                case 'notification':
+                    //consult_event(key,_event_id);
+                    break;
+            }
+        },
+        items: {
+            "view": {name: _view_text, icon: "fa-eye"},
+            "re_agenda": {name: "Re-Agenda", icon: "fa-repeat"},
+            "notification": {name: "Send Notification", icon: "fa-send"}
+        }
+    });
+
+    //CALENDAR CANCELED CONSULT
+    $.contextMenu({
+        selector: '.fc-event-container .event_canceled',
+        callback: function(key, options) {
+
+            switch (key){
+                case 'view':
+                    var url = 'consult_agenda/' + _event_id;
+                    $('#myModalLabel').text(_details_consult_text);
+                    $('#modal').modal('show')
+                        .find('.modal-body')
+                        .load(url);
+                    break;
+                case 're_agenda':
+                    consult_re_agenda(_event_id, _event_date);
+                    break;
+                case 'notification':
+                    //consult_event(key,_event_id);
+                    break;
+            }
+        },
+        items: {
+            "view": {name: _view_text, icon: "fa-eye"},
+            "re_agenda": {name: "Re-Agenda", icon: "fa-repeat"},
+            "notification": {name: "Send Notification", icon: "fa-send"}
+        }
+    });
+
+    //CALENDAR CONFIRMED CONSULT
+    $.contextMenu({
+        selector: '.fc-event-container .event_confirmed',
+        callback: function(key, options) {
+
+            switch (key){
+                case 'view':
+                    var url = 'consult_agenda/' + _event_id;
+                    $('#myModalLabel').text(_details_consult_text);
+                    $('#modal').modal('show')
+                        .find('.modal-body')
+                        .load(url);
+                    break;
+                case 'notification':
+                    //consult_event(key,_event_id);
+                    break;
+            }
+        },
+        items: {
+            "view": {name: _view_text, icon: "fa-eye"},
+            "notification": {name: "Send Notification", icon: "fa-send"}
+        }
+    });
+
+    //CALENDAR EXPIRED CONSULT
+    $.contextMenu({
+        selector: '.fc-event-container .event_expired',
+        callback: function(key, options) {
+
+            switch (key){
+                case 'view':
+                    var url = 'consult_agenda/' + _event_id;
+                    $('#myModalLabel').text(_details_consult_text);
+                    $('#modal').modal('show')
+                        .find('.modal-body')
+                        .load(url);
+                    break;
+                case 'notification':
+                    //consult_event(key,_event_id);
+                    break;
+            }
+        },
+        items: {
+            "view": {name: _view_text, icon: "fa-eye"},
+            "notification": {name: "Send Notification", icon: "fa-send"}
+        }
+    });
+
+
+    $.contextMenu({
+        selector: '.fc-event-container .event_scheduled',
+        callback: function(key, options) {
+            switch (key){
+                case 'view':
+                    var url = 'consult_agenda/' + _event_id;
+                    $('#myModalLabel').text(_details_consult_text);
+                    $('#modal').modal('show')
+                        .find('.modal-body')
+                        .load(url);
+                    break;
                 case 'confirm':
                     consult_event(key,_event_id);
-                   // console.log(_event_id);
                     break;
                 case 'cancel':
                     consult_event(key,_event_id);
@@ -276,9 +429,9 @@ $(function () {
                         .load(url);
                 break;
             }
-            //window.console && console.log(m) || alert(m);
         },
         items: {
+            "view": {name: _view_text, icon: "fa-eye"},
             "confirm": {name: "Confirm", icon: "fa-check"},
             "edit": {name: "Edit", icon: "edit"},
             "cancel": {name: "Cancel", icon: "fa-ban"},
@@ -310,63 +463,123 @@ $(function () {
     //AGENDA RE-AGENDA BUTTON
     $(document).on('click','#agenda_re_agenda',function () {
         var _id = $(this).attr('data-key');
-        consult_event('re_agenda',_id);
-          //  console.log('Patient Notificated');
+        var _date = $(this).attr('data-date');
+       
+        // consult_event('re_agenda',_id);
+        consult_re_agenda(_id, _date);
+
     });
 
 
 });
 
+//THIS FUNCTION RE-AGENDA CONSULT TO A DATE
+function consult_re_agenda(_id, _date) {
+    var  url = 'consult/re_agenda';
+    bootbox.prompt({
+        title: "Choose the date to re-agenda this consult",
+        inputType: 'date',
+        value:_date,
+        callback: function (result) {
+            // var _date = result;
+            //console.log(result);
+            if(result != null) {
+                $.ajax({
+                    type: 'POST',
+                    url: url,
+                    data: {id: _id, date: result},
+                    dataType: 'json',
+                    success: function (data) {
+                        if (data.type == 'error') {
+                            toastr.error(data.message, {timeOut: 5000}).css("width", "300px");
+                            $('#calendar').fullCalendar('revertFunc');
+                        } else {
+                            toastr.success(data.message, {timeOut: 5000}).css("width", "300px");
+                            $('#calendar').fullCalendar('refetchEvents');
+                            $('#consult_confirm').load('confirm_list');
+                            $('#consult_cancel').load('cancel_list');
+                        }
+
+                    },
+                    error: function () {
+
+                    }
+                });
+            }
+        }
+    });
+    
+}
 
 //THIS EVENT IS TO CHANGE CONSULT STATUS (CONFIRM AND CANCEL)
 function consult_event(_type,_id) {
 
-    var _alert = confirm(_confirm_alert_text);
+    var url = '';
 
-    if(_alert) {
-
-        var url = '';
-        if (_type == 'confirm') {
-            url = 'consult/confirm';
-        } else if (_type == 'cancel') {
-            url = 'consult/cancel';
-        } else if (_type == 're_agenda') {
-            url = 'consult/re_agenda';
-        }
-
-        $.ajax({
-            type: 'POST',
-            url: url,
-            data: {id: _id},
-            dataType: 'json',
-            success: function (data) {
-                if (data.type == 'error')
-                    toastr.error(data.message, {timeOut: 5000}).css("width", "300px");
-                else
-                    toastr.success(data.message, {timeOut: 5000}).css("width", "300px");
-
-                $('#calendar').fullCalendar('refetchEvents');
+    bootbox.confirm({
+        title: _confirm_alert_text,
+        message: _confirm_alert_text,
+        //size: 'small',
+        buttons: {
+            confirm: {
+                label: _yes_text,
+                className: 'btn-success'
             },
-            error: function () {
-
+            cancel: {
+                label: _no_text,
+                className: 'btn-danger'
             }
-        });
-    }
+        },
+        callback: function (result) {
+            if(result == true){
+
+                if (_type == 'confirm') {
+                    url = 'consult/confirm';
+                } else if (_type == 'cancel') {
+                    url = 'consult/cancel';
+                } else if (_type == 're_agenda') {
+                    url = 'consult/re_agenda';
+                }
+
+                $.ajax({
+                    type: 'POST',
+                    url: url,
+                    data: {id: _id},
+                    dataType: 'json',
+                    success: function (data) {
+                        if (data.type == 'error'){
+                            toastr.error(data.message, {timeOut: 5000}).css("width", "300px");
+                            $('#calendar').fullCalendar('revertFunc');
+                        }else{
+                            toastr.success(data.message, {timeOut: 5000}).css("width", "300px");
+                            $('#calendar').fullCalendar('refetchEvents');
+                            $('#consult_confirm').load('confirm_list');
+                            $('#consult_cancel').load('cancel_list');
+                        }
+
+                    },
+                    error: function () {
+
+                    }
+                });
+            }
+        }
+    });
 }
 //loadCalendarData();
-
-function loadCalendarData() {
-    var url = 'agenda/get_all';
-    $.get(url,function (data) {
-        console.log(data);
-        $('#calendar').fullCalendar({
-            events: JSON.parse(data)
-        });
-    });
-}
-
-function getTableData() {
-    $.get('agenda/list_agenda',function (data) {
-        return data;
-    });
-}
+//
+// function loadCalendarData() {
+//     var url = 'agenda/get_all';
+//     $.get(url,function (data) {
+//         console.log(data);
+//         $('#calendar').fullCalendar({
+//             events: JSON.parse(data)
+//         });
+//     });
+// }
+//
+// function getTableData() {
+//     $.get('agenda/list_agenda',function (data) {
+//         return data;
+//     });
+// }

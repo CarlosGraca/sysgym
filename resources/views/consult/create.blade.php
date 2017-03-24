@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('htmlheader_title')
-	{{ trans('adminlte_lang::message.new_consult_type') }}
+	{{ trans('adminlte_lang::message.new_consult') }}
 @endsection
 
 @section('contentheader_title')
@@ -9,7 +9,7 @@
 @endsection
 
 @section('contentheader_description')
-  {{ trans('adminlte_lang::message.new_consult_type') }}
+  {{ trans('adminlte_lang::message.new_consult') }}
 @endsection
 
 
@@ -33,18 +33,19 @@
 							 <i class="fa  fa-arrow-left"></i>
 						</a>
 
-						<a href="#" class="btn btn-primary btn-sm" role="button" data-toggle="tooltip" title="Save" id="add-consult_type">
+						<a href="#" class="btn btn-primary btn-sm" role="button" data-toggle="tooltip" title="Save" id="add-consult">
 							 <i class="fa fa-save"></i>
 						</a>
 				</div><!-- /. tools -->
-	            </div><!-- /.box-header -->
-
-	            <div class="box-body">
-					{!! Form::open(['route'=>'consult.store', 'id'=>'consult-form','files'=>true]) !!}
-	                 	@include('consult.form', ['type'=>'create'])
-					{!! Form::close() !!}
-				</div>
-	        </div>
-	    </div>
-	</div>
+				</div><!-- /.box-header -->
+			</div>
+		</div>
+		</div>
+		<div class="row">
+			<div class="col-lg-12">
+				{!! Form::open(['route'=>'consult.store', 'id'=>'consult-form','files'=>true]) !!}
+					@include('consult.form', ['type'=>'create'])
+				{!! Form::close() !!}
+			</div>
+		</div>
 @endsection

@@ -7,20 +7,20 @@ $(function () {
     //BUTTON EVENT TO SAVE NEW EMPLOYEE
     $('#add-secure_agency').click(function () {
         save($('#secure_agency-form'), $('#secure_agency-form')[0], 'create');
-        fieldstatus('disable',$('#secure_agency-form'));
+        field_status_change('disable',$('#secure_agency-form'));
     });
 
     //BOTÃO EDITAR CLIENTE
     $('#edit-secure_agency').click(function () {
         save($('#secure_agency-form'), $('#secure_agency-form')[0], 'update');
         $(this).css('display', 'none');
-        fieldstatus('disable',$('#secure_agency-form'));
+        field_status_change('disable',$('#secure_agency-form'));
         $('#edit-secure_agency-button').removeAttr('style');
     });
 
     $('#edit-secure_agency-button').click(function () {
         $(this).css('display', 'none');
-        fieldstatus('enable',$('#secure_agency-form'));
+        field_status_change('enable',$('#secure_agency-form'));
         $('#edit-secure_agency').removeAttr('style');
     });
 
