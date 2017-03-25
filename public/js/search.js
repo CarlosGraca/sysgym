@@ -31,7 +31,8 @@ $(function()
 				}
 
 				$('#add-budget_consult').removeClass('disabled');
-				$('#budget_consult_type_id').removeAttr('disabled');
+				$('#budget_procedure_id').removeAttr('disabled');
+				$('#budget_teeth_id').removeAttr('disabled');
 			});
 
 		}

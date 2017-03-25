@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\ConsultType;
 use App\Http\Requests\SecureCardRequest;
 use App\Http\Requests\SecureComparticipationRequest;
+use App\Procedure;
 use App\SecureAgency;
 use App\SecureComparticipation;
 use Request;
@@ -43,10 +44,10 @@ class SecureComparticipationController extends Controller
         //SECURITY AGENCY ARRAY DATA TO SELECT
         $secure_agency = SecureAgency::pluck('name','id');
 
-        //CONSULT TYPE ARRAY DATA TO SELECT
-        $consult_type = ConsultType::pluck('name','id');
+        //PROCEDURE ARRAY DATA TO SELECT
+        $procedure = Procedure::pluck('name','id');
 
-        return view('secure_comparticipation.create',compact('secure_agency','consult_type'));
+        return view('secure_comparticipation.create',compact('secure_agency','procedure'));
     }
 
     /**
@@ -89,10 +90,10 @@ class SecureComparticipationController extends Controller
         //SECURITY AGENCY ARRAY DATA TO SELECT
         $secure_agency = SecureAgency::pluck('name','id');
 
-        //CONSULT TYPE ARRAY DATA TO SELECT
-        $consult_type = ConsultType::pluck('name','id');
-
-        return view('secure_comparticipation.edit',compact('secure_agency','consult_type','secure_comparticipation'));
+        //PROCEDURE ARRAY DATA TO SELECT
+        $procedure = Procedure::pluck('name','id');
+        
+        return view('secure_comparticipation.edit',compact('secure_agency','procedure','secure_comparticipation'));
     }
 
     /**
@@ -117,26 +118,53 @@ class SecureComparticipationController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  Request $request
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function disable(Request $request)
     {
-        //
+        $secure_comparticipation = SecureComparticipation::where('id',\Input::get('id'))->first();
+        $secure_comparticipation->status = 0;
+
+        if (Request::wantsJson() && $secure_comparticipation->save()){
+            $message = trans('adminlte_lang::message.msg_success_disable_secure_comparticipation');
+            return ['status_color'=>'bg-danger','message'=>$message,'form'=>'secure_comparticipation', 'type'=>'success'];
+        }else{
+            return redirect('patients');
+        }
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  Request $request
+     * @return \Illuminate\Http\Response
+     */
+    public function enable(Request $request)
+    {
+        $secure_comparticipation = SecureComparticipation::where('id',\Input::get('id'))->first();
+        $secure_comparticipation->status = 1;
+
+        if (Request::wantsJson() && $secure_comparticipation->save()){
+            $message = trans('adminlte_lang::message.msg_success_enable_secure_comparticipation');
+            return ['status_color'=>'bg-success','message'=>$message,'form'=>'secure_comparticipation'];
+        }else{
+            return redirect('secure_comparticipation');
+        }
     }
 
 
     public function getSecureComparticipation(){
         $currency_function = new Defaults();
-        $consult_type_id = \Input::get('consult_type_id');
+        $procedure_id = \Input::get('procedure_id');
         $secure_agency_id = \Input::get('secure_agency_id');
 
-        $secure_comparticipation = SecureComparticipation::select(['consult_type.name', 'secure_comparticipation.max_value', 'consult_type.price'])
-            ->join('consult_type', 'secure_comparticipation.consult_type_id', '=', 'consult_type.id')->where('consult_type.id',$consult_type_id)->where('secure_comparticipation.secure_agency_id',$secure_agency_id)->first();
+        $secure_comparticipation = SecureComparticipation::select(['procedure.name', 'secure_comparticipation.max_value', 'procedure.price'])
+            ->join('procedure', 'secure_comparticipation.procedure_id', '=', 'procedure.id')->where('procedure.id',$procedure_id)->where('secure_comparticipation.secure_agency_id',$secure_agency_id)->first();
 
         if(empty($secure_comparticipation)){
-            $consult_type = ConsultType::select(['name','price'])->where('id',$consult_type_id)->first();
-            return ['name'=>$consult_type->name,'max_value'=>$currency_function->currency(0),'price'=>$currency_function->currency($consult_type->price),'total_price'=>$currency_function->currency($consult_type->price),'total'=>$consult_type->price];
+            $procedure = Procedure::select(['name','price'])->where('id',$procedure_id)->first();
+            return ['name'=>$procedure->name,'max_value'=>$currency_function->currency(0),'price'=>$currency_function->currency($procedure->price),'total_price'=>$currency_function->currency($procedure->price),'total'=>$procedure->price];
         }
 
         $total = $secure_comparticipation->price - $secure_comparticipation->max_value;

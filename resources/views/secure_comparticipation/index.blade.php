@@ -13,6 +13,10 @@
 @endsection
 
 @inject('Defaults', 'App\Http\Controllers\Defaults')
+<?php
+$status = [trans('adminlte_lang::message.deleted'),trans('adminlte_lang::message.active'),trans('adminlte_lang::message.expired')];
+$status_color = ['danger','success','info'];
+?>
 
 @section('main-content')
 	<div class="row">
@@ -29,7 +33,7 @@
 	            </div><!-- /.box-header -->
 
 	            <div class="box-body">
-	                <table id="table-secure_comparticipation" class="table table-bordered table-striped table-design">
+	                <table id="table-secure_comparticipation" class="table table-hover table-design">
 		                <thead>
 		                  <tr>
 		                    {{--<th style="width: 10px" class="col-md-1">#</th>--}}
@@ -44,27 +48,25 @@
 		                </thead>
 		                <tbody>
                           @foreach ($secure_comparticipation as $comparticipation)
-                                <tr>
+                                <tr data-key="{{ $comparticipation->id }}" class="bg-{{ $status_color[$comparticipation->status] }}">
 									{{--<td>{{ $comparticipation->id }}</td>--}}
 									<td>{{ $comparticipation->secure_agency->name }}</td>
 									<td>{{ $comparticipation->code }}</td>
-									<td>{{ $comparticipation->consult_type->name }}</td>
+									<td>{{ $comparticipation->procedure->name }}</td>
 									<td>{{ $comparticipation->max_frequency }}</td>
 									<td>{{ $comparticipation->deadline }}</td>
                                     <td>{{ $Defaults->currency($comparticipation->max_value) }}</td>
                                     <td>
-                                        <button type="button" class="btn btn-xs btn-warning btn-flat" data-toggle="modal" data-target="#confirmDelete" data-toggle="tooltip" title="Delete" data-product_id="{{ $comparticipation->id }}" data-product_name="{{ $comparticipation->id }}">
-                                            <i class="fa fa-trash"></i>
-                                        </button>
-                                        <a href="{{ route('secure_comparticipation.edit',$comparticipation->id) }}" class="btn btn-primary btn-xs", data-toggle="tooltip" title="Editar" data-remote='false'])>   <i class="fa fa-edit"></i>
-                                            </a>
-                                        <!--
-                                            <a href="{{ url('tests/pdf/') }}/{{$comparticipation->id}}" target="_blank" class="btn btn-primary btn-xs", data-toggle="tooltip" title="Pdf" ])>   <i class="fa fa-file-pdf-o"></i>
-                                            </a>
+										<a href="#disable" style="display: {{ $comparticipation->status == 1 ? 'initial' : 'none' }};" data-toggle="tooltip" id="disable-secure_comparticipation" title="{{ trans('adminlte_lang::message.disable') }}" data-key="{{ $comparticipation->id }}" data-name="{{ $comparticipation->name }}">
+											<i class="fa fa-user-o"></i>
+										</a>
 
-                                        <a href="{{ route('secure_comparticipation.edit',$comparticipation->id) }}" class="btn btn-primary btn-xs", data-toggle="tooltip" title="Email" data-remote='true'])>   <i class="fa fa-send"></i>
-                                        </a>
-                                            -->
+										<a href="#enable" style="display: {{ $comparticipation->status == 0 ? 'initial' : 'none' }};" data-toggle="tooltip" id="enable-secure_comparticipation" title="{{ trans('adminlte_lang::message.enable') }}" data-key="{{ $comparticipation->id }}" data-name="{{ $comparticipation->name }}">
+											<i class="fa fa-user"></i>
+										</a>
+										<a href="{{ route('secure_comparticipation.edit',$comparticipation->id) }}"  data-toggle="tooltip" title="{{ trans('adminlte_lang::message.edit') }}" id="update-secure_comparticipation">
+											<i class="fa fa-edit"></i>
+										</a>
                                     </td>
                                 </tr>
                             @endforeach

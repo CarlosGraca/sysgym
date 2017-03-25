@@ -14,4 +14,8 @@ class ProcedureGroup extends Model
     public function user(){
         return $this->belongsTo('App\User');
     }
+
+    public function procedure(){
+        return $this->hasOne('App\Procedure');
+    }
 }

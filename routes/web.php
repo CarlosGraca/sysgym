@@ -53,7 +53,9 @@ Route::group(['middleware' => ['web','auth','check_agenda']], function(){
     Route::resource('license_generate','Defaults');
     Route::resource('files','FileController');
     Route::resource('payments','PaymentController');
-
+    Route::resource('procedure_group','ProcedureGroupController');
+    Route::resource('procedure','ProcedureController');
+    Route::resource('teeth','TeethController');
 });
 
 /**/
@@ -136,6 +138,24 @@ Route::get('reset/password/{id}','Auth\UserController@reset_password');
 //USER CHANGE STATUS
 Route::post('users/enable','Auth\UserController@enable');
 Route::post('users/disable','Auth\UserController@disable');
+
+
+//PROCEDURE GROUP CHANGE STATUS
+Route::post('procedure_group/enable','ProcedureGroupController@enable');
+Route::post('procedure_group/disable','ProcedureGroupController@disable');
+
+//PROCEDURE CHANGE STATUS
+Route::post('procedure/enable','ProcedureController@enable');
+Route::post('procedure/disable','ProcedureController@disable');
+
+//PROCEDURE CHANGE STATUS
+Route::post('secure_comparticipation/enable','SecureComparticipationController@enable');
+Route::post('secure_comparticipation/disable','SecureComparticipationController@disable');
+
+//TEETH CHANGE STATUS
+Route::post('teeth/enable','TeethController@enable');
+Route::post('teeth/disable','TeethController@disable');
+
 
 //SYSTEM SETUP
 Route::get('setup/system',function(){

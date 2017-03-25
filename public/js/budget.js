@@ -5,8 +5,8 @@ $(function () {
 
 
     $(document).on('click','#add-budget_consult', function () {
-        var consult_type_id = $('#budget_consult_type_id').val();
-        if (consult_type_id == '') {
+        var procedure_id = $('#budget_procedure_id').val();
+        if (procedure_id == '') {
             toastr.error('SELECT CONSULT TYPE', {timeOut: 5000}).css("width", "500px");
             return false;
         } else {
@@ -17,12 +17,12 @@ $(function () {
                 $.ajax({
                     url: '/consult_procedure/get_consult',
                     type: 'POST',
-                    data: {consult_type_id: consult_type_id, secure_agency_id: secure_agency_id},
+                    data: {procedure_id: procedure_id, secure_agency_id: secure_agency_id},
                     dataType: 'json',
                     success: function (data) {
                         if (data.length != 0) {
-                            $('#consult_type_id').val('');
-                            $("#budget_consult_type_id option[value='" + consult_type_id + "']").remove();
+                            $('#procedure_id').val('');
+                            $("#budget_procedure_id option[value='" + procedure_id + "']").remove();
                             console.log(data);
                             var total = parseFloat(data.total) + parseFloat($('#sum-total').attr('data-value'));
                             $('#sum-total').attr('data-value', total);
@@ -32,7 +32,7 @@ $(function () {
                             });
 
                             table.find('#budget_with_secure').append(
-                                '<tr class="budget_table" data-key="' + consult_type_id + '" data-total="' + data.total + '">' +
+                                '<tr class="budget_table" data-key="' + procedure_id + '" data-total="' + data.total + '">' +
                                 '<td class="name">' + data.name + '</td>' +
                                 '<td>' + data.price + '</td>' +
                                 '<td>' + data.max_value + '</td>' +
@@ -48,9 +48,9 @@ $(function () {
                 });
 
             } else {
-                $.getJSON('/consult_type/' + consult_type_id, function (data) {
-                    $('#budget_consult_type_id').val('');
-                    $("#budget_consult_type_id option[value='" + consult_type_id + "']").remove();
+                $.getJSON('/procedure/' + procedure_id, function (data) {
+                    $('#budget_procedure_id').val('');
+                    $("#budget_procedure_id option[value='" + procedure_id + "']").remove();
 
                     var total = parseFloat(data.total) + parseFloat($('#sum-total').attr('data-value'));
                     $('#sum-total').attr('data-value', total);
@@ -60,7 +60,7 @@ $(function () {
                     });
 
                     table.find('#budget_without_secure').append(
-                        '<tr class="budget_table" data-key="' + consult_type_id + '" data-total="' + data.total + '">' +
+                        '<tr class="budget_table" data-key="' + procedure_id + '" data-total="' + data.total + '">' +
                         '<td class="name">' + data.name + '</td>' +
                         '<td>' + data.price + '</td>' +
                         '<td>' + data.total_price + '</td>' +
@@ -108,7 +108,7 @@ $(function () {
             $('#sum-total').text(data);
         });
 
-        $('#budget_consult_type_id').append('<option value="' + tr_parent.data('key') + '">' + tr_parent.find('.name').text() + '</option>');
+        $('#budget_procedure_id').append('<option value="' + tr_parent.data('key') + '">' + tr_parent.find('.name').text() + '</option>');
         tr_parent.remove();
         */
     });
@@ -192,6 +192,6 @@ function removeBudgetTableValues(_item) {
         $('#sum-total').text(data);
     });
 
-    $('#budget_consult_type_id').append('<option value="' + tr_parent.data('key') + '">' + tr_parent.find('.name').text() + '</option>');
+    $('#budget_procedure_id').append('<option value="' + tr_parent.data('key') + '">' + tr_parent.find('.name').text() + '</option>');
     tr_parent.remove();
 }

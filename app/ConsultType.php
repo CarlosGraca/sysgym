@@ -18,7 +18,5 @@ class ConsultType extends Model
         return $this->hasOne('App\ConsultAgenda');
     }
 
-    public function secure_comparticipation(){
-        return $this->hasOne('App\SecureComparticipation');
-    }
+    
 }

@@ -144,6 +144,7 @@
     $('#branch').select2();
     $('#employee_id').select2();
     $('#doctor').select2();
+//    $('#budget_procedure_id').select2();
 
     var _select_html = "<select name='status'>" +
             "<option value selected>SELECT OPTION</option>" +
@@ -301,5 +302,8 @@
 <script src="{{ asset('/js/license.js')}}" type="text/javascript"></script>
 <script src="{{ asset('/js/files.js')}}" type="text/javascript"></script>
 <script src="{{ asset('/js/consult.js')}}" type="text/javascript"></script>
+<script src="{{ asset('/js/procedure_group.js')}}" type="text/javascript"></script>
+<script src="{{ asset('/js/procedure.js')}}" type="text/javascript"></script>
+<script src="{{ asset('/js/teeth.js')}}" type="text/javascript"></script>
 
 

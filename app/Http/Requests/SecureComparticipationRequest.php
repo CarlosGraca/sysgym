@@ -25,7 +25,7 @@ class SecureComparticipationRequest extends FormRequest
     {
         return [
             'secure_agency_id'=>'required',
-            'consult_type_id'=>'required',
+            'procedure_id'=>'required',
             'code'=>'required',
             'max_value'=>'required',
             'deadline'=>'required',

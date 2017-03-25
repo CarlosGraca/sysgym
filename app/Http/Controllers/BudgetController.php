@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use App\ConsultType;
 use App\Employee;
+use App\Procedure;
 use App\SecureAgency;
+use App\Teeth;
 use Illuminate\Http\Request;
 
 class BudgetController extends Controller
@@ -37,7 +39,7 @@ class BudgetController extends Controller
     public function create()
     {
         //CONSULT TYPE ARRAY DATA TO SELECT
-        $consult_type = ConsultType::pluck('name','id');
+        $procedure = Procedure::pluck('name','id');
 
         //CONSULT TYPE ARRAY DATA TO SELECT
         $secure_agency = SecureAgency::pluck('name','id');
@@ -45,7 +47,10 @@ class BudgetController extends Controller
         //DOCTOR ARRAY DATA TO SELECT
         $doctor = Employee::where('doctor',1)->pluck('name','id');
 
-        return view('budget.create',compact('consult_type','secure_agency','doctor'));
+        //TEETH TYPE ARRAY DATA TO SELECT
+        $teeth = Teeth::pluck('number','id');
+
+        return view('budget.create',compact('procedure','secure_agency','doctor','teeth'));
     }
 
     /**

@@ -51,7 +51,7 @@
 			<div class="col-md-4 col-sm-10 col-xs-10" id="secure_agency" style="display: none;">
 				<div class="form-group form-group-sm">
 					{!! Form::label('secure_agency_id',trans('adminlte_lang::message.secure_agency') ) !!}
-					{!! Form::select('secure_agency_id', $secure_agency, ($type == 'update' && $secure_comparticipation != null ? $secure_comparticipation->consult_type_id : null) , ['class'=>'form-control','id'=>'secure_agency_id','placeholder'=>' (SELECT SECURE AGENCY) ','disabled'=>'disabled']) !!}
+					{!! Form::select('secure_agency_id', $secure_agency, ($type == 'update' && $secure_comparticipation != null ? $secure_comparticipation->procedure_id : null) , ['class'=>'form-control','id'=>'secure_agency_id','placeholder'=>' (SELECT SECURE AGENCY) ','disabled'=>'disabled']) !!}
 				</div>
 			</div>
 
@@ -92,15 +92,21 @@
 			<hr class="h-divider" >
 			<div class="col-md-4 col-sm-10 col-xs-10">
 				<div class="form-group form-group-sm">
-					{!! Form::label('consult_type_id',trans('adminlte_lang::message.consult_type') ) !!}
-					{!! Form::select('consult_type_id', $consult_type, ($type == 'update' && $secure_comparticipation != null ? $secure_comparticipation->consult_type_id : null) , ['class'=>'form-control','id'=>'budget_consult_type_id','placeholder'=>' (SELECT CONSULT TYPE) ','disabled'=>'disabled']) !!}
+					{!! Form::label('teeth_id',trans('adminlte_lang::message.teeth') ) !!}
+					{!! Form::select('teeth_id', $teeth, null , ['class'=>'form-control','id'=>'budget_teeth_id','placeholder'=>' (SELECT TEETH) ','disabled'=>'disabled']) !!}
 				</div>
 			</div>
+			<div class="col-md-4 col-sm-10 col-xs-10">
+				<div class="form-group form-group-sm">
+					{!! Form::label('procedure_id',trans('adminlte_lang::message.procedure') ) !!}
+					{!! Form::select('procedure_id', $procedure, null , ['class'=>'form-control','id'=>'budget_procedure_id','placeholder'=>' (SELECT CONSULT TYPE) ','disabled'=>'disabled']) !!}
+				</div>
+			</div>
+
 			<div class="col-md-1 col-sm-1 col-xs-2">
                 <div class="form-group form-group-sm">
                     {!! Form::label('','Add',['style'=>'visibility: hidden;'] ) !!}
-                    {!! Form::button('<i class="fa fa-plus"></i>', ['class'=>'form-control btn btn-primary btn-sm disabled','id'=>'add-budget_consult']) !!}
-
+                    {!! Form::button('<i class="fa fa-plus"></i>', ['class'=>'form-control btn btn-primary btn-sm disabled','id'=>'add-budget_consult','data-toggle'=>"tooltip", 'title'=> trans('adminlte_lang::message.add') ]) !!}
                 </div>
             </div>
 			<div class="col-md-12 col-sm-12 col-xs-12">
@@ -116,7 +122,7 @@
 						<table id="table-budget" class="table table-bordered table-striped">
 
 							<thead id="budget_with_secure" style="display: none;">
-								<th class="col-md-3">{{ trans('adminlte_lang::message.consult_type') }}</th>
+								<th class="col-md-3">{{ trans('adminlte_lang::message.procedure') }}</th>
 								<th class="col-md-3">{{ trans('adminlte_lang::message.price') }}</th>
 								<th class="col-md-3">{{ trans('adminlte_lang::message.secure_service_price') }}</th>
 								<th class="col-md-2">{{ trans('adminlte_lang::message.total') }}</th>
@@ -124,7 +130,7 @@
 							</thead>
 
 							<thead id="budget_without_secure" style="display: none;">
-								<th class="col-md-4">{{ trans('adminlte_lang::message.consult_type') }}</th>
+								<th class="col-md-4">{{ trans('adminlte_lang::message.procedure') }}</th>
 								<th class="col-md-3">{{ trans('adminlte_lang::message.price') }}</th>
 								<th class="col-md-4">{{ trans('adminlte_lang::message.total') }}</th>
 								<th class="col-md-1"></th>

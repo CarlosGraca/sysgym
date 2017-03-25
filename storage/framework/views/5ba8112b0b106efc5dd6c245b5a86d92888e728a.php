@@ -14,6 +14,10 @@
 <?php $__env->stopSection(); ?>
 
 <?php $Defaults = app('App\Http\Controllers\Defaults'); ?>
+<?php
+$status = [trans('adminlte_lang::message.deleted'),trans('adminlte_lang::message.active'),trans('adminlte_lang::message.expired')];
+$status_color = ['danger','success','info'];
+?>
 
 <?php $__env->startSection('main-content'); ?>
 	<div class="row">
@@ -31,7 +35,7 @@
 	            </div><!-- /.box-header -->
 
 	            <div class="box-body">
-	                <table id="table-secure_comparticipation" class="table table-bordered table-striped table-design">
+	                <table id="table-secure_comparticipation" class="table table-hover table-design">
 		                <thead>
 		                  <tr>
 		                    
@@ -46,27 +50,25 @@
 		                </thead>
 		                <tbody>
                           <?php $__currentLoopData = $secure_comparticipation; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $comparticipation): $__env->incrementLoopIndices(); $loop = $__env->getFirstLoop(); ?>
-                                <tr>
+                                <tr data-key="<?php echo e($comparticipation->id); ?>" class="bg-<?php echo e($status_color[$comparticipation->status]); ?>">
 									
 									<td><?php echo e($comparticipation->secure_agency->name); ?></td>
 									<td><?php echo e($comparticipation->code); ?></td>
-									<td><?php echo e($comparticipation->consult_type->name); ?></td>
+									<td><?php echo e($comparticipation->procedure->name); ?></td>
 									<td><?php echo e($comparticipation->max_frequency); ?></td>
 									<td><?php echo e($comparticipation->deadline); ?></td>
                                     <td><?php echo e($Defaults->currency($comparticipation->max_value)); ?></td>
                                     <td>
-                                        <button type="button" class="btn btn-xs btn-warning btn-flat" data-toggle="modal" data-target="#confirmDelete" data-toggle="tooltip" title="Delete" data-product_id="<?php echo e($comparticipation->id); ?>" data-product_name="<?php echo e($comparticipation->id); ?>">
-                                            <i class="fa fa-trash"></i>
-                                        </button>
-                                        <a href="<?php echo e(route('secure_comparticipation.edit',$comparticipation->id)); ?>" class="btn btn-primary btn-xs", data-toggle="tooltip" title="Editar" data-remote='false'])>   <i class="fa fa-edit"></i>
-                                            </a>
-                                        <!--
-                                            <a href="<?php echo e(url('tests/pdf/')); ?>/<?php echo e($comparticipation->id); ?>" target="_blank" class="btn btn-primary btn-xs", data-toggle="tooltip" title="Pdf" ])>   <i class="fa fa-file-pdf-o"></i>
-                                            </a>
+										<a href="#disable" style="display: <?php echo e($comparticipation->status == 1 ? 'initial' : 'none'); ?>;" data-toggle="tooltip" id="disable-secure_comparticipation" title="<?php echo e(trans('adminlte_lang::message.disable')); ?>" data-key="<?php echo e($comparticipation->id); ?>" data-name="<?php echo e($comparticipation->name); ?>">
+											<i class="fa fa-user-o"></i>
+										</a>
 
-                                        <a href="<?php echo e(route('secure_comparticipation.edit',$comparticipation->id)); ?>" class="btn btn-primary btn-xs", data-toggle="tooltip" title="Email" data-remote='true'])>   <i class="fa fa-send"></i>
-                                        </a>
-                                            -->
+										<a href="#enable" style="display: <?php echo e($comparticipation->status == 0 ? 'initial' : 'none'); ?>;" data-toggle="tooltip" id="enable-secure_comparticipation" title="<?php echo e(trans('adminlte_lang::message.enable')); ?>" data-key="<?php echo e($comparticipation->id); ?>" data-name="<?php echo e($comparticipation->name); ?>">
+											<i class="fa fa-user"></i>
+										</a>
+										<a href="<?php echo e(route('secure_comparticipation.edit',$comparticipation->id)); ?>"  data-toggle="tooltip" title="<?php echo e(trans('adminlte_lang::message.edit')); ?>" id="update-secure_comparticipation">
+											<i class="fa fa-edit"></i>
+										</a>
                                     </td>
                                 </tr>
                             <?php endforeach; $__env->popLoop(); $loop = $__env->getFirstLoop(); ?>

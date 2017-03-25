@@ -34,7 +34,7 @@
 	                <table id="table-category" class="table table-bordered table-striped">
 		                <thead>
 		                  <tr>
-		                    <th style="width: 10px" class="col-md-1">#</th>
+		                    
 		                    <th class="col-md-8"><?php echo e(trans('adminlte_lang::message.name')); ?></th>
 		                    <th class="col-md-2"><?php echo e(trans('adminlte_lang::message.salary_base')); ?></th>
 		                    <th class="col-md-1"></th>
@@ -43,7 +43,7 @@
 		                <tbody>
                           <?php $__currentLoopData = $categories; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $category): $__env->incrementLoopIndices(); $loop = $__env->getFirstLoop(); ?>
                                 <tr>
-                                    <td><?php echo e($category->id); ?></td>
+                                    
                                     <td><?php echo e($category->name); ?></td>
                                     <td><?php echo e($Defaults->currency($category->salary_base)); ?></td>
                                     <td>

@@ -13,8 +13,8 @@
 
 	<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
 		<div class="form-group form-group-sm">
-			{!! Form::label('consult_type_id',trans('adminlte_lang::message.consult_type') ) !!}
-			{!! Form::select('consult_type_id', $consult_type, ($type == 'update' && $secure_comparticipation != null ? $secure_comparticipation->consult_type_id : null) , ['class'=>'form-control','id'=>'consult_type_id','placeholder'=>' (SELECT CONSULT TYPE) ']) !!}
+			{!! Form::label('procedure_id',trans('adminlte_lang::message.procedure') ) !!}
+			{!! Form::select('procedure_id', $procedure, ($type == 'update' && $secure_comparticipation != null ? $secure_comparticipation->procedure_id : null) , ['class'=>'form-control','id'=>'procedure_id','placeholder'=>' (SELECT CONSULT TYPE) ']) !!}
 		</div>
 	</div>
 

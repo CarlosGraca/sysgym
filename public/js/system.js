@@ -220,7 +220,7 @@ $(function () {
         $('#modal').find('#myModalLabel').html('<i class="fa fa-info-circle"></i> ');
         $('#modal').find('#myModalLabel').append($(this).text());
 
-        $('#modal').find('.modal-body').load($(this).attr('url'));
+        $('#modal').find('.modal-body').load($(this).attr('data-url'));
         var footer_html = $('#modal').find('.modal-body').find('#app_footer').html();
         $('#modal').find('.modal-footer').html(footer_html);
         $('#modal').modal();

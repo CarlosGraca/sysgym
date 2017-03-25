@@ -462,6 +462,21 @@ return [
     'msg_error_disable_patient' => 'This patient cannot be disabled',
     'msg_error_disable_employee' => 'This employee cannot be disabled',
     'end_budget'    =>  'Finish Budget',
-
+    'procedure_group'   => 'Procedure Group',
+    'new_procedure_group' => 'New Procedure Group',
+    'edit_procedure_group' => 'Edit Procedure Group',
+    'update_procedure_group' => 'Update Procedure Group',
+    'list_procedure_group' => 'List Procedure Group',
+    'new_procedure' => 'New Procedure',
+    'edit_procedure' => 'Edit Procedure',
+    'update_procedure' => 'Update Procedure',
+    'list_procedure' => 'List Procedure',
+    'new_consult'   => 'New Consult',
+    'new_teeth' => 'New Teeth',
+    'edit_teeth' => 'Edit Teeth',
+    'update_teeth' => 'Update Teeth',
+    'list_teeth' => 'List Teeth',
+    'number'    => 'Number',
+    'teeth_information' => 'Teeth Information',
 ];
 

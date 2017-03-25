@@ -44,13 +44,6 @@
             <li class="header"><?php echo e(trans('adminlte_lang::message.menu')); ?></li>
             <!-- Optionally, you can add icons to the links -->
             <li><a href="<?php echo e(url('home')); ?>"><i class='fa fa-home'></i> <span><?php echo e(trans('adminlte_lang::message.home')); ?></span></a></li>
-           <!--<li class="treeview">
-                <a href="#"><i class='glyphicon glyphicon-qrcode'></i> <span><?php echo e(trans('adminlte_lang::message.tests')); ?></span> <i class="fa fa-angle-left pull-right"></i></a>
-                <ul class="treeview-menu">
-                     <li><a href="<?php echo e(url('tests')); ?>"><?php echo e(trans('adminlte_lang::message.list_test')); ?></a></li>
-                     <li><a href="<?php echo e(url('sheets')); ?>"><span><?php echo e(trans('adminlte_lang::message.evaluation_sheet')); ?></span></a></li>
-                </ul>
-            </li>-->
             <li><a href="<?php echo e(url('patients')); ?>"><i class='fa fa-user'></i> <span><?php echo e(trans('adminlte_lang::message.patients')); ?></span></a></li>
             <li><a href="<?php echo e(url('employees')); ?>"><i class='fa fa-user-md'></i> <span><?php echo e(trans('adminlte_lang::message.employees')); ?></span></a></li>
             <li><a href="<?php echo e(url('agenda')); ?>"><i class='fa fa-calendar'></i> <span><?php echo e(trans('adminlte_lang::message.agenda')); ?></span></a></li>
@@ -63,6 +56,9 @@
                     <li><a href="<?php echo e(url('secure_agency')); ?>"> <i class='fa fa-shield'></i> <?php echo e(trans('adminlte_lang::message.secure_agency')); ?></a></li>
                     <li><a href="<?php echo e(url('secure_comparticipation')); ?>"> <i class='fa fa-shield'></i> <?php echo e(trans('adminlte_lang::message.secure_comparticipation')); ?></a></li>
                     <li><a href="<?php echo e(url('consult_type')); ?>"> <i class='fa fa-stethoscope'></i> <?php echo e(trans('adminlte_lang::message.consult_type')); ?></a></li>
+                    <li><a href="<?php echo e(url('procedure_group')); ?>"> <i class='fa fa-pagelines'></i> <?php echo e(trans('adminlte_lang::message.procedure_group')); ?></a></li>
+                    <li><a href="<?php echo e(url('procedure')); ?>"> <i class='fa fa-pagelines'></i> <?php echo e(trans('adminlte_lang::message.procedure')); ?></a></li>
+                    <li><a href="<?php echo e(url('teeth')); ?>"> <i class='fa fa-pagelines'></i> <?php echo e(trans('adminlte_lang::message.teeth')); ?></a></li>
                     <li><a href="<?php echo e(url('users')); ?>"> <i class='fa fa-user-secret'></i> <?php echo e(trans('adminlte_lang::message.users')); ?></a></li>
                     <li><a href="<?php echo e(url('category')); ?>"> <i class='fa fa-users'></i> <?php echo e(trans('adminlte_lang::message.category')); ?></a></li>
                     <li><a href="<?php echo e(url('license')); ?>"> <i class='fa fa-key'></i> <?php echo e(trans('adminlte_lang::message.license')); ?></a></li>
@@ -70,7 +66,7 @@
                 </ul>
             </li>
             <li><a href="<?php echo e(url('help')); ?>"><i class='fa fa-question'></i> <span><?php echo e(trans('adminlte_lang::message.help')); ?></span></a></li>
-            <li><a href="#about_system" id="about_system" url="<?php echo e(url('about_system')); ?>"><i class='fa fa-info'></i> <span><?php echo e(trans('adminlte_lang::message.about_odontsoft')); ?></span></a></li>
+            <li><a href="#about_system" id="about_system" data-url="<?php echo e(url('about_system')); ?>"><i class='fa fa-info'></i> <span><?php echo e(trans('adminlte_lang::message.about_odontsoft')); ?></span></a></li>
         </ul><!-- /.sidebar-menu -->
     </section>
     <!-- /.sidebar -->
