@@ -49,7 +49,7 @@ class EmployeeRequest extends FormRequest
             {
                 return [
                     'name' => 'required',
-                    // 'email' => 'email|max:255|unique:patients',
+                    // 'email' => 'email|max:255|unique:clients',
                     'birthday' => 'required',
                     'address' => 'required',
                     'genre' => 'required',

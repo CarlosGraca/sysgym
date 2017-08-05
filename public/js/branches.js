@@ -12,26 +12,11 @@ $(function () {
     //BOTÃO ADICIONAR CLIENTE
     $(document).on('click','#add-branch',function(){
         save($('#branches-form'),$('#branches-form')[0],'create');
-
-        $(this).css('display', 'none');
-        field_status_change('disable',$('#branches-form'));
-        schedule_button_action('disable');
-        $('#edit-branch-button').removeAttr('style');
-        branch_schedule_save();
-        _deleted_id = [];
-        all_data = [];
     });
 
     //BOTÃO EDITAR CLIENTE
-    $(document).on('click','#edit-branch',function(){
+    $(document).on('click','#update-branch',function(){
         save($('#branches-form'),$('#branches-form')[0],'update');
-        $(this).css('display', 'none');
-        field_status_change('disable',$('#branches-form'));
-        schedule_button_action('disable');
-        $('#edit-branch-button').removeAttr('style');
-        branch_schedule_save();
-        _deleted_id = [];
-        all_data = [];
     });
 
 
@@ -44,9 +29,13 @@ $(function () {
         $('#edit-branch').removeAttr('style');
     });
 
-    $(document).on('click','#add-office_hours',function () {
+    $(document).on('click','#add-office_hours',function (e) {
+        e.preventDefault();
         var _id = $('#office_hours_id').val();
         var _exists = validation_shedules();
+
+        // console.log(_id);
+        // console.log(_exists);
 
         if(_exists == false) {
             if (_id == '') {
@@ -64,18 +53,21 @@ $(function () {
     });
 
     //REMOVE SCHEDULE TABLE ITEM
-    $(document).on('click','.remove_schedule',function(){
+    $(document).on('click','.remove_schedule',function(e){
+        e.preventDefault();
         remove_schedule($(this));
     });
 
     //EDIT SCHEDULE TABLE ITEM
-    $(document).on('click','.edit_schedule',function(){
+    $(document).on('click','.edit_schedule',function(e){
+        e.preventDefault();
         edit_schedule($(this));
     });
 
 
     //COPY SCHEDULE TABLE ITEM
-    $(document).on('click', '.copy_schedule',function(){
+    $(document).on('click', '.copy_schedule',function(e){
+        e.preventDefault();
         copy_schedule($(this));
     });
 
@@ -105,15 +97,28 @@ $(function () {
         }
     });
 
+
+    //DISABLE role CONSULT
+    $(document).on('click','#disable-branch',function (e) {
+        e.preventDefault();
+        change_status($(this).attr('data-key'), 'disable', $(this).attr('data-name'), $(this), 'branches/disable', 'bg-success', 'branch')
+    });
+
+    //ENABLE PATIENT
+    $(document).on('click','#enable-branch',function (e) {
+        e.preventDefault();
+        change_status($(this).attr('data-key'), 'enable', $(this).attr('data-name'), $(this), 'branches/enable', 'bg-danger', 'branch');
+    });
+
 });
 
 //SCHEDULE SET BUTTON ACTIONS
 function schedule_button_action(_action) {
     if (_action == 'enable'){
-        $('.action_button').css('visibility','visible');
+        $('.action_button').css('display','table-cell');
         //$('.action_button').css('display','block');
     }else{
-        $('.action_button').css('visibility','hidden');
+        $('.action_button').css('display','none');
       //  $('.action_button').css('display','none');
     }
 
@@ -133,7 +138,7 @@ function remove_table_schedule_data(_item) {
     var _id = tr_parent.attr('data-key');
     _deleted_id.push(_id);
     tr_parent.remove();
-    console.log(_deleted_id);
+    // console.log(_deleted_id);
     removeTableValue(_id);
 }
 
@@ -167,7 +172,7 @@ function table_data(value) {
     var end_time = $('#end_time').val();
 
     var max = '00:00:00';
-    var min = '23:59:00';
+    var min = '23:59:59';
     var append = null;
     var type = null;
     table.find('.office_hours_table').each(function () {
@@ -179,7 +184,7 @@ function table_data(value) {
                     append = $(this);
                     type = 'after';
                 }
-                console.log('max: '+max);
+                // console.log('max: '+max);
                 // console.log(week_value);
             }else{
 
@@ -187,7 +192,7 @@ function table_data(value) {
                     min = start_time;
                     append = $(this);
                     type = 'before';
-                    console.log('min: '+min);
+                    // console.log('min: '+min);
                 }
             }
 
@@ -196,6 +201,7 @@ function table_data(value) {
     });
 
     if(append == null){
+        // console.log('empty - '+week_value);
         switch (week_value){
             case 'monday':
                 type = 'before';
@@ -297,26 +303,30 @@ function table_data(value) {
         '</td>' +
         '</tr>'
     );
-    // table.append
-   type =='after' ?  table_html.insertAfter(append) : table_html.insertBefore(append);
 
-
+    // console.log(append);
+    if(append == undefined){
+        table.append(table_html);
+    }else{
+        type =='after' ?  table_html.insertAfter(append) : table_html.insertBefore(append);
+    }
 }
 
 
 //SAVE SCHEDULE TO BRANCH
-function branch_schedule_save() {
+function schedule_save() {
     getTableScheduleData($('#table-office_hours'));
 
-    var branch_id = $('#branch_id').val();
+    var item_id = $('#item_id').val();
+    var flag = $('#flag').val();
 
-    if(branch_id != '' && branch_id != undefined){
+    if(item_id != '' && item_id != undefined){
         var url = '/schedule';
 
         $.ajax({
             type: 'POST',
             url: url,
-            data: {schedule: JSON.stringify(all_data), branch_id: branch_id, delete: JSON.stringify(_deleted_id)},
+            data: {schedule: JSON.stringify(all_data), item_id: item_id, delete: JSON.stringify(_deleted_id), flag: flag},
             dataType: 'json',
             success: function (data) {
                 console.log(data);

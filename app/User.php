@@ -15,7 +15,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password','logged_branch','status','employee_id'
+        'name', 'email', 'password','branch_id','status','employee_id'
     ];
 
     /**
@@ -27,15 +27,47 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
-    public function branch(){
-        return $this->hasOne('App\Branch');
-    }
+//    public function branch(){
+//        return $this->hasOne('App\Branch');
+//    }
 
-    public function logged(){
-        return $this->belongsTo('App\Branch');
+    public function branch(){
+        return $this->belongsTo('App\Models\Branch');
     }
 
     public function employee(){
-        return $this->belongsTo('App\Employee');
+        return $this->belongsTo('App\Models\Employee');
     }
+
+    public function roles(){
+        return $this->belongsToMany('App\Models\Role');
+    }
+
+     public function role()
+    {
+        return $this->belongsTo('App\Models\Role','role_id','id');
+    }
+
+   /* public function hasRole($role){
+        if(is_string($role)){
+            return $this->roles->contains('name',$role);
+        }
+
+        return !! $role->intersect($this->roles)->count();
+    }
+
+    public function assign($role){
+        if(is_string($role)){
+            return $this->roles()->save(
+                Role::whereName($role)->firstOrFail()
+            );
+        }
+        
+        return $this->roles()->save($role);
+    }
+
+    public function detatch(Role $role){
+        return $this->roles()->detach($role);
+    }*/
+    
 }

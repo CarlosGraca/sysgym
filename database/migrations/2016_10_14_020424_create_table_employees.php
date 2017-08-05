@@ -13,7 +13,7 @@ class CreateTableEmployees extends Migration
      */
     public function up()
     {
-        Schema::create('category', function (Blueprint $table) {
+        Schema::create('employees_category', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
             $table->double('salary_base');
@@ -39,26 +39,22 @@ class CreateTableEmployees extends Migration
             $table->integer('zip_code')->nullable();
             $table->string('website')->nullable();
             $table->string('facebook')->nullable();
-            $table->string('avatar')->nullable();
+            $table->string('avatar')->default('img/avatar.png');
             $table->date('start_work');
             $table->date('end_work')->nullable();
             $table->text('note')->nullable();
             $table->double('salary')->default(0);
             $table->integer('status')->default(1);
-            $table->boolean('doctor');
-            $table->integer('secure_card_id')->default(0);
-            $table->integer('has_secure')->default(0);
             $table->timestamps();
 
             $table->integer('user_id')->unsigned()->index();
             $table->foreign('user_id')->references('id')->on('users');
             $table->integer('category_id')->unsigned()->index();
-            $table->foreign('category_id')->references('id')->on('category');
+            $table->foreign('category_id')->references('id')->on('employees_category');
             $table->integer('branch_id')->unsigned()->index();
             $table->foreign('branch_id')->references('id')->on('branches');
-            $table->integer('island_id')->unsigned()->index();
-            $table->foreign('island_id')->references('id')->on('islands');
-
+            $table->integer('tenant_id')->unsigned()->index();
+            $table->foreign('tenant_id')->references('id')->on('tenants');
         });
     }
 
@@ -70,6 +66,6 @@ class CreateTableEmployees extends Migration
     public function down()
     {
         Schema::dropIfExists('employees');
-        Schema::dropIfExists('category');
+        Schema::dropIfExists('employees_category');
     }
 }

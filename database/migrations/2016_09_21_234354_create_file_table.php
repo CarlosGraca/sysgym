@@ -14,16 +14,15 @@ class CreateFileTable extends Migration {
 			$table->text('full_path');
 			$table->string('mime_type');
 			$table->string('media_type',10);
+			$table->text('description')->nullable();
 			$table->integer('flag')->default(0);
-			$table->timestamps();
-			$table->softDeletes();
-		});
-
-        Schema::table('files', function ($table) {
+            $table->integer('item_id')->default(0);
             $table->integer('user_id')->unsigned();
             $table->foreign('user_id')->references('id')->on('users');
-        });
-
+            $table->integer('status')->default(1);
+			$table->softDeletes();
+			$table->timestamps();
+		});
 	}
 
 	public function down()

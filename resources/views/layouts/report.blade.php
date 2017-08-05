@@ -28,7 +28,26 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
             <!-- /.row -->
             <!-- Your Page Content Here -->
+
+            <section class="invoice">
+                <div class="row no-print">
+                    <div class="col-xs-6 pull-left">
+                        <img  src="{{ url('/img/clinic/logo.png') }}" class="img-circle" alt="Cinque Terre" style="float: left; width: 30px; height: 30px; margin-right: 10px;  margin-top: -2px;">
+                        <h4>{{ \Auth::user()->branch->company->name }} - Report</h4>
+                    </div>
+                    <div class="col-xs-6 pull-right">
+                        <a href="#" id="close-page" onclick="window.close();" class="btn btn-default pull-right"><i class="fa fa-close"></i> Close</a>
+                        <a href="#" id="print-page" onclick="window.print();" class="btn btn-default pull-right" style="margin-right: 5px;"><i class="fa fa-print"></i> Print</a>
+                        <!--
+                            <a href="#" id="btn-download" type='tests' class="btn btn-default pull-right" style="margin-right: 5px;"><i class="fa fa-cloud-download"></i> Download</a>
+                        -->
+                        <a href="#" id="btn-email" class="btn btn-default pull-right" style="margin-right: 5px;"><i class="fa fa-envelope"></i> Email</a>
+                    </div>
+                </div>
+            </section>
+
             @yield('main-content')
+
 
         </div><!-- /.content -->
 

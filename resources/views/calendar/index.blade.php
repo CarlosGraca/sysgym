@@ -22,10 +22,12 @@
 
             <div class="box-tools">
                 <div class="btn-group pull-right">
+                    @can('add_agenda')
                     <a href="#" class="btn btn-primary btn-sm " data-toggle="tooltip" id="add-agenda" data-url="{{ url('consult_agenda/create') }}" title="{{ trans('adminlte_lang::message.consult_agenda') }}">
                         <i class="fa fa-calendar-plus-o"></i> {{ trans('adminlte_lang::message.consult_agenda') }}
                     </a>
-            
+                    @endcan
+
                     <a href="{{ url('consult_agenda') }}" class="btn btn-primary btn-sm" data-toggle="tooltip" title="{{ trans('adminlte_lang::message.consult_list') }}" style="display:none;">
                         <i class="fa fa-list"></i>
                     </a>
@@ -36,7 +38,7 @@
 
         <div class="box-body">
             <!-- THE CALENDAR -->
-            <div id="calendar" ></div>
+            <div id="calendar"></div>
         </div>
         <!-- /.box-body -->
     </div>

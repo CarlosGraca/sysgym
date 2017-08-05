@@ -1,4 +1,6 @@
-<?php $system = \App\System::all()->first(); ?>
+<?php 
+	//$system = \App\System::all()->first(); 
+?>
 <!DOCTYPE html>
 <html>
 
@@ -6,7 +8,7 @@
 
 <style>
     .content-wrapper-login {
-        background: url('{{ asset( $system->background_image ) }}') no-repeat center center fixed;
+        background: url('{{ asset( 'img/background.jpg' ) }}') no-repeat center center fixed;
         -webkit-background-size: cover;
         -moz-background-size: cover;
         -o-background-size: cover;

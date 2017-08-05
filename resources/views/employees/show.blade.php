@@ -42,11 +42,16 @@
                         <a href="{{ url('employees') }}" class="btn btn-primary btn-sm" role="button" data-toggle="tooltip" title="{{ trans('adminlte_lang::message.list') }}">
                             <i class="fa fa-list"></i>
                         </a>
+                        @if($employee->status == 1)
+                            @can('edit_employee')
+                                <a href="{{ route('employees.edit',$employee->id) }}" class="btn btn-primary btn-sm" role="button" data-toggle="tooltip" title="{{ trans('adminlte_lang::message.edit') }}">
+                                    <i class="fa fa-edit"></i>
+                                </a>
+                            @endcan
+                        @endif
+
                         <a href="{{ url('employees') }}/{{$employee->id}}/print" class="btn btn-primary btn-sm" target="_blank" role="button" data-toggle="tooltip" title="{{ trans('adminlte_lang::message.print') }}">
                             <i class="fa fa-print"></i>
-                        </a>
-                        <a href="{{ route('employees.edit',$employee->id) }}" class="btn btn-primary btn-sm" role="button" data-toggle="tooltip" title="{{ trans('adminlte_lang::message.edit') }}">
-                            <i class="fa fa-edit"></i>
                         </a>
                     </div>
                 </div>
@@ -54,193 +59,19 @@
                 <div class="box-body">
                     <div class="nav-tabs-custom">
                             <ul class="nav nav-tabs">
-                                <li class="active"><a href="#personal_data" data-toggle="tab">{{ trans('adminlte_lang::message.personal_data') }}</a></li>
-                                <li><a href="#documents" data-toggle="tab">{{ trans('adminlte_lang::message.documents') }}</a></li>
-                                <li><a href="#settings" data-toggle="tab">Settings</a></li>
+                                <li class="active"><a href="#personal_data" data-toggle="tab"> <i class="fa fa-address-card-o"></i> {{ trans('adminlte_lang::message.personal_data') }}</a></li>
+                                <li><a href="#documents" data-toggle="tab"> <i class="fa fa-folder-open-o"></i> {{ trans('adminlte_lang::message.documents') }}</a></li>
+                                {{--<li><a href="#settings" data-toggle="tab">Settings</a></li>--}}
                             </ul>
 
                             <div class="tab-content">
                                 <div class="active tab-pane" id="personal_data">
-                                    <!-- PERSONAL INFORMATION -->
-                                    <div class="row">
-                                        <span ><strong class="title"> <i class="fa fa-id-card-o"></i> {{ trans('adminlte_lang::message.personal_information') }}</strong></span>
-                                        <hr class="h-divider" >
-                                        <div class="col-lg-6 col-md-6 col-sm-6">
-                                            <ul class="list-group list-group-unbordered">
-                                                <li class="list-group-item">
-                                                    <i class="fa fa-user"></i>  <b>{{ trans('adminlte_lang::message.name') }}: </b>
-                                                    <a> {{ $employee->name }} </a>
-                                                </li>
-                                                <li class="list-group-item">
-                                                    <i class="fa fa-venus-mars"></i>  <b>{{ trans('adminlte_lang::message.genre') }}: </b>
-                                                    <a>  {{trans('adminlte_lang::message.'.$employee->genre)}} </a>
-                                                </li>
-                                                <li class="list-group-item">
-                                                    <i class="fa fa-heart-o"></i>  <b>{{ trans('adminlte_lang::message.civil_state') }}: </b>
-                                                    <a>{{ trans('adminlte_lang::message.'.$employee->civil_state.'') }}</a>
-                                                </li>
-                                                <li class="list-group-item">
-                                                    <i class="fa fa-birthday-cake"></i>  <b>{{ trans('adminlte_lang::message.birthday') }}: </b>
-                                                    <a>{{ \Carbon\Carbon::createFromFormat('Y-m-d', $employee->birthday)->format('d-m-Y') }}</a>
-                                                </li>
-                                            </ul>
-                                        </div>
 
-                                        <div class="col-lg-6 col-md-6 col-sm-6">
-                                            <ul class="list-group list-group-unbordered">
-                                                <li class="list-group-item">
-                                                    <i class="fa fa-id-card"></i>  <b>{{ trans('adminlte_lang::message.nationality') }}: </b>
-                                                    <a> {{ $employee->nationality }} </a>
-                                                </li>
-                                                <li class="list-group-item">
-                                                    <i class="fa fa-vcard-o"></i>  <b>{{ trans('adminlte_lang::message.bi') }}: </b>
-                                                    <a> {{$employee->bi}} </a>
-                                                </li>
-                                                <li class="list-group-item">
-                                                    <i class="fa fa-vcard-o"></i>  <b>{{ trans('adminlte_lang::message.nif') }}: </b>
-                                                    <a>{{ $employee->nif }}</a>
-                                                </li>
-                                                <li class="list-group-item">
-                                                    <i class="fa fa-users"></i>  <b>{{ trans('adminlte_lang::message.parents') }}: </b>
-                                                    <a>{{  $employee->parents }}</a>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </div>
+                                    @include('people.show',['people'=>$employee,'setting'=>['photo'=>false,'contact'=>true,'report'=>false,'work'=>true,'type_people'=>'employee']])
 
-                                    <!-- CONTACT INFORMATION -->
-                                    <div class="row">
-                                        <span ><strong class="title"> <i class="fa fa-phone"></i> {{ trans('adminlte_lang::message.contact_information') }}</strong></span>
-                                        <hr class="h-divider" >
-                                        <div class="col-lg-6 col-md-6 col-sm-6">
-                                            <ul class="list-group list-group-unbordered">
-                                                <li class="list-group-item">
-                                                    <i class="fa fa-map-marker"></i>  <b>{{ trans('adminlte_lang::message.address') }}: </b>
-                                                    <a> {{ $employee->address }}, {{ $employee->city }}, {{ $employee->island->name }} </a>
-                                                </li>
-                                                <li class="list-group-item">
-                                                    <i class="fa fa-at"></i>  <b>{{ trans('adminlte_lang::message.email') }}: </b>
-                                                    <a> {{$employee->email }} </a>
-                                                </li>
-                                                <li class="list-group-item">
-                                                    <i class="fa fa-phone"></i>  <b>{{ trans('adminlte_lang::message.phone') }}: </b>
-                                                    <a>{{ $employee->phone }}</a>
-                                                </li>
-                                                <li class="list-group-item">
-                                                    <i class="fa fa-mobile"></i>  <b>{{ trans('adminlte_lang::message.mobile') }}: </b>
-                                                    <a>{{ $employee->mobile}}</a>
-                                                </li>
-                                            </ul>
-                                        </div>
-
-                                        <div class="col-lg-6 col-md-6 col-sm-6">
-                                            <ul class="list-group list-group-unbordered">
-                                                <li class="list-group-item">
-                                                    <i class="fa fa-id-card"></i>  <b>{{ trans('adminlte_lang::message.zip_code') }}: </b>
-                                                    <a> {{ $employee->zip_code }} </a>
-                                                </li>
-                                                <li class="list-group-item">
-                                                    <i class="fa fa-globe"></i>  <b>{{ trans('adminlte_lang::message.website') }}: </b>
-                                                    <a> {{$employee->website}} </a>
-                                                </li>
-                                                <li class="list-group-item">
-                                                    <i class="fa fa-facebook-official"></i>  <b>{{ trans('adminlte_lang::message.facebook') }}: </b>
-                                                    <a>{{ $employee->facebook }}</a>
-                                                </li>
-                                                <li class="list-group-item">
-                                                    <i class="fa fa-shield"></i>  <b>{{ trans('adminlte_lang::message.has_secure') }}: </b>
-                                                    <a>{{  $employee->has_secure == 1 ? trans('adminlte_lang::message.yes') : trans('adminlte_lang::message.not') }}</a>
-                                                </li>
-                                            </ul>
-                                        </div>
-
-                                    </div>
-
-                                    <!-- WORK INFORMATION -->
-                                    <div class="row">
-                                        <span ><strong class="title"> <i class="fa fa-id-card-o"></i> {{ trans('adminlte_lang::message.work_information') }}</strong></span>
-                                        <hr class="h-divider" >
-                                        <div class="col-lg-6 col-md-6 col-sm-6">
-                                            <ul class="list-group list-group-unbordered">
-                                                <li class="list-group-item">
-                                                    <i class="fa fa-info"></i>  <b>{{ trans('adminlte_lang::message.branch_name') }}: </b>
-                                                    <a> {{ $employee->branch->name }} </a>
-                                                </li>
-                                                <li class="list-group-item">
-                                                    <i class="fa fa-map-marker"></i>  <b>{{ trans('adminlte_lang::message.address') }}: </b>
-                                                    <a> {{ $employee->branch->address }} </a>
-                                                </li>
-                                                <li class="list-group-item">
-                                                    <i class="fa fa-phone"></i>  <b>{{ trans('adminlte_lang::message.work_phone') }}: </b>
-                                                    <a> {{ $employee->branch->phone }} </a>
-                                                </li>
-
-                                                <li class="list-group-item">
-                                                    <i class="fa fa-quote-left"></i>  <b>{{ trans('adminlte_lang::message.note') }}: </b>
-                                                    <a> {{ $employee->note }} </a>
-                                                </li>
-                                            </ul>
-                                        </div>
-
-                                        <div class="col-lg-6 col-md-6 col-sm-6">
-                                            <ul class="list-group list-group-unbordered">
-                                                <li class="list-group-item">
-                                                    <i class="fa fa-user-md"></i>  <b>{{ trans('adminlte_lang::message.category') }}: </b>
-                                                    <a> {{$employee->category->name }} </a>
-                                                </li>
-
-                                                <li class="list-group-item">
-                                                    <i class="fa fa-calendar"></i>  <b>{{ trans('adminlte_lang::message.start_work') }}: </b>
-                                                    <a> {{ \Carbon\Carbon::createFromFormat('Y-m-d', $employee->start_work)->format('d-m-Y') }} </a>
-                                                </li>
-
-                                                <li class="list-group-item">
-                                                    <i class="fa fa-calendar"></i>  <b>{{ trans('adminlte_lang::message.end_work') }}: </b>
-                                                    <a> {{ \Carbon\Carbon::createFromFormat('Y-m-d', $employee->end_work)->format('d-m-Y') }} </a>
-                                                </li>
-                                            </ul>
-                                        </div>
-
-                                    </div>
-
-                                @if($employee->has_secure == 1)
-                                    <!-- SECURE INFORMATION -->
-                                        <div class="row">
-                                            <span ><strong class="title"> <i class="fa fa-id-card-o"></i> {{ trans('adminlte_lang::message.secure_card_information') }}</strong></span>
-                                            <hr class="h-divider" >
-                                            <div class="col-lg-6 col-md-6 col-sm-6">
-                                                <ul class="list-group list-group-unbordered">
-                                                    <li class="list-group-item">
-                                                        <i class="fa fa-shield"></i>  <b>{{ trans('adminlte_lang::message.secure_agency') }}: </b>
-                                                        <a> {{ $employee->secure_card->secure_agency->name }} </a>
-                                                    </li>
-                                                    <li class="list-group-item">
-                                                        <i class="fa fa-id-card-o"></i>  <b>{{ trans('adminlte_lang::message.secure_number') }}: </b>
-                                                        <a> {{ $employee->secure_card->secure_number }} </a>
-                                                    </li>
-                                                    <li class="list-group-item">
-                                                        <i class="fa fa-quote-left"></i>  <b>{{ trans('adminlte_lang::message.note') }}: </b>
-                                                        <a> {{ $employee->secure_card->note }} </a>
-                                                    </li>
-                                                </ul>
-                                            </div>
-
-                                            <div class="col-lg-6 col-md-6 col-sm-6">
-                                                <ul class="list-group list-group-unbordered">
-                                                    <li class="list-group-item">
-                                                        <i class="fa fa-calendar"></i>  <b>{{ trans('adminlte_lang::message.start_date') }}: </b>
-                                                        <a> {{ \Carbon\Carbon::createFromFormat('Y-m-d', $employee->secure_card->start_date)->format('d-m-Y') }} </a>
-                                                    </li>
-                                                    <li class="list-group-item">
-                                                        <i class="fa fa-calendar"></i>  <b>{{ trans('adminlte_lang::message.end_date') }}: </b>
-                                                        <a> {{ \Carbon\Carbon::createFromFormat('Y-m-d', $employee->secure_card->end_date)->format('d-m-Y') }} </a>
-                                                    </li>
-
-                                                </ul>
-                                            </div>
-
-                                        </div>
-                                    @endif
+                                    {{--@if($employee->has_secure == 1)--}}
+                                        {{--@include('secure_card.show',['card'=>$employee])--}}
+                                    {{--@endif--}}
                                 </div>
                                 <!-- /.tab-pane -->
                                 <div class="tab-pane" id="documents">
@@ -285,10 +116,10 @@
                                 </div>
                                 <!-- /.tab-pane -->
 
-                                <div class="tab-pane" id="settings">
+                                {{--<div class="tab-pane" id="settings">--}}
 
-                                </div>
-                                <!-- /.tab-pane -->
+                                {{--</div>--}}
+                                {{--<!-- /.tab-pane -->--}}
                             </div>
                             <!-- /.tab-content -->
                         </div>

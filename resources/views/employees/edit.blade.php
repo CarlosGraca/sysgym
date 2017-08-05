@@ -28,14 +28,14 @@
 							</a>
 
 							<a href="{{ route('employees.show',$employee->id) }}" class="btn btn-primary btn-sm" role="button" data-toggle="tooltip" title="{{ trans('adminlte_lang::message.show_details') }}")>
-								<i class="fa fa-address-card"></i>
+								<i class="fa fa-eye"></i>
 							</a>
 
 							<a href="#!" class="btn btn-primary btn-sm" role="button" data-toggle="tooltip" title="{{ trans('adminlte_lang::message.edit') }}" id="edit-employee-button" style="display: none;">
 								<i class="fa fa-edit"></i>
 							</a>
 
-							<a href="#" class="btn btn-primary btn-sm" role="button" data-toggle="tooltip" title="{{ trans('adminlte_lang::message.save') }}" id="edit-employee">
+							<a href="#" class="btn btn-primary btn-sm" role="button" data-toggle="tooltip" title="{{ trans('adminlte_lang::message.save') }}" id="update-employee">
 								 <i class="fa fa-save"></i>
 							</a>
 					</div><!-- /. tools -->

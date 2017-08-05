@@ -28,10 +28,10 @@
                         </a>
 
                         <a href="{{ route('branches.show',$branch->id) }}" class="btn btn-primary btn-sm" role="button" data-toggle="tooltip" title="{{ trans('adminlte_lang::message.show_details') }}")>
-                            <i class="fa fa-address-card"></i>
+                            <i class="fa fa-eye"></i>
                         </a>
 
-                        <a href="#!" class="btn btn-primary btn-sm" role="button" data-toggle="tooltip" title="{{ trans('adminlte_lang::message.save') }}" id="edit-branch">
+                        <a href="#!" class="btn btn-primary btn-sm" role="button" data-toggle="tooltip" title="{{ trans('adminlte_lang::message.save') }}" id="update-branch">
                             <i class="fa fa-save"></i>
                         </a>
 

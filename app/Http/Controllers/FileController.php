@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\File;
-use App\PatientFiles;
+use App\ClientFiles;
 use Illuminate\Http\Request;
 
 
@@ -65,14 +65,14 @@ class FileController extends Controller
 //            }
 
             if($file->save()){
-                /*$patient_files = new PatientFiles();
-                $patient_files->file_id = $file->id;
-                $patient_files->patient_id = $request->patient_id;
-                $patient_files->user_id = \Auth::user()->id;
-                $patient_files->save();*/
+                /*$client_files = new ClientFiles();
+                $client_files->file_id = $file->id;
+                $client_files->client_id = $request->client_id;
+                $client_files->user_id = \Auth::user()->id;
+                $client_files->save();*/
                 $success = true;
             }else{
-                $message = trans('adminlte_lang::message.msg_error_patient_files');
+                $message = trans('adminlte_lang::message.msg_error_client_files');
                 return ['values'=>$file,'message'=>$message,'form'=>'files','type'=>'error'];
             }
 
@@ -82,12 +82,12 @@ class FileController extends Controller
         //echo $success;
 
         if (\Request::wantsJson() && $success ){
-            $message = trans('adminlte_lang::message.msg_success_patient_files');
+            $message = trans('adminlte_lang::message.msg_success_client_files');
             return ['values'=>$file,'message'=>$message,'form'=>'files','type'=>'success'];
         }else{
 //            print_r();
 //            die();
-            $message = trans('adminlte_lang::message.msg_error_patient_files').' <br> '.$request->file('file')->getErrorMessage();
+            $message = trans('adminlte_lang::message.msg_error_client_files').' <br> '.$request->file('file')->getErrorMessage();
             return ['values'=>$file,'message'=>$message,'form'=>'files','type'=>'error'];
         }
     }
@@ -186,24 +186,24 @@ class FileController extends Controller
     {
         //
         $file = File::where('id',$id)->first();
-       // $patient_files = PatientFiles::where('file_id',$id)->first();
+       // $client_files = ClientFiles::where('file_id',$id)->first();
 
-       // if($patient_files->delete()){
+       // if($client_files->delete()){
            if($file->delete()){
                if(file_exists($file->full_path)) {
                    unlink($file->full_path);
                }
            }else{
-               $message = trans('adminlte_lang::message.msg_error_deleted_patient_files');
+               $message = trans('adminlte_lang::message.msg_error_deleted_client_files');
                return ['message'=>$message,'form'=>'files'];
            }
         //
 
         if (\Request::wantsJson()){
-            $message = trans('adminlte_lang::message.msg_success_deleted_patient_files');
+            $message = trans('adminlte_lang::message.msg_success_deleted_client_files');
             return ['message'=>$message,'form'=>'files'];
         }else{
-            $message = trans('adminlte_lang::message.msg_success_deleted_patient_files');
+            $message = trans('adminlte_lang::message.msg_success_deleted_client_files');
             return ['values'=>$file,'message'=>$message,'form'=>'files'];
         }
         

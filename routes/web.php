@@ -7,12 +7,24 @@
 |
 | This file is where you may define all of the routes that are handled
 | by your application. Just tell Laravel the URIs it should respond
-| to using a Closure or controller method. Build something great!
+| to using a Closure or controller method. Build something great! 
 |
 */
+Route::get('/', function () {
+    return view('welcome');
+});
+
+
+
+Route::get('auth/register', 'Auth\RegisterController@redirectRegisterTenants');
+
+Route::post('/register_tenant', 'Auth\RegisterController@registerTenants');
+
+Route::get('/confirmation/{token}', 'Auth\RegisterController@confirmation')->name('confirmation');
+
 
 //LOGIN REDIRECT
-Route::get('/', 'Auth\LoginController@redirectLogin');
+//Route::get('/', 'Auth\LoginController@redirectLogin');
 Route::get('/login', 'Auth\LoginController@redirectLogin');
 
 Route::get('/logout', 'Auth\LoginController@logout');
@@ -29,33 +41,27 @@ Route::get('token_password/reset/',function ($token){
 Route::post('setup/password','Auth\UserController@setup_password');
 
 //
-Route::group(['middleware' => ['web','auth','check_agenda']], function(){
-    $system = \App\System::all()->first();
-    \App::setLocale($system->lang);
-//    config(['app.timezone' => $system->timezone]);
-
-    Route::resource('patients','PatientController');
+Route::group(['middleware' => ['web','auth']], function(){
+   // $system = \App\System::all()->first();
+   // \App::setLocale($system->lang);
+    
+    Route::resource('clients','ClientController');
     Route::resource('auth/profile', 'Auth\ProfileController');
     Route::resource('company','CompanyController');
     Route::resource('branches','BranchController');
     Route::resource('employees','EmployeeController');
-    Route::resource('secure_agency','SecureAgencyController');
     Route::resource('category','CategoryController');
-    Route::resource('consult_type','ConsultTypeController');
+    Route::resource('modalities','ModalityController');
     Route::resource('system','SystemController');
-    Route::resource('consult_agenda','ConsultAgendaController');
-    Route::resource('consult','ConsultController');
     Route::resource('users','Auth\UserController');
-    Route::resource('secure_comparticipation','SecureComparticipationController');
-    Route::resource('budget','BudgetController');
+    Route::resource('matriculation','MatriculationController');
     Route::resource('secure_card','SecureCardController');
     Route::resource('campaign_messages','CampaignMessageController');
     Route::resource('license_generate','Defaults');
     Route::resource('files','FileController');
     Route::resource('payments','PaymentController');
-    Route::resource('procedure_group','ProcedureGroupController');
-    Route::resource('procedure','ProcedureController');
-    Route::resource('teeth','TeethController');
+    Route::resource('roles','RoleController');
+    Route::resource('permissions','PermissionController');
 });
 
 /**/
@@ -63,19 +69,17 @@ Route::group(['middleware' => ['license']], function() {
     Route::resource('license','LicenseController');
 });
 
+//REPORT PRINT
+Route::get('/clients/{id}/print','ClientController@_print');
+Route::get('/employees/{id}/print','EmployeeController@_print');
 
-
-//REPORT TO PATIENTS
-Route::get('/patients/{id}/print','PatientController@_print');
 //PATIENT CHANGE STATUS
-Route::post('patients/enable','PatientController@enable');
-Route::post('patients/disable','PatientController@disable');
-
+Route::post('clients/enable','ClientController@enable');
+Route::post('clients/disable','ClientController@disable');
 
 //EMPLOYEES CHANGE STATUS
 Route::post('employees/enable','EmployeeController@enable');
 Route::post('employees/disable','EmployeeController@disable');
-
 
 //AGENDA
 Route::get('agenda',function (){
@@ -98,13 +102,23 @@ Route::get('confirm_list','ConsultAgendaController@confirm_consult_list');
 Route::get('cancel_list','ConsultAgendaController@cancel_consult_list');
 
 
-Route::post('consult_procedure/get_consult','SecureComparticipationController@getSecureComparticipation');
+Route::post('/procedure/secure/co_participation/get','SecureComparticipationController@getSecureComparticipation');
+
 
 //GET CURRENCY VALUES
 Route::get('/currency_format/{value}', 'Defaults@currency');
 
-//Route
-Route::get('search/autocomplete', 'SearchController@autocomplete');
+//SEARCH PATIENT
+Route::get('search/client/autocomplete', 'SearchController@client');
+
+//SEARCH DOCTOR
+Route::get('search/employee/autocomplete', 'SearchController@employee');
+
+//SEARCH PROCEDURE
+Route::get('search/modality/autocomplete', 'SearchController@modality');
+
+//SEARCH EMPLOYEE CATEGORY
+Route::get('search/employee-category/autocomplete', 'SearchController@employee_category');
 
 //
 Route::get('/island', 'IslandController@island');
@@ -112,22 +126,37 @@ Route::get('/island', 'IslandController@island');
 //GET CATEGORY BASE SALARY
 Route::get('/category/salary_base/{id}', 'CategoryController@getSalaryBase');
 
-/*
-Route::post('/pdf/sendMail/', 'MailController@sendReport');
 
-Route::get('tests/pdf/download/{id}', 'TestController@downloadPDF');
-
-Route::post('tests/pdf/downloadhtml/', 'TestController@downloadHTMLtoPDF');
-*/
 //Dashboard getData
 Route::post('dashboard/graphic', 'DashboardGraphic@getData');
 
 //Change user fields
 // usage inside a laravel route
 Route::post('upload','Auth\ProfileController@update_avatar');
-Route::post('update/user/field/','Auth\ProfileController@updateField');
-Route::get('edit/user/field/{name}','Auth\ProfileController@getPopEdit');
 Route::get('employee/{id}','EmployeeController@getEmployee');
+
+
+//POPOVER FIELD
+Route::post('/edit/{popover}/field','Defaults@GetPopOver');
+Route::post('/update/{popover}/field','Defaults@SetPopOver');
+
+//PAYMENT PROCEDURE
+Route::post('modalities/client','ModalityController@getClientModality');
+
+//BUDGET PROCEDURE
+Route::post('matriculation/modality','MatriculationController@modality');
+
+//GENERATE BUDGET PAYMENT
+Route::post('matriculation/payment','MatriculationController@generate_matriculation_payment');
+
+
+//BUDGET CHANGE STATUS
+Route::post('matriculation/publish','MatriculationController@publish');
+Route::post('matriculation/approve','MatriculationController@approve');
+Route::post('matriculation/cancel','MatriculationController@cancel');
+Route::post('matriculation/reject','MatriculationController@reject');
+//BUDGET REPORT
+Route::get('matriculation/{id}/report', 'MatriculationController@report');
 
 //BUILD USER
 Route::get('build/{id}','Auth\UserController@build');
@@ -152,25 +181,25 @@ Route::post('procedure/disable','ProcedureController@disable');
 Route::post('secure_comparticipation/enable','SecureComparticipationController@enable');
 Route::post('secure_comparticipation/disable','SecureComparticipationController@disable');
 
-//TEETH CHANGE STATUS
-Route::post('teeth/enable','TeethController@enable');
-Route::post('teeth/disable','TeethController@disable');
+//Modality CHANGE STATUS
+Route::post('modalities/enable','ModalityController@enable');
+Route::post('modalities/disable','ModalityController@disable');
 
+//ROLES CHANGE STATUS
+Route::post('roles/enable','RoleController@enable');
+Route::post('roles/disable','RoleController@disable');
 
-//SYSTEM SETUP
-Route::get('setup/system',function(){
-    $default = new \App\Http\Controllers\Defaults();
-    $system = \App\System::all()->first();
-    $island = \App\Island::pluck('name','id');
-    $theme = $default->getTheme();
-    $lang = $default->getLang();
-    $currency = $default->getCurrency();
-    $layout = $default->getLayout();
-    $timezone = $default->getTimezone();
-//    $timezone = \App\TimeZone::pluck('name','id');
+//CATEGORY CHANGE STATUS
+Route::post('category/enable','CategoryController@enable');
+Route::post('category/disable','CategoryController@disable');
 
-    return view('system.setup',compact('island','system','theme','lang','currency','layout','timezone'));
-});
+//PERMISSIONS CHANGE STATUS
+Route::post('permissions/enable','PermissionController@enable');
+Route::post('permissions/disable','PermissionController@disable');
+
+//BRANCH CHANGE STATUS
+Route::post('branches/enable','BranchController@enable');
+Route::post('branches/disable','BranchController@disable');
 
 //EXPIRED LICENSE
 Route::get('license_expired',function(){
@@ -178,13 +207,29 @@ Route::get('license_expired',function(){
 });
 
 //MESSAGES
-Route::get('mail','SendMailController@sendMail');
+//Route::get('mail','SendMailController@sendMail');
 
 //ABOUT SYSTEM
-Route::get('about_system','SystemController@aboutSystem');
+Route::get('about-system','SystemController@aboutSystem');
 
 //HELP
 Route::get('help','SystemController@help');
+
+//SYSTEM SETUP
+Route::get('setup/system',function()
+{
+    $default = new App\Http\Controllers\Defaults();
+    $system = \App\System::all()->first();
+    $island = \App\Island::pluck('name','id');
+    $theme = $default->getTheme();
+    $lang = $default->getLang();
+    $currency = $default->getCurrency();
+    $layout = $default->getLayout();
+    $timezone = $default->getTimezone();
+    $roles = \App\Role::pluck('name','id');
+
+    return view('system.setup',compact('island','system','theme','lang','currency','layout','timezone','roles'));
+});
 
 //SCHEDULE
 Route::post('schedule','BranchController@schedule');
@@ -193,7 +238,6 @@ Route::post('schedule','BranchController@schedule');
 Route::get('user/setup/password',function(){
     return view('auth.setup_password');
 });
-
 
 //GET ALL EMPLOYEES CATEGORY
 Route::get('category_all','CategoryController@getEmployeesCategory');
@@ -211,21 +255,3 @@ Route::get('files/{id}/remove','FileController@remove');
 Route::post('croppie',function(\Illuminate\Http\Request $request){
     return view('components.croppie',['type'=>$request->type,'src'=>$request->src]);
 });
-
-//OWN DOCUMENTS
-
-
-//Route::get('/sistema/Comum.do',function(\Illuminate\Http\Request $request)
-//{
-//  if ($request->get("act") == "loadUsuarioPAD") {
-//    return view('owner.Comum_utilizador');
-//  }elseif ($request->get("act") == "loadProprietarioPAD") {
-//    return view('owner.Comum_proprietario');
-//  }elseif ($request->get("act") == "loadLotePAD") {
-//    return view('owner.Comum_lote');
-//  }elseif ($request->get("act") == "loadComunidadePAD") {
-//    return view('owner.Comum_comunidade');
-//  }elseif ($request->get("act") == "insertAmanhoPDA") {
-//    echo "success";
-//  }
-//});

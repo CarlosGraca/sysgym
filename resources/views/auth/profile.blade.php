@@ -23,7 +23,7 @@
 				<div class="box-body box-profile">
 					<div class="text-center">
 						<img class="avatar thumbnail" src="{{ asset(Auth::user()->avatar) }}" style="max-width: 100%; width: 250px; margin: 0 auto; z-index: -1;">
-						<h3 class="profile-username text-center">{{  Auth::user()->name }}</h3>
+						<h3 class="profile-username text-center user-name">{{  Auth::user()->name }}</h3>
 					</div>
 
 				</div>
@@ -61,24 +61,26 @@
 					        		<div class="col-lg-12">
 					        			<ul class="list-group list-group-unbordered">
 						                    <li class="list-group-item">
-						                      <b>Name: </b><span class="name">{{Auth::user()->name}}</span> <a href="#" id='user-name' title='Edit'> <i class="fa fa-pencil"></i> </a>
+						                      <b>{{ trans('adminlte_lang::message.name') }}: </b><span class="user-name">{{Auth::user()->name}}</span> <a href="#" id='user-name' title='Edit'> <i class="fa fa-pencil"></i> </a>
 						                    </li>
 						                    <li class="list-group-item">
-						                      <b>Email: </b>{{Auth::user()->email}} <a href="#" id='user-email'>  <i class="fa fa-pencil"></i> </a>
+						                      <b>{{ trans('adminlte_lang::message.email') }}: </b>{{\Auth::user()->email}}
+												{{--<a href="#" id='user-email'>  <i class="fa fa-pencil"></i> </a>--}}
 						                    </li>
+											<?php $role =  \Auth::user()->roles->first(); ?>
+											<li class="list-group-item">
+												<b>{{ trans('adminlte_lang::message.role') }}: </b>{{ $role['name'] }}
+											</li>
 						                    <li class="list-group-item">
-						                      <b>Created At: </b> {{ \Carbon\Carbon::parse(\Auth::user()->created_at)->format('d-m-Y') }}
+						                      <b>{{ trans('adminlte_lang::message.create_date') }}: </b> {{ \Carbon\Carbon::parse(\Auth::user()->created_at)->format('d/m/Y') }}
 						                    </li>
 						                </ul>
-
-
-
 					        		</div>
 					        	</div>
 							</div>
 							 <!-- Reset Password -->
 					        <div class="tab-pane " id="password">
-					            <form action="{{ url('/password/reset') }}" method="post" class="form-horizontal">
+					            <form action="{{ url('auth/password/reset') }}" method="post" class="form-horizontal">
 									<input type="hidden" name="_token" value="{{ csrf_token() }}">
 									<div class="form-group has-feedback">
 					                     <label for="old_password" class="col-sm-2 control-label">Current  Password *</label>

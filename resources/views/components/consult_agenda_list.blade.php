@@ -3,19 +3,19 @@
 
         <tbody>
         @foreach ($consult_agenda as $agenda)
-            <tr class="{{$table_name}}" data-key="{{ $agenda->id }}" data-date="{{ $agenda->date }}">
+            <tr class="{{ $table_name }}" data-key="{{ $agenda->id }}" data-date="{{ $agenda->date }}">
                 <td class="col-md-6">
 
                     <div class="user-panel">
                         <div class="pull-left image">
-                            <img  src="{{ url('/') }}/{{ $agenda->patient_avatar }}" class="list_image" alt="Cinque Terre" style="max-height: 50px; max-width: 50px; min-height: 50px; min-width: 50px;">
+                            <img  src="{{ asset($agenda->client_avatar) }}" class="list_image" alt="Cinque Terre" style="max-height: 50px; max-width: 50px; min-height: 50px; min-width: 50px;">
                         </div>
                         <div class="pull-left info">
                             <p>
-                                <a class="users-list-name" href="{{ route('patients.show',$agenda->patient_id) }}" data-toggle="tooltip"  data-placement="bottom" title="{{ $agenda->patient }}" style="margin-bottom: 5px;" >{{ $agenda->patient }}</a>
+                                <a class="users-list-name" href="{{ route('clients',$agenda->client_id) }}" data-toggle="tooltip"  data-placement="bottom" title="{{ $agenda->client }}" style="margin-bottom: 5px;" >{{ $agenda->client }}</a>
                                 <a href="tel:{{ $agenda->mobile  }}" style="color: rgba(0, 0, 0, 0.51); " ><i class="fa fa-mobile"></i> {{ $agenda->mobile  }} /</a>  <a href="tel:{{ $agenda->phone }}" style="color: rgba(0, 0, 0, 0.51); " ><i class="fa fa-phone"></i> {{ $agenda->phone  }}</a>
                                 <br>
-                                <a href="#" style="color: rgba(0, 0, 0, 0.51); margin-top:5px;" ><i class="fa fa-at"></i> {{ $agenda->email  }}</a>
+                                <a href="#" style="color: rgba(0, 0, 0, 0.51);  margin-top:15px;" ><i class="fa fa-at"></i> {{ $agenda->email  }}</a>
                             </p>
                             <!-- Status -->
                         </div>
@@ -27,7 +27,7 @@
                     <div class="user-panel">
                         <div class="text-center">
                             <p>
-                                <a class="users-list-name" href="#" data-toggle="tooltip"  data-placement="bottom" title="{{ \Carbon\Carbon::parse($agenda->date)->diffForHumans() }}" >{{ \Carbon\Carbon::createFromFormat('Y-m-d', $agenda->date)->format('d/m/Y') }} @if($type == 'scheduled') | {{ $agenda->starttime }} - {{ $agenda->endtime }} @endif</a>
+                                <a class="users-list-name" href="#" data-toggle="tooltip"  data-placement="bottom" title="{{ \Carbon\Carbon::parse($agenda->date)->diffForHumans() }}" >{{ \Carbon\Carbon::createFromFormat('Y-m-d', $agenda->date)->format('d/m/Y') }} @if($type == 'scheduled')  {{ $agenda->starttime }} - {{ $agenda->endtime }} @endif</a>
                                 <span style="color: rgba(0, 0, 0, 0.51); display: block; white-space: nowrap; text-overflow: ellipsis;">
 								  {{ trans('adminlte_lang::message.by') }} <a href="#" style=" color: rgba(0, 0, 0, 0.51);"  data-toggle="tooltip"  data-placement="top" title="{{ $agenda->user_name  }}" >{{ $agenda->user_name  }}</a>
 								</span>

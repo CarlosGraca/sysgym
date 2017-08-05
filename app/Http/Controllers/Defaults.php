@@ -10,6 +10,7 @@ namespace App\Http\Controllers;
 
 
 //use Illuminate\Http\Request;
+use App\Teeth;
 use Request;
 use App\Http\Requests\LicenseGeratorRequest;
 use Illuminate\Support\Facades\Auth;
@@ -76,7 +77,7 @@ class Defaults extends Controller
     ];
 
     //SYSTEM NAME
-    private $system_name = 'ODONTSOFT';
+    private $system_name = 'SYSGYM';
     private $rang_primo = 100;
     private $rang_impar = 99;
     private $time = [  'D', 'M', 'Y'];
@@ -235,9 +236,28 @@ class Defaults extends Controller
         '(UTC+13:00) Nuku\'alofa' => 'Pacific/Tongatapu'
     ];
 
+    private $status = ['canceled','scheduled','confirmed','expired','in_progress'];
+    private $status_color = ['danger','info','success','default','warning'];
+
     //DATE FORMAT
     private $date_format = [
-        ''
+        'd/m/Y'
+    ];
+
+    //months
+    private $monthNames =
+        ['january',
+        'february',
+        'march',
+        'april',
+        'may',
+        'june',
+        'july',
+        'august',
+        'september',
+        'october',
+        'november',
+        'december'
     ];
 
     /**
@@ -270,6 +290,19 @@ class Defaults extends Controller
     public function getLayout()
     {
         return $this->layout;
+    }
+
+    /**
+     * @return array
+     */
+    public function getMonthNames()
+    {
+        $new_month = [];
+        foreach ($this->monthNames as $month) {
+            $name = trans('adminlte_lang::message.'.$month);
+            $new_month = $new_month + [$month=>$name];
+        }
+        return $new_month;
     }
 
     /**
@@ -316,6 +349,24 @@ class Defaults extends Controller
     {
         return $this->oldWeeks;
     }
+
+    /**
+     * @return array
+     */
+    public function getStatus()
+    {
+        return $this->status;
+    }
+
+    /**
+     * @return array
+     */
+    public function getStatusColor()
+    {
+        return $this->status_color;
+    }
+    
+    
     
     
 
@@ -524,7 +575,7 @@ class Defaults extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  LicenseGeratorRequest $request
      * @return \Illuminate\Http\Response
      */
     public function store(LicenseGeratorRequest $request){
@@ -595,7 +646,86 @@ class Defaults extends Controller
 
         return $timezone;
     }
-    
-    
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request $request
+     * @param  string $popover
+     * @return \Illuminate\Http\Response
+     */
+    //THIS FUNCTION CONTROL POP OVER FIELDS
+    public function GetPopOver(\Illuminate\Http\Request $request, $popover){
+//        echo $popover.' SYSTEM';
+        
+        
+        switch ($popover) {
+            case 'payment-value':
+                $placeholder = trans('adminlte_lang::message.value');
+                return view('layouts.shared.field', ['name' => $popover, 'value' => ($request->val == 0 ? null : $request->val), 'type' => 'number', 'placeholder' => $placeholder]);
+                break;
+
+            case 'm_modality-discount':
+                $placeholder = trans('adminlte_lang::message.value');
+                return view('layouts.shared.field', ['name' => $popover, 'value' => ($request->val == 0 ? null : $request->val), 'type' => 'number', 'placeholder' => $placeholder]);
+                break;
+
+            case 'matriculation-modalities':
+                $teeth = null;
+                $teeth = Teeth::orderby('number')->pluck('number', 'id');
+                $placeholder = trans('adminlte_lang::message.teeth_empty');
+                return view('layouts.shared.field', ['name' => $popover, 'value' => $teeth, 'selected' => $request->id, 'type' => 'select', 'placeholder' => $placeholder]);
+                break;
+
+            case 'user-name':
+                $user = \Auth::user();
+                $placeholder = trans('adminlte_lang::message.name');
+                return view('layouts.shared.field',['name'=>$popover,'value'=>$user->name,'type'=>'text', 'placeholder' => $placeholder]);
+                break;
+            default:
+                # code...
+                break;
+        }
+
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request $request
+     * @param  string $popover
+     * @return \Illuminate\Http\Response
+     */
+    public function SetPopOver(\Illuminate\Http\Request $request, $popover){
+        
+        switch ($popover) {
+        
+            case 'payment-value':
+                $format_value = $this->currency($request->val);
+                $remaining = doubleval(($request->total - $request->paid) - $request->val);
+                $format_remaining = $this->currency($remaining);
+                return ['value' => $request->val,'format_value'=>$format_value,'format_remaining'=>$format_remaining,'remaining'=>$remaining];
+                break;
+            case 'm_modality-discount':
+                $format_discount = $this->currency($request->val);
+                $m_modality_total = doubleval($request->total - $request->val);
+                $format_m_modality_total = $this->currency($m_modality_total);
+                return ['discount' => $request->val,'format_discount'=>$format_discount,'format_m_modality_total'=>$format_m_modality_total,'m_modality_total'=>$m_modality_total,'type'=>'success'];
+                break;
+            case 'matriculation-modalities':
+                return ['id' => ($request->id == '' ? 0 : $request->id), 'value'=> ($request->id == '' ? '' : $request->value )];
+                break;
+            case 'user-name':
+                $user = \Auth::user();
+                $user->name = $request->value;
+                $user->save();
+                return ['field_value'=>$request->value,'type'=>'success','message'=>'Name updated with success'];
+                break;
+            default:
+                # code...
+                break;
+        }
+        return ['id' => ($request->id == '' ? 0 : $request->id), 'value'=> ($request->id == '' ? '' : $request->value )];
+    }
 
 }

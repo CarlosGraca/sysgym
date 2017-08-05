@@ -1,5 +1,6 @@
 <div class="row">
     <div class="col-lg-12" style="text-align: justify;">
+        <img src="{{ asset('/img/clinic/doctor_icon.png') }}" alt="" class="img-circle"  style="float: left; width: 30px; height: 30px; margin-right: 10px;  margin-top: 5px;">
         <p>
             <b>OdontSoft</b> é um sistema de gestão de clínica dentária, desenvolvido com objectivo
             de ajudar a melhorar a qualidade de atendimento dos pacientes num clinica de odontologia
@@ -46,9 +47,9 @@
             +238 599 72 11 <br>
             <br>
             <b>Email</b>: <br>
-            ailtonsemedo-2006@hotmail.com <br>
-            ailtonsemedo.2006@gmail.com <br>
-            ​ af131588@us.edu.cv​ <br>
+              ailtonsemedo-2006@hotmail.com <br>
+              ailtonsemedo.2006@gmail.com <br>
+             ​af131588@us.edu.cv​ <br>
             <br>
             <b>Morada</b>: <br>
             Palmarejo Grande - Praia. Cabo Verde.

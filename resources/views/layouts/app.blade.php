@@ -1,6 +1,6 @@
 <?php
-    $system = \App\System::all()->first();
-    \Carbon\Carbon::setLocale($system->lang)
+    $system = \App\Models\System::where('id',\Auth::user()->branch_id)->first();
+   \Carbon\Carbon::setLocale(count($system) > 0 ? $system->lang : 'en'); 
 ?>
 <!DOCTYPE html>
 <!--
@@ -41,7 +41,7 @@ desired effect
         margin: 10px;
     }
 
-    #patient-avatar{
+    #client-avatar{
         position: absolute;
         top: 0;
         right: 0;
@@ -54,7 +54,7 @@ desired effect
     }
 
     .content-wrapper {
-        background: url('{{ asset( $system->background_image ) }}') no-repeat center center fixed;
+        background: url('{{ asset( count($system) > 0 ? $system->background_image : 'img/background.jpg' ) }}') no-repeat center center fixed;
         -webkit-background-size: cover;
         -moz-background-size: cover;
         -o-background-size: cover;
@@ -62,7 +62,7 @@ desired effect
     }
 
     .layout-boxed {
-        background: url('{{ asset( $system->background_image ) }}') no-repeat center center fixed;
+        background: url('{{ asset( count($system) > 0 ? $system->background_image : 'img/background.jpg' ) }}') no-repeat center center fixed;
         -webkit-background-size: cover;
         -moz-background-size: cover;
         -o-background-size: cover;
@@ -79,7 +79,7 @@ desired effect
 
 </style>
 
-<body class=" {{  $system->theme }} sidebar-mini {{  $system->layout }}">
+<body class=" {{ count($system) > 0 ? $system->theme : 'skin-blue' }} sidebar-mini {{ count($system) > 0 ? $system->layout : 'fixed' }}">
 <div class="wrapper">
 
     @include('layouts.partials.mainheader')

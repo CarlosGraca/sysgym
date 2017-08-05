@@ -11,9 +11,9 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-       // Eloquent::unguard();
-        //$this->call(IslandTableSeeder::class);
-        // $this->call(SystemSeeder::class);
+        Eloquent::unguard();
+        $this->call(MenuTableSeeder::class);
+        //$this->call(SystemSeeder::class);
 //        $this->call(TimezoneTableSeeder::class);
        
     }

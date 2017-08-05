@@ -8,7 +8,7 @@
   {{ trans('adminlte_lang::message.app_name') }}
 @endsection
 
-@section('contentheader_description')
+@section('contentheader_description')matriculation_procedure
   {{ trans('adminlte_lang::message.users') }}
 @endsection
 
@@ -41,21 +41,37 @@ $status_color = ['danger','success','info'];
                           @foreach ($users as $user)
                                 <tr class="bg-{{ $status_color[$user->status] }} ">
                                     {{--<td>{{ $user->id }}</td>--}}
+									<?php $role =  $user->roles->first(); ?>
 									<td>{{ $user->name }}</td>
 									<td>{{ $user->email }}</td>
-									<td> </td>
+									<td> {{ $role['name'] }} </td>
                                     <td>
+										<a href="{{ route('users.show',$user->id) }}" data-toggle="tooltip" title="{{ trans('adminlte_lang::message.view') }}">
+											<i class="fa fa-eye"></i>
+										</a>
+										@can('edit_user')
+										<a href="{{ route('users.edit',$user->id) }}" data-toggle="tooltip" title="{{ trans('adminlte_lang::message.edit') }}">
+											<i class="fa fa-edit"></i>
+										</a>
+										@endcan
+										@can('disable_user')
 										<a href="#disable" style="display: {{ $user->status == 1 ? 'initial' :'none' }};" data-toggle="tooltip" id="disable-user" title="{{ trans('adminlte_lang::message.disable') }}" data-key="{{ $user->id }}" data-name="{{ $user->name }}">
 											<i class="fa fa-user-o"></i>
 										</a>
+										@endcan
 
+										@can('enable_user')
 										<a href="#enable" style="display: {{ $user->status == 0 ? 'initial' :'none' }};" data-toggle="tooltip" id="enable-user" title="{{ trans('adminlte_lang::message.enable') }}" data-key="{{ $user->id }}" data-name="{{ $user->name }}">
 											<i class="fa fa-user"></i>
 										</a>
+										@endcan
 
-                                        <a href="#" data-url="{{ url('reset/password') }}/{{$user->id}}" data-toggle="tooltip" title="{{ trans('adminlte_lang::message.reset_password') }}" id="user-reset-password">
+										@can('reset_user_password')
+										<a href="#" data-url="{{ url('reset/password') }}/{{$user->id}}" data-toggle="tooltip" title="{{ trans('adminlte_lang::message.reset_password') }}" id="user-reset-password">
                                             <i class="fa fa-repeat"></i>
                                         </a>
+										@endcan
+
                                     </td>
                                 </tr>
                             @endforeach

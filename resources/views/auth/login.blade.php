@@ -8,7 +8,7 @@
 <body class="hold-transition content-wrapper-login">
     <div class="login-box">
         <div class="login-logo">
-            <a href="{{ url('/home') }}"><b>Odont</b>Soft</a>
+            <a href="{{ url('/home') }}"><b>Sys</b>Gym</a>
         </div><!-- /.login-logo -->
 
 
@@ -45,9 +45,6 @@
         <div class="form-group has-feedback">
             <input type="password" class="form-control" placeholder="{{ trans('adminlte_lang::message.password') }}" name="password"/>
             <span class="glyphicon glyphicon-lock form-control-feedback"></span>
-        </div>
-        <div class="form-group has-feedback">
-            {!! Form::select('branch', $branches, null , ['class'=>'form-control','id'=>'branch','placeholder' => ' (SELECT BRANCH) ']) !!}
         </div>
         <div class="row">
             <div class="col-xs-7">

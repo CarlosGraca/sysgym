@@ -2,10 +2,8 @@
 
 namespace App\Http\Controllers\Auth;
 
-use App\Branch;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\SystemController;
-use App\System;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Support\Facades\Auth;
 
@@ -47,7 +45,7 @@ class LoginController extends Controller
             return redirect('home');
         }
 
-        $branches = Branch::pluck('name','id');
-        return view('auth.login',compact('branches'));
+        //$branches = Branch::pluck('name','id');
+        return view('auth.login');
     }
 }

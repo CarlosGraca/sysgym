@@ -24,11 +24,13 @@ class ConsultAgendaRequest extends FormRequest
     public function rules()
     {
         return [
-            'doctor_id'=>'required',
-            'consult_type_id'=>'required',
-            'patient_id'=>'required',
-            'start_time'=>'required',
-            'end_time'=>'required',
+            'doctor_id' => 'required',
+            'consult_type_id' => 'required',
+            'client_id' => 'required',
+            'client' => 'required',
+            'doctor' => 'required',
+            'start_time'=> 'required',
+            'end_time' => 'required',
         ];
     }
 }

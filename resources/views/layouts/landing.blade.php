@@ -1,306 +1,530 @@
 <!DOCTYPE html>
-<!--
-Landing page based on Pratt: http://blacktie.co/demo/pratt/
--->
 <html lang="en">
+
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Adminlte-laravel - {{ trans('adminlte_lang::message.landingdescription') }} ">
-    <meta name="author" content="Sergi Tur Badenas - acacha.org">
+    <meta name="description" content="">
+    <meta name="author" content="">
 
-    <meta property="og:title" content="Adminlte-laravel" />
-    <meta property="og:type" content="website" />
-    <meta property="og:description" content="Adminlte-laravel - {{ trans('adminlte_lang::message.landingdescription') }}" />
-    <meta property="og:url" content="http://demo.adminlte.acacha.org/" />
-    <meta property="og:image" content="http://demo.adminlte.acacha.org/img/AcachaAdminLTE.png" />
-    <meta property="og:image" content="http://demo.adminlte.acacha.org/img/AcachaAdminLTE600x600.png" />
-    <meta property="og:image" content="http://demo.adminlte.acacha.org/img/AcachaAdminLTE600x314.png" />
-    <meta property="og:sitename" content="demo.adminlte.acacha.org" />
-    <meta property="og:url" content="http://demo.adminlte.acacha.org" />
+    <title>{{ trans('adminlte_lang::message.app_name') }}</title>
+    
+    <!-- css -->
+    <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet" type="text/css">
+    <link href="{{ asset('plugins/font-awesome/css/font-awesome.min.css') }}"" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('css/nivo-lightbox.css') }}"" rel="stylesheet" />
+    <link href="{{ asset('css/nivo-lightbox-theme/default/default.css') }}"" rel="stylesheet" type="text/css" />
 
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:site" content="@acachawiki" />
-    <meta name="twitter:creator" content="@acacha1" />
+    <link href="{{ asset('css/animate.css') }}"" rel="stylesheet" />
 
-    <title>{{ trans('adminlte_lang::message.landingdescriptionpratt') }}</title>
+    <link href="{{ asset('css/prettyPhoto.css') }}"" rel="stylesheet"> 
 
-    <!-- Bootstrap core CSS -->
-    <link href="{{ asset('/css/bootstrap.css') }}" rel="stylesheet">
-
-    <!-- Custom styles for this template -->
-    <link href="{{ asset('/css/main.css') }}" rel="stylesheet">
-
-    <link href='http://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic' rel='stylesheet' type='text/css'>
-    <link href='http://fonts.googleapis.com/css?family=Raleway:400,300,700' rel='stylesheet' type='text/css'>
-
-    <script src="{{ asset('/plugins/jQuery/jQuery-2.1.4.min.js') }}"></script>
-    <script src="{{ asset('/js/smoothscroll.js') }}"></script>
+    <link href="{{ asset('css/style.css') }}"" rel="stylesheet">
+    <link href="{{ asset('css/style2.css') }}"" rel="stylesheet">
 
 
+    <!-- template skin -->
+    <link id="t-colors" href="{{ asset('color/default.css') }}"" rel="stylesheet">
+    
+    <!-- =======================================================
+        Theme Name: Appland
+        Theme URL: https://bootstrapmade.com/free-bootstrap-app-landing-page-template/
+        Author: BootstrapMade
+        Author URL: https://bootstrapmade.com
+    ======================================================= -->
+
+    <style type="text/css">
+        #carousel-slider a i {
+            border: 1px solid #2487cd;
+            border-radius: 50%;
+            font-size: 30px;
+            height: 50px;
+            padding: 8px;
+            position: absolute;
+            top: 25%;
+            width: 50px;
+            color: #fff;
+            background: #2487cd;
+        }
+        #menu .login {
+            border-left: 1px solid #e4e8ea;
+            margin-left: 20px;
+        }
+    </style>
 </head>
 
-<body data-spy="scroll" data-offset="0" data-target="#navigation">
-
-<!-- Fixed navbar -->
-<div id="navigation" class="navbar navbar-default navbar-fixed-top">
-    <div class="container">
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand" href="#"><b>adminlte-laravel</b></a>
-        </div>
-        <div class="navbar-collapse collapse">
-            <ul class="nav navbar-nav">
-                <li class="active"><a href="#home" class="smoothScroll">{{ trans('adminlte_lang::message.home') }}</a></li>
-                <li><a href="#desc" class="smoothScroll">{{ trans('adminlte_lang::message.description') }}</a></li>
-                <li><a href="#showcase" class="smoothScroll">{{ trans('adminlte_lang::message.showcase') }}</a></li>
-                <li><a href="#contact" class="smoothScroll">{{ trans('adminlte_lang::message.contact') }}</a></li>
-            </ul>
-            <ul class="nav navbar-nav navbar-right">
-                @if (Auth::guest())
-                    <li><a href="{{ url('/login') }}">{{ trans('adminlte_lang::message.login') }}</a></li>
-                    <li><a href="{{ url('/register') }}">{{ trans('adminlte_lang::message.register') }}</a></li>
-                @else
-                    <li><a href="/home">{{ Auth::user()->name }}</a></li>
-                @endif
-            </ul>
-        </div><!--/.nav-collapse -->
-    </div>
-</div>
+<body>
 
 
-<section id="home" name="home"></section>
-<div id="headerwrap">
-    <div class="container">
-        <div class="row centered">
-            <div class="col-lg-12">
-                <h1>Acacha <b><a href="https://github.com/acacha/adminlte-laravel">adminlte-laravel</a></b></h1>
-                <h3>A <a href="https://laravel.com/">Laravel</a> {{ trans('adminlte_lang::message.laravelpackage') }}
-                    scaffolding/boilerplate {{ trans('adminlte_lang::message.to') }} <a href="https://almsaeedstudio.com/preview">AdminLTE</a> {{ trans('adminlte_lang::message.templatewith') }}
-                    <a href="http://getbootstrap.com/">Bootstrap</a> 3.0 {{ trans('adminlte_lang::message.and') }} <a href="http://blacktie.co/demo/pratt/">Pratt</a> Landing page</h3>
-                <h3><a href="{{ url('/register') }}" class="btn btn-lg btn-success">{{ trans('adminlte_lang::message.gedstarted') }}</a></h3>
+<div id="wrapper">
+    
+    <nav class="navbar navbar-default navbar-fixed-top">
+        <div class="container">
+            <div class="row">
+                    <div class="site-logo">
+                        <a href="index.html" class="brand">{{ trans('adminlte_lang::message.app_name') }}</a>
+                    </div>
+
+                    <!-- Brand and toggle get grouped for better mobile display -->
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#menu">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                    </div>
+                    <!-- Collect the nav links, forms, and other content for toggling -->
+                    <div class="collapse navbar-collapse" id="menu">
+                        <ul class="nav navbar-nav navbar-right">
+                              <li><a href="#home">Home</a></li>
+                              <li><a href="#about">Sobre</a></li>
+                              <li><a href="#content1">Recurso</a></li>
+                              <li><a href="#portfolio">Plano e Preço</a></li>                                 
+                              <li><a href="#contact">Contato</a></li>
+                               @if (Auth::guest())
+                                    <li class="login"><a href="{{ url('/login') }}"><i class="fa fa-sign-in" aria-hidden="true"></i>
+                                    {{ trans('adminlte_lang::message.login') }}</a></li>
+                                    <li><a href="{{ url('/auth/register') }}">{{ trans('adminlte_lang::message.register') }}</a></li>
+                                @else
+                                    <li class="login"><a href="/home">{{ Auth::user()->name }}</a></li>
+                                @endif
+                        </ul>
+                    </div>
+                    <!-- /.Navbar-collapse -->       
             </div>
-            <div class="col-lg-2">
-                <h5>{{ trans('adminlte_lang::message.amazing') }}</h5>
-                <p>{{ trans('adminlte_lang::message.basedadminlte') }}</p>
-                <img class="hidden-xs hidden-sm hidden-md" src="{{ asset('/img/arrow1.png') }}">
-            </div>
-            <div class="col-lg-8">
-                <img class="img-responsive" src="{{ asset('/img/app-bg.png') }}" alt="">
-            </div>
-            <div class="col-lg-2">
-                <br>
-                <img class="hidden-xs hidden-sm hidden-md" src="{{ asset('/img/arrow2.png') }}">
-                <h5>{{ trans('adminlte_lang::message.awesomepackaged') }}</h5>
-                <p>... {{ trans('adminlte_lang::message.by') }} <a href="http://acacha.org/sergitur">Sergi Tur Badenas</a> {{ trans('adminlte_lang::message.at') }} <a href="http://acacha.org">acacha.org</a> {{ trans('adminlte_lang::message.readytouse') }}</p>
-            </div>
-        </div>
-    </div> <!--/ .container -->
-</div><!--/ #headerwrap -->
-
-
-<section id="desc" name="desc"></section>
-<!-- INTRO WRAP -->
-<div id="intro">
-    <div class="container">
-        <div class="row centered">
-            <h1>{{ trans('adminlte_lang::message.designed') }}</h1>
-            <br>
-            <br>
-            <div class="col-lg-4">
-                <img src="{{ asset('/img/intro01.png') }}" alt="">
-                <h3>{{ trans('adminlte_lang::message.community') }}</h3>
-                <p>{{ trans('adminlte_lang::message.see') }} <a href="https://github.com/acacha/adminlte-laravel">{{ trans('adminlte_lang::message.githubproject') }}</a>, {{ trans('adminlte_lang::message.post') }} <a href="https://github.com/acacha/adminlte-laravel/issues">{{ trans('adminlte_lang::message.issues') }}</a> {{ trans('adminlte_lang::message.and') }} <a href="https://github.com/acacha/adminlte-laravel/pulls">{{ trans('adminlte_lang::message.pullrequests') }}</a></p>
-            </div>
-            <div class="col-lg-4">
-                <img src="{{ asset('/img/intro02.png') }}" alt="">
-                <h3>{{ trans('adminlte_lang::message.schedule') }}</h3>
-                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
-            </div>
-            <div class="col-lg-4">
-                <img src="{{ asset('/img/intro03.png') }}" alt="">
-                <h3>{{ trans('adminlte_lang::message.monitoring') }}</h3>
-                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
-            </div>
-        </div>
-        <br>
-        <hr>
-    </div> <!--/ .container -->
-</div><!--/ #introwrap -->
-
-<!-- FEATURES WRAP -->
-<div id="features">
-    <div class="container">
-        <div class="row">
-            <h1 class="centered">{{ trans('adminlte_lang::message.whatnew') }}</h1>
-            <br>
-            <br>
-            <div class="col-lg-6 centered">
-                <img class="centered" src="{{ asset('/img/mobile.png') }}" alt="">
-            </div>
-
-            <div class="col-lg-6">
-                <h3>{{ trans('adminlte_lang::message.features') }}</h3>
-                <br>
-                <!-- ACCORDION -->
-                <div class="accordion ac" id="accordion2">
-                    <div class="accordion-group">
-                        <div class="accordion-heading">
-                            <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseOne">
-                                {{ trans('adminlte_lang::message.design') }}
-                            </a>
-                        </div><!-- /accordion-heading -->
-                        <div id="collapseOne" class="accordion-body collapse in">
-                            <div class="accordion-inner">
-                                <p>It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
-                            </div><!-- /accordion-inner -->
-                        </div><!-- /collapse -->
-                    </div><!-- /accordion-group -->
-                    <br>
-
-                    <div class="accordion-group">
-                        <div class="accordion-heading">
-                            <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseTwo">
-                                {{ trans('adminlte_lang::message.retina') }}
-                            </a>
-                        </div>
-                        <div id="collapseTwo" class="accordion-body collapse">
-                            <div class="accordion-inner">
-                                <p>It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
-                            </div><!-- /accordion-inner -->
-                        </div><!-- /collapse -->
-                    </div><!-- /accordion-group -->
-                    <br>
-
-                    <div class="accordion-group">
-                        <div class="accordion-heading">
-                            <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseThree">
-                                {{ trans('adminlte_lang::message.support') }}
-                            </a>
-                        </div>
-                        <div id="collapseThree" class="accordion-body collapse">
-                            <div class="accordion-inner">
-                                <p>It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
-                            </div><!-- /accordion-inner -->
-                        </div><!-- /collapse -->
-                    </div><!-- /accordion-group -->
-                    <br>
-
-                    <div class="accordion-group">
-                        <div class="accordion-heading">
-                            <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseFour">
-                                {{ trans('adminlte_lang::message.responsive') }}
-                            </a>
-                        </div>
-                        <div id="collapseFour" class="accordion-body collapse">
-                            <div class="accordion-inner">
-                                <p>It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
-                            </div><!-- /accordion-inner -->
-                        </div><!-- /collapse -->
-                    </div><!-- /accordion-group -->
-                    <br>
-                </div><!-- Accordion -->
-            </div>
-        </div>
-    </div><!--/ .container -->
-</div><!--/ #features -->
-
-
-<section id="showcase" name="showcase"></section>
-<div id="showcase">
-    <div class="container">
-        <div class="row">
-            <h1 class="centered">{{ trans('adminlte_lang::message.screenshots') }}</h1>
-            <br>
-            <div class="col-lg-8 col-lg-offset-2">
-                <div id="carousel-example-generic" class="carousel slide">
+        </div>      
+    </nav>
+    
+    <div id="home">
+        <div class="slider">
+            <div id="about-slider">
+                <div id="carousel-slider" class="carousel slide" data-ride="carousel">
                     <!-- Indicators -->
-                    <ol class="carousel-indicators">
-                        <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
-                        <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+                    <ol class="carousel-indicators visible-xs">
+                        <li data-target="#carousel-slider" data-slide-to="0" class="active"></li>
+                        <li data-target="#carousel-slider" data-slide-to="1"></li>
+                        <li data-target="#carousel-slider" data-slide-to="2"></li>
                     </ol>
 
-                    <!-- Wrapper for slides -->
                     <div class="carousel-inner">
                         <div class="item active">
-                            <img src="{{ asset('/img/item-01.png') }}" alt="">
+                            <img src="images/slide1.jpg" class="img-responsive" alt=""> 
                         </div>
-                        <div class="item">
-                            <img src="{{ asset('/img/item-02.png') }}" alt="">
+                       <div class="item">
+                            <img src="images/slide2.jpg" class="img-responsive" alt=""> 
+                       </div> 
+                       <div class="item">
+                            <img src="images/slide3.jpg" class="img-responsive" alt=""> 
+                       </div> 
+                    </div>
+                    
+                    <a class="left carousel-control hidden-xs" href="#carousel-slider" data-slide="prev">
+                        <i class="fa fa-angle-left"></i> 
+                    </a>
+                    
+                    <a class=" right carousel-control hidden-xs"href="#carousel-slider" data-slide="next">
+                        <i class="fa fa-angle-right"></i> 
+                    </a>
+                </div> <!--/#carousel-slider-->
+            </div><!--/#about-slider-->
+        </div>
+    </div>
+    
+
+    <section id="about">
+        <div class="container">
+            <div class="center">
+                <div class="col-md-6 col-md-offset-3">
+                    <h2>Sobre</h2>
+                    <hr>                    
+                    <p class="lead">Software completo para gestão de ginásio</p>
+                </div>
+            </div>
+        </div>
+    
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-6 wow fadeInRight">
+                    <img src="images/1.png" class="img-responsive" />
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Magni autem minus sint, commodi.</p>
+
+                </div><!--/.col-sm-6-->
+
+                <div class="col-sm-6 wow fadeInDown">
+                    <div class="accordion">
+                        <div class="panel-group" id="accordion1">
+                          <div class="panel panel-default">
+                            <div class="panel-heading active">
+                              <h3 class="panel-title">
+                                <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion1" href="#collapseOne1">
+                                  Web Design
+                                  <i class="fa fa-angle-right pull-right"></i>
+                                </a>
+                              </h3>
+                            </div>
+
+                            <div id="collapseOne1" class="panel-collapse collapse in">
+                              <div class="panel-body">
+                                  <div class="media accordion-inner">
+                                        <div class="pull-left">
+                                            <img class="img-responsive" src="images/accordion1.png">
+                                        </div>
+                                        <div class="media-body">
+                                             <h4>Adipisicing elit</h4>
+                                             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore</p>
+                                        </div>
+                                  </div>
+                              </div>
+                            </div>
+                          </div>
+
+                          <div class="panel panel-default">
+                            <div class="panel-heading">
+                              <h3 class="panel-title">
+                                <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion1" href="#collapseTwo1">
+                                  Lorem ipsum dolor sit amet
+                                  <i class="fa fa-angle-right pull-right"></i>
+                                </a>
+                              </h3>
+                            </div>
+                            <div id="collapseTwo1" class="panel-collapse collapse">
+                                <div class="panel-body">
+                                    <p>Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid.
+                                    3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod.
+                                    Brunch 3 wolf moon tempor.<br>
+                                    
+                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut
+                                    non cupidatat skateboard dolor brunch.</p>
+                                </div>
+                            </div>
+                          </div>
+
+                          <div class="panel panel-default">
+                            <div class="panel-heading">
+                              <h3 class="panel-title">
+                                <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion1" href="#collapseThree1">
+                                  Lorem ipsum dolor sit amet
+                                  <i class="fa fa-angle-right pull-right"></i>
+                                </a>
+                              </h3>
+                            </div>
+                            <div id="collapseThree1" class="panel-collapse collapse">
+                              <div class="panel-body">
+                                <p>Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid.
+                                3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod.
+                                Brunch 3 wolf moon tempor.<br>
+                                
+                                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut
+                                non cupidatat skateboard dolor brunch.</p>
+                              </div>
+                            </div>
+                          </div>
+
+                          <div class="panel panel-default">
+                            <div class="panel-heading">
+                              <h3 class="panel-title">
+                                <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion1" href="#collapseFour1">
+                                  Lorem ipsum dolor sit amet
+                                  <i class="fa fa-angle-right pull-right"></i>
+                                </a>
+                              </h3>
+                            </div>
+                            <div id="collapseFour1" class="panel-collapse collapse">
+                                <div class="panel-body">
+                                   <p>Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid.
+                                    3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod.
+                                    Brunch 3 wolf moon tempor.<br>
+                                    
+                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut
+                                    non cupidatat skateboard dolor brunch.</p>
+                                </div>
+                            </div>
+                          </div>
+                        </div><!--/#accordion1-->
+                    </div>
+                </div>
+
+            </div><!--/.row-->
+        </div><!--/.container-->
+    </section><!--/#about-->
+    
+    <section id="content1" class="home-section">
+    
+        <div class="container">
+            <div class="center">
+                <div class="col-md-6 col-md-offset-3 text-center">
+                    <h2>Recursos Disponíveis</h2>
+                    <hr>                    
+                        <p class="lead">Facilidade no controle da gestão de ginásio 100% online</p>
+                </div>
+            </div>
+        </div>
+            
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="wow fadeInRight" data-wow-delay="0.3s">
+                        <div class="features">                          
+                            <i class="fa fa-check fa-2x circled bg-skin float-left"></i>
+                            <h6>Modern interface</h6>
+                            <p>
+                            Lorem ipsum dolor sit amet, nec te mollis utroque honestatis, ut utamur molestiae vix, graecis eligendi ne.
+                            </p>
+                        </div>
+                        <div class="features">                          
+                            <i class="fa fa-check fa-2x circled bg-skin float-left"></i>
+                            <h5>Easy to use</h5>
+                            <p>
+                            Lorem ipsum dolor sit amet, nec te mollis utroque honestatis, ut utamur molestiae vix, graecis eligendi ne.
+                            </p>
+                        </div>
+                        <div class="features">                          
+                            <i class="fa fa-check fa-2x circled bg-skin float-left"></i>
+                            <h5>Free updates</h5>
+                            <p>
+                            Lorem ipsum dolor sit amet, nec te mollis utroque honestatis, ut utamur molestiae vix, graecis eligendi ne.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="wow fadeInRight" data-wow-delay="0.3s">
+                        <div class="features">                          
+                            <i class="fa fa-check fa-2x circled bg-skin float-left"></i>
+                            <h5>Modern interface</h5>
+                            <p>
+                            Lorem ipsum dolor sit amet, nec te mollis utroque honestatis, ut utamur molestiae vix, graecis eligendi ne.
+                            </p>
+                        </div>
+                        <div class="features">                          
+                            <i class="fa fa-check fa-2x circled bg-skin float-left"></i>
+                            <h5>Easy to use</h5>
+                            <p>
+                            Lorem ipsum dolor sit amet, nec te mollis utroque honestatis, ut utamur molestiae vix, graecis eligendi ne.
+                            </p>
+                        </div>
+                        <div class="features">                          
+                            <i class="fa fa-check fa-2x circled bg-skin float-left"></i>
+                            <h5>Free updates</h5>
+                            <p>
+                            Lorem ipsum dolor sit amet, nec te mollis utroque honestatis, ut utamur molestiae vix, graecis eligendi ne.
+                            </p>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        <br>
-        <br>
-        <br>
-    </div><!-- /container -->
-</div>
 
+    </section>
+    <!-- /Section: content -->
+    
+    <div class="divider-short"></div>
+    
+    <section id="content2" class="home-section">
+    
+        <div class="container">
+            <div class="row text-center heading">
+                <h3>Mais Recursos</h3>
+            </div>
+            
+            
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="wow fadeInLeft" data-wow-delay="0.2s">
+                        <p>
+                        O Cartão Sócio electrónico vem facilitar a comunicação e disponibilizar informação útil e em tempo real da associação para o associado.
+                        </p>
+                        <p>
+                         O cartão pode comprovar rapidamente a identidade do socio assim como o estado das suas quotas.
+                        </p>
+                        <p>Nesta área reservada e encriptada o sócio pode consultar as suas quotas, recibos, mensagens, avisos, notícias e o calendário de actividades.</p>
+                        <div class="divider-short marginbot-30 margintop-30"></div>
+                        <div class="features">                          
+                            <i class="fa fa-android fa-2x circled bg-skin float-left"></i>
+                            <h5>Android application</h5>
+                        </div>
+                        <div class="features">                          
+                            <i class="fa fa-apple fa-2x circled bg-skin float-left"></i>
+                            <h5>For Apple iOs</h5>
+                        </div>
+                        <div class="features">                          
+                            <i class="fa fa-windows fa-2x circled bg-skin float-left"></i>
+                            <h5>Windows version</h5>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="wow fadeInRight" data-wow-delay="0.3s">
+                        <img src="img/img-2.png" alt="" class="img-responsive" />
+                    </div>
+                </div>
 
-<section id="contact" name="contact"></section>
-<div id="footerwrap">
-    <div class="container">
-        <div class="col-lg-5">
-            <h3>{{ trans('adminlte_lang::message.address') }}</h3>
-            <p>
-                Av. Greenville 987,<br/>
-                New York,<br/>
-                90873<br/>
-                United States
-            </p>
+            </div>
         </div>
 
-        <div class="col-lg-7">
-            <h3>{{ trans('adminlte_lang::message.dropus') }}</h3>
-            <br>
-            <form role="form" action="#" method="post" enctype="plain">
-                <div class="form-group">
-                    <label for="name1">{{ trans('adminlte_lang::message.yourname') }}</label>
-                    <input type="name" name="Name" class="form-control" id="name1" placeholder="{{ trans('adminlte_lang::message.yourname') }}">
+    </section>
+    <!-- /Section: content -->
+    
+    <div class="divider-short"></div>
+    <section id="works" class="home-section text-center">
+        <div class="container">
+            <div class="row text-center heading">
+                <h3>Screenshots</h3>
+            </div>
+            <div class="row">
+                <div class="col-sm-12 col-md-12 col-lg-12" >
+
+                    <div class="row gallery-item">
+                        <div class="col-md-3">
+                            <a href="img/works/1.jpg" title="This is an image title" data-lightbox-gallery="gallery1" data-lightbox-hidpi="img/works/1@2x.jpg">
+                                <img src="img/works/1.jpg" class="img-responsive" alt="img">
+                            </a>
+                        </div>
+                        <div class="col-md-3">
+                            <a href="img/works/2.jpg" title="This is an image title" data-lightbox-gallery="gallery1" data-lightbox-hidpi="img/works/1@2x.jpg">
+                                <img src="img/works/2.jpg" class="img-responsive" alt="img">
+                            </a>
+                        </div>
+                        <div class="col-md-3">
+                            <a href="img/works/3.jpg" title="This is an image title" data-lightbox-gallery="gallery1" data-lightbox-hidpi="img/works/1@2x.jpg">
+                                <img src="img/works/3.jpg" class="img-responsive" alt="img">
+                            </a>
+                        </div>
+                        <div class="col-md-3">
+                            <a href="img/works/4.jpg" title="This is an image title" data-lightbox-gallery="gallery1" data-lightbox-hidpi="img/works/1@2x.jpg">
+                                <img src="img/works/4.jpg" class="img-responsive" alt="img">
+                            </a>
+                        </div>
+                    </div>
+    
                 </div>
-                <div class="form-group">
-                    <label for="email1">{{ trans('adminlte_lang::message.emailaddress') }}</label>
-                    <input type="email" name="Mail" class="form-control" id="email1" placeholder="{{ trans('adminlte_lang::message.enteremail') }}">
-                </div>
-                <div class="form-group">
-                    <label>{{ trans('adminlte_lang::message.yourtext') }}</label>
-                    <textarea class="form-control" name="Message" rows="3"></textarea>
-                </div>
-                <br>
-                <button type="submit" class="btn btn-large btn-success">{{ trans('adminlte_lang::message.submit') }}</button>
-            </form>
+            </div>  
         </div>
-    </div>
+    </section>
+
+
+    <section id="callaction" class="home-section paddingtop-40">    
+           <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="callaction">
+                            <div class="row">
+                                <div class="col-md-8">
+                                    <div class="wow fadeInUp" data-wow-delay="0.1s">
+                                    <div class="cta-text">
+                                    <h3>Need more advanced features?</h3>
+                                    <p>Lorem ipsum dolor sit amet consectetur adipiscing elit uisque interdum ante eget faucibus. </p>
+                                    </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="wow lightSpeedIn" data-wow-delay="0.1s">
+                                        <div class="cta-btn">
+                                        <a href="#" class="btn btn-skin btn-lg">Contact us</a>  
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    </section>  
 </div>
-<div id="c">
-    <div class="container">
-        <p>
-            <a href="https://github.com/acacha/adminlte-laravel"></a><b>admin-lte-laravel</b></a>. {{ trans('adminlte_lang::message.descriptionpackage') }}.<br/>
-            <strong>Copyright &copy; 2015 <a href="http://acacha.org">Acacha.org</a>.</strong> {{ trans('adminlte_lang::message.createdby') }} <a href="http://acacha.org/sergitur">Sergi Tur Badenas</a>. {{ trans('adminlte_lang::message.seecode') }} <a href="https://github.com/acacha/adminlte-laravel">Github</a>
-            <br/>
-            AdminLTE {{ trans('adminlte_lang::message.createdby') }} Abdullah Almsaeed <a href="https://almsaeedstudio.com/">almsaeedstudio.com</a>
-            <br/>
-             Pratt Landing Page {{ trans('adminlte_lang::message.createdby') }} <a href="http://www.blacktie.co">BLACKTIE.CO</a>
-        </p>
+    <footer id="footer" class="midnight-blue">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 col-md-offset-3">
+                    <div class="text-center">
+                        <a href="#home" class="scrollup"><i class="fa fa-angle-up fa-3x"></i></a>
+                    </div>
+                    &copy; {{ trans('adminlte_lang::message.app_name') }}. All Rights Reserved.
+                    <div class="credits">
+                        <!-- 
+                            All the links in the footer should remain intact. 
+                            You can delete the links only if you purchased the pro version.
+                            Licensing information: https://bootstrapmade.com/license/
+                            Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/buy/?theme=OnePage
+                        
+                        <a href="https://bootstrapmade.com/">Bootstrap Themes</a> by <a href="https://bootstrapmade.com/">BootstrapMade</a>-->
+                    </div>
+                </div>
+                
+                <div class="top-bar">           
+                    <div class="col-lg-12">
+                       <div class="social">
+                            <ul class="social-share">
+                                <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                                <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                                <li><a href="#"><i class="fa fa-linkedin"></i></a></li> 
+                                <li><a href="#"><i class="fa fa-dribbble"></i></a></li>
+                                <li><a href="#"><i class="fa fa-skype"></i></a></li>
+                                <li><a href="#"><i class="fa fa-dribbble"></i></a></li>
+                                <li><a href="#"><i class="fa fa-skype"></i></a></li>                               
+                            </ul>
+                       </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer><!--/#footer-->
+    
 
-    </div>
-</div>
+   <!--  <footer>
+    
+
+        <div class="sub-footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-6 col-md-6 col-lg-6">
+                    <ul class="social">
+                        <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                        <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                        <li><a href="#"><i class="fa fa-dribbble"></i></a></li>
+                        <li><a href="#"><i class="fa fa-youtube"></i></a></li>
+                    </ul>
+                
+                    <div class="wow fadeInLeft" data-wow-delay="0.1s">
+                    <div class="text-left">
+                    <p>&copy;Copyright - Appland. All rights reserved.</p>
+                    </div>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-md-6 col-lg-6">
+                    <div class="wow fadeInRight" data-wow-delay="0.1s">
+                        <div class="text-right margintop-30">
+                            <div class="credits">
+                                <!-- 
+                                    All the links in the footer should remain intact. 
+                                    You can delete the links only if you purchased the pro version.
+                                    Licensing information: https://bootstrapmade.com/license/
+                                    Purchase the pro version form: https://bootstrapmade.com/buy/?theme=Appland
+                                -->
+                               <!--  <a href="https://bootstrapmade.com/free-one-page-bootstrap-themes-website-templates/">One Page Bootstrap Themes</a> by <a href="https://bootstrapmade.com/">BootstrapMade</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>  
+        </div>
+        </div>
+    </footer> 
+</div>--> 
 
 
-<!-- Bootstrap core JavaScript
-================================================== -->
-<!-- Placed at the end of the document so the pages load faster -->
-<script src="{{ asset('/js/bootstrap.min.js') }}" type="text/javascript"></script>
-<script>
-    $('.carousel').carousel({
-        interval: 3500
-    })
-</script>
+
+    <!-- Core JavaScript Files -->
+    <script src="js/jquery.min.js"></script>     
+    <script src="js/bootstrap.min.js"></script>
+
+    <script src="js/jquery.prettyPhoto.js"></script>
+    <script src="js/jquery.isotope.min.js"></script> 
+
+    <script src="js/jquery.easing.min.js"></script>
+    <script src="js/wow.min.js"></script>
+     <script src="js/jquery.scrollTo.js"></script> 
+    <script src="js/nivo-lightbox.min.js"></script>
+    <script src="js/main.js"></script>
+    <!--<script src="js/custom.js"></script>-->
+    
 </body>
+
 </html>

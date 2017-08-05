@@ -6,7 +6,7 @@ use App\Island;
 use Illuminate\Support\Facades\DB;
 
 use App\Http\Requests\CompanyRequest;
-use App\Company;
+use App\Models\Tenant;
 use Request;
 use Image;
 
@@ -19,7 +19,7 @@ class CompanyController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth');
+        $this->middleware('auth'); 
     }
 
     /**
@@ -29,7 +29,7 @@ class CompanyController extends Controller
      */
     public function index()
     {
-        $company = Company::all()->first();
+        $company = Tenant::where('id', \Auth::user()->tenant_id)->first();
 
         if (Request::wantsJson()){
             return $company;

@@ -47,28 +47,40 @@
 							@endif
 						</div>
 
-		        		<div class="col-lg-9">
+		        		<div class="col-lg-5">
 		        			<ul class="list-group list-group-unbordered">
 			                    <li class="list-group-item">
-									<i class="fa fa-laptop"></i> <b> {{ trans('adminlte_lang::message.application_name') }}: </b><span class="name">{{$system ? $system->name : null}}</span>
+									<i class="fa fa-laptop"></i> <b> {{ trans('adminlte_lang::message.application_name') }}: </b><a class="app-name">{{$system ? $system->name : null}}</a>
 			                    </li>
 								<li class="list-group-item">
-									<i class="fa fa-leaf"></i> <b> {{ trans('adminlte_lang::message.theme') }}: </b> {{$system ? $system->theme : null}}
+									<i class="fa fa-language"></i> <b> {{ trans('adminlte_lang::message.lang') }}: </b> <a class="app-lang">{{$system ? $lang[$system->lang]: null}}</a>
 								</li>
 								<li class="list-group-item">
-									<i class="fa fa-language"></i> <b> {{ trans('adminlte_lang::message.lang') }}: </b> {{$system ? $lang[$system->lang]: null}}
+									<i class="fa fa-tv"></i> <b> {{ trans('adminlte_lang::message.layout') }}: </b><a class="app-layout">{{$system ? $system->layout : null}}</a>
 								</li>
-			                    <li class="list-group-item">
-									<i class="fa fa-money"></i> <b> {{ trans('adminlte_lang::message.currency') }}: </b>{{$system ? $system->currency : null}}
-			                    </li>
-			                    <li class="list-group-item">
-									<i class="fa fa-tv"></i> <b> {{ trans('adminlte_lang::message.layout') }}: </b><span class="nif">{{$system ? $system->layout : null}}</span>
-			                    </li>
 								<li class="list-group-item">
-									<i class="fa fa-clock-o"></i> <b> {{ trans('adminlte_lang::message.timezone') }}: </b><span class="timezone">{{$system ? $timezone[$system->timezone] : null}}</span>
+									<i class="fa fa-info"></i> <b> {{ trans('adminlte_lang::message.iva') }}: </b><a class="app-iva">{{$system ? $system->iva : null}}%</a>
 								</li>
-			                </ul>
+							 </ul>
 		        		</div>
+
+						<div class="col-lg-4">
+							<ul class="list-group list-group-unbordered">
+								<li class="list-group-item">
+									<i class="fa fa-leaf"></i> <b> {{ trans('adminlte_lang::message.theme') }}: </b> <a class="app-theme"> {{$system ? $system->theme : null}}</a>
+								</li>
+								<li class="list-group-item">
+									<i class="fa fa-money"></i> <b> {{ trans('adminlte_lang::message.currency') }}: </b> <a class="app-currency">{{$system ? $system->currency : null}}</a>
+								</li>
+								<li class="list-group-item">
+									<i class="fa fa-clock-o"></i> <b> {{ trans('adminlte_lang::message.timezone') }}: </b><a class="app-timezone">{{$system ? $timezone[$system->timezone] : null}}</a>
+								</li>
+								<li class="list-group-item">
+									<i class="fa fa-certificate"></i> <b> {{ trans('adminlte_lang::message.version') }}: </b><a class="app-version">{{ config('app.version') }}</a>
+								</li>
+							</ul>
+						</div>
+
 		        	</div>
 	            </div>
 	        </div>

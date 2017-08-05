@@ -2,7 +2,7 @@
 
 namespace App\Http\Middleware;
 
-use App\System;
+use App\Models\System;
 use Closure;
 use Illuminate\Auth\AuthenticationException;
 use Illuminate\Contracts\Auth\Factory as Auth;
@@ -40,22 +40,24 @@ class Authenticate
      */
     public function handle($request, Closure $next, ...$guards)
     {
-        $system = System::all()->first();
+       /* $system = System::all()->first();
 
-        if($system->status == '2'){
+        if($system->status == '2' && $request->isMethod('get')){ //VERIFY THE STATUS OF SYSTEM
             return redirect('setup/system');
-        }elseif ($system->status == '0'){
+        }elseif ($system->status == '0' && $request->isMethod('get')){
             return redirect('license_expired');
         }else{
-            $this->authenticate($guards);
+            if($system->status != '2' && $request->isMethod('post')){
+                $this->authenticate($guards);
+            }
         }
 
         if(\Auth::user() != null && \Auth::user()->status == 2 && $request->isMethod('get')){
             return redirect('user/setup/password');
-        }elseif(\Auth::check() && \Auth::user()->status != 1){
+        }elseif(\Auth::check() && (\Auth::user()->status != 1 && \Auth::user()->status != 2)){
             \Auth::logout();
             return redirect('login')->with('status', \Lang::get('auth.disable'));
-        }
+        }*/
 
 
         return $next($request);

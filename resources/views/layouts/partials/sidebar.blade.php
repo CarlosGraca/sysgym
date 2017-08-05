@@ -6,7 +6,7 @@
 
         <!-- Sidebar user panel (optional) -->
         @if (! Auth::guest())
-            <?php $branch = \App\Branch::where('id',Auth::user()->logged_branch)->first(); ?>
+            <?php $branch = \App\Models\Branch::where('id',Auth::user()->branch_id)->first(); ?>
             <div class="user-panel">
                 <div class="pull-left image">
                     <img  src="{{ url('/') }}/{{Auth::user()->avatar}}" class="img-circle" alt="Cinque Terre" >
@@ -26,46 +26,8 @@
             </div>
         @endif
 
-        <!-- search form (Optional) --
-        <form action="#" method="get" class="sidebar-form">
-            <div class="input-group">
-                <input type="text" name="q" class="form-control" placeholder="{{ trans('adminlte_lang::message.search') }}..."/>
-              <span class="input-group-btn">
-                <button type='submit' name='search' id='search-btn' class="btn btn-flat"><i class="fa fa-search"></i></button>
-              </span>
-            </div>
-        </form>
-        -- /.search form -->
-
-        <!-- Sidebar Menu -->
-        <ul class="sidebar-menu">
-            <li class="header">{{ trans('adminlte_lang::message.menu') }}</li>
-            <!-- Optionally, you can add icons to the links -->
-            <li><a href="{{ url('home') }}"><i class='fa fa-home'></i> <span>{{ trans('adminlte_lang::message.home') }}</span></a></li>
-            <li><a href="{{ url('patients') }}"><i class='fa fa-user'></i> <span>{{ trans('adminlte_lang::message.patients') }}</span></a></li>
-            <li><a href="{{ url('employees') }}"><i class='fa fa-user-md'></i> <span>{{ trans('adminlte_lang::message.employees') }}</span></a></li>
-            <li><a href="{{ url('agenda') }}"><i class='fa fa-calendar'></i> <span>{{ trans('adminlte_lang::message.agenda') }}</span></a></li>
-            <li><a href="{{ url('campaign_messages') }}"><i class='fa fa-envelope'></i> <span>{{ trans('adminlte_lang::message.campaign_message') }}</span></a></li>
-            <li class="treeview">
-                <a href="#setting" id="setting"><i class='fa fa-gears'></i> <span>{{ trans('adminlte_lang::message.settings') }}</span> <i class="fa fa-angle-left pull-right"></i></a>
-                <ul class="treeview-menu">
-                    <li><a href="{{ url('company') }}"> <i class='fa fa-building'></i> {{ trans('adminlte_lang::message.company') }}</a></li>
-                    <li><a href="{{ url('branches') }}"> <i class='fa fa-building-o'></i> {{ trans('adminlte_lang::message.branches') }}</a></li>
-                    <li><a href="{{ url('secure_agency') }}"> <i class='fa fa-shield'></i> {{ trans('adminlte_lang::message.secure_agency') }}</a></li>
-                    <li><a href="{{ url('secure_comparticipation') }}"> <i class='fa fa-shield'></i> {{ trans('adminlte_lang::message.secure_comparticipation') }}</a></li>
-                    <li><a href="{{ url('consult_type') }}"> <i class='fa fa-stethoscope'></i> {{ trans('adminlte_lang::message.consult_type') }}</a></li>
-                    <li><a href="{{ url('procedure_group') }}"> <i class='fa fa-pagelines'></i> {{ trans('adminlte_lang::message.procedure_group') }}</a></li>
-                    <li><a href="{{ url('procedure') }}"> <i class='fa fa-pagelines'></i> {{ trans('adminlte_lang::message.procedure') }}</a></li>
-                    <li><a href="{{ url('teeth') }}"> <i class='fa fa-pagelines'></i> {{ trans('adminlte_lang::message.teeth') }}</a></li>
-                    <li><a href="{{ url('users') }}"> <i class='fa fa-user-secret'></i> {{ trans('adminlte_lang::message.users') }}</a></li>
-                    <li><a href="{{ url('category') }}"> <i class='fa fa-users'></i> {{ trans('adminlte_lang::message.category') }}</a></li>
-                    <li><a href="{{ url('license') }}"> <i class='fa fa-key'></i> {{ trans('adminlte_lang::message.license') }}</a></li>
-                    <li><a href="{{ url('system') }}"> <i class='fa fa-wrench'></i> {{ trans('adminlte_lang::message.system') }}</a></li>
-                </ul>
-            </li>
-            <li><a href="{{ url('help') }}"><i class='fa fa-question'></i> <span>{{ trans('adminlte_lang::message.help') }}</span></a></li>
-            <li><a href="#about_system" id="about_system" data-url="{{ url('about_system') }}"><i class='fa fa-info'></i> <span>{{ trans('adminlte_lang::message.about_odontsoft') }}</span></a></li>
-        </ul><!-- /.sidebar-menu -->
+        {!! Helpers::sidebar() !!}
+        
     </section>
     <!-- /.sidebar -->
 </aside>

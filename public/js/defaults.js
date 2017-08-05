@@ -27,16 +27,16 @@ $(function () {
                 avatar = $('.avatar-user');
                 break;
         
-            case 'patient':
-                avatar = $('.avatar-patient');
+            case 'client':
+                avatar = $('.avatar-client');
                 break;
         
             case 'employee':
                 avatar = $('.avatar-employee');
                 break;
 
-            case 'teeth':
-                avatar = $('.avatar-teeth');
+            case 'modality':
+                avatar = $('.avatar-modality');
                 break;
         }
 
@@ -58,7 +58,7 @@ $(function () {
 
     //GET INPUT KEYDOWN VALUE
     $(':input').keyup(function (e) {
-
+    e.preventDefault();
         var name = $(this).attr('name');
         if ($(this).hasClass('field-error')) {
             $(this).removeClass('field-error');
@@ -73,6 +73,7 @@ $(function () {
             }
         }
     });
+
     $(':input').mouseout(function (e) {
         if($(this).val() == ''){
             if (!$(this).hasClass('field-error') && $(this)[0].hasAttribute('required')) {
@@ -111,6 +112,15 @@ $(function () {
         $(".loader").modal('hide');
     });
 
+    //POPUP TOOLBAR
+    $(document).on('click','#people_show_popup',function (e) {
+        e.preventDefault();
+        $('#myModalLabel').text($(this).attr('data-title'));
+        $('#modal').modal('show')
+            .find('.modal-body')
+            .load($(this).data('url'));
+        $('#modal').css('overflow','auto');
+    });
 
 });
 
@@ -131,7 +141,7 @@ function readURL(input,preview) {
 //  - form -> THIS IS THE FORM THAT THE DATA COME FROM
 //  - form_type -> THIS ONE IS TO SEND THE TYPE OF FORM MAY BE: 'update' or 'create'
 
-function save(_form,_form_data,form_type,_branches_schedule) {
+function save(_form,_form_data,form_type) {
 
     var type = _form.attr('method');
     var url;
@@ -214,15 +224,15 @@ function save(_form,_form_data,form_type,_branches_schedule) {
                 toastr.success(data.message,{timeOut: 5000} ).css("width","300px");
 
             switch (data.form){
-                case 'patient':
+                case 'client':
 
-                    $('#add-patient').css('display','none');
-                    $('#edit-patient').css('display','none');
-                    $('#edit-patient-button').removeAttr('style');
+                    $('#add-client').css('display','none');
+                    $('#edit-client').css('display','none');
+                    $('#edit-client-button').removeAttr('style');
                     if(form_type == 'create'){
-                        var patient_url = $('#patient_detail').attr('href');
-                        $('#patient_detail').attr('href',patient_url+'/'+data.id);
-                        $('#patient_detail').removeAttr('style');
+                        var client_url = $('#client_detail').attr('href');
+                        $('#client_detail').attr('href',client_url+'/'+data.id);
+                        $('#client_detail').removeAttr('style');
                         field_status_change('disable',_form);
                     }else{
                         field_status_change('disable',_form);
@@ -235,6 +245,7 @@ function save(_form,_form_data,form_type,_branches_schedule) {
                     field_status_change('disable',_form);
                     $('#edit-system-button').removeAttr('style');
                     timezone = data.timezone;
+                    reloadPage();
                     break;
 
                 case 'employee':
@@ -243,7 +254,7 @@ function save(_form,_form_data,form_type,_branches_schedule) {
                         $('#edit-employee').css('display', 'none');
                         $('#edit-employee-button').removeAttr('style');
                         if (form_type == 'create') {
-                            var employee_url = $('#patient_detail').attr('href');
+                            var employee_url = $('#client_detail').attr('href');
                             $('#employee_detail').attr('href', employee_url + '/' + data.values);
                             $('#employee_detail').removeAttr('style');
                             field_status_change('disable', _form);
@@ -257,9 +268,26 @@ function save(_form,_form_data,form_type,_branches_schedule) {
                     $('#edit-category').css('display','none');
                     break;
                 case 'branches':
-                    // $('#add-branch').css('display','none');
-                    // $('#edit-branch').css('display','none');
-                    $('#branch_id').val(data.id);
+
+                    if(form_type == 'create' && data.type == 'success'){
+                        $('#branch_id').val(data.id);
+                        $('#item_id').val(data.id);
+                        $('#add-branch').css('display', 'none');
+                        field_status_change('disable',$('#branches-form'));
+                        schedule_button_action('disable');
+                        $('#edit-branch-button').removeAttr('style');
+                        schedule_save();
+                        _deleted_id = [];
+                        all_data = [];
+                    }else{
+                        $('#edit-branch').css('display', 'none');
+                        field_status_change('disable',$('#branches-form'));
+                        schedule_button_action('disable');
+                        $('#edit-branch-button').removeAttr('style');
+                        schedule_save();
+                        _deleted_id = [];
+                        all_data = [];
+                    }
 
                     break;
                 case 'company':
@@ -270,67 +298,147 @@ function save(_form,_form_data,form_type,_branches_schedule) {
                     $('#add-secure_agency').css('display','none');
                     $('#edit-secure_agency').css('display','none');
                     break;
-                case 'consult_type':
-                    if(form_type=='create')
-                        _form.trigger('reset');
-                    //$('#add-consult_type').css('display','none');
-                    //$('#edit-consult_type').css('display','none');
-                    // setTableValue(data,form_type);
+                case 'modality':
+
+                    if(form_type == 'create' && data.type == 'success'){
+                        $('#modality_id').val(data.id);
+                        $('#item_id').val(data.id);
+                        $('#add-modality').css('display', 'none');
+                        field_status_change('disable',$('#modality-form'));
+                        schedule_button_action('disable');
+                        $('#edit-modality-button').removeAttr('style');
+                        schedule_save();
+                        _deleted_id = [];
+                        all_data = [];
+                    }else{
+                        $('#edit-modality').css('display', 'none');
+                        field_status_change('disable',$('#modality-form'));
+                        schedule_button_action('disable');
+                        $('#edit-modality-button').removeAttr('style');
+                        schedule_save();
+                        _deleted_id = [];
+                        all_data = [];
+                    }
+
                     break;
-                case 'procedure_group':
-                    if(form_type=='create')
-                        _form.trigger('reset');
-                    else{
-                        field_status_change('disable',_form);
-                        $('#edit-procedure_group-button').removeAttr('style');
-                        $('#edit-procedure_group').css('display','none');
+                // case 'procedure_group':
+                //     if(form_type=='create' && data.type == 'success')
+                //         _form.trigger('reset');
+                //     else{
+                //         field_status_change('disable',_form);
+                //         $('#edit-procedure_group-button').removeAttr('style');
+                //         $('#edit-procedure_group').css('display','none');
+                //     }
+                //     break;
+                // case 'procedure':
+                //     if(data.type == 'success') {
+                //         if (form_type == 'create')
+                //             _form.trigger('reset');
+                //         else {
+                //             field_status_change('disable', _form);
+                //             $('#edit-procedure-button').removeAttr('style');
+                //             $('#edit-procedure').css('display', 'none');
+                //         }
+                //     }
+                //     break;
+                case 'roles':
+                    if(data.type == 'success') {
+                        if (form_type == 'create'){
+                            $('#role_id').val(data.id);
+                            window.location = data.url;
+                        }
+                        else {
+                            field_status_change('disable', _form);
+                            $('#edit-role-button').removeAttr('style');
+                            $('#update-role').css('display', 'none');
+                            reloadPage();
+                        }
                     }
                     break;
-                case 'procedure':
-                    if(form_type=='create')
-                        _form.trigger('reset');
-                    else{
-                        field_status_change('disable',_form);
-                        $('#edit-procedure-button').removeAttr('style');
-                        $('#edit-procedure').css('display','none');
+                case 'user':
+                    if(data.type == 'success') {
+                        if (form_type == 'update'){
+                            field_status_change('disable', _form);
+                            $('#edit-user-button').removeAttr('style');
+                            $('#update-user').css('display', 'none');
+                            reloadPage();
+                        }
                     }
                     break;
-                case 'teeth':
+                case 'permissions':
+                    if(data.type == 'success') {
+                        if (form_type == 'create')
+                            _form.trigger('reset');
+                        else {
+                            field_status_change('disable', _form);
+                            $('#edit-permission-button').removeAttr('style');
+                            $('#update-permission').css('display', 'none');
+                        }
+                    }
+                    break;
+                case 'matriculation':
+                    if(data.type == 'success') {
+                        if (form_type == 'create') {
+                            $('#matriculation_id').val(data.id);
+                            matriculation_modality_save();
+                            window.location = data.url;
+                            schedule_button_action('disable');
+                        }
+                        else {
+                            field_status_change('disable', _form);
+                            $('#add-matriculation_consult').addClass('disabled');
+                            $('#edit-matriculation-button').removeAttr('style');
+                            $('#update-matriculation').css('display', 'none');
+                            matriculation_modality_save();
+                            schedule_button_action('disable');
+                        }
+                    }
+                    break;
+                case 'payment':
+                    if(data.type == 'success') {
+                            field_status_change('disable', _form);
+                            $('#add-payments').addClass('disabled');
+                            $('#edit-payment-button').removeAttr('style');
+                            $('#update-payment').css('display', 'none');
+                            payment_procedure_save();
+                    }
+                    break;
+                case 'modalities':
                     if(form_type=='create') {
                         _form.trigger('reset');
                         $('.avatar-' + data.form).attr('src', '/img/clinic/doctor_icon.png');
                     }else{
                         field_status_change('disable',_form);
-                        $('#edit-teeth-button').removeAttr('style');
-                        $('#edit-teeth').css('display','none');
+                        $('#edit-modalities-button').removeAttr('style');
+                        $('#edit-modalities').css('display','none');
                     }
                     break;
-                case 'secure_comparticipation':
-                    $('#add-secure_comparticipation').css('display','none');
-                    $('#edit-secure_comparticipation').css('display','none');
-                    break;
-                case 'consult_agenda':
-                    //$('#modal').find('#add-consult_agenda').css('display','none');
-                    //$('#modal').find('#edit-consult_agenda').css('display','none');
-                    // $('#modal').modal('hide');
-                    if(data.type != 'error'){
-
-                        if(form_type=='create'){
-                            $('#add-consult_agenda').css('display', 'none');
-                        }else{
-                            $('#edit-consult_agenda').css('display', 'none');
-                        }
-
-                        field_status_change('disable',_form);
-                        $('#edit-consult_agenda-button').removeAttr('style');
-
-                        $('#calendar').fullCalendar('refetchEvents');
-                        $('#consult_confirm').load('confirm_list');
-                        $('#consult_cancel').load('cancel_list');
-                    }
-
-
-                    break;
+                // case 'secure_comparticipation':
+                //     $('#add-secure_comparticipation').css('display','none');
+                //     $('#edit-secure_comparticipation').css('display','none');
+                //     break;
+                // case 'consult_agenda':
+                //     //$('#modal').find('#add-consult_agenda').css('display','none');
+                //     //$('#modal').find('#edit-consult_agenda').css('display','none');
+                //     // $('#modal').modal('hide');
+                //     if(data.type != 'error'){
+                //
+                //         if(form_type=='create'){
+                //             $('#add-consult_agenda').css('display', 'none');
+                //         }else{
+                //             $('#edit-consult_agenda').css('display', 'none');
+                //         }
+                //
+                //         field_status_change('disable',_form);
+                //         $('#edit-consult_agenda-button').removeAttr('style');
+                //
+                //         $('#calendar').fullCalendar('refetchEvents');
+                //         $('#consult_confirm').load('confirm_list');
+                //         $('#consult_cancel').load('cancel_list');
+                //     }
+                //
+                //
+                //     break;
 
                 case 'license_generator':
                     field_status_change('disable',_form);
@@ -395,13 +503,16 @@ function field_status_change(action,_form) {
     var inputs = _form.find(':input');
     if (action == 'disable') {
         inputs.each(function () {
-            inputs.attr('disabled', 'disabled');
+            // console.log();
+            if($(this).attr('type') != 'hidden')
+                $(this).attr('disabled', 'disabled');
+
         });
     }
 
     if (action == 'enable') {
         inputs.each(function () {
-            inputs.removeAttr('disabled');
+            $(this).removeAttr('disabled');
         });
     }
 }
@@ -435,21 +546,67 @@ function change_status(_id, _type, _name_item, _tr, url, _tr_class, _form) {
                         if (data.type == 'error'){
                             toastr.error(data.message, {timeOut: 5000}).css("width", "300px");
                         }else{
-                            toastr.success(data.message, {timeOut: 5000}).css("width", "300px");
+
+                            if(_form == 'matriculation'){
+                                //GENERATE BUDGET PAYMENT VAL
+                                if(data.action == 'approve'){
+                                    bootbox.confirm({
+                                        title: 'Do you want generate payment?',
+                                        message: 'This action will generate payment.',
+                                        //size: 'small',
+                                        buttons: {
+                                            confirm: {
+                                                label: _yes_text,
+                                                className: 'btn-success'
+                                            },
+                                            cancel: {
+                                                label: _no_text,
+                                                className: 'btn-danger'
+                                            }
+                                        },
+                                        callback: function (result) {
+                                            if(result == true){
+                                                url = '/matriculation/payment';
+                                                $.ajax({
+                                                    type: 'POST',
+                                                    url: url,
+                                                    data: {id: _id},
+                                                    dataType: 'json',
+                                                    success: function (data) {
+                                                        toastr.success(data.message, {timeOut: 5000}).css("width", "300px");
+                                                        location.reload();
+                                                    },
+                                                    error: function () {
+
+                                                    }
+                                                });
+
+                                            }
+                                        }
+                                    });
+                                }else{
+                                    location.reload();
+                                }
+                                
+                            }else
+                                toastr.success(data.message, {timeOut: 5000}).css("width", "300px");
+
 
                             if(_type == 'enable'){
-                                _tr.parent().find('#update-'+_form).css('display','initial');
+                                _tr.parent().find('#edit-'+_form).css('display','initial');
                                 _tr.parent().find('#enable-'+_form).css('display','none');
                                 _tr.parent().find('#disable-'+_form).css('display','initial');
 
                             }else if(_type == 'disable'){
-                                _tr.parent().find('#update-'+_form).css('display','none');
+                                _tr.parent().find('#edit-'+_form).css('display','none');
                                 _tr.parent().find('#enable-'+_form).css('display','initial');
                                 _tr.parent().find('#disable-'+_form).css('display','none');
                             }
 
                             _tr.parent().parent().removeClass(_tr_class);
                             _tr.parent().parent().addClass(data.status_color);
+
+
                         }
 
                     },
@@ -462,4 +619,105 @@ function change_status(_id, _type, _name_item, _tr, url, _tr_class, _form) {
     });
 }
 
+// THIS FUNCTION PUT CURRENCY FORMAT TO OBJECT IN HTML VIEW
+function getCurrency(_value, _object, _option) {
+    
+    $.get('/currency_format/' + _value, function (data) {
+        switch (_option){
+            case 'text':
+                _object.text(data);
+                break;
+            case 'val':
+                _object.val(data);
+                break;
+        }
+    });
+}
+
+function reloadPage() {
+    bootbox.confirm({
+        title: 'Do you want reload this page?',
+        message: 'This action refresh your current page.',
+        //size: 'small',
+        buttons: {
+            confirm: {
+                label: _yes_text,
+                className: 'btn-success'
+            },
+            cancel: {
+                label: _no_text,
+                className: 'btn-danger'
+            }
+        },
+        callback: function (result) {
+            if(result == true){
+                location.reload();
+            }
+        }
+    });
+}
+
+//POPOVER
+function setPopOver(field) {
+    if(field === 'name'){
+        $('#user-name').popover({
+            html:true,
+            content: '',
+            title:'Edit',
+            footer:'Footer',
+            placement:'right',
+            trigger:'click',
+            template:'<div class="popover col-md-6"><button type="button" class="close close-popover" data-dismiss="modal" aria-label="Close" style="margin: 5px;"><span aria-hidden="true">×</span></button><div class="arrow"></div><h3 class="popover-title"></h3><div class="popover-content popover-name"></div></div>',
+        });
+    }
+
+    if(field === 'email'){
+        $('#user-email').popover({
+            html:true,
+            content: '',
+            title:'Edit',
+            footer:'Footer',
+            placement:'right',
+            trigger:'click',
+            template:'<div class="popover col-md-6"><button type="button" class="close close-popover" data-dismiss="modal" aria-label="Close" style="margin: 5px;"><span aria-hidden="true">×</span></button><div class="arrow"></div><h3 class="popover-title"></h3><div class="popover-content popover-email"></div></div>',
+        });
+    }
+
+    if(field === 'matriculation_teeth'){
+        $('.matriculation-modalities').popover({
+            html:true,
+            content: '',
+            title:'Select Teeth',
+            footer:'Footer',
+            placement:'bottom',
+            trigger:'click',
+            template:'<div class="popover col-md-6"><button type="button" class="close close-popover" data-dismiss="modal" aria-label="Close" style="margin: 5px;"><span aria-hidden="true">×</span></button><div class="arrow"></div><h3 class="popover-title"></h3><div class="popover-content popover-matriculation-modalities"></div></div>',
+        });
+    }
+
+    if(field === 'payment-value'){
+        $('.payment-value').popover({
+            html:true,
+            content: '',
+            title:'Payment Value',
+            footer:'Footer',
+            placement:'bottom',
+            trigger:'click',
+            template:'<div class="popover col-md-6"><button type="button" class="close close-popover" data-dismiss="modal" aria-label="Close" style="margin: 5px;"><span aria-hidden="true">×</span></button><div class="arrow"></div><h3 class="popover-title"></h3><div class="popover-content popover-payment-value"></div></div>',
+        });
+    }
+
+    if(field === 'm_modality-discount'){
+        // console.log('Aqui!');
+        $('.m_modality-discount').popover({
+            html:true,
+            content: '',
+            title:'Discount Value',
+            footer:'Footer',
+            placement:'bottom',
+            trigger:'click',
+            template:'<div class="popover col-md-6"><button type="button" class="close close-popover" data-dismiss="modal" aria-label="Close" style="margin: 5px;"><span aria-hidden="true">×</span></button><div class="arrow"></div><h3 class="popover-title"></h3><div class="popover-content popover-m_modality-discount"></div></div>',
+        });
+    }
+}
 

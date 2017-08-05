@@ -11,6 +11,7 @@
 @section('contentheader_description')
     {{ trans('adminlte_lang::message.update_system') }}
 @endsection
+@inject('Defaults', 'App\Http\Controllers\Defaults')
 
 @section('main-content')
 
@@ -26,7 +27,7 @@
 
                     <div class="pull-right box-tools">
 
-                        <a href="{{ \Illuminate\Support\Facades\URL::previous() }}" class="btn btn-primary btn-sm" role="button" data-toggle="tooltip" title="{{ trans('adminlte_lang::message.back') }}">
+                        <a href="{{ url('system') }}" class="btn btn-primary btn-sm" role="button" data-toggle="tooltip" title="{{ trans('adminlte_lang::message.back') }}">
                             <i class="fa  fa-arrow-left"></i>
                         </a>
                         <a href="#!" class="btn btn-primary btn-sm" role="button" data-toggle="tooltip" title="{{ trans('adminlte_lang::message.save') }}" id="edit-system">

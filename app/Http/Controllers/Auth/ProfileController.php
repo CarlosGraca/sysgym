@@ -117,10 +117,10 @@ class ProfileController extends Controller
       $user = Auth::user();
       switch ($name) {
         case 'name':
-          return view('layouts.shared.field',['name'=>$name,'label'=>'Name: ','value'=>$user->name]);
+          return view('layouts.shared.field',['name'=>$name,'label'=>'Name: ','value'=>$user->name,'type'=>'text']);
           break;
         case 'email':
-          return view('layouts.shared.field',['name'=>$name,'label'=>'Email: ','value'=>$user->email]);
+          return view('layouts.shared.field',['name'=>$name,'label'=>'Email: ','value'=>$user->email,'type'=>'email']);
           break;
 
         default:

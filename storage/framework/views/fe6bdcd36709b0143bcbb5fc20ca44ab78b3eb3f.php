@@ -67,15 +67,16 @@
 
                     </div><!--end #rootwizard -->
                 </div>
-                <div class="box-footer">
-                    <div class="pull-right hidden-xs">
-                        <b>Version</b> 1.0.0
-                    </div>
-                    <strong>Copyright &copy; 2016-<span id="app_date"></span> <a href="#">MCSolution</a>.</strong> All rights reserved.
-                </div>
+                <?php echo $__env->make('layouts.partials.footer', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+                
+                    
+                        
+                    
+                    
+                
             </div><!--end .col -->
         </div>
     </div><!--end .row -->
     <!-- END VALIDATION FORM WIZARD -->
 <?php $__env->stopSection(); ?>
-<?php echo $__env->make('layouts.report', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+<?php echo $__env->make('layouts.default', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

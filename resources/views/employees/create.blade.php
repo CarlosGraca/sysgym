@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('htmlheader_title')
-	{{ trans('adminlte_lang::message.new_patient') }}
+	{{ trans('adminlte_lang::message.new_client') }}
 @endsection
 
 @section('contentheader_title')
@@ -9,7 +9,7 @@
 @endsection
 
 @section('contentheader_description')
-  {{ trans('adminlte_lang::message.new_patient') }}
+  {{ trans('adminlte_lang::message.new_client') }}
 @endsection
 
 

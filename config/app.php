@@ -12,7 +12,7 @@ return [
     | any other location as required by the application or its packages.
     */
 
-    'name' => 'OdontSoft',
+    'name' => env('APP_NAME', 'SysGym'),
 
     /*
    |--------------------------------------------------------------------------
@@ -175,7 +175,7 @@ return [
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
 
-        //OWN
+        //OWN 
         Acacha\AdminLTETemplateLaravel\Providers\AdminLTETemplateServiceProvider::class,
         Collective\Html\HtmlServiceProvider::class,
         Barryvdh\DomPDF\ServiceProvider::class,
@@ -246,11 +246,12 @@ return [
 
         //PLUGINS
         'AdminLTE' => Acacha\AdminLTETemplateLaravel\Facades\AdminLTE::class,
-        'Form'      => Collective\Html\FormFacade::class,
-        'Html'      => Collective\Html\HtmlFacade::class,
+        'Form' => Collective\Html\FormFacade::class,
+                'HTML' => Collective\Html\HtmlFacade::class,
         'Input'     => Illuminate\Support\Facades\Input::class,
         'PDF' => Barryvdh\DomPDF\Facade::class,
         'Image' => Intervention\Image\Facades\Image::class,
+        'Helpers' => App\Helpers::class
     ],
 
 ];

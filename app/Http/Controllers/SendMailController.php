@@ -16,7 +16,7 @@ class SendMailController extends Controller
         $actionText  = 'View',
         $actionUrl   = null,
         $name        = 'ODONTSOFT',
-        $document    = 'TEST MAIL',
+        $subject    = 'TEST MAIL',
         $email       = 'ailtonsemedo.2006@gmail.com',
         $license_key = null,
         $system = null,
@@ -24,16 +24,18 @@ class SendMailController extends Controller
 
         $company = Company::all()->first();
 
-        Mail::send('layouts.shared.email',compact('level','introLines','outroLines','actionText','actionUrl','name','company','license_key','system','reset_password','email'), function($message) use ($document,$email,$name)
+        Mail::send('layouts.shared.email',compact('level','introLines','outroLines','actionText','actionUrl','name','company','license_key','system','reset_password','email'), function($message) use ($subject,$email,$name)
         {
-            $message->to($email,$name)->subject($document);
+            $message->to($email,$name)->subject($subject);
         });
 
         if(count(Mail::failures()) > 0){
-            $message = ['message'=>'Failed to send report to email, please try again.','type'=>'error'];
-        }else{
-            $message = ['message'=>'Message send with success.','type'=>'success'];
+            return false;
+//            $message = ['message'=>'Failed to send email, please try again.','type'=>'error'];
         }
-        return $message;
+//        else{
+//            $message = ['message'=>'Message send with success.','type'=>'success'];
+//        }
+        return true;
     }
 }

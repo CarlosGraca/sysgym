@@ -2,7 +2,7 @@
 
 namespace App\Http\Middleware;
 
-use App\System;
+use App\Models\System;
 use Closure;
 
 class license
@@ -16,7 +16,7 @@ class license
      */
     public function handle($request, Closure $next)
     {
-        $system = System::all()->first();
+       /* $system = System::all()->first();
 
         if($system->status == '0' && $request->isMethod('get')){
             return redirect('license_expired');
@@ -24,7 +24,7 @@ class license
             return redirect('home');
         }else if(\Auth::user() == null && $request->isMethod('get') && $system->status == '1'){
             return redirect('home');
-        }
+        }*/
         return $next($request);
     }
 }

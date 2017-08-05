@@ -22,28 +22,28 @@
 			<hr class="h-divider" >
 			<div class="col-md-6 col-sm-6 col-xs-12">
 				<div class="form-group form-group-sm">
-					{!! Form::label('name',trans('adminlte_lang::message.name')) !!}
+					{!! Form::label('name','(*)'.trans('adminlte_lang::message.name')) !!}
 					{!! Form::text('name', ($type == 'update' ? $company->name : null) , ['class'=>'form-control','required'=>'true']) !!}
 				</div>
 			</div>
 
 			<div class="col-md-6 col-sm-6 col-xs-12">
 				<div class="form-group form-group-sm">
-					{!! Form::label('nif',trans('adminlte_lang::message.nif')) !!}
+					{!! Form::label('nif','(*)'.trans('adminlte_lang::message.nif')) !!}
 					{!! Form::number('nif', ($type == 'update' ? $company->nif : null) , ['class'=>'form-control','required'=>'true']) !!}
 				</div>
 			</div>
 
 			<div class="col-md-6 col-sm-6 col-xs-12">
 				<div class="form-group form-group-sm">
-					{!! Form::label('owner',trans('adminlte_lang::message.owner')) !!}
+					{!! Form::label('owner','(*)'.trans('adminlte_lang::message.owner')) !!}
 					{!! Form::text('owner', ($type == 'update' ? $company->owner : null) , ['class'=>'form-control','required'=>'true']) !!}
 				</div>
 			</div>
 
 			<div class="col-md-6 col-sm-6 col-xs-12">
 				<div class="form-group form-group-sm">
-					{!! Form::label('area',trans('adminlte_lang::message.area')) !!}
+					{!! Form::label('area','(*)'.trans('adminlte_lang::message.area')) !!}
 					{!! Form::text('area', ($type == 'update' ? $company->area : null) , ['class'=>'form-control','required'=>'true']) !!}
 				</div>
 			</div>
@@ -55,14 +55,14 @@
 
 			<div class="col-md-6 col-sm-6 col-xs-12">
 				<div class="form-group form-group-sm">
-					{!! Form::label('email',trans('adminlte_lang::message.email')) !!}
+					{!! Form::label('email','(*)'.trans('adminlte_lang::message.email')) !!}
 					{!! Form::email('email', ($type == 'update' ? $company->email : null), ['class'=>'form-control','required'=>'true']) !!}
 				</div>
 			</div>
 
 			<div class="col-md-6 col-sm-6 col-xs-12">
 				<div class="form-group form-group-sm">
-					{!! Form::label('phone',trans('adminlte_lang::message.phone')) !!}
+					{!! Form::label('phone','(*)'.trans('adminlte_lang::message.phone')) !!}
 					{!! Form::tel('phone', ($type == 'update' ? $company->phone : null) , ['class'=>'form-control','required'=>'true']) !!}
 				</div>
 			</div>
@@ -75,21 +75,21 @@
 			</div>
 			<div class="col-md-6 col-sm-6 col-xs-12">
 				<div class="form-group form-group-sm">
-					{!! Form::label('address',trans('adminlte_lang::message.address')) !!}
+					{!! Form::label('address','(*)'.trans('adminlte_lang::message.address')) !!}
 					{!! Form::text('address', ($type == 'update' ? $company->address : null) , ['class'=>'form-control','required'=>'true']) !!}
 				</div>
 			</div>
 
 			<div class="col-lg-6 col-md-6 col-sm-6">
 				<div class="form-group form-group-sm">
-					{!! Form::label('city',trans('adminlte_lang::message.city') ) !!}
+					{!! Form::label('city','(*)'.trans('adminlte_lang::message.city') ) !!}
 					{!! Form::text('city', ($type == 'update' ? $company->city : null) , ['class'=>'form-control','required'=>'true']) !!}
 				</div>
 			</div>
 
 			<div class="col-lg-6 col-md-6 col-sm-6">
 				<div class="form-group form-group-sm">
-					{!! Form::label('island',trans('adminlte_lang::message.island') ) !!}
+					{!! Form::label('island','(*)'.trans('adminlte_lang::message.island') ) !!}
 					{!! Form::select('island', $island, ($type == 'update' ? $company->island_id : null) , ['class'=>'form-control','id'=>'island','placeholder'=>' (SELECT ISLAND) ']) !!}
 				</div>
 			</div>
@@ -98,7 +98,7 @@
 			<div class="col-md-6 col-sm-6 col-xs-12">
 				<div class="form-group form-group-sm">
 					{!! Form::label('zip_code',trans('adminlte_lang::message.zip_code')) !!}
-					{!! Form::number('zip_code', ($type == 'update' ? $company->zip_code : null) , ['class'=>'form-control']) !!}
+					{!! Form::number('zip_code', ($type == 'update' ? $company->zip_code : 0) , ['class'=>'form-control']) !!}
 				</div>
 			</div>
 

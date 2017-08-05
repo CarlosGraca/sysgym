@@ -104,7 +104,7 @@ class BranchController extends Controller
      */
     public function show(Branch $branch)
     {
-        $schedules = Schedule::select( \DB::raw("week_day, start_time, end_time") )->where('branch_id',$branch->id)->where('status',1)
+        $schedules = Schedule::select( \DB::raw("week_day, start_time, end_time") )->where(['item_id'=>$branch->id,'status'=>1,'flag'=>1])
             ->orderby( \DB::raw(" field(week_day,'monday','tuesday','wednesday','thursday','friday','saturday','sunday'), start_time") )->get();
         //ORDER BY FIELD(<fieldname>, 'MONDAY', 'TUESDAY', 'WEDNESDAY', 'THURSDAY', 'FRIDAY', 'SATURDAY', 'SUNDAY');
         $company = Company::all()->first();
@@ -141,7 +141,7 @@ class BranchController extends Controller
         $defaults = new Defaults();
         $weeks = $defaults->getWeeks();
         $island = Island::pluck('name','id');
-        $schedules = Schedule::where('branch_id',$branch->id)->where('status',1)
+        $schedules = Schedule::where(['item_id'=>$branch->id,'status'=>1,'flag'=>1])
             ->orderby( \DB::raw(" field(week_day,'monday','tuesday','wednesday','thursday','friday','saturday','sunday'), start_time ") )->get();
         //ORDER BY FIELD(<fieldname>, 'MONDAY', 'TUESDAY', 'WEDNESDAY', 'THURSDAY', 'FRIDAY', 'SATURDAY', 'SUNDAY');
 
@@ -202,12 +202,37 @@ class BranchController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function disable()
     {
-        //
+        $branch = Branch::where('id',\Input::get('id'))->first();
+        $branch->status = 0;
+
+        if (Request::wantsJson() && $branch->save()){
+            $message = trans('adminlte_lang::message.msg_success_disable_branch');
+            return ['status_color'=>'bg-danger','message'=>$message,'form'=>'branch', 'type'=>'success'];
+        }else{
+            return redirect('branches');
+        }
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function enable()
+    {
+        $branch = Branch::where('id',\Input::get('id'))->first();
+        $branch->status = 1;
+
+        if (Request::wantsJson() && $branch->save()){
+            $message = trans('adminlte_lang::message.msg_success_enable_branch');
+            return ['status_color'=>'bg-success','message'=>$message,'form'=>'branch', 'type'=>'success'];
+        }else{
+            return redirect('branches');
+        }
     }
 
 
@@ -221,17 +246,16 @@ class BranchController extends Controller
     {
         $schedules = json_decode($request->schedule);
         $delete = json_decode($request->delete);
-        $branch_id = $request->branch_id;
-
-       // print_r($delete);
+        $item_id = $request->item_id;
+        $flag = $request->flag;
 
         if (is_array($delete)){
             foreach ($delete as $item) {
-                $has_schedule = Schedule::where('id', $item)->where('branch_id', $branch_id)->first();
+                $has_schedule = Schedule::where('id', $item)->first();
                 if($has_schedule){
-                    $has_schedule->status = 0;
-                    $has_schedule->save();
-                    //Schedule::destroy($item);
+                    $has_schedule->delete();
+//                    $has_schedule->status = 0;
+//                    $has_schedule->save();
                 }
             }
         }
@@ -239,22 +263,24 @@ class BranchController extends Controller
         if (is_array($schedules)){
             foreach ($schedules as $item) {
 
-                $has_schedule = Schedule::where('id',$item->id)->where('branch_id', $branch_id)->first();
+                $has_schedule = Schedule::where('id',$item->id)->first();
 
                 if($has_schedule){
                     $has_schedule->week_day = $item->week_day;
                     $has_schedule->start_time = $item->start_time;
                     $has_schedule->end_time = $item->end_time;
-                    $has_schedule->branch_id = $branch_id;
+                    $has_schedule->item_id = $item_id;
                     $has_schedule->user_id =  Auth::user()->id;
+                    $has_schedule->flag = $flag;
                     $has_schedule->save();
                 }else{
                     $schedule = new Schedule();
                     $schedule->week_day = $item->week_day;
                     $schedule->start_time = $item->start_time;
                     $schedule->end_time = $item->end_time;
-                    $schedule->branch_id = $branch_id;
+                    $schedule->item_id = $item_id;
                     $schedule->user_id =  Auth::user()->id;
+                    $schedule->flag = $flag;
                     $schedule->save();
                 }
 
@@ -264,7 +290,7 @@ class BranchController extends Controller
 
         if (Request::wantsJson()){
             ///$message = trans('adminlte_lang::message.msg_update_success_branches');
-            return ['id'=>$branch_id,'form'=>'branches'];
+            return ['id'=>$item_id,'form'=>'branches'];
         }else{
             return redirect('branches');
         }

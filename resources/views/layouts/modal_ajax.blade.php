@@ -10,7 +10,7 @@
 <script src="{{ asset('/plugins/jQueryUI/jquery-ui.min.js') }}" type="text/javascript" ></script>
 
 <!-- SCRIPT IN DEVELOPMENT MODE -->
-<script src="{{ asset('/js/patients.js') }}" type="text/javascript"></script>
+<script src="{{ asset('clients') }}" type="text/javascript"></script>
 <script src="{{ asset('/js/users.js') }}" type="text/javascript"></script>
 <script src="{{ asset('/js/branches.js') }}" type="text/javascript"></script>
 <script src="{{ asset('/js/employees.js') }}" type="text/javascript"></script>
@@ -41,7 +41,7 @@
         }
     });
 
-    $('#consult_patient').select2();
+    $('#consult_client').select2();
     $('#consult_type').select2();
     $('#doctor').select2();
 </script>

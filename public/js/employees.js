@@ -11,7 +11,7 @@ $(function () {
     });
 
 //BOTÃO EDITAR CLIENTE
-    $(document).on('click','#edit-employee',function () {
+    $(document).on('click','#update-employee',function () {
         save($('#employee-form'), $('#employee-form')[0], 'update');
     });
 

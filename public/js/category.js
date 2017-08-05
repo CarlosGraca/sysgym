@@ -15,28 +15,40 @@ $(function () {
         save($('#category-form'), $('#category-form')[0], 'update');
     });
 
+    //DISABLE role CONSULT
+    $(document).on('click','#disable-category',function (e) {
+        e.preventDefault();
+        change_status($(this).attr('data-key'), 'disable', $(this).attr('data-name'), $(this), 'category/disable', 'bg-success', 'category')
+    });
+
+    //ENABLE PATIENT
+    $(document).on('click','#enable-category',function (e) {
+        e.preventDefault();
+        change_status($(this).attr('data-key'), 'enable', $(this).attr('data-name'), $(this), 'category/enable', 'bg-danger', 'category');
+    });
+
 //GET SALARY BY CATEGORY
-    $('#category').on('change', function () {
-        var category = $(this).val();
-        if (category != 0) {
-            $.get('/category/salary_base/' + category, function (data) {
-                $('#salary').val(data);
-            });
-        }
-    });
+//     $('#category').on('change', function () {
+//         var category = $(this).val();
+//         if (category != 0) {
+//             $.get('/category/salary_base/' + category, function (data) {
+//                 $('#salary').val(data);
+//             });
+//         }
+//     });
 
 
-    $('#table-category').dataTable({
-        /*"processing": true,
-        "serverSide": true,
-       // "ajax": "/category_all",
-        "columns": [
-            {"data": "id"},
-            {"data": "name"},
-            {"data": "salary_base"},
-            {"data": "id"}
-        ],*/
-    });
+    // $('#table-category').dataTable({
+    //     /*"processing": true,
+    //     "serverSide": true,
+    //    // "ajax": "/category_all",
+    //     "columns": [
+    //         {"data": "id"},
+    //         {"data": "name"},
+    //         {"data": "salary_base"},
+    //         {"data": "id"}
+    //     ],*/
+    // });
 
 });
 //$('#table-category').dataTable();

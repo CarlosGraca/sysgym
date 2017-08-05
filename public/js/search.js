@@ -1,40 +1,67 @@
 //Javascript
 $(function()
 {
-	$( "#patient" ).autocomplete({
-	    source: "/search/autocomplete",
-	    minLength: 3,
+	$("#client").autocomplete({
+	    source: "/search/client/autocomplete",
+	    minLength: 1,
 	    autoFocus: true,
 	    select: function(event, ui) {
-		  	$('#patient').val(ui.item.value);
-		  	$('#patient_id').val(ui.item.id);
-		  	console.log(ui.item.id);
-		  	$.getJSON('/patients/'+ui.item.id, function(data){
+		  	$('#client').val(ui.item.value);
+		  	$('#client_id').val(ui.item.id);
+		  	// console.log(ui.item.id);
+		  	$.getJSON('/clients/'+ui.item.id, function(data){
 		  		$('#email').val(data.email);
 				$('#phone').val(data.phone);
 				$('#mobile').val(data.mobile);
-				$('#has_secure').val(data.has_secure);
-				$('.avatar-patient').attr('src','/'+data.avatar);
-				//$('.tbhead').css('display','none');
-				if(data.has_secure == 1){
-					var secure_card_id = data.secure_card_id;
-					$.getJSON('/secure_card/'+secure_card_id, function(data){
-                        $('#budget_without_secure').css('display','none');
-                        $('#secure_agency_id').val(data.secure_agency_id);
-						$('#secure_agency').removeAttr('style');
-                        $('#budget_with_secure').removeAttr('style');
-					});
-				}else{
-                    $('#budget_with_secure').css('display','none');
-                    $('#secure_agency').css('display','none');
-					$('#budget_without_secure').removeAttr('style');
-				}
+				$('.avatar-client').attr('src','/'+data.avatar);
+				
+				$('#add-matriculation_modality').removeClass('disabled');
+				$('#matriculation_modality_id').removeAttr('disabled');
+				$('#modality').removeAttr('disabled');
 
-				$('#add-budget_consult').removeClass('disabled');
-				$('#budget_procedure_id').removeAttr('disabled');
-				$('#budget_teeth_id').removeAttr('disabled');
+				var form = $('Form').attr('id');
+
+				if(form == 'payment-form'){
+					// console.log('Payment');
+					full_modality_table();
+				}
 			});
 
 		}
 	});
+
+	$("#employee").autocomplete({
+		source: "/search/employee/autocomplete",
+		minLength: 1,
+		autoFocus: true,
+		select: function(event, ui) {
+			$('#employee').val(ui.item.value);
+			$('#employee_id').val(ui.item.id);
+		}
+	});
+
+	$("#modality").autocomplete({
+		source: "/search/modality/autocomplete",
+		minLength: 1,
+		autoFocus: true,
+		select: function(event, ui) {
+			$('#modality').val(ui.item.value);
+			$('#modality_id').val(ui.item.id);
+		}
+	});
+
+    //EMPLOYEE CATEGORY
+    $("#category").autocomplete({
+        source: "/search/employee-category/autocomplete",
+        minLength: 1,
+        autoFocus: true,
+        select: function(event, ui) {
+            $('#category').val(ui.item.value);
+            $('#employee_category_id').val(ui.item.id);
+            $.get('/category/salary_base/' + ui.item.id, function (data) {
+                $('#salary').val(data);
+            });
+        }
+    });
+
 });

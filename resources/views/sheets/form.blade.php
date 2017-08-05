@@ -22,7 +22,7 @@
         background-color:rgb(255,253,210);  
     }
 </style>
-@include('patients.form',['form'=>null,'client'=>$client,'type'=>$type])
+@include('clients.form',['form'=>null,'client'=>$client,'type'=>$type])
 <div class="row">
     {!! Form::hidden('sheet_id', ($type == 'update' ? $sheet->id : null), ['class'=>'form-control','id'=>'sheet_id']) !!}
     <span ><strong class="title">Dados Ficha de Treino</strong></span>

@@ -20,15 +20,15 @@
 	        <div class="box box-default">
 	            <div class="box-header with-border">
 	              <h3 class="box-title">
-	              	 <strong>{{ trans('adminlte_lang::message.system_user') }}: </strong><span>{{ Auth::user()->name }}</span>
+	              	 <strong>{{ trans('adminlte_lang::message.system_user') }}: </strong><span>{{ \Auth::user()->name }}</span>
 	              </h3>
 
 				<div class="pull-right box-tools">
-					<a href="{{ url('payments') }}" class="btn btn-primary btn-sm" role="button" data-toggle="tooltip" title="Voltar">
+					<a href="{{ url('payments') }}" class="btn btn-primary btn-sm" role="button" data-toggle="tooltip" title="{{ trans('adminlte_lang::message.back') }}">
 						 <i class="fa  fa-arrow-left"></i>
 					</a>
 
-					<a href="#" class="btn btn-primary btn-sm" role="button" data-toggle="tooltip" title="Save" id="add-payments">
+					<a href="#" class="btn btn-primary btn-sm" role="button" data-toggle="tooltip" title="{{ trans('adminlte_lang::message.save') }}" id="add-payment">
 						 <i class="fa fa-save"></i>
 					</a>
 				</div><!-- /. tools -->

@@ -33,7 +33,7 @@ These multiple threshold objects can be passed in any order since they are
 sorted by the processing function.
 
 The data points below "below" are drawn with the specified color. This makes
-it easy to mark points below 0, e.g. for budget data.
+it easy to mark points below 0, e.g. for matriculation data.
 
 Internally, the plugin works by splitting the data into two series, above and
 below the threshold. The extra series below the threshold will have its label

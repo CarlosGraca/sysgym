@@ -56,7 +56,7 @@
                             <ul class="nav nav-tabs">
                                 <li class="active"><a href="#personal_data" data-toggle="tab">{{ trans('adminlte_lang::message.personal_data') }}</a></li>
                                 <li><a href="#officeHours" data-toggle="tab">{{ trans('adminlte_lang::message.office_hours') }}</a></li>
-                                <li><a href="#settings" data-toggle="tab">Settings</a></li>
+                                {{--<li><a href="#settings" data-toggle="tab">Settings</a></li>--}}
                             </ul>
 
                             <div class="tab-content">
@@ -201,10 +201,10 @@
                                 </div>
                                 <!-- /.tab-pane -->
 
-                                <div class="tab-pane" id="settings">
+                                {{--<div class="tab-pane" id="settings">--}}
 
 
-                                </div>
+                                {{--</div>--}}
                                 <!-- /.tab-pane -->
                             </div>
                             <!-- /.tab-content -->

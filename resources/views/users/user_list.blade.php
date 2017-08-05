@@ -1,6 +1,6 @@
 <?php
-    $system = \App\System::all()->first();
-    \Carbon\Carbon::setLocale($system->lang);
+    //$system = \App\System::all()->first();
+   // \Carbon\Carbon::setLocale($system->lang);
 ?>
 <!-- USERS LIST -->
 <div class="box box-danger">
@@ -20,7 +20,7 @@
             @foreach($recent_users as $user)
                 <li>
                     <img src="{{ asset($user->avatar) }}" alt="User Image" >
-                    <a class="users-list-name" href="{{ $user->employee_id != 0 ? route('employees.show',$user->employee_id) : '' }}" data-toggle="tooltip" title="{{ $user->name }}">{{$user->name}}</a>
+                    <a class="users-list-name" href="#" data-toggle="tooltip" title="{{ $user->name }}">{{$user->name}}</a>
                     <span class="users-list-date">{{ \Carbon\Carbon::parse($user->created_at)->diffForHumans() }}</span>
                 </li>
             @endforeach

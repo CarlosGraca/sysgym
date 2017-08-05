@@ -6,7 +6,19 @@ use App\User;
 use Validator;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\RegistersUsers;
-
+use App\Models\Tenant;
+use App\Models\Role;
+use Illuminate\Http\Request;
+use Mail;
+use DB;
+use App\Models\Menu;
+use App\Models\TenantMenu;
+use App\Models\Permission;
+use Auth;
+/**
+ * Class RegisterController
+ * @package %%NAMESPACE%%\Http\Controllers\Auth
+ */
 class RegisterController extends Controller
 {
     /*
@@ -21,6 +33,16 @@ class RegisterController extends Controller
     */
 
     use RegistersUsers;
+
+    /**
+     * Show the application registration form.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function showRegistrationForm()
+    {
+        return view('auth.register');
+    }
 
     /**
      * Where to redirect users after login / registration.
@@ -51,6 +73,7 @@ class RegisterController extends Controller
             'name' => 'required|max:255',
             'email' => 'required|email|max:255|unique:users',
             'password' => 'required|min:6|confirmed',
+            'terms' => 'required',
         ]);
     }
 
@@ -68,4 +91,98 @@ class RegisterController extends Controller
             'password' => bcrypt($data['password']),
         ]);
     }
+
+
+    protected function redirectRegisterTenants(){
+        return view('auth.tenant');
+    }
+
+    public function registerTenants(Request $request){
+
+        /*DB::beginTransaction();
+        try{*/
+            $input = $request->all();
+            $validator = $this->validator($input);
+
+            if($validator->passes()){
+                $tenant = Tenant::create($input);
+                $role = new Role();
+                $role->name = 'admin';
+                $role->display_name = 'Administrador';
+                $role->description = 'Administrador';
+                $role->tenant_id =  $tenant->id;
+                $role->save();
+
+                $data = $this->create($input)->toArray();
+                $data['tenant_id'] = $tenant->id;
+                $data['role_id'] = $role->id;
+                $data['token'] = str_random(25);
+
+                $user = User::find($data['id']);
+                $user->tenant_id = $data['tenant_id'];
+                $user->role_id   = $data['role_id'];
+                $user->token     = $data['token'];
+                $user->save();
+
+                Mail::send('auth.mails.confirmation', $data, function($message) use($data) {
+                     $message->to($data['email']);
+                     $message->subject('Registration Confirmation');
+                });
+
+                return redirect(route('login'))->with('status', 'Confirmation email has been send. please check your email.');
+            }
+           /* DB::commit();
+        }catch(\Exception $e){
+            DB::rollBack();           
+            return redirect('auth/register')->with('warning', $e);
+        }*/
+         return redirect('auth/register')->with('warning', $validator->errors());
+        
+    }
+
+    public function saveMenu($user){        
+
+        $menus = Menu::where('status',1)->get();
+        foreach ($menus  as $key => $menu) {
+            $tenant_menu = new TenantMenu();
+            $tenant_menu->menu_id = $menu->id;
+            $tenant_menu->tenant_id = $user->tenant_id;
+            $tenant_menu->save();
+        }
+    }
+
+
+    public function savePermissions($user){        
+
+        $tenant_menus = TenantMenu::where('tenant_id',$user->tenant_id)->get();
+        foreach ($tenant_menus  as $key => $tenant_menu) {
+            $permision = new Permission();
+            $permision->type ='MENU';
+            $permision->tenant_menu_id = $tenant_menu->id;
+            $permision->role_id = $user->role_id;
+            $permision->active  =1;
+            $permision->save();
+        }
+    }
+
+
+    public function confirmation($token){
+         $user = user::where('token',$token)->first();
+         $tenant = Tenant::where('id',$user->tenant_id)->first();
+         if(!is_null($user) && !is_null($tenant)){
+            $user->active = 1;
+            $tenant->active = 1;
+            $user->token = '';
+            $user->save();
+            $tenant->save();
+
+            $this->saveMenu($user);
+            $this->savePermissions($user);
+
+            return redirect(route('login'))->with('status', 'Your activation is completed.');
+         }
+         return redirect(route('login'))->with('warning', 'Something went wrong');
+    }
+
+   
 }

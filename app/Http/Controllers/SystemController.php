@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Island;
+use App\Role;
 use App\System;
 use App\TimeZone;
 use Illuminate\Support\Facades\Crypt;
@@ -75,6 +77,7 @@ class SystemController extends Controller
         $system->lang = $request->lang;
         $system->theme = $request->theme;
         $system->layout = $request->layout;
+        $system->iva = $request->iva;
         $system->save();
 
         session()->flash('flash_message','System was Saved with success');
@@ -134,6 +137,7 @@ class SystemController extends Controller
         $system->theme = $request->theme;
         $system->layout = $request->layout;
         $system->timezone = $request->timezone;
+        $system->iva = $request->iva;
 
         if($request->status != ""){
             $system->status = $request->status;
@@ -207,4 +211,18 @@ class SystemController extends Controller
     public function licenseExpired(){
         return view('license.expired');
     }*/
+
+    public function setup(){
+        $default = new Defaults();
+        $system = System::all()->first();
+        $island = Island::pluck('name','id');
+        $theme = $default->getTheme();
+        $lang = $default->getLang();
+        $currency = $default->getCurrency();
+        $layout = $default->getLayout();
+        $timezone = $default->getTimezone();
+        $roles = Role::pluck('name','id');
+
+        return view('system.setup',compact('island','system','theme','lang','currency','layout','timezone','roles'));
+    }
 }

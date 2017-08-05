@@ -8,7 +8,7 @@
 <body class="hold-transition content-wrapper-login">
     <div class="login-box">
         <div class="login-logo">
-            <a href="{{ url('/home') }}"><b>Odont</b>Soft</a>
+            <a href="{{ url('/home') }}"><b>Sys</b>Gym</a>
         </div><!-- /.login-logo -->
 
     @if (count($errors) > 0)

@@ -143,17 +143,19 @@ $(function () {
 
        // alert('submited');
         
-        save($('#system-form'),$('#system-form')[0],'update',system_form);
-        save($('#user-form'),$('#user-form')[0],'create',user_form);
-        save($('#company-form'),$('#company-form')[0],'create',company_form);
+        save($('#system-form'),$('#system-form')[0],'update');
+        save($('#user-form'),$('#user-form')[0],'create');
+        save($('#company-form'),$('#company-form')[0],'create');
         
 
-        console.log(company_form);
-        console.log(user_form);
-        console.log(system_form);
+        //console.log(company_form);
+        //console.log(user_form);
+        //console.log(system_form);
 
         //window.location.href = 'http://odontsoft.cv';
+        // location.reload();
 
+        reloadPage();
     });
 
     //NAV TAB
@@ -213,21 +215,29 @@ $(function () {
     });
 
     //ABOUT SYSTEM MODAL POPUP
-    $(document).on('click','#about_system',function () {
+    $(document).on('click','#about_system',function (e) {
+        e.preventDefault();
+        // $('#modal').css('overflow','auto');
+        // console.log(($(window).height() - 100));
+        // $('#modal').find('.modal-content').css('height',($(window).height() - 100)+'px');
+        // $('#modal').find('#myModalLabel').html('<i class="fa fa-info-circle"></i> ');
+        // $('#modal').find('#myModalLabel').append($(this).text());
+
+        // $('#modal').find('.modal-body').load($(this).attr('data-url'));
+        // var footer_html = $('#modal').find('.modal-body').find('#app_footer').html();
+        // $('#modal').find('.modal-footer').html(footer_html);
+        // $('#modal').modal();
+
+        // $('#modal').find('.modal-body').slimScroll();
+        // $('#modal').find('.slimScrollDiv').attr('style','overflow: auto; height: '+($(window).height()-200)+'px;');
+        // $('#modal').find('.modal-body').css('height',($(window).height()-200)+'px');
+
+        $('#myModalLabel').html('<i class="fa fa-info-circle"></i> ');
+        $('#myModalLabel').append($(this).text());
+        $('#modal').modal('show')
+            .find('.modal-body')
+            .load($(this).data('url'));
         $('#modal').css('overflow','auto');
-        console.log(($(window).height() - 100));
-        $('#modal').find('.modal-content').css('height',($(window).height() - 100)+'px');
-        $('#modal').find('#myModalLabel').html('<i class="fa fa-info-circle"></i> ');
-        $('#modal').find('#myModalLabel').append($(this).text());
-
-        $('#modal').find('.modal-body').load($(this).attr('data-url'));
-        var footer_html = $('#modal').find('.modal-body').find('#app_footer').html();
-        $('#modal').find('.modal-footer').html(footer_html);
-        $('#modal').modal();
-
-        $('#modal').find('.modal-body').slimScroll();
-        $('#modal').find('.slimScrollDiv').attr('style','overflow: auto; height: '+($(window).height()-200)+'px;');
-        $('#modal').find('.modal-body').css('height',($(window).height()-200)+'px');
     });
 
     // $('#modal').on('hidden.bs.modal', function () {

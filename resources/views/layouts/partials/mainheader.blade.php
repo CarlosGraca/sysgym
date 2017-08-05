@@ -1,8 +1,7 @@
 <?php
-    $system = \App\System::all()->first();
-    $company = \App\Company::all()->first();
-    $branch = \App\Branch::where('id',\Auth::user()->logged_branch)->first();
-
+    $system = \App\Models\System::where('id',\Auth::user()->branch_id)->first();
+    $company = \App\Models\Tenant::where('id',\Auth::user()->tenant_id)->first();
+    $branch = \App\Models\Branch::where('id',(\Auth::user() ? \Auth::user()->branch_id : 0))->first();
 ?>
 <!-- Main Header -->
 <header class="main-header">
@@ -21,8 +20,7 @@
         <span class="logo-mini">
             <div class="user-panel">
                 <div class="pull-left image">
-                    <img  src="{{ url('/img/clinic/doctor_icon.png') }}" class="img-circle" alt="Cinque Terre"
-                          style="float: left; width: 30px; height: 30px; margin-right: 10px;  margin-top: -2px;">
+                    <img  src="{{ url('/img/clinic/logo.png') }}" class="img-circle" alt="Cinque Terre" style="float: left; width: 30px; height: 30px; margin-right: 10px;  margin-top: -2px;">
                 </div>
             </div>
         </span>
@@ -30,11 +28,11 @@
         <span class="logo-lg">
             <div class="user-panel">
                 <div class="pull-left image">
-                    <img  src="{{ url('/img/clinic/doctor_icon.png') }}" class="img-circle" alt="Cinque Terre"
+                    <img  src="{{ url('/img/clinic/logo.png') }}" class="img-circle" alt="Cinque Terre"
                           style="float: left; width: 30px; height: 30px; margin-right: 10px;  margin-top: -2px;">
                 </div>
                 <div class="pull-left info">
-                    <b>O</b>dont<b>S</b>oft
+                    <b>S</b>ys<b>G</b>ym
                 </div>
             </div>
 
@@ -54,7 +52,7 @@
                 <a href="{{ url('company') }}" data-toggle="tooltip" title="{{ trans('adminlte_lang::message.company') }} - {{ $company->name }}">
                     <img  src="{{ url('/') }}/{{$company->logo}}" class="user-image" alt="Cinque Terre" >
                     <!-- hidden-xs hides the username on small devices so only the image appears. -->
-                    <span class="hidden-xs"><span class="name_company">{{ $company->name }} | {{ $branch != null ? $branch->name : trans('adminlte_lang::message.all_branch') }}</span>  <span id="clock"></span></span>
+                    <span class="hidden-xs"><span class="name_company">{{ $company->company_name }} | {{ $branch != null ? $branch->name : trans('adminlte_lang::message.all_branch') }}</span>  <span id="clock"></span></span>
                 </a>
             </li>
         </ul>
@@ -65,7 +63,7 @@
             <ul class="nav navbar-nav">
 
 
-                <!-- Messages: style can be found in dropdown.less-->
+               {{--  <!-- Messages: style can be found in dropdown.less-->
                 <li class="dropdown messages-menu">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                         <i class="fa fa-envelope-o"></i>
@@ -92,9 +90,9 @@
                         </li>
                         <li class="footer"><a href="#">See All Messages</a></li>
                     </ul>
-                </li>
+                </li> --}}
 
-                <!-- Notifications: style can be found in dropdown.less -->
+               {{--  <!-- Notifications: style can be found in dropdown.less -->
                 <li class="dropdown notifications-menu">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                         <i class="fa fa-bell-o"></i>
@@ -119,7 +117,7 @@
                         </li>
                         <li class="footer"><a href="#">View all</a></li>
                     </ul>
-                </li>
+                </li> --}}
                 @if (Auth::guest())
                     <li><a href="{{ url('/login') }}">{{ trans('adminlte_lang::message.login') }}</a></li>
                 @else
@@ -176,8 +174,8 @@
                 <li class="user user-menu">
                   <a href="{{ url('auth/profile') }}" data-toggle="tooltip" title="{{ trans('adminlte_lang::message.profile') }}">
                     <img  src="{{ url('/') }}/{{Auth::user()->avatar}}" class="user-image" alt="Cinque Terre" >
-                    <!-- hidden-xs hides the username on small devices so only the image appears. -->
-                    <span class="hidden-xs"><span class="name">{{ Auth::user()->name }}</span></span>
+                              <!-- hidden-xs hides the username on small devices so only the image appears. -->
+                    <span class="hidden-xs"><span class="user-name">{{ Auth::user()->name }}</span> | {{  Auth::user()->role->display_name }}</span>
                   </a>
                 </li>
                 <li>

@@ -1,16 +1,17 @@
 
 $(function(){
-    $(document).on("click", '#save-name',function () {
-        var url = '/update/user/field';
-        $('.loader-name').css('display','block');
-        $('#field-name').css('display','none');
+    $(document).on("click", '#save-user-name',function () {
+        var url = '/update/user-name/field';
+        $('.loader-user-name').css('display','block');
+        $('#field-user-name').css('display','none');
+
         $.ajax({
             url:url,
-            data:{field:'name',name:$('#name').val()},
+            data:{ field: 'name', value: $('input#user-name').val() },
             type: 'POST',
             dataType: 'json',
             success: function(data) {
-                $('.loader-name').css('display','none');
+                $('.loader-user-name').css('display','none');
                 if(data.type === 'success'){
                     toastr.success(data.message,{timeOut: 5000} ).css("width","300px");
                 }
@@ -20,8 +21,10 @@ $(function(){
                 }
 
                 $('#name').val(data.field_value);
-                $('#save-name').parents(".popover").popover('hide');
-                $('.name').text(data.field_value);
+                $('#save-user-name').parents(".popover").popover('hide');
+                $('.user-name').text(data.field_value);
+                $('.users-list-name').text(data.field_value);
+                $('.users-list-name').attr('title',data.field_value);
             }
         });
         return false;
@@ -50,7 +53,7 @@ $(function(){
     });
 
     //BUILD USER
-    $('#user-build').on('click',function () {
+    $(document).on('click','#user-build',function () {
       var url = $(this).data('url');
       $.get(url,function (data) {
         toastr.success(data.message,{timeOut: 5000} ).css("width","300px");
@@ -96,17 +99,17 @@ $(function(){
 
     //POPOVER CHANGE USER-NAME
     $(document).on('show.bs.popover','#user-name',function () {
-        $.get('/edit/user/field/name',function (data) {
+        $.post('/edit/user-name/field',function (data) {
             $('.popover-name').html(data);
         });
     });
 
     //POPOVER CHANGE USER-EMAIL
-    $(document).on('show.bs.popover','#user-email',function () {
-        $.get('/edit/user/field/email',function (data) {
-            $('.popover-email').html(data);
-        });
-    });
+    // $(document).on('show.bs.popover','#user-email',function () {
+    //     $.get('/edit/user/field/email',function (data) {
+    //         $('.popover-email').html(data);
+    //     });
+    // });
 
     //DISABLE USER
     $(document).on('click','#disable-user',function () {
@@ -117,34 +120,22 @@ $(function(){
     $(document).on('click','#enable-user',function () {
         change_status($(this).attr('data-key'), 'enable', $(this).attr('data-name'), $(this), 'users/enable', 'bg-danger', 'user');
     });
+
+
+    //EDIT role GROUP
+    $(document).on('click','#update-user',function (e) {
+        e.preventDefault();
+        save($('#user-form'), $('#user-form')[0], 'update');
+    });
+
+    //CLICK EDIT BUTTON
+    $(document).on('click','#edit-user-button',function (e) {
+        e.preventDefault();
+        $(this).css('display', 'none');
+        field_status_change('enable', $('#user-form'));
+        $('#update-user').removeAttr('style');
+    });
 });
 
     
-
-//POPOVER
-function setPopOver(field) {
-  if(field === 'name'){
-    $('#user-name').popover({
-      html:true,
-      content: '',
-      title:'Edit',
-      footer:'Footer',
-      placement:'right',
-      trigger:'click',
-      template:'<div class="popover col-md-6"><button type="button" class="close close-popover" data-dismiss="modal" aria-label="Close" style="margin: 5px;"><span aria-hidden="true">×</span></button><div class="arrow"></div><h3 class="popover-title"></h3><div class="popover-content popover-name"></div></div>',
-    });
-  }
-
-  if(field === 'email'){
-    $('#user-email').popover({
-      html:true,
-      content: '',
-      title:'Edit',
-      footer:'Footer',
-      placement:'right',
-      trigger:'click',
-      template:'<div class="popover col-md-6"><button type="button" class="close close-popover" data-dismiss="modal" aria-label="Close" style="margin: 5px;"><span aria-hidden="true">×</span></button><div class="arrow"></div><h3 class="popover-title"></h3><div class="popover-content popover-email"></div></div>',
-    });
-  }
-}
 

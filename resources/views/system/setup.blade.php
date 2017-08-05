@@ -1,4 +1,4 @@
-@extends('layouts.report')
+@extends('layouts.default')
 
 @section('htmlheader_title')
     {{ trans('adminlte_lang::message.setup_system') }}
@@ -62,12 +62,17 @@
 
                     </div><!--end #rootwizard -->
                 </div>
-                <div class="box-footer">
-                    <div class="pull-right hidden-xs">
-                        <b>Version</b> 1.0.0
+
+{{--                @include('layouts.partials.footer')--}}
+
+                    <div class="box-footer">
+                        <span>
+                            &copy {{ date('Y') }} - <a href="{{ url('/') }}">{{ config('app.name') }}</a> - {{ trans('adminlte_lang::message.copyright') }}
+                        </span>
+                        <span class="pull-right hidden-xs">
+                            {{trans('adminlte_lang::message.version')}}:  {{ config('app.version') }}
+                        </span>
                     </div>
-                    <strong>Copyright &copy; 2016-<span id="app_date"></span> <a href="#">MCSolution</a>.</strong> All rights reserved.
-                </div>
             </div><!--end .col -->
         </div>
     </div><!--end .row -->

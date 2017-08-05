@@ -83,132 +83,166 @@ $(function () {
          },*/
 
         dayClick: function (date) {
+            if(can_add_agenda){
+                $('#myModalLabel').text(_add_consult_text);
+                $('#modal').modal('show')
+                    .find('.modal-body')
+                    .load($('#add-agenda').data('url'), function () {
+                        $(this).find('#consult_agenda-form').find('#date').val(date.format('YYYY-MM-DD'));
+                        $(this).find('#consult_agenda-form').find('#start_time').val(date.format('HH:mm:SS'));
+                    });
+            }
 
-            $('#myModalLabel').text(_add_consult_text);
-            $('#modal').modal('show')
-                .find('.modal-body')
-                .load($('#add-agenda').data('url'), function () {
-                    $(this).find('#consult_agenda-form').find('#date').val(date.format('YYYY-MM-DD'));
-                    $(this).find('#consult_agenda-form').find('#start_time').val(date.format('HH:mm:SS'));
-                });
         },
-        timeFormat: 'h:mm',
+        timeFormat: 'H:mm',
+        slotLabelFormat:'H:mm',
+        slotDuration: '00:15:00',
         //displayEventTime: true,
         eventClick: function (event, jsEvent, view) {
-            var url = 'consult_agenda/' + event.id;
-            $('#myModalLabel').text(_details_consult_text);
-            $('#modal').modal('show')
-                .find('.modal-body')
-                .load(url);
+            if(can_view_agenda) {
+                var url = 'consult_agenda/' + event.id;
+                $('#myModalLabel').text(_details_consult_text);
+                $('#modal').modal('show')
+                    .find('.modal-body')
+                    .load(url);
+            }
         },
         eventDrop: function (event, delta, revertFunc) {
 
             //var _alert = confirm(_confirm_alert_text);
 
             //if(_alert){
-            bootbox.confirm({
-                title: _confirm_alert_text,
-                message: _confirm_alert_text,
-                //size: 'small',
-                buttons: {
-                    confirm: {
-                        label: _yes_text,
-                        className: 'btn-success'
+            if(can_edit_agenda) {
+                bootbox.confirm({
+                    title: _confirm_alert_text,
+                    message: _confirm_alert_text,
+                    //size: 'small',
+                    buttons: {
+                        confirm: {
+                            label: _yes_text,
+                            className: 'btn-success'
+                        },
+                        cancel: {
+                            label: _no_text,
+                            className: 'btn-danger'
+                        }
                     },
-                    cancel: {
-                        label: _no_text,
-                        className: 'btn-danger'
-                    }
-                },
-                callback: function(result) {
-                    if (result == true) {
-                        var start = event.start.format('HH:mm:SS');
-                        var end = (event.end == null) ? start : event.end.format('HH:mm:SS');
-                        var date = event.start.format('YYYY-MM-DD');
-                        var url = 'agenda/drop_agenda';
-                        var type = 'post';
-                        var formData = {
-                            'start_time': start,
-                            'end_time': end,
-                            'date': date,
-                            'id': event.id
-                        };
+                    callback: function (result) {
+                        if (result == true) {
+                            var start = event.start.format('HH:mm:SS');
+                            var end = (event.end == null) ? start : event.end.format('HH:mm:SS');
+                            var date = event.start.format('YYYY-MM-DD');
+                            var url = 'agenda/drop_agenda';
+                            var type = 'post';
+                            var formData = {
+                                'start_time': start,
+                                'end_time': end,
+                                'date': date,
+                                'id': event.id
+                            };
 
-                        $.ajax({
-                            type: type,
-                            url: url,
-                            data: formData,
-                            dataType: 'json',
-                            success: function (data) {
-                                if (data.type == 'error') {
-                                    revertFunc();
-                                    toastr.error(data.message, {timeOut: 5000}).css("width", "300px");
-                                } else {
-                                    $('#calendar').fullCalendar('refetchEvents');
-                                    toastr.success(data.message, {timeOut: 5000}).css("width", "300px");
-                                    startDashboard();
+                            $.ajax({
+                                type: type,
+                                url: url,
+                                data: formData,
+                                dataType: 'json',
+                                success: function (data) {
+                                    if (data.type == 'error') {
+                                        revertFunc();
+                                        toastr.error(data.message, {timeOut: 5000}).css("width", "300px");
+                                    } else {
+                                        $('#calendar').fullCalendar('refetchEvents');
+                                        toastr.success(data.message, {timeOut: 5000}).css("width", "300px");
+                                        startDashboard();
+                                    }
                                 }
-                            }
-                        });
-                    } else {
-                        revertFunc();
-                    }
+                            });
+                        } else {
+                            revertFunc();
+                        }
 
-                }
-            });
+                    }
+                });
+            }else{
+                bootbox.dialog({
+                    title: 'Insufficient Permission',
+                    message: 'You has not permission to do that',
+                    buttons:{
+                        ok:{
+                            label: 'Ok',
+                            className: 'btn-primary'
+                        }
+                    }
+                });
+                revertFunc();
+            }
 
         },
         eventResize: function (event, delta, revertFunc) {
           //  var _alert = confirm(_confirm_alert_text);
 
-            //if(_alert) {
-            bootbox.confirm({
-                title: _confirm_alert_text,
-                message: _confirm_alert_text,
-                //size: 'small',
-                buttons: {
-                    confirm: {
-                        label: _yes_text,
-                        className: 'btn-success'
+            if(can_edit_agenda) {
+                bootbox.confirm({
+                    title: _confirm_alert_text,
+                    message: _confirm_alert_text,
+                    //size: 'small',
+                    buttons: {
+                        confirm: {
+                            label: _yes_text,
+                            className: 'btn-success'
+                        },
+                        cancel: {
+                            label: _no_text,
+                            className: 'btn-danger'
+                        }
                     },
-                    cancel: {
-                        label: _no_text,
-                        className: 'btn-danger'
-                    }
-                },
-                callback: function (result) {
-                    if (result == true) {
-                        var start = event.start.format('HH:mm:SS');
-                        var end = (event.end == null) ? start : event.end.format('HH:mm:SS');
-                        var date = event.start.format('YYYY-MM-DD');
-                        var url = 'agenda/drop_agenda';
-                        var type = 'post';
-                        var formData = {
-                            'start_time': start,
-                            'end_time': end,
-                            'date': date,
-                            'id': event.id
-                        };
+                    callback: function (result) {
+                        if (result == true) {
+                            var start = event.start.format('HH:mm:SS');
+                            var end = (event.end == null) ? start : event.end.format('HH:mm:SS');
+                            var date = event.start.format('YYYY-MM-DD');
+                            var url = 'agenda/drop_agenda';
+                            var type = 'post';
+                            var formData = {
+                                'start_time': start,
+                                'end_time': end,
+                                'date': date,
+                                'id': event.id
+                            };
 
-                        $.ajax({
-                            type: type,
-                            url: url,
-                            data: formData,
-                            dataType: 'json',
-                            success: function (data) {
-                                if (data.type == 'error') {
-                                    revertFunc();
-                                    toastr.error(data.message, {timeOut: 5000}).css("width", "300px");
-                                } else {
-                                    startDashboard();
+                            $.ajax({
+                                type: type,
+                                url: url,
+                                data: formData,
+                                dataType: 'json',
+                                success: function (data) {
+                                    if (data.type == 'error') {
+                                        revertFunc();
+                                        toastr.error(data.message, {timeOut: 5000}).css("width", "300px");
+                                    } else {
+                                        startDashboard();
+                                    }
                                 }
-                            }
-                        });
-                    } else {
-                        revertFunc();
+                            });
+                        } else {
+                            revertFunc();
+                        }
                     }
-                }
-            });
+                });
+            }else{
+                bootbox.dialog({
+                    title: 'Insufficient Permission',
+                    message: 'You has not permission to do that',
+                    buttons:{
+                        ok:{
+                            label: 'Ok',
+                            className: 'btn-primary'
+                        }
+                    }
+                });
+                revertFunc();
+            }
+
         },
         //EVENT MOUSEHOVER
         eventMouseover:function (event, jsEvent, view) {
@@ -319,11 +353,14 @@ $(function () {
                     break;
             }
         },
-        items: {
+
+         items: //(can_view_agenda && can_reagenda_agenda ?
+        {
             "view": {name: _view_text, icon: "fa-eye"},
             "re_agenda": {name: "Re-Agenda", icon: "fa-repeat"},
             "notification": {name: "Send Notification", icon: "fa-send"}
         }
+            // : {})
     });
 
     //CALENDAR CANCELED CONSULT
@@ -391,18 +428,15 @@ $(function () {
                         .find('.modal-body')
                         .load(url);
                     break;
-                case 'notification':
-                    //consult_event(key,_event_id);
-                    break;
             }
         },
         items: {
-            "view": {name: _view_text, icon: "fa-eye"},
-            "notification": {name: "Send Notification", icon: "fa-send"}
+            "view": {name: _view_text, icon: "fa-eye"}
         }
     });
 
 
+    //CALENDAR SCHEDULE EVENT
     $.contextMenu({
         selector: '.fc-event-container .event_scheduled',
         callback: function(key, options) {
@@ -457,7 +491,7 @@ $(function () {
         var _alert = confirm(_confirm_alert_text);
         if(_alert)
             //consult_event('cancel',_id);
-            console.log('Patient Notificated');
+            console.log('Client Notificated');
     });
 
     //AGENDA RE-AGENDA BUTTON

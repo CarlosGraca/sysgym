@@ -15,7 +15,7 @@ class CreateSystemLogTable extends Migration
     {
         Schema::create('system_log', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('activity');
+            $table->longtext('activity');
             $table->date('date');
             $table->time('time');
             $table->integer('user_id')->unsigned()->index();

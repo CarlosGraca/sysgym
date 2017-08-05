@@ -108,12 +108,37 @@ class CategoryController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function disable()
     {
-        //
+        $category = Category::where('id',\Input::get('id'))->first();
+        $category->status = 0;
+
+        if (Request::wantsJson() && $category->save()){
+            $message = trans('adminlte_lang::message.msg_success_disable_category');
+            return ['status_color'=>'bg-danger','message'=>$message,'form'=>'category', 'type'=>'success'];
+        }else{
+            return redirect('category');
+        }
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function enable()
+    {
+        $category = Category::where('id',\Input::get('id'))->first();
+        $category->status = 1;
+
+        if (Request::wantsJson() && $category->save()){
+            $message = trans('adminlte_lang::message.msg_success_enable_category');
+            return ['status_color'=>'bg-success','message'=>$message,'form'=>'category', 'type'=>'success'];
+        }else{
+            return redirect('category');
+        }
     }
 
 
