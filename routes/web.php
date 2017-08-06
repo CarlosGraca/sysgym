@@ -62,7 +62,11 @@ Route::group(['middleware' => ['web','auth']], function(){
     Route::resource('payments','PaymentController');
     Route::resource('roles','RoleController');
     Route::resource('permissions','PermissionController');
+    Route::resource('domains', 'DomainController');
+    Route::resource('menus', 'MenuController');
 });
+
+Route::get('/login-activity', 'LoginActivityController@index')->middleware('auth');
 
 /**/
 Route::group(['middleware' => ['license']], function() {

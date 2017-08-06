@@ -151,6 +151,27 @@
         }
     });
 
+    /*$('.table-design2').({
+//        dom: 'Bfrtip',
+//        "buttons": [
+//            'copy', 'excel', 'pdf'
+//        ],
+        "colVis": {
+            "buttonText": "Columns",
+            "overlayFade": 0,
+            "align": "right"
+        },
+        "language": {
+            "lengthMenu": '_MENU_ <?php echo e(trans('adminlte_lang::message.entries_per_page')); ?> ',
+            "search": '<?php echo e(trans('adminlte_lang::message.search')); ?>',
+            "paginate": {
+                "previous": '<i class="fa fa-angle-left"></i>',
+                "next": '<i class="fa fa-angle-right"></i>'
+            },
+            "emptyTable": "<?php echo e(trans('adminlte_lang::message.no_data_available')); ?>",
+        }
+    });*/
+
     $("#compose-textarea").wysihtml5();
 
     $('.slimscroll').slimScroll();

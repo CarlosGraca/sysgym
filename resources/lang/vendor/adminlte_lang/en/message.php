@@ -12,6 +12,13 @@ return [
     | these language lines according to your application's requirements.
     |
     */
+    'title'                   => 'Title',
+    'parent'                  => 'Parent',
+    'url'                     => 'URL',
+    'menu_order'              => 'Menu Order',
+    'icon'                    => 'ICON',
+    'new_menu'                => 'New Menu',
+    'menu_list'               => 'Menu List',
     'update_handout'          => 'Update Handout Training',
     'lock'                    => 'Lock',
     'settings'                => 'Settings',

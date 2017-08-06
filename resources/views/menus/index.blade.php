@@ -1,4 +1,4 @@
-@extends('adminlte::layouts.app')
+@extends('layouts.app')
 
 @section('htmlheader_title')
     Menu
@@ -15,13 +15,20 @@
 
 @section('main-content')
     <div class="row">
-        <div class="col-md-12">
-            <div class="panel panel-default">
-                <div class="panel-heading">Menu</div>
+        <div class="col-lg-12">
+            <div class="box box-default">
+                <div class="box-header with-border">
+                  <h3 class="box-title">  {{ trans('adminlte_lang::message.menu_list') }} </h3>
+                  <div class="pull-left box-tools">
+                         <a href="{{ url('menus/create') }}" class="btn btn-primary btn-sm" role="button" data-toggle="tooltip" title="{{ trans('adminlte_lang::message.new_menu') }}">
+                              <i class="fa fa-plus"></i> {{ trans('adminlte_lang::message.new_menu') }}
+                         </a>
+                  </div><!-- /. tools -->
+                </div><!-- /.box-header -->
 
-                <div class="panel-body">
-                    @if(count($menus) > 0)
-                        <table class="table table-responsive table-bordered">
+                <div class="box-body">
+                   {{--  @if(count($menus) > 0) --}}
+                        <table class="table table-hover table-design">
                             <thead>
                             <tr>
                                 <th>Title</th>
@@ -51,13 +58,13 @@
                                         </button> 
                                     </td>
                                 </tr>
-                            @endforeach
+                             @endforeach 
                             </tbody>
                         </table>
-                        <div class="paginate">
+{{--                         <div class="paginate">
                             {!! $menus->render() !!}
-                        </div>
-                    @endif
+                        </div> 
+                    @endif--}}
                 </div>
             </div>
         </div>
