@@ -14,8 +14,6 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-
-
 Route::get('auth/register', 'Auth\RegisterController@redirectRegisterTenants');
 
 Route::post('/register_tenant', 'Auth\RegisterController@registerTenants');
@@ -61,8 +59,20 @@ Route::group(['middleware' => ['web','auth']], function(){
     Route::resource('files','FileController');
     Route::resource('payments','PaymentController');
     Route::resource('roles','RoleController');
+    Route::resource('domains','DomainController');
     Route::resource('permissions','PermissionController');
 });
+
+//ACCOUNTS CONTROLLER
+Route::get('accounts','Auth\ProfileController@index');
+Route::get('accounts/edit','Auth\ProfileController@editAccount');
+Route::post('accounts/update','Auth\ProfileController@updateProfile')->name('accounts.update_profile');
+Route::post('accounts/password/change','Auth\ProfileController@passwordChange')->name('accounts.password_change');
+Route::post('accounts/setting','Auth\ProfileController@setting')->name('accounts.setting');
+
+
+Route::get('lockscreen','LockScreenController@get');
+Route::post('lockscreen','LockScreenController@post');
 
 /**/
 Route::group(['middleware' => ['license']], function() {
@@ -81,51 +91,13 @@ Route::post('clients/disable','ClientController@disable');
 Route::post('employees/enable','EmployeeController@enable');
 Route::post('employees/disable','EmployeeController@disable');
 
-//AGENDA
-Route::get('agenda',function (){
-   return view('calendar.index');
-})->middleware(['auth','check_agenda']);
-
-Route::get('agenda/get_all','ConsultAgendaController@getAllConsultAgenda');
-Route::get('agenda/list_agenda','ConsultAgendaController@getTableData');
-Route::post('agenda/drop_agenda','ConsultAgendaController@updateConsultAgenda');
-Route::get('calendar',function (){
-    return view('calendar.index_ajax');
-});
-
-Route::post('consult/confirm','ConsultAgendaController@confirm');
-Route::post('consult/cancel','ConsultAgendaController@cancel');
-Route::post('consult/re_agenda','ConsultAgendaController@re_agenda');
-
-//Getting consult list item
-Route::get('confirm_list','ConsultAgendaController@confirm_consult_list');
-Route::get('cancel_list','ConsultAgendaController@cancel_consult_list');
-
-
-Route::post('/procedure/secure/co_participation/get','SecureComparticipationController@getSecureComparticipation');
-
 
 //GET CURRENCY VALUES
 Route::get('/currency_format/{value}', 'Defaults@currency');
-
-//SEARCH PATIENT
-Route::get('search/client/autocomplete', 'SearchController@client');
-
-//SEARCH DOCTOR
-Route::get('search/employee/autocomplete', 'SearchController@employee');
-
-//SEARCH PROCEDURE
-Route::get('search/modality/autocomplete', 'SearchController@modality');
-
-//SEARCH EMPLOYEE CATEGORY
-Route::get('search/employee-category/autocomplete', 'SearchController@employee_category');
-
-//
-Route::get('/island', 'IslandController@island');
+Route::get('search/{field}/autocomplete', 'SearchController@search');
 
 //GET CATEGORY BASE SALARY
 Route::get('/category/salary_base/{id}', 'CategoryController@getSalaryBase');
-
 
 //Dashboard getData
 Route::post('dashboard/graphic', 'DashboardGraphic@getData');
@@ -134,7 +106,6 @@ Route::post('dashboard/graphic', 'DashboardGraphic@getData');
 // usage inside a laravel route
 Route::post('upload','Auth\ProfileController@update_avatar');
 Route::get('employee/{id}','EmployeeController@getEmployee');
-
 
 //POPOVER FIELD
 Route::post('/edit/{popover}/field','Defaults@GetPopOver');
@@ -168,19 +139,6 @@ Route::get('reset/password/{id}','Auth\UserController@reset_password');
 Route::post('users/enable','Auth\UserController@enable');
 Route::post('users/disable','Auth\UserController@disable');
 
-
-//PROCEDURE GROUP CHANGE STATUS
-Route::post('procedure_group/enable','ProcedureGroupController@enable');
-Route::post('procedure_group/disable','ProcedureGroupController@disable');
-
-//PROCEDURE CHANGE STATUS
-Route::post('procedure/enable','ProcedureController@enable');
-Route::post('procedure/disable','ProcedureController@disable');
-
-//PROCEDURE CHANGE STATUS
-Route::post('secure_comparticipation/enable','SecureComparticipationController@enable');
-Route::post('secure_comparticipation/disable','SecureComparticipationController@disable');
-
 //Modality CHANGE STATUS
 Route::post('modalities/enable','ModalityController@enable');
 Route::post('modalities/disable','ModalityController@disable');
@@ -190,8 +148,8 @@ Route::post('roles/enable','RoleController@enable');
 Route::post('roles/disable','RoleController@disable');
 
 //CATEGORY CHANGE STATUS
-Route::post('category/enable','CategoryController@enable');
-Route::post('category/disable','CategoryController@disable');
+Route::post('employees_category/enable','CategoryController@enable');
+Route::post('employees_category/disable','CategoryController@disable');
 
 //PERMISSIONS CHANGE STATUS
 Route::post('permissions/enable','PermissionController@enable');

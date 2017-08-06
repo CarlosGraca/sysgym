@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Branch;
-use App\Category;
+use App\EmployeeCategory;
 use App\Company;
 use App\File;
 use App\Island;
@@ -58,7 +58,7 @@ class EmployeeController extends Controller
         $branches = Branch::pluck('name','id');
 
         //CATEGORY ARRAY DATA TO SELECT
-        $category = Category::pluck('name','id');
+        $category = EmployeeCategory::pluck('name','id');
 
         //SECURITY AGENCY ARRAY DATA TO SELECT
 //        $secure_agency = SecureAgency::pluck('name','id');
@@ -169,7 +169,7 @@ class EmployeeController extends Controller
         $branches = Branch::pluck('name','id');
 
         //CATEGORY ARRAY DATA TO SELECT
-        $category = Category::pluck('name','id');
+        $category = EmployeeCategory::pluck('name','id');
 
         //SECURITY AGENCY ARRAY DATA TO SELECT
 //        $secure_agency = SecureAgency::pluck('name','id');
