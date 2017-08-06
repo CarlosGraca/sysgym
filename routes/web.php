@@ -14,29 +14,24 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('auth/register', 'Auth\RegisterController@redirectRegisterTenants');
-
+Route::get('/auth/register', 'Auth\RegisterController@redirectRegisterTenants');
 Route::post('/register_tenant', 'Auth\RegisterController@registerTenants');
-
 Route::get('/confirmation/{token}', 'Auth\RegisterController@confirmation')->name('confirmation');
 
-
 //LOGIN REDIRECT
-//Route::get('/', 'Auth\LoginController@redirectLogin');
 Route::get('/login', 'Auth\LoginController@redirectLogin');
-
 Route::get('/logout', 'Auth\LoginController@logout');
 Route::get('password/reset','Auth\ResetPasswordController@reset');
 
-Route::get('forgot/password',function (){
+Route::get('/forgot/password',function (){
     return view('auth.passwords.email');
 });
 
-Route::get('token_password/reset/',function ($token){
+Route::get('/token_password/reset/',function ($token){
     return view('auth.passwords.email',compact('token'));
 });
 
-Route::post('setup/password','Auth\UserController@setup_password');
+Route::post('/setup/password','Auth\UserController@setup_password');
 
 //
 Route::group(['middleware' => ['web','auth']], function(){
@@ -170,27 +165,20 @@ Route::get('license_expired',function(){
     return view('license.expired');
 });
 
-//MESSAGES
-//Route::get('mail','SendMailController@sendMail');
-
-//ABOUT SYSTEM
-Route::get('about-system','SystemController@aboutSystem');
-
-//HELP
-Route::get('help','SystemController@help');
+Route::get('about-system','SystemController@aboutSystem');//ABOUT SYSTEM
+Route::get('help','SystemController@help');//HELP
 
 //SYSTEM SETUP
 Route::get('setup/system',function()
 {
     $default = new App\Http\Controllers\Defaults();
-    $system = \App\System::all()->first();
-    $island = \App\Island::pluck('name','id');
+    $system = \App\Models\System::all()->first();
     $theme = $default->getTheme();
     $lang = $default->getLang();
     $currency = $default->getCurrency();
     $layout = $default->getLayout();
     $timezone = $default->getTimezone();
-    $roles = \App\Role::pluck('name','id');
+    $roles = \App\Models\Role::pluck('name','id');
 
     return view('system.setup',compact('island','system','theme','lang','currency','layout','timezone','roles'));
 });
@@ -199,22 +187,12 @@ Route::get('setup/system',function()
 Route::post('schedule','BranchController@schedule');
 
 //USERS SETUP PASSWORD
-Route::get('user/setup/password',function(){
-    return view('auth.setup_password');
-});
+Route::get('user/setup/password',function(){  return view('auth.setup_password'); });
 
-//GET ALL EMPLOYEES CATEGORY
-Route::get('category_all','CategoryController@getEmployeesCategory');
-
-
-//DOWNLOAD FILE
-Route::get('files/{id}/download','FileController@download');
-
-//PREVIEW FILE
-Route::get('files/{id}/preview','FileController@preview');
-
-//REMOVE FILE
-Route::get('files/{id}/remove','FileController@remove');
+Route::get('category_all','CategoryController@getEmployeesCategory'); //GET ALL EMPLOYEES CATEGORY
+Route::get('files/{id}/download','FileController@download');//DOWNLOAD FILE
+Route::get('files/{id}/preview','FileController@preview');//PREVIEW FILE
+Route::get('files/{id}/remove','FileController@remove'); //REMOVE FILE
 
 Route::post('croppie',function(\Illuminate\Http\Request $request){
     return view('components.croppie',['type'=>$request->type,'src'=>$request->src]);

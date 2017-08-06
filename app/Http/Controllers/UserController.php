@@ -58,8 +58,8 @@ class UserController extends Controller
      */
     public function index()
     {
-        $users = User::where('tenant_id',Auth::user()->tenant_id)->latest()->paginate(10);
-        return view('adminlte::users.index', compact('users'));
+        $users = User::where('tenant_id',Auth::user()->tenant_id)->get();
+        return view('users.index', compact('users'));
     }
     /**
      * Show the form for creating a new resource.
@@ -69,7 +69,7 @@ class UserController extends Controller
     public function create()
     {
         $profiles = Role::where('tenant_id',Auth::user()->tenant_id)->pluck('display_name','id')->all(); 
-        return view('adminlte::users.create',compact('profiles'));
+        return view('users.create',compact('profiles'));
     }
 
     /**
@@ -96,10 +96,10 @@ class UserController extends Controller
             $user->token     = $data['token'];
             $user->save();
 
-            /*Mail::send('adminlte::auth.mails.confirmation',$data,function($message) use($data){
+            Mail::send('auth.mails.confirmation',$data,function($message) use($data){
                  $message->to($data['email']);
                  $message->subject('Registration Confirmation');
-            });*/
+            });
 
             return redirect(route('users.create'))->with('status', 'Confirmation email has been send. please check your email.');
         }
