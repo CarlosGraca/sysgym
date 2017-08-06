@@ -118,23 +118,8 @@
         }
     });
 
-//      $('#select2').select2();
-//    $('#branch').select2();
-//    $('#employee_id').select2();
-//    $('#doctor').select2();
-//    $('#matriculation_procedure_id').select2();
-
-    var _select_html = "<select name='status'>" +
-            "<option value selected>SELECT OPTION</option>" +
-            "<option value='0'>Inactive</option>" +
-            "<option value='1'>Active</option>" +
-            "</select>";
 
     $('.table-design').DataTable({
-//        dom: 'Bfrtip',
-//        "buttons": [
-//            'copy', 'excel', 'pdf'
-//        ],
         "colVis": {
             "buttonText": "Columns",
             "overlayFade": 0,
@@ -207,6 +192,30 @@
         setInterval(update, 1000);
     });
 
+    $(function () {
+        var pressedCtrl = false;
+        $(document).keyup(function (e) {
+            if(e.which == 18)
+                pressedCtrl=false;
+        })
+
+        $(document).keydown(function (e) {
+            if(e.which == 18)
+                pressedCtrl = true;
+
+            if(e.which == 76 && pressedCtrl == true) {
+                //Aqui vai o código e chamadas de funções para o ctrl+l
+                // CTRL + L pressionados
+                window.location= "/lockscreen";
+            }
+
+            if(e.which == 69 && pressedCtrl == true)
+            //Aqui vai o código e chamadas de funções para o ctrl+l
+            // CTRL + E pressionados
+                window.location= "/logout";
+        });
+    });
+
 </script>
 
 <script src="<?php echo e(asset('/js/search.js')); ?>" type="text/javascript"></script>
@@ -216,21 +225,12 @@
 <script src="<?php echo e(asset('/js/company.js')); ?>" type="text/javascript"></script>
 <script src="<?php echo e(asset('/js/branches.js')); ?>" type="text/javascript"></script>
 <script src="<?php echo e(asset('/js/employees.js')); ?>" type="text/javascript"></script>
-
-
 <script src="<?php echo e(asset('/js/defaults.js')); ?>" type="text/javascript"></script>
 <script src="<?php echo e(asset('/js/category.js')); ?>" type="text/javascript"></script>
-
-
-
-
 <script src="<?php echo e(asset('/js/system.js')); ?>" type="text/javascript"></script>
 <script src="<?php echo e(asset('/js/matriculation.js')); ?>" type="text/javascript"></script>
 
 <script src="<?php echo e(asset('/js/files.js')); ?>" type="text/javascript"></script>
-
-
-
 <script src="<?php echo e(asset('/js/modalities.js')); ?>" type="text/javascript"></script>
 <script src="<?php echo e(asset('/js/payments.js')); ?>" type="text/javascript"></script>
 <script src="<?php echo e(asset('/js/roles.js')); ?>" type="text/javascript"></script>

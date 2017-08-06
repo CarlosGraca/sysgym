@@ -14,6 +14,7 @@
 
 <?php $__env->startSection('main-content'); ?>
     <div class="row">
+        <?php echo $__env->make('layouts.shared.alert', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?> 
         <div class="col-lg-12">
             <div class="box box-default">
                 <div class="box-header with-border">
@@ -34,6 +35,8 @@
                                 <th>Title</th>
                                 <th>Url</th>
                                 <th>Icon</th>
+                               
+                                <th>Order</th>
                                 <th>Estado</th>
                                 <th>Ações</th>
                             </tr>
@@ -44,6 +47,8 @@
                                     <td><?php echo $menu->title; ?></td>
                                     <td><?php echo $menu->url; ?></td>
                                     <td><?php echo $menu->icon; ?></td>
+                                   
+                                    <td><?php echo $menu->menu_order; ?></td>
                                     <td><?php if($menu->status === 1): ?>
                                             <span class="label label-success">Ativo</span>
                                         <?php elseif($menu->status === 0): ?>
@@ -51,7 +56,7 @@
                                         <?php endif; ?>
                                     </td>
                                     <td class="actions">
-                                        <a href="<?php echo e(route('menus.edit',$menu->id)); ?>" class="btn btn-primary btn-xs", data-remote='true'])>      <i class="fa fa-edit"></i>
+                                        <a href="<?php echo e(route('menus.edit',$menu->id)); ?>" class="btn btn-primary btn-xs", data-remote='false'])>      <i class="fa fa-edit"></i>
                                         </a>                           
                                          <button type="button" class="btn btn-xs btn-danger btn-flat" data-toggle="modal" data-target="#confirmDelete" data-id="<?php echo e($menu->id); ?>" data-name="<?php echo e($menu->id); ?>" data-title="Confirma Alterar estado Menu" data-url="/menus/" title="Alterar Estado">
                                             <i class="fa fa-exchange"></i>

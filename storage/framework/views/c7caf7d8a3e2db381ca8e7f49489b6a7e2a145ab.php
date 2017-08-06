@@ -29,10 +29,10 @@
 	                       <i class="fa fa-save"></i>
 	                     </a>
 	              </div><!-- /. tools -->
-	              <?php echo Form::open(['route'=>'menus.store', 'id'=>'menu-form','files'=>true]); ?>
+	              <?php echo Form::model($menu, ['method'=>'PATCH',null,'route'=>['menus.update', $menu->id],'id'=>'menus-form']); ?>
 
 					<div class="pull-right box-tools">
-						<a href="<?php echo e(url('menus')); ?>  "" class="btn btn-primary btn-sm" role="button" data-toggle="tooltip" title="<?php echo e(trans('adminlte_lang::message.back')); ?>" >
+						<a href="<?php echo e(\Illuminate\Support\Facades\URL::previous()); ?>" class="btn btn-primary btn-sm" role="button" data-toggle="tooltip" title="<?php echo e(trans('adminlte_lang::message.back')); ?>" >
 							 <i class="fa  fa-arrow-left"></i>
 						</a>
 

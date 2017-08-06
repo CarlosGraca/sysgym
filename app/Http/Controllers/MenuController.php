@@ -62,4 +62,66 @@ class MenuController extends Controller
         }
     }
 
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function show(Menu $menu)
+    {
+        //
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  Menu $menu
+     * @return \Illuminate\Http\Response
+     */
+    public function edit(Menu $menu)
+    {
+        $status = Domain::where('dominio','STATUS')->pluck('significado','codigo')->all();    
+        $menu_parents = Menu::where('parent_id',0)->pluck('title','id')->all();
+        return view('menus.edit',compact('menu','menu_parents','status'));
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  Menu $menu
+     * @return \Illuminate\Http\Response
+     */
+    public function update(MenuRequest $request, Menu $menu)
+    {
+       
+        $menu->update($request->all());
+        session()->flash('flash_message','Menu was update with success');
+
+        if (Request::wantsJson()){
+            return $menu;
+        }else{
+            return redirect('menus');
+        }
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  Menu $menu
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy(Menu $menu)
+    {
+        $deleted= $menu->delete();
+        session()->flash('flash_message','Menu was removed with success');
+
+        if (Request::wantsJson()){
+            return (string) $deleted;
+        }else{
+            return redirect('menus');
+        }
+    }
+
 }

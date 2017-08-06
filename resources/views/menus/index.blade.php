@@ -15,6 +15,7 @@
 
 @section('main-content')
     <div class="row">
+        @include('layouts.shared.alert') 
         <div class="col-lg-12">
             <div class="box box-default">
                 <div class="box-header with-border">
@@ -34,6 +35,8 @@
                                 <th>Title</th>
                                 <th>Url</th>
                                 <th>Icon</th>
+                               
+                                <th>Order</th>
                                 <th>Estado</th>
                                 <th>Ações</th>
                             </tr>
@@ -44,6 +47,8 @@
                                     <td>{!! $menu->title !!}</td>
                                     <td>{!! $menu->url !!}</td>
                                     <td>{!! $menu->icon !!}</td>
+                                   
+                                    <td>{!! $menu->menu_order !!}</td>
                                     <td>@if ($menu->status === 1)
                                             <span class="label label-success">Ativo</span>
                                         @elseif($menu->status === 0)
@@ -51,7 +56,7 @@
                                         @endif
                                     </td>
                                     <td class="actions">
-                                        <a href="{{ route('menus.edit',$menu->id) }}" class="btn btn-primary btn-xs", data-remote='true'])>      <i class="fa fa-edit"></i>
+                                        <a href="{{ route('menus.edit',$menu->id) }}" class="btn btn-primary btn-xs", data-remote='false'])>      <i class="fa fa-edit"></i>
                                         </a>                           
                                          <button type="button" class="btn btn-xs btn-danger btn-flat" data-toggle="modal" data-target="#confirmDelete" data-id="{{ $menu->id }}" data-name="{{ $menu->id }}" data-title="Confirma Alterar estado Menu" data-url="/menus/" title="Alterar Estado">
                                             <i class="fa fa-exchange"></i>

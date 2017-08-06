@@ -145,5 +145,11 @@ class Helpers
         return   LoginActivity::where('user_id',$user)
                  ->latest('id')->value('created_at');
     }
+
+
+    public static function get_parent($id){
+       $menu = Menu::firstOrFail($id);
+       return $menu->title;
+    }
 }
 ?>
