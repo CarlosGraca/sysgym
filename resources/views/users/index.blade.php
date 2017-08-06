@@ -8,7 +8,7 @@
   {{ trans('adminlte_lang::message.app_name') }}
 @endsection
 
-@section('contentheader_description')matriculation_procedure
+@section('contentheader_description')
   {{ trans('adminlte_lang::message.users') }}
 @endsection
 
@@ -23,7 +23,15 @@ $status_color = ['danger','success','info'];
 	    <div class="col-lg-12">
 	        <div class="box box-default">
 	            <div class="box-header with-border">
-	              <h3 class="box-title"></h3>
+	              <h3 class="box-title">{{ trans('adminlte_lang::message.user_list') }} </h3>
+
+					<div class="pull-left box-tools">
+						@can('add_user')
+							<a href="{{ url('users/create') }}" class="btn btn-primary btn-sm" role="button" data-toggle="tooltip" title="{{ trans('adminlte_lang::message.new_user') }}">
+								<i class="fa fa-plus"></i> {{ trans('adminlte_lang::message.new_user') }}
+							</a>
+						@endcan
+					</div><!-- /. tools -->
 	            </div><!-- /.box-header -->
 
 	            <div class="box-body">
@@ -46,30 +54,36 @@ $status_color = ['danger','success','info'];
 									<td>{{ $user->email }}</td>
 									<td> {{ $role['name'] }} </td>
                                     <td>
+										@can('view_user')
 										<a href="{{ route('users.show',$user->id) }}" data-toggle="tooltip" title="{{ trans('adminlte_lang::message.view') }}">
 											<i class="fa fa-eye"></i>
 										</a>
+										@endcan
 										@can('edit_user')
-										<a href="{{ route('users.edit',$user->id) }}" data-toggle="tooltip" title="{{ trans('adminlte_lang::message.edit') }}">
+										<a href="{{ route('users.edit',$user->id) }}" data-toggle="tooltip" title="{{ trans('adminlte_lang::message.edit') }}" id="edit-user">
 											<i class="fa fa-edit"></i>
 										</a>
 										@endcan
 										@can('disable_user')
-										<a href="#disable" style="display: {{ $user->status == 1 ? 'initial' :'none' }};" data-toggle="tooltip" id="disable-user" title="{{ trans('adminlte_lang::message.disable') }}" data-key="{{ $user->id }}" data-name="{{ $user->name }}">
-											<i class="fa fa-user-o"></i>
-										</a>
+												@if(\Auth::user()->id != $user->id)
+													<a href="#disable" style="display: {{ $user->status == 1 ? 'initial' :'none' }};  color: #999;" data-toggle="tooltip" id="disable-user" title="{{ trans('adminlte_lang::message.disable') }}" data-key="{{ $user->id }}" data-name="{{ $user->name }}">
+														<i class="fa fa-user-secret"></i>
+													</a>
+												@endif
 										@endcan
 
 										@can('enable_user')
-										<a href="#enable" style="display: {{ $user->status == 0 ? 'initial' :'none' }};" data-toggle="tooltip" id="enable-user" title="{{ trans('adminlte_lang::message.enable') }}" data-key="{{ $user->id }}" data-name="{{ $user->name }}">
-											<i class="fa fa-user"></i>
+										<a href="#enable" style="display: {{ $user->status == 0 ? 'initial' :'none' }};  color: #00a65a;" data-toggle="tooltip" id="enable-user" title="{{ trans('adminlte_lang::message.enable') }}" data-key="{{ $user->id }}" data-name="{{ $user->name }}">
+											<i class="fa fa-user-secret"></i>
 										</a>
 										@endcan
 
 										@can('reset_user_password')
-										<a href="#" data-url="{{ url('reset/password') }}/{{$user->id}}" data-toggle="tooltip" title="{{ trans('adminlte_lang::message.reset_password') }}" id="user-reset-password">
-                                            <i class="fa fa-repeat"></i>
-                                        </a>
+											@if(\Auth::user()->id != $user->id)
+												<a href="#" data-url="{{ url('reset/password') }}/{{$user->id}}"  style="color: #dd4b39"  data-toggle="tooltip" title="{{ trans('adminlte_lang::message.reset_password') }}" id="user-reset-password">
+													<i class="fa fa-repeat"></i>
+												</a>
+											@endif
 										@endcan
 
                                     </td>

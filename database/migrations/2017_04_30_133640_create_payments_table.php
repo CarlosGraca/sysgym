@@ -29,6 +29,8 @@ class CreatePaymentsTable extends Migration
             $table->text('type','50');
             $table->integer('status')->default(1);
             $table->integer('month_id')->nullable();
+            $table->integer('item_id')->default(0);
+            $table->string('item_type')->nullable();
             $table->date('start_date');
             $table->date('end_date');
             $table->SoftDeletes();
