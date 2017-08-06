@@ -9,7 +9,7 @@ $(function () {
     });
 
     //UPDATE PATIENT
-    $(document).on('click','#edit-client',function (e) {
+    $(document).on('click','#update-client',function (e) {
         e.preventDefault();
         save($('#client-form'), $('#client-form')[0], 'update');
     });

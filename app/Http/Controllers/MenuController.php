@@ -102,7 +102,7 @@ class MenuController extends Controller
         $menu->title = $request->title;
         $menu->url = $request->url;
         $menu->icon = $request->icon;
-        $menu->parent_id = $request->parent_id;
+        $menu->parent_id = $request->main_menu != '' ? $request->parent_id : 0;
         $menu->menu_order = $request->menu_order;
         $menu->description = $request->description;
 

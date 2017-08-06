@@ -85,30 +85,30 @@ $status_color = ['danger','success','info'];
                                     <td>{{trans('adminlte_lang::message.'.$client->genre)}}</td>
                                     <td>{{$client->address }}</td>
                                     <td>
-                                        @can('view_client')
-										<a href="{{ route('clients.show',$client->id) }}" data-toggle="tooltip" title="{{ trans('adminlte_lang::message.show_details') }}">
+                                        {{--@can('view_client')--}}
+										<a href="{{ route('clients.show',$client->id) }}" data-toggle="tooltip" title="{{ trans('adminlte_lang::message.view') }}">
                                             <i class="fa fa-eye"></i>
 										</a>
-                                        @endcan
+                                        {{--@endcan--}}
 
-										@can('edit_client')
-											<a href="{{ route('clients.edit',$client->id) }}" style="display: {{ $client->status == 1 ? 'initial' :'none' }};" data-toggle="tooltip" id="update-client" title="{{ trans('adminlte_lang::message.edit') }}" >
+										{{--@can('edit_client')--}}
+											<a href="{{ route('clients.edit',$client->id) }}" style="display: {{ $client->status == 1 ? 'initial' :'none' }};" data-toggle="tooltip" id="edit-client" title="{{ trans('adminlte_lang::message.edit') }}" >
 												<i class="fa fa-edit"></i>
 											</a>
-										@endcan
+										{{--@endcan--}}
 
-                                        @can('disable_client')
+                                        {{--@can('disable_client')--}}
                                         <a href="#disable" style="display: {{ $client->status == 1 ? 'initial' :'none' }};" data-toggle="tooltip" id="disable-client" title="{{ trans('adminlte_lang::message.disable') }}" data-key="{{ $client->id }}" data-name="{{ $client->name }}">
                                             <i class="fa fa-user-o"></i>
                                         </a>
-                                        @endcan
+                                        {{--@endcan--}}
 
 
-                                        @can('enable_client')
+                                        {{--@can('enable_client')--}}
                                         <a href="#enable" style="display: {{ $client->status == 0 ? 'initial' :'none' }};" data-toggle="tooltip" id="enable-client" title="{{ trans('adminlte_lang::message.enable') }}" data-key="{{ $client->id }}" data-name="{{ $client->name }}">
                                             <i class="fa fa-user"></i>
                                         </a>
-                                        @endcan
+                                        {{--@endcan--}}
 
                                     </td>
                                 </tr>

@@ -19,13 +19,13 @@
             <div class="box box-primary">
                 <div class="box-header with-border">
                     <h3 class="box-title">
-                        <strong>{{ trans('adminlte_lang::message.branches') }}: </strong><span>{{ $branch->name }}</span>
-                    </h3>
-
-                    <div class="pull-right box-tools">
                         <a href="{{ url('branches') }}" class="btn btn-primary btn-sm" role="button" data-toggle="tooltip" title="{{ trans('adminlte_lang::message.back') }}">
                             <i class="fa  fa-arrow-left"></i> {{ trans('adminlte_lang::message.back') }}
                         </a>
+                        <strong>{{ trans('adminlte_lang::message.update_branch') }}  </strong><span>{{ $branch->name }}</span>
+                    </h3>
+
+                    <div class="pull-right box-tools">
 
                         <a href="{{ route('branches.show',$branch->id) }}" class="btn btn-primary btn-sm" role="button" data-toggle="tooltip" title="{{ trans('adminlte_lang::message.show_details') }}")>
                             <i class="fa fa-eye"></i> {{ trans('adminlte_lang::message.view') }}

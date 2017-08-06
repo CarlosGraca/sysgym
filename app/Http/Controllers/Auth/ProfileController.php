@@ -188,7 +188,6 @@ class ProfileController extends Controller
 
         $user->branch_default_id = isset($request->branches) ? $request->branches : 0 ;
         $user->name = $request->name;
-        $user->genre = $request->genre;
         $user->username = $request->username;
 
         if ($request->hasFile('avatar')){

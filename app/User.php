@@ -27,9 +27,9 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
-//    public function branch(){
-//        return $this->hasOne('App\Branch');
-//    }
+    public function tenant(){
+        return $this->belongsTo('App\Models\Tenant');
+    }
 
     public function branch(){
         return $this->belongsTo('App\Models\Branch');
@@ -50,6 +50,10 @@ class User extends Authenticatable
 
     public function branch_default(){
         return $this->belongsTo('App\Models\Branch','branch_default_id','id');
+    }
+
+    public function branch_permission(){
+        return $this->hasMany('App\Models\BranchPermission','user_id','id');
     }
 
    /* public function hasRole($role){

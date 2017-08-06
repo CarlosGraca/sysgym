@@ -35,21 +35,17 @@ Route::post('/setup/password','Auth\UserController@setup_password');
 
 //
 Route::group(['middleware' => ['web','auth']], function(){
-   // $system = \App\System::all()->first();
-   // \App::setLocale($system->lang);
     
     Route::resource('clients','ClientController');
     Route::resource('auth/profile', 'Auth\ProfileController');
     Route::resource('company','CompanyController');
     Route::resource('branches','BranchController');
     Route::resource('employees','EmployeeController');
-    Route::resource('category','CategoryController');
+    Route::resource('employees_category','EmployeeCategoryController');
     Route::resource('modalities','ModalityController');
     Route::resource('system','SystemController');
     Route::resource('users','Auth\UserController');
     Route::resource('matriculation','MatriculationController');
-    Route::resource('secure_card','SecureCardController');
-    Route::resource('campaign_messages','CampaignMessageController');
     Route::resource('license_generate','Defaults');
     Route::resource('files','FileController');
     Route::resource('payments','PaymentController');
@@ -57,6 +53,8 @@ Route::group(['middleware' => ['web','auth']], function(){
     Route::resource('domains','DomainController');
     Route::resource('menus','MenuController');
     Route::resource('permissions','PermissionController');
+    Route::resource('dashboard','DashboardController');
+    Route::resource('backups','BackupController');
 });
 
 //ACCOUNTS CONTROLLER
@@ -188,6 +186,14 @@ Route::get('category_all','CategoryController@getEmployeesCategory'); //GET ALL 
 Route::get('files/{id}/download','FileController@download');//DOWNLOAD FILE
 Route::get('files/{id}/preview','FileController@preview');//PREVIEW FILE
 Route::get('files/{id}/remove','FileController@remove'); //REMOVE FILE
+
+
+Route::post('backups/remove','BackupController@remove');//REMOVE BACKUP
+Route::get('backups/{fileName}/download','BackupController@download');//DOWNLOAD BACKUP
+Route::get('backups/upload/popup','BackupController@uploadPopup');//UPLOAD BACKUP POPUP
+Route::post('backups/restore','BackupController@restore');//RESTORE BACKUP
+Route::post('backups/upload','BackupController@upload');//UPLOAD BACKUP
+Route::get('backups_list','BackupController@backup_list');//LIST BACKUP
 
 Route::post('croppie',function(\Illuminate\Http\Request $request){
     return view('components.croppie',['type'=>$request->type,'src'=>$request->src]);

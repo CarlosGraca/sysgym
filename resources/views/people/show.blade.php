@@ -62,7 +62,7 @@
             <ul class="list-group list-group-unbordered">
                 <li class="list-group-item" style="border-top:none;">
                     <i class="fa fa-map-marker"></i>  <b>{{ trans('adminlte_lang::message.address') }}: </b>
-                    <a> {{ $people->address }}, {{ $people->city }}, {{ $people->island->name }} </a>
+                    <a> {{ $people->address }}, {{ $people->city }} </a>
                 </li>
                 <li class="list-group-item">
                     <i class="fa fa-at"></i>  <b>{{ trans('adminlte_lang::message.email') }}: </b>

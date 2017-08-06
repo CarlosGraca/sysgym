@@ -92,10 +92,10 @@
                                             <ul class="list-group list-group-unbordered">
                                                 <li class="list-group-item">
                                                     <i class="fa fa-map-marker"></i>  <b>{{ trans('adminlte_lang::message.address') }}: </b>
-                                                    <a> {{ $branch->address }}, {{ $branch->city }}, {{ $branch->island->name }} </a>
+                                                    <a> {{ $branch->address }}, {{ $branch->city }} </a>
                                                 </li>
                                                 <li class="list-group-item">
-                                                    <i class="fa fa-at"></i>  <b>{{ trans('adminlte_lang::message.email') }}: </b>
+                                                    <i class="fa fa-envelope"></i>  <b>{{ trans('adminlte_lang::message.email') }}: </b>
                                                     <a> {{$branch->email }} </a>
                                                 </li>
                                                 <li class="list-group-item">

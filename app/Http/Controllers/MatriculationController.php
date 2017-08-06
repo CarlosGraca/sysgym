@@ -3,18 +3,13 @@
 namespace App\Http\Controllers;
 
 //use App\Modality;
-use App\Matriculation;
-use App\MatriculationModality;
-use App\Company;
-use App\Employee;
+use App\Models\Matriculation;
+use App\Models\Employee;
 use App\Http\Requests\MatriculationRequest;
-use App\Client;
-use App\Modality;
-use App\Payment;
-use App\Procedure;
-use App\SecureAgency;
-use App\System;
-use App\Teeth;
+use App\Models\Client;
+use App\Models\Modality;
+use App\Models\Payment;
+use App\Models\System;
 //use Illuminate\Http\Request;
 use Request;
 
@@ -51,7 +46,7 @@ class MatriculationController extends Controller
         //CONSULT TYPE ARRAY DATA TO SELECT
         $modality = Modality::pluck('name', 'id');
 
-        $last_modality = MatriculationModality::select(['id'])->orderby('id','desc')->first();
+        $last_modality = Matriculation::select(['id'])->orderby('id','desc')->first();
 
         return view('matriculation.create', compact('modality','last_modality'));
     }
@@ -90,9 +85,9 @@ class MatriculationController extends Controller
      */
     public function show(Matriculation $matriculation)
     {
-        $matriculation_modality = MatriculationModality::where(['matriculation_id'=>$matriculation->id,'status'=>1])->get();
+        $matriculation_modality = Matriculation::where(['matriculation_id'=>$matriculation->id,'status'=>1])->get();
 
-        $valor = MatriculationModality::select(\DB::raw('sum(total) as total'))->where(['matriculation_id'=>$matriculation->id,'status'=>1])->first();
+        $valor = Matriculation::select(\DB::raw('sum(total) as total'))->where(['matriculation_id'=>$matriculation->id,'status'=>1])->first();
 
         return view('matriculation.show',compact('matriculation','matriculation_modality','valor'));
     }
@@ -108,11 +103,11 @@ class MatriculationController extends Controller
         //CONSULT TYPE ARRAY DATA TO SELECT
         $modality = Modality::pluck('name', 'id');
 
-        $last_modality = MatriculationModality::select(['id'])->orderby('id','desc')->first();
+        $last_modality = Matriculation::select(['id'])->orderby('id','desc')->first();
         
-        $matriculation_modality = MatriculationModality::where(['matriculation_id'=>$matriculation->id,'status'=>1])->get();
+        $matriculation_modality = Matriculation::where(['matriculation_id'=>$matriculation->id,'status'=>1])->get();
 
-        $valor = MatriculationModality::select(\DB::raw('sum(total) as total'))->where(['matriculation_id'=>$matriculation->id,'status'=>1])->first();
+        $valor = Matriculation::select(\DB::raw('sum(total) as total'))->where(['matriculation_id'=>$matriculation->id,'status'=>1])->first();
         
         return view('matriculation.edit',compact('matriculation', 'secure_agency', 'doctor', 'teeth','modality','last_modality','matriculation_modality','valor'));
     }
@@ -169,7 +164,7 @@ class MatriculationController extends Controller
 
         $matriculation = Matriculation::where('id',\Input::get('id'))->first();
 
-        $modality = MatriculationModality::where('matriculation_id', $matriculation->id)->get();
+        $modality = Matriculation::where('matriculation_id', $matriculation->id)->get();
 
         if(count($modality) == 0){
             $message = trans('adminlte_lang::message.msg_error_publish_matriculation');
@@ -240,7 +235,7 @@ class MatriculationController extends Controller
 
         if (is_array($delete)){
             foreach ($delete as $item) {
-                $has_modality = MatriculationModality::where('id', $item)->where('matriculation_id', $matriculation_id)->first();
+                $has_modality = Matriculation::where('id', $item)->where('matriculation_id', $matriculation_id)->first();
                 $has_modality->delete();
 //                if($has_modality){
 //                    $has_modality->status = 0;
@@ -252,7 +247,7 @@ class MatriculationController extends Controller
         if (is_array($modality)){
             foreach ($modality as $item) {
 
-                $has_modality = MatriculationModality::where(['id'=>$item->id, 'matriculation_id' => $matriculation_id, 'client_id' => $client_id])->first();
+                $has_modality = Matriculation::where(['id'=>$item->id, 'matriculation_id' => $matriculation_id, 'client_id' => $client_id])->first();
 
                 if($has_modality){
                     $has_modality->modality_id = $item->modality_id;
@@ -263,7 +258,7 @@ class MatriculationController extends Controller
                     $has_modality->user_id =  \Auth::user()->id;
                     $has_modality->save();
                 }else{
-                    $modality = new MatriculationModality();
+                    $modality = new Matriculation();
                     $modality->modality_id = $item->modality_id;
                     $modality->total = $item->total;
                     $modality->matriculation_id = $matriculation_id;
@@ -280,7 +275,7 @@ class MatriculationController extends Controller
         }
 
         $matriculation = Matriculation::where('id',$matriculation_id)->first();
-        $valor = MatriculationModality::select(\DB::raw('sum(total) as total, sum(discount) as discount'))->where(['matriculation_id'=>$matriculation_id,'status'=>1])->first();
+        $valor = Matriculation::select(\DB::raw('sum(total) as total, sum(discount) as discount'))->where(['matriculation_id'=>$matriculation_id,'status'=>1])->first();
 
         $matriculation->total = ($valor->total == null ? 0 : $valor->total);
         $matriculation->total_discount = ($valor->discount == null ? 0 : $valor->discount);

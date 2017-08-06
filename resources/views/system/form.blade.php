@@ -64,12 +64,12 @@
 				</div>
 			</div>
 
-			<div class="col-md-6 col-sm-6 col-xs-12">
-				<div class="form-group form-group-sm">
-					{!! Form::label('iva',trans('adminlte_lang::message.iva')) !!}
-					{!! Form::number('iva', ($type == 'update' ? $system->iva : null) , ['class'=>'form-control']) !!}
-				</div>
-			</div>
+			{{--<div class="col-md-6 col-sm-6 col-xs-12">--}}
+				{{--<div class="form-group form-group-sm">--}}
+					{{--{!! Form::label('iva',trans('adminlte_lang::message.iva')) !!}--}}
+					{{--{!! Form::number('iva', ($type == 'update' ? $system->iva : null) , ['class'=>'form-control']) !!}--}}
+				{{--</div>--}}
+			{{--</div>--}}
 
 		</div>
 	</div>	

@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Client;
-use App\MatriculationModality;
-use App\Modality;
-use App\Schedule;
-use App\System;
+use App\Models\Client;
+use App\Models\Matriculation;
+use App\Models\Modality;
+use App\Models\Schedule;
+use App\Models\System;
 use Illuminate\Support\Facades\Auth;
 use Request;
 use Image;
@@ -59,14 +59,13 @@ class ModalityController extends Controller
      */
     public function store(ModalityRequest $request)
     {
-//        $modality = Modality::create($request->all());
         $default = new Defaults();
         $modality = new Modality();
         $modality->name = $request->name;
         $modality->price = $request->price;
         $modality->user_id = \Auth::user()->id;
-
-//        $currency_function = new Defaults();
+        $modality->branch_id = \Auth::user()->branch_id;
+        $modality->tenant_id = \Auth::user()->tenant_id;
 
         if ($request->hasFile('avatar')){
             $img_base64 = $request->avatar_crop;
@@ -221,7 +220,7 @@ class ModalityController extends Controller
      */
     public function getClientModality(){
         $default = new Defaults();
-        $modalities = MatriculationModality::select(\DB::raw('modalities.name as name, matriculation_modality.total as total, modality_id, matriculation_modality.price, matriculation_modality.iva, matriculation_modality.discount'))
+        $modalities = Matriculation::select(\DB::raw('modalities.name as name, matriculation_modality.total as total, modality_id, matriculation_modality.price, matriculation_modality.iva, matriculation_modality.discount'))
             ->join('modalities', 'matriculation_modality.modality_id', '=', 'modalities.id')
             ->where(['matriculation_modality.client_id'=>\Input::get('id'), 'matriculation_modality.status'=>1])->get();
 

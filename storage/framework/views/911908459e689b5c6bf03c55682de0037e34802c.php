@@ -70,11 +70,6 @@
                                 </li>
 
                                 <li class="list-group-item">
-                                    <i class="fa fa-venus-mars"></i>  <b><?php echo e(trans('adminlte_lang::message.genre')); ?>: </b>
-                                    <a> <?php echo e(trans('adminlte_lang::message.'.(\Auth::user()->genre == null ? 'none' : \Auth::user()->genre))); ?> </a>
-                                </li>
-
-                                <li class="list-group-item">
                                     <i class="fa fa-envelope"></i>
                                     <b><?php echo e(trans('adminlte_lang::message.email')); ?>: </b> <a><?php echo e(\Auth::user()->email); ?></a>
                                 </li>
@@ -85,10 +80,9 @@
                                 </li>
 
 
-                            <?php $role =  \Auth::user()->roles->first(); ?>
 								<li class="list-group-item">
                                     <i class="fa fa-wrench"></i>
-									<b><?php echo e(trans('adminlte_lang::message.role')); ?>: </b> <a><?php echo e($role['name']); ?></a>
+									<b><?php echo e(trans('adminlte_lang::message.role')); ?>: </b> <a><?php echo e(\Auth::user()->role->display_name); ?></a>
 								</li>
 								<li class="list-group-item">
                                     <i class="fa fa-calendar"></i>

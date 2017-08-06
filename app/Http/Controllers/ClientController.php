@@ -96,11 +96,12 @@ class ClientController extends Controller
             $client->avatar = $filename;
         }
 
-        $client->save();
 
-        if (Request::wantsJson()){
+
+        if (Request::wantsJson() && $client->save()){
+            $url = route('clients.edit',$client->id);
             $message = trans('adminlte_lang::message.msg_success_client');
-            return ['id'=>$client->id,'message'=>$message,'form'=>'client'];
+            return ['id'=>$client->id,'message'=>$message,'form'=>'client','type'=>'success','url'=>$url];
         }else{
              return view('clients');
         }
@@ -186,11 +187,10 @@ class ClientController extends Controller
             $client->avatar = $filename;
         }
 
-        $client->save();
 
-        if (Request::wantsJson()){
+        if (Request::wantsJson() && $client->save()){
             $message = trans('adminlte_lang::message.msg_success_client');
-            return ['values'=>$client,'message'=>$message,'form'=>'client'];
+            return ['values'=>$client,'message'=>$message,'form'=>'client','type'=>'success'];
         }else{
              return view('clients.create');
         }

@@ -1,5 +1,4 @@
 <?php
-    $system = \App\Models\System::where('id',\Auth::user()->branch_id)->first();
     $company = \App\Models\Tenant::where('id',\Auth::user()->tenant_id)->first();
     $branch = \App\Models\Branch::where('id',(\Auth::user() ? \Auth::user()->branch_id : 0))->first();
 
@@ -141,8 +140,15 @@
                     <span class="hidden-xs"><span class="user-name"><?php echo e(Auth::user()->name); ?></span> | <?php echo e(Auth::user()->role->display_name); ?></span>
                   </a>
                 </li>
+
                 <li>
-                  <a href="<?php echo e(url('/logout')); ?>"><i class="fa fa-sign-out"></i> <?php echo e(trans('adminlte_lang::message.signout')); ?></a>
+                    <?php if(\Auth::user()->action_button == 'sign_out'): ?>
+                        <a href="<?php echo e(url('/logout')); ?>"><i class="fa fa-sign-out"></i> <?php echo e(trans('adminlte_lang::message.signout')); ?></a>
+                    <?php endif; ?>
+
+                    <?php if(\Auth::user()->action_button == 'lock_screen'): ?>
+                        <a href="<?php echo e(url('/lockscreen')); ?>"><i class="fa fa-lock"></i> <?php echo e(trans('adminlte_lang::message.lockscreen')); ?></a>
+                    <?php endif; ?>
                 </li>
 
                   <?php endif; ?>

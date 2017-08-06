@@ -40,7 +40,6 @@ class ClientRequest extends FormRequest
                     'birthday' => 'required',
                     'address' => 'required',
                     'city' => 'required',
-                    'island_id' => 'required',
                 ];
             }
             case 'PUT':
@@ -54,7 +53,6 @@ class ClientRequest extends FormRequest
                         'genre' => 'required',
                         'civil_state' => 'required',
                         'city' => 'required',
-                        'island_id' => 'required',
                 ];
                 /*  return [
                       'user.name.first' => 'required',

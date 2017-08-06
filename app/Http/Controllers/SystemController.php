@@ -2,10 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Island;
-use App\Role;
-use App\System;
-use App\TimeZone;
+use App\Models\Role;
+use App\Models\System;
 use Illuminate\Support\Facades\Crypt;
 use Illuminate\Support\Facades\DB;
 
@@ -34,7 +32,7 @@ class SystemController extends Controller
     public function index()
     {
         $default = new Defaults();
-        $system = System::All()->first();
+        $system = System::where(['branch_id'=>\Auth::user()->branch_id,'tenant_id'=>\Auth::user()->tenant_id])->first();
         $lang = $default->getLang();
         $timezone = $default->getTimezone();
 
@@ -77,12 +75,10 @@ class SystemController extends Controller
         $system->lang = $request->lang;
         $system->theme = $request->theme;
         $system->layout = $request->layout;
-        $system->iva = $request->iva;
-        $system->save();
 
-        session()->flash('flash_message','System was Saved with success');
+        //session()->flash('flash_message','System was Saved with success');
 
-        if (Request::wantsJson()){
+        if (Request::wantsJson() && $system->save()){
             return $system;
         }else{
             return redirect('system');
@@ -117,7 +113,6 @@ class SystemController extends Controller
         $lang = $default->getLang();
         $currency = $default->getCurrency();
         $layout = $default->getLayout();
-//        $timezone = TimeZone::pluck('name','id');
         $timezone = $default->getTimezone();
         return view('system.edit',compact('theme','layout','currency','lang','system','timezone'));
     }
@@ -137,7 +132,6 @@ class SystemController extends Controller
         $system->theme = $request->theme;
         $system->layout = $request->layout;
         $system->timezone = $request->timezone;
-        $system->iva = $request->iva;
 
         if($request->status != ""){
             $system->status = $request->status;
@@ -149,7 +143,7 @@ class SystemController extends Controller
 
             $path = public_path('uploads/' . $filename);
 
-            if($system->background_image && $system->background_image != 'img/photo1.png'){
+            if($system->background_image && $system->background_image != 'img/background.jpg'){
                 if(file_exists($system->background_image)){
                     unlink($system->background_image);
                 }
@@ -158,14 +152,9 @@ class SystemController extends Controller
             Image::make($image->getRealPath())->save($path);
 
             $system->background_image = 'uploads/' . $filename;
-
         }
 
-        $system->save();
-
-       // session()->flash('flash_message','System was updated with success');
-
-        if (Request::wantsJson()){
+        if (Request::wantsJson() && $system->save()){
             $message = trans('adminlte_lang::message.msg_success_system');
             return ['values'=>$system->name,'message'=>$message,'form'=>'system','type'=>'success','timezone'=>$system->timezone];
         }else{

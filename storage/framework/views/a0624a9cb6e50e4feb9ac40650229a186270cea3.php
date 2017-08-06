@@ -163,7 +163,7 @@
     var _add_consult_text = '<?php echo e(trans('adminlte_lang::message.new_consult_agenda')); ?>';
     var _disable_text = '<?php echo e(trans('adminlte_lang::message.disable')); ?>';
 
-    var timezone = '<?php echo count($system) > 0 ? $system->timezone : 'Atlantic/Cape_Verde'; ?>';
+    var timezone = '<?php echo count($system) > 0 ? $system->timezone : config('app.timezone'); ?>';
 
     function update() {
         var time = moment().tz(timezone).format('- DD/MM/YYYY HH:mm:ss');
@@ -217,5 +217,7 @@
 <script src="<?php echo e(asset('/js/roles.js')); ?>" type="text/javascript"></script>
 <script src="<?php echo e(asset('/js/permissions.js')); ?>" type="text/javascript"></script>
 <script src="<?php echo e(asset('/js/menus.js')); ?>" type="text/javascript"></script>
+<script src="<?php echo e(asset('/js/backups.js')); ?>" type="text/javascript"></script>
+<script src="<?php echo e(asset('/js/accounts.js')); ?>" type="text/javascript"></script>
 
 

@@ -45,15 +45,6 @@
 
 				</div>
 			</div>
-
-			<div class="col-lg-6 col-md-6 col-sm-6">
-				<div class="form-group form-group-sm">
-					<?php echo Form::label('genre',trans('adminlte_lang::message.genre')); ?>
-
-					<?php echo Form::select('genre', [ 'male'=>trans('adminlte_lang::message.male'),'female'=>trans('adminlte_lang::message.female')],($type == 'update' ? $user->genre : null), ['class'=>'form-control', 'placeholder' => trans('adminlte_lang::message.genre_select')]); ?>
-
-				</div>
-			</div>
 		</div>
 
 		<div class="row">

@@ -1,5 +1,7 @@
 <div class="row">
 	{!! Form::hidden('branch_id', ($type == 'update' ? $branch->id : null), ['class'=>'form-control','id'=>'branch_id']) !!}
+	{!! Form::hidden('item_id', ($type == 'update' ? $branch->id : null), ['class'=>'form-control','id'=>'item_id']) !!}
+
 	<span id="last-schedules_id" style="display:none;">{{ $last_schedules != null ? $last_schedules->id : "0"}}</span>
 
     <div class="col-lg-12 col-md-6 col-sm-6 col-xs-12">
@@ -92,94 +94,13 @@
 
 				<div class="tab-pane" id="office_hours">
 					<!-- WORK TIME -->
-					<div class="row">
-						{!! Form::hidden('office_hours_id', null, ['class'=>'form-control','id'=>'office_hours_id']) !!}
-						<div class="col-md-4 col-sm-10 col-xs-10">
-							<div class="form-group form-group-sm">
-								{!! Form::label('week_day',trans('adminlte_lang::message.week_day') ) !!}
-								{!! Form::select('week_day', $weeks, ($type == 'update' ? null : null) , ['class'=>'form-control','id'=>'branch_week','placeholder'=>' (SELECT WEEK DAY) ']) !!}
-							</div>
-						</div>
-						<div class="col-md-3 col-sm-12 col-xs-12">
-							<div class="form-group form-group-sm">
-								{!! Form::label('start_time',trans('adminlte_lang::message.start_time') ) !!}
-								{!! Form::time('start_time', ($type == 'update' ? $branch->start_time : null) , ['class'=>'form-control']) !!}
-							</div>
-						</div>
-						<div class="col-md-3 col-sm-12 col-xs-12">
-							<div class="form-group form-group-sm">
-								{!! Form::label('end_time',trans('adminlte_lang::message.end_time') ) !!}
-								{!! Form::time('end_time', ($type == 'update' ? $branch->end_time : null) , ['class'=>'form-control']) !!}
-							</div>
-						</div>
-
-						<div class="col-md-2 col-sm-1 col-xs-2">
-							<div class="form-group form-group-sm">
-								{!! Form::label('add-schedule','ADD',['style'=>'visibility: hidden;'] ) !!}
-								<a href="#!add-schedule" class="btn btn-primary btn-sm" style="display: table;" data-message="NO SCHEDULE TYPED" data-toggle="tooltip" title="{{ trans('adminlte_lang::message.add_schedule') }}" id="add-office_hours" data-action="create">
-									<i class="fa fa-plus"></i>
-								</a>
-							</div>
-						</div>
-
-						{{--<hr class="h-divider" >--}}
-						<div class="col-md-12 col-sm-12 col-xs-12">
-							{{--<span ><strong class="title">{{ trans('adminlte_lang::message.schedule') }}</strong></span>--}}
-
-							<table id="table-office_hours" class="table table-bordered table-striped">
-
-								<thead>
-								<th class="col-md-4">{{ trans('adminlte_lang::message.week_day') }}</th>
-								<th class="col-md-4">{{ trans('adminlte_lang::message.start_time') }}</th>
-								<th class="col-md-2">{{ trans('adminlte_lang::message.end_time') }}</th>
-								<th class="col-md-1 action_button"></th>
-								</thead>
-
-								<tbody>
-								@if(isset($schedules))
-									@foreach($schedules as $schedule)
-										<tr class="office_hours_table" data-key="{{ $schedule->id }}"  data-week="{{ $schedule->week_day }}">
-											<td class="week_name" data-value="{{ $schedule->week_day }}">{{ trans('adminlte_lang::message.'.$schedule->week_day) }}</td>
-											<td class="start_time" >{{ $schedule->start_time }}</td>
-											<td class="end_time" >{{ $schedule->end_time }}</td>
-											<td class="action_button">
-												<a href="#!copy" class="copy_schedule" data-toggle="tooltip" title="{{ trans('adminlte_lang::message.copy') }}"><i class="fa fa-clone"></i></a>
-												<a href="#!edit" class="edit_schedule" data-toggle="tooltip" title="{{ trans('adminlte_lang::message.edit') }}"><i class="fa fa-edit"></i></a>
-												<a href="#!remove" class="remove_schedule" data-toggle="tooltip" title="{{ trans('adminlte_lang::message.remove') }}"><i class="fa fa-trash"></i></a>
-											</td>
-										</tr>
-									@endforeach
-								@endif
-								</tbody>
-							</table>
-
-
-							{{--<div class="box box-default">--}}
-								{{--<div class="box-header with-border">--}}
-									{{--<h3 class="box-title"><i class="fa fa-clock-o"></i> {{ trans('adminlte_lang::message.schedule') }}</h3>--}}
-								{{--</div><!-- /.box-header -->--}}
-
-								{{--<div class="box-body">--}}
-
-								{{--</div>--}}
-							{{--</div>--}}
-						</div>
-
-					</div>
+					@include('schedules.form',['schedules'=>(isset($schedules) ? $schedules : null),'weeks'=>$weeks,'flag'=>1])
 				</div>
 
 			</div>
 
 		</div>
 
-
-
-
-
-
-
-
 		</div>
 
-	</div>	
 </div>

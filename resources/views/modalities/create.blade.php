@@ -20,15 +20,15 @@
 	        <div class="box box-default">
 	            <div class="box-header with-border">
 	              <h3 class="box-title">
-	              	 <strong>{{ trans('adminlte_lang::message.system_user') }}: </strong><span>{{ Auth::user()->name }}</span>
+					  <a href="{{ url('modalities') }}" class="btn btn-primary btn-sm" role="button" data-toggle="tooltip" title="{{ trans('adminlte_lang::message.back') }}">
+						  <i class="fa  fa-arrow-left"></i> {{ trans('adminlte_lang::message.back') }}
+					  </a>
+	              	 <span>  {{ trans('adminlte_lang::message.new_modality') }} </span>
 	              </h3>
 					<div class="pull-right box-tools">
-						<a href="{{ url('modalities') }}" class="btn btn-primary btn-sm" role="button" data-toggle="tooltip" title="{{ trans('adminlte_lang::message.back') }}">
-							 <i class="fa  fa-arrow-left"></i>
-						</a>
 
-						<a href="#" class="btn btn-primary btn-sm" role="button" data-toggle="tooltip" title="Save" id="add-modality">
-							 <i class="fa fa-save"></i>
+						<a href="#" class="btn btn-primary btn-sm" data-toggle="tooltip" title=" {{ trans('adminlte_lang::message.save') }}" id="add-modality">
+							 <i class="fa fa-save"></i>  {{ trans('adminlte_lang::message.save') }}
 						</a>
 					</div><!-- /. tools -->
 	            </div><!-- /.box-header -->

@@ -5,20 +5,21 @@
 $(function () {
 
     //UPDATE SYSTEM DATA
-    $(document).on('click','#edit-system',function () {
+    $(document).on('click','#update-system',function (e) {
+        e.preventDefault();
         save($('#system-form'),$('#system-form')[0],'update');
-        //$(this).css('display', 'none');
-       // $('#edit-system-button').removeAttr('style');
     });
 
 
-    $(document).on('click','#edit-system-button',function () {
+    $(document).on('click','#edit-system-button',function (e) {
+        e.preventDefault();
         $(this).css('display', 'none');
         field_status_change('enable', $('#system-form'));
-        $('#edit-system').removeAttr('style');
+        $('#update-system').removeAttr('style');
     });
 
-    $('#theme').change(function () {
+    $(document).on('change','#theme',function (e) {
+        e.preventDefault();
 
         var my_skins = [
             "skin-blue",
@@ -45,7 +46,8 @@ $(function () {
     });
 
 
-    $('#layout').change(function () {
+    $(document).on('change','#layout',function (e) {
+        e.preventDefault();
 
        var layouts =  [
            'fixed',
@@ -65,6 +67,7 @@ $(function () {
 
 
     $(document).on('click','#tool_bar_button_employee',function (e) {
+        e.preventDefault();
         $('#myModalLabel').text('New Employee');
         $('#modal').modal('show')
             .find('.modal-body')
@@ -74,6 +77,7 @@ $(function () {
 
 
     $('#modal').on('show.bs.modal', function (e) {
+        e.preventDefault();
         $(document.body).css('overflow','hidden');
         $(this).find('.modal-body').css({
             width:'auto', //probably not needed
@@ -90,6 +94,7 @@ $(function () {
     });
 
     $('#modal').on('hidden.bs.modal', function (e) {
+        e.preventDefault();
         $(document.body).css('overflow','auto');
     });
 

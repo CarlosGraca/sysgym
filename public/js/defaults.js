@@ -235,27 +235,27 @@ function save(_form,_form_data,form_type) {
 
             switch (data.form){
                 case 'client':
+                    if(data.type=='success') {
 
-                    $('#add-client').css('display','none');
-                    $('#edit-client').css('display','none');
-                    $('#edit-client-button').removeAttr('style');
-                    if(form_type == 'create'){
-                        var client_url = $('#client_detail').attr('href');
-                        $('#client_detail').attr('href',client_url+'/'+data.id);
-                        $('#client_detail').removeAttr('style');
-                        field_status_change('disable',_form);
-                    }else{
-                        field_status_change('disable',_form);
+                        if (form_type == 'create') {
+                            field_status_change('disable', _form);
+                            window.location = data.url;
+                        } else {
+                            $('#edit-client-button').removeAttr('style');
+                            $('#update-client').css('display', 'none');
+                            field_status_change('disable', _form);
+                        }
                     }
-
                     break;
 
                 case 'system':
-                    $('#edit-system').css('display','none');
-                    field_status_change('disable',_form);
-                    $('#edit-system-button').removeAttr('style');
-                    timezone = data.timezone;
-                    reloadPage();
+                    if(data.type=='success') {
+                        $('#update-system').css('display', 'none');
+                        field_status_change('disable', _form);
+                        $('#edit-system-button').removeAttr('style');
+                        timezone = data.timezone;
+                        reloadPage();
+                    }
                     break;
 
                 case 'employee':
@@ -278,25 +278,28 @@ function save(_form,_form_data,form_type) {
                     $('#edit-category').css('display','none');
                     break;
                 case 'branches':
+                    if(data.type == 'success'){
+                        if(form_type == 'create'){
+                            $('#branch_id').val(data.id);
+                            $('#item_id').val(data.id);
+                            $('#add-branch').css('display', 'none');
+                            field_status_change('disable',$('#branches-form'));
+                            schedule_button_action('disable');
+                            $('#edit-branch-button').removeAttr('style');
+                            schedule_save();
+                            _deleted_id = [];
+                            all_data = [];
 
-                    if(form_type == 'create' && data.type == 'success'){
-                        $('#branch_id').val(data.id);
-                        $('#item_id').val(data.id);
-                        $('#add-branch').css('display', 'none');
-                        field_status_change('disable',$('#branches-form'));
-                        schedule_button_action('disable');
-                        $('#edit-branch-button').removeAttr('style');
-                        schedule_save();
-                        _deleted_id = [];
-                        all_data = [];
-                    }else{
-                        $('#edit-branch').css('display', 'none');
-                        field_status_change('disable',$('#branches-form'));
-                        schedule_button_action('disable');
-                        $('#edit-branch-button').removeAttr('style');
-                        schedule_save();
-                        _deleted_id = [];
-                        all_data = [];
+                            window.location = data.url;
+                        }else{
+                            $('#update-branch').css('display', 'none');
+                            field_status_change('disable',$('#branches-form'));
+                            schedule_button_action('disable');
+                            $('#edit-branch-button').removeAttr('style');
+                            schedule_save();
+                            _deleted_id = [];
+                            all_data = [];
+                        }
                     }
 
                     break;
@@ -311,30 +314,27 @@ function save(_form,_form_data,form_type) {
                         }
                     }
                     break;
-                case 'agency':
-                    $('#add-secure_agency').css('display','none');
-                    $('#edit-secure_agency').css('display','none');
-                    break;
                 case 'modality':
-
-                    if(form_type == 'create' && data.type == 'success'){
-                        $('#modality_id').val(data.id);
-                        $('#item_id').val(data.id);
-                        $('#add-modality').css('display', 'none');
-                        field_status_change('disable',$('#modality-form'));
-                        schedule_button_action('disable');
-                        $('#edit-modality-button').removeAttr('style');
-                        schedule_save();
-                        _deleted_id = [];
-                        all_data = [];
-                    }else{
-                        $('#edit-modality').css('display', 'none');
-                        field_status_change('disable',$('#modality-form'));
-                        schedule_button_action('disable');
-                        $('#edit-modality-button').removeAttr('style');
-                        schedule_save();
-                        _deleted_id = [];
-                        all_data = [];
+                    if(data.type=='success') {
+                        if (form_type == 'create') {
+                            $('#modality_id').val(data.id);
+                            $('#item_id').val(data.id);
+                            $('#add-modality').css('display', 'none');
+                            field_status_change('disable', $('#modality-form'));
+                            schedule_button_action('disable');
+                            $('#edit-modality-button').removeAttr('style');
+                            schedule_save();
+                            _deleted_id = [];
+                            all_data = [];
+                        } else {
+                            $('#update-modality').css('display', 'none');
+                            field_status_change('disable', $('#modality-form'));
+                            schedule_button_action('disable');
+                            $('#edit-modality-button').removeAttr('style');
+                            schedule_save();
+                            _deleted_id = [];
+                            all_data = [];
+                        }
                     }
 
                     break;

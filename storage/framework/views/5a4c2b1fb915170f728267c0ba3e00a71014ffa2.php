@@ -1,13 +1,13 @@
 <?php
-    $system = \App\Models\System::where('id',\Auth::user()->branch_id)->first();
-   \Carbon\Carbon::setLocale(count($system) > 0 ? $system->lang : 'en'); 
+    $system = \App\Models\System::where(['branch_id'=>\Auth::user()->branch_id,'tenant_id'=>\Auth::user()->tenant_id])->first();
+   \Carbon\Carbon::setLocale(count($system) > 0 ? $system->lang : config('app.locale'));
 ?>
 <!DOCTYPE html>
 <!--
 This is a starter template page. Use this page to start your new project from
 scratch. This page gets rid of all links and provides the needed markup only.
 -->
-<html lang="en">
+<html lang="<?php echo e(count($system) > 0 ? $system->lang : config('app.locale')); ?>">
 
 <?php $__env->startSection('htmlheader'); ?>
     <?php echo $__env->make('layouts.partials.htmlheader', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
@@ -54,7 +54,7 @@ desired effect
     }
 
     .content-wrapper {
-        background: url('<?php echo e(asset( count($system) > 0 ? $system->background_image : 'img/background.jpg' )); ?>') no-repeat center center fixed;
+        background: url('<?php echo e(asset( count($system) > 0 ? $system->background_image : config('app.background') )); ?>') no-repeat center center fixed;
         -webkit-background-size: cover;
         -moz-background-size: cover;
         -o-background-size: cover;
@@ -62,7 +62,7 @@ desired effect
     }
 
     .layout-boxed {
-        background: url('<?php echo e(asset( count($system) > 0 ? $system->background_image : 'img/background.jpg' )); ?>') no-repeat center center fixed;
+        background: url('<?php echo e(asset( count($system) > 0 ? $system->background_image : config('app.background') )); ?>') no-repeat center center fixed;
         -webkit-background-size: cover;
         -moz-background-size: cover;
         -o-background-size: cover;
@@ -79,7 +79,7 @@ desired effect
 
 </style>
 
-<body class=" <?php echo e(count($system) > 0 ? $system->theme : 'skin-blue'); ?> sidebar-mini <?php echo e(count($system) > 0 ? $system->layout : 'fixed'); ?>">
+<body class=" <?php echo e(count($system) > 0 ? $system->theme : config('app.theme')); ?> sidebar-mini <?php echo e(count($system) > 0 ? $system->layout : config('app.layout')); ?>">
 <div class="wrapper">
 
     <?php echo $__env->make('layouts.partials.mainheader', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
@@ -100,10 +100,11 @@ desired effect
         </section><!-- /.content -->
     </div><!-- /.content-wrapper -->
 
-    <?php echo $__env->make('layouts.partials.controlsidebar', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+    
 
-    <?php echo $__env->make('layouts.shared.modal', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
-    <?php echo $__env->make('layouts.shared.modal_del', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+        <?php echo $__env->make('layouts.shared.modal_lg', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+        <?php echo $__env->make('layouts.shared.modal_md', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+        <?php echo $__env->make('layouts.shared.modal_del', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
 
     <?php echo $__env->make('layouts.shared.croppie_modal', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
 

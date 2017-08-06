@@ -22,12 +22,12 @@ $status_color = ['danger','success','info'];
 <?php $__env->startSection('main-content'); ?>
 	<div class="row">
 	    <div class="col-lg-12">
-	        <div class="box box-default">
+	        <div class="box box-primary">
 	            <div class="box-header with-border">
-	              <h3 class="box-title"></h3>
+	              <h3 class="box-title"> <?php echo e(trans('adminlte_lang::message.branch_list')); ?> </h3>
 	              <div class="pull-left box-tools">
-
-						  <a href="<?php echo e(url('branches/create')); ?>" class="btn btn-primary btn-sm" branch="button" data-toggle="tooltip" title="<?php echo e(trans('adminlte_lang::message.new_branch')); ?>">
+					  
+						  <a href="<?php echo e(url('branches/create')); ?>" class="btn btn-primary btn-sm" data-toggle="tooltip" title="<?php echo e(trans('adminlte_lang::message.new_branch')); ?>">
 							   <i class="fa fa-plus"></i> <?php echo e(trans('adminlte_lang::message.new_branch')); ?>
 
 						  </a>
@@ -54,28 +54,28 @@ $status_color = ['danger','success','info'];
                                     <td><?php echo e($branch->name); ?></td>
                                     <td><?php echo e($branch->email); ?></td>
                                     <td><?php echo e($branch->phone); ?> / <?php echo e($branch->fax); ?></td>
-                                    <td><?php echo e($branch->address); ?>, <?php echo e($branch->city); ?>, <?php echo e($branch->island->name); ?></td>
+                                    <td><?php echo e($branch->address); ?>, <?php echo e($branch->city); ?></td>
                                     <td>
-										<?php if (app('Illuminate\Contracts\Auth\Access\Gate')->check('view_branch')): ?>
+										
 										<a href="<?php echo e(route('branches.show',$branch->id)); ?>" data-toggle="tooltip" title="<?php echo e(trans('adminlte_lang::message.show_details')); ?>">
 											<i class="fa fa-eye"></i>
 										</a>
-										<?php endif; ?>
+										
 
-										<?php if (app('Illuminate\Contracts\Auth\Access\Gate')->check('edit_branch')): ?>
+
 											<a href="<?php echo e(route('branches.edit',$branch->id)); ?>"  data-toggle="tooltip" title="<?php echo e(trans('adminlte_lang::message.edit')); ?>" id="edit-branch">
 												<i class="fa fa-edit"></i>
 											</a>
-										<?php endif; ?>										
+										
 										<?php if (app('Illuminate\Contracts\Auth\Access\Gate')->check('disable_branch')): ?>
-										<a href="#disable" style="display: <?php echo e($branch->status == 1 ? 'initial' : 'none'); ?>;" data-toggle="tooltip" id="disable-branch" title="<?php echo e(trans('adminlte_lang::message.disable')); ?>" data-key="<?php echo e($branch->id); ?>" data-name="<?php echo e($branch->name); ?>">
-											<i class="fa fa-user-o"></i>
+										<a href="#disable" style="display: <?php echo e($branch->status == 1 ? 'initial' : 'none'); ?>; color: #999;" data-toggle="tooltip" id="disable-branch" title="<?php echo e(trans('adminlte_lang::message.disable')); ?>" data-key="<?php echo e($branch->id); ?>" data-name="<?php echo e($branch->name); ?>">
+											<i class="fa fa-building"></i>
 										</a>
 										<?php endif; ?>
 
 										<?php if (app('Illuminate\Contracts\Auth\Access\Gate')->check('enable_branch')): ?>
-										<a href="#enable" style="display: <?php echo e($branch->status == 0 ? 'initial' : 'none'); ?>;" data-toggle="tooltip" id="enable-branch" title="<?php echo e(trans('adminlte_lang::message.enable')); ?>" data-key="<?php echo e($branch->id); ?>" data-name="<?php echo e($branch->name); ?>">
-											<i class="fa fa-user"></i>
+										<a href="#enable" style="display: <?php echo e($branch->status == 0 ? 'initial' : 'none'); ?>; color: #00a65a;" data-toggle="tooltip" id="enable-branch" title="<?php echo e(trans('adminlte_lang::message.enable')); ?>" data-key="<?php echo e($branch->id); ?>" data-name="<?php echo e($branch->name); ?>">
+											<i class="fa fa-building"></i>
 										</a>
 										<?php endif; ?>
                                     </td>

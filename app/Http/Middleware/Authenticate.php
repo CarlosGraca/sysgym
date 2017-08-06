@@ -40,24 +40,30 @@ class Authenticate
      */
     public function handle($request, Closure $next, ...$guards)
     {
-       /* $system = System::all()->first();
+        if(\Auth::user() != null){
+            $system = System::where('id',\Auth::user()->branch_id)->first();
+            if(count($system) > 0){
+                \App::setLocale($system->lang);
 
-        if($system->status == '2' && $request->isMethod('get')){ //VERIFY THE STATUS OF SYSTEM
-            return redirect('setup/system');
-        }elseif ($system->status == '0' && $request->isMethod('get')){
-            return redirect('license_expired');
-        }else{
-            if($system->status != '2' && $request->isMethod('post')){
-                $this->authenticate($guards);
+                if($system->status == '2' && $request->isMethod('get')){ //VERIFY THE STATUS OF SYSTEM
+                    return redirect('setup/system');
+                }elseif ($system->status == '0' && $request->isMethod('get')){
+                    return redirect('license_expired');
+                }else{
+                    if($system->status != '2' && $request->isMethod('post')){
+                        $this->authenticate($guards);
+                    }
+                }
             }
         }
+
 
         if(\Auth::user() != null && \Auth::user()->status == 2 && $request->isMethod('get')){
             return redirect('user/setup/password');
         }elseif(\Auth::check() && (\Auth::user()->status != 1 && \Auth::user()->status != 2)){
             \Auth::logout();
             return redirect('login')->with('status', \Lang::get('auth.disable'));
-        }*/
+        }
 
 
         return $next($request);
