@@ -2,14 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use App\Category;
+use App\EmployeeCategory;
 use App\System;
 use Illuminate\Support\Facades\Auth;
 use Request;
 use Image;
 use App\Http\Requests\CategoryRequest;
 
-class CategoryController extends Controller
+class EmployeeCategoryController extends Controller
 {
 
     /**
@@ -29,7 +29,7 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        $categories = Category::All();
+        $categories = EmployeeCategory::All();
         return view('category.index',compact('categories'));
     }
 
@@ -53,7 +53,7 @@ class CategoryController extends Controller
     public function store(CategoryRequest $request)
     {
         //
-        $category = Category::create($request->all());
+        $category = EmployeeCategory::create($request->all());
 
         if (Request::wantsJson()){
             $message = trans('adminlte_lang::message.msg_add_success_category');
@@ -81,7 +81,7 @@ class CategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Category $category)
+    public function edit(EmployeeCategory $category)
     {
         return view('category.edit',compact('category'));
     }
@@ -93,7 +93,7 @@ class CategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(CategoryRequest $request, Category $category)
+    public function update(CategoryRequest $request, EmployeeCategory $category)
     {
         $category->update($request->all());
 
@@ -112,7 +112,7 @@ class CategoryController extends Controller
      */
     public function disable()
     {
-        $category = Category::where('id',\Input::get('id'))->first();
+        $category = EmployeeCategory::where('id',\Input::get('id'))->first();
         $category->status = 0;
 
         if (Request::wantsJson() && $category->save()){
@@ -130,7 +130,7 @@ class CategoryController extends Controller
      */
     public function enable()
     {
-        $category = Category::where('id',\Input::get('id'))->first();
+        $category = EmployeeCategory::where('id',\Input::get('id'))->first();
         $category->status = 1;
 
         if (Request::wantsJson() && $category->save()){
@@ -144,14 +144,14 @@ class CategoryController extends Controller
 
 
     public function getSalaryBase($id){
-        $category = Category::where("id",$id)->first();
+        $category = EmployeeCategory::where("id",$id)->first();
         return $category->salary_base;
     }
 
 
     public function getEmployeesCategory(){
         $default = new Defaults();
-        $categories = Category::select(['id','name','salary_base'])->get();
+        $categories = EmployeeCategory::select(['id','name','salary_base'])->get();
         //$categories = Category::select([ \DB::raw('id ,name, salary_base') ])->All();
 
         return json_encode($categories);

@@ -13,7 +13,7 @@
 
 <?php $__env->stopSection(); ?>
 
-<?php $CategoryController = app('App\Http\Controllers\CategoryController'); ?>
+<?php $CategoryController = app('App\Http\Controllers\EmployeeCategoryController'); ?>
 <?php
 $status = [trans('adminlte_lang::message.deleted'),trans('adminlte_lang::message.active'),trans('adminlte_lang::message.expired')];
 $status_color = ['danger','success','info'];

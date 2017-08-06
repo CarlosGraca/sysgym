@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
@@ -12,7 +12,7 @@ class Payment extends Model
     protected $fillable = ['note','payment_method','total','status','value_pay','user_id','matriculation_id','branch_id'];
     
     public function matriculation(){
-        return $this->belongsTo('App\Matriculation');
+        return $this->belongsTo('App\Models\Matriculation');
     }
 
     public function user(){
@@ -20,7 +20,7 @@ class Payment extends Model
     }
 
     public function branch(){
-        return $this->belongsTo('App\Branch');
+        return $this->belongsTo('App\Models\Branch');
     }
     
 }

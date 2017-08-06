@@ -3,15 +3,15 @@
 namespace App\Http\Controllers;
 
 //use Illuminate\Http\Request;
-use App\Http\Requests\DominioRequest;
+use App\Http\Requests\DomainRequest;
 
-use App\Models\Dominio;
+use App\Models\Domain;
 use App\User;
 use Auth;
 
 use Request;
 
-class DominioController extends Controller
+class DomainController extends Controller
 {
     /**
      * Create a new controller instance.
@@ -30,8 +30,8 @@ class DominioController extends Controller
      */
     public function index()
     {
-        $dominios  = Dominio::where('tenant_id',Auth::user()->tenant_id)->get();
-        return view('adminlte::dominios.index',compact('dominios'));
+        $dominios  = Domain::where('tenant_id',Auth::user()->tenant_id)->get();
+        return view('domains.index',compact('dominios'));
     }
 
     /**
@@ -41,7 +41,7 @@ class DominioController extends Controller
      */
     public function create()
     {
-        return view('adminlte::dominios.create');
+        return view('domains.create');
     }
 
     /**
@@ -50,17 +50,17 @@ class DominioController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(DominioRequest $request)
+    public function store(DomainRequest $request)
     {   
         $tenant_id = Auth::user()->tenant_id; // some logic to decide user's plan
         $request->request->add(['tenant_id' => $tenant_id]);
-        $dominio = Dominio::create($request->all());
-        session()->flash('flash_message','Dominio was stored with success');
+        $dominio = Domain::create($request->all());
+        session()->flash('flash_message','Domain was stored with success');
 
         if (Request::wantsJson()){
             return $dominio;
         }else{
-            return redirect('dominios');
+            return redirect('domains');
         }
     }
 
@@ -70,7 +70,7 @@ class DominioController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Dominio $dominio)
+    public function show(Domain $dominio)
     {
         //
     }
@@ -78,50 +78,50 @@ class DominioController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  Domain $dominio
      * @return \Illuminate\Http\Response
      */
-    public function edit(Dominio $dominio)
+    public function edit(Domain $dominio)
     {
-        return view('adminlte::dominios.edit',compact('dominio'));
+        return view('domains.edit',compact('dominio'));
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  Domain $dominio
      * @return \Illuminate\Http\Response
      */
-    public function update(DominioRequest $request, Dominio $dominio)
+    public function update(DomainRequest $request, Domain $dominio)
     {
         $tenant_id = Auth::user()->tenant_id; // some logic to decide user's plan
         $request->request->add(['tenant_id' => $tenant_id]);
         $dominio->update($request->all());
-        session()->flash('flash_message','Dominio was update with success');
+        session()->flash('flash_message','Domain was update with success');
 
         if (Request::wantsJson()){
             return $dominio;
         }else{
-            return redirect('dominios');
+            return redirect('domains');
         }
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  Domain $dominio
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Dominio $dominio)
+    public function destroy(Domain $dominio)
     {
         $deleted= $dominio->delete();
-        session()->flash('flash_message','Dominio was removed with success');
+        session()->flash('flash_message','Domain was removed with success');
 
         if (Request::wantsJson()){
             return (string) $deleted;
         }else{
-            return redirect('dominios');
+            return redirect('domains');
         }
     }
 }

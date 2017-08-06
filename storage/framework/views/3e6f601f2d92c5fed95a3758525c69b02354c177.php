@@ -2,6 +2,9 @@
     $system = \App\Models\System::where('id',\Auth::user()->branch_id)->first();
     $company = \App\Models\Tenant::where('id',\Auth::user()->tenant_id)->first();
     $branch = \App\Models\Branch::where('id',(\Auth::user() ? \Auth::user()->branch_id : 0))->first();
+
+    if(\Auth::guest())
+        header('Location: /');
 ?>
 <!-- Main Header -->
 <header class="main-header">
@@ -48,11 +51,22 @@
         </a>
         <div class="navbar-custom-menu pull-left">
             <ul class="nav navbar-nav">
+
             <li class="user user-menu">
                 <a href="<?php echo e(url('company')); ?>" data-toggle="tooltip" title="<?php echo e(trans('adminlte_lang::message.company')); ?> - <?php echo e($company->name); ?>">
                     <img  src="<?php echo e(url('/')); ?>/<?php echo e($company->logo); ?>" class="user-image" alt="Cinque Terre" >
                     <!-- hidden-xs hides the username on small devices so only the image appears. -->
-                    <span class="hidden-xs"><span class="name_company"><?php echo e($company->company_name); ?> | <?php echo e($branch != null ? $branch->name : trans('adminlte_lang::message.all_branch')); ?></span>  <span id="clock"></span></span>
+                    <span class="hidden-xs"><span class="name_company"><?php echo e($company->company_name); ?></span></span>
+                </a>
+            </li>
+            <li class="user user-menu">
+                <a style="margin: 0 -15px;">
+                    <span class="hidden-xs"> <span>|</span></span>
+                </a>
+            </li>
+            <li class="user user-menu">
+                <a style="cursor: pointer;" data-toggle="tooltip" data-key="<?php echo e(\Auth::user()->branch_id); ?>" class="branch-select" title="<?php echo e(trans('adminlte_lang::message.branch_select_title')); ?>">
+                    <span class="hidden-xs"> <span> <i class="fa fa-building"></i> <?php echo e($branch != null ? $branch->name : trans('adminlte_lang::message.all_branch')); ?></span>  <span id="clock"></span></span>
                 </a>
             </li>
         </ul>

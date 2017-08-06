@@ -8,13 +8,11 @@ class Domain extends Model
 {
     protected $table = 'domains';
 	public $timestamps = false;
-
 	//use SoftDeletes;
 
 	protected $fillable = ['dominio', 'codigo', 'significado','tenant_id'];
 
-
-	 public function membros(){
-     	return $this->hasMany('App\Models\Membro');
-     }
+//	 public function membros(){
+//     	return $this->hasMany('App\Models\Membro');
+//     }
 }

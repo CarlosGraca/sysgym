@@ -1,16 +1,16 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Category extends Model
+class EmployeeCategory extends Model
 {
-    protected $table = 'category';
+    protected $table = 'employees_category';
     public $timestamps = true;
     protected $fillable = ['name','salary_base','created_at','updated_at'];
 
     public function employee(){
-        return $this->hasOne('App\Employee');
+        return $this->hasOne('App\Models\Employee');
     }
 }
