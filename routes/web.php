@@ -19,7 +19,7 @@ Route::post('/register_tenant', 'Auth\RegisterController@registerTenants');
 Route::get('/confirmation/{token}', 'Auth\RegisterController@confirmation')->name('confirmation');
 
 //LOGIN REDIRECT
-Route::get('/login', 'Auth\LoginController@redirectLogin');
+Route::get('/login', 'Auth\LoginController@redirectLogin')->name('login');
 Route::get('/logout', 'Auth\LoginController@logout');
 Route::get('password/reset','Auth\ResetPasswordController@reset');
 
