@@ -2,9 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Matriculation;
-use App\MatriculationProcedure;
-use App\Payment;
+use App\Models\Matriculation;
+use App\Models\Payment;
 //use Illuminate\Http\Request;
 use Request;
 class PaymentController extends Controller
@@ -102,41 +101,41 @@ class PaymentController extends Controller
         //
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function procedure(\Illuminate\Http\Request $request)
-    {
-        $procedures = json_decode($request->procedure);
-        $matriculation_id = $request->matriculation_id;
-        $payment_id = $request->payment_id;
-
-        if (is_array($procedures)){
-            foreach ($procedures as $item) {
-
-                $has_procedure = MatriculationProcedure::where('id',$item->id)->where('matriculation_id', $matriculation_id)->first();
-                if($has_procedure){
-                    $has_procedure->value_pay = doubleval($has_procedure->value_pay + $item->value);
-                    $has_procedure->remaining = $item->remaining;
-                    $has_procedure->user_id =  \Auth::user()->id;
-                    $has_procedure->save();
-                }
-            }
-        }
-
-        $payment = Payment::where('id',$payment_id)->first();
-        $valor = MatriculationProcedure::select(\DB::raw('sum(value_pay) as paid'))->where(['matriculation_id'=>$matriculation_id,'status'=>1])->first();
-
-        $payment->value_pay = ($valor->paid == null ? 0 : $valor->paid);
-
-        if (Request::wantsJson() && $payment->save()){
-            return ['form'=>'payment'];
-        }else{
-            return redirect('payments');
-        }
-    }
+//    /**
+//     * Update the specified resource in storage.
+//     *
+//     * @param  \Illuminate\Http\Request  $request
+//     * @return \Illuminate\Http\Response
+//     */
+//    public function procedure(\Illuminate\Http\Request $request)
+//    {
+//        $procedures = json_decode($request->procedure);
+//        $matriculation_id = $request->matriculation_id;
+//        $payment_id = $request->payment_id;
+//
+//        if (is_array($procedures)){
+//            foreach ($procedures as $item) {
+//
+//                $has_procedure = MatriculationProcedure::where('id',$item->id)->where('matriculation_id', $matriculation_id)->first();
+//                if($has_procedure){
+//                    $has_procedure->value_pay = doubleval($has_procedure->value_pay + $item->value);
+//                    $has_procedure->remaining = $item->remaining;
+//                    $has_procedure->user_id =  \Auth::user()->id;
+//                    $has_procedure->save();
+//                }
+//            }
+//        }
+//
+//        $payment = Payment::where('id',$payment_id)->first();
+//        $valor = MatriculationProcedure::select(\DB::raw('sum(value_pay) as paid'))->where(['matriculation_id'=>$matriculation_id,'status'=>1])->first();
+//
+//        $payment->value_pay = ($valor->paid == null ? 0 : $valor->paid);
+//
+//        if (Request::wantsJson() && $payment->save()){
+//            return ['form'=>'payment'];
+//        }else{
+//            return redirect('payments');
+//        }
+//    }
     
 }

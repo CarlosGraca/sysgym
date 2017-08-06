@@ -23,7 +23,7 @@
 			<div class="col-md-6 col-sm-6 col-xs-12">
 				<div class="form-group form-group-sm">
 					{!! Form::label('name','(*)'.trans('adminlte_lang::message.name')) !!}
-					{!! Form::text('name', ($type == 'update' ? $company->name : null) , ['class'=>'form-control','required'=>'true']) !!}
+					{!! Form::text('name', ($type == 'update' ? $company->company_name : null) , ['class'=>'form-control','required'=>'true']) !!}
 				</div>
 			</div>
 
@@ -31,20 +31,6 @@
 				<div class="form-group form-group-sm">
 					{!! Form::label('nif','(*)'.trans('adminlte_lang::message.nif')) !!}
 					{!! Form::number('nif', ($type == 'update' ? $company->nif : null) , ['class'=>'form-control','required'=>'true']) !!}
-				</div>
-			</div>
-
-			<div class="col-md-6 col-sm-6 col-xs-12">
-				<div class="form-group form-group-sm">
-					{!! Form::label('owner','(*)'.trans('adminlte_lang::message.owner')) !!}
-					{!! Form::text('owner', ($type == 'update' ? $company->owner : null) , ['class'=>'form-control','required'=>'true']) !!}
-				</div>
-			</div>
-
-			<div class="col-md-6 col-sm-6 col-xs-12">
-				<div class="form-group form-group-sm">
-					{!! Form::label('area','(*)'.trans('adminlte_lang::message.area')) !!}
-					{!! Form::text('area', ($type == 'update' ? $company->area : null) , ['class'=>'form-control','required'=>'true']) !!}
 				</div>
 			</div>
 
@@ -73,10 +59,18 @@
 					{!! Form::text('fax', ($type == 'update' ? $company->fax : null) , ['class'=>'form-control']) !!}
 				</div>
 			</div>
+
 			<div class="col-md-6 col-sm-6 col-xs-12">
 				<div class="form-group form-group-sm">
-					{!! Form::label('address','(*)'.trans('adminlte_lang::message.address')) !!}
-					{!! Form::text('address', ($type == 'update' ? $company->address : null) , ['class'=>'form-control','required'=>'true']) !!}
+					{!! Form::label('address_1','(*)'.trans('adminlte_lang::message.address_1')) !!}
+					{!! Form::text('address_1', ($type == 'update' ? $company->address_1 : null) , ['class'=>'form-control','required'=>'true']) !!}
+				</div>
+			</div>
+
+			<div class="col-md-6 col-sm-6 col-xs-12">
+				<div class="form-group form-group-sm">
+					{!! Form::label('address_2',trans('adminlte_lang::message.address_2')) !!}
+					{!! Form::text('address_2', ($type == 'update' ? $company->address_2 : null) , ['class'=>'form-control']) !!}
 				</div>
 			</div>
 
@@ -84,13 +78,6 @@
 				<div class="form-group form-group-sm">
 					{!! Form::label('city','(*)'.trans('adminlte_lang::message.city') ) !!}
 					{!! Form::text('city', ($type == 'update' ? $company->city : null) , ['class'=>'form-control','required'=>'true']) !!}
-				</div>
-			</div>
-
-			<div class="col-lg-6 col-md-6 col-sm-6">
-				<div class="form-group form-group-sm">
-					{!! Form::label('island','(*)'.trans('adminlte_lang::message.island') ) !!}
-					{!! Form::select('island', $island, ($type == 'update' ? $company->island_id : null) , ['class'=>'form-control','id'=>'island','placeholder'=>' (SELECT ISLAND) ']) !!}
 				</div>
 			</div>
 

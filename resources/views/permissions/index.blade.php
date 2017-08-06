@@ -15,7 +15,7 @@
 @section('main-content')
 	<div class="row">
 	    <div class="col-lg-12">
-	        <div class="box box-default">
+	        <div class="box box-primary">
 	            <div class="box-header with-border">
 	              <h3 class="box-title">{{ trans('adminlte_lang::message.permission_list') }}</h3>
 	              <div class="pull-left box-tools">
@@ -31,7 +31,7 @@
 		                <thead>
 		                  <tr>
 		                    {{--<th style="width: 10px" class="col-md-1">#</th>--}}
-		                    <th class="col-md-3">{{ trans('adminlte_lang::message.name') }}</th>
+		                    <th class="col-md-3">{{ trans('adminlte_lang::message.title') }}</th>
 		                    <th class="col-md-8">{{ trans('adminlte_lang::message.description') }}</th>
 		                    <th class="col-md-1"></th>
 		                  </tr>
@@ -40,8 +40,8 @@
                           @foreach ($permissions as $permission)
                                 <tr data-key="{{ $permission->id }}">
                                     {{--<td>{{ $permission->id }}</td>--}}
-                                    <td class="name">{{ $permission->name }}</td>
-                                    <td class="price">{{ $permission->label }}</td>
+                                    <td>{{ $permission->tenant_menu->menus->title }}</td>
+                                    <td>{{ $permission->label }}</td>
                                     <td>
 										<a href="#disable" style="display: {{ $permission->status == 1 ? 'initial' : 'none' }};" data-toggle="tooltip" id="disable-permission" title="{{ trans('adminlte_lang::message.disable') }}" data-key="{{ $permission->id }}" data-name="{{ $permission->name }}">
 											<i class="fa fa-user-o"></i>

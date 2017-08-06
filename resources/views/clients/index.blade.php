@@ -25,11 +25,11 @@ $status_color = ['danger','success','info'];
 	            <div class="box-header with-border">
 	              <h3 class="box-title">  {{ trans('adminlte_lang::message.clients_list') }} </h3>
 	              <div class="pull-left box-tools">
-                      @can('add_client')
-                          <a href="{{ url('clients/create') }}" class="btn btn-primary btn-sm" role="button" data-toggle="tooltip" title="{{ trans('adminlte_lang::message.new_client') }}">
+                      {{--@can('add_client')--}}
+                          <a href="{{ url('clients/create') }}" class="btn btn-primary btn-sm" data-toggle="tooltip" title="{{ trans('adminlte_lang::message.new_client') }}">
                               <i class="fa fa-plus"></i> {{ trans('adminlte_lang::message.new_client') }}
                           </a>
-                    @endcan
+                    {{--@endcan--}}
 	              </div><!-- /. tools -->
 	            </div><!-- /.box-header -->
 

@@ -143,6 +143,8 @@
         height: 100
     });
 
+    $('#select-2').select2();
+
     var _file_url = '{{ url('files') }}';
 
     //LANGUAGE TRANSLATE
@@ -214,5 +216,6 @@
 <script src="{{ asset('/js/payments.js')}}" type="text/javascript"></script>
 <script src="{{ asset('/js/roles.js')}}" type="text/javascript"></script>
 <script src="{{ asset('/js/permissions.js')}}" type="text/javascript"></script>
+<script src="{{ asset('/js/menus.js')}}" type="text/javascript"></script>
 
 

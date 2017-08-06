@@ -1,88 +1,185 @@
 <div class="row">
 	{!! Form::hidden('branch_id', ($type == 'update' ? $branch->id : null), ['class'=>'form-control','id'=>'branch_id']) !!}
-	{!! Form::hidden('item_id', ($type == 'update' ? $branch->id : null), ['class'=>'form-control','id'=>'item_id']) !!}
-    <div class="col-lg-12 col-md-6 col-sm-6 col-xs-12">
-		<div class="row">
-			<span ><strong class="title">{{ trans('adminlte_lang::message.personal_information') }}</strong></span>
-			<hr class="h-divider" >
+	<span id="last-schedules_id" style="display:none;">{{ $last_schedules != null ? $last_schedules->id : "0"}}</span>
 
-			<div class="col-md-3 col-sm-6 text-center">
-				<img  src="{{ asset(($type == 'update' ? $branch->avatar : 'img/round-logo.jpg')) }}" class="img-thumbnail avatar-branch" alt="Cinque Terre" width="150" height="150">
-				<div style="margin-top: 10px">
-					<div class="col-xs-12 text-center">
-						<div class="form-group" data-type='branch'>
-							{!! Form::file('avatar', '', ['class' =>  'filestyle upload_image','data-input'=>'false', 'data-buttonText'=>'Select Image', 'accept'=>'image/*', 'data-placeholder'=> trans('adminlte_lang::message.browser_avatar') ]) !!}
+    <div class="col-lg-12 col-md-6 col-sm-6 col-xs-12">
+
+		<div class="nav-tabs-custom">
+			<ul class="nav nav-tabs">
+				<li class="active">
+					<a href="#personal_information" data-toggle="tab"><i class="fa fa-address-card-o"></i> {{ trans('adminlte_lang::message.personal_information') }}</a>
+				</li>
+				<li>
+					<a href="#office_hours" data-toggle="tab"><i class="fa fa-clock-o"></i> {{ trans('adminlte_lang::message.office_hours') }}</a>
+				</li>
+			</ul>
+			<div class="tab-content">
+
+				<!-- profile -->
+				<div class="tab-pane active" id="personal_information">
+
+					<div class="row">
+						<span ><strong class="title">{{ trans('adminlte_lang::message.personal_information') }}</strong></span>
+						<hr class="h-divider" >
+
+						<div class="col-md-3 col-sm-6 text-center">
+							<img  src="{{ asset(($type == 'update' ? $branch->avatar : 'img/round-logo.jpg')) }}" class="img-thumbnail avatar-branch" alt="Cinque Terre" width="150" height="150">
+							<div style="margin-top: 10px">
+								<div class="col-xs-12 text-center">
+									<div class="form-group" data-type='branch'>
+										{!! Form::file('avatar', '', ['class' =>  'filestyle upload_image','data-input'=>'false', 'data-buttonText'=>'Select Image', 'accept'=>'image/*', 'data-placeholder'=> trans('adminlte_lang::message.browser_avatar') ]) !!}
+									</div>
+								</div>
+							</div>
 						</div>
+
+						<div class="col-md-9 col-sm-6 col-xs-12">
+							<div class="form-group form-group-sm">
+								{!! Form::label('name','(*) '.trans('adminlte_lang::message.name')) !!}
+								{!! Form::text('name', ($type == 'update' ? $branch->name : null) , ['class'=>'form-control']) !!}
+							</div>
+						</div>
+
+						<div class="col-md-9 col-sm-6 col-xs-12">
+							<div class="form-group form-group-sm">
+								{!! Form::label('manager',trans('adminlte_lang::message.manager')) !!}
+								{!! Form::text('manager', ($type == 'update' ? $branch->manager : null) , ['class'=>'form-control']) !!}
+							</div>
+						</div>
+
+					</div>
+					<div class="row">
+						<span ><strong class="title">{{ trans('adminlte_lang::message.contact_information') }}</strong></span>
+						<hr class="h-divider" >
+
+						<div class="col-md-4 col-sm-6 col-xs-12">
+							<div class="form-group form-group-sm">
+								{!! Form::label('email','(*) '.trans('adminlte_lang::message.email')) !!}
+								{!! Form::email('email', ($type == 'update' ? $branch->email : null), ['class'=>'form-control']) !!}
+							</div>
+						</div>
+
+						<div class="col-md-4 col-sm-6 col-xs-12">
+							<div class="form-group form-group-sm">
+								{!! Form::label('phone','(*) '.trans('adminlte_lang::message.phone')) !!}
+								{!! Form::tel('phone', ($type == 'update' ? $branch->phone : null) , ['class'=>'form-control']) !!}
+							</div>
+						</div>
+
+						<div class="col-md-4 col-sm-6 col-xs-12">
+							<div class="form-group form-group-sm">
+								{!! Form::label('fax',trans('adminlte_lang::message.fax')) !!}
+								{!! Form::text('fax', ($type == 'update' ? $branch->fax : null) , ['class'=>'form-control']) !!}
+							</div>
+						</div>
+						<div class="col-md-4 col-sm-6 col-xs-12">
+							<div class="form-group form-group-sm">
+								{!! Form::label('address','(*) '.trans('adminlte_lang::message.address')) !!}
+								{!! Form::textArea('address', ($type == 'update' ? $branch->address : null) , ['class'=>'form-control']) !!}
+							</div>
+						</div>
+
+						<div class="col-lg-4 col-md-6 col-sm-6">
+							<div class="form-group form-group-sm">
+								{!! Form::label('city','(*) '.trans('adminlte_lang::message.city') ) !!}
+								{!! Form::text('city', ($type == 'update' ? $branch->city : null) , ['class'=>'form-control']) !!}
+							</div>
+						</div>
+
+					</div>
+
+				</div>
+
+				<div class="tab-pane" id="office_hours">
+					<!-- WORK TIME -->
+					<div class="row">
+						{!! Form::hidden('office_hours_id', null, ['class'=>'form-control','id'=>'office_hours_id']) !!}
+						<div class="col-md-4 col-sm-10 col-xs-10">
+							<div class="form-group form-group-sm">
+								{!! Form::label('week_day',trans('adminlte_lang::message.week_day') ) !!}
+								{!! Form::select('week_day', $weeks, ($type == 'update' ? null : null) , ['class'=>'form-control','id'=>'branch_week','placeholder'=>' (SELECT WEEK DAY) ']) !!}
+							</div>
+						</div>
+						<div class="col-md-3 col-sm-12 col-xs-12">
+							<div class="form-group form-group-sm">
+								{!! Form::label('start_time',trans('adminlte_lang::message.start_time') ) !!}
+								{!! Form::time('start_time', ($type == 'update' ? $branch->start_time : null) , ['class'=>'form-control']) !!}
+							</div>
+						</div>
+						<div class="col-md-3 col-sm-12 col-xs-12">
+							<div class="form-group form-group-sm">
+								{!! Form::label('end_time',trans('adminlte_lang::message.end_time') ) !!}
+								{!! Form::time('end_time', ($type == 'update' ? $branch->end_time : null) , ['class'=>'form-control']) !!}
+							</div>
+						</div>
+
+						<div class="col-md-2 col-sm-1 col-xs-2">
+							<div class="form-group form-group-sm">
+								{!! Form::label('add-schedule','ADD',['style'=>'visibility: hidden;'] ) !!}
+								<a href="#!add-schedule" class="btn btn-primary btn-sm" style="display: table;" data-message="NO SCHEDULE TYPED" data-toggle="tooltip" title="{{ trans('adminlte_lang::message.add_schedule') }}" id="add-office_hours" data-action="create">
+									<i class="fa fa-plus"></i>
+								</a>
+							</div>
+						</div>
+
+						{{--<hr class="h-divider" >--}}
+						<div class="col-md-12 col-sm-12 col-xs-12">
+							{{--<span ><strong class="title">{{ trans('adminlte_lang::message.schedule') }}</strong></span>--}}
+
+							<table id="table-office_hours" class="table table-bordered table-striped">
+
+								<thead>
+								<th class="col-md-4">{{ trans('adminlte_lang::message.week_day') }}</th>
+								<th class="col-md-4">{{ trans('adminlte_lang::message.start_time') }}</th>
+								<th class="col-md-2">{{ trans('adminlte_lang::message.end_time') }}</th>
+								<th class="col-md-1 action_button"></th>
+								</thead>
+
+								<tbody>
+								@if(isset($schedules))
+									@foreach($schedules as $schedule)
+										<tr class="office_hours_table" data-key="{{ $schedule->id }}"  data-week="{{ $schedule->week_day }}">
+											<td class="week_name" data-value="{{ $schedule->week_day }}">{{ trans('adminlte_lang::message.'.$schedule->week_day) }}</td>
+											<td class="start_time" >{{ $schedule->start_time }}</td>
+											<td class="end_time" >{{ $schedule->end_time }}</td>
+											<td class="action_button">
+												<a href="#!copy" class="copy_schedule" data-toggle="tooltip" title="{{ trans('adminlte_lang::message.copy') }}"><i class="fa fa-clone"></i></a>
+												<a href="#!edit" class="edit_schedule" data-toggle="tooltip" title="{{ trans('adminlte_lang::message.edit') }}"><i class="fa fa-edit"></i></a>
+												<a href="#!remove" class="remove_schedule" data-toggle="tooltip" title="{{ trans('adminlte_lang::message.remove') }}"><i class="fa fa-trash"></i></a>
+											</td>
+										</tr>
+									@endforeach
+								@endif
+								</tbody>
+							</table>
+
+
+							{{--<div class="box box-default">--}}
+								{{--<div class="box-header with-border">--}}
+									{{--<h3 class="box-title"><i class="fa fa-clock-o"></i> {{ trans('adminlte_lang::message.schedule') }}</h3>--}}
+								{{--</div><!-- /.box-header -->--}}
+
+								{{--<div class="box-body">--}}
+
+								{{--</div>--}}
+							{{--</div>--}}
+						</div>
+
 					</div>
 				</div>
-			</div>
 
-			<div class="col-md-9 col-sm-6 col-xs-12">
-				<div class="form-group form-group-sm">
-					{!! Form::label('name',trans('adminlte_lang::message.name')) !!}
-					{!! Form::text('name', ($type == 'update' ? $branch->name : null) , ['class'=>'form-control']) !!}
-				</div>
-			</div>
-
-			<div class="col-md-9 col-sm-6 col-xs-12">
-				<div class="form-group form-group-sm">
-					{!! Form::label('manager',trans('adminlte_lang::message.manager')) !!}
-					{!! Form::text('manager', ($type == 'update' ? $branch->manager : null) , ['class'=>'form-control']) !!}
-				</div>
-			</div>
-
-		</div>
-		<div class="row">
-			<span ><strong class="title">{{ trans('adminlte_lang::message.contact_information') }}</strong></span>
-			<hr class="h-divider" >
-
-			<div class="col-md-4 col-sm-6 col-xs-12">
-				<div class="form-group form-group-sm">
-					{!! Form::label('email',trans('adminlte_lang::message.email')) !!}
-					{!! Form::email('email', ($type == 'update' ? $branch->email : null), ['class'=>'form-control']) !!}
-				</div>
-			</div>
-
-			<div class="col-md-4 col-sm-6 col-xs-12">
-				<div class="form-group form-group-sm">
-					{!! Form::label('phone',trans('adminlte_lang::message.phone')) !!}
-					{!! Form::tel('phone', ($type == 'update' ? $branch->phone : null) , ['class'=>'form-control']) !!}
-				</div>
-			</div>
-
-			<div class="col-md-4 col-sm-6 col-xs-12">
-				<div class="form-group form-group-sm">
-					{!! Form::label('fax',trans('adminlte_lang::message.fax')) !!}
-					{!! Form::text('fax', ($type == 'update' ? $branch->fax : null) , ['class'=>'form-control']) !!}
-				</div>
-			</div>
-			<div class="col-md-4 col-sm-6 col-xs-12">
-				<div class="form-group form-group-sm">
-					{!! Form::label('address',trans('adminlte_lang::message.address')) !!}
-					{!! Form::textArea('address', ($type == 'update' ? $branch->address : null) , ['class'=>'form-control']) !!}
-				</div>
-			</div>
-
-			<div class="col-lg-4 col-md-6 col-sm-6">
-				<div class="form-group form-group-sm">
-					{!! Form::label('city',trans('adminlte_lang::message.city') ) !!}
-					{!! Form::text('city', ($type == 'update' ? $branch->city : null) , ['class'=>'form-control']) !!}
-				</div>
-			</div>
-
-			<div class="col-lg-4 col-md-6 col-sm-6">
-				<div class="form-group form-group-sm">
-					{!! Form::label('island',trans('adminlte_lang::message.island') ) !!}
-					{!! Form::select('island', $island, ($type == 'update' ? $branch->island_id : null) , ['class'=>'form-control','id'=>'island','placeholder'=>' (SELECT ISLAND) ']) !!}
-				</div>
 			</div>
 
 		</div>
 
 
-		<!-- WORK TIME -->
-		@include('schedules.form',['schedules'=>(isset($schedules) ? $schedules : null),'last_schedules'=>(isset($last_schedules) ? $last_schedules : null),'weeks'=>$weeks,'flag'=>1])
 
-	</div>
 
+
+
+
+
+		</div>
+
+	</div>	
 </div>

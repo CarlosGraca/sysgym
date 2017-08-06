@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Island;
+//use App\Island;
 use Illuminate\Support\Facades\DB;
 
 use App\Http\Requests\CompanyRequest;
@@ -110,23 +110,23 @@ class CompanyController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  Company  $company
+     * @param  Tenant  $company
      * @return \Illuminate\Http\Response
      */
-    public function edit(Company $company)
+    public function edit(Tenant $company)
     {
-        $island = Island::pluck('name','id');
-        return view('company.edit',compact('company','island'));
+//        $island = Island::pluck('name','id');
+        return view('company.edit',compact('company'));
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \App\Http\Requests\CompanyRequest  $request
-     * @param  Company  $company
+     * @param  Tenant  $company
      * @return \Illuminate\Http\Response
      */
-    public function update(CompanyRequest $request, Company $company)
+    public function update(CompanyRequest $request, Tenant $company)
     {
         $company->name = $request->name;
         $company->email = $request->email;

@@ -143,6 +143,8 @@
         height: 100
     });
 
+    $('#select-2').select2();
+
     var _file_url = '<?php echo e(url('files')); ?>';
 
     //LANGUAGE TRANSLATE
@@ -214,5 +216,6 @@
 <script src="<?php echo e(asset('/js/payments.js')); ?>" type="text/javascript"></script>
 <script src="<?php echo e(asset('/js/roles.js')); ?>" type="text/javascript"></script>
 <script src="<?php echo e(asset('/js/permissions.js')); ?>" type="text/javascript"></script>
+<script src="<?php echo e(asset('/js/menus.js')); ?>" type="text/javascript"></script>
 
 

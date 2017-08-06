@@ -135,7 +135,7 @@
 
 
                 <li class="user user-menu">
-                  <a href="<?php echo e(url('auth/profile')); ?>" data-toggle="tooltip" title="<?php echo e(trans('adminlte_lang::message.profile')); ?>">
+                  <a href="<?php echo e(url('accounts')); ?>" data-toggle="tooltip" title="<?php echo e(trans('adminlte_lang::message.profile')); ?>">
                     <img  src="<?php echo e(url('/')); ?>/<?php echo e(Auth::user()->avatar); ?>" class="user-image" alt="Cinque Terre" >
                               <!-- hidden-xs hides the username on small devices so only the image appears. -->
                     <span class="hidden-xs"><span class="user-name"><?php echo e(Auth::user()->name); ?></span> | <?php echo e(Auth::user()->role->display_name); ?></span>

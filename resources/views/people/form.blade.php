@@ -97,14 +97,6 @@
 
     <div class="col-lg-3 col-md-4 col-sm-6">
         <div class="form-group form-group-sm">
-            {!! Form::label('island_id','(*) '.trans('adminlte_lang::message.island') ) !!}
-            {!! Form::select('island_id', $island, ($type == 'update' ? $people->island_id : null) , ['class'=>'form-control','id'=>'island_id','placeholder' => ' (SELECT ISLAND) ']) !!}
-            <p class="has-error" style="display: none"></p>
-        </div>
-    </div>
-
-    <div class="col-lg-3 col-md-4 col-sm-6">
-        <div class="form-group form-group-sm">
             {!! Form::label('email',trans('adminlte_lang::message.email') ) !!}
             {!! Form::email('email', ($type == 'update' ? $people->email : null) , ['class'=>'form-control']) !!}
         </div>
@@ -145,18 +137,11 @@
         </div>
     </div>
 
-    <div class="col-lg-9 col-md-8 col-sm-12">
+    <div class="col-lg-12 col-md-12 col-sm-12">
         <div class="form-group form-group-sm">
             {!! Form::label('note',trans('adminlte_lang::message.note') ) !!}
             {!! Form::textarea('note', ($type == 'update' ? $people->note : null) , ['class'=>'form-control']) !!}
         </div>
     </div>
-
-    {{--<div class="col-lg-3 col-md-4 col-sm-6">--}}
-        {{--<div class="form-group form-group-sm">--}}
-            {{--{!! Form::label('has_secure',trans('adminlte_lang::message.has_secure') ) !!}--}}
-            {{--{!! Form::select('has_secure',[0 =>trans('adminlte_lang::message.not'), 1 =>trans('adminlte_lang::message.yes') ], ($type == 'update' ? $people->has_secure : null) , ['class'=>'form-control','id'=>'has_secure']) !!}--}}
-        {{--</div>--}}
-    {{--</div>--}}
 
 </div>

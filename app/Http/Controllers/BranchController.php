@@ -2,10 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Branch;
-use App\Company;
-use App\Island;
-use App\Schedule;
+use App\Models\Branch;
+use App\Models\Tenant;
+use App\Models\Schedule;
 use Illuminate\Support\Facades\Auth;
 use Request;
 use Image;
@@ -47,11 +46,9 @@ class BranchController extends Controller
     public function create()
     {
         $defaults = new Defaults();
-        $island = Island::pluck('name','id');
         $weeks = $defaults->getWeeks();
         $last_schedules = Schedule::select(['id'])->orderby('id','desc')->first();
-
-        return view('branches.create',compact('island','weeks','last_schedules'));
+        return view('branches.create',compact('weeks','last_schedules'));
     }
 
     /**
@@ -62,7 +59,7 @@ class BranchController extends Controller
      */
     public function store(BranchRequest $request)
     {
-        $company = Company::All()->first();
+        $company = Tenant::where('id',\Auth::user()->tenant_id)->first();
         $branch = new Branch();
         $branch->name = $request->name;
         $branch->email = $request->email;
@@ -70,9 +67,8 @@ class BranchController extends Controller
         $branch->phone = $request->phone;
         $branch->fax = $request->fax;
         $branch->manager = $request->manager;
-        $branch->island_id = $request->island;
         $branch->city = $request->city;
-        $branch->company_id = $company->id;
+        $branch->tenant_id = $company->id;
         $branch->user_id = Auth::user()->id;
 
         if ($request->hasFile('avatar')){
@@ -107,7 +103,7 @@ class BranchController extends Controller
         $schedules = Schedule::select( \DB::raw("week_day, start_time, end_time") )->where(['item_id'=>$branch->id,'status'=>1,'flag'=>1])
             ->orderby( \DB::raw(" field(week_day,'monday','tuesday','wednesday','thursday','friday','saturday','sunday'), start_time") )->get();
         //ORDER BY FIELD(<fieldname>, 'MONDAY', 'TUESDAY', 'WEDNESDAY', 'THURSDAY', 'FRIDAY', 'SATURDAY', 'SUNDAY');
-        $company = Company::all()->first();
+        $company = Tenant::where('id',\Auth::user()->tenant_id)->first();
 
         $schedule_order = $schedules->toArray();
 
@@ -140,7 +136,7 @@ class BranchController extends Controller
     {
         $defaults = new Defaults();
         $weeks = $defaults->getWeeks();
-        $island = Island::pluck('name','id');
+
         $schedules = Schedule::where(['item_id'=>$branch->id,'status'=>1,'flag'=>1])
             ->orderby( \DB::raw(" field(week_day,'monday','tuesday','wednesday','thursday','friday','saturday','sunday'), start_time ") )->get();
         //ORDER BY FIELD(<fieldname>, 'MONDAY', 'TUESDAY', 'WEDNESDAY', 'THURSDAY', 'FRIDAY', 'SATURDAY', 'SUNDAY');
@@ -166,7 +162,6 @@ class BranchController extends Controller
         $branch->phone = $request->phone;
         $branch->fax = $request->fax;
         $branch->manager = $request->manager;
-        $branch->island_id = $request->island;
         $branch->city = $request->city;
         $branch->user_id = Auth::user()->id;
 

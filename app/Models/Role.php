@@ -2,17 +2,20 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\SoftDeletes;
 
  class Role extends Model{
-  protected $fillable = [
+
+    protected $table = 'roles';
+    protected $fillable = [
     'name',
     'display_name',
     'description',
-  ];
+    'status',
+    ];
 
-  protected $rules = [
+    protected $rules = [
     'name'      => 'required|unique:roles',
     'display_name'      => 'required|unique:roles',
-  ];
+    ];
+
 }

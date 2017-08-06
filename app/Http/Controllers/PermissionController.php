@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\PermissionRequest;
-use App\Permission;
+use App\Models\Permission;
 //use Illuminate\Http\Request;
 use Request;
 

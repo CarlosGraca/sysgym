@@ -48,6 +48,10 @@ class User extends Authenticatable
         return $this->belongsTo('App\Models\Role','role_id','id');
     }
 
+    public function branch_default(){
+        return $this->belongsTo('App\Models\Branch','branch_default_id','id');
+    }
+
    /* public function hasRole($role){
         if(is_string($role)){
             return $this->roles->contains('name',$role);

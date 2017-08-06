@@ -25,11 +25,11 @@ $status_color = ['danger','success','info'];
 	            <div class="box-header with-border">
 	              <h3 class="box-title">{{ trans('adminlte_lang::message.role_list') }}</h3>
 	              <div class="pull-left box-tools">
-					  @can('add_role')
+					  {{--@can('add_role')--}}
 						  <a href="{{ url('roles/create') }}" class="btn btn-primary btn-sm" role="button" data-toggle="tooltip" title="{{ trans('adminlte_lang::message.new_role') }}">
 							   <i class="fa fa-plus"></i> {{ trans('adminlte_lang::message.new_role') }}
 						  </a>
-					  @endcan
+					  {{--@endcan--}}
 
 	              </div><!-- /. tools -->
 	            </div><!-- /.box-header -->
@@ -45,35 +45,26 @@ $status_color = ['danger','success','info'];
 		                  </tr>
 		                </thead>
 		                <tbody class="roles_table">
-                          @foreach ($roles as $role)
-							  <tr data-key="{{ $role->id }}" class="bg-{{ $status_color[$role->status] }}">
+							{{--{{ $roles }}--}}
+
+                          	@foreach ($roles as $role)
+							  <tr data-key="{{ $role->id }}">
 							  {{--<td>{{ $role->id }}</td>--}}
-                                    <td class="name">{{ $role->name }}</td>
-                                    <td class="price">{{ $role->label }}</td>
+                                    <td>{{ $role->display_name }}</td>
+                                    <td>{{ $role->description }}</td>
                                     <td>
-										@can('view_role')
+										{{--@can('view_role')--}}
 											<a href="{{ route('roles.show',$role->id) }}"  data-toggle="tooltip" title="{{ trans('adminlte_lang::message.view') }}">
 												<i class="fa fa-eye"></i>
 											</a>
-										@endcan
+										{{--@endcan--}}
 
-										@can('edit_role')
+{{--										@can('edit_role')--}}
 											<a href="{{ route('roles.edit',$role->id) }}"  data-toggle="tooltip" title="{{ trans('adminlte_lang::message.edit') }}" id="edit-role">
 												<i class="fa fa-edit"></i>
 											</a>
-										@endcan
+										{{--@endcan--}}
 
-										@can('disable_role')
-										<a href="#disable" style="display: {{ $role->status == 1 ? 'initial' : 'none' }};" data-toggle="tooltip" id="disable-role" title="{{ trans('adminlte_lang::message.disable') }}" data-key="{{ $role->id }}" data-name="{{ $role->name }}">
-											<i class="fa fa-user-o"></i>
-										</a>
-										@endcan
-
-										@can('enable_role')
-										<a href="#enable" style="display: {{ $role->status == 0 ? 'initial' : 'none' }};" data-toggle="tooltip" id="enable-role" title="{{ trans('adminlte_lang::message.enable') }}" data-key="{{ $role->id }}" data-name="{{ $role->name }}">
-											<i class="fa fa-user"></i>
-										</a>
-										@endcan
                                     </td>
                                 </tr>
                             @endforeach

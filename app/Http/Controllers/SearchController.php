@@ -45,6 +45,18 @@ class SearchController extends Controller
                     ->where('name', 'LIKE', '%'.$term.'%')
                     ->take(5)->get();
                 break;
+            case 'menu':
+                $queries = DB::table('menus')
+                    ->where('title', 'LIKE', '%'.$term.'%')
+                    ->take(5)->get();
+
+                foreach ($queries as $query)
+                {
+                    $results[] = [ 'id' => $query->id, 'value' => $query->title];
+                }
+                return Response::json($results);
+
+                break;
         }
 
         foreach ($queries as $query)

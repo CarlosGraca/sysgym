@@ -186,7 +186,7 @@
 
 
                 <li class="user user-menu">
-                  <a href="{{ url('auth/profile') }}" data-toggle="tooltip" title="{{ trans('adminlte_lang::message.profile') }}">
+                  <a href="{{ url('accounts') }}" data-toggle="tooltip" title="{{ trans('adminlte_lang::message.profile') }}">
                     <img  src="{{ url('/') }}/{{Auth::user()->avatar}}" class="user-image" alt="Cinque Terre" >
                               <!-- hidden-xs hides the username on small devices so only the image appears. -->
                     <span class="hidden-xs"><span class="user-name">{{ Auth::user()->name }}</span> | {{  Auth::user()->role->display_name }}</span>
