@@ -4,7 +4,7 @@
     {!! Form::hidden('avatar_crop', null , ['class'=>'form-control','id'=>'avatar_crop']) !!}
 
 	<div class="col-lg-3 col-md-6 col-sm-6 col-xs-12 text-center">
-		<span ><strong class="title" style="text-align: left;">{{ trans('adminlte_lang::message.user_image') }}</strong></span>
+		<span ><strong class="title" style="text-align: left;">{{ trans('adminlte_lang::message.avatar') }}</strong></span>
 		<hr class="h-divider" >
 		<img  src="{{ asset( ($type == 'update' ? $user->avatar : 'img/avatar.png') ) }}" class="img-thumbnail avatar-crop" alt="Cinque Terre" width="150" height="150">
 		<div style="margin-top: 10px">
@@ -29,7 +29,7 @@
 			<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
 				<div class="form-group form-group-sm">
 					{!! Form::label('email',trans('adminlte_lang::message.email')) !!}
-					{!! Form::email('email', ($type == 'update' ? $user->email : null) , ['class'=>'form-control','required'=>'true', ($type == 'update' ? 'readonly' : '')]) !!}
+					{!! Form::email('email', ($type == 'update' ? $user->email : null) , ['class'=>'form-control','required'=>'true', ($type == 'update' ? ' ' : '')]) !!}
 				</div>
 			</div>
 
@@ -58,5 +58,36 @@
 				</div>
 			@endif
 		</div>
+
+		@if($type == 'update')
+		{{--<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">--}}
+			<div class="row">
+				<span ><strong class="title">{{ trans('adminlte_lang::message.branch_permission') }}</strong></span>
+				<hr class="h-divider">
+
+				{{--{{ $user->branch_permission }}--}}
+				{{--@if(isset($user->company->branch))--}}
+					{{--<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">--}}
+					{{--{{  }}--}}
+					@foreach($user->company->branch->where('institution_type_flag',2) as $branch)
+						<div class="col-lg-2 col-md-2 col-sm-2 col-xs-12">
+							<div class="form-group form-group-sm">
+								{!! Form::checkbox('branches[]',$branch->id, ($type == 'update' ? ( !!count( $user->branch_permission->where('branch_id',$branch->id)->first() ) ) : false)) !!}
+								{!! Form::label('branches',$branch->name) !!}
+							</div>
+						</div>
+						{{--{{ $branch->name }}--}--}}
+
+					@endforeach
+
+				{{--@endif--}}
+				{{--</div>--}}
+
+			</div>
+		{{--</div>--}}
+		@endif
+
 	</div>
+
+
 </div>

@@ -7,24 +7,24 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>{{ trans('adminlte_lang::message.app_name') }}</title>
+    <title><?php echo e(trans('adminlte_lang::message.app_name')); ?></title>
     
     <!-- css -->
-    <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet" type="text/css">
-    <link href="{{ asset('plugins/font-awesome/css/font-awesome.min.css') }}" rel="stylesheet" type="text/css" />
-    <link href="{{ asset('css/nivo-lightbox.css') }}" rel="stylesheet" />
-    <link href="{{ asset('css/nivo-lightbox-theme/default/default.css') }}" rel="stylesheet" type="text/css" />
+    <link href="<?php echo e(asset('css/bootstrap.min.css')); ?>" rel="stylesheet" type="text/css">
+    <link href="<?php echo e(asset('plugins/font-awesome/css/font-awesome.min.css')); ?>" rel="stylesheet" type="text/css" />
+    <link href="<?php echo e(asset('css/nivo-lightbox.css')); ?>" rel="stylesheet" />
+    <link href="<?php echo e(asset('css/nivo-lightbox-theme/default/default.css')); ?>" rel="stylesheet" type="text/css" />
 
-    <link href="{{ asset('css/animate.css') }}" rel="stylesheet" />
+    <link href="<?php echo e(asset('css/animate.css')); ?>" rel="stylesheet" />
 
-    <link href="{{ asset('css/prettyPhoto.css') }}" rel="stylesheet">
+    <link href="<?php echo e(asset('css/prettyPhoto.css')); ?>" rel="stylesheet">
 
-    <link href="{{ asset('css/style.css') }}" rel="stylesheet">
-    <link href="{{ asset('css/style2.css') }}" rel="stylesheet">
+    <link href="<?php echo e(asset('css/style.css')); ?>" rel="stylesheet">
+    <link href="<?php echo e(asset('css/style2.css')); ?>" rel="stylesheet">
 
 
     <!-- template skin -->
-    <link id="t-colors" href="{{ asset('color/default.css') }}" rel="stylesheet">
+    <link id="t-colors" href="<?php echo e(asset('color/default.css')); ?>" rel="stylesheet">
     
     <!-- =======================================================
         Theme Name: Appland
@@ -62,7 +62,7 @@
         <div class="container">
             <div class="row">
                     <div class="site-logo">
-                        <a href="/" class="brand">{{ trans('adminlte_lang::message.app_name') }}</a>
+                        <a href="/" class="brand"><?php echo e(trans('adminlte_lang::message.app_name')); ?></a>
                     </div>
 
                     <!-- Brand and toggle get grouped for better mobile display -->
@@ -79,13 +79,13 @@
                               <li><a href="#content1">Recurso</a></li>
                               <li><a href="#portfolio">Plano e Preço</a></li>                                 
                               <li><a href="#contact">Contato</a></li>
-                               @if (Auth::guest())
-                                    <li class="login"><a href="{{ url('/login') }}"><i class="fa fa-sign-in" aria-hidden="true"></i>
-                                    {{ trans('adminlte_lang::message.login') }}</a></li>
-                                    <li><a href="{{ url('/auth/register') }}">{{ trans('adminlte_lang::message.register') }}</a></li>
-                                @else
-                                    <li class="login"><a href="/home">{{ Auth::user()->name }}</a></li>
-                                @endif
+                               <?php if(Auth::guest()): ?>
+                                    <li class="login"><a href="<?php echo e(url('/login')); ?>"><i class="fa fa-sign-in" aria-hidden="true"></i>
+                                    <?php echo e(trans('adminlte_lang::message.login')); ?></a></li>
+                                    <li><a href="<?php echo e(url('/auth/register')); ?>"><?php echo e(trans('adminlte_lang::message.register')); ?></a></li>
+                                <?php else: ?>
+                                    <li class="login"><a href="/home"><?php echo e(Auth::user()->name); ?></a></li>
+                                <?php endif; ?>
                         </ul>
                     </div>
                     <!-- /.Navbar-collapse -->       
@@ -436,7 +436,7 @@
                     <div class="text-center">
                         <a href="#home" class="scrollup"><i class="fa fa-angle-up fa-3x"></i></a>
                     </div>
-                    &copy; {{ trans('adminlte_lang::message.app_name') }}. All Rights Reserved.
+                    &copy; <?php echo e(trans('adminlte_lang::message.app_name')); ?>. All Rights Reserved.
                     <div class="credits">
                         <!-- 
                             All the links in the footer should remain intact. 
