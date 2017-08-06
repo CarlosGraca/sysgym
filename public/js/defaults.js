@@ -93,13 +93,22 @@ $(function () {
     });
 
 
-    var url = window.location;
-
     var element = $('.sidebar-menu > li > a').filter(function () {
         return this.href == url.href || url.href.indexOf(this.href) == 0;
     }).addClass('active').parent();
     if (element.is('li')) {
         element.addClass('active');
+    }
+
+    if (element[0] == undefined){
+
+        var element = $('.sidebar-menu > li.treeview > ul.treeview-menu > li > a').filter(function () {
+            return this.href == url.href || url.href.indexOf(this.href) == 0;
+        }).parent().addClass('active');
+        if (element.is('li')) {
+            element.parent().parent().addClass('active');
+        }
+
     }
 
     $(document).ajaxStart(function () {
@@ -413,32 +422,6 @@ function save(_form,_form_data,form_type) {
                         $('#edit-modalities').css('display','none');
                     }
                     break;
-                // case 'secure_comparticipation':
-                //     $('#add-secure_comparticipation').css('display','none');
-                //     $('#edit-secure_comparticipation').css('display','none');
-                //     break;
-                // case 'consult_agenda':
-                //     //$('#modal').find('#add-consult_agenda').css('display','none');
-                //     //$('#modal').find('#edit-consult_agenda').css('display','none');
-                //     // $('#modal').modal('hide');
-                //     if(data.type != 'error'){
-                //
-                //         if(form_type=='create'){
-                //             $('#add-consult_agenda').css('display', 'none');
-                //         }else{
-                //             $('#edit-consult_agenda').css('display', 'none');
-                //         }
-                //
-                //         field_status_change('disable',_form);
-                //         $('#edit-consult_agenda-button').removeAttr('style');
-                //
-                //         $('#calendar').fullCalendar('refetchEvents');
-                //         $('#consult_confirm').load('confirm_list');
-                //         $('#consult_cancel').load('cancel_list');
-                //     }
-                //
-                //
-                //     break;
 
                 case 'license_generator':
                     field_status_change('disable',_form);
@@ -462,6 +445,80 @@ function save(_form,_form_data,form_type) {
                         p.addClass('progress-bar-danger');
                     }
 
+                    break;
+
+                case 'backup':
+                    if(data.type === 'success') {
+                        // backup_table_data(data.values);
+                        // $('#modal-md').modal('hide');
+
+                        if($('#backup-upload-message').hasClass('callout-danger'))
+                            $('#backup-upload-message').removeClass('callout-danger');
+
+                        $('#backup-upload-message').addClass('callout-success');
+                        $('#backup-upload-message').find('#message').text(data.message);
+                        $('#backup-upload-message').show();
+
+                        // $('#backup-upload-message').fadeOut(5000);
+
+                        // location.reload();
+                        $('#backup-list').load('backups_list');
+                    }else {
+                        var p = $('.progress').find('.progress-bar');
+                        p.removeClass('active');
+                        p.removeClass('progress-bar-striped');
+                        p.addClass('progress-bar-danger');
+
+                        if($('#backup-upload-message').hasClass('callout-success'))
+                            $('#backup-upload-message').removeClass('callout-success');
+
+                        $('#backup-upload-message').addClass('callout-danger');
+                        $('#backup-upload-message').find('#message').text(data.message);
+                        $('#backup-upload-message').show();
+
+                        // $('#backup-upload-message').fadeOut(5000);
+                    }
+
+                    break;
+
+                case 'profile':
+                    if(data.type == 'success') {
+                        if (form_type == 'update'){
+                            field_status_change('disable', _form);
+                            $('#edit-accounts-profile-button').removeAttr('style');
+                            $('#update-accounts-profile').css('display', 'none');
+                            reloadPage();
+                        }
+                    }
+                    break;
+
+                case 'accounts-setting':
+                    if(data.type == 'success') {
+                        if (form_type == 'update'){
+                            field_status_change('disable', _form);
+                            $('#edit-accounts-setting-button').removeAttr('style');
+                            $('#update-accounts-setting').css('display', 'none');
+                            reloadPage();
+                        }
+                    }
+                    break;
+
+                case 'password':
+                    if(data.type == 'success') {
+                        if (form_type == 'update'){
+                            _form.trigger('reset');
+
+                            bootbox.alert({
+                                title: 'Password Change',
+                                message: data.change_password_message,
+                                size: 'small',
+                                callback: function () {
+                                    window.location = data.url;
+                                }
+                            });
+
+                        }
+                    }
                     break;
 
             }
@@ -523,7 +580,6 @@ function change_status(_id, _type, _name_item, _tr, url, _tr_class, _form) {
     bootbox.confirm({
         title: ' <i> ' + _type.toUpperCase() + ' '+_form.toUpperCase()+ ' <strong>'+ _name_item.toUpperCase() + '</strong></i> ?',
         message: _confirm_alert_text,
-        //size: 'small',
         buttons: {
             confirm: {
                 label: _yes_text,
@@ -657,6 +713,14 @@ function reloadPage() {
     });
 }
 
+function get_row_sum_total_value(_table_id,_row_class,_column_class) {
+    var total = 0;
+    $(_table_id).find(_row_class).each(function () {
+        total += parseFloat($(this).find(_column_class).attr('data-value'));
+    });
+    return total;
+}
+
 //POPOVER
 function setPopOver(field) {
     if(field === 'name'){
@@ -718,6 +782,28 @@ function setPopOver(field) {
             trigger:'click',
             template:'<div class="popover col-md-6"><button type="button" class="close close-popover" data-dismiss="modal" aria-label="Close" style="margin: 5px;"><span aria-hidden="true">×</span></button><div class="arrow"></div><h3 class="popover-title"></h3><div class="popover-content popover-m_modality-discount"></div></div>',
         });
+    }
+
+    if(field === 'branch-select'){
+        $('.branch-select').popover({
+            html:true,
+            content: '',
+            title:'Select Branch',
+            footer:'Footer',
+            placement:'bottom',
+            trigger:'click',
+            template:'<div class="popover col-md-12"><button type="button" class="close close-popover" data-dismiss="modal" aria-label="Close" style="margin: 5px;"><span aria-hidden="true">×</span></button><div class="arrow"></div><h3 class="popover-title"></h3><div class="popover-content popover-branch-select"></div></div>',
+        });
+    }
+}
+
+
+//SCHEDULE SET BUTTON ACTIONS
+function action_button(_action) {
+    if (_action == 'enable'){
+        $('.action_button').css('display','table-cell');
+    }else{
+        $('.action_button').css('display','none');
     }
 }
 
