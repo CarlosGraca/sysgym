@@ -7,7 +7,7 @@
 <body class="hold-transition content-wrapper-login">
     <div class="login-box">
         <div class="login-logo">
-            <a href="<?php echo e(url('/home')); ?>"><b>Sys</b>Gym</a>
+            <a href="<?php echo e(url('/')); ?>"><b>Sys</b>Gym</a>
         </div><!-- /.login-logo -->
 
 

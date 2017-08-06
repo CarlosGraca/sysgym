@@ -32,12 +32,12 @@
                         <table class="table table-hover table-design">
                             <thead>
                             <tr>
-                                <th>Title</th>
-                                <th>Url</th>
-                                <th>Icon</th>
+                                <th><?php echo e(trans('adminlte_lang::message.title')); ?></th>
+                                <th><?php echo e(trans('adminlte_lang::message.url')); ?></th>
+                                <th><?php echo e(trans('adminlte_lang::message.icon')); ?></th>
                                
-                                <th>Order</th>
-                                <th>Estado</th>
+                                <th><?php echo e(trans('adminlte_lang::message.menu_order')); ?></th>
+                                <th><?php echo e(trans('adminlte_lang::message.status')); ?></th>
                                 <th>Ações</th>
                             </tr>
                             </thead>
@@ -56,11 +56,11 @@
                                         <?php endif; ?>
                                     </td>
                                     <td class="actions">
-                                        <a href="<?php echo e(route('menus.edit',$menu->id)); ?>" class="btn btn-primary btn-xs", data-remote='false'])>      <i class="fa fa-edit"></i>
+                                        <a href="<?php echo e(route('menus.edit',$menu->id)); ?>" class="btn btn-primary btn-xs", data-remote='false' title="<?php echo e(trans('adminlte_lang::message.edit')); ?>">      <i class="fa fa-edit" ></i>
+                                        </a>  
+                                        <a href="<?php echo e(route('tenant-menu.create','id='.$menu->id)); ?>" class="btn btn-warning btn-xs", data-remote='false' title="<?php echo e(trans('adminlte_lang::message.associate_tenant')); ?>">      <i class="fa fa-snowflake-o"></i>
                                         </a>                           
-                                         <button type="button" class="btn btn-xs btn-danger btn-flat" data-toggle="modal" data-target="#confirmDelete" data-id="<?php echo e($menu->id); ?>" data-name="<?php echo e($menu->id); ?>" data-title="Confirma Alterar estado Menu" data-url="/menus/" title="Alterar Estado">
-                                            <i class="fa fa-exchange"></i>
-                                        </button> 
+                                       
                                     </td>
                                 </tr>
                              <?php endforeach; $__env->popLoop(); $loop = $__env->getFirstLoop(); ?> 

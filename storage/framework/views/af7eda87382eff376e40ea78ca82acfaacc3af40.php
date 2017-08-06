@@ -1,5 +1,6 @@
 <div class="row">
-	
+	<span ><strong class="title"><?php echo e(trans('adminlte_lang::message.new_menu')); ?></strong></span> 
+	<hr class="h-divider" >
 	<div class="col-lg-3 col-md-4 col-sm-6">
 		<div class="form-group form-group-sm">
 			<?php echo Form::label('title',trans('adminlte_lang::message.title') ); ?>
@@ -53,4 +54,20 @@
 
 		</div>
 	</div>
+</div>
+
+<div class="row">
+	<span ><strong class="title"><?php echo e(trans('adminlte_lang::message.associate_tenant')); ?></strong></span> 
+	<hr class="h-divider" >
+     
+	<div class="col-lg-3 col-md-4 col-sm-6">
+		<div class="form-group form-group-sm">
+			<?php echo Form::label('tenants',trans('adminlte_lang::message.company') ); ?>
+
+			<?php echo Form::select('tenants[]',  [''=>'Escolha a opcão']+ $tenants,null, ['class'=>'form-control select2','multiple'=>true,'style'=>'width: 100%;' ]); ?>
+
+		</div>
+	</div> 
+
+	
 </div>

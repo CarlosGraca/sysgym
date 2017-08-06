@@ -16,6 +16,7 @@
 @section('main-content')
 
 	<div class="row">
+	     {!! Form::model($menu, ['method'=>'PATCH',null,'route'=>['menus.update', $menu->id],'id'=>'menus-form'])!!}
 	    <div class="col-lg-12">
 	        <div class="box box-default">
 	            <div class="box-header with-border">
@@ -28,7 +29,7 @@
 	                       <i class="fa fa-save"></i>
 	                     </a>
 	              </div><!-- /. tools -->
-	              {!! Form::model($menu, ['method'=>'PATCH',null,'route'=>['menus.update', $menu->id],'id'=>'menus-form'])!!}
+	             
 					<div class="pull-right box-tools">
 						<a href="{{ \Illuminate\Support\Facades\URL::previous() }}" class="btn btn-primary btn-sm" role="button" data-toggle="tooltip" title="{{ trans('adminlte_lang::message.back') }}" >
 							 <i class="fa  fa-arrow-left"></i>
@@ -51,8 +52,9 @@
 	                  	@include('menus.form', ['type'=>'create']) 
 					
 				</div>
-				{!! Form::close() !!}
+				
 	        </div>
+	        {!! Form::close() !!}
 	    </div>
 	</div>
 @endsection

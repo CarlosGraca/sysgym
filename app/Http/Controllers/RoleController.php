@@ -30,7 +30,7 @@ class RoleController extends Controller
     public function create()
     {
         //
-        $permissions = Permission::orderby('name')->get();
+        $permissions = Permission::orderby('id')->get();
         return view('roles.create',compact('permissions'));
     }
 

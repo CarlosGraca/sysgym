@@ -18,7 +18,7 @@
 
 	<div class="row">
 	    <div class="col-lg-12">
-	       <?php echo Form::open(['route'=>'menus.store', 'id'=>'menu-form','files'=>true]); ?>
+	        <?php echo Form::open(['route'=>'tenant-menu.store', 'id'=>'menu-form','files'=>true]); ?>
 
 	        <div class="box box-default">
 	            <div class="box-header with-border">
@@ -31,9 +31,9 @@
 	                       <i class="fa fa-save"></i>
 	                     </a>
 	              </div><!-- /. tools -->
-	              
+	             
 					<div class="pull-right box-tools">
-						<a href="<?php echo e(url('menus')); ?>  "" class="btn btn-primary btn-sm" role="button" data-toggle="tooltip" title="<?php echo e(trans('adminlte_lang::message.back')); ?>" >
+						<a href="<?php echo e(url('tenant-menu')); ?>  "" class="btn btn-primary btn-sm" role="button" data-toggle="tooltip" title="<?php echo e(trans('adminlte_lang::message.back')); ?>" >
 							 <i class="fa  fa-arrow-left"></i>
 						</a>
 
@@ -51,7 +51,7 @@
 
 	            <div class="box-body">
 					
-	                  	<?php echo $__env->make('menus.form', ['type'=>'create'], array_except(get_defined_vars(), array('__data', '__path')))->render(); ?> 
+	                  	<?php echo $__env->make('tenant_menu.form', ['type'=>'create'], array_except(get_defined_vars(), array('__data', '__path')))->render(); ?> 
 					
 				</div>
 				

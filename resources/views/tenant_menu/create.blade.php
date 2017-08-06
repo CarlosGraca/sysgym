@@ -17,7 +17,7 @@
 
 	<div class="row">
 	    <div class="col-lg-12">
-	       {!! Form::open(['route'=>'menus.store', 'id'=>'menu-form','files'=>true]) !!}
+	        {!! Form::open(['route'=>'tenant-menu.store', 'id'=>'menu-form','files'=>true]) !!}
 	        <div class="box box-default">
 	            <div class="box-header with-border">
 	              <h3 class="box-title">
@@ -29,9 +29,9 @@
 	                       <i class="fa fa-save"></i>
 	                     </a>
 	              </div><!-- /. tools -->
-	              
+	             
 					<div class="pull-right box-tools">
-						<a href="{{ url('menus') }}  "" class="btn btn-primary btn-sm" role="button" data-toggle="tooltip" title="{{ trans('adminlte_lang::message.back') }}" >
+						<a href="{{ url('tenant-menu') }}  "" class="btn btn-primary btn-sm" role="button" data-toggle="tooltip" title="{{ trans('adminlte_lang::message.back') }}" >
 							 <i class="fa  fa-arrow-left"></i>
 						</a>
 
@@ -49,7 +49,7 @@
 
 	            <div class="box-body">
 					
-	                  	@include('menus.form', ['type'=>'create']) 
+	                  	@include('tenant_menu.form', ['type'=>'create']) 
 					
 				</div>
 				

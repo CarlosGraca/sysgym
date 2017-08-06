@@ -32,12 +32,12 @@
                         <table class="table table-hover table-design">
                             <thead>
                             <tr>
-                                <th>{{ trans('adminlte_lang::message.title') }}</th>
-                                <th>{{ trans('adminlte_lang::message.url') }}</th>
-                                <th>{{ trans('adminlte_lang::message.icon') }}</th>
+                                <th>Title</th>
+                                <th>Url</th>
+                                <th>Icon</th>
                                
-                                <th>{{trans('adminlte_lang::message.menu_order')}}</th>
-                                <th>{{ trans('adminlte_lang::message.status') }}</th>
+                                <th>Order</th>
+                                <th>Estado</th>
                                 <th>Ações</th>
                             </tr>
                             </thead>
@@ -56,13 +56,13 @@
                                         @endif
                                     </td>
                                     <td class="actions">
-                                        <a href="{{ route('menus.edit',$menu->id) }}" class="btn btn-primary btn-xs", data-remote='false' title="{{ trans('adminlte_lang::message.edit') }}">      <i class="fa fa-edit" ></i>
+                                        <a href="{{ route('menus.edit',$menu->id) }}" class="btn btn-primary btn-xs", data-remote='false'])>      <i class="fa fa-edit"></i>
                                         </a>  
-                                        <a href="{{ route('tenant-menu.create','id='.$menu->id) }}" class="btn btn-warning btn-xs", data-remote='false' title="{{ trans('adminlte_lang::message.associate_tenant') }}">      <i class="fa fa-snowflake-o"></i>
+                                        <a href="{{ route('tenant-menu.create','id='.$menu->id) }}" class="btn btn-warning btn-xs", data-remote='false'])>      <i class="fa-snowflake-o"></i>
                                         </a>                           
-                                       {{--   <button type="button" class="btn btn-xs btn-danger btn-flat" data-toggle="modal" data-target="#confirmDelete" data-id="{{ $menu->id }}" data-name="{{ $menu->id }}" data-title="Confirma Alterar estado Menu" data-url="/menus" title="{{ trans('adminlte_lang::message.alter_status') }}">
+                                         <button type="button" class="btn btn-xs btn-danger btn-flat" data-toggle="modal" data-target="#confirmDelete" data-id="{{ $menu->id }}" data-name="{{ $menu->id }}" data-title="Confirma Alterar estado Menu" data-url="/menus" title="Alterar Estado">
                                             <i class="fa fa-exchange"></i>
-                                        </button>  --}}
+                                        </button> 
                                     </td>
                                 </tr>
                              @endforeach 

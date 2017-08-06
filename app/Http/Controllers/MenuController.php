@@ -6,8 +6,10 @@ use App\Http\Requests\MenuRequest;
 
 use App\Models\Menu;
 use App\Models\Domain;
-
+use App\Models\Tenant;
+use App\Models\TenantMenu;
 use Request;
+use Input;
 
 class MenuController extends Controller
 {
@@ -27,7 +29,7 @@ class MenuController extends Controller
      */
     public function index()
     {
-        $menus = Menu::orderby('menu_order','asc')->orderby('parent_id','asc')->get();//->latest()->paginate(10);
+        $menus = Menu::orderby('parent_id','asc')->orderby('menu_order','asc')->get();//->latest()->paginate(10);
 	    return view('menus.index', compact('menus'));
     }
 
@@ -38,9 +40,10 @@ class MenuController extends Controller
      */
     public function create()
     {
+        $tenants = Tenant::pluck('company_name','id')->all();
         $status = Domain::where('dominio','STATUS')->pluck('significado','codigo')->all();    
         $menu_parents = Menu::where('parent_id',0)->pluck('title','id')->all();
-        return view('menus.create',compact('menu_parents','status'));
+        return view('menus.create',compact('menu_parents','status','tenants'));
     }
 
     /**
@@ -53,6 +56,14 @@ class MenuController extends Controller
     {   
        
         $menu = Menu::create($request->all());
+
+        foreach(Input::get('tenants') as $selected_id){
+            $tenant_menu= new TenantMenu;
+            $tenant_menu->tenant_id=$selected_id;
+            $tenant_menu->menu_id=$menu->id;
+            $tenant_menu->save();
+        }
+
         session()->flash('flash_message','Menu was stored with success');
 
         if (Request::wantsJson()){
@@ -81,9 +92,10 @@ class MenuController extends Controller
      */
     public function edit(Menu $menu)
     {
+        $tenants = Tenant::pluck('company_name','id')->all();
         $status = Domain::where('dominio','STATUS')->pluck('significado','codigo')->all();    
         $menu_parents = Menu::where('parent_id',0)->pluck('title','id')->all();
-        return view('menus.edit',compact('menu','menu_parents','status'));
+        return view('menus.edit',compact('menu','menu_parents','status','tenants'));
     }
 
     /**
@@ -122,6 +134,10 @@ class MenuController extends Controller
         }else{
             return redirect('menus');
         }
+    }
+
+    public function tenant_menu($menu){
+        
     }
 
 }

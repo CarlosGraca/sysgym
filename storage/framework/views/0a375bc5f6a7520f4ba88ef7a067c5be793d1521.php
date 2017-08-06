@@ -26,12 +26,12 @@ $status_color = ['danger','success','info'];
 	            <div class="box-header with-border">
 	              <h3 class="box-title"><?php echo e(trans('adminlte_lang::message.role_list')); ?></h3>
 	              <div class="pull-left box-tools">
-					  <?php if (app('Illuminate\Contracts\Auth\Access\Gate')->check('add_role')): ?>
+					 
 						  <a href="<?php echo e(url('roles/create')); ?>" class="btn btn-primary btn-sm" role="button" data-toggle="tooltip" title="<?php echo e(trans('adminlte_lang::message.new_role')); ?>">
 							   <i class="fa fa-plus"></i> <?php echo e(trans('adminlte_lang::message.new_role')); ?>
 
 						  </a>
-					  <?php endif; ?>
+					  
 
 	              </div><!-- /. tools -->
 	            </div><!-- /.box-header -->
@@ -48,10 +48,10 @@ $status_color = ['danger','success','info'];
 		                </thead>
 		                <tbody class="roles_table">
                           <?php $__currentLoopData = $roles; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $role): $__env->incrementLoopIndices(); $loop = $__env->getFirstLoop(); ?>
-							  <tr data-key="<?php echo e($role->id); ?>" class="bg-<?php echo e($status_color[$role->status]); ?>">
+							  <tr data-key="<?php echo e($role->id); ?>" class="bg-">
 							  
                                     <td class="name"><?php echo e($role->name); ?></td>
-                                    <td class="price"><?php echo e($role->label); ?></td>
+                                    <td class="price"><?php echo e($role->display_name); ?></td>
                                     <td>
 										<?php if (app('Illuminate\Contracts\Auth\Access\Gate')->check('view_role')): ?>
 											<a href="<?php echo e(route('roles.show',$role->id)); ?>"  data-toggle="tooltip" title="<?php echo e(trans('adminlte_lang::message.view')); ?>">
@@ -76,7 +76,7 @@ $status_color = ['danger','success','info'];
 											<i class="fa fa-user"></i>
 										</a>
 										<?php endif; ?>
-                                    </td>
+                                    </td> 
                                 </tr>
                             <?php endforeach; $__env->popLoop(); $loop = $__env->getFirstLoop(); ?>
 		                <tbody>

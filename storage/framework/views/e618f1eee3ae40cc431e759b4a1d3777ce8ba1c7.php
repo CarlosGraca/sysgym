@@ -13,7 +13,7 @@
 
 
 <?php $__env->startSection('main-content'); ?>
-    
+     <?php echo $__env->make('layouts.shared.alert', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?> 
 	<div class="row">
 	    <div class="col-lg-12">
 	        <div class="box box-primary">

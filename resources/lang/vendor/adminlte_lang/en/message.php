@@ -12,8 +12,12 @@ return [
     | these language lines according to your application's requirements.
     |
     */
+    'alter_status'=>'Alter Status',
+    'associate_tenant'=>'Associate to companies',
+    'edit'                   => 'Edit',
     'title'                   => 'Title',
     'parent'                  => 'Parent',
+    'menu'                    => 'menu',
     'url'                     => 'URL',
     'menu_order'              => 'Menu Order',
     'icon'                    => 'ICON',

@@ -11,20 +11,20 @@
     
     <!-- css -->
     <link href="<?php echo e(asset('css/bootstrap.min.css')); ?>" rel="stylesheet" type="text/css">
-    <link href="<?php echo e(asset('plugins/font-awesome/css/font-awesome.min.css')); ?>"" rel="stylesheet" type="text/css" />
-    <link href="<?php echo e(asset('css/nivo-lightbox.css')); ?>"" rel="stylesheet" />
-    <link href="<?php echo e(asset('css/nivo-lightbox-theme/default/default.css')); ?>"" rel="stylesheet" type="text/css" />
+    <link href="<?php echo e(asset('plugins/font-awesome/css/font-awesome.min.css')); ?>" rel="stylesheet" type="text/css" />
+    <link href="<?php echo e(asset('css/nivo-lightbox.css')); ?>" rel="stylesheet" />
+    <link href="<?php echo e(asset('css/nivo-lightbox-theme/default/default.css')); ?>" rel="stylesheet" type="text/css" />
 
-    <link href="<?php echo e(asset('css/animate.css')); ?>"" rel="stylesheet" />
+    <link href="<?php echo e(asset('css/animate.css')); ?>" rel="stylesheet" />
 
-    <link href="<?php echo e(asset('css/prettyPhoto.css')); ?>"" rel="stylesheet"> 
+    <link href="<?php echo e(asset('css/prettyPhoto.css')); ?>" rel="stylesheet">
 
-    <link href="<?php echo e(asset('css/style.css')); ?>"" rel="stylesheet">
-    <link href="<?php echo e(asset('css/style2.css')); ?>"" rel="stylesheet">
+    <link href="<?php echo e(asset('css/style.css')); ?>" rel="stylesheet">
+    <link href="<?php echo e(asset('css/style2.css')); ?>" rel="stylesheet">
 
 
     <!-- template skin -->
-    <link id="t-colors" href="<?php echo e(asset('color/default.css')); ?>"" rel="stylesheet">
+    <link id="t-colors" href="<?php echo e(asset('color/default.css')); ?>" rel="stylesheet">
     
     <!-- =======================================================
         Theme Name: Appland
@@ -62,7 +62,7 @@
         <div class="container">
             <div class="row">
                     <div class="site-logo">
-                        <a href="index.html" class="brand"><?php echo e(trans('adminlte_lang::message.app_name')); ?></a>
+                        <a href="/" class="brand"><?php echo e(trans('adminlte_lang::message.app_name')); ?></a>
                     </div>
 
                     <!-- Brand and toggle get grouped for better mobile display -->
