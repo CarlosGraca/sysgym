@@ -24,7 +24,7 @@
 			<hr class="h-divider" >
 			<div class="col-md-6 col-sm-6 col-xs-12">
 				<div class="form-group form-group-sm">
-					<?php echo Form::label('name','(*)'.trans('adminlte_lang::message.name')); ?>
+					<?php echo Form::label('name','(*)'.trans('adminlte_lang::message.company_name')); ?>
 
 					<?php echo Form::text('name', ($type == 'update' ? $company->company_name : null) , ['class'=>'form-control','required'=>'true']); ?>
 
@@ -47,9 +47,18 @@
 
 			<div class="col-md-6 col-sm-6 col-xs-12">
 				<div class="form-group form-group-sm">
-					<?php echo Form::label('email','(*)'.trans('adminlte_lang::message.email')); ?>
+					<?php echo Form::label('country',trans('adminlte_lang::message.country')); ?>
 
-					<?php echo Form::email('email', ($type == 'update' ? $company->email : null), ['class'=>'form-control','required'=>'true']); ?>
+					<?php echo Form::email('country', ($type == 'update' ? $company->country : null), ['class'=>'form-control']); ?>
+
+				</div>
+			</div>
+
+			<div class="col-md-6 col-sm-6 col-xs-12">
+				<div class="form-group form-group-sm">
+					<?php echo Form::label('state',trans('adminlte_lang::message.state')); ?>
+
+					<?php echo Form::email('state', ($type == 'update' ? $company->state : null), ['class'=>'form-control']); ?>
 
 				</div>
 			</div>

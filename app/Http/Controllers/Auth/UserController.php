@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers\Auth;
 
-use App\Employee;
+//use App\Models\Employee;
 use App\Http\Controllers\Defaults;
 use App\Http\Controllers\SendMailController;
-use App\Role;
+use App\Models\BranchPermission;
+use App\Models\Role;
 use App\User;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
@@ -116,7 +117,7 @@ class UserController extends Controller
     public function edit(User $user)
     {
         //
-        $roles = Role::where('status',1)->pluck('name','id');
+        $roles = Role::pluck('display_name','id');
         return view('users.edit',compact('user','roles'));
     }
 
@@ -130,6 +131,24 @@ class UserController extends Controller
     public function update(Request $request,  User $user)
     {
         $default = new Defaults();
+
+        $branches = $request->get('branches');
+
+        $branchPermission = BranchPermission::where(['user_id'=>$user->id,'tenant_id'=>$user->tenant_id])->get();
+
+//        echo $user->tenant_id;
+//        die();
+
+        if(count($branchPermission) > 0){
+            foreach ($branchPermission as $item) {
+                $item->delete();
+            }
+        }
+        if(count($branches) > 0){
+            foreach ($branches as $branch) {
+                BranchPermission::create(['branch_id'=>$branch,'user_id'=>$user->id,'tenant_id' =>$user->tenant_id]);
+            }
+        }
        
         if ($request->hasFile('avatar')){
 
@@ -148,15 +167,8 @@ class UserController extends Controller
 
         $user->name = $request->name;
         $user->email = $request->email;
+        $user->role_id = $request->role;
 
-        foreach ($user->roles as $r) {
-            $user->detatch($r);
-        }
-
-        $role = Role::where('id',$request->role)->first();
-
-//      if(!$user->hasRole($user))
-        $user->assign($role);
 
         if (\Request::wantsJson() && $user->save()){
             $message = trans('adminlte_lang::message.msg_update_success_user');
@@ -270,6 +282,17 @@ class UserController extends Controller
             $user->save();
             return redirect('home');
         }
+    }
+
+    /**
+     * Setup user password
+     * @return \Illuminate\Http\Response
+     */
+    public function setup_password_skip(){
+        $user = \Auth::user();
+        $user->status = 1;
+        $user->save();
+        return redirect('home');
     }
 
 

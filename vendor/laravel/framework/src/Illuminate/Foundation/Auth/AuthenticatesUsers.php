@@ -114,6 +114,8 @@ trait AuthenticatesUsers
     protected function authenticated(Request $request, $user)
     {
         //
+        $user->branch_id = $user->branch_default_id;
+        $user->save();
     }
 
     /**
@@ -128,7 +130,7 @@ trait AuthenticatesUsers
             ->withInput($request->only($this->username(), 'remember'))
             ->withErrors([
                 $this->username() => Lang::get('auth.failed'),
-            ]);
+            ])->with('email', $request->email);
     }
 
     /**
@@ -149,6 +151,10 @@ trait AuthenticatesUsers
      */
     public function logout(Request $request)
     {
+        $user = $this->guard()->user();
+        $user->branch_id = 0;
+        $user->save();
+        
         $this->guard()->logout();
 
         $request->session()->flush();

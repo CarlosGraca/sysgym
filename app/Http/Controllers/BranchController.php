@@ -68,6 +68,7 @@ class BranchController extends Controller
         $branch->fax = $request->fax;
         $branch->manager = $request->manager;
         $branch->city = $request->city;
+
         $branch->tenant_id = \Auth::user()->tenant_id;
         $branch->user_id = Auth::user()->id;
 
@@ -92,13 +93,13 @@ class BranchController extends Controller
             $system->background_image = config('app.background');
             $system->timezone = config('app.timezone');
             $system->branch_id = $branch->id;
-            $system->tenant_id = \Auth::user()->tentant_id;
+            $system->tenant_id = \Auth::user()->tenant_id;
             $system->save();
 
             $url = route('branches.edit',$branch->id);
 
             $message = trans('adminlte_lang::message.msg_create_success_branches');
-            return ['id'=>$branch->id,'message'=>$message,'form'=>'branches','url'=>$url];
+            return ['id'=>$branch->id,'message'=>$message,'form'=>'branches','url'=>$url,'type'=>'success'];
         }else{
             return redirect('branches');
         }

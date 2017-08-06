@@ -20,19 +20,19 @@
 	        <div class="box box-default">
 	            <div class="box-header with-border">
 	              <h3 class="box-title">
-	              	 <strong>{{ trans('adminlte_lang::message.user') }}: </strong><span>{{ $user->name }}</span>
+					  <a href="{{ url('users') }}" class="btn btn-primary btn-sm" role="button" data-toggle="tooltip" title="{{ trans('adminlte_lang::message.back') }}">
+						  <i class="fa  fa-arrow-left"></i> {{ trans('adminlte_lang::message.back') }}
+					  </a>
+	              	 <strong>{{ trans('adminlte_lang::message.update_user') }} </strong><span>{{ $user->name }}</span>
 	              </h3>
 					<div class="pull-right box-tools">
-						<a href="{{ url('users') }}" class="btn btn-primary btn-sm" role="button" data-toggle="tooltip" title="{{ trans('adminlte_lang::message.back') }}">
-							 <i class="fa  fa-arrow-left"></i>
-						</a>
 
 						<a href="#" class="btn btn-primary btn-sm" role="button" data-toggle="tooltip" title="{{ trans('adminlte_lang::message.save') }}" id="update-user">
-							 <i class="fa fa-save"></i>
+							 <i class="fa fa-save"></i> {{ trans('adminlte_lang::message.save') }}
 						</a>
 
 						<a href="#!" class="btn btn-primary btn-sm" role="button" data-toggle="tooltip" title="{{ trans('adminlte_lang::message.edit') }}" id="edit-user-button" style="display: none;">
-							<i class="fa fa-edit"></i>
+							<i class="fa fa-edit"></i> {{ trans('adminlte_lang::message.edit') }}
 						</a>
 					</div><!-- /. tools -->
 	            </div><!-- /.box-header -->

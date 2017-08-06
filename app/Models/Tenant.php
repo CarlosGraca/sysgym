@@ -11,5 +11,9 @@ class Tenant extends Model
 	use SoftDeletes;
     protected $fillable = ['company_name', 'subdomain_name', 'address_1', 'address_2', 'country', 'country_code', 'state', 'state_code', 'city', 'latitude', 'longitude', 'status_code_id', 'status_date', 'active'
                          ];
+
+    public function branch(){
+        return $this->hasMany('App\Models\Branch');
+    }
 }
 

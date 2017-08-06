@@ -37,22 +37,22 @@
 		        		<div class="col-lg-9">
 		        			<ul class="list-group list-group-unbordered">
 			                    <li class="list-group-item">
-									<i class="fa fa-laptop"></i> <b> {{ trans('adminlte_lang::message.company_name') }}: </b><span class="name">{{$company ? $company->company_name : null}}</span> <a href="#" id='setting-name' title='Edit'> </a>
+									<i class="fa fa-laptop"></i> <b> {{ trans('adminlte_lang::message.company_name') }}: </b><a class="name">{{$company ? $company->company_name : null}}</a>
+			                    </li>
+			                    {{--<li class="list-group-item">--}}
+			                       	{{--<i class="fa fa-envelope"></i> <b> {{ trans('adminlte_lang::message.email') }}: </b> <a> {{$company ? $company->email : null}} </a>--}}
+			                    {{--</li>--}}
+			                    <li class="list-group-item">
+									<i class="fa fa-address-card"></i> <b> {{ trans('adminlte_lang::message.nif') }}: </b><a>{{$company ? $company->nif : null}}</a>
 			                    </li>
 			                    <li class="list-group-item">
-			                       	<i class="fa fa-envelope"></i> <b> {{ trans('adminlte_lang::message.email') }}: </b>{{$company ? $company->email : null}} <a href="#" id='setting-email'>  </a>
+									<i class="fa fa-phone"></i> <b> {{ trans('adminlte_lang::message.contacts') }}: </b><a> {{$company ? $company->phone : null }} / {{$company ? $company->fax : null }}</a>
 			                    </li>
 			                    <li class="list-group-item">
-									<i class="fa fa-address-card"></i> <b> {{ trans('adminlte_lang::message.nif') }}: </b><span class="nif">{{$company ? $company->nif : null}}</span> <a href="#" id='setting-nif' title='Edit'> </a>
-			                    </li>
-			                    <li class="list-group-item">
-									<i class="fa fa-phone"></i> <b> {{ trans('adminlte_lang::message.contacts') }}: </b>{{$company ? $company->phone : null }} / {{$company ? $company->fax : null }}<a href="#" id='setting-contactos'> </a>
-			                    </li>
-			                    <li class="list-group-item">
-									<i class="fa fa-map-marker"></i> <b> {{ trans('adminlte_lang::message.address') }}: </b>{{$company ? $company->address : null}} | <b> {{ trans('adminlte_lang::message.city') }}: </b> {{$company ? $company->city : null}}
+									<i class="fa fa-map-marker"></i> <b> {{ trans('adminlte_lang::message.address') }}: </b> <a> {{$company ? $company->address_1 : null}} , {{$company ? $company->city : null}}, {{$company ? $company->country : null}}</a>
 			                    </li>
 								<li class="list-group-item">
-									<i class="fa fa-facebook-official"></i> <b> {{ trans('adminlte_lang::message.facebook') }}: </b> {{$company ? $company->facebook : null}}  | <i class="fa fa-globe"></i> <b> {{ trans('adminlte_lang::message.website') }}: </b> {!! link_to($company ? $company->website : null, $title = null, $attributes = [], $secure = null) !!}
+									<i class="fa fa-facebook-official"></i> <b> {{ trans('adminlte_lang::message.facebook') }}: </b> <a>{{$company ? $company->facebook : null}}</a>   | <i class="fa fa-globe"></i> <b> {{ trans('adminlte_lang::message.website') }}: </b> {!! link_to($company ? $company->website : null, $title = null, $attributes = [], $secure = null) !!}
 								</li>
 								<li class="list-group-item">
 									<i class="fa fa-address-card"></i> <b> {{ trans('adminlte_lang::message.zip_code') }}: </b> {{$company ? $company->zip_code : null}}

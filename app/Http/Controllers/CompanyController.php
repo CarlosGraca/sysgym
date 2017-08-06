@@ -57,8 +57,8 @@ class CompanyController extends Controller
      */
     public function store(CompanyRequest $request)
     {
-        $company = new Company();
-        $company->name = $request->name;
+        $company = new Tenant();
+        $company->display_name = $request->name;
         $company->email = $request->email;
         $company->address = $request->address;
         $company->phone = $request->phone;
@@ -67,7 +67,6 @@ class CompanyController extends Controller
         $company->zip_code = $request->zip_code;
         $company->owner = $request->owner;
         $company->area = $request->area;
-        $company->island_id = $request->island;
         $company->city = $request->city;
         $company->website = $request->website;
         $company->facebook = $request->facebook;
@@ -128,16 +127,14 @@ class CompanyController extends Controller
      */
     public function update(CompanyRequest $request, Tenant $company)
     {
-        $company->name = $request->name;
-        $company->email = $request->email;
-        $company->address = $request->address;
+        $company->company_name = $request->name;
+        $company->state = $request->state;
+        $company->address_1 = $request->address_1;
+        $company->address_2 = $request->address_2;
         $company->phone = $request->phone;
         $company->fax = $request->fax;
         $company->nif = $request->nif;
         $company->zip_code = $request->zip_code;
-        $company->owner = $request->owner;
-        $company->area = $request->area;
-        $company->island_id = $request->island;
         $company->city = $request->city;
         $company->website = $request->website;
         $company->facebook = $request->facebook;
@@ -159,12 +156,12 @@ class CompanyController extends Controller
 
             $company->logo = 'uploads/' . $filename;
         }
-        $company->save();
+
         //session()->flash('flash_message','Company was update with success');
 
-        if (Request::wantsJson()){
+        if (Request::wantsJson() && $company->save()){
             $message = trans('adminlte_lang::message.msg_success_company');
-            return ['values'=>$company->name,'message'=>$message,'form'=>'company'];
+            return ['values'=>$company->name,'message'=>$message,'form'=>'company','type'=>'success'];
         }else{
             return redirect('company');
         }

@@ -564,5 +564,11 @@ return [
     'msg_create_success_backup' =>  'Backup created with success',
     'msg_error_backup_file_name' =>  'This backup file don\'t belong to system',
     'msg_error_backup_file_exist' =>  'This backup file already exist on system',
+    'branch_list' => 'List of Branch',
+    'branch_permission' => 'Branch Permission',
+    'update_user' => 'Update User',
+    'user_list' => 'List of Users',
+    'state' => 'State',
+    'country' => 'Country',
 ];
 

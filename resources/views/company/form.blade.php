@@ -22,7 +22,7 @@
 			<hr class="h-divider" >
 			<div class="col-md-6 col-sm-6 col-xs-12">
 				<div class="form-group form-group-sm">
-					{!! Form::label('name','(*)'.trans('adminlte_lang::message.name')) !!}
+					{!! Form::label('name','(*)'.trans('adminlte_lang::message.company_name')) !!}
 					{!! Form::text('name', ($type == 'update' ? $company->company_name : null) , ['class'=>'form-control','required'=>'true']) !!}
 				</div>
 			</div>
@@ -41,8 +41,15 @@
 
 			<div class="col-md-6 col-sm-6 col-xs-12">
 				<div class="form-group form-group-sm">
-					{!! Form::label('email','(*)'.trans('adminlte_lang::message.email')) !!}
-					{!! Form::email('email', ($type == 'update' ? $company->email : null), ['class'=>'form-control','required'=>'true']) !!}
+					{!! Form::label('country',trans('adminlte_lang::message.country')) !!}
+					{!! Form::email('country', ($type == 'update' ? $company->country : null), ['class'=>'form-control']) !!}
+				</div>
+			</div>
+
+			<div class="col-md-6 col-sm-6 col-xs-12">
+				<div class="form-group form-group-sm">
+					{!! Form::label('state',trans('adminlte_lang::message.state')) !!}
+					{!! Form::email('state', ($type == 'update' ? $company->state : null), ['class'=>'form-control']) !!}
 				</div>
 			</div>
 

@@ -45,7 +45,6 @@ class LoginController extends Controller
             return redirect('home');
         }
 
-        //$branches = Branch::pluck('name','id');
         return view('auth.login');
     }
 }

@@ -11,27 +11,27 @@
             <a href="{{ url('/') }}"><b>Sys</b>Gym</a>
         </div><!-- /.login-logo -->
 
+        <?php $email = ''; ?>
 
         @if (count($errors) > 0)
-            <div class="alert alert-danger">
-                <strong>Whoops!</strong> {{ trans('adminlte_lang::message.someproblems') }}<br><br>
-                <ul>
-                    @foreach ($errors->all() as $error)
-                        <li>{{ $error }}</li>
-                    @endforeach
-                </ul>
+            <div class="alert alert-danger alert-dismissible" role="info">
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <strong><i class="fa fa-close"></i></strong>
+                @foreach ($errors->all() as $error)
+                    {{ $error }}
+                @endforeach
             </div>
         @endif
 
-        @if ( session('status') )
-            <div class="alert alert-info alert-dismissible" role="info">
-                <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <strong><i class="fa fa-info-circle"></i></strong> {{ session('status') }}
-            </div>
+        @if ( session('email') )
+            <?php $email = session('email'); ?>
+        @endif
 
-            {{--<div class="alert alert-info">--}}
-                {{--<i class="fa fa-info-circle"></i> <span class="text-center">{{ session('status') }}</span>--}}
-            {{--</div>--}}
+        @if ( session('status') )
+            <div class="alert alert-warning alert-dismissible" role="info">
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <strong><i class="fa fa-warning"></i></strong> {{ session('status') }}
+            </div>
         @endif
 
     <div class="login-box-body">
@@ -39,11 +39,11 @@
     <form action="{{ url('/login') }}" method="post" id="form-login">
         <input type="hidden" name="_token" value="{{ csrf_token() }}">
         <div class="form-group has-feedback">
-            <input type="email" class="form-control" placeholder="{{ trans('adminlte_lang::message.email') }}" name="email"/>
+            <input type="email" class="form-control" placeholder="{{ trans('adminlte_lang::message.email') }}" name="email" value="{{ $email }}" required {{ $email == '' ? 'autofocus' : '' }}/>
             <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
         </div>
         <div class="form-group has-feedback">
-            <input type="password" class="form-control" placeholder="{{ trans('adminlte_lang::message.password') }}" name="password"/>
+            <input type="password" class="form-control" placeholder="{{ trans('adminlte_lang::message.password') }}" name="password" required {{ $email != '' ? 'autofocus' : '' }}/>
             <span class="glyphicon glyphicon-lock form-control-feedback"></span>
         </div>
         <div class="row">
