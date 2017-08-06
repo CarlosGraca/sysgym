@@ -30,8 +30,8 @@ class DomainController extends Controller
      */
     public function index()
     {
-        $dominios  = Domain::where('tenant_id',Auth::user()->tenant_id)->get();
-        return view('domains.index',compact('dominios'));
+        $domains  = Domain::where('tenant_id',Auth::user()->tenant_id)->get();
+        return view('domains.index',compact('domains'));
     }
 
     /**

@@ -9,7 +9,7 @@
 @endsection
 
 @section('contentheader_description')
-  dominios
+  domains
 @endsection
 
 
@@ -21,7 +21,7 @@
 	            <div class="box-header with-border">
 	              <h3 class="box-title"></h3>
 	               <div class="pull-left box-tools">
-	                  <a href="{{ url('dominios/create') }}"  class="btn btn-primary btn-sm" role="button" data-toggle="tooltip" title="">
+	                  <a href="{{ url('domains/create') }}"  class="btn btn-primary btn-sm" role="button" data-toggle="tooltip" title="">
 	                       <i class="fa fa-plus"></i>
 	                  </a>
 	                  
@@ -30,7 +30,7 @@
 	  
 	            <div class="box-body">
 		            <div class="box-body table-responsive no-padding">
-                        <table class="table table-hover" id="table-dominios">  
+                        <table class="table table-hover table-design">  
 			                <thead>
 			                    <tr>		                        
 			                        <th >Dominio</th>
@@ -40,15 +40,15 @@
 			                    </tr>
 			                </thead>
 			                <tbody>
-			                    @foreach ($dominios as $dominio)
+			                    @foreach ($domains as $dominio)
 			                        <tr>
 				                    	<td>{{$dominio->dominio}}</td> 
 				                    	<td>{{$dominio->codigo}}</td> 
 				                    	<td>{{$dominio->significado}}</td> 
 				                    	<td class="actions">
-					                        <a href="{{ route('dominios.edit',$dominio->id) }}" class="btn btn-primary btn-xs", data-remote='true'])>      <i class="fa fa-edit"></i>
+					                        <a href="{{ route('domains.edit',$dominio->id) }}" class="btn btn-primary btn-xs", data-remote='true'])>      <i class="fa fa-edit"></i>
 					                        </a>                           
-					                        <button type="button" class="btn btn-xs btn-warning btn-flat" data-toggle="modal" data-target="#confirmDelete" data-id="{{ $dominio->id }}" data-name="{{ $dominio->name }}" data-title="Confirm provider deletion" data-url="/dominios/">
+					                        <button type="button" class="btn btn-xs btn-warning btn-flat" data-toggle="modal" data-target="#confirmDelete" data-id="{{ $dominio->id }}" data-name="{{ $dominio->name }}" data-title="Confirm provider deletion" data-url="/domains/">
 					                            <i class="fa fa-trash"></i>
 					                        </button>  
 					                    </td>

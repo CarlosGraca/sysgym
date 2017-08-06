@@ -2,9 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use App\Http\Requests\MenuRequest;
+
 use App\Models\Menu;
 use App\Models\Domain;
+
+use Request;
 
 class MenuController extends Controller
 {
@@ -35,7 +38,7 @@ class MenuController extends Controller
      */
     public function create()
     {
-        $status = Domain::where('codigo','STATUS')->pluck('significado','id')->all();    
+        $status = Domain::where('dominio','STATUS')->pluck('significado','codigo')->all();    
         $menu_parents = Menu::where('parent_id',0)->pluck('title','id')->all();
         return view('menus.create',compact('menu_parents','status'));
     }
@@ -46,17 +49,16 @@ class MenuController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(DominioRequest $request)
+    public function store(MenuRequest $request)
     {   
-        $tenant_id = Auth::user()->tenant_id; // some logic to decide user's plan
-        $request->request->add(['tenant_id' => $tenant_id]);
-        $dominio = Dominio::create($request->all());
-        session()->flash('flash_message','Dominio was stored with success');
+       
+        $menu = Menu::create($request->all());
+        session()->flash('flash_message','Menu was stored with success');
 
         if (Request::wantsJson()){
-            return $dominio;
+            return $menu;
         }else{
-            return redirect('dominios');
+            return redirect('menus');
         }
     }
 
