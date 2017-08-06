@@ -24,6 +24,5 @@
     <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
         <b>Ops...</b>
         Incorrect current password
-        
     </div>
 <?php endif; ?>

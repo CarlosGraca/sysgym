@@ -136,7 +136,7 @@ class RegisterController extends Controller
             DB::rollBack();           
             return redirect('auth/register')->with('warning', $e);
         }*/
-         return redirect('auth/register')->with('warning', $validator->errors());
+         return redirect('auth/register')->withErrors($validator->errors());
         
     }
 
@@ -170,7 +170,7 @@ class RegisterController extends Controller
          $user = user::where('token',$token)->first();
          $tenant = Tenant::where('id',$user->tenant_id)->first();
          if(!is_null($user) && !is_null($tenant)){
-            $user->active = 1;
+            $user->status = 1;
             $tenant->active = 1;
             $user->token = '';
             $user->save();
