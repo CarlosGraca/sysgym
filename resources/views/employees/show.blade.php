@@ -39,19 +39,19 @@
                 <div class="box-header with-border">
                     <h3 class="box-title">{{ trans('adminlte_lang::message.employee_profile') }}</h3>
                     <div class="pull-right box-tools">
-                        <a href="{{ url('employees') }}" class="btn btn-primary btn-sm" role="button" data-toggle="tooltip" title="{{ trans('adminlte_lang::message.list') }}">
-                            <i class="fa fa-list"></i>
+                        <a href="{{ url('employees') }}" class="btn btn-primary btn-sm" data-toggle="tooltip" title="{{ trans('adminlte_lang::message.list') }}">
+                            <i class="fa fa-list"></i> {{ trans('adminlte_lang::message.employees_list') }}
                         </a>
                         @if($employee->status == 1)
-                            @can('edit_employee')
+                            {{--@can('edit_employee')--}}
                                 <a href="{{ route('employees.edit',$employee->id) }}" class="btn btn-primary btn-sm" role="button" data-toggle="tooltip" title="{{ trans('adminlte_lang::message.edit') }}">
-                                    <i class="fa fa-edit"></i>
+                                    <i class="fa fa-edit"></i> {{ trans('adminlte_lang::message.edit') }}
                                 </a>
-                            @endcan
+                            {{--@endcan--}}
                         @endif
 
                         <a href="{{ url('employees') }}/{{$employee->id}}/print" class="btn btn-primary btn-sm" target="_blank" role="button" data-toggle="tooltip" title="{{ trans('adminlte_lang::message.print') }}">
-                            <i class="fa fa-print"></i>
+                            <i class="fa fa-print"></i> {{ trans('adminlte_lang::message.print') }}
                         </a>
                     </div>
                 </div>

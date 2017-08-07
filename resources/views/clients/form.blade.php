@@ -1,5 +1,7 @@
 {!! Form::hidden('client_id', ($type == 'update' ? $client->id : null), ['class'=>'form-control','id'=>'client_id']) !!}
-{!! Form::hidden('avatar_crop', null , ['class'=>'form-control','id'=>'avatar_crop']) !!}
+
+{{-- avatar_type leva 2 tipos 'upload' ou 'capture' --}}
+
 @include('people.form',['people'=>(isset($client) ? $client : null),'type'=>$type,'type_form'=>'client'])
 
 <div class="row">
@@ -26,5 +28,3 @@
 		</div>
 	</div>
 </div>
-
-{{--@include('secure_card.form')--}}

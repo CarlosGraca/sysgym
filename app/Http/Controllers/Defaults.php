@@ -10,11 +10,11 @@ namespace App\Http\Controllers;
 
 
 //use Illuminate\Http\Request;
-use App\Teeth;
+use App\Models\BranchPermission;
 use Request;
 use App\Http\Requests\LicenseGeratorRequest;
 use Illuminate\Support\Facades\Auth;
-use App\System;
+use App\Models\System;
 
 class Defaults extends Controller
 {
@@ -561,6 +561,13 @@ class Defaults extends Controller
 
     }
 
+    //BYTE HUMAN READ
+    public function human_filesize($bytes, $decimals = 2) {
+        $size = array('B','kB','MB','GB','TB','PB','EB','ZB','YB');
+        $factor = floor((strlen($bytes) - 1) / 3);
+        return sprintf("%.{$decimals}f", $bytes / pow(1024, $factor)) . @$size[$factor];
+    }
+
 
     /**
      * Show the form for creating a new resource.
@@ -682,6 +689,14 @@ class Defaults extends Controller
                 $placeholder = trans('adminlte_lang::message.name');
                 return view('layouts.shared.field',['name'=>$popover,'value'=>$user->name,'type'=>'text', 'placeholder' => $placeholder]);
                 break;
+
+            case 'branch-select':
+                $branches = BranchPermission::SELECT(\DB::raw("branches.id, branches.name"))->join('branches','branch_permission.branch_id','=','branches.id')
+                    ->where(['branch_permission.user_id'=>\Auth::user()->id,'branches.tenant_id' => \Auth::user()->tenant_id]) ->pluck('name','id');
+
+                $placeholder = trans('adminlte_lang::message.branch_select');
+                return view('layouts.shared.field', ['name' => $popover, 'value' => $branches, 'selected' => $request->id, 'type' => 'select', 'placeholder' => $placeholder]);
+                break;
             default:
                 # code...
                 break;
@@ -719,6 +734,14 @@ class Defaults extends Controller
                 $user = \Auth::user();
                 $user->name = $request->value;
                 $user->save();
+                return ['field_value'=>$request->value,'type'=>'success','message'=>'Name updated with success'];
+                break;
+
+            case 'branch-select':
+                $user = \Auth::user();
+                $user->branch_id = ($request->id == '' ? 0 : $request->id);
+                $user->save();
+
                 return ['field_value'=>$request->value,'type'=>'success','message'=>'Name updated with success'];
                 break;
             default:

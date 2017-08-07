@@ -20,7 +20,7 @@ class CreateTableSystem extends Migration
             $table->string('lang');
             $table->string('currency');
             $table->string('layout');
-            $table->string('background_image')->default('img/photo1.png');
+            $table->string('background_image')->default('img/background.jpg');
             $table->string('timezone')->default('Atlantic/Cape_Verde');
             $table->string('status')->default(1);
             $table->integer('branch_id')->unsigned()->index();

@@ -68,11 +68,6 @@
                                 </li>
 
                                 <li class="list-group-item">
-                                    <i class="fa fa-venus-mars"></i>  <b>{{ trans('adminlte_lang::message.genre') }}: </b>
-                                    <a> {{trans('adminlte_lang::message.'.(\Auth::user()->genre == null ? 'none' : \Auth::user()->genre))}} </a>
-                                </li>
-
-                                <li class="list-group-item">
                                     <i class="fa fa-envelope"></i>
                                     <b>{{ trans('adminlte_lang::message.email') }}: </b> <a>{{\Auth::user()->email}}</a>
                                 </li>
@@ -83,10 +78,9 @@
                                 </li>
 
 
-                            <?php $role =  \Auth::user()->roles->first(); ?>
 								<li class="list-group-item">
                                     <i class="fa fa-wrench"></i>
-									<b>{{ trans('adminlte_lang::message.role') }}: </b> <a>{{ $role['name'] }}</a>
+									<b>{{ trans('adminlte_lang::message.role') }}: </b> <a>{{ \Auth::user()->role->display_name }}</a>
 								</li>
 								<li class="list-group-item">
                                     <i class="fa fa-calendar"></i>

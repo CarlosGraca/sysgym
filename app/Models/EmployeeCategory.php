@@ -8,9 +8,9 @@ class EmployeeCategory extends Model
 {
     protected $table = 'employees_category';
     public $timestamps = true;
-    protected $fillable = ['name','salary_base','created_at','updated_at'];
+    protected $fillable = ['name','salary_base','tenant_id','branch_id','user_id','created_at','updated_at'];
 
     public function employee(){
-        return $this->hasOne('App\Models\Employee');
+        return $this->hasMany('App\Models\Employee','category_id','id');
     }
 }

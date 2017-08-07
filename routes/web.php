@@ -35,30 +35,26 @@ Route::post('/setup/password','Auth\UserController@setup_password');
 
 //
 Route::group(['middleware' => ['web','auth']], function(){
-   // $system = \App\System::all()->first();
-   // \App::setLocale($system->lang);
     
     Route::resource('clients','ClientController');
     Route::resource('auth/profile', 'Auth\ProfileController');
     Route::resource('company','CompanyController');
     Route::resource('branches','BranchController');
     Route::resource('employees','EmployeeController');
-    Route::resource('category','CategoryController');
+    Route::resource('employees_category','EmployeeCategoryController');
     Route::resource('modalities','ModalityController');
     Route::resource('system','SystemController');
     Route::resource('users','Auth\UserController');
     Route::resource('matriculation','MatriculationController');
-    Route::resource('secure_card','SecureCardController');
-    Route::resource('campaign_messages','CampaignMessageController');
     Route::resource('license_generate','Defaults');
     Route::resource('files','FileController');
     Route::resource('payments','PaymentController');
     Route::resource('roles','RoleController');
     Route::resource('domains','DomainController');
+    Route::resource('menus','MenuController');
     Route::resource('permissions','PermissionController');
-    Route::resource('domains', 'DomainController');
-    Route::resource('menus', 'MenuController');
     route::resource('tenant-menu','TenantMenuController');
+
 });
 
 
@@ -99,7 +95,7 @@ Route::get('/currency_format/{value}', 'Defaults@currency');
 Route::get('search/{field}/autocomplete', 'SearchController@search');
 
 //GET CATEGORY BASE SALARY
-Route::get('/category/salary_base/{id}', 'CategoryController@getSalaryBase');
+Route::get('/category/salary_base/{id}', 'EmployeeCategoryController@getSalaryBase');
 
 //Dashboard getData
 Route::post('dashboard/graphic', 'DashboardGraphic@getData');
@@ -113,23 +109,20 @@ Route::get('employee/{id}','EmployeeController@getEmployee');
 Route::post('/edit/{popover}/field','Defaults@GetPopOver');
 Route::post('/update/{popover}/field','Defaults@SetPopOver');
 
-//PAYMENT PROCEDURE
-Route::post('modalities/client','ModalityController@getClientModality');
 
-//BUDGET PROCEDURE
-Route::post('matriculation/modality','MatriculationController@modality');
-
-//GENERATE BUDGET PAYMENT
-Route::post('matriculation/payment','MatriculationController@generate_matriculation_payment');
-
+Route::post('modalities/client','ModalityController@getClientModality');//PAYMENT PROCEDURE
+Route::post('matriculation/modality','MatriculationController@modality');//BUDGET PROCEDURE
+Route::post('matriculation/payment','MatriculationController@generate_matriculation_payment');//GENERATE BUDGET PAYMENT
 
 //BUDGET CHANGE STATUS
 Route::post('matriculation/publish','MatriculationController@publish');
 Route::post('matriculation/approve','MatriculationController@approve');
 Route::post('matriculation/cancel','MatriculationController@cancel');
 Route::post('matriculation/reject','MatriculationController@reject');
-//BUDGET REPORT
-Route::get('matriculation/{id}/report', 'MatriculationController@report');
+Route::get('matriculation/{id}/report', 'MatriculationController@report');//REPORT
+Route::get('setup/matriculation', 'MatriculationController@setup');//REPORT
+
+
 
 //BUILD USER
 Route::get('build/{id}','Auth\UserController@build');
@@ -150,8 +143,8 @@ Route::post('roles/enable','RoleController@enable');
 Route::post('roles/disable','RoleController@disable');
 
 //CATEGORY CHANGE STATUS
-Route::post('employees_category/enable','CategoryController@enable');
-Route::post('employees_category/disable','CategoryController@disable');
+Route::post('employees_category/enable','EmployeeCategoryController@enable');
+Route::post('employees_category/disable','EmployeeCategoryController@disable');
 
 //PERMISSIONS CHANGE STATUS
 Route::post('permissions/enable','PermissionController@enable');
@@ -195,6 +188,18 @@ Route::get('files/{id}/download','FileController@download');//DOWNLOAD FILE
 Route::get('files/{id}/preview','FileController@preview');//PREVIEW FILE
 Route::get('files/{id}/remove','FileController@remove'); //REMOVE FILE
 
+
+Route::post('backups/remove','BackupController@remove');//REMOVE BACKUP
+Route::get('backups/{fileName}/download','BackupController@download');//DOWNLOAD BACKUP
+Route::get('backups/upload/popup','BackupController@uploadPopup');//UPLOAD BACKUP POPUP
+Route::post('backups/restore','BackupController@restore');//RESTORE BACKUP
+Route::post('backups/upload','BackupController@upload');//UPLOAD BACKUP
+Route::get('backups_list','BackupController@backup_list');//LIST BACKUP
+
 Route::post('croppie',function(\Illuminate\Http\Request $request){
     return view('components.croppie',['type'=>$request->type,'src'=>$request->src]);
+});
+
+Route::get('camera',function (){
+    return view('components.camera_capture');
 });

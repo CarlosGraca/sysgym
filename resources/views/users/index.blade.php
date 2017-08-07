@@ -12,7 +12,6 @@
   {{ trans('adminlte_lang::message.users') }}
 @endsection
 
-@inject('CategoryController', 'App\Http\Controllers\CategoryController')
 <?php
 $status = [trans('adminlte_lang::message.deleted'),trans('adminlte_lang::message.active'),trans('adminlte_lang::message.expired')];
 $status_color = ['danger','success','info'];
@@ -49,42 +48,41 @@ $status_color = ['danger','success','info'];
                           @foreach ($users as $user)
                                 <tr class="bg-{{ $status_color[$user->status] }} ">
                                     {{--<td>{{ $user->id }}</td>--}}
-									<?php $role =  $user->roles->first(); ?>
 									<td>{{ $user->name }}</td>
 									<td>{{ $user->email }}</td>
-									<td> {{ $role['name'] }} </td>
+									<td> {{ $user->role->display_name }} </td>
                                     <td>
-										@can('view_user')
+										{{--@can('view_user')--}}
 										<a href="{{ route('users.show',$user->id) }}" data-toggle="tooltip" title="{{ trans('adminlte_lang::message.view') }}">
 											<i class="fa fa-eye"></i>
 										</a>
-										@endcan
-										@can('edit_user')
+										{{--@endcan--}}
+										{{--@can('edit_user')--}}
 										<a href="{{ route('users.edit',$user->id) }}" data-toggle="tooltip" title="{{ trans('adminlte_lang::message.edit') }}" id="edit-user">
 											<i class="fa fa-edit"></i>
 										</a>
-										@endcan
-										@can('disable_user')
+										{{--@endcan--}}
+										{{--@can('disable_user')--}}
 												@if(\Auth::user()->id != $user->id)
 													<a href="#disable" style="display: {{ $user->status == 1 ? 'initial' :'none' }};  color: #999;" data-toggle="tooltip" id="disable-user" title="{{ trans('adminlte_lang::message.disable') }}" data-key="{{ $user->id }}" data-name="{{ $user->name }}">
 														<i class="fa fa-user-secret"></i>
 													</a>
 												@endif
-										@endcan
+										{{--@endcan--}}
 
-										@can('enable_user')
+										{{--@can('enable_user')--}}
 										<a href="#enable" style="display: {{ $user->status == 0 ? 'initial' :'none' }};  color: #00a65a;" data-toggle="tooltip" id="enable-user" title="{{ trans('adminlte_lang::message.enable') }}" data-key="{{ $user->id }}" data-name="{{ $user->name }}">
 											<i class="fa fa-user-secret"></i>
 										</a>
-										@endcan
+										{{--@endcan--}}
 
-										@can('reset_user_password')
+										{{--@can('reset_user_password')--}}
 											@if(\Auth::user()->id != $user->id)
 												<a href="#" data-url="{{ url('reset/password') }}/{{$user->id}}"  style="color: #dd4b39"  data-toggle="tooltip" title="{{ trans('adminlte_lang::message.reset_password') }}" id="user-reset-password">
 													<i class="fa fa-repeat"></i>
 												</a>
 											@endif
-										@endcan
+										{{--@endcan--}}
 
                                     </td>
                                 </tr>

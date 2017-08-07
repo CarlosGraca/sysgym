@@ -40,8 +40,6 @@ class EmployeeRequest extends FormRequest
                     'genre' => 'required',
                     'civil_state' => 'required',
                     'city' => 'required',
-                    'branch'=>'required',
-                    'island_id' => 'required',
                 ];
             }
             case 'PUT':
@@ -49,14 +47,11 @@ class EmployeeRequest extends FormRequest
             {
                 return [
                     'name' => 'required',
-                    // 'email' => 'email|max:255|unique:clients',
                     'birthday' => 'required',
                     'address' => 'required',
                     'genre' => 'required',
                     'civil_state' => 'required',
                     'city' => 'required',
-                    'island_id' => 'required',
-                    'branch'=>'required',
                 ];
             }
             default:break;

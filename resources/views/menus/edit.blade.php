@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('htmlheader_title')
-	{{ trans('adminlte_lang::message.new_menu') }}
+	{{ trans('adminlte_lang::message.update_menu') }}
 @endsection
 
 @section('contentheader_title')
@@ -9,26 +9,19 @@
 @endsection
 
 @section('contentheader_description')
-  {{ trans('adminlte_lang::message.new_menu') }}
+  {{ trans('adminlte_lang::message.update_menu') }}
 @endsection
 
 
 @section('main-content')
 
 	<div class="row">
-	     {!! Form::model($menu, ['method'=>'PATCH',null,'route'=>['menus.update', $menu->id],'id'=>'menus-form'])!!}
+
 	    <div class="col-lg-12">
 	        <div class="box box-default">
 	            <div class="box-header with-border">
 	              <h3 class="box-title">
-	              	{{--  <strong>{{ trans('adminlte_lang::message.system_user') }}: </strong><span>{{ Auth::user()->name }}</span> --}}
-	              </h3>
-					<!--
-	              <div class="pull-right box-tools">
-	                    <a href="#"  class="btn btn-primary btn-sm" role="button" data-toggle="tooltip" title="Save">
-	                       <i class="fa fa-save"></i>
-	                     </a>
-	              </div><!-- /. tools -->
+{{-- <<<<<<< HEAD     </h3>
 	             
 					<div class="pull-right box-tools">
 						<a href="{{ \Illuminate\Support\Facades\URL::previous() }}" class="btn btn-primary btn-sm" role="button" data-toggle="tooltip" title="{{ trans('adminlte_lang::message.back') }}" >
@@ -55,6 +48,30 @@
 				
 	        </div>
 	        {!! Form::close() !!}
+======= --}}
+					  <a href="{{ url('menus') }}" class="btn btn-primary btn-sm" menu="button" data-toggle="tooltip" title="{{ trans('adminlte_lang::message.back') }}">
+						  <i class="fa  fa-arrow-left"></i> {{ trans('adminlte_lang::message.back') }}
+					  </a>
+	              	 <strong>{{ trans('adminlte_lang::message.update_menu') }} </strong><span>{{ $menu->title }}</span>
+	              </h3>
+					<div class="pull-right box-tools">
+
+						<a href="#" class="btn btn-primary btn-sm" menu="button" data-toggle="tooltip" title="{{ trans('adminlte_lang::message.save') }}" id="update-menu">
+							<i class="fa fa-save"></i> {{ trans('adminlte_lang::message.save') }}
+						</a>
+
+						<a href="#!" class="btn btn-primary btn-sm" menu="button" data-toggle="tooltip" title="{{ trans('adminlte_lang::message.edit') }}" id="edit-menu-button" style="display: none;">
+							<i class="fa fa-edit"></i> {{ trans('adminlte_lang::message.edit') }}
+						</a>
+					</div><!-- /. tools -->
+	            </div><!-- /.box-header -->
+	            <div class="box-body">
+					{!! Form::model($menu, ['method'=>'PATCH','route'=>['menus.update', $menu->id],'id'=>'menu-form','files'=>true])!!}
+						@include('menus.form', ['type'=>'update'])
+					{!! Form::close() !!}
+				</div>
+	        </div>
+
 	    </div>
 	</div>
 @endsection

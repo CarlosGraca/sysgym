@@ -231,7 +231,7 @@ return [
     'change_password_information' => 'Your password was generated automatic by system, to be continue we recommend change your password',
     'send'                    => 'Enviar',
     'change'                  => 'Alterar',
-    'employee_category'       => 'Categoria de Colaborador',
+    'employees_category'       => 'Categoria de Colaborador',
     'setup_system'            => 'Setup de Sistema',
     'recent_users'            => 'Recent Users',
     'msg_error_own_reset_password_user' => 'You Cannot reset your own password here.',

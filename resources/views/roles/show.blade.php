@@ -12,43 +12,23 @@
     {{ trans('adminlte_lang::message.role') }}
 @endsection
 
-{{--@inject('Defaults', 'App\Http\Controllers\Defaults')--}}
-
 
 @section('main-content')
     <div class="row">
-        {{--<div class="col-md-3">--}}
-
-            {{--<!-- Profile Image -->--}}
-            {{--<div class="box box-primary">--}}
-                {{--<div class="box-body box-profile">--}}
-                    {{--<div class="text-center">--}}
-                        {{--<img class="thumbnail" src="{{ asset($role->avatar) }}" style="max-width: 100%; width: 250px; margin: 0 auto; z-index: -1;">--}}
-                        {{--<i class="fa fa-camera" style="  position: absolute; left: 0; top: 50%; width: 100%; text-align: center;   font-size: 18px; display: none;"></i>--}}
-                    {{--</div>--}}
-
-                    {{--<h3 class="profile-username text-center">{{ $role->name }}</h3>--}}
-                {{--</div>--}}
-                {{--<!-- /.box-body -->--}}
-            {{--</div>--}}
-            {{--<!-- /.box -->--}}
-
-
-        {{--</div>--}}
         <!-- /.col -->
         <div class="col-md-12">
             <div class="box box-primary">
                 <div class="box-header with-border">
                     <h3 class="box-title">{{ trans('adminlte_lang::message.role_profile') }}</h3>
                     <div class="pull-right box-tools">
-                        <a href="{{ url('roles') }}" class="btn btn-primary btn-sm" role="button" data-toggle="tooltip" title="{{ trans('adminlte_lang::message.list') }}">
-                            <i class="fa fa-list"></i>
+                        <a href="{{ url('roles') }}" class="btn btn-primary btn-sm" data-toggle="tooltip" title="{{ trans('adminlte_lang::message.list') }}">
+                            <i class="fa fa-list"></i> {{ trans('adminlte_lang::message.role_list') }}
                         </a>
-                        <a href="{{ url('roles') }}/{{$role->id}}/print" class="btn btn-primary btn-sm" target="_blank" role="button" data-toggle="tooltip" title="{{ trans('adminlte_lang::message.print') }}">
-                            <i class="fa fa-print"></i>
+                        <a href="{{ route('roles.edit',$role->id) }}" class="btn btn-primary btn-sm"  data-toggle="tooltip" title="{{ trans('adminlte_lang::message.edit') }}">
+                            <i class="fa fa-edit"></i> {{ trans('adminlte_lang::message.edit') }}
                         </a>
-                        <a href="{{ route('roles.edit',$role->id) }}" class="btn btn-primary btn-sm" role="button" data-toggle="tooltip" title="{{ trans('adminlte_lang::message.edit') }}">
-                            <i class="fa fa-edit"></i>
+                        <a href="{{ url('roles') }}/{{$role->id}}/print" class="btn btn-primary btn-sm" target="_blank" data-toggle="tooltip" title="{{ trans('adminlte_lang::message.print') }}">
+                            <i class="fa fa-print"></i> {{ trans('adminlte_lang::message.print') }}
                         </a>
                     </div>
                 </div>
@@ -57,7 +37,6 @@
                     <div class="nav-tabs-custom">
                             <ul class="nav nav-tabs">
                                 <li class="active"><a href="#personal_data" data-toggle="tab"><i class="fa fa-address-card-o"></i> {{ trans('adminlte_lang::message.personal_data') }}</a></li>
-                                {{--<li><a href="#officeHours" data-toggle="tab"><i class="fa fa-clock"></i> {{ trans('adminlte_lang::message.office_hours') }}</a></li>--}}
                                 <li><a href="#users" data-toggle="tab"><i class="fa fa-user-secret"></i> {{ trans('adminlte_lang::message.users') }}</a></li>
                             </ul>
 
@@ -73,6 +52,10 @@
                                                     <i class="fa fa-user"></i>  <b>{{ trans('adminlte_lang::message.name') }}: </b>
                                                     <a> {{ $role->name }} </a>
                                                 </li>
+                                                <li class="list-group-item">
+                                                    <i class="fa fa-user"></i>  <b>{{ trans('adminlte_lang::message.display_name') }}: </b>
+                                                    <a> {{ $role->display_name }} </a>
+                                                </li>
                                             </ul>
                                         </div>
 
@@ -80,7 +63,7 @@
                                             <ul class="list-group list-group-unbordered">
                                                 <li class="list-group-item">
                                                     <i class="fa fa-quote-left"></i>  <b>{{ trans('adminlte_lang::message.description') }}: </b>
-                                                    <a> {{ $role->label }} </a>
+                                                    <a> {{ $role->description }} </a>
                                                 </li>
                                             </ul>
                                         </div>
@@ -93,15 +76,18 @@
                                             <table id="table-permission" class="table table-bordered table-striped table-design">
                                                 <thead>
                                                 <tr>
+                                                    <th class="col-md-2">{{ trans('adminlte_lang::message.type') }}</th>
                                                     <th class="col-md-2">{{ trans('adminlte_lang::message.name') }}</th>
-                                                    <th class="col-md-10">{{ trans('adminlte_lang::message.description') }}</th>
+                                                    <th class="col-md-8">{{ trans('adminlte_lang::message.description') }}</th>
                                                 </tr>
                                                 </thead>
                                                 <tbody>
+                                                {{--{{ $role->permission }}--}}
                                                 @foreach ($role->permission as $permission)
                                                     <tr>
-                                                        <td class="name">{{$permission->name}} </td>
-                                                        <td class="description">{{$permission->label}} </td>
+                                                        <td class="name">{{$permission->type}} </td>
+                                                        <td class="name">{{$permission->tenant_menu->menus->title}} </td>
+                                                        <td class="description">{{$permission->tenant_menu->menus->description}} </td>
                                                     </tr>
                                                 @endforeach
                                                 </tbody>
@@ -109,13 +95,6 @@
                                         </div>
                                     </div>
                                 </div>
-                                <!-- /.tab-pane -->
-
-                                {{--<!-- OFFICE HOURS TABLE-->--}}
-                                {{--<div class="tab-pane" id="officeHours">--}}
-
-
-                                {{--</div>--}}
                                 <!-- /.tab-pane -->
 
                                 <div class="tab-pane" id="users">
@@ -134,14 +113,11 @@
                                                 </tr>
                                                 </thead>
                                                 <tbody>
-                                                @foreach ($users as $user)
-                                                    @if($user->roles->first()->id == $role->id)
-{{--                                                    {{ $user->roles->first()->id }}--}}
-                                                        <tr>
-                                                            <td class="name">{{$user->name}} </td>
-                                                            <td class="email">{{$user->email}} </td>
-                                                        </tr>
-                                                    @endif
+                                                @foreach ($role->user as $user)
+                                                    <tr>
+                                                        <td class="name">{{$user->name}} </td>
+                                                        <td class="email">{{$user->email}} </td>
+                                                    </tr>
                                                 @endforeach
                                                 </tbody>
                                             </table>

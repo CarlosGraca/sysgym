@@ -56,8 +56,10 @@ class Menu extends Model
             
         return $menus;
     }
-
-
     
+
+    public function parent(){
+        return $this->belongsTo('App\Models\Menu');
+    }
 
 }

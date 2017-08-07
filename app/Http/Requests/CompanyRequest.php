@@ -25,15 +25,10 @@ class CompanyRequest extends FormRequest
     {
         return [
             'name' => 'required',
-            'email' => 'required',
             'nif' => 'required',
             'phone' => 'required',
-            'address' => 'required',
-            'zip_code' => 'required',
+            'address_1' => 'required',
             'city' => 'required',
-            'area' => 'required',
-            'owner' => 'required',
-            'island' => 'required',
         ];
     }
 }

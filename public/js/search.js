@@ -64,4 +64,14 @@ $(function()
         }
     });
 
+    $("#main_menu").autocomplete({
+        source: "/search/menu/autocomplete",
+        minLength: 1,
+        autoFocus: true,
+        select: function(event, ui) {
+            $('#main_menu').val(ui.item.value);
+            $('#parent_id').val(ui.item.id);
+        }
+    });
+
 });

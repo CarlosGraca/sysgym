@@ -20,7 +20,7 @@
                         <!--
                             <i class="fa fa-circle text-success"></i> {{ trans('adminlte_lang::message.online') }}
                         -->
-                            {{ trans('adminlte_lang::message.branch') }} : {{ $branch != null ? $branch->name : trans('adminlte_lang::message.all_branch') }}
+                        {{ trans('adminlte_lang::message.branch') }} : {{ $branch != null ? $branch->name : trans('adminlte_lang::message.all_branch') }}
                     </a>
                 </div>
             </div>

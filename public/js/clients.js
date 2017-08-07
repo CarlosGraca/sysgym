@@ -9,7 +9,7 @@ $(function () {
     });
 
     //UPDATE PATIENT
-    $(document).on('click','#edit-client',function (e) {
+    $(document).on('click','#update-client',function (e) {
         e.preventDefault();
         save($('#client-form'), $('#client-form')[0], 'update');
     });
@@ -19,7 +19,7 @@ $(function () {
         e.preventDefault();
         $(this).css('display', 'none');
         field_status_change('enable',$('#client-form'));
-        $('#edit-client').removeAttr('style');
+        $('#update-client').removeAttr('style');
     });
 
 
@@ -27,10 +27,10 @@ $(function () {
     $(document).on('click','#client_add_popup',function (e) {
         e.preventDefault();
         $('#myModalLabel').text($(this).attr('data-title'));
-        $('#modal').modal('show')
+        $('#modal-ajax').modal('show')
             .find('.modal-body')
-            .load($(this).data('url'));
-        $('#modal').css('overflow','auto');
+            .load($(this).attr('data-url'));
+        $('#modal-ajax').css('overflow','auto');
     });
     
 

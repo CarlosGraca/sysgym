@@ -23,8 +23,45 @@ class ClientRequest extends FormRequest
      */
     public function rules()
     {
-        return [
-            //
-        ];
+        switch($this->method())
+        {
+            case 'GET':
+            case 'DELETE':
+            {
+                return [];
+            }
+            case 'POST':
+            {
+                return [
+                    'name' => 'required',
+                    'email' => 'email|max:255|unique:clients',
+                    'genre' => 'required',
+                    'civil_state' => 'required',
+                    'birthday' => 'required',
+                    'address' => 'required',
+                    'city' => 'required',
+                ];
+            }
+            case 'PUT':
+            case 'PATCH':
+            {
+                return [
+                        'name' => 'required',
+                       // 'email' => 'email|max:255|unique:clients',
+                        'birthday' => 'required',
+                        'address' => 'required',
+                        'genre' => 'required',
+                        'civil_state' => 'required',
+                        'city' => 'required',
+                ];
+                /*  return [
+                      'user.name.first' => 'required',
+                      'user.name.last'  => 'required',
+                      'user.email'      => 'required|email|unique:users,email,'.$user->id,
+                      'user.password'   => 'required|confirmed',
+                  ];*/
+            }
+            default:break;
+        }
     }
 }

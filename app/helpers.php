@@ -18,7 +18,7 @@ class Helpers
         $href = ($href == '#' ) ? '#': '/'.$href;
     	$output = '<a '.\HTML::attributes(array('href' => $href)).'>';  	
     	$output .=(new static)->createIcon($icon);
-    	$output .='<span>'.$title.'</span>';
+    	$output .='<span>'.trans('adminlte_lang::message.'.$title).'</span>';
     	$output .= '</a>';
     	return $output;
     }
@@ -51,7 +51,7 @@ class Helpers
                     $classes = array('item_menu');
                     $menu_items .= '<li'.\HTML::attributes(array('class' => implode(' ', $classes))).'>';
 	                    $menu_items .= '<a'.\HTML::attributes(array('href' => $href)).'>';
-	                    $menu_items .= $item_menu->title.'</a>';
+	                    $menu_items .= trans('adminlte_lang::message.'.$item_menu->title).'</a>';
                     $menu_items .= '</li>';
                 }
                 $menu_items .= '</ul>';
@@ -61,7 +61,7 @@ class Helpers
                 $menu .= '<li'.\HTML::attributes(array('class' => implode(' ', $classes))).'>';
 	                $menu .= '<a'.\HTML::attributes(array('href' => $href)).'>';
 		                $menu.=(new static)->createIcon($item->icon);
-		                $menu .='<span>'.$item->title.'</span>';
+		                $menu .='<span>'.trans('adminlte_lang::message.'.$item->title).'</span>';
 		                $menu.=(new static)->createIcon('fa fa-angle-left pull-right');
 	                $menu .= '</a>';
 

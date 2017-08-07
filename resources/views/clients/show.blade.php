@@ -58,19 +58,19 @@ $status_color = $defaults->getStatusColor();
                     <h3 class="box-title">{{ trans('adminlte_lang::message.client_profile') }}</h3>
                     <div class="pull-right box-tools">
                         <a href="{{ url('clients') }}" class="btn btn-primary btn-sm" role="button" data-toggle="tooltip" title="{{ trans('adminlte_lang::message.clients_list') }}">
-                            <i class="fa fa-list"></i>
+                            <i class="fa fa-list"></i> {{ trans('adminlte_lang::message.clients_list') }}
                         </a>
 
                         @if($client->status == 1)
-                            @can('edit_client')
+                            {{--@can('edit_client')--}}
                             <a href="{{ route('clients.edit',$client->id) }}" class="btn btn-primary btn-sm" role="button" data-toggle="tooltip" title="{{ trans('adminlte_lang::message.edit') }}">
-                                <i class="fa fa-edit"></i>
+                                <i class="fa fa-edit"></i> {{ trans('adminlte_lang::message.edit') }}
                             </a>
-                            @endcan
+                            {{--@endcan--}}
                         @endif
 
                         <a href="{{ url('clients') }}/{{$client->id}}/print" class="btn btn-primary btn-sm" target="_blank" role="button" data-toggle="tooltip" title="{{ trans('adminlte_lang::message.print') }}">
-                            <i class="fa fa-print"></i>
+                            <i class="fa fa-print"></i> {{ trans('adminlte_lang::message.print') }}
                         </a>
                     </div>
                 </div>

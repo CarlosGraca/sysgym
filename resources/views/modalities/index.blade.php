@@ -22,7 +22,7 @@ $status_color = ['danger','success','info'];
 @section('main-content')
 	<div class="row">
 	    <div class="col-lg-12">
-	        <div class="box box-default">
+	        <div class="box box-primary">
 	            <div class="box-header with-border">
 	              <h3 class="box-title"> {{ trans('adminlte_lang::message.list_modality') }} </h3>
 	              <div class="pull-left box-tools">

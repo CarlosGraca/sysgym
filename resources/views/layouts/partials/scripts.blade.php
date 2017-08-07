@@ -94,6 +94,8 @@
 {{--CROPPIE PLUGIN--}}
 <script src="{{ asset('/plugins/croppie/js/croppie.js') }}"></script>
 
+<!-- First, include the Webcam.js JavaScript Library -->
+<script type="text/javascript" src="{{ asset('plugins/webcam/webcam.min.js') }}"></script>
 
 <!-- SCRIPT IN DEVELOPMENT MODE -->
 
@@ -164,6 +166,8 @@
         height: 100
     });
 
+    $('#select-2').select2();
+
     var _file_url = '{{ url('files') }}';
 
     //LANGUAGE TRANSLATE
@@ -177,12 +181,9 @@
     var _download_text = '{{ trans('adminlte_lang::message.download') }}';
     var _yes_text = '{{ trans('adminlte_lang::message.yes') }}';
     var _no_text = '{{ trans('adminlte_lang::message.not') }}';
-    var _edit_consult_text = '{{ trans('adminlte_lang::message.update_consult_agenda') }}';
-    var _details_consult_text = '{{ trans('adminlte_lang::message.details_consult_agenda') }}';
-    var _add_consult_text = '{{ trans('adminlte_lang::message.new_consult_agenda') }}';
     var _disable_text = '{{ trans('adminlte_lang::message.disable') }}';
 
-    var timezone = '{!! count($system) > 0 ? $system->timezone : 'Atlantic/Cape_Verde' !!}';
+    var timezone = '{!! count($system) > 0 ? $system->timezone : config('app.timezone') !!}';
 
     function update() {
         var time = moment().tz(timezone).format('- DD/MM/YYYY HH:mm:ss');
@@ -226,7 +227,7 @@
 <script src="{{ asset('/js/branches.js') }}" type="text/javascript"></script>
 <script src="{{ asset('/js/employees.js') }}" type="text/javascript"></script>
 <script src="{{ asset('/js/defaults.js')}}" type="text/javascript"></script>
-<script src="{{ asset('/js/category.js')}}" type="text/javascript"></script>
+<script src="{{ asset('/js/employees_category.js')}}" type="text/javascript"></script>
 <script src="{{ asset('/js/system.js')}}" type="text/javascript"></script>
 <script src="{{ asset('/js/matriculation.js')}}" type="text/javascript"></script>
 {{--<script src="{{ asset('/js/license.js')}}" type="text/javascript"></script>--}}
@@ -235,5 +236,8 @@
 <script src="{{ asset('/js/payments.js')}}" type="text/javascript"></script>
 <script src="{{ asset('/js/roles.js')}}" type="text/javascript"></script>
 <script src="{{ asset('/js/permissions.js')}}" type="text/javascript"></script>
+<script src="{{ asset('/js/menus.js')}}" type="text/javascript"></script>
+<script src="{{ asset('/js/backups.js')}}" type="text/javascript"></script>
+<script src="{{ asset('/js/accounts.js')}}" type="text/javascript"></script>
 
 

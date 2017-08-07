@@ -21,7 +21,7 @@
                             <i class="fa fa-circle text-success"></i> <?php echo e(trans('adminlte_lang::message.online')); ?>
 
                         -->
-                            <?php echo e(trans('adminlte_lang::message.branch')); ?> : <?php echo e($branch != null ? $branch->name : trans('adminlte_lang::message.all_branch')); ?>
+                        <?php echo e(trans('adminlte_lang::message.branch')); ?> : <?php echo e($branch != null ? $branch->name : trans('adminlte_lang::message.all_branch')); ?>
 
                     </a>
                 </div>

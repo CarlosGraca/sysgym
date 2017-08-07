@@ -10,32 +10,31 @@ $(function () {
     //console.log(_val);
 
     //BOTÃO ADICIONAR CLIENTE
-    $(document).on('click','#add-branch',function(){
+    $(document).on('click','#add-branch',function(e){
+        e.preventDefault();
         save($('#branches-form'),$('#branches-form')[0],'create');
     });
 
     //BOTÃO EDITAR CLIENTE
-    $(document).on('click','#update-branch',function(){
+    $(document).on('click','#update-branch',function(e){
+        e.preventDefault();
         save($('#branches-form'),$('#branches-form')[0],'update');
     });
 
 
-    $(document).on('click','#edit-branch-button',function () {
+    $(document).on('click','#edit-branch-button',function (e) {
+        e.preventDefault();
         $(this).css('display', 'none');
-
         field_status_change('enable',$('#branches-form'));
         schedule_button_action('enable');
 
-        $('#edit-branch').removeAttr('style');
+        $('#update-branch').removeAttr('style');
     });
 
     $(document).on('click','#add-office_hours',function (e) {
         e.preventDefault();
         var _id = $('#office_hours_id').val();
         var _exists = validation_shedules();
-
-        // console.log(_id);
-        // console.log(_exists);
 
         if(_exists == false) {
             if (_id == '') {
@@ -108,6 +107,38 @@ $(function () {
     $(document).on('click','#enable-branch',function (e) {
         e.preventDefault();
         change_status($(this).attr('data-key'), 'enable', $(this).attr('data-name'), $(this), 'branches/enable', 'bg-danger', 'branch');
+    });
+
+    //HOME BRANCH SELECT
+    setPopOver('branch-select');
+
+    //POPOVER CHANGE BUDGET TEETH
+    $(document).on('show.bs.popover','.branch-select',function (e) {
+        var _branch_id = $(this).attr('data-key');
+        $.post('/edit/branch-select/field',{id: _branch_id },function (data) {
+            $('.popover-branch-select').html(data);
+        });
+        // e.preventDefault();
+    });
+
+    $(document).on("click", '#save-branch-select',function (e) {
+        e.preventDefault();
+        console.log($('#branch-select').val());
+        var url = '/update/branch-select/field';
+        $('.loader-name').css('display','block');
+        $('#field-branch-select').css('display','none');
+        $.ajax({
+            url:url,
+            data:{id: $('#branch-select').val(), value: $('#branch-select option:selected').text() },
+            type: 'POST',
+            dataType: 'json',
+            success: function() {
+                $('.loader-name').css('display','none');
+                $('#save-branch-select').parents(".popover").popover('hide');
+                location.reload();
+            }
+        });
+        return false;
     });
 
 });

@@ -1,4 +1,4 @@
-<div class="modal fade" id="modal">
+<div class="modal fade" id="modal-ajax" data-backdrop="static" data-keyboard="true">
 	<div class="modal-dialog modal-lg">
 		<div class="modal-content">
 		    <div class="modal-header">

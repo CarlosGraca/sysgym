@@ -21,15 +21,15 @@ $status_color = ['danger','success','info'];
 @section('main-content')
 	<div class="row">
 	    <div class="col-lg-12">
-	        <div class="box box-default">
+	        <div class="box box-primary">
 	            <div class="box-header with-border">
-	              <h3 class="box-title"></h3>
+	              <h3 class="box-title"> {{ trans('adminlte_lang::message.branch_list') }} </h3>
 	              <div class="pull-left box-tools">
-					  @can('add_branch')
-						  <a href="{{ url('branches/create') }}" class="btn btn-primary btn-sm" branch="button" data-toggle="tooltip" title="{{ trans('adminlte_lang::message.new_branch') }}">
+					  {{--@can('add_branch')--}}
+						  <a href="{{ url('branches/create') }}" class="btn btn-primary btn-sm" data-toggle="tooltip" title="{{ trans('adminlte_lang::message.new_branch') }}">
 							   <i class="fa fa-plus"></i> {{ trans('adminlte_lang::message.new_branch') }}
 						  </a>
-					  @endcan
+					  {{--@endcan--}}
 	              </div><!-- /. tools -->
 	            </div><!-- /.box-header -->
 
@@ -52,28 +52,28 @@ $status_color = ['danger','success','info'];
                                     <td>{{$branch->name}}</td>
                                     <td>{{$branch->email}}</td>
                                     <td>{{$branch->phone }} / {{ $branch->fax }}</td>
-                                    <td>{{$branch->address }}, {{$branch->city }}, {{$branch->island->name }}</td>
+                                    <td>{{$branch->address }}, {{$branch->city }}</td>
                                     <td>
-										@can('view_branch')
+										{{--@can('view_branch')--}}
 										<a href="{{ route('branches.show',$branch->id) }}" data-toggle="tooltip" title="{{ trans('adminlte_lang::message.show_details') }}">
 											<i class="fa fa-eye"></i>
 										</a>
-										@endcan
+										{{--@endcan--}}
 
-										@can('edit_branch')
+{{--										@can('edit_branch')--}}
 											<a href="{{ route('branches.edit',$branch->id) }}"  data-toggle="tooltip" title="{{ trans('adminlte_lang::message.edit') }}" id="edit-branch">
 												<i class="fa fa-edit"></i>
 											</a>
-										@endcan										
+										{{--@endcan										--}}
 										@can('disable_branch')
-										<a href="#disable" style="display: {{ $branch->status == 1 ? 'initial' : 'none' }};" data-toggle="tooltip" id="disable-branch" title="{{ trans('adminlte_lang::message.disable') }}" data-key="{{ $branch->id }}" data-name="{{ $branch->name }}">
-											<i class="fa fa-user-o"></i>
+										<a href="#disable" style="display: {{ $branch->status == 1 ? 'initial' : 'none' }}; color: #999;" data-toggle="tooltip" id="disable-branch" title="{{ trans('adminlte_lang::message.disable') }}" data-key="{{ $branch->id }}" data-name="{{ $branch->name }}">
+											<i class="fa fa-building"></i>
 										</a>
 										@endcan
 
 										@can('enable_branch')
-										<a href="#enable" style="display: {{ $branch->status == 0 ? 'initial' : 'none' }};" data-toggle="tooltip" id="enable-branch" title="{{ trans('adminlte_lang::message.enable') }}" data-key="{{ $branch->id }}" data-name="{{ $branch->name }}">
-											<i class="fa fa-user"></i>
+										<a href="#enable" style="display: {{ $branch->status == 0 ? 'initial' : 'none' }}; color: #00a65a;" data-toggle="tooltip" id="enable-branch" title="{{ trans('adminlte_lang::message.enable') }}" data-key="{{ $branch->id }}" data-name="{{ $branch->name }}">
+											<i class="fa fa-building"></i>
 										</a>
 										@endcan
                                     </td>

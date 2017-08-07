@@ -29,7 +29,6 @@ class BranchRequest extends FormRequest
             'phone' => 'required',
             'address' => 'required',
             'city' => 'required',
-            'island' => 'required',
         ];
     }
 }

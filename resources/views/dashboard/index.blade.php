@@ -1,39 +1,102 @@
-<!-- BAR CHART -->
-<div class="box box-success">
-  <div class="box-header with-border">
-    <i class="fa fa-bar-chart"></i>
-    <h3 class="box-title" id='chart-title'>{{ trans('adminlte_lang::message.chart_bar_title') }}</h3>
+@extends('layouts.app')
 
-    <div class="box-tools">
+@section('htmlheader_title')
+    {{ trans('adminlte_lang::message.dashboard') }}
+@endsection
 
-      <div class="btn-group pull-right">
-        <button type="button" class="btn btn-primary btn-sm dropdown-toggle" data-toggle="dropdown">
-          <i class="fa fa-angle-down"></i></button>
-        <ul class="dropdown-menu" role="menu">
-          <li><a href="#" id='bar'>Bar Graphic</a></li>
-          <li><a href="#" id='line'>Line Graphic</a></li>
-        </ul>
-      </div>
+@section('contentheader_title')
+    {{ trans('adminlte_lang::message.app_name') }}
+@endsection
 
-      <button type="button" class="btn btn-primary btn-sm daterange pull-right" style='margin-right:5px;' data-toggle="tooltip" title="Date range">
-        <i class="fa fa-calendar"></i>
-        <span class="range-date"></span>
-      </button>
-        <!--
-          <button type="button" class="btn btn-primary btn-sm pull-right" data-widget="collapse" data-toggle="tooltip" title="Collapse" style="margin-right: 5px;">
-            <i class="fa fa-minus"></i></button>
-        -->
+@section('contentheader_description')
+    {{ trans('adminlte_lang::message.dashboard') }}
+@endsection
+
+
+@section('main-content')
+
+    <div class="row">
+
+        <div class="col-md-3 col-sm-6 col-xs-12">
+            <div class="info-box">
+                <span class="info-box-icon bg-green"><i class="fa fa-users"></i></span>
+
+                <div class="info-box-content">
+                    <span class="info-box-text">{{ trans('adminlte_lang::message.clients_active') }}</span>
+                    <span class="info-box-number" style="font-size: 40px;">{{ $total_a }}</span>
+                </div>
+                <!-- /.info-box-content -->
+            </div>
+            <!-- /.info-box -->
+        </div>
+
+        <div class="col-md-3 col-sm-6 col-xs-12">
+            <div class="info-box">
+                <span class="info-box-icon bg-red"><i class="fa fa-users"></i></span>
+
+                <div class="info-box-content">
+                    <span class="info-box-text">{{ trans('adminlte_lang::message.clients_inactive') }}</span>
+                    <span class="info-box-number" style="font-size: 40px;">{{ $total_i }}</span>
+                </div>
+                <!-- /.info-box-content -->
+            </div>
+            <!-- /.info-box -->
+        </div>
+
+        <div class="col-md-3 col-sm-6 col-xs-12">
+            <div class="info-box">
+                <span class="info-box-icon bg-aqua"><i class="fa fa-gamepad"></i></span>
+
+                <div class="info-box-content">
+                    <span class="info-box-text">{{ trans('adminlte_lang::message.modalities') }}</span>
+                    <span class="info-box-number" style="font-size: 40px;">{{ $total_m }}</span>
+                </div>
+                <!-- /.info-box-content -->
+            </div>
+            <!-- /.info-box -->
+        </div>
+
+        <div class="col-md-3 col-sm-6 col-xs-12">
+            <div class="info-box">
+                <span class="info-box-icon bg-yellow"><i class="fa fa-cube"></i></span>
+
+                <div class="info-box-content">
+                    <span class="info-box-text">{{ trans('adminlte_lang::message.matriculation') }}</span>
+                    <span class="info-box-number" style="font-size: 40px;"> {{ $total_mt }}</span>
+                </div>
+                <!-- /.info-box-content -->
+            </div>
+            <!-- /.info-box -->
+        </div>
 
     </div>
-  </div>
-  <div class="box-body">
-    <div class="chart">
-        @include('dashboard.bar_chart',[])
-    </div>
-  </div>
-  <!-- /.box-body -->
-  {{--<div class="box-footer text-center">--}}
-    {{--<span class="range-date"></span>--}}
-  {{--</div>--}}
-</div>
-<!-- /.box -->
+
+    {{--<div class="row">--}}
+        {{--<div class="col-lg-3 pull-right">--}}
+            {{--<!-- BAR CHART -->--}}
+            {{--<div class="box box-success">--}}
+                {{--<div class="box-header with-border">--}}
+                    {{--<i class="fa fa-bar-chart"></i>--}}
+                    {{--<h3 class="box-title" id='chart-title'>{{ trans('adminlte_lang::message.none') }}</h3>--}}
+                    {{--<div class="box-tools">--}}
+                        {{--<button type="button" class="btn btn-primary btn-sm daterange pull-right" style='margin-right:5px;' data-toggle="tooltip" title="Date range">--}}
+                            {{--<i class="fa fa-calendar"></i>--}}
+                            {{--<span class="range-date"></span>--}}
+                        {{--</button>--}}
+                    {{--</div>--}}
+                {{--</div>--}}
+                {{--<div class="box-body">--}}
+                    {{--<div class="chart">--}}
+                        {{--@include('dashboard.bar_chart',[])--}}
+                    {{--</div>--}}
+                {{--</div>--}}
+                {{--<!-- /.box-body -->--}}
+                {{--<div class="box-footer text-center">--}}
+
+                {{--</div>--}}
+            {{--</div>--}}
+            {{--<!-- /.box -->--}}
+        {{--</div>--}}
+    {{--</div>--}}
+
+@endsection

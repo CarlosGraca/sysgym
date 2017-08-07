@@ -5,20 +5,21 @@
 $(function () {
 
     //UPDATE SYSTEM DATA
-    $(document).on('click','#edit-system',function () {
+    $(document).on('click','#update-system',function (e) {
+        e.preventDefault();
         save($('#system-form'),$('#system-form')[0],'update');
-        //$(this).css('display', 'none');
-       // $('#edit-system-button').removeAttr('style');
     });
 
 
-    $(document).on('click','#edit-system-button',function () {
+    $(document).on('click','#edit-system-button',function (e) {
+        e.preventDefault();
         $(this).css('display', 'none');
         field_status_change('enable', $('#system-form'));
-        $('#edit-system').removeAttr('style');
+        $('#update-system').removeAttr('style');
     });
 
-    $('#theme').change(function () {
+    $(document).on('change','#theme',function (e) {
+        e.preventDefault();
 
         var my_skins = [
             "skin-blue",
@@ -45,7 +46,8 @@ $(function () {
     });
 
 
-    $('#layout').change(function () {
+    $(document).on('change','#layout',function (e) {
+        e.preventDefault();
 
        var layouts =  [
            'fixed',
@@ -65,6 +67,7 @@ $(function () {
 
 
     $(document).on('click','#tool_bar_button_employee',function (e) {
+        e.preventDefault();
         $('#myModalLabel').text('New Employee');
         $('#modal').modal('show')
             .find('.modal-body')
@@ -72,26 +75,6 @@ $(function () {
         $('#modal').css('overflow','auto');
     });
 
-
-    $('#modal').on('show.bs.modal', function (e) {
-        $(document.body).css('overflow','hidden');
-        $(this).find('.modal-body').css({
-            width:'auto', //probably not needed
-            height:'auto', //probably not needed
-            'max-height':'100%'
-        });
-        $(this).find('.modal-dialog').css('width', $(window).width() * 0.8);
-    });
-
-
-    $(window).bind("load resize", function() {
-        var width = (this.window.innerWidth > 0) ? this.window.innerWidth : this.screen.width;
-        $('#modal').find('.modal-dialog').css('width', width * 0.9);
-    });
-
-    $('#modal').on('hidden.bs.modal', function (e) {
-        $(document.body).css('overflow','auto');
-    });
 
 
     //SETUP SYSTEM
@@ -217,20 +200,6 @@ $(function () {
     //ABOUT SYSTEM MODAL POPUP
     $(document).on('click','#about_system',function (e) {
         e.preventDefault();
-        // $('#modal').css('overflow','auto');
-        // console.log(($(window).height() - 100));
-        // $('#modal').find('.modal-content').css('height',($(window).height() - 100)+'px');
-        // $('#modal').find('#myModalLabel').html('<i class="fa fa-info-circle"></i> ');
-        // $('#modal').find('#myModalLabel').append($(this).text());
-
-        // $('#modal').find('.modal-body').load($(this).attr('data-url'));
-        // var footer_html = $('#modal').find('.modal-body').find('#app_footer').html();
-        // $('#modal').find('.modal-footer').html(footer_html);
-        // $('#modal').modal();
-
-        // $('#modal').find('.modal-body').slimScroll();
-        // $('#modal').find('.slimScrollDiv').attr('style','overflow: auto; height: '+($(window).height()-200)+'px;');
-        // $('#modal').find('.modal-body').css('height',($(window).height()-200)+'px');
 
         $('#myModalLabel').html('<i class="fa fa-info-circle"></i> ');
         $('#myModalLabel').append($(this).text());
@@ -239,10 +208,6 @@ $(function () {
             .load($(this).data('url'));
         $('#modal').css('overflow','auto');
     });
-
-    // $('#modal').on('hidden.bs.modal', function () {
-    //     $('body').removeAttr('style');
-    // });
 
     $(".carousel").carousel();
 

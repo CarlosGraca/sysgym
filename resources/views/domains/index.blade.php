@@ -9,7 +9,8 @@
 @endsection
 
 @section('contentheader_description')
-  domains
+
+	{{ trans('adminlte_lang::message.domains') }}
 @endsection
 
 
@@ -22,7 +23,9 @@
 	              <h3 class="box-title"></h3>
 	               <div class="pull-left box-tools">
 	                  <a href="{{ url('domains/create') }}"  class="btn btn-primary btn-sm" role="button" data-toggle="tooltip" title="">
-	                       <i class="fa fa-plus"></i>
+
+	                       <i class="fa fa-plus"></i> {{ trans('adminlte_lang::message.new_domain') }}
+
 	                  </a>
 	                  
 	              </div><!-- /. tools -->

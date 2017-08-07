@@ -2,10 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Company;
-use App\File;
-use App\Island;
-use App\Client;
+use App\Models\Tenant;
+use App\Models\File;
+use App\Models\Client;
 use Illuminate\Support\Facades\Auth;
 use Request;
 use Image;
@@ -31,7 +30,7 @@ class ClientController extends Controller
      */
     public function index()
     {
-        $clients = Client::all();
+        $clients = Client::where(['branch_id'=>\Auth::user()->branch_id,'tenant_id'=>\Auth::user()->tenant_id])->get();
 
         if (\Request::wantsJson()) {
             return $clients;
@@ -47,12 +46,10 @@ class ClientController extends Controller
      */
     public function create()
     {
-        $island = Island::pluck('name','id');
-//        $secure_agency = SecureAgency::pluck('name','id');
         if (\Request::ajax()) {
-            return view('clients.create_ajax',compact('island'));
+            return view('clients.create_ajax');
         }
-        return view('clients.create',compact('island'));
+        return view('clients.create');
     }
 
     /**
@@ -74,10 +71,8 @@ class ClientController extends Controller
         $client->zip_code = $request->zip_code;
         $client->genre = $request->genre;
         $client->civil_state = $request->civil_state;
-        $client->island_id = $request->island_id;
         $client->city = $request->city;
         $client->website = $request->website;
-        $client->user_id = Auth::user()->id;
         $client->work_address = $request->work_address;
         $client->work_phone = $request->work_phone;
         $client->profession = $request->profession;
@@ -88,30 +83,23 @@ class ClientController extends Controller
         $client->bi = $request->bi;
         $client->note = $request->note;
 
+        $client->user_id = Auth::user()->id;
+        $client->branch_id = Auth::user()->branch_id;
+        $client->tenant_id = Auth::user()->tenant_id;
 
-        if ($request->hasFile('avatar')){
+        if ($request->hasFile('avatar') || $request->avatar_type == 'capture'){
             $img_base64 = $request->avatar_crop;
             $filename = 'uploads/' .time().'.png';
             $default->base64_to_png($img_base64, $filename);
             $client->avatar = $filename;
         }
 
-//        if($request->has_secure == 1){
-//            $card = new SecureCard();
-//            $card->start_date = $request->start_date;
-//            $card->end_date = $request->end_date;
-//            $card->note = $request->note_card;
-//            $card->secure_number = $request->secure_number;
-//            $card->secure_agency_id = $request->secure_agency;
-//            $card->save();
-//            $client->secure_card_id = $card->id;
-//        }
 
-        $client->save();
 
-        if (Request::wantsJson()){
+        if (Request::wantsJson() && $client->save()){
+            $url = route('clients.edit',$client->id);
             $message = trans('adminlte_lang::message.msg_success_client');
-            return ['id'=>$client->id,'message'=>$message,'form'=>'client'];
+            return ['id'=>$client->id,'message'=>$message,'form'=>'client','type'=>'success','url'=>$url];
         }else{
              return view('clients');
         }
@@ -126,7 +114,6 @@ class ClientController extends Controller
     public function show(Client $client)
     {
         $Files = File::where(['item_id'=>$client->id,'flag'=>1])->get();
-//        $consult_agenda = ConsultAgenda::where('client_id',$client->id)->orderby('date','desc')->get();
 //        $matriculation = Matriculation::where('client_id',$client->id)->get();
         
         if (Request::wantsJson()){
@@ -146,10 +133,7 @@ class ClientController extends Controller
      */
     public function edit(Client $client)
     {
-        $island = Island::pluck('name','id');
-//        $secure_agency = SecureAgency::pluck('name','id');
-//        $card = SecureCard::where('id',$client->secure_card_id)->first();
-        return view('clients.edit',compact('client','island'));
+        return view('clients.edit',compact('client'));
     }
 
     /**
@@ -172,7 +156,6 @@ class ClientController extends Controller
         $client->zip_code = $request->zip_code;
         $client->genre = $request->genre;
         $client->civil_state = $request->civil_state;
-        $client->island_id = $request->island_id;
         $client->city = $request->city;
         $client->website = $request->website;
         $client->user_id = \Auth::user()->id;
@@ -187,8 +170,7 @@ class ClientController extends Controller
         $client->note = $request->note;
 
 
-
-        if ($request->hasFile('avatar')){
+        if ($request->hasFile('avatar') || $request->avatar_type == 'capture'){
             
             $img_base64 = $request->avatar_crop;
             $filename = 'uploads/' .time().'.png';
@@ -203,32 +185,10 @@ class ClientController extends Controller
             $client->avatar = $filename;
         }
 
-//        $card = SecureCard::where('id',$client->secure_card_id)->first();
-//        if(isset($card)){
-//            $card->start_date = $request->start_date;
-//            $card->end_date = $request->end_date;
-//            $card->note = $request->note_card;
-//            $card->secure_number = $request->secure_number;
-//            $card->secure_agency_id = $request->secure_agency;
-//            $card->save();
-//        }else{
-//            if($request->has_secure == 1){
-//                $card = new SecureCard();
-//                $card->start_date = $request->start_date;
-//                $card->end_date = $request->end_date;
-//                $card->note = $request->note_card;
-//                $card->secure_number = $request->secure_number;
-//                $card->secure_agency_id = $request->secure_agency;
-//                $card->save();
-//                $client->secure_card_id = $card->id;
-//            }
-//        }
 
-        $client->save();
-
-        if (Request::wantsJson()){
+        if (Request::wantsJson() && $client->save()){
             $message = trans('adminlte_lang::message.msg_success_client');
-            return ['values'=>$client,'message'=>$message,'form'=>'client'];
+            return ['values'=>$client,'message'=>$message,'form'=>'client','type'=>'success'];
         }else{
              return view('clients.create');
         }
@@ -242,10 +202,6 @@ class ClientController extends Controller
      */
     public function disable(Request $request)
     {
-//        if(!$this->can_disable(\Input::get('id'))){
-//            $message = trans('adminlte_lang::message.msg_error_disable_client');
-//            return ['status_color'=>'bg-danger','message'=>$message,'form'=>'client', 'type'=>'error'];
-//        }
 
         $client = Client::where('id',\Input::get('id'))->first();
         $client->status = 0;
@@ -286,7 +242,7 @@ class ClientController extends Controller
     public function _print($id)
     {
         $client = Client::where('id',$id)->first();
-        $company = Company::all()->first();
+        $company = Tenant::where('id',\Auth::user()->tenant_id)->first();
         return view('report.profile_print',['people'=>$client, 'company'=> $company , 'type_people' => 'client']);
     }
 

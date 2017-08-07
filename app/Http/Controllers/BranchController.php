@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Branch;
-use App\Company;
-use App\Island;
-use App\Schedule;
+use App\Models\Branch;
+use App\Models\System;
+use App\Models\Tenant;
+use App\Models\Schedule;
 use Illuminate\Support\Facades\Auth;
 use Request;
 use Image;
@@ -47,11 +47,9 @@ class BranchController extends Controller
     public function create()
     {
         $defaults = new Defaults();
-        $island = Island::pluck('name','id');
         $weeks = $defaults->getWeeks();
         $last_schedules = Schedule::select(['id'])->orderby('id','desc')->first();
-
-        return view('branches.create',compact('island','weeks','last_schedules'));
+        return view('branches.create',compact('weeks','last_schedules'));
     }
 
     /**
@@ -62,7 +60,6 @@ class BranchController extends Controller
      */
     public function store(BranchRequest $request)
     {
-        $company = Company::All()->first();
         $branch = new Branch();
         $branch->name = $request->name;
         $branch->email = $request->email;
@@ -70,9 +67,9 @@ class BranchController extends Controller
         $branch->phone = $request->phone;
         $branch->fax = $request->fax;
         $branch->manager = $request->manager;
-        $branch->island_id = $request->island;
         $branch->city = $request->city;
-        $branch->company_id = $company->id;
+
+        $branch->tenant_id = \Auth::user()->tenant_id;
         $branch->user_id = Auth::user()->id;
 
         if ($request->hasFile('avatar')){
@@ -82,15 +79,27 @@ class BranchController extends Controller
             $destinationPath = 'uploads/';
             $image->move($destinationPath,$filename);
 
-            $company->logo = 'uploads/' . $filename;
+            $branch->avatar = 'uploads/' . $filename;
         }
 
-        $branch->save();
 
+        if (Request::wantsJson() && $branch->save()){
+            $system = new System();
+            $system->name = config('app.name');
+            $system->theme = config('app.theme');
+            $system->lang = config('app.locale');
+            $system->layout = config('app.layout');
+            $system->currency = config('app.currency');
+            $system->background_image = config('app.background');
+            $system->timezone = config('app.timezone');
+            $system->branch_id = $branch->id;
+            $system->tenant_id = \Auth::user()->tenant_id;
+            $system->save();
 
-        if (Request::wantsJson()){
+            $url = route('branches.edit',$branch->id);
+
             $message = trans('adminlte_lang::message.msg_create_success_branches');
-            return ['id'=>$branch->id,'message'=>$message,'form'=>'branches'];
+            return ['id'=>$branch->id,'message'=>$message,'form'=>'branches','url'=>$url,'type'=>'success'];
         }else{
             return redirect('branches');
         }
@@ -107,7 +116,7 @@ class BranchController extends Controller
         $schedules = Schedule::select( \DB::raw("week_day, start_time, end_time") )->where(['item_id'=>$branch->id,'status'=>1,'flag'=>1])
             ->orderby( \DB::raw(" field(week_day,'monday','tuesday','wednesday','thursday','friday','saturday','sunday'), start_time") )->get();
         //ORDER BY FIELD(<fieldname>, 'MONDAY', 'TUESDAY', 'WEDNESDAY', 'THURSDAY', 'FRIDAY', 'SATURDAY', 'SUNDAY');
-        $company = Company::all()->first();
+        $company = Tenant::where('id',\Auth::user()->tenant_id)->first();
 
         $schedule_order = $schedules->toArray();
 
@@ -140,7 +149,7 @@ class BranchController extends Controller
     {
         $defaults = new Defaults();
         $weeks = $defaults->getWeeks();
-        $island = Island::pluck('name','id');
+
         $schedules = Schedule::where(['item_id'=>$branch->id,'status'=>1,'flag'=>1])
             ->orderby( \DB::raw(" field(week_day,'monday','tuesday','wednesday','thursday','friday','saturday','sunday'), start_time ") )->get();
         //ORDER BY FIELD(<fieldname>, 'MONDAY', 'TUESDAY', 'WEDNESDAY', 'THURSDAY', 'FRIDAY', 'SATURDAY', 'SUNDAY');
@@ -166,7 +175,6 @@ class BranchController extends Controller
         $branch->phone = $request->phone;
         $branch->fax = $request->fax;
         $branch->manager = $request->manager;
-        $branch->island_id = $request->island;
         $branch->city = $request->city;
         $branch->user_id = Auth::user()->id;
 
@@ -186,14 +194,13 @@ class BranchController extends Controller
             $image->move($path,$filename);
             $branch->avatar = 'uploads/' . $filename;
         }
-
-        $branch->save();
+        ;
 
         //session()->flash('flash_message','Company was stored with success');
 
-        if (Request::wantsJson()){
+        if (Request::wantsJson() && $branch->save()){
             $message = trans('adminlte_lang::message.msg_update_success_branches');
-            return ['id'=>$branch->id,'message'=>$message,'form'=>'branches'];
+            return ['id'=>$branch->id,'message'=>$message,'form'=>'branches','type'=>'success'];
         }else{
             return redirect('branches');
         }
@@ -280,6 +287,7 @@ class BranchController extends Controller
                     $schedule->end_time = $item->end_time;
                     $schedule->item_id = $item_id;
                     $schedule->user_id =  Auth::user()->id;
+                    $schedule->tenant_id =  Auth::user()->tenant_id;
                     $schedule->flag = $flag;
                     $schedule->save();
                 }

@@ -1,10 +1,6 @@
 <?php
-    $system = \App\Models\System::where('id',\Auth::user()->branch_id)->first();
     $company = \App\Models\Tenant::where('id',\Auth::user()->tenant_id)->first();
     $branch = \App\Models\Branch::where('id',(\Auth::user() ? \Auth::user()->branch_id : 0))->first();
-
-    if(\Auth::guest())
-        header('Location: /');
 ?>
 <!-- Main Header -->
 <header class="main-header">
@@ -186,14 +182,23 @@
 
 
                 <li class="user user-menu">
-                  <a href="{{ url('auth/profile') }}" data-toggle="tooltip" title="{{ trans('adminlte_lang::message.profile') }}">
+                  <a href="{{ url('accounts') }}" data-toggle="tooltip" title="{{ trans('adminlte_lang::message.profile') }}">
                     <img  src="{{ url('/') }}/{{Auth::user()->avatar}}" class="user-image" alt="Cinque Terre" >
                               <!-- hidden-xs hides the username on small devices so only the image appears. -->
-                    <span class="hidden-xs"><span class="user-name">{{ Auth::user()->name }}</span> | {{  Auth::user()->role->display_name }}</span>
+                    <span class="hidden-xs">
+                        <span class="users-list-name" style="color: #fff; display: table-cell; max-width: 100px;">{{ Auth::user()->name }}</span> | <span> {{  Auth::user()->role->display_name }} </span>
+                    </span>
                   </a>
                 </li>
+
                 <li>
-                  <a href="{{ url('/logout') }}"><i class="fa fa-sign-out"></i> {{ trans('adminlte_lang::message.signout') }}</a>
+                    @if(\Auth::user()->action_button == 'sign_out')
+                        <a href="{{ url('/logout') }}"><i class="fa fa-sign-out"></i> {{ trans('adminlte_lang::message.signout') }}</a>
+                    @endif
+
+                    @if(\Auth::user()->action_button == 'lock_screen')
+                        <a href="{{ url('/lockscreen') }}"><i class="fa fa-lock"></i> {{ trans('adminlte_lang::message.lockscreen') }}</a>
+                    @endif
                 </li>
 
                   @endif

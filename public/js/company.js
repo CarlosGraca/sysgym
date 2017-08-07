@@ -4,17 +4,14 @@
 $(function () {
 
     //BUTTON EDIT COMPANY
-    $('#edit-company').click(function(){
+    $(document).on('click','#update-company',function(){
         save($('#company-form'),$('#company-form')[0],'update');
-        $(this).css('display', 'none');
-        field_status_change('disable',$('#company-form'));
-        $('#edit-company-button').removeAttr('style');
     });
 
-    $('#edit-company-button').click(function () {
+    $(document).on('click','#edit-company-button',function () {
         $(this).css('display', 'none');
         field_status_change('enable',$('#company-form'));
-        $('#edit-company').removeAttr('style');
+        $('#update-company').removeAttr('style');
     });
 
 });

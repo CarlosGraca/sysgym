@@ -40,13 +40,13 @@
                     <h3 class="box-title">{{ trans('adminlte_lang::message.branch_profile') }}</h3>
                     <div class="pull-right box-tools">
                         <a href="{{ url('branches') }}" class="btn btn-primary btn-sm" role="button" data-toggle="tooltip" title="{{ trans('adminlte_lang::message.list') }}">
-                            <i class="fa fa-list"></i>
-                        </a>
-                        <a href="{{ url('branches') }}/{{$branch->id}}/print" class="btn btn-primary btn-sm" target="_blank" role="button" data-toggle="tooltip" title="{{ trans('adminlte_lang::message.print') }}">
-                            <i class="fa fa-print"></i>
+                            <i class="fa fa-list"></i> {{ trans('adminlte_lang::message.branch_list') }}
                         </a>
                         <a href="{{ route('branches.edit',$branch->id) }}" class="btn btn-primary btn-sm" role="button" data-toggle="tooltip" title="{{ trans('adminlte_lang::message.edit') }}">
-                            <i class="fa fa-edit"></i>
+                            <i class="fa fa-edit"></i> {{ trans('adminlte_lang::message.edit') }}
+                        </a>
+                        <a href="{{ url('branches') }}/{{$branch->id}}/print" class="btn btn-primary btn-sm" target="_blank" role="button" data-toggle="tooltip" title="{{ trans('adminlte_lang::message.print') }}">
+                            <i class="fa fa-print"></i> {{ trans('adminlte_lang::message.print') }}
                         </a>
                     </div>
                 </div>
@@ -54,8 +54,8 @@
                 <div class="box-body">
                     <div class="nav-tabs-custom">
                             <ul class="nav nav-tabs">
-                                <li class="active"><a href="#personal_data" data-toggle="tab">{{ trans('adminlte_lang::message.personal_data') }}</a></li>
-                                <li><a href="#officeHours" data-toggle="tab">{{ trans('adminlte_lang::message.office_hours') }}</a></li>
+                                <li class="active"><a href="#personal_data" data-toggle="tab"><i class="fa fa-id-card-o"></i> {{ trans('adminlte_lang::message.personal_data') }}</a></li>
+                                <li><a href="#officeHours" data-toggle="tab"><i class="fa fa-clock-o"></i> {{ trans('adminlte_lang::message.office_hours') }}</a></li>
                                 {{--<li><a href="#settings" data-toggle="tab">Settings</a></li>--}}
                             </ul>
 
@@ -68,7 +68,7 @@
                                         <div class="col-lg-6 col-md-6 col-sm-6">
                                             <ul class="list-group list-group-unbordered">
                                                 <li class="list-group-item">
-                                                    <i class="fa fa-user"></i>  <b>{{ trans('adminlte_lang::message.name') }}: </b>
+                                                    <i class="fa fa-building-o"></i>  <b>{{ trans('adminlte_lang::message.name') }}: </b>
                                                     <a> {{ $branch->name }} </a>
                                                 </li>
                                             </ul>
@@ -77,7 +77,7 @@
                                         <div class="col-lg-6 col-md-6 col-sm-6">
                                             <ul class="list-group list-group-unbordered">
                                                 <li class="list-group-item">
-                                                    <i class="fa fa-vcard-o"></i>  <b>{{ trans('adminlte_lang::message.manager') }}: </b>
+                                                    <i class="fa fa-user"></i>  <b>{{ trans('adminlte_lang::message.manager') }}: </b>
                                                     <a>{{ $branch->manager }}</a>
                                                 </li>
                                             </ul>
@@ -92,10 +92,10 @@
                                             <ul class="list-group list-group-unbordered">
                                                 <li class="list-group-item">
                                                     <i class="fa fa-map-marker"></i>  <b>{{ trans('adminlte_lang::message.address') }}: </b>
-                                                    <a> {{ $branch->address }}, {{ $branch->city }}, {{ $branch->island->name }} </a>
+                                                    <a> {{ $branch->address }}, {{ $branch->city }} </a>
                                                 </li>
                                                 <li class="list-group-item">
-                                                    <i class="fa fa-at"></i>  <b>{{ trans('adminlte_lang::message.email') }}: </b>
+                                                    <i class="fa fa-envelope"></i>  <b>{{ trans('adminlte_lang::message.email') }}: </b>
                                                     <a> {{$branch->email }} </a>
                                                 </li>
                                                 <li class="list-group-item">
@@ -205,7 +205,7 @@
 
 
                                 {{--</div>--}}
-                                <!-- /.tab-pane -->
+                                {{--<!-- /.tab-pane -->--}}
                             </div>
                             <!-- /.tab-content -->
                         </div>

@@ -35,9 +35,8 @@
 
 			<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
 				<div class="form-group form-group-sm">
-                    <?php if($type == 'update') $role =  $user->roles->first(); ?>
                     {!! Form::label('role',trans('adminlte_lang::message.role') ) !!}
-					{!! Form::select('role', $roles, ($type == 'update' ? $role['id'] : null) , ['class'=>'form-control','placeholder'=>' (SELECT ROLE) ']) !!}
+					{!! Form::select('role', $roles, ($type == 'update' ? $user->role->id : null) , ['class'=>'form-control','placeholder'=>' (SELECT ROLE) ']) !!}
 				</div>
 			</div>
 
@@ -68,16 +67,14 @@
 				{{--{{ $user->branch_permission }}--}}
 				{{--@if(isset($user->company->branch))--}}
 					{{--<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">--}}
-					{{--{{  }}--}}
-					@foreach($user->company->branch->where('institution_type_flag',2) as $branch)
+
+					@foreach($user->tenant->branch as $branch)
 						<div class="col-lg-2 col-md-2 col-sm-2 col-xs-12">
 							<div class="form-group form-group-sm">
 								{!! Form::checkbox('branches[]',$branch->id, ($type == 'update' ? ( !!count( $user->branch_permission->where('branch_id',$branch->id)->first() ) ) : false)) !!}
 								{!! Form::label('branches',$branch->name) !!}
 							</div>
 						</div>
-						{{--{{ $branch->name }}--}--}}
-
 					@endforeach
 
 				{{--@endif--}}

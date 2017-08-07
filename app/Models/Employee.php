@@ -11,7 +11,7 @@ class Employee extends Model
     protected $fillable = ['name','phone','mobile','email','genre','birthday','address','bi','city','category_id','salary','note','nationality','zip_code','facebook','avatar','website','user_id','parents','nif','civil_state','start_work','end_work','branch_id'];
 
     public function employee_category(){
-        return $this->belongsTo('App\Models\EmployeeCategory');
+        return $this->belongsTo('App\Models\EmployeeCategory','category_id','id');
     }
 
     public function branch(){
