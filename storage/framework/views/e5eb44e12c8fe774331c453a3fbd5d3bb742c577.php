@@ -100,32 +100,26 @@
                 </div>
             </div>
 
-			<div class="col-md-3 col-sm-6 col-xs-12">
-				<div class="form-group form-group-sm">
-					<?php echo Form::label('branch',trans('adminlte_lang::message.branch') ); ?>
+			
+				
+					
+					
+				
+			
 
-					<?php echo Form::text('branch', ($type == 'update' ? $matriculation->branch->name : \Auth::user()->branch->name) , ['class'=>'form-control','readonly'=>'readonly']); ?>
+			
+				
+					
+					
+				
+			
 
-				</div>
-			</div>
-
-			<div class="col-md-3 col-sm-6 col-xs-12">
-				<div class="form-group form-group-sm">
-					<?php echo Form::label('employee',trans('adminlte_lang::message.employee') ); ?>
-
-					<?php echo Form::text('employee', ($type == 'update' ? $matriculation->user->name : \Auth::user()->name) , ['class'=>'form-control','readonly'=>'readonly']); ?>
-
-				</div>
-			</div>
-
-            <div class="col-md-4 col-sm-6 col-xs-12">
-                <div class="form-group form-group-sm">
-                    <?php echo Form::label('note',trans('adminlte_lang::message.note') ); ?>
-
-                    <?php echo Form::textarea('note', ($type == 'update' ? $matriculation->note : null) , ['class'=>'form-control', $form_status]); ?>
-
-                </div>
-            </div>
+            
+                
+                    
+                    
+                
+            
 		</div>
 
         

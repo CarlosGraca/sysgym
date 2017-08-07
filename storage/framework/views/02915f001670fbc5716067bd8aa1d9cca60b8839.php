@@ -49,7 +49,8 @@ $status_color = ['danger','success','info'];
                           <?php $__currentLoopData = $modalities; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $modality): $__env->incrementLoopIndices(); $loop = $__env->getFirstLoop(); ?>
                                 <tr data-key="<?php echo e($modality->id); ?>" class="bg-<?php echo e($status_color[$modality->status]); ?>">
                                     <td><?php echo e($modality->name); ?></td>
-									<td class="text-center"><?php echo e($Defaults->currency($modality->price)); ?></td>
+                                    <td class="text-center"><?php echo e($modality->price); ?></td>
+									
 									<td><span class="label label-<?php echo e($status_color[$modality->status]); ?>"><?php echo e($status[$modality->status]); ?></span></td>
 									<td class="text-center">
 										<a href="<?php echo e(route('modalities.show',$modality->id)); ?>"  data-toggle="tooltip" title="<?php echo e(trans('adminlte_lang::message.view')); ?>">

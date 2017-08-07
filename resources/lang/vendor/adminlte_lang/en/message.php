@@ -597,6 +597,7 @@ return [
     'employees_category_list' => 'List of Employee Category',
     'clients_active' => 'Clients Active',
     'clients_inactive' => 'Clients Inactive',
-
+    'add_client' => 'Add Client',
+    'next' => 'Next',
 ];
 

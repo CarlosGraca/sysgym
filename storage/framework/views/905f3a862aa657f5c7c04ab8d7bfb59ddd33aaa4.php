@@ -23,18 +23,18 @@
 	              </h3>
 	              
 				  <div class="pull-right box-tools">
-							<a href="<?php echo e(url('dominios')); ?>" class="btn btn-primary btn-sm" role="button" data-toggle="tooltip" title="Voltar">
+							<a href="<?php echo e(url('domains')); ?>" class="btn btn-primary btn-sm" role="button" data-toggle="tooltip" title="Voltar">
 								 <i class="fa  fa-arrow-left"></i>
 							</a>
 					</div><!-- /. tools -->
 	            </div><!-- /.box-header -->
 
 	            <div class="box-body">
-	                <?php echo Form::open(['route'=>'dominios.store', 'id'=>'dominios-form','files'=>true]); ?>
+	                <?php echo Form::open(['route'=>'domains.store', 'id'=>'domains-form','files'=>true]); ?>
 
 	                    <?php echo e(csrf_field()); ?>
 
-					    <?php echo $__env->make('adminlte::dominios.form', array('submitButtonText'=>'Gravar'), array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+					    <?php echo $__env->make('domains.form', array('submitButtonText'=>'Gravar'), array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
 					<?php echo Form::close(); ?>
 
 	            </div>

@@ -28,20 +28,18 @@
 	              	 <span><?php echo e(trans('adminlte_lang::message.new_matriculation')); ?></span>
 	              </h3>
 				<div class="pull-right box-tools">
-
-						<a href="#" class="btn btn-primary btn-sm" role="button" data-toggle="tooltip" title="<?php echo e(trans('adminlte_lang::message.reset')); ?>" id="reset-matriculation">
-							<i class="fa fa-repeat"></i> <?php echo e(trans('adminlte_lang::message.reset')); ?>
-
-						</a>
-
-						<a href="#" class="btn btn-primary btn-sm" role="button" data-toggle="tooltip" title="<?php echo e(trans('adminlte_lang::message.save')); ?>" id="add-matriculation">
-							 <i class="fa fa-save"></i> <?php echo e(trans('adminlte_lang::message.save')); ?>
-
-						</a>
-
+					
 						
-							
-						
+					
+					<a href="#" class="btn btn-primary btn-sm" role="button" data-toggle="tooltip" title="<?php echo e(trans('adminlte_lang::message.save')); ?>" id="add-matriculation">
+						 <i class="fa fa-save"></i> <?php echo e(trans('adminlte_lang::message.save')); ?>
+
+					</a>
+
+					<a href="#" class="btn btn-primary btn-sm" role="button" data-toggle="tooltip" title="<?php echo e(trans('adminlte_lang::message.reset')); ?>" id="next-step">
+						 <?php echo e(trans('adminlte_lang::message.next')); ?> <i class="fa fa-arrow-right"></i>
+					</a>
+
 				</div><!-- /. tools -->
 
 	            </div><!-- /.box-header -->

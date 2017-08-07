@@ -31,7 +31,7 @@
             <!-- END -->
             {{--@endcan--}}
 {{--            @can('view_matriculation_page')--}}
-            <a class="btn btn-app" href="{{ url('matriculation') }}" data-toggle="tooltip" title="{{ trans('adminlte_lang::message.matriculation') }}">
+            <a class="btn btn-app" href="{{ url('matriculation/create') }}" data-toggle="tooltip" title="{{ trans('adminlte_lang::message.matriculation') }}">
                <i class="fa fa-cube"> </i>  {{ trans('adminlte_lang::message.matriculation') }}
             </a>
             {{--@endcan--}}
