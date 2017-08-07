@@ -14,6 +14,11 @@
 
 
 @section('main-content')
+    <style>
+        .info-box-number{
+            font-size: 30px;
+        }
+    </style>
 
     <div class="row">
 
@@ -23,7 +28,7 @@
 
                 <div class="info-box-content">
                     <span class="info-box-text">{{ trans('adminlte_lang::message.clients_active') }}</span>
-                    <span class="info-box-number" style="font-size: 40px;">{{ $total_a }}</span>
+                    <span class="info-box-number">{{ $total_a }}</span>
                 </div>
                 <!-- /.info-box-content -->
             </div>
@@ -36,7 +41,7 @@
 
                 <div class="info-box-content">
                     <span class="info-box-text">{{ trans('adminlte_lang::message.clients_inactive') }}</span>
-                    <span class="info-box-number" style="font-size: 40px;">{{ $total_i }}</span>
+                    <span class="info-box-number">{{ $total_i }}</span>
                 </div>
                 <!-- /.info-box-content -->
             </div>
@@ -49,7 +54,7 @@
 
                 <div class="info-box-content">
                     <span class="info-box-text">{{ trans('adminlte_lang::message.modalities') }}</span>
-                    <span class="info-box-number" style="font-size: 40px;">{{ $total_m }}</span>
+                    <span class="info-box-number">{{ $total_m }}</span>
                 </div>
                 <!-- /.info-box-content -->
             </div>
@@ -58,17 +63,42 @@
 
         <div class="col-md-3 col-sm-6 col-xs-12">
             <div class="info-box">
-                <span class="info-box-icon bg-yellow"><i class="fa fa-cube"></i></span>
+                <span class="info-box-icon bg-aqua"><i class="fa fa-cube"></i></span>
 
                 <div class="info-box-content">
                     <span class="info-box-text">{{ trans('adminlte_lang::message.matriculation') }}</span>
-                    <span class="info-box-number" style="font-size: 40px;"> {{ $total_mt }}</span>
+                    <span class="info-box-number"> {{ $total_mt }}</span>
                 </div>
                 <!-- /.info-box-content -->
             </div>
             <!-- /.info-box -->
         </div>
 
+        <div class="col-md-3 col-sm-6 col-xs-12">
+            <div class="info-box">
+                <span class="info-box-icon bg-aqua"><i class="fa fa-money"></i></span>
+
+                <div class="info-box-content">
+                    <span class="info-box-text">{{ trans('adminlte_lang::message.payments') }}</span>
+                    <span class="info-box-number"> {{ $total_mt }}</span>
+                </div>
+                <!-- /.info-box-content -->
+            </div>
+            <!-- /.info-box -->
+        </div>
+
+        <div class="col-md-3 col-sm-6 col-xs-12">
+            <div class="info-box">
+                <span class="info-box-icon bg-aqua"><i class="fa fa-money"></i></span>
+
+                <div class="info-box-content">
+                    <span class="info-box-text">{{ trans('adminlte_lang::message.payment') }}</span>
+                    <span class="info-box-number"> {{ $total_mt }}</span>
+                </div>
+                <!-- /.info-box-content -->
+            </div>
+            <!-- /.info-box -->
+        </div>
     </div>
 
     {{--<div class="row">--}}
