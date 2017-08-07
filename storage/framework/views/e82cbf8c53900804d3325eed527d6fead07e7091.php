@@ -18,6 +18,7 @@
 
 	<div class="row">
 	    <div class="col-lg-12">
+
 	        <div class="box box-default">
 	            <div class="box-header with-border">
 				  <h3 class="box-title">
@@ -34,10 +35,12 @@
 								 <i class="fa fa-save"></i> <?php echo e(trans('adminlte_lang::message.save')); ?>
 
 							</a>
+
 					</div><!-- /. tools -->
 	            </div><!-- /.box-header -->
 
 	            <div class="box-body">
+
 					<?php echo Form::open(['route'=>'menus.store', 'id'=>'menu-form','files'=>true]); ?>
 
 	                 	<?php echo $__env->make('menus.form', ['type'=>'create'], array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

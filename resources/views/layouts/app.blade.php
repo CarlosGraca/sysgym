@@ -1,5 +1,5 @@
 <?php
-    $system = \App\Models\System::where(['branch_id'=>\Auth::user()->branch_id,'tenant_id'=>\Auth::user()->tenant_id])->first();
+    $system = \Auth::user()->branch_id != 0 ? \Auth::user()->branch->system :  \App\Models\System::where(['branch_id'=>\Auth::user()->branch_id,'tenant_id'=>\Auth::user()->tenant_id])->first();
     \Carbon\Carbon::setLocale(count($system) > 0 ? $system->lang : config('app.locale'));
 ?>
 <!DOCTYPE html>

@@ -34,14 +34,14 @@
             <!-- END -->
             
 
-            <a class="btn btn-app" href="<?php echo e(url('matriculation')); ?>">
+            <a class="btn btn-app" href="<?php echo e(url('matriculation')); ?>" data-toggle="tooltip" title="<?php echo e(trans('adminlte_lang::message.matriculation')); ?>">
                <i class="fa fa-cube"> </i>  <?php echo e(trans('adminlte_lang::message.matriculation')); ?>
 
             </a>
             
             
             
-            <a class="btn btn-app" href="<?php echo e(url('payments')); ?>">
+            <a class="btn btn-app" href="<?php echo e(url('payments')); ?>"  data-toggle="tooltip" title="<?php echo e(trans('adminlte_lang::message.payments')); ?>">
                 <i class="fa fa-money"></i>  <?php echo e(trans('adminlte_lang::message.payments')); ?>
 
             </a>
@@ -52,12 +52,12 @@
             
             
 
-            <a class="btn btn-app" href="<?php echo e(url('users')); ?>">
+            <a class="btn btn-app" href="<?php echo e(url('users')); ?>"  data-toggle="tooltip" title="<?php echo e(trans('adminlte_lang::message.users')); ?>">
                 <i class="fa fa-users"></i>  <?php echo e(trans('adminlte_lang::message.users')); ?>
 
             </a>
 
-            <a class="btn btn-app" href="<?php echo e(url('system')); ?>">
+            <a class="btn btn-app" href="<?php echo e(url('system')); ?>"  data-toggle="tooltip" title="<?php echo e(trans('adminlte_lang::message.system')); ?>">
                 <i class="fa fa-wrench"></i>  <?php echo e(trans('adminlte_lang::message.system')); ?>
 
             </a>

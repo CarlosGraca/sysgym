@@ -17,10 +17,12 @@
 <?php $__env->startSection('main-content'); ?>
 
 	<div class="row">
+
 	    <div class="col-lg-12">
 	        <div class="box box-default">
 	            <div class="box-header with-border">
 	              <h3 class="box-title">
+
 					  <a href="<?php echo e(url('menus')); ?>" class="btn btn-primary btn-sm" menu="button" data-toggle="tooltip" title="<?php echo e(trans('adminlte_lang::message.back')); ?>">
 						  <i class="fa  fa-arrow-left"></i> <?php echo e(trans('adminlte_lang::message.back')); ?>
 
@@ -48,6 +50,7 @@
 
 				</div>
 	        </div>
+
 	    </div>
 	</div>
 <?php $__env->stopSection(); ?>

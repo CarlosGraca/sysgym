@@ -20,7 +20,7 @@ $status_color = ['danger','success','info'];
 @section('main-content')
 	<div class="row">
 	    <div class="col-lg-12">
-	        <div class="box box-default">
+	        <div class="box box-primary">
 	            <div class="box-header with-border">
 	              <h3 class="box-title"> {{ trans('adminlte_lang::message.employees_list') }}</h3>
 	              <div class="pull-left box-tools">
@@ -37,12 +37,13 @@ $status_color = ['danger','success','info'];
 		                <thead>
 		                  <tr>
 		                    {{--<th style="width: 10px" class="col-md-1">#</th>--}}
-						  	<th class="col-md-2">{{ trans('adminlte_lang::message.category') }}</th>
+						  	<th class="col-md-1">{{ trans('adminlte_lang::message.category') }}</th>
 						  	<th class="col-md-2">{{ trans('adminlte_lang::message.name') }}</th>
 						  	<th class="col-md-2">{{ trans('adminlte_lang::message.email') }}</th>
 		                    <th class="col-md-2">{{ trans('adminlte_lang::message.contacts') }}</th>
                             <th class="col-md-1">{{ trans('adminlte_lang::message.genre') }}</th>
-		                    <th class="col-md-2">{{ trans('adminlte_lang::message.address') }}</th>
+                              <th class="col-md-2">{{ trans('adminlte_lang::message.address') }}</th>
+                          <th class="col-md-1">{{ trans('adminlte_lang::message.status') }}</th>
 		                    <th class="col-md-1"></th>
 		                  </tr>
 		                </thead>
@@ -55,6 +56,7 @@ $status_color = ['danger','success','info'];
                                     <td>{{$employee->mobile }} / {{ $employee->phone }}</td>
                                     <td>{{trans('adminlte_lang::message.'.$employee->genre)}}</td>
                                     <td>{{$employee->address }}</td>
+                                    <td><span class="label label-{{ $status_color[$employee->status] }}">{{ $status[$employee->status] }}</span></td>
                                     <td>
 										{{--@can('view_employee')--}}
 											<a href="{{ route('employees.show',$employee->id) }}"  data-toggle="tooltip" title="{{ trans('adminlte_lang::message.show_details') }}">

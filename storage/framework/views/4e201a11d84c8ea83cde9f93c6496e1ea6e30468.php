@@ -1,4 +1,5 @@
 <div class="row">
+
 	<?php echo Form::hidden('menu_id', ($type == 'update' ? $menu->id : null), ['class'=>'form-control','id'=>'menu_id']); ?>
 
     <?php echo Form::hidden('user_id', \Auth::user()->id, ['class'=>'form-control','id'=>'user_id']); ?>
@@ -61,4 +62,19 @@
 
 		</div>
 	</div>
+
+</div>
+
+<div class="row">
+	<span ><strong class="title"><?php echo e(trans('adminlte_lang::message.associate_tenant')); ?></strong></span> 
+	<hr class="h-divider" >
+     
+	<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+		<div class="form-group form-group-sm">
+			<?php echo Form::label('tenants',trans('adminlte_lang::message.company') ); ?>
+
+			<?php echo Form::select('tenants[]',  [''=>'Escolha a opcão']+ $tenants,null, ['class'=>'form-control select2','multiple'=>true,'style'=>'width: 100%;' ]); ?>
+
+		</div>
+	</div> 
 </div>

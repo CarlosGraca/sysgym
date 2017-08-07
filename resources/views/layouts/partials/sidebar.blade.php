@@ -6,7 +6,6 @@
 
         <!-- Sidebar user panel (optional) -->
         @if (! Auth::guest())
-            <?php $branch = \App\Models\Branch::where('id',Auth::user()->branch_id)->first(); ?>
             <div class="user-panel">
                 <div class="pull-left image">
                     <img  src="{{ url('/') }}/{{Auth::user()->avatar}}" class="img-circle" alt="Cinque Terre" >
@@ -20,7 +19,7 @@
                         <!--
                             <i class="fa fa-circle text-success"></i> {{ trans('adminlte_lang::message.online') }}
                         -->
-                        {{ trans('adminlte_lang::message.branch') }} : {{ $branch != null ? $branch->name : trans('adminlte_lang::message.all_branch') }}
+                        {{ trans('adminlte_lang::message.branch') }} : {{ \Auth::user()->branch_id != 0 ? \Auth::user()->branch->name : trans('adminlte_lang::message.all_branch') }}
                     </a>
                 </div>
             </div>
