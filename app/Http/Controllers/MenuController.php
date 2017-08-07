@@ -77,16 +77,7 @@ class MenuController extends Controller
     //     }
     // }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Menu $menu)
-    {
-        //
-    }
+   
 
     /**
      * Show the form for editing the specified resource.
@@ -133,9 +124,8 @@ class MenuController extends Controller
      */
     public function create()
     {
-        //$menus = Menu::pluck('title','id');
-        //
-        return view('menus.create');
+        $tenants = Tenant::pluck('company_name','id')->all();
+        return view('menus.create',compact('tenants'));
     }
 
     /**
@@ -178,8 +168,8 @@ class MenuController extends Controller
      */
     public function edit(Menu $menu)
     {
-        //
-        return view('menus.edit',compact('menu'));
+        $tenants = Tenant::pluck('company_name','id')->all();
+        return view('menus.edit',compact('menu','tenants'));
     }
 
     /**

@@ -23,6 +23,10 @@
 	        <div class="box box-default">
 	            <div class="box-header with-border">
 	              <h3 class="box-title">
+	               <a href="<?php echo e(url('menus')); ?>" class="btn btn-primary btn-sm" menu="button" data-toggle="tooltip" title="<?php echo e(trans('adminlte_lang::message.back')); ?>">
+						  <i class="fa  fa-arrow-left"></i> <?php echo e(trans('adminlte_lang::message.back')); ?>
+
+					  </a>
 	              	
 	              </h3>
 					<!--
@@ -33,11 +37,6 @@
 	              </div><!-- /. tools -->
 	             
 					<div class="pull-right box-tools">
-						<a href="<?php echo e(url('tenant-menu')); ?>  "" class="btn btn-primary btn-sm" role="button" data-toggle="tooltip" title="<?php echo e(trans('adminlte_lang::message.back')); ?>" >
-							 <i class="fa  fa-arrow-left"></i>
-						</a>
-
-						
 						<a href="#!" class="btn btn-primary btn-sm" role="button" data-toggle="tooltip" title="Edit" id="edit-menu-button" style="display: none;" >
 							<i class="fa fa-edit"></i>
 						</a>

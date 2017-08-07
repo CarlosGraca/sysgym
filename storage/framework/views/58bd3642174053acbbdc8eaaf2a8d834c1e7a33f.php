@@ -13,7 +13,6 @@
 
 <?php $__env->stopSection(); ?>
 
-<?php $CategoryController = app('App\Http\Controllers\CategoryController'); ?>
 <?php
 $status = [trans('adminlte_lang::message.deleted'),trans('adminlte_lang::message.active'),trans('adminlte_lang::message.expired')];
 $status_color = ['danger','success','info'];
@@ -51,42 +50,41 @@ $status_color = ['danger','success','info'];
                           <?php $__currentLoopData = $users; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $user): $__env->incrementLoopIndices(); $loop = $__env->getFirstLoop(); ?>
                                 <tr class="bg-<?php echo e($status_color[$user->status]); ?> ">
                                     
-									<?php $role =  $user->roles->first(); ?>
 									<td><?php echo e($user->name); ?></td>
 									<td><?php echo e($user->email); ?></td>
-									<td> <?php echo e($role['name']); ?> </td>
+									<td> <?php echo e($user->role->display_name); ?> </td>
                                     <td>
-										<?php if (app('Illuminate\Contracts\Auth\Access\Gate')->check('view_user')): ?>
+										
 										<a href="<?php echo e(route('users.show',$user->id)); ?>" data-toggle="tooltip" title="<?php echo e(trans('adminlte_lang::message.view')); ?>">
 											<i class="fa fa-eye"></i>
 										</a>
-										<?php endif; ?>
-										<?php if (app('Illuminate\Contracts\Auth\Access\Gate')->check('edit_user')): ?>
+										
+										
 										<a href="<?php echo e(route('users.edit',$user->id)); ?>" data-toggle="tooltip" title="<?php echo e(trans('adminlte_lang::message.edit')); ?>" id="edit-user">
 											<i class="fa fa-edit"></i>
 										</a>
-										<?php endif; ?>
-										<?php if (app('Illuminate\Contracts\Auth\Access\Gate')->check('disable_user')): ?>
+										
+										
 												<?php if(\Auth::user()->id != $user->id): ?>
 													<a href="#disable" style="display: <?php echo e($user->status == 1 ? 'initial' :'none'); ?>;  color: #999;" data-toggle="tooltip" id="disable-user" title="<?php echo e(trans('adminlte_lang::message.disable')); ?>" data-key="<?php echo e($user->id); ?>" data-name="<?php echo e($user->name); ?>">
 														<i class="fa fa-user-secret"></i>
 													</a>
 												<?php endif; ?>
-										<?php endif; ?>
+										
 
-										<?php if (app('Illuminate\Contracts\Auth\Access\Gate')->check('enable_user')): ?>
+										
 										<a href="#enable" style="display: <?php echo e($user->status == 0 ? 'initial' :'none'); ?>;  color: #00a65a;" data-toggle="tooltip" id="enable-user" title="<?php echo e(trans('adminlte_lang::message.enable')); ?>" data-key="<?php echo e($user->id); ?>" data-name="<?php echo e($user->name); ?>">
 											<i class="fa fa-user-secret"></i>
 										</a>
-										<?php endif; ?>
+										
 
-										<?php if (app('Illuminate\Contracts\Auth\Access\Gate')->check('reset_user_password')): ?>
+										
 											<?php if(\Auth::user()->id != $user->id): ?>
 												<a href="#" data-url="<?php echo e(url('reset/password')); ?>/<?php echo e($user->id); ?>"  style="color: #dd4b39"  data-toggle="tooltip" title="<?php echo e(trans('adminlte_lang::message.reset_password')); ?>" id="user-reset-password">
 													<i class="fa fa-repeat"></i>
 												</a>
 											<?php endif; ?>
-										<?php endif; ?>
+										
 
                                     </td>
                                 </tr>

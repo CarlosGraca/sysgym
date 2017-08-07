@@ -94,6 +94,8 @@
 
 <script src="<?php echo e(asset('/plugins/croppie/js/croppie.js')); ?>"></script>
 
+<!-- First, include the Webcam.js JavaScript Library -->
+<script type="text/javascript" src="<?php echo e(asset('plugins/webcam/webcam.min.js')); ?>"></script>
 
 <!-- SCRIPT IN DEVELOPMENT MODE -->
 
@@ -136,33 +138,14 @@
         }
     });
 
-    /*$('.table-design2').({
-//        dom: 'Bfrtip',
-//        "buttons": [
-//            'copy', 'excel', 'pdf'
-//        ],
-        "colVis": {
-            "buttonText": "Columns",
-            "overlayFade": 0,
-            "align": "right"
-        },
-        "language": {
-            "lengthMenu": '_MENU_ <?php echo e(trans('adminlte_lang::message.entries_per_page')); ?> ',
-            "search": '<?php echo e(trans('adminlte_lang::message.search')); ?>',
-            "paginate": {
-                "previous": '<i class="fa fa-angle-left"></i>',
-                "next": '<i class="fa fa-angle-right"></i>'
-            },
-            "emptyTable": "<?php echo e(trans('adminlte_lang::message.no_data_available')); ?>",
-        }
-    });*/
-
     $("#compose-textarea").wysihtml5();
 
     $('.slimscroll').slimScroll();
     $('.menu').slimScroll({
         height: 100
     });
+
+    $('#select-2').select2();
 
     var _file_url = '<?php echo e(url('files')); ?>';
 
@@ -177,12 +160,9 @@
     var _download_text = '<?php echo e(trans('adminlte_lang::message.download')); ?>';
     var _yes_text = '<?php echo e(trans('adminlte_lang::message.yes')); ?>';
     var _no_text = '<?php echo e(trans('adminlte_lang::message.not')); ?>';
-    var _edit_consult_text = '<?php echo e(trans('adminlte_lang::message.update_consult_agenda')); ?>';
-    var _details_consult_text = '<?php echo e(trans('adminlte_lang::message.details_consult_agenda')); ?>';
-    var _add_consult_text = '<?php echo e(trans('adminlte_lang::message.new_consult_agenda')); ?>';
     var _disable_text = '<?php echo e(trans('adminlte_lang::message.disable')); ?>';
 
-    var timezone = '<?php echo count($system) > 0 ? $system->timezone : 'Atlantic/Cape_Verde'; ?>';
+    var timezone = '<?php echo count($system) > 0 ? $system->timezone : config('app.timezone'); ?>';
 
     function update() {
         var time = moment().tz(timezone).format('- DD/MM/YYYY HH:mm:ss');
@@ -226,7 +206,7 @@
 <script src="<?php echo e(asset('/js/branches.js')); ?>" type="text/javascript"></script>
 <script src="<?php echo e(asset('/js/employees.js')); ?>" type="text/javascript"></script>
 <script src="<?php echo e(asset('/js/defaults.js')); ?>" type="text/javascript"></script>
-<script src="<?php echo e(asset('/js/category.js')); ?>" type="text/javascript"></script>
+<script src="<?php echo e(asset('/js/employees_category.js')); ?>" type="text/javascript"></script>
 <script src="<?php echo e(asset('/js/system.js')); ?>" type="text/javascript"></script>
 <script src="<?php echo e(asset('/js/matriculation.js')); ?>" type="text/javascript"></script>
 
@@ -235,5 +215,8 @@
 <script src="<?php echo e(asset('/js/payments.js')); ?>" type="text/javascript"></script>
 <script src="<?php echo e(asset('/js/roles.js')); ?>" type="text/javascript"></script>
 <script src="<?php echo e(asset('/js/permissions.js')); ?>" type="text/javascript"></script>
+<script src="<?php echo e(asset('/js/menus.js')); ?>" type="text/javascript"></script>
+<script src="<?php echo e(asset('/js/backups.js')); ?>" type="text/javascript"></script>
+<script src="<?php echo e(asset('/js/accounts.js')); ?>" type="text/javascript"></script>
 
 

@@ -98,6 +98,7 @@ $status_color = ['danger','success','info'];
 							<th class="col-md-4">{{ trans('adminlte_lang::message.title') }}</th>
 							<th class="col-md-3">{{ trans('adminlte_lang::message.url') }}</th>
 							<th class="col-md-2">{{ trans('adminlte_lang::message.icon') }}</th>
+                            <th  class="col-md-2">{{trans('adminlte_lang::message.menu_order')}}</th>
 							<th class="col-md-2">{{ trans('adminlte_lang::message.status') }}</th>
 							<th class="col-md-1"></th>
 		                  </tr>
@@ -107,9 +108,12 @@ $status_color = ['danger','success','info'];
 							  <tr class="bg-{{ $status_color[$menu->status] }}">
                                     <td>{{ $menu->title }}</td>
                                     <td>{{ $menu->url }}</td>
-									  <td class="text-center"><i class="{{ $menu->icon }}"></i></td>
+									<td class="text-center"><i class="{{ $menu->icon }}"></i></td>
+                                    <td>{!! $menu->menu_order !!}</td>
 								  	<td><span class="label label-{{ $status_color[$menu->status] }}">{{ $status[$menu->status] }}</span></td>
 								   <td>
+                                        <a href="{{ route('tenant-menu.create','id='.$menu->id) }}" , data-remote='false' data-toggle="tooltip" title="{{ trans('adminlte_lang::message.associate_tenant') }}">      <i class="fa fa-snowflake-o"></i>
+                                        </a> 
 										{{--@can('view_menu')--}}
 											<a href="{{ route('menus.show',$menu->id) }}"  data-toggle="tooltip" title="{{ trans('adminlte_lang::message.view') }}">
 												<i class="fa fa-eye"></i>

@@ -10,28 +10,29 @@
             <a href="<?php echo e(url('/')); ?>"><b>Sys</b>Gym</a>
         </div><!-- /.login-logo -->
 
+        <?php $email = ''; ?>
 
         <?php if(count($errors) > 0): ?>
-            <div class="alert alert-danger">
-                <strong>Whoops!</strong> <?php echo e(trans('adminlte_lang::message.someproblems')); ?><br><br>
-                <ul>
-                    <?php $__currentLoopData = $errors->all(); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $error): $__env->incrementLoopIndices(); $loop = $__env->getFirstLoop(); ?>
-                        <li><?php echo e($error); ?></li>
-                    <?php endforeach; $__env->popLoop(); $loop = $__env->getFirstLoop(); ?>
-                </ul>
+            <div class="alert alert-danger alert-dismissible" role="info">
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <strong><i class="fa fa-close"></i></strong>
+                <?php $__currentLoopData = $errors->all(); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $error): $__env->incrementLoopIndices(); $loop = $__env->getFirstLoop(); ?>
+                    <?php echo e($error); ?>
+
+                <?php endforeach; $__env->popLoop(); $loop = $__env->getFirstLoop(); ?>
             </div>
         <?php endif; ?>
 
+        <?php if( session('email') ): ?>
+            <?php $email = session('email'); ?>
+        <?php endif; ?>
+
         <?php if( session('status') ): ?>
-            <div class="alert alert-info alert-dismissible" role="info">
+            <div class="alert alert-warning alert-dismissible" role="info">
                 <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <strong><i class="fa fa-info-circle"></i></strong> <?php echo e(session('status')); ?>
+                <strong><i class="fa fa-warning"></i></strong> <?php echo e(session('status')); ?>
 
             </div>
-
-            
-                
-            
         <?php endif; ?>
 
     <div class="login-box-body">
@@ -39,11 +40,11 @@
     <form action="<?php echo e(url('/login')); ?>" method="post" id="form-login">
         <input type="hidden" name="_token" value="<?php echo e(csrf_token()); ?>">
         <div class="form-group has-feedback">
-            <input type="email" class="form-control" placeholder="<?php echo e(trans('adminlte_lang::message.email')); ?>" name="email"/>
+            <input type="email" class="form-control" placeholder="<?php echo e(trans('adminlte_lang::message.email')); ?>" name="email" value="<?php echo e($email); ?>" required <?php echo e($email == '' ? 'autofocus' : ''); ?>/>
             <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
         </div>
         <div class="form-group has-feedback">
-            <input type="password" class="form-control" placeholder="<?php echo e(trans('adminlte_lang::message.password')); ?>" name="password"/>
+            <input type="password" class="form-control" placeholder="<?php echo e(trans('adminlte_lang::message.password')); ?>" name="password" required <?php echo e($email != '' ? 'autofocus' : ''); ?>/>
             <span class="glyphicon glyphicon-lock form-control-feedback"></span>
         </div>
         <div class="row">

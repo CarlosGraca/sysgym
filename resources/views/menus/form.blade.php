@@ -107,3 +107,15 @@
 	</div>
 
 </div>
+
+<div class="row">
+	<span ><strong class="title">{{ trans('adminlte_lang::message.associate_tenant') }}</strong></span> 
+	<hr class="h-divider" >
+     
+	<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+		<div class="form-group form-group-sm">
+			{!! Form::label('tenants',trans('adminlte_lang::message.company') ) !!}
+			{!! Form::select('tenants[]',  [''=>'Escolha a opcão']+ $tenants,null, ['class'=>'form-control select2','multiple'=>true,'style'=>'width: 100%;' ]) !!}
+		</div>
+	</div> 
+</div>

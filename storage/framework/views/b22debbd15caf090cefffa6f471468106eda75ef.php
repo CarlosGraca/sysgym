@@ -39,23 +39,22 @@
 		        		<div class="col-lg-9">
 		        			<ul class="list-group list-group-unbordered">
 			                    <li class="list-group-item">
-									<i class="fa fa-laptop"></i> <b> <?php echo e(trans('adminlte_lang::message.company_name')); ?>: </b><span class="name"><?php echo e($company ? $company->company_name : null); ?></span> <a href="#" id='setting-name' title='Edit'> </a>
+									<i class="fa fa-laptop"></i> <b> <?php echo e(trans('adminlte_lang::message.company_name')); ?>: </b><a class="name"><?php echo e($company ? $company->company_name : null); ?></a>
+			                    </li>
+			                    
+			                       	
+			                    
+			                    <li class="list-group-item">
+									<i class="fa fa-address-card"></i> <b> <?php echo e(trans('adminlte_lang::message.nif')); ?>: </b><a><?php echo e($company ? $company->nif : null); ?></a>
 			                    </li>
 			                    <li class="list-group-item">
-			                       	<i class="fa fa-envelope"></i> <b> <?php echo e(trans('adminlte_lang::message.email')); ?>: </b><?php echo e($company ? $company->email : null); ?> <a href="#" id='setting-email'>  </a>
+									<i class="fa fa-phone"></i> <b> <?php echo e(trans('adminlte_lang::message.contacts')); ?>: </b><a> <?php echo e($company ? $company->phone : null); ?> / <?php echo e($company ? $company->fax : null); ?></a>
 			                    </li>
 			                    <li class="list-group-item">
-									<i class="fa fa-address-card"></i> <b> <?php echo e(trans('adminlte_lang::message.nif')); ?>: </b><span class="nif"><?php echo e($company ? $company->nif : null); ?></span> <a href="#" id='setting-nif' title='Edit'> </a>
-			                    </li>
-			                    <li class="list-group-item">
-									<i class="fa fa-phone"></i> <b> <?php echo e(trans('adminlte_lang::message.contacts')); ?>: </b><?php echo e($company ? $company->phone : null); ?> / <?php echo e($company ? $company->fax : null); ?><a href="#" id='setting-contactos'> </a>
-			                    </li>
-			                    <li class="list-group-item">
-									<i class="fa fa-map-marker"></i> <b> <?php echo e(trans('adminlte_lang::message.address')); ?>: </b><?php echo e($company ? $company->address : null); ?> | <b> <?php echo e(trans('adminlte_lang::message.city')); ?>: </b> <?php echo e($company ? $company->city : null); ?>
-
+									<i class="fa fa-map-marker"></i> <b> <?php echo e(trans('adminlte_lang::message.address')); ?>: </b> <a> <?php echo e($company ? $company->address_1 : null); ?> , <?php echo e($company ? $company->city : null); ?>, <?php echo e($company ? $company->country : null); ?></a>
 			                    </li>
 								<li class="list-group-item">
-									<i class="fa fa-facebook-official"></i> <b> <?php echo e(trans('adminlte_lang::message.facebook')); ?>: </b> <?php echo e($company ? $company->facebook : null); ?>  | <i class="fa fa-globe"></i> <b> <?php echo e(trans('adminlte_lang::message.website')); ?>: </b> <?php echo link_to($company ? $company->website : null, $title = null, $attributes = [], $secure = null); ?>
+									<i class="fa fa-facebook-official"></i> <b> <?php echo e(trans('adminlte_lang::message.facebook')); ?>: </b> <a><?php echo e($company ? $company->facebook : null); ?></a>   | <i class="fa fa-globe"></i> <b> <?php echo e(trans('adminlte_lang::message.website')); ?>: </b> <?php echo link_to($company ? $company->website : null, $title = null, $attributes = [], $secure = null); ?>
 
 								</li>
 								<li class="list-group-item">
