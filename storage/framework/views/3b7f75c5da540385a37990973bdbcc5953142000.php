@@ -14,42 +14,25 @@
 <?php $__env->stopSection(); ?>
 
 
-
-
 <?php $__env->startSection('main-content'); ?>
     <div class="row">
-        
-
-            
-            
-                
-                    
-                        
-                        
-                    
-
-                    
-                
-                
-            
-            
-
-
-        
         <!-- /.col -->
         <div class="col-md-12">
             <div class="box box-primary">
                 <div class="box-header with-border">
                     <h3 class="box-title"><?php echo e(trans('adminlte_lang::message.role_profile')); ?></h3>
                     <div class="pull-right box-tools">
-                        <a href="<?php echo e(url('roles')); ?>" class="btn btn-primary btn-sm" role="button" data-toggle="tooltip" title="<?php echo e(trans('adminlte_lang::message.list')); ?>">
-                            <i class="fa fa-list"></i>
+                        <a href="<?php echo e(url('roles')); ?>" class="btn btn-primary btn-sm" data-toggle="tooltip" title="<?php echo e(trans('adminlte_lang::message.list')); ?>">
+                            <i class="fa fa-list"></i> <?php echo e(trans('adminlte_lang::message.role_list')); ?>
+
                         </a>
-                        <a href="<?php echo e(url('roles')); ?>/<?php echo e($role->id); ?>/print" class="btn btn-primary btn-sm" target="_blank" role="button" data-toggle="tooltip" title="<?php echo e(trans('adminlte_lang::message.print')); ?>">
-                            <i class="fa fa-print"></i>
+                        <a href="<?php echo e(route('roles.edit',$role->id)); ?>" class="btn btn-primary btn-sm"  data-toggle="tooltip" title="<?php echo e(trans('adminlte_lang::message.edit')); ?>">
+                            <i class="fa fa-edit"></i> <?php echo e(trans('adminlte_lang::message.edit')); ?>
+
                         </a>
-                        <a href="<?php echo e(route('roles.edit',$role->id)); ?>" class="btn btn-primary btn-sm" role="button" data-toggle="tooltip" title="<?php echo e(trans('adminlte_lang::message.edit')); ?>">
-                            <i class="fa fa-edit"></i>
+                        <a href="<?php echo e(url('roles')); ?>/<?php echo e($role->id); ?>/print" class="btn btn-primary btn-sm" target="_blank" data-toggle="tooltip" title="<?php echo e(trans('adminlte_lang::message.print')); ?>">
+                            <i class="fa fa-print"></i> <?php echo e(trans('adminlte_lang::message.print')); ?>
+
                         </a>
                     </div>
                 </div>
@@ -58,7 +41,6 @@
                     <div class="nav-tabs-custom">
                             <ul class="nav nav-tabs">
                                 <li class="active"><a href="#personal_data" data-toggle="tab"><i class="fa fa-address-card-o"></i> <?php echo e(trans('adminlte_lang::message.personal_data')); ?></a></li>
-                                
                                 <li><a href="#users" data-toggle="tab"><i class="fa fa-user-secret"></i> <?php echo e(trans('adminlte_lang::message.users')); ?></a></li>
                             </ul>
 
@@ -74,6 +56,10 @@
                                                     <i class="fa fa-user"></i>  <b><?php echo e(trans('adminlte_lang::message.name')); ?>: </b>
                                                     <a> <?php echo e($role->name); ?> </a>
                                                 </li>
+                                                <li class="list-group-item">
+                                                    <i class="fa fa-user"></i>  <b><?php echo e(trans('adminlte_lang::message.display_name')); ?>: </b>
+                                                    <a> <?php echo e($role->display_name); ?> </a>
+                                                </li>
                                             </ul>
                                         </div>
 
@@ -81,7 +67,7 @@
                                             <ul class="list-group list-group-unbordered">
                                                 <li class="list-group-item">
                                                     <i class="fa fa-quote-left"></i>  <b><?php echo e(trans('adminlte_lang::message.description')); ?>: </b>
-                                                    <a> <?php echo e($role->label); ?> </a>
+                                                    <a> <?php echo e($role->description); ?> </a>
                                                 </li>
                                             </ul>
                                         </div>
@@ -94,15 +80,18 @@
                                             <table id="table-permission" class="table table-bordered table-striped table-design">
                                                 <thead>
                                                 <tr>
+                                                    <th class="col-md-2"><?php echo e(trans('adminlte_lang::message.type')); ?></th>
                                                     <th class="col-md-2"><?php echo e(trans('adminlte_lang::message.name')); ?></th>
-                                                    <th class="col-md-10"><?php echo e(trans('adminlte_lang::message.description')); ?></th>
+                                                    <th class="col-md-8"><?php echo e(trans('adminlte_lang::message.description')); ?></th>
                                                 </tr>
                                                 </thead>
                                                 <tbody>
+                                                
                                                 <?php $__currentLoopData = $role->permission; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $permission): $__env->incrementLoopIndices(); $loop = $__env->getFirstLoop(); ?>
                                                     <tr>
-                                                        <td class="name"><?php echo e($permission->name); ?> </td>
-                                                        <td class="description"><?php echo e($permission->label); ?> </td>
+                                                        <td class="name"><?php echo e($permission->type); ?> </td>
+                                                        <td class="name"><?php echo e($permission->tenant_menu->menus->title); ?> </td>
+                                                        <td class="description"><?php echo e($permission->tenant_menu->menus->description); ?> </td>
                                                     </tr>
                                                 <?php endforeach; $__env->popLoop(); $loop = $__env->getFirstLoop(); ?>
                                                 </tbody>
@@ -110,13 +99,6 @@
                                         </div>
                                     </div>
                                 </div>
-                                <!-- /.tab-pane -->
-
-                                
-                                
-
-
-                                
                                 <!-- /.tab-pane -->
 
                                 <div class="tab-pane" id="users">
@@ -135,14 +117,11 @@
                                                 </tr>
                                                 </thead>
                                                 <tbody>
-                                                <?php $__currentLoopData = $users; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $user): $__env->incrementLoopIndices(); $loop = $__env->getFirstLoop(); ?>
-                                                    <?php if($user->roles->first()->id == $role->id): ?>
-
-                                                        <tr>
-                                                            <td class="name"><?php echo e($user->name); ?> </td>
-                                                            <td class="email"><?php echo e($user->email); ?> </td>
-                                                        </tr>
-                                                    <?php endif; ?>
+                                                <?php $__currentLoopData = $role->user; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $user): $__env->incrementLoopIndices(); $loop = $__env->getFirstLoop(); ?>
+                                                    <tr>
+                                                        <td class="name"><?php echo e($user->name); ?> </td>
+                                                        <td class="email"><?php echo e($user->email); ?> </td>
+                                                    </tr>
                                                 <?php endforeach; $__env->popLoop(); $loop = $__env->getFirstLoop(); ?>
                                                 </tbody>
                                             </table>

@@ -1,6 +1,6 @@
 <?php
     $system = \App\Models\System::where(['branch_id'=>\Auth::user()->branch_id,'tenant_id'=>\Auth::user()->tenant_id])->first();
-   \Carbon\Carbon::setLocale(count($system) > 0 ? $system->lang : config('app.locale'));
+    \Carbon\Carbon::setLocale(count($system) > 0 ? $system->lang : config('app.locale'));
 ?>
 <!DOCTYPE html>
 <!--
@@ -69,8 +69,6 @@ desired effect
         background-size: cover;
     }
 
-
-
     .list_image{
         border-radius: 50%;
         max-width: 100%;
@@ -87,9 +85,7 @@ desired effect
     @include('layouts.partials.sidebar')
 
     <!-- Content Wrapper. Contains page content -->
-    <div class="content-wrapper"
-         {{--style="margin-bottom: 50px;"--}}
-    >
+    <div class="content-wrapper">
 
         @include('layouts.partials.contentheader')
 
@@ -101,13 +97,13 @@ desired effect
     </div><!-- /.content-wrapper -->
 
     {{--@include('layouts.partials.controlsidebar')--}}
+    @include('layouts.shared.modal')
 
-        @include('layouts.shared.modal_lg')
-        @include('layouts.shared.modal_md')
-        @include('layouts.shared.modal_del')
+    {{--@include('layouts.shared.modal_lg')--}}
+    {{--@include('layouts.shared.modal_md')--}}
+    {{--@include('layouts.shared.modal_del')--}}
 
     @include('layouts.shared.croppie_modal')
-
 
     @include('layouts.partials.footer')
 

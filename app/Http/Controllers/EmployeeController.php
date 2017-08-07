@@ -2,14 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Branch;
-use App\EmployeeCategory;
-use App\Company;
-use App\File;
-use App\Island;
-use App\Employee;
-use App\SecureAgency;
-use App\SecureCard;
+use App\Models\Branch;
+use App\Models\EmployeeCategory;
+use App\Models\Tenant;
+use App\Models\File;
+use App\Models\Employee;
 use App\User;
 use Illuminate\Support\Facades\Auth;
 use Request;
@@ -35,7 +32,7 @@ class EmployeeController extends Controller
      */
     public function index()
     {
-        $employees = Employee::all();
+        $employees = Employee::where(['branch_id'=>\Auth::user()->branch_id,'tenant_id'=>\Auth::user()->tenant_id])->get();
 
         if (Request::wantsJson()) {
             return $employees;
@@ -51,8 +48,6 @@ class EmployeeController extends Controller
      */
     public function create()
     {
-        //ISLAND ARRAY DATA TO SELECT
-        $island = Island::pluck('name','id');
 
         //BRANCHES ARRAY DATA TO SELECT
         $branches = Branch::pluck('name','id');
@@ -60,13 +55,10 @@ class EmployeeController extends Controller
         //CATEGORY ARRAY DATA TO SELECT
         $category = EmployeeCategory::pluck('name','id');
 
-        //SECURITY AGENCY ARRAY DATA TO SELECT
-//        $secure_agency = SecureAgency::pluck('name','id');
-
         if (Request::ajax()) {
-            return view('employees.create_ajax',compact('island','branches','category'));
+            return view('employees.create_ajax',compact('branches','category'));
         }
-        return view('employees.create',compact('island','branches','category'));
+        return view('employees.create',compact('branches','category'));
     }
 
     /**
@@ -88,14 +80,11 @@ class EmployeeController extends Controller
         $employee->zip_code = $request->zip_code;
         $employee->genre = $request->genre;
         $employee->civil_state = $request->civil_state;
-        $employee->island_id = $request->island_id;
         $employee->city = $request->city;
         $employee->website = $request->website;
-        $employee->user_id = Auth::user()->id;
         $employee->salary = $request->salary;
         $employee->start_work = $request->start_work;
         $employee->end_work = $request->end_work;
-        $employee->branch_id = $request->branch;
         $employee->category_id = $request->employee_category_id;
         $employee->note = $request->note;
         $employee->facebook = $request->facebook;
@@ -104,31 +93,22 @@ class EmployeeController extends Controller
         $employee->parents = $request->parents;
         $employee->bi = $request->bi;
 
-        if ($request->hasFile('avatar')){
+        $employee->user_id = Auth::user()->id;
+        $employee->branch_id = Auth::user()->branch_id;
+        $employee->tenant_id = Auth::user()->tenant_id;
+
+//        $employee->branch_id = $request->branch;
+
+        if ($request->hasFile('avatar') || $request->avatar_type == 'capture'){
             $img_base64 = $request->avatar_crop;
             $filename = 'uploads/' .time().'.png';
             $default->base64_to_png($img_base64, $filename);
             $employee->avatar = $filename;
         }
 
-//        $employee->has_secure = $request->has_secure;
-//
-//        if($request->has_secure == 1){
-//            $card = new SecureCard();
-//            $card->start_date = $request->start_date;
-//            $card->end_date = $request->end_date;
-//            $card->note = $request->note_card;
-//            $card->secure_number = $request->secure_number;
-//            $card->secure_agency_id = $request->secure_agency;
-//            $card->save();
-//            $employee->secure_card_id = $card->id;
-//        }
-
-        $employee->save();
-
-        if (Request::wantsJson()){
+        if (Request::wantsJson() && $employee->save()){
             $message = trans('adminlte_lang::message.msg_add_success_employee');
-            return ['values'=>$employee->name,'message'=>$message,'form'=>'employee'];
+            return ['values'=>$employee->name,'message'=>$message,'form'=>'employee','type'=>'success'];
         }else{
             //return view('employees.create');
         }
@@ -145,7 +125,7 @@ class EmployeeController extends Controller
         $Files = File::where(['item_id'=>$employee->id,'flag'=>2])->get();
 
         if (Request::wantsJson()){
-            return ['name'=>$employee->name,'mobile'=>$employee->mobile,'phone'=>$employee->phone,'has_secure'=>$employee->has_secure,'secure_card_id'=>$employee->secure_card_id,'email'=>$employee->email];
+            return ['name'=>$employee->name,'mobile'=>$employee->mobile,'phone'=>$employee->phone,'email'=>$employee->email];
         }elseif (Request::Ajax()){
             return view('people.show_ajax',['people'=>$employee, 'type_people'=>'employee']);
         }
@@ -162,28 +142,20 @@ class EmployeeController extends Controller
      */
     public function edit(Employee $employee)
     {
-        //ISLAND ARRAY DATA TO SELECT
-        $island = Island::pluck('name','id');
-
-        //BRANCHES ARRAY DATA TO SELECT
+       //BRANCHES ARRAY DATA TO SELECT
         $branches = Branch::pluck('name','id');
 
         //CATEGORY ARRAY DATA TO SELECT
         $category = EmployeeCategory::pluck('name','id');
 
-        //SECURITY AGENCY ARRAY DATA TO SELECT
-//        $secure_agency = SecureAgency::pluck('name','id');
-
-//        $card = SecureCard::where('id',$employee->secure_card_id)->first();
-
-        return view('employees.edit',compact('island','branches','category','employee'));
+        return view('employees.edit',compact('branches','category','employee'));
 
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  EmployeeRequest  $request
      * @param  Employee  $employee
      * @return \Illuminate\Http\Response
      */
@@ -199,14 +171,11 @@ class EmployeeController extends Controller
         $employee->zip_code = $request->zip_code;
         $employee->genre = $request->genre;
         $employee->civil_state = $request->civil_state;
-        $employee->island_id = $request->island_id;
         $employee->city = $request->city;
         $employee->website = $request->website;
-        $employee->user_id = Auth::user()->id;
         $employee->salary = $request->salary;
         $employee->start_work = $request->start_work;
         $employee->end_work = $request->end_work;
-        $employee->branch_id = $request->branch;
         $employee->category_id = $request->employee_category_id;
         $employee->note = $request->note;
         $employee->facebook = $request->facebook;
@@ -215,11 +184,8 @@ class EmployeeController extends Controller
         $employee->parents = $request->parents;
         $employee->bi = $request->bi;
 
-//        $employee->has_secure = $request->has_secure;
 
-        $user = User::where('employee_id',$employee->id)->first();
-
-        if ($request->hasFile('avatar')){
+        if ($request->hasFile('avatar')  || $request->avatar_type == 'capture'){
 
             $img_base64 = $request->avatar_crop;
             $filename = 'uploads/' .time().'.png';
@@ -233,50 +199,13 @@ class EmployeeController extends Controller
             }
 
             $employee->avatar = $filename;
-
-
-            if (isset($user)){
-                $user->avatar = $filename;
-//                $user->save();
-            }
         }
 
-        if (isset($user)){
-            $user->name = $employee->name;
-            $user->save();
-        }
-
-//        $employee->has_secure = $request->has_secure;
-//
-//        $card = SecureCard::where('id',$employee->secure_card_id)->first();
-//        if(isset($card)){
-//            $card->start_date = $request->start_date;
-//            $card->end_date = $request->end_date;
-//            $card->note = $request->note_card;
-//            $card->secure_agency_id = $request->secure_agency;
-//            $card->secure_number = $request->secure_number;
-//            $card->save();
-//        }else{
-//            if($request->has_secure == 1){
-//                $card = new SecureCard();
-//                $card->start_date = $request->start_date;
-//                $card->end_date = $request->end_date;
-//                $card->note = $request->note_card;
-//                $card->secure_agency_id = $request->secure_agency;
-//                $card->secure_number = $request->secure_number;
-//                $card->save();
-//                $employee->secure_card_id = $card->id;
-//            }
-//        }
-
-        $employee->save();
-
-
-        if (Request::wantsJson()){
+        if (Request::wantsJson() && $employee->save()){
             $message = trans('adminlte_lang::message.msg_update_success_employee');
             return ['values'=>$employee->id,'message'=>$message,'form'=>'employee','type'=>'success'];
         }else{
-            //return view('employees.create');
+            return view('employees.create');
         }
     }
 

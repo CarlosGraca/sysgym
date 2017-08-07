@@ -93,10 +93,6 @@
                     <i class="fa fa-facebook-official"></i>  <b>{{ trans('adminlte_lang::message.facebook') }}: </b>
                     <a>{{ $people->facebook }}</a>
                 </li>
-                {{--<li class="list-group-item">--}}
-                    {{--<i class="fa fa-shield"></i>  <b>{{ trans('adminlte_lang::message.has_secure') }}: </b>--}}
-                    {{--<a>{{  $people->has_secure == 1 ? trans('adminlte_lang::message.yes') : trans('adminlte_lang::message.not') }}</a>--}}
-                {{--</li>--}}
             </ul>
         </div>
     </div>
@@ -136,7 +132,7 @@
                 <ul class="list-group list-group-unbordered">
                     <li class="list-group-item">
                         <i class="fa fa-user-md"></i>  <b>{{ trans('adminlte_lang::message.category') }}: </b>
-                        <a> {{$people->category->name }} </a>
+                        <a> {{$people->employee_category->name }} </a>
                     </li>
         
                     <li class="list-group-item">

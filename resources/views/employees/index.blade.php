@@ -11,8 +11,6 @@
 @section('contentheader_description')
   {{ trans('adminlte_lang::message.employees') }}
 @endsection
-
-@inject('EmployeeController', 'App\Http\Controllers\EmployeeController')
 <?php
 $status = [trans('adminlte_lang::message.deleted'),trans('adminlte_lang::message.active'),trans('adminlte_lang::message.expired')];
 $status_color = ['danger','success','info'];
@@ -26,11 +24,11 @@ $status_color = ['danger','success','info'];
 	            <div class="box-header with-border">
 	              <h3 class="box-title"> {{ trans('adminlte_lang::message.employees_list') }}</h3>
 	              <div class="pull-left box-tools">
-                        @can('add_employee')
+                        {{--@can('add_employee')--}}
                           <a href="{{ url('employees/create') }}" class="btn btn-primary btn-sm" role="button" data-toggle="tooltip" title="{{ trans('adminlte_lang::message.new_employee') }}">
                                <i class="fa fa-plus"></i> {{ trans('adminlte_lang::message.new_employee') }}
                           </a>
-                        @endcan
+                        {{--@endcan--}}
 	              </div><!-- /. tools -->
 	            </div><!-- /.box-header -->
 
@@ -51,43 +49,36 @@ $status_color = ['danger','success','info'];
 		                <tbody>
                           @foreach ($employees as $employee)
                                 <tr class="bg-{{ $status_color[$employee->status] }}">
-									<td>{{$employee->category->name}}</td>
+									<td>{{ $employee->employee_category->name }}</td>
 									<td><a href="#show" data-url="{{ route('employees.show',$employee->id) }}" id="people_show_popup" data-title="{{ trans('adminlte_lang::message.employee_details') }}">{{ $employee->name }}</a> </td>
 									<td>{{$employee->email}}</td>
                                     <td>{{$employee->mobile }} / {{ $employee->phone }}</td>
                                     <td>{{trans('adminlte_lang::message.'.$employee->genre)}}</td>
                                     <td>{{$employee->address }}</td>
                                     <td>
-										@can('view_employee')
+										{{--@can('view_employee')--}}
 											<a href="{{ route('employees.show',$employee->id) }}"  data-toggle="tooltip" title="{{ trans('adminlte_lang::message.show_details') }}">
 												<i class="fa fa-eye"></i>
 											</a>
-										@endcan
+										{{--@endcan--}}
 
-										@can('edit_employee')
+                                        {{-- @can('edit_employee')--}}
 											<a href="{{ route('employees.edit',$employee->id) }}"  data-toggle="tooltip" title="{{ trans('adminlte_lang::message.edit') }}" id="edit-employee" >
 												<i class="fa fa-edit"></i>
                                             </a>
-										@endcan
+										{{--@endcan--}}
 
-                                        @can('build_user_employee')
-                                            @if(!$EmployeeController->UserAccountExist($employee->id))
-                                                <a href="#" data-url="{{ url('build') }}/{{$employee->id}}"  data-toggle="tooltip" title="{{ trans('adminlte_lang::message.build_user') }}" id="user-build"  >   <i class="fa fa-gears"></i>
-                                                </a>
-                                            @endif
-                                        @endcan
-
-                                        @can('disable_employee')
+                                        {{--@can('disable_employee')--}}
                                             <a href="#disable" style="display: {{ $employee->status == 1 ? 'initial' :'none' }};" data-toggle="tooltip" id="disable-employee" title="{{ trans('adminlte_lang::message.disable') }}" data-key="{{ $employee->id }}" data-name="{{ $employee->name }}">
                                                 <i class="fa fa-user-o"></i>
                                             </a>
-                                        @endcan
+                                        {{--@endcan--}}
 
-                                        @can('enable_employee')
+                                        {{--@can('enable_employee')--}}
                                             <a href="#enable" style="display: {{ $employee->status == 0 ? 'initial' :'none' }};" data-toggle="tooltip" id="enable-employee" title="{{ trans('adminlte_lang::message.enable') }}" data-key="{{ $employee->id }}" data-name="{{ $employee->name }}">
                                                 <i class="fa fa-user"></i>
                                             </a>
-                                        @endcan
+                                        {{--@endcan--}}
 
                                     </td>
                                 </tr>

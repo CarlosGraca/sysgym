@@ -1,6 +1,5 @@
 
 <script src="<?php echo e(asset('/plugins/croppie/css/bootstrap-3.min.css')); ?>"></script>
-
 <link rel="stylesheet" href="<?php echo e(asset('/plugins/croppie/css/croppie.css')); ?>">
 
 
@@ -40,6 +39,7 @@
         }).then(function (resp) {
             $(".avatar-crop").attr('src',resp);
             $('#avatar_crop').val(resp);
+            $('#avatar_type').val('upload');
             $('#croppie_modal').modal('hide');
         });
     });

@@ -31,7 +31,7 @@ class ModalityController extends Controller
      */
     public function index()
     {
-        $modalities = Modality::All();
+        $modalities = Modality::where(['branch_id'=>\Auth::user()->branch_id,'tenant_id'=>\Auth::user()->tenant_id])->get();
         return view('modalities.index',compact('modalities'));
     }
 

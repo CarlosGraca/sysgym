@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Matriculation;
+use App\Models\Modality;
 use Illuminate\Http\Request;
 use App\Models\Client;
 use Auth;
@@ -25,9 +27,12 @@ class DashboardController extends Controller
      */
     public function index()
     {
-       $total_a = Client::where('status', 1)->where('tenant_id',Auth::user()->tenant_id)->count();
-       $total_i = Client::where('status', 0)->where('tenant_id',Auth::user()->tenant_id)->count();
-        return view('adminlte::dashboard.index',compact('total_a','total_i'));
+        $total_a = Client::where('status', 1)->where(['branch_id'=>Auth::user()->branch_id,'tenant_id'=>Auth::user()->tenant_id])->count();
+        $total_i = Client::where('status', 0)->where(['branch_id'=>Auth::user()->branch_id,'tenant_id'=>Auth::user()->tenant_id])->count();
+        $total_m = Modality::where(['branch_id'=>Auth::user()->branch_id,'tenant_id'=>Auth::user()->tenant_id])->count();
+        $total_mt = Matriculation::where(['branch_id'=>Auth::user()->branch_id,'tenant_id'=>Auth::user()->tenant_id])->count();
+
+        return view('dashboard.index',compact('total_a','total_i','total_m','total_mt'));
     }
 
     /**

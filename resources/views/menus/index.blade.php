@@ -51,7 +51,7 @@ $status_color = ['danger','success','info'];
                                     <td>{{ $menu->title }}</td>
                                     <td>{{ $menu->url }}</td>
 									  <td class="text-center"><i class="{{ $menu->icon }}"></i></td>
-								  <td><span class="label label-{{ $status_color[$menu->status] }}">{{ $status[$menu->status] }}</span></td>
+								  	<td><span class="label label-{{ $status_color[$menu->status] }}">{{ $status[$menu->status] }}</span></td>
 								   <td>
 										{{--@can('view_menu')--}}
 											<a href="{{ route('menus.show',$menu->id) }}"  data-toggle="tooltip" title="{{ trans('adminlte_lang::message.view') }}">

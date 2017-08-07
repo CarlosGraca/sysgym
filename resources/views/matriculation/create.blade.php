@@ -20,28 +20,24 @@
 	        <div class="box box-default">
 	            <div class="box-header with-border">
 	              <h3 class="box-title">
-	              	 <strong>{{ trans('adminlte_lang::message.system_user') }}: </strong><span>{{ Auth::user()->name }}</span>
+					  <a href="{{ \Illuminate\Support\Facades\URL::previous() }}" class="btn btn-primary btn-sm" role="button" data-toggle="tooltip" title="{{ trans('adminlte_lang::message.back') }}">
+						  <i class="fa fa-arrow-left"></i> {{ trans('adminlte_lang::message.back') }}
+					  </a>
+	              	 <span>{{ trans('adminlte_lang::message.new_matriculation') }}</span>
 	              </h3>
 				<div class="pull-right box-tools">
-						<a href="{{ \Illuminate\Support\Facades\URL::previous() }}" class="btn btn-primary btn-sm" role="button" data-toggle="tooltip" title="{{ trans('adminlte_lang::message.back') }}">
-							 <i class="fa fa-arrow-left"></i>
-						</a>
-
-						<a href="#" data-url="{{ url('clients/create') }}" data-title="{{ trans('adminlte_lang::message.new_client') }}" class="btn btn-primary btn-sm"  data-toggle="tooltip" title="{{ trans('adminlte_lang::message.new_client') }}" id="client_add_popup">
-							<i class="fa fa-user-plus"></i>
-						</a>
 
 						<a href="#" class="btn btn-primary btn-sm" role="button" data-toggle="tooltip" title="{{ trans('adminlte_lang::message.reset') }}" id="reset-matriculation">
-							<i class="fa fa-repeat"></i>
+							<i class="fa fa-repeat"></i> {{ trans('adminlte_lang::message.reset') }}
 						</a>
 
 						<a href="#" class="btn btn-primary btn-sm" role="button" data-toggle="tooltip" title="{{ trans('adminlte_lang::message.save') }}" id="add-matriculation">
-							 <i class="fa fa-save"></i>
+							 <i class="fa fa-save"></i> {{ trans('adminlte_lang::message.save') }}
 						</a>
 
-						<a href="#" class="btn btn-primary btn-sm" role="button" data-toggle="tooltip" title="{{ trans('adminlte_lang::message.public_matriculation') }}" id="publish-matriculation" data-key="" data-name="">
-							<i class="fa fa-check"></i>
-						</a>
+						{{--<a href="#" class="btn btn-primary btn-sm" role="button" data-toggle="tooltip" title="{{ trans('adminlte_lang::message.public_matriculation') }}" id="publish-matriculation" data-key="" data-name="">--}}
+							{{--<i class="fa fa-check"></i> {{ trans('adminlte_lang::message.back') }}--}}
+						{{--</a>--}}
 				</div><!-- /. tools -->
 
 	            </div><!-- /.box-header -->

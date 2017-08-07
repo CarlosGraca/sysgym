@@ -94,6 +94,8 @@
 
 <script src="<?php echo e(asset('/plugins/croppie/js/croppie.js')); ?>"></script>
 
+<!-- First, include the Webcam.js JavaScript Library -->
+<script type="text/javascript" src="<?php echo e(asset('plugins/webcam/webcam.min.js')); ?>"></script>
 
 <!-- SCRIPT IN DEVELOPMENT MODE -->
 
@@ -158,9 +160,6 @@
     var _download_text = '<?php echo e(trans('adminlte_lang::message.download')); ?>';
     var _yes_text = '<?php echo e(trans('adminlte_lang::message.yes')); ?>';
     var _no_text = '<?php echo e(trans('adminlte_lang::message.not')); ?>';
-    var _edit_consult_text = '<?php echo e(trans('adminlte_lang::message.update_consult_agenda')); ?>';
-    var _details_consult_text = '<?php echo e(trans('adminlte_lang::message.details_consult_agenda')); ?>';
-    var _add_consult_text = '<?php echo e(trans('adminlte_lang::message.new_consult_agenda')); ?>';
     var _disable_text = '<?php echo e(trans('adminlte_lang::message.disable')); ?>';
 
     var timezone = '<?php echo count($system) > 0 ? $system->timezone : config('app.timezone'); ?>';
@@ -207,7 +206,7 @@
 <script src="<?php echo e(asset('/js/branches.js')); ?>" type="text/javascript"></script>
 <script src="<?php echo e(asset('/js/employees.js')); ?>" type="text/javascript"></script>
 <script src="<?php echo e(asset('/js/defaults.js')); ?>" type="text/javascript"></script>
-<script src="<?php echo e(asset('/js/category.js')); ?>" type="text/javascript"></script>
+<script src="<?php echo e(asset('/js/employees_category.js')); ?>" type="text/javascript"></script>
 <script src="<?php echo e(asset('/js/system.js')); ?>" type="text/javascript"></script>
 <script src="<?php echo e(asset('/js/matriculation.js')); ?>" type="text/javascript"></script>
 

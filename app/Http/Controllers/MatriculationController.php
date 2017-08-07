@@ -231,7 +231,7 @@ class MatriculationController extends Controller
 
         $client_id = $request->client_id;
 
-        $system = System::all()->first();
+        //$system = System::all()->first();
 
         if (is_array($delete)){
             foreach ($delete as $item) {

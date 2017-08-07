@@ -55,16 +55,18 @@ class Authenticate
                     }
                 }
             }
-        }
 
 
-        if(\Auth::user() != null && \Auth::user()->status == 2 && $request->isMethod('get')){
-            return redirect('user/setup/password');
-        }elseif(\Auth::check() && (\Auth::user()->status != 1 && \Auth::user()->status != 2)){
+            if(\Auth::user()->status == 2 && $request->isMethod('get')){
+                return redirect('user/setup/password');
+            }elseif(\Auth::check() && (\Auth::user()->status != 1 && \Auth::user()->status != 2)){
+                \Auth::logout();
+                return redirect('login')->with('status', \Lang::get('auth.disable'));
+            }
+        }else{
             \Auth::logout();
-            return redirect('login')->with('status', \Lang::get('auth.disable'));
+            return redirect('login');
         }
-
 
         return $next($request);
     }

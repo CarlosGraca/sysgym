@@ -18,4 +18,11 @@ use Illuminate\Database\Eloquent\Model;
     'display_name'      => 'required|unique:roles',
     ];
 
+    public function permission(){
+        return $this->hasMany('App\Models\Permission');
+    }
+
+    public function user(){
+        return $this->hasMany('App\User');
+    }
 }

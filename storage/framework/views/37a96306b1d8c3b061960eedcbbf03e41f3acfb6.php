@@ -1,3 +1,8 @@
+<?php echo Form::hidden('avatar_crop', null , ['class'=>'form-control','id'=>'avatar_crop']); ?>
+
+<?php echo Form::hidden('avatar_type', null , ['class'=>'form-control','id'=>'avatar_type']); ?>
+
+
 
 <div class="row">
     <span style="display: none;"> </span>
@@ -7,10 +12,16 @@
         <img  src="<?php echo e(asset(($type == 'update' ? $people->avatar : 'img/avatar.png'))); ?>" class="img-thumbnail avatar-crop" alt="Cinque Terre" width="150" height="150">
         <div style="margin-top: 10px">
             <div class="col-xs-12 text-center">
-                <div class="form-group" data-type='<?php echo e($type_form); ?>' data-crop="true">
+                <div class="form-group form-group-sm" style="float: right; max-width: 15%;">
+                    <button class="btn btn-primary btn-sm" data-toggle="tooltip" title="<?php echo e(trans('adminlte_lang::message.capture')); ?>" data-message="<?php echo e(trans('adminlte_lang::message.camera_capture')); ?>" style="padding: 7px 10px;" id="camera-capture">
+                        <i class="fa  fa-camera"></i>
+                    </button>
+                </div>
+                <div class="form-group" data-type='<?php echo e($type_form); ?>' data-crop="true" style="float:left; max-width: 85%;">
                     <?php echo Form::file('avatar', '', ['class' =>  'filestyle upload_image','data-input'=>'false', 'data-buttonText'=>'Select Image', 'data-placeholder'=> trans('adminlte_lang::message.browser_avatar') ]); ?>
 
                 </div>
+
             </div>
         </div>
     </div>

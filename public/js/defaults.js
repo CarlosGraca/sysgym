@@ -56,6 +56,14 @@ $(function () {
 
     });
 
+    $(document).on('click','#camera-capture',function (e) {
+       e.preventDefault();
+        $('#myModalLabel-md').text($(this).data('message'));
+       $('#modal-md').modal('show')
+           .find('.modal-body')
+           .load('/camera');
+    });
+
     //GET INPUT KEYDOWN VALUE
     $(':input').keyup(function (e) {
     e.preventDefault();
@@ -126,10 +134,29 @@ $(function () {
     $(document).on('click','#people_show_popup',function (e) {
         e.preventDefault();
         $('#myModalLabel').text($(this).attr('data-title'));
-        $('#modal').modal('show')
+        $('#modal-ajax').modal('show')
             .find('.modal-body')
             .load($(this).data('url'));
-        $('#modal').css('overflow','auto');
+        $('#modal-ajax').css('overflow','auto');
+    });
+
+    $('#modal-ajax').on('show.bs.modal', function (e) {
+        $(document.body).css('overflow','hidden');
+        $(this).find('.modal-body').css({
+            width:'auto', //probably not needed
+            height:'auto', //probably not needed
+            'max-height':'100%'
+        });
+        $(this).find('.modal-dialog').css('width', $(window).width() * 0.8);
+    });
+
+    $(window).bind("load resize", function() {
+        var width = (this.window.innerWidth > 0) ? this.window.innerWidth : this.screen.width;
+        $('#modal-ajax').find('.modal-dialog').css('width', width * 0.9);
+    });
+
+    $('#modal-ajax').on('hidden.bs.modal', function (e) {
+        $(document.body).css('overflow','auto');
     });
 
 });
@@ -260,22 +287,31 @@ function save(_form,_form_data,form_type) {
 
                 case 'employee':
                     if(data.type=='success') {
-                        $('#add-employee').css('display', 'none');
-                        $('#edit-employee').css('display', 'none');
-                        $('#edit-employee-button').removeAttr('style');
+
                         if (form_type == 'create') {
-                            var employee_url = $('#client_detail').attr('href');
-                            $('#employee_detail').attr('href', employee_url + '/' + data.values);
-                            $('#employee_detail').removeAttr('style');
+                            $('#add-employee').css('display', 'none');
+                            // var employee_url = $('#client_detail').attr('href');
+                            // $('#employee_detail').attr('href', employee_url + '/' + data.values);
+                            // $('#employee_detail').removeAttr('style');
+
                             field_status_change('disable', _form);
                         } else {
+                            $('#update-employee').css('display', 'none');
+                            $('#edit-employee-button').removeAttr('style');
                             field_status_change('disable', _form);
                         }
                     }
                     break;
-                case 'category':
-                    $('#add-category').css('display','none');
-                    $('#edit-category').css('display','none');
+                case 'employees_category':
+                    if(data.type=='success') {
+                        if (form_type == 'create') {
+                            $('#add-employees_category').css('display','none');
+                        }else{
+                            $('#update-employees_category').css('display','none');
+                            $('#edit-employees_category-button').removeAttr('style');
+                            field_status_change('disable',$('#employees_category-form'));
+                        }
+                    }
                     break;
                 case 'branches':
                     if(data.type == 'success'){
@@ -338,26 +374,6 @@ function save(_form,_form_data,form_type) {
                     }
 
                     break;
-                // case 'procedure_group':
-                //     if(form_type=='create' && data.type == 'success')
-                //         _form.trigger('reset');
-                //     else{
-                //         field_status_change('disable',_form);
-                //         $('#edit-procedure_group-button').removeAttr('style');
-                //         $('#edit-procedure_group').css('display','none');
-                //     }
-                //     break;
-                // case 'procedure':
-                //     if(data.type == 'success') {
-                //         if (form_type == 'create')
-                //             _form.trigger('reset');
-                //         else {
-                //             field_status_change('disable', _form);
-                //             $('#edit-procedure-button').removeAttr('style');
-                //             $('#edit-procedure').css('display', 'none');
-                //         }
-                //     }
-                //     break;
                 case 'roles':
                     if(data.type == 'success') {
                         if (form_type == 'create'){
@@ -669,6 +685,8 @@ function change_status(_id, _type, _name_item, _tr, url, _tr_class, _form) {
                             }else
                                 toastr.success(data.message, {timeOut: 5000}).css("width", "300px");
 
+                            if(_form == 'employees_category')
+                                location.reload();
 
                             if(_type == 'enable'){
                                 _tr.parent().find('#edit-'+_form).css('display','initial');

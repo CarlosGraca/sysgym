@@ -30,7 +30,7 @@ class ClientController extends Controller
      */
     public function index()
     {
-        $clients = Client::all();
+        $clients = Client::where(['branch_id'=>\Auth::user()->branch_id,'tenant_id'=>\Auth::user()->tenant_id])->get();
 
         if (\Request::wantsJson()) {
             return $clients;
@@ -46,8 +46,6 @@ class ClientController extends Controller
      */
     public function create()
     {
-//        $island = Island::pluck('name','id');
-//        $secure_agency = SecureAgency::pluck('name','id');
         if (\Request::ajax()) {
             return view('clients.create_ajax');
         }
@@ -89,7 +87,7 @@ class ClientController extends Controller
         $client->branch_id = Auth::user()->branch_id;
         $client->tenant_id = Auth::user()->tenant_id;
 
-        if ($request->hasFile('avatar')){
+        if ($request->hasFile('avatar') || $request->avatar_type == 'capture'){
             $img_base64 = $request->avatar_crop;
             $filename = 'uploads/' .time().'.png';
             $default->base64_to_png($img_base64, $filename);
@@ -172,7 +170,7 @@ class ClientController extends Controller
         $client->note = $request->note;
 
 
-        if ($request->hasFile('avatar')){
+        if ($request->hasFile('avatar') || $request->avatar_type == 'capture'){
             
             $img_base64 = $request->avatar_crop;
             $filename = 'uploads/' .time().'.png';

@@ -27,10 +27,11 @@ class RedirectIfAuthenticated
         }elseif ($system->status == '0' && $request->isMethod('get')){
             return redirect('license_expired');
         }
+        */
 
         if (Auth::guard($guard)->check()) {
             return redirect('/home');
-        }*/
+        }
 
         return $next($request);
     }

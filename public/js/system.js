@@ -76,28 +76,6 @@ $(function () {
     });
 
 
-    $('#modal').on('show.bs.modal', function (e) {
-        e.preventDefault();
-        $(document.body).css('overflow','hidden');
-        $(this).find('.modal-body').css({
-            width:'auto', //probably not needed
-            height:'auto', //probably not needed
-            'max-height':'100%'
-        });
-        $(this).find('.modal-dialog').css('width', $(window).width() * 0.8);
-    });
-
-
-    $(window).bind("load resize", function() {
-        var width = (this.window.innerWidth > 0) ? this.window.innerWidth : this.screen.width;
-        $('#modal').find('.modal-dialog').css('width', width * 0.9);
-    });
-
-    $('#modal').on('hidden.bs.modal', function (e) {
-        e.preventDefault();
-        $(document.body).css('overflow','auto');
-    });
-
 
     //SETUP SYSTEM
     $('#setup_wizard').bootstrapWizard({
@@ -222,20 +200,6 @@ $(function () {
     //ABOUT SYSTEM MODAL POPUP
     $(document).on('click','#about_system',function (e) {
         e.preventDefault();
-        // $('#modal').css('overflow','auto');
-        // console.log(($(window).height() - 100));
-        // $('#modal').find('.modal-content').css('height',($(window).height() - 100)+'px');
-        // $('#modal').find('#myModalLabel').html('<i class="fa fa-info-circle"></i> ');
-        // $('#modal').find('#myModalLabel').append($(this).text());
-
-        // $('#modal').find('.modal-body').load($(this).attr('data-url'));
-        // var footer_html = $('#modal').find('.modal-body').find('#app_footer').html();
-        // $('#modal').find('.modal-footer').html(footer_html);
-        // $('#modal').modal();
-
-        // $('#modal').find('.modal-body').slimScroll();
-        // $('#modal').find('.slimScrollDiv').attr('style','overflow: auto; height: '+($(window).height()-200)+'px;');
-        // $('#modal').find('.modal-body').css('height',($(window).height()-200)+'px');
 
         $('#myModalLabel').html('<i class="fa fa-info-circle"></i> ');
         $('#myModalLabel').append($(this).text());
@@ -244,10 +208,6 @@ $(function () {
             .load($(this).data('url'));
         $('#modal').css('overflow','auto');
     });
-
-    // $('#modal').on('hidden.bs.modal', function () {
-    //     $('body').removeAttr('style');
-    // });
 
     $(".carousel").carousel();
 

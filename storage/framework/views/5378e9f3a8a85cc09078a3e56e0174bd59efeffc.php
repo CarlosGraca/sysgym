@@ -1,9 +1,6 @@
 <?php
     $company = \App\Models\Tenant::where('id',\Auth::user()->tenant_id)->first();
     $branch = \App\Models\Branch::where('id',(\Auth::user() ? \Auth::user()->branch_id : 0))->first();
-
-    if(\Auth::guest())
-        header('Location: /');
 ?>
 <!-- Main Header -->
 <header class="main-header">
@@ -137,7 +134,9 @@
                   <a href="<?php echo e(url('accounts')); ?>" data-toggle="tooltip" title="<?php echo e(trans('adminlte_lang::message.profile')); ?>">
                     <img  src="<?php echo e(url('/')); ?>/<?php echo e(Auth::user()->avatar); ?>" class="user-image" alt="Cinque Terre" >
                               <!-- hidden-xs hides the username on small devices so only the image appears. -->
-                    <span class="hidden-xs"><span class="user-name"><?php echo e(Auth::user()->name); ?></span> | <?php echo e(Auth::user()->role->display_name); ?></span>
+                    <span class="hidden-xs">
+                        <span class="users-list-name" style="color: #fff; display: table-cell; max-width: 100px;"><?php echo e(Auth::user()->name); ?></span> | <span> <?php echo e(Auth::user()->role->display_name); ?> </span>
+                    </span>
                   </a>
                 </li>
 

@@ -1,6 +1,6 @@
 <?php
     $system = \App\Models\System::where(['branch_id'=>\Auth::user()->branch_id,'tenant_id'=>\Auth::user()->tenant_id])->first();
-   \Carbon\Carbon::setLocale(count($system) > 0 ? $system->lang : config('app.locale'));
+    \Carbon\Carbon::setLocale(count($system) > 0 ? $system->lang : config('app.locale'));
 ?>
 <!DOCTYPE html>
 <!--
@@ -69,8 +69,6 @@ desired effect
         background-size: cover;
     }
 
-
-
     .list_image{
         border-radius: 50%;
         max-width: 100%;
@@ -87,9 +85,7 @@ desired effect
     <?php echo $__env->make('layouts.partials.sidebar', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
 
     <!-- Content Wrapper. Contains page content -->
-    <div class="content-wrapper"
-         
-    >
+    <div class="content-wrapper">
 
         <?php echo $__env->make('layouts.partials.contentheader', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
 
@@ -101,13 +97,13 @@ desired effect
     </div><!-- /.content-wrapper -->
 
     
+    <?php echo $__env->make('layouts.shared.modal', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
 
-        <?php echo $__env->make('layouts.shared.modal_lg', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
-        <?php echo $__env->make('layouts.shared.modal_md', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
-        <?php echo $__env->make('layouts.shared.modal_del', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+    
+    
+    
 
     <?php echo $__env->make('layouts.shared.croppie_modal', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
-
 
     <?php echo $__env->make('layouts.partials.footer', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
 

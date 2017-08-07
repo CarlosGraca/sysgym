@@ -24,10 +24,27 @@
 				</div>
 			</div>
 			<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
-				<div class="form-group form-group-sm">
-					{!! Form::label('client','(*) '.trans('adminlte_lang::message.client')) !!}
-					{!! Form::text('client', ($type == 'update' ? $matriculation->client->name : null) , ['class'=>'form-control','onfocus'=>'onfocus','placeholder'=>trans('adminlte_lang::message.type_client_name'), ($type == 'update' ? 'readonly' : '')]) !!}
-				</div>
+
+				@if($type == 'create')
+					<div class="input-group input-group-sm">
+						{!! Form::label('client','(*) '.trans('adminlte_lang::message.client')) !!}
+						{!! Form::text('client', ($type == 'update' ? $matriculation->client->name : null) , ['class'=>'form-control','onfocus'=>'onfocus','placeholder'=>trans('adminlte_lang::message.type_client_name'), ($type == 'update' ? 'readonly' : '')]) !!}
+						<span class="input-group-btn" style="font-size: inherit;">
+							{!! Form::label('client_add_popup','ADD',['style'=>'visibility: hidden;'] ) !!}
+							<a class="btn btn-success btn-flat form-control" id="client_add_popup" data-url="{{ url('clients/create') }}" data-toggle="tooltip" title="{{ trans('adminlte_lang::message.add_client') }}" data-title="{{ trans('adminlte_lang::message.new_client') }}"><i class="fa fa-user-plus"></i></a>
+								</span>
+					</div>
+				@else
+					<div class="form-group form-group-sm">
+						{!! Form::label('client','(*) '.trans('adminlte_lang::message.client')) !!}
+						{!! Form::text('client', ($type == 'update' ? $matriculation->client->name : null) , ['class'=>'form-control','onfocus'=>'onfocus','placeholder'=>trans('adminlte_lang::message.type_client_name'), ($type == 'update' ? 'readonly' : '')]) !!}
+					</div>
+				@endif
+
+				{{--<div class="form-group form-group-sm">--}}
+					{{--{!! Form::label('client','(*) '.trans('adminlte_lang::message.client')) !!}--}}
+					{{--{!! Form::text('client', ($type == 'update' ? $matriculation->client->name : null) , ['class'=>'form-control','onfocus'=>'onfocus','placeholder'=>trans('adminlte_lang::message.type_client_name'), ($type == 'update' ? 'readonly' : '')]) !!}--}}
+				{{--</div>--}}
 			</div>
 
 			<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
@@ -85,14 +102,6 @@
                     {!! Form::textarea('note', ($type == 'update' ? $matriculation->note : null) , ['class'=>'form-control', $form_status]) !!}
                 </div>
             </div>
-
-            {{--<div class="col-md-2 col-sm-6 col-xs-12">--}}
-                {{--<div class="form-group form-group-sm">--}}
-                    {{--{!! Form::label('status',trans('adminlte_lang::message.status') ) !!}--}}
-                    {{--{!! Form::text('status', $status[($type == 'update' ? $matriculation->status : 1)] , ['class'=>'form-control','disabled'=>'disabled']) !!}--}}
-                {{--</div>--}}
-            {{--</div>--}}
-
 		</div>
 
         {{--MODALITY--}}
@@ -146,7 +155,6 @@
 								<th class="col-md-1 action_button"></th>
 							</thead>
 							{{--$m_modality = Matriculation Modality--}}
-							<?php  $system = \App\System::all()->first();?>
                             @if(isset($matriculation))
                                 @foreach($matriculation->modality->where('status',1) as $m_modality)
                                 <tr class="m_modality-table-row" data-key="{{ $m_modality->id }}" data-total="{{ doubleval($m_modality->total + $m_modality->discount) }}">

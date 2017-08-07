@@ -93,10 +93,6 @@
                     <i class="fa fa-facebook-official"></i>  <b><?php echo e(trans('adminlte_lang::message.facebook')); ?>: </b>
                     <a><?php echo e($people->facebook); ?></a>
                 </li>
-                
-                    
-                    
-                
             </ul>
         </div>
     </div>
@@ -136,7 +132,7 @@
                 <ul class="list-group list-group-unbordered">
                     <li class="list-group-item">
                         <i class="fa fa-user-md"></i>  <b><?php echo e(trans('adminlte_lang::message.category')); ?>: </b>
-                        <a> <?php echo e($people->category->name); ?> </a>
+                        <a> <?php echo e($people->employee_category->name); ?> </a>
                     </li>
         
                     <li class="list-group-item">

@@ -91,7 +91,7 @@ Route::get('/currency_format/{value}', 'Defaults@currency');
 Route::get('search/{field}/autocomplete', 'SearchController@search');
 
 //GET CATEGORY BASE SALARY
-Route::get('/category/salary_base/{id}', 'CategoryController@getSalaryBase');
+Route::get('/category/salary_base/{id}', 'EmployeeCategoryController@getSalaryBase');
 
 //Dashboard getData
 Route::post('dashboard/graphic', 'DashboardGraphic@getData');
@@ -142,8 +142,8 @@ Route::post('roles/enable','RoleController@enable');
 Route::post('roles/disable','RoleController@disable');
 
 //CATEGORY CHANGE STATUS
-Route::post('employees_category/enable','CategoryController@enable');
-Route::post('employees_category/disable','CategoryController@disable');
+Route::post('employees_category/enable','EmployeeCategoryController@enable');
+Route::post('employees_category/disable','EmployeeCategoryController@disable');
 
 //PERMISSIONS CHANGE STATUS
 Route::post('permissions/enable','PermissionController@enable');
@@ -197,4 +197,8 @@ Route::get('backups_list','BackupController@backup_list');//LIST BACKUP
 
 Route::post('croppie',function(\Illuminate\Http\Request $request){
     return view('components.croppie',['type'=>$request->type,'src'=>$request->src]);
+});
+
+Route::get('camera',function (){
+    return view('components.camera_capture');
 });
