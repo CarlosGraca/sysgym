@@ -19,7 +19,10 @@ $status_color = ['danger','success','info'];
 ?>
 
 
-<?php $__env->startSection('main-content'); ?>
+ <?php $__env->startSection('main-content'); ?>
+
+ 
+
 	<div class="row">
 	    <div class="col-lg-12">
 	        <div class="box box-primary">
@@ -43,6 +46,7 @@ $status_color = ['danger','success','info'];
 							<th class="col-md-4"><?php echo e(trans('adminlte_lang::message.title')); ?></th>
 							<th class="col-md-3"><?php echo e(trans('adminlte_lang::message.url')); ?></th>
 							<th class="col-md-2"><?php echo e(trans('adminlte_lang::message.icon')); ?></th>
+                            <th  class="col-md-2"><?php echo e(trans('adminlte_lang::message.menu_order')); ?></th>
 							<th class="col-md-2"><?php echo e(trans('adminlte_lang::message.status')); ?></th>
 							<th class="col-md-1"></th>
 		                  </tr>
@@ -52,9 +56,12 @@ $status_color = ['danger','success','info'];
 							  <tr class="bg-<?php echo e($status_color[$menu->status]); ?>">
                                     <td><?php echo e($menu->title); ?></td>
                                     <td><?php echo e($menu->url); ?></td>
-									  <td class="text-center"><i class="<?php echo e($menu->icon); ?>"></i></td>
-								  <td><span class="label label-<?php echo e($status_color[$menu->status]); ?>"><?php echo e($status[$menu->status]); ?></span></td>
+									<td class="text-center"><i class="<?php echo e($menu->icon); ?>"></i></td>
+                                    <td><?php echo $menu->menu_order; ?></td>
+								  	<td><span class="label label-<?php echo e($status_color[$menu->status]); ?>"><?php echo e($status[$menu->status]); ?></span></td>
 								   <td>
+                                        <a href="<?php echo e(route('tenant-menu.create','id='.$menu->id)); ?>" , data-remote='false' data-toggle="tooltip" title="<?php echo e(trans('adminlte_lang::message.associate_tenant')); ?>">      <i class="fa fa-snowflake-o"></i>
+                                        </a> 
 										
 											<a href="<?php echo e(route('menus.show',$menu->id)); ?>"  data-toggle="tooltip" title="<?php echo e(trans('adminlte_lang::message.view')); ?>">
 												<i class="fa fa-eye"></i>

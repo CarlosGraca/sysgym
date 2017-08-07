@@ -1,6 +1,5 @@
 <?php
-    $system = \App\Models\System::where('id',\Auth::user()->branch_id)->first();
-    $defaults = new App\Http\Controllers\Defaults();
+    $system = \App\Models\System::where(['branch_id'=>\Auth::user()->branch_id,'tenant_id'=>\Auth::user()->tenant_id])->first();
 ?>
 
 <!-- REQUIRED JS SCRIPTS -->
@@ -100,7 +99,7 @@
 <!-- SCRIPT IN DEVELOPMENT MODE -->
 
 <script type="text/javascript">
-    var localName = '<?php echo e(count($system) > 0 ? $system->lang : 'en'); ?>';
+    
 
 
     $(":file").filestyle({

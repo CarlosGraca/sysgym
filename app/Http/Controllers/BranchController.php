@@ -30,7 +30,7 @@ class BranchController extends Controller
      */
     public function index()
     {
-        $branches = Branch::all();
+        $branches = Branch::where(['tenant_id'=>Auth::user()->tenant_id])->get();
 
         if (Request::wantsJson()) {
             return $branches;

@@ -14,8 +14,8 @@
 <?php $__env->stopSection(); ?>
 
 <?php
-$status = [trans('adminlte_lang::message.deleted'),trans('adminlte_lang::message.active'),trans('adminlte_lang::message.expired')];
-$status_color = ['danger','success','info'];
+	$status = [trans('adminlte_lang::message.inactive'),trans('adminlte_lang::message.active'),trans('adminlte_lang::message.expired')];
+	$status_color = ['danger','success','info'];
 ?>
 
 
@@ -79,7 +79,8 @@ $status_color = ['danger','success','info'];
 		                    <th class="col-md-2"><?php echo e(trans('adminlte_lang::message.email')); ?></th>
 		                    <th class="col-md-2"><?php echo e(trans('adminlte_lang::message.contacts')); ?></th>
                             <th class="col-md-1"><?php echo e(trans('adminlte_lang::message.genre')); ?></th>
-		                    <th class="col-md-3"><?php echo e(trans('adminlte_lang::message.address')); ?></th>
+							  <th class="col-md-2"><?php echo e(trans('adminlte_lang::message.address')); ?></th>
+							  <th class="col-md-1"><?php echo e(trans('adminlte_lang::message.status')); ?></th>
 		                    <th class="col-md-1"></th>
 		                  </tr>
 		                </thead>
@@ -92,7 +93,8 @@ $status_color = ['danger','success','info'];
                                     <td><?php echo e($client->mobile); ?> / <?php echo e($client->phone); ?></td>
                                     <td><?php echo e(trans('adminlte_lang::message.'.$client->genre)); ?></td>
                                     <td><?php echo e($client->address); ?></td>
-                                    <td>
+									<td><span class="label label-<?php echo e($status_color[$client->status]); ?>"><?php echo e($status[$client->status]); ?></span></td>
+									<td>
                                         
 										<a href="<?php echo e(route('clients.show',$client->id)); ?>" data-toggle="tooltip" title="<?php echo e(trans('adminlte_lang::message.view')); ?>">
                                             <i class="fa fa-eye"></i>

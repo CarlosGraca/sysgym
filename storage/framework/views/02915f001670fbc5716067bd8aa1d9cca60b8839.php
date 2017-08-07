@@ -39,8 +39,9 @@ $status_color = ['danger','success','info'];
 	                <table id="table-modality" class="table table-hover table-design">
 		                <thead>
 		                  <tr>
-							  <th class="col-md-8"><?php echo e(trans('adminlte_lang::message.name')); ?></th>
+							  <th class="col-md-7"><?php echo e(trans('adminlte_lang::message.name')); ?></th>
 							  <th class="col-md-3 text-center"><?php echo e(trans('adminlte_lang::message.price')); ?></th>
+							  <th class="col-md-1 text-center"><?php echo e(trans('adminlte_lang::message.status')); ?></th>
 							  <th class="col-md-1"></th>
 		                  </tr>
 		                </thead>
@@ -48,7 +49,8 @@ $status_color = ['danger','success','info'];
                           <?php $__currentLoopData = $modalities; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $modality): $__env->incrementLoopIndices(); $loop = $__env->getFirstLoop(); ?>
                                 <tr data-key="<?php echo e($modality->id); ?>" class="bg-<?php echo e($status_color[$modality->status]); ?>">
                                     <td><?php echo e($modality->name); ?></td>
-									<td class="price text-center"><?php echo e($Defaults->currency($modality->price)); ?></td>
+									<td class="text-center"><?php echo e($Defaults->currency($modality->price)); ?></td>
+									<td><span class="label label-<?php echo e($status_color[$modality->status]); ?>"><?php echo e($status[$modality->status]); ?></span></td>
 									<td class="text-center">
 										<a href="<?php echo e(route('modalities.show',$modality->id)); ?>"  data-toggle="tooltip" title="<?php echo e(trans('adminlte_lang::message.view')); ?>">
 											<i class="fa fa-eye"></i>

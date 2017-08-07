@@ -8,13 +8,14 @@
 <?php $__env->stopSection(); ?>
 
 <?php $__env->startSection('contentheader_description'); ?>
+
 	<?php echo e(trans('adminlte_lang::message.domains')); ?>
 
 <?php $__env->stopSection(); ?>
 
 
 <?php $__env->startSection('main-content'); ?>
-    
+     <?php echo $__env->make('layouts.shared.alert', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?> 
 	<div class="row">
 	    <div class="col-lg-12">
 	        <div class="box box-primary">
@@ -22,7 +23,9 @@
 	              <h3 class="box-title"></h3>
 	               <div class="pull-left box-tools">
 	                  <a href="<?php echo e(url('domains/create')); ?>"  class="btn btn-primary btn-sm" role="button" data-toggle="tooltip" title="">
+
 	                       <i class="fa fa-plus"></i> <?php echo e(trans('adminlte_lang::message.new_domain')); ?>
+
 
 	                  </a>
 	                  
@@ -31,7 +34,7 @@
 	  
 	            <div class="box-body">
 		            <div class="box-body table-responsive no-padding">
-                        <table class="table table-hover" id="table-dominios">  
+                        <table class="table table-hover table-design">  
 			                <thead>
 			                    <tr>		                        
 			                        <th >Dominio</th>
@@ -41,7 +44,7 @@
 			                    </tr>
 			                </thead>
 			                <tbody>
-			                    <?php $__currentLoopData = $dominios; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $dominio): $__env->incrementLoopIndices(); $loop = $__env->getFirstLoop(); ?>
+			                    <?php $__currentLoopData = $domains; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $dominio): $__env->incrementLoopIndices(); $loop = $__env->getFirstLoop(); ?>
 			                        <tr>
 				                    	<td><?php echo e($dominio->dominio); ?></td> 
 				                    	<td><?php echo e($dominio->codigo); ?></td> 

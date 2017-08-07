@@ -13,7 +13,7 @@
 @endsection
 
 <?php
-	$status = [trans('adminlte_lang::message.deleted'),trans('adminlte_lang::message.active'),trans('adminlte_lang::message.expired')];
+	$status = [trans('adminlte_lang::message.inactive'),trans('adminlte_lang::message.active'),trans('adminlte_lang::message.expired')];
 	$status_color = ['danger','success','info'];
 ?>
 
@@ -71,7 +71,8 @@
 		                    <th class="col-md-2">{{ trans('adminlte_lang::message.email') }}</th>
 		                    <th class="col-md-2">{{ trans('adminlte_lang::message.contacts') }}</th>
                             <th class="col-md-1">{{ trans('adminlte_lang::message.genre') }}</th>
-		                    <th class="col-md-3">{{ trans('adminlte_lang::message.address') }}</th>
+							  <th class="col-md-2">{{ trans('adminlte_lang::message.address') }}</th>
+							  <th class="col-md-1">{{ trans('adminlte_lang::message.status') }}</th>
 		                    <th class="col-md-1"></th>
 		                  </tr>
 		                </thead>
@@ -84,7 +85,8 @@
                                     <td>{{$client->mobile }} / {{ $client->phone }}</td>
                                     <td>{{trans('adminlte_lang::message.'.$client->genre)}}</td>
                                     <td>{{$client->address }}</td>
-                                    <td>
+									<td><span class="label label-{{ $status_color[$client->status] }}">{{ $status[$client->status] }}</span></td>
+									<td>
                                         {{--@can('view_client')--}}
 										<a href="{{ route('clients.show',$client->id) }}" data-toggle="tooltip" title="{{ trans('adminlte_lang::message.view') }}">
                                             <i class="fa fa-eye"></i>

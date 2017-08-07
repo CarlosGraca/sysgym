@@ -53,8 +53,8 @@ Route::group(['middleware' => ['web','auth']], function(){
     Route::resource('domains','DomainController');
     Route::resource('menus','MenuController');
     Route::resource('permissions','PermissionController');
-    route::resource('tenant-menu','TenantMenuController');
-
+    Route::resource('tenant-menu','TenantMenuController');
+    Route::resource('dashboard','DashboardController');
 });
 
 
