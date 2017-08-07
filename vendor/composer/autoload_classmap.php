@@ -6,8 +6,11 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
+    'AddColumnsBranchIdModalities' => $baseDir . '/database/migrations/2017_08_07_131627_add_columns_branch_id_modalities.php',
+    'AddColumnsTenantIdModalities' => $baseDir . '/database/migrations/2017_08_07_132020_add_columns_tenant_id_modalities.php',
     'ChangeTanantToUsersTable' => $baseDir . '/database/migrations/2017_04_04_145926_change_tanant_to_users_table.php',
     'Cpdf' => $vendorDir . '/dompdf/dompdf/lib/Cpdf.php',
+    'CreateBranchPermissionTable' => $baseDir . '/database/migrations/2017_10_14_115234_create_branch_permission_table.php',
     'CreateBranchTable' => $baseDir . '/database/migrations/2016_10_13_204360_create_branch_table.php',
     'CreateClientTable' => $baseDir . '/database/migrations/2017_04_05_145459_create_client_table.php',
     'CreateDominiosTable' => $baseDir . '/database/migrations/2016_03_05_200113_create_dominios_table.php',

@@ -100,6 +100,7 @@ class ClientController extends Controller
             $url = route('clients.edit',$client->id);
             $message = trans('adminlte_lang::message.msg_success_client');
             return ['id'=>$client->id,'message'=>$message,'form'=>'client','type'=>'success','url'=>$url];
+           // return redirect('payments/create'.'?idCliente='.$client->id);
         }else{
              return view('clients');
         }

@@ -20,7 +20,7 @@
 	        <div class="box box-default">
 	            <div class="box-header with-border">
 	              <h3 class="box-title">
-	              	 <strong>{{ trans('adminlte_lang::message.system_user') }}: </strong><span>{{ \Auth::user()->name }}</span>
+	              	{{--  <strong>{{ trans('adminlte_lang::message.system_user') }}: </strong><span>{{ \Auth::user()->name }}</span> --}}
 	              </h3>
 
 				<div class="pull-right box-tools">

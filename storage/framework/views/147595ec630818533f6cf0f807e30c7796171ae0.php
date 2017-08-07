@@ -1,4 +1,6 @@
-<?php $system = \App\System::all()->first(); ?>
+<?php
+$system = \App\Models\System::where(['branch_id'=>\Auth::user()->branch_id,'tenant_id'=>\Auth::user()->tenant_id])->first();
+?>
 <!DOCTYPE html>
 <!--
 This is a starter template page. Use this page to start your new project from
@@ -33,7 +35,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                 <div class="row no-print">
                     <div class="col-xs-6 pull-left">
                         <img  src="<?php echo e(url('/img/clinic/logo.png')); ?>" class="img-circle" alt="Cinque Terre" style="float: left; width: 30px; height: 30px; margin-right: 10px;  margin-top: -2px;">
-                        <h4><?php echo e(\Auth::user()->branch->company->name); ?> - Report</h4>
+                        <h4><?php echo e(\Auth::user()->tenant->company_name); ?> - Report</h4>
                     </div>
                     <div class="col-xs-6 pull-right">
                         <a href="#" id="close-page" onclick="window.close();" class="btn btn-default pull-right"><i class="fa fa-close"></i> Close</a>

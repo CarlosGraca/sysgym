@@ -12,6 +12,8 @@ return [
     | these language lines according to your application's requirements.
     |
     */
+    'start_date' =>'Start Date',
+    'start_date' =>'End Date',
     'alter_status'=>'Alter Status',
     'associate_tenant'=>'Associate to companies',
     'edit'                   => 'Edit',

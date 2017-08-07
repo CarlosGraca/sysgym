@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\Matriculation;
 use App\Models\Payment;
+use Input;
+use App\Models\Client;
+use App\Models\Domain;
 //use Illuminate\Http\Request;
 use Request;
 class PaymentController extends Controller
@@ -31,8 +34,11 @@ class PaymentController extends Controller
      */
     public function create()
     {
-        //
-        return view('payments.create');
+
+        $idCliente = Input::get('idCliente');
+        $client = Client::findorfail( $idCliente );
+        $meses = Domain::where('dominio','MES')->pluck('significado','id')->all();  
+        return view('payments.create',compact('client','meses'));
     }
 
     /**

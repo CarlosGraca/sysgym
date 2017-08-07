@@ -47,7 +47,8 @@ $status_color = ['danger','success','info'];
                           @foreach ($modalities as $modality)
                                 <tr data-key="{{ $modality->id }}" class="bg-{{ $status_color[$modality->status] }}">
                                     <td>{{ $modality->name }}</td>
-									<td class="text-center">{{ $Defaults->currency($modality->price) }}</td>
+                                    <td class="text-center">{{$modality->price}}</td>
+									{{-- <td class="text-center">{{ $Defaults->currency($modality->price) }}</td> --}}
 									<td><span class="label label-{{ $status_color[$modality->status] }}">{{ $status[$modality->status] }}</span></td>
 									<td class="text-center">
 										<a href="{{ route('modalities.show',$modality->id) }}"  data-toggle="tooltip" title="{{ trans('adminlte_lang::message.view') }}">
