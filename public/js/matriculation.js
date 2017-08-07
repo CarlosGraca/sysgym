@@ -93,6 +93,12 @@ $(function () {
 
     });
 
+    $(document).on('click','#next-step-payment',function (e) {
+        e.preventDefault();
+        var client_id = $('#client_id').val();
+        window.location = '/payments/create?idCliente='+client_id;
+    });
+
     //APPROVE BUDGET
     $(document).on('click','#approve-matriculation',function (e) {
         e.preventDefault();

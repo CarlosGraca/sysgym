@@ -42,15 +42,36 @@
                 </div>
             </div>
 
-            <div class="col-lg-3 col-md-4 col-sm-6">
+            <div class="col-lg-3 col-md-4 col-sm-6" id="div_month">
                 <div class="form-group form-group">
                   {!! Form::label('month_id','Months:') !!}
-                  
                   {!! Form::select('month_id',$meses,null, ['class'=>'form-control select2','multiple'=>'multiple', 'style'=>'width: 100%;'])  !!}
                 </div>
             </div>
 
-            <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+                <div class="col-lg-3 col-md-4 col-sm-6">
+                    <div class="form-group form-group-sm">
+                        {!! Form::label('value_pay',trans('adminlte_lang::message.value_pay')) !!}
+                        {!! Form::number('value_pay', ($type == 'update' ? $payment->client->name : $client->name ) , ['class'=>'form-control']) !!}
+                    </div>
+                </div>
+
+                <div class="col-lg-3 col-md-4 col-sm-6">
+                    <div class="form-group form-group-sm">
+                        {!! Form::label('discount',trans('adminlte_lang::message.discount')) !!}
+                        {!! Form::number('discount', ($type == 'update' ? $payment->discount : $client->name ) , ['class'=>'form-control']) !!}
+                    </div>
+                </div>
+
+
+                <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+                    <div class="form-group form-group-sm">
+                        {!! Form::label('free',trans('adminlte_lang::message.free')) !!}
+                        {!! Form::select('free', [ 0 => trans('adminlte_lang::message.not'),1 =>trans('adminlte_lang::message.yes')],($type == 'update' ? $payment->payment_method : 0), ['class'=>'form-control','placeholder' => trans('adminlte_lang::message.select_free')]) !!}
+                    </div>
+                </div>
+
+                <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
                 <div class="form-group form-group-sm">
                     {!! Form::label('start_date',trans('adminlte_lang::message.start_date') ) !!}
                     {!! Form::date('start_date', ($type == 'update' ? $payment->created_at : \Carbon\Carbon::now()->subDay(0)->format('Y-m-d')) , ['class'=>'form-control']) !!}

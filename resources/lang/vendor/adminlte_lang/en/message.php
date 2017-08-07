@@ -599,5 +599,8 @@ return [
     'clients_inactive' => 'Clients Inactive',
     'add_client' => 'Add Client',
     'next' => 'Next',
+    'free' => 'Free',
+    'value_pay' => 'Value Pay',
+    'select_free' => ' (SELECT FREE) ',
 ];
 

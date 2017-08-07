@@ -290,10 +290,6 @@ function save(_form,_form_data,form_type) {
 
                         if (form_type == 'create') {
                             $('#add-employee').css('display', 'none');
-                            // var employee_url = $('#client_detail').attr('href');
-                            // $('#employee_detail').attr('href', employee_url + '/' + data.values);
-                            // $('#employee_detail').removeAttr('style');
-
                             field_status_change('disable', _form);
                         } else {
                             $('#update-employee').css('display', 'none');

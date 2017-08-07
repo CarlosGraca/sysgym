@@ -18,6 +18,26 @@ $(function () {
     //     });
     // });
 
+
+    // $(document).onload(function () {
+    if($('#payment_type').val() != 'monthly')
+        $('#div_month').css('display','none');
+    else
+        $('#div_month').removeAttr('style');
+    // });
+
+
+
+    $(document).on('change','#payment_type',function (e) {
+        e.preventDefault();
+        if($(this).val() != 'monthly')
+            $('#div_month').css('display','none');
+        else
+            $('#div_month').removeAttr('style');
+
+    });
+
+
     _payment_total = get_payment_total_value('.payment-value');
     var _payment_remaining_total = $('#remaining_total') != undefined ? $('#remaining_total').val() : 0;
 

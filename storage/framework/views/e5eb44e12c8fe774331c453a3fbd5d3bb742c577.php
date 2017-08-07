@@ -87,18 +87,16 @@
 		</div>
 
 		
-		<div class="row">
-			<span ><strong class="title"><?php echo e(trans('adminlte_lang::message.matriculation_information')); ?></strong></span>
-			<hr class="h-divider" >
+		
+			
+			
 
-            <div class="col-md-2 col-sm-6 col-xs-12">
-                <div class="form-group form-group-sm">
-                    <?php echo Form::label('created_at',trans('adminlte_lang::message.create_date') ); ?>
-
-                    <?php echo Form::date('created_at', ($type == 'update' ? $matriculation->created_at : \Carbon\Carbon::now()->subDay(0)->format('Y-m-d')) , ['class'=>'form-control','readonly'=>'readonly']); ?>
-
-                </div>
-            </div>
+            
+                
+                    
+                    
+                
+            
 
 			
 				
@@ -120,7 +118,7 @@
                     
                 
             
-		</div>
+		
 
         
 		<div class="row">
@@ -142,7 +140,7 @@
                 <div class="form-group form-group-sm">
                     <?php echo Form::label('add-matriculation_modality','ADD',['style'=>'visibility: hidden;'] ); ?>
 
-                    <a href="#!add-modality" class="btn btn-primary btn-sm <?php echo e($type == 'update' && $matriculation->status == 1 ? '' : 'disabled'); ?>" style="display: table;" role="button" data-toggle="tooltip" title="<?php echo e(trans('adminlte_lang::message.add_modality')); ?>" id="add-matriculation_modality" data-message="NO MODALITY TYPED">
+                    <a href="#!add-modality" class="btn btn-primary btn-sm" style="display: table;" data-toggle="tooltip" title="<?php echo e(trans('adminlte_lang::message.add_modality')); ?>" id="add-matriculation_modality" data-message="NO MODALITY TYPED">
                         <i class="fa fa-plus"></i>
                     </a>
                 </div>

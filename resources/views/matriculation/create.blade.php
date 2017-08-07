@@ -33,8 +33,8 @@
 						 <i class="fa fa-save"></i> {{ trans('adminlte_lang::message.save') }}
 					</a>
 
-					<a href="#" class="btn btn-primary btn-sm" role="button" data-toggle="tooltip" title="{{ trans('adminlte_lang::message.reset') }}" id="next-step">
-						 {{ trans('adminlte_lang::message.next') }} <i class="fa fa-arrow-right"></i>
+					<a href="#" class="btn btn-primary btn-sm"  data-toggle="tooltip" title="{{ trans('adminlte_lang::message.payments') }}" id="next-step-payment">
+                        <i class="fa fa-money"></i> {{ trans('adminlte_lang::message.payments') }} <i class="fa fa-arrow-right"></i>
 					</a>
 
 				</div><!-- /. tools -->
