@@ -100,7 +100,7 @@ desired effect
     @include('layouts.shared.modal')
 
     {{--@include('layouts.shared.modal_lg')--}}
-    {{--@include('layouts.shared.modal_md')--}}
+    @include('layouts.shared.modal_md')
     {{--@include('layouts.shared.modal_del')--}}
 
     @include('layouts.shared.croppie_modal')

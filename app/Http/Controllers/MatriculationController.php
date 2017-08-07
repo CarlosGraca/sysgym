@@ -322,4 +322,13 @@ class MatriculationController extends Controller
             return redirect('matriculation');
         }
     }
+
+
+    /**
+     * Show the form for editing the specified resource.
+     * @return \Illuminate\Http\Response
+     */
+    public function setup(){
+        return view('matriculation.setup');
+    }
 }

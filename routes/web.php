@@ -105,23 +105,20 @@ Route::get('employee/{id}','EmployeeController@getEmployee');
 Route::post('/edit/{popover}/field','Defaults@GetPopOver');
 Route::post('/update/{popover}/field','Defaults@SetPopOver');
 
-//PAYMENT PROCEDURE
-Route::post('modalities/client','ModalityController@getClientModality');
 
-//BUDGET PROCEDURE
-Route::post('matriculation/modality','MatriculationController@modality');
-
-//GENERATE BUDGET PAYMENT
-Route::post('matriculation/payment','MatriculationController@generate_matriculation_payment');
-
+Route::post('modalities/client','ModalityController@getClientModality');//PAYMENT PROCEDURE
+Route::post('matriculation/modality','MatriculationController@modality');//BUDGET PROCEDURE
+Route::post('matriculation/payment','MatriculationController@generate_matriculation_payment');//GENERATE BUDGET PAYMENT
 
 //BUDGET CHANGE STATUS
 Route::post('matriculation/publish','MatriculationController@publish');
 Route::post('matriculation/approve','MatriculationController@approve');
 Route::post('matriculation/cancel','MatriculationController@cancel');
 Route::post('matriculation/reject','MatriculationController@reject');
-//BUDGET REPORT
-Route::get('matriculation/{id}/report', 'MatriculationController@report');
+Route::get('matriculation/{id}/report', 'MatriculationController@report');//REPORT
+Route::get('setup/matriculation', 'MatriculationController@setup');//REPORT
+
+
 
 //BUILD USER
 Route::get('build/{id}','Auth\UserController@build');

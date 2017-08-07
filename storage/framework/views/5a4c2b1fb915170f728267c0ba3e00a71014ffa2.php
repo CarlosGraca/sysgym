@@ -100,7 +100,7 @@ desired effect
     <?php echo $__env->make('layouts.shared.modal', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
 
     
-    
+    <?php echo $__env->make('layouts.shared.modal_md', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
     
 
     <?php echo $__env->make('layouts.shared.croppie_modal', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
