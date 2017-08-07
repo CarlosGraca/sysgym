@@ -1,5 +1,6 @@
 <div class="row">
     {!! Form::hidden('avatar_crop', null , ['class'=>'form-control','id'=>'avatar_crop']) !!}
+	{!! Form::hidden('avatar_type', null , ['class'=>'form-control','id'=>'avatar_type']) !!}
 
 	<div class="col-lg-3 col-md-6 col-sm-6 col-xs-12 text-center">
 		<span ><strong class="title" style="text-align: left;">{{ trans('adminlte_lang::message.avatar') }}</strong></span>
@@ -7,7 +8,13 @@
 		<img  src="{{ asset( ($type == 'update' ? $user->avatar : 'img/avatar.png') ) }}" class="img-thumbnail avatar-crop" alt="Cinque Terre" width="150" height="150">
 		<div style="margin-top: 10px">
 			<div class="col-xs-12 text-center">
-				<div class="form-group" data-type='user' data-crop="true">
+				<div class="form-group form-group-sm" style="float: right; max-width: 15%;">
+					<button class="btn btn-primary btn-sm" data-toggle="tooltip" title="{{ trans('adminlte_lang::message.capture') }}" data-message="{{ trans('adminlte_lang::message.camera_capture') }}" style="padding: 7px 10px;" id="camera-capture">
+						<i class="fa  fa-camera"></i>
+					</button>
+				</div>
+
+				<div class="form-group" data-type='user' data-crop="true" style="float:left; max-width: 85%;">
                     {!! Form::file('avatar', '', ['class' =>  'filestyle upload_image','data-input'=>'false', 'data-buttonText'=>'Select Image', 'data-placeholder'=> trans('adminlte_lang::message.browser_avatar') ]) !!}
                 </div>
 			</div>

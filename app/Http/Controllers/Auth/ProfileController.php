@@ -190,7 +190,7 @@ class ProfileController extends Controller
         $user->name = $request->name;
         $user->username = $request->username;
 
-        if ($request->hasFile('avatar')){
+        if ($request->hasFile('avatar') || $request->avatar_type == 'capture'){
 
             $img_base64 = $request->avatar_crop;
             $filename = 'uploads/' .time().'.png';
