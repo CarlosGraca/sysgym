@@ -55,6 +55,7 @@ Route::group(['middleware' => ['web','auth']], function(){
     Route::resource('permissions','PermissionController');
     Route::resource('tenant-menu','TenantMenuController');
     Route::resource('dashboard','DashboardController');
+    Route::resource('backups','BackupController');
 });
 
 
