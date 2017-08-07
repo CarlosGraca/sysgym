@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\File;
-use App\ClientFiles;
+use App\Models\File;
+//use App\ClientFiles;
 use Illuminate\Http\Request;
 
 

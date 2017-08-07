@@ -17,7 +17,7 @@
 
 	<div class="row">
 	    <div class="col-lg-12">
-	        <div class="box box-default">
+	        <div class="box box-primary">
 	            <div class="box-header with-border">
 	              <h3 class="box-title">
 					  <a href="{{ \Illuminate\Support\Facades\URL::previous() }}" class="btn btn-primary btn-sm" data-toggle="tooltip" title="{{ trans('adminlte_lang::message.back') }}">

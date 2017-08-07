@@ -21,7 +21,7 @@ $status_color = ['danger','success','info'];
 <?php $__env->startSection('main-content'); ?>
 	<div class="row">
 	    <div class="col-lg-12">
-	        <div class="box box-default">
+	        <div class="box box-primary">
 	            <div class="box-header with-border">
 	              <h3 class="box-title"> <?php echo e(trans('adminlte_lang::message.employees_list')); ?></h3>
 	              <div class="pull-left box-tools">
@@ -39,12 +39,13 @@ $status_color = ['danger','success','info'];
 		                <thead>
 		                  <tr>
 		                    
-						  	<th class="col-md-2"><?php echo e(trans('adminlte_lang::message.category')); ?></th>
+						  	<th class="col-md-1"><?php echo e(trans('adminlte_lang::message.category')); ?></th>
 						  	<th class="col-md-2"><?php echo e(trans('adminlte_lang::message.name')); ?></th>
 						  	<th class="col-md-2"><?php echo e(trans('adminlte_lang::message.email')); ?></th>
 		                    <th class="col-md-2"><?php echo e(trans('adminlte_lang::message.contacts')); ?></th>
                             <th class="col-md-1"><?php echo e(trans('adminlte_lang::message.genre')); ?></th>
-		                    <th class="col-md-2"><?php echo e(trans('adminlte_lang::message.address')); ?></th>
+                              <th class="col-md-2"><?php echo e(trans('adminlte_lang::message.address')); ?></th>
+                          <th class="col-md-1"><?php echo e(trans('adminlte_lang::message.status')); ?></th>
 		                    <th class="col-md-1"></th>
 		                  </tr>
 		                </thead>
@@ -57,6 +58,7 @@ $status_color = ['danger','success','info'];
                                     <td><?php echo e($employee->mobile); ?> / <?php echo e($employee->phone); ?></td>
                                     <td><?php echo e(trans('adminlte_lang::message.'.$employee->genre)); ?></td>
                                     <td><?php echo e($employee->address); ?></td>
+                                    <td><span class="label label-<?php echo e($status_color[$employee->status]); ?>"><?php echo e($status[$employee->status]); ?></span></td>
                                     <td>
 										
 											<a href="<?php echo e(route('employees.show',$employee->id)); ?>"  data-toggle="tooltip" title="<?php echo e(trans('adminlte_lang::message.show_details')); ?>">

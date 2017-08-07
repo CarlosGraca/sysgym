@@ -10,8 +10,8 @@ class Branch extends Model
     public $timestamps = true;
     protected $fillable = ['name','email','phone','fax','address','manager','city','island_id','user_id','company_id','avatar'];
 
-    public function island(){
-        return $this->belongsTo('App\Island');
+    public function system(){
+        return $this->hasOne('App\Models\System');
     }
 
 

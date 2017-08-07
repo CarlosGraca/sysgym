@@ -4,45 +4,44 @@
 
 $(function () {
 
-    $('#add-file').click(function () {
+    $(document).on('click','#add-file',function (e) {
+        e.preventDefault();
         var _file = $(':file');
-        //console.log(_file.val());
 
         if(_file.val() == ''){
             toastr.error('no file browsed',{timeOut: 5000} ).css("width","500px");
         }
-        // else if($('#file_type').val() == ''){
-        //     toastr.error('no type file selected',{timeOut: 5000} ).css("width","500px");
-        // }
         else{
             save($('#files-form'), $('#files-form')[0], 'create');
         }
     });
 
-    $(document).on('click','.file-preview',function () {
-        $('#modal').css('overflow','auto');
+    $(document).on('click','.file-preview',function (e) {
+        e.preventDefault();
+        $('#modal-ajax').css('overflow','auto');
         console.log(($(window).height() - 100));
-        $('#modal').find('.modal-content').css('height',($(window).height() - 100)+'px');
-        $('#modal').find('#myModalLabel').html('<i class="fa fa-eye"></i> ');
-        $('#modal').find('#myModalLabel').append($(this).data('original-title'));
+        $('#modal-ajax').find('.modal-content').css('height',($(window).height() - 100)+'px');
+        $('#modal-ajax').find('#myModalLabel').html('<i class="fa fa-eye"></i> ');
+        $('#modal-ajax').find('#myModalLabel').append($(this).data('original-title'));
 
-        $('#modal').find('.modal-body').load($(this).data('url'));
+        $('#modal-ajax').find('.modal-body').load($(this).data('url'));
         var footer_html = $('#modal').find('.modal-body').find('#app_footer').html();
-        $('#modal').find('.modal-footer').html(footer_html);
+        $('#modal-ajax').find('.modal-footer').html(footer_html);
 
        // $('#modal').find('.modal-body').find('.preview-image').attr('style','max-height: 100%;height: 400px; width: auto; margin: 0 auto; z-index: -1;');
 
-        $('#modal').modal();
+        $('#modal-ajax').modal();
 
 
-        $('#modal').find('.modal-body').slimScroll({
+        $('#modal-ajax').find('.modal-body').slimScroll({
             height: ($(window).height()-200)
         });
-        $('#modal').find('.slimScrollDiv').attr('style','overflow: auto; height: '+($(window).height()-200)+'px;');
+        $('#modal-ajax').find('.slimScrollDiv').attr('style','overflow: auto; height: '+($(window).height()-200)+'px;');
 
     });
 
-    $(document).on('click','.file-remove',function () {
+    $(document).on('click','.file-remove',function (e) {
+        e.preventDefault();
 
         // var _alert = confirm('Are you sure?');
         var _tr_element = $(this).parent().parent();
