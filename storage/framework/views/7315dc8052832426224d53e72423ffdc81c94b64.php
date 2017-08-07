@@ -41,8 +41,9 @@ $status_color = ['danger','success','info'];
 		                  <tr>
 		                    
 							  <th class="col-md-4"><?php echo e(trans('adminlte_lang::message.name')); ?></th>
-							  <th class="col-md-4"><?php echo e(trans('adminlte_lang::message.email')); ?></th>
+							  <th class="col-md-3"><?php echo e(trans('adminlte_lang::message.email')); ?></th>
 							  <th class="col-md-3"><?php echo e(trans('adminlte_lang::message.role')); ?></th>
+							  <th class="col-md-1"><?php echo e(trans('adminlte_lang::message.status')); ?></th>
 		                    <th class="col-md-1"></th>
 		                  </tr>
 		                </thead>
@@ -53,7 +54,8 @@ $status_color = ['danger','success','info'];
 									<td><?php echo e($user->name); ?></td>
 									<td><?php echo e($user->email); ?></td>
 									<td> <?php echo e($user->role->display_name); ?> </td>
-                                    <td>
+									<td><span class="label label-<?php echo e($status_color[$user->status]); ?>"><?php echo e($status[$user->status]); ?></span></td>
+									<td>
 										
 										<a href="<?php echo e(route('users.show',$user->id)); ?>" data-toggle="tooltip" title="<?php echo e(trans('adminlte_lang::message.view')); ?>">
 											<i class="fa fa-eye"></i>

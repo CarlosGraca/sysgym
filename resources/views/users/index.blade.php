@@ -13,7 +13,7 @@
 @endsection
 
 <?php
-$status = [trans('adminlte_lang::message.deleted'),trans('adminlte_lang::message.active'),trans('adminlte_lang::message.expired')];
+$status = [trans('adminlte_lang::message.inactive'),trans('adminlte_lang::message.active'),trans('adminlte_lang::message.expired')];
 $status_color = ['danger','success','info'];
 ?>
 
@@ -39,8 +39,9 @@ $status_color = ['danger','success','info'];
 		                  <tr>
 		                    {{--<th style="width: 10px" class="col-md-1">#</th>--}}
 							  <th class="col-md-4">{{ trans('adminlte_lang::message.name') }}</th>
-							  <th class="col-md-4">{{ trans('adminlte_lang::message.email') }}</th>
+							  <th class="col-md-3">{{ trans('adminlte_lang::message.email') }}</th>
 							  <th class="col-md-3">{{ trans('adminlte_lang::message.role') }}</th>
+							  <th class="col-md-1">{{ trans('adminlte_lang::message.status') }}</th>
 		                    <th class="col-md-1"></th>
 		                  </tr>
 		                </thead>
@@ -51,7 +52,8 @@ $status_color = ['danger','success','info'];
 									<td>{{ $user->name }}</td>
 									<td>{{ $user->email }}</td>
 									<td> {{ $user->role->display_name }} </td>
-                                    <td>
+									<td><span class="label label-{{ $status_color[$user->status] }}">{{ $status[$user->status] }}</span></td>
+									<td>
 										{{--@can('view_user')--}}
 										<a href="{{ route('users.show',$user->id) }}" data-toggle="tooltip" title="{{ trans('adminlte_lang::message.view') }}">
 											<i class="fa fa-eye"></i>
