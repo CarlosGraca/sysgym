@@ -31,13 +31,13 @@
             <!-- END -->
             {{--@endcan--}}
 {{--            @can('view_matriculation_page')--}}
-            <a class="btn btn-app" href="{{ url('matriculation') }}">
+            <a class="btn btn-app" href="{{ url('matriculation') }}" data-toggle="tooltip" title="{{ trans('adminlte_lang::message.matriculation') }}">
                <i class="fa fa-cube"> </i>  {{ trans('adminlte_lang::message.matriculation') }}
             </a>
             {{--@endcan--}}
             {{--<img src="{{asset('img/icon/credit-card-swipe-20.png')}} ">  <img src="{{asset('img/icon/matriculation-calculator-20.png')}}"></i>--}}
             {{--@can('view_payment_page')--}}
-            <a class="btn btn-app" href="{{ url('payments') }}">
+            <a class="btn btn-app" href="{{ url('payments') }}"  data-toggle="tooltip" title="{{ trans('adminlte_lang::message.payments') }}">
                 <i class="fa fa-money"></i>  {{ trans('adminlte_lang::message.payments') }}
             </a>
             {{--@endcan--}}
@@ -47,11 +47,11 @@
             {{--</a>--}}
             {{--@endcan--}}
 {{--            @can('view_system_page')--}}
-            <a class="btn btn-app" href="{{ url('users') }}">
+            <a class="btn btn-app" href="{{ url('users') }}"  data-toggle="tooltip" title="{{ trans('adminlte_lang::message.users') }}">
                 <i class="fa fa-users"></i>  {{ trans('adminlte_lang::message.users') }}
             </a>
 
-            <a class="btn btn-app" href="{{ url('system') }}">
+            <a class="btn btn-app" href="{{ url('system') }}"  data-toggle="tooltip" title="{{ trans('adminlte_lang::message.system') }}">
                 <i class="fa fa-wrench"></i>  {{ trans('adminlte_lang::message.system') }}
             </a>
             {{--@endcan--}}
