@@ -20,54 +20,28 @@
 	        <div class="box box-default">
 	            <div class="box-header with-border">
 				  	<h3 class="box-title">
-					 	<strong>{{ trans('adminlte_lang::message.matriculation') }} {{ trans('adminlte_lang::message.of') }}: </strong><span>{{ $matriculation->client->name }}</span>
+						<a href="{{ url('matriculation') }}" class="btn btn-primary btn-sm" role="button" data-toggle="tooltip" title="{{ trans('adminlte_lang::message.back') }}">
+							<i class="fa  fa-arrow-left"></i> {{ trans('adminlte_lang::message.back') }}
+						</a>
+					 	<strong>{{ trans('adminlte_lang::message.matriculation') }} {{ trans('adminlte_lang::message.of') }} </strong><span>{{ $matriculation->client->name }}</span>
 				  	</h3>
 
 					<div class="pull-right box-tools">
-						<a href="{{ url('matriculation') }}" class="btn btn-primary btn-sm" role="button" data-toggle="tooltip" title="{{ trans('adminlte_lang::message.back') }}">
-							 <i class="fa  fa-arrow-left"></i>
+						{{--@can('view_matriculation')--}}
+						<a href="{{ route('matriculation.show',$matriculation->id) }}" class="btn btn-primary btn-sm" data-toggle="tooltip" title="{{ trans('adminlte_lang::message.view') }}">
+							<i class="fa  fa-eye"></i> {{ trans('adminlte_lang::message.view') }}
 						</a>
-						@can('view_matriculation')
-						<a href="{{ route('matriculation.show',$matriculation->id) }}" class="btn btn-primary btn-sm" role="button" data-toggle="tooltip" title="{{ trans('adminlte_lang::message.view') }}">
-							<i class="fa  fa-eye"></i>
+						<a href="#" class="btn btn-primary btn-sm" data-toggle="tooltip" title="{{ trans('adminlte_lang::message.save') }}" id="update-matriculation">
+							 <i class="fa fa-save"></i> {{ trans('adminlte_lang::message.save') }}
 						</a>
-						@endcan
-						@if($matriculation->status == 1)
-							{{--@can('view_matriculation')--}}
-							<a href="#" class="btn btn-primary btn-sm" role="button" data-toggle="tooltip" title="{{ trans('adminlte_lang::message.save') }}" id="update-matriculation">
-								 <i class="fa fa-save"></i>
-							</a>
-							{{--@endcan--}}
-							{{--@can('view_matriculation')--}}
-							<a href="#" class="btn btn-primary btn-sm" role="button" data-toggle="tooltip" title="{{ trans('adminlte_lang::message.edit') }}" id="edit-matriculation-button" style="display: none;">
-								<i class="fa fa-edit"></i>
-							</a>
-							{{--@endcan--}}
-							@can('publish_matriculation')
-							<a href="#" class="btn btn-primary btn-sm" role="button" data-toggle="tooltip" title="{{ trans('adminlte_lang::message.publish_matriculation') }}" id="publish-matriculation" data-key="{{ $matriculation->id }}" data-name="{{ trans('adminlte_lang::message.of').' '.$matriculation->client->name  }}">
-								<i class="fa fa-check"></i>
-							</a>
-							@endcan
-						@endif
-
-						{{--@if($matriculation->status == 2)--}}
-							{{--@can('approve_matriculation')--}}
-							{{--<a href="#" class="btn btn-primary btn-sm" role="button" data-toggle="tooltip" title="{{ trans('adminlte_lang::message.approve') }}" id="approve-matriculation" data-key="{{ $matriculation->id }}" data-name="{{ trans('adminlte_lang::message.of').' '.$matriculation->client->name  }}">--}}
-								{{--<i class="fa fa-thumbs-o-up"></i>--}}
-							{{--</a>--}}
-							{{--@endcan--}}
-							{{--@can('reject_matriculation')--}}
-							{{--<a href="#" class="btn btn-primary btn-sm" role="button" data-toggle="tooltip" title="{{ trans('adminlte_lang::message.reject') }}" id="reject-matriculation" data-key="{{ $matriculation->id }}" data-name="{{ trans('adminlte_lang::message.of').' '.$matriculation->client->name  }}">--}}
-								{{--<i class="fa fa-thumbs-o-down"></i>--}}
-							{{--</a>--}}
-							{{--@endcan--}}
-						{{--@endif--}}
-
+						<a href="#" class="btn btn-primary btn-sm" data-toggle="tooltip" title="{{ trans('adminlte_lang::message.edit') }}" id="edit-matriculation-button" style="display: none;">
+							<i class="fa fa-edit"></i> {{ trans('adminlte_lang::message.edit') }}
+						</a>
 					</div><!-- /. tools -->
 	            </div><!-- /.box-header -->
 	            <div class="box-body">
 					{!! Form::model($matriculation, ['method'=>'PATCH','route'=>['matriculation.update', $matriculation->id],'id'=>'matriculation-form','files'=>true])!!}
-						@include('matriculation.form', ['type'=>'update','matriculation'=>$matriculation])
+						@include('matriculation.form_edit')
 					{!! Form::close() !!}
 				</div>
 	        </div>

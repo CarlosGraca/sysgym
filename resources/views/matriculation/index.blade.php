@@ -14,8 +14,8 @@
 
 @inject('Defaults', 'App\Http\Controllers\Defaults')
 <?php
-$status = [trans('adminlte_lang::message.canceled'),trans('adminlte_lang::message.draft'),trans('adminlte_lang::message.published'),trans('adminlte_lang::message.approved'),trans('adminlte_lang::message.rejected')];
-$status_color = ['danger','default','info','success','warning'];
+$status = [trans('adminlte_lang::message.canceled'),trans('adminlte_lang::message.active')];
+$status_color = ['danger','success'];
 ?>
 
 
@@ -41,8 +41,8 @@ $status_color = ['danger','default','info','success','warning'];
                             <th class="col-md-3" style="text-align: center">{{ trans('adminlte_lang::message.client') }}</th>
                             <th class="col-md-3" style="text-align: center">{{ trans('adminlte_lang::message.modality') }}</th>
                             <th class="col-md-3" style="text-align: center">{{ trans('adminlte_lang::message.note') }}</th>
-                            <th class="col-md-2" style="text-align: center">{{ trans('adminlte_lang::message.status') }}</th>
-                            <th class="col-md-1"></th>
+                            <th class="col-md-1" style="text-align: center">{{ trans('adminlte_lang::message.status') }}</th>
+                            <th class="col-md-2"></th>
                         </tr>
                         </thead>
                         <tbody>
@@ -52,7 +52,7 @@ $status_color = ['danger','default','info','success','warning'];
                                 <td>{{ $item->client->name }}</td>
                                 <td>{{ $item->modality->name }}</td>
                                 <td>{{ $item->note }}</td>
-                                <td class="text-center"> {{ $status[$item->status] }} </td>
+                                <td class="text-center"> <span class="label label-{{ $status_color[$item->status] }}">{{ $status[$item->status] }}</span> </td>
                                 <td>
 {{--                                    @can('view_matriculation')--}}
                                     <a href="{{ route('matriculation.show',$item->id) }}"  data-toggle="tooltip" title="{{ trans('adminlte_lang::message.view') }}">
@@ -95,9 +95,9 @@ $status_color = ['danger','default','info','success','warning'];
 
 {{--                                    @if($item->status == 3)--}}
                                         {{--@can('edit_payment')--}}
-                                        {{--<a href="{{route('payments.edit',$item->payment->id) }}" target="_blank" role="button" data-toggle="tooltip" title="{{ trans('adminlte_lang::message.payments') }}">--}}
-                                            {{--<i class="fa fa-money"></i>--}}
-                                        {{--</a>--}}
+                                        <a href="{{url('payments/create?idCliente='.$item->client_id) }}" target="_blank" role="button" data-toggle="tooltip" title="{{ trans('adminlte_lang::message.payments') }}">
+                                            <i class="fa fa-money"></i>
+                                        </a>
                                         {{--@endcan--}}
                                         {{--@endif--}}
 

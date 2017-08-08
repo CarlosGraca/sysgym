@@ -12,18 +12,22 @@ class Matriculation extends Model
     protected $fillable = ['note','tenant_id','modality_id','status','client_id','user_id','branch_id'];
 
     public function modality(){
-        return $this->belongsTo('App\Modality');
+        return $this->belongsTo('App\Models\Modality');
     }
 
     public function matriculation(){
-        return $this->belongsTo('App\Matriculation');
+        return $this->belongsTo('App\Models\Matriculation');
     }
 
     public function user(){
         return $this->belongsTo('App\User');
     }
 
+    public function branch(){
+        return $this->belongsTo('App\Models\Branch');
+    }
+
     public function client(){
-        return $this->belongsTo('App\Client');
+        return $this->belongsTo('App\Models\Client');
     }
 }

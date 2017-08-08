@@ -15,8 +15,8 @@
 
 <?php $Defaults = app('App\Http\Controllers\Defaults'); ?>
 <?php
-$status = [trans('adminlte_lang::message.canceled'),trans('adminlte_lang::message.draft'),trans('adminlte_lang::message.published'),trans('adminlte_lang::message.approved'),trans('adminlte_lang::message.rejected')];
-$status_color = ['danger','default','info','success','warning'];
+$status = [trans('adminlte_lang::message.canceled'),trans('adminlte_lang::message.active')];
+$status_color = ['danger','success'];
 ?>
 
 
@@ -43,8 +43,8 @@ $status_color = ['danger','default','info','success','warning'];
                             <th class="col-md-3" style="text-align: center"><?php echo e(trans('adminlte_lang::message.client')); ?></th>
                             <th class="col-md-3" style="text-align: center"><?php echo e(trans('adminlte_lang::message.modality')); ?></th>
                             <th class="col-md-3" style="text-align: center"><?php echo e(trans('adminlte_lang::message.note')); ?></th>
-                            <th class="col-md-2" style="text-align: center"><?php echo e(trans('adminlte_lang::message.status')); ?></th>
-                            <th class="col-md-1"></th>
+                            <th class="col-md-1" style="text-align: center"><?php echo e(trans('adminlte_lang::message.status')); ?></th>
+                            <th class="col-md-2"></th>
                         </tr>
                         </thead>
                         <tbody>
@@ -54,7 +54,7 @@ $status_color = ['danger','default','info','success','warning'];
                                 <td><?php echo e($item->client->name); ?></td>
                                 <td><?php echo e($item->modality->name); ?></td>
                                 <td><?php echo e($item->note); ?></td>
-                                <td class="text-center"> <?php echo e($status[$item->status]); ?> </td>
+                                <td class="text-center"> <span class="label label-<?php echo e($status_color[$item->status]); ?>"><?php echo e($status[$item->status]); ?></span> </td>
                                 <td>
 
                                     <a href="<?php echo e(route('matriculation.show',$item->id)); ?>"  data-toggle="tooltip" title="<?php echo e(trans('adminlte_lang::message.view')); ?>">
@@ -97,9 +97,9 @@ $status_color = ['danger','default','info','success','warning'];
 
 
                                         
-                                        
-                                            
-                                        
+                                        <a href="<?php echo e(url('payments/create?idCliente='.$item->client_id)); ?>" target="_blank" role="button" data-toggle="tooltip" title="<?php echo e(trans('adminlte_lang::message.payments')); ?>">
+                                            <i class="fa fa-money"></i>
+                                        </a>
                                         
                                         
 

@@ -14,13 +14,13 @@ $(function () {
     $(document).on('click','#add-matriculation_modality', function (e) {
         e.preventDefault();
         var modality_id = $('#modality_id').val();
-        if (modality_id == '') {
+        if (modality_id === '') {
             toastr.error($(this).attr('data-message'), {timeOut: 5000}).css("width", "500px");
             return false;
         } else {
 
             _val_modality = _val_modality + 1;
-            console.log(_val_modality);
+            // console.log(_val_modality);
 
             var table = $('#table-matriculation-modality');
             
@@ -28,11 +28,11 @@ $(function () {
                 $('#modality_id').val('');
                 $('#modality').val('');
                 
-                var total = parseFloat(data.total) + parseFloat($('#matriculation-sum-total').attr('data-value'));
+                // var total = parseFloat(data.total) + parseFloat($('#matriculation-sum-total').attr('data-value'));
 
-                $('#matriculation-sum-total').attr('data-value', total);
-                $('#total').val(total);
-                getCurrency(total, $('#matriculation-sum-total'), 'text');
+                // $('#matriculation-sum-total').attr('data-value', total);
+                // $('#total').val(total);
+                // getCurrency(total, $('#matriculation-sum-total'), 'text');
                 PutMatriculationTableValue(data,table,modality_id, _val_modality);
             });
             
@@ -70,7 +70,29 @@ $(function () {
     //BOTÃO ADICIONAR CLIENTE
     $(document).on('click','#add-matriculation',function(e){
         e.preventDefault();
-        save($('#matriculation-form'),$('#matriculation-form')[0],'create');
+        // save($('#matriculation-form'),$('#matriculation-form')[0],'create');
+
+        bootbox.confirm({
+            title: _confirm_alert_text,
+            message: _confirm_alert_text,
+            //size: 'small',
+            buttons: {
+                confirm: {
+                    label: _yes_text,
+                    className: 'btn-success'
+                },
+                cancel: {
+                    label: _no_text,
+                    className: 'btn-danger'
+                }
+            },
+            callback: function (result) {
+                if (result == true) {
+                    matriculation_modality_save();
+                }
+            }
+        });
+
     });
 
     //BOTÃO EDITAR CLIENTE
@@ -279,9 +301,9 @@ function PutMatriculationTableValue(data,table, modality_id, _id){
             '<tr class="m_modality-table-row" data-key="' + _id + '" data-total="' + data.total + '">' +
                 '<td class="m_modality-modality" data-value="' + modality_id + '" >' + data.name + '</td>' +
                 '<td class="m_modality-price text-center" data-value="'+data.price+'" >' + data.price_text + '</td>' +
-                '<td class="m_modality-iva text-center" data-value="'+data.iva+'" >' + data.iva + ' %</td>' +
-                '<td class="m_modality-discount text-center" data-value="'+data.discount+'" >' + data.discount_text + '</td>' +
-                '<td class="m_modality-total text-center" data-value="'+data.total+'" >' + data.total_text + '</td>' +
+                // '<td class="m_modality-iva text-center" data-value="'+data.iva+'" >' + data.iva + ' %</td>' +
+                // '<td class="m_modality-discount text-center" data-value="'+data.discount+'" >' + data.discount_text + '</td>' +
+                // '<td class="m_modality-total text-center" data-value="'+data.total+'" >' + data.total_text + '</td>' +
                 '<td class="text-center action_button">' +
                     '<a href="#!remove" class="remove-modality-row" data-toggle="tooltip" title="'+_remove_text+'"><i class="fa fa-trash"></i></a> ' +
                 '</td>' +
@@ -302,18 +324,18 @@ function getTableMatriculationModalityData(_table) {
     _row.each(function () {
         var _id = $(this).attr('data-key');
         var modality_id = $(this).find('.m_modality-modality').attr('data-value');
-        var total = $(this).find('.m_modality-total').attr('data-value');
+        // var total = $(this).find('.m_modality-total').attr('data-value');
         var price = $(this).find('.m_modality-price').attr('data-value');
         // var total_price = $(this).find('.m_modality-total').attr('data-value');
-        var discount = $(this).find('.m_modality-discount').attr('data-value');
+        // var discount = $(this).find('.m_modality-discount').attr('data-value');
 
         data =  {
             id : _id,
             modality_id : modality_id,
-            total : total,
+            // total : total,
             price: price,
             // total_price: total_price,
-            discount: discount
+            // discount: discount
         };
 
         all_modality_data.push(data);
@@ -335,24 +357,51 @@ function removeModalityTableValue(_id) {
 function matriculation_modality_save() {
     getTableMatriculationModalityData($('#table-matriculation-modality'));
 
-    var matriculation_id = $('#matriculation_id').val();
+    // var matriculation_id = $('#matriculation_id').val();
     var client_id = $('#client_id').val();
 
-    if(matriculation_id != '' && matriculation_id != undefined){
+    // if(matriculation_id != '' && matriculation_id != undefined){ matriculation_id: matriculation_id,
+      if(client_id !== '' && client_id !== undefined){
         var url = '/matriculation/modality';
 
-        $.ajax({
-            type: 'POST',
-            url: url,
-            data: {modalities: JSON.stringify(all_modality_data), matriculation_id: matriculation_id, delete: JSON.stringify(_deleted_modality_id), client_id: client_id},
-            dataType: 'json',
-            success: function () {
-                _deleted_modality_id = [];
-                all_modality_data = [];
-            },
-            error: function () {
+        if(all_modality_data.length === 0)
+        {
+            toastr.error('No modality added to table',{timeOut: 5000} ).css("width","300px");
+        }
+        else
+          {
+              $.ajax({
+                  type: 'POST',
+                  url: url,
+                  data: {
+                      modalities: JSON.stringify(all_modality_data),
+                      delete: JSON.stringify(_deleted_modality_id),
+                      client_id: client_id
+                  },
+                  dataType: 'json',
+                  success: function (data) {
+                      if (data.type == 'error')
+                          toastr.error(data.message, {timeOut: 5000}).css("width", "300px");
+                      else
+                          toastr.success(data.message, {timeOut: 5000}).css("width", "300px");
 
-            }
-        });
-    }
+                      if (data.type == 'success') {
+                          $('#div_add_modality').css('display', 'none');
+                          $('#add-matriculation').css('display','none');
+                          _deleted_modality_id = [];
+                          all_modality_data = [];
+                          field_status_change('disable', $('#matriculation-form'));
+                          schedule_button_action('disable');
+                      }
+                  },
+                  error: function (data) {
+                  }
+              });
+
+          }
+
+    }else{
+          toastr.error(_required_field_text,{timeOut: 5000} ).css("width","300px");
+         $('#client').focus();
+      }
 }
