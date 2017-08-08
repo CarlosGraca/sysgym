@@ -8,6 +8,7 @@ use Input;
 use App\Models\Client;
 use App\Models\Domain;
 //use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Request;
 class PaymentController extends Controller
 {
@@ -34,11 +35,26 @@ class PaymentController extends Controller
      */
     public function create()
     {
-
         $idCliente = Input::get('idCliente');
+        
+        $payments = DB::table('matriculation as a')
+                  ->join('modalities as b', function($join) 
+                            {
+                                $join->on('a.modality_id', '=', 'b.id') ;                                   
+                            })
+                   ->leftjoin('payments as c', function($join) 
+                            {
+                                $join->on('a.id', '=', 'c.item_id');                                 
+                            })
+                   ->where('a.client_id', '=', $idCliente)
+                   ->select('b.name','b.price','a.id as idmatricula','c.id as idpayment','c.discount')
+                    ->get();
+         
+
+       
         $client = Client::findorfail( $idCliente );
         $meses = Domain::where('dominio','MES')->pluck('significado','id')->all();  
-        return view('payments.create',compact('client','meses'));
+        return view('payments.create',compact('client','meses','payments'));
     }
 
     /**

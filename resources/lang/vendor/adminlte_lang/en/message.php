@@ -12,6 +12,7 @@ return [
     | these language lines according to your application's requirements.
     |
     */
+    'list_pay' =>'List of Pay',
     'start_date' =>'Start Date',
     'start_date' =>'End Date',
     'alter_status'=>'Alter Status',

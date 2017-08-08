@@ -21,16 +21,17 @@
 	        <div class="box box-default">
 	            <div class="box-header with-border">
 	              <h3 class="box-title">
+					  <a href="<?php echo e(url('payments')); ?>" class="btn btn-primary btn-sm" role="button" data-toggle="tooltip" title="<?php echo e(trans('adminlte_lang::message.back')); ?>">
+						  <i class="fa  fa-arrow-left"></i>  <?php echo e(trans('adminlte_lang::message.back')); ?>
+
+					  </a>
 	              	
 	              </h3>
 
 				<div class="pull-right box-tools">
-					<a href="<?php echo e(url('payments')); ?>" class="btn btn-primary btn-sm" role="button" data-toggle="tooltip" title="<?php echo e(trans('adminlte_lang::message.back')); ?>">
-						 <i class="fa  fa-arrow-left"></i>
-					</a>
-
 					<a href="#" class="btn btn-primary btn-sm" role="button" data-toggle="tooltip" title="<?php echo e(trans('adminlte_lang::message.save')); ?>" id="add-payment">
-						 <i class="fa fa-save"></i>
+						 <i class="fa fa-save"></i>  <?php echo e(trans('adminlte_lang::message.save')); ?>
+
 					</a>
 				</div><!-- /. tools -->
 	            </div><!-- /.box-header -->

@@ -16,7 +16,7 @@
 <?php $__env->startSection('main-content'); ?>
 	<div class="row">
 	    <div class="col-lg-12">
-	        <div class="box box-default">
+	        <div class="box box-primary">
 	            <div class="box-header with-border">
 	              <h3 class="box-title"><?php echo e(trans('adminlte_lang::message.permission_list')); ?></h3>
 	              <div class="pull-left box-tools">
@@ -33,7 +33,7 @@
 		                <thead>
 		                  <tr>
 		                    
-		                    <th class="col-md-3"><?php echo e(trans('adminlte_lang::message.name')); ?></th>
+		                    <th class="col-md-3"><?php echo e(trans('adminlte_lang::message.title')); ?></th>
 		                    <th class="col-md-8"><?php echo e(trans('adminlte_lang::message.description')); ?></th>
 		                    <th class="col-md-1"></th>
 		                  </tr>
@@ -42,8 +42,8 @@
                           <?php $__currentLoopData = $permissions; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $permission): $__env->incrementLoopIndices(); $loop = $__env->getFirstLoop(); ?>
                                 <tr data-key="<?php echo e($permission->id); ?>">
                                     
-                                    <td class="name"><?php echo e($permission->name); ?></td>
-                                    <td class="price"><?php echo e($permission->label); ?></td>
+                                    <td><?php echo e($permission->tenant_menu->menus->title); ?></td>
+                                    <td><?php echo e($permission->label); ?></td>
                                     <td>
 										<a href="#disable" style="display: <?php echo e($permission->status == 1 ? 'initial' : 'none'); ?>;" data-toggle="tooltip" id="disable-permission" title="<?php echo e(trans('adminlte_lang::message.disable')); ?>" data-key="<?php echo e($permission->id); ?>" data-name="<?php echo e($permission->name); ?>">
 											<i class="fa fa-user-o"></i>

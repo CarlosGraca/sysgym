@@ -1,4 +1,7 @@
+
 @inject('Defaults', 'App\Http\Controllers\Defaults')
+
+
 
 <div class="row">
     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
@@ -48,87 +51,24 @@
                   {!! Form::select('month_id',$meses,null, ['class'=>'form-control select2','multiple'=>'multiple', 'style'=>'width: 100%;'])  !!}
                 </div>
             </div>
-
-                <div class="col-lg-3 col-md-4 col-sm-6">
-                    <div class="form-group form-group-sm">
-                        {!! Form::label('value_pay',trans('adminlte_lang::message.value_pay')) !!}
-                        {!! Form::number('value_pay', ($type == 'update' ? $payment->client->name : $client->name ) , ['class'=>'form-control']) !!}
-                    </div>
-                </div>
-
-                <div class="col-lg-3 col-md-4 col-sm-6">
-                    <div class="form-group form-group-sm">
-                        {!! Form::label('discount',trans('adminlte_lang::message.discount')) !!}
-                        {!! Form::number('discount', ($type == 'update' ? $payment->discount : $client->name ) , ['class'=>'form-control']) !!}
-                    </div>
-                </div>
-
-
-                <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
-                    <div class="form-group form-group-sm">
-                        {!! Form::label('free',trans('adminlte_lang::message.free')) !!}
-                        {!! Form::select('free', [ 0 => trans('adminlte_lang::message.not'),1 =>trans('adminlte_lang::message.yes')],($type == 'update' ? $payment->payment_method : 0), ['class'=>'form-control','placeholder' => trans('adminlte_lang::message.select_free')]) !!}
-                    </div>
-                </div>
-
-                <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
-                <div class="form-group form-group-sm">
-                    {!! Form::label('start_date',trans('adminlte_lang::message.start_date') ) !!}
-                    {!! Form::date('start_date', ($type == 'update' ? $payment->created_at : \Carbon\Carbon::now()->subDay(0)->format('Y-m-d')) , ['class'=>'form-control']) !!}
-                </div>
-            </div>
-             <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
-                <div class="form-group form-group-sm">
-                    {!! Form::label('end_date',trans('adminlte_lang::message.end_date') ) !!}
-                    {!! Form::date('end_date', ($type == 'update' ? $payment->created_at : null) , ['class'=>'form-control']) !!}
-                </div>
-            </div>
-           {{-- 
-            <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
-                <div class="form-group form-group-sm">
-                    {!! Form::label('employee',trans('adminlte_lang::message.employee') ) !!}
-                    {!! Form::text('employee', ($type == 'update' ? $payment->employee->name : \Auth::user()->name) , ['class'=>'form-control','readOnly'=>'readOnly']) !!}
-                </div>
-            </div> --}}
-
-            <div class="col-lg-12">
-                <div class="form-group form-group-sm">
-                    {!! Form::label('note',trans('adminlte_lang::message.note') ) !!}
-                    {!! Form::textarea('note', ($type == 'update' ? $payment->note : null) , ['class'=>'form-control']) !!}
-                </div>
-            </div>
-
-            {{--<div class="col-lg-3 col-md-3 col-sm-5 col-xs-10">--}}
-                {{--<div class="form-group form-group-sm">--}}
-                    {{--{!! Form::label('remaining_value',trans('adminlte_lang::message.remaining_value') ) !!}--}}
-                    {{--{!! Form::text('remaining_value', ($type == 'update' ? $Defaults->currency(($payment->total - $payment->value_pay)) : $Defaults->currency(0)) , ['class'=>'form-control','readonly'=>'readonly']) !!}--}}
-                {{--</div>--}}
-            {{--</div>--}}
-
-                {{--<div class="col-md-1 col-sm-1 col-xs-2">--}}
-                    {{--<div class="form-group form-group-sm">--}}
-                        {{--{!! Form::label('','pay-all',['style'=>'visibility: hidden;'] ) !!}--}}
-                        {{--<a href="#" class="btn btn-primary btn-sm" role="button" data-toggle="tooltip" title="{{ trans('adminlte_lang::message.pay_all') }}" id="pay-all">--}}
-                            {{--<i class="fa fa-check"></i>--}}
-                        {{--</a>--}}
-                    {{--</div>--}}
-                {{--</div>--}}
         </div>
 
         <div class="row">
-            <span ><strong class="title">{{ trans('adminlte_lang::message.modalities') }}</strong></span>
-            <hr class="h-divider" >
+           {{--  <span ><strong class="title">{{ trans('adminlte_lang::message.modalities') }}</strong></span>
+            <hr class="h-divider" > --}}
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                <div class="box box-default">
+                <div class="box box-primary">
                     <div class="box-header with-border">
-                        <h3 class="box-title">{{ trans('adminlte_lang::message.list_modality') }}</h3>
+                        <h3 class="box-title">{{ trans('adminlte_lang::message.list_pay') }}</h3>
                         <div class="pull-right">
-							<span style="margin-right: 20px;">
+							{{-- <span style="margin-right: 20px;">
 								<b>{{ trans('adminlte_lang::message.total_with_desc') }}: </b><span id="payment-sum-discount" data-value="{{ ($type == 'update' ? ( $payment->total_discount != null ? $payment->total_discount : 0 ) : 0) }}"> {{ ($type == 'update' ? ( $payment->total_discount != null ? $Defaults->currency( $payment->total_discount ) : $Defaults->currency(0) )   : $Defaults->currency(0)) }} </span>
 							</span>
 							<span>
 								<b>{{ trans('adminlte_lang::message.total') }}: </b><span id="payment-sum-total" data-value="{{ ($type == 'update' ? ( $payment->total != null ? $payment->total : 0 ) : 0) }}"> {{ ($type == 'update' ? ( $payment->total != null ? $Defaults->currency( $payment->total ) : $Defaults->currency(0) )   : $Defaults->currency(0)) }} </span>
-							</span>
+							</span> --}}
+                            <span style="margin-right: 20px;"><b>{{ trans('adminlte_lang::message.total_with_desc') }}: <span id="payment-sum-discount"></span></b></span>
+                            <span><b>{{ trans('adminlte_lang::message.total') }}: <span id="payment-sum-total"></span></b></span>
                         </div>
                     </div><!-- /.box-header --> 
 
@@ -137,24 +77,38 @@
                         <table id="table-payment-modality" class="table table-bordered table-striped">
                             <thead>
                                 <tr>
-                                    <th class="col-md-3">{{ trans('adminlte_lang::message.modality') }}</th>
-                                    <th class="col-md-2 text-center">{{ trans('adminlte_lang::message.price_with_iva') }}</th>
-                                    <th class="col-md-1 text-center">{{ trans('adminlte_lang::message.iva') }} (%)</th>
+                                    <th><input type="checkbox" name="check[]" /></th>
+                                    <th class="col-md-2">{{ trans('adminlte_lang::message.modality') }}</th>
+                                    <th class="col-md-2 text-center">{{ trans('adminlte_lang::message.value_pay') }}</th>
+                                    <th class="col-md-2 text-center">{{ trans('adminlte_lang::message.end_date') }}</th>
+                                    <th class="col-md-2 text-center">{{ trans('adminlte_lang::message.start_date') }}</th>
                                     <th class="col-md-2 text-center">{{ trans('adminlte_lang::message.discount') }}</th>
-                                    <th class="col-md-2 text-center">{{ trans('adminlte_lang::message.value_total') }}</th>
-        {{--                            <th class="col-md-2 text-center">{{ trans('adminlte_lang::message.value') }}</th>--}}
+                                    <th class="col-md-1 text-center">{{ trans('adminlte_lang::message.total') }}</th>
+                                    <th class="col-md-1 text-center">{{ trans('adminlte_lang::message.free') }}</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                @if(isset($payment))
-                                    @foreach($payment->matriculation->modality->where('status',1) as $modality)
-                                        <tr class="payment-modality" data-key="{{ $modality->id }}">
-                                            <td>{{ $modality->modality->name }}</td>
-                                            <td class="text-right payment-price" data-value="{{ $modality->total }}">{{ $Defaults->currency($modality->total) }}</td>
-                                            <td class="text-right payment-iva" data-value="{{ $modality->value_pay }}">{{ $Defaults->currency($modality->value_pay) }}</td>
-                                            <td class="text-right payment-discount" data-value="{{ $modality->remaining }}">{{ $Defaults->currency($modality->remaining) }}</td>
-                                            <td class="text-right payment-total" data-value="0">{{ $Defaults->currency(0) }}</td>
-                                            {{--<td class="text-right payment-value" data-value="0">{{ $Defaults->currency(0) }}</td>--}}
+                                @if(isset($payments))
+                                    @foreach($payments as $payment)
+                                        <tr class="payment-modality" data-key="{{ $payment->idpayment }}">
+                                            <td><input type="checkbox" name="check[]" /></td>
+                                            <td>{{ $payment->name }}</td>
+                                            <td class="text-right t-payment-price" data-value="{{ $payment->price }}">
+                                                <input type="text" name="" id="payment-price" class="form-control  payment-price" value="{{ $Defaults->currency($payment->price) }}" style="height: 25px;">
+                                            </td>
+                                            <td class="text-right" data-value="0"> 
+                                                <input type="date" name="" id="payment-start-date" class="form-control  payment-start-date" style="height: 25px;">
+                                            </td>
+                                            <td class="text-right" data-value="0"> 
+                                                <input type="date" name="" id="payment-start-end" class="form-control  payment-start-end" style="height: 25px;">
+                                            </td>
+                                            
+                                            <td class="text-right" data-value="{{ $payment->discount != null ? $payment->discount : 0 }}">
+                                                <input type="number" name="" id="payment-discount" class="form-control  payment-discount" value="{{ $payment->discount != null ? $payment->discount : 0 }}" style="height: 25px;">
+                                            </td>
+                                            <td class="text-right payment-total" data-value=""></td>
+                                            <td class="text-right payment-free" data-value="0"><input type="checkbox" name="check[]" /></td>
+
                                         </tr>
                                     @endforeach
                                 @endif
@@ -170,6 +124,12 @@
                     {{--<b>Total: </b><span id="payment-sum-total" data-value="0" style="margin-right: 10px"> {{ $Defaults->currency( 0 ) }} </span>--}}
                 {{--</div>--}}
             {{--</div>--}}
+            <div class="col-lg-12">
+                <div class="form-group form-group-sm">
+                    {!! Form::label('note',trans('adminlte_lang::message.note') ) !!}
+                    {!! Form::textarea('note', ($type == 'update' ? $payment->note : null) , ['class'=>'form-control']) !!}
+                </div>
+            </div>
         </div>
     </div>
 </div>

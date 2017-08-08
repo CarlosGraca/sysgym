@@ -5,6 +5,7 @@ $(function () {
 
     var clicked_payment = null;
     var _payment_total = 0;
+    var _payment_total_discount = 0;
 
     // setPopOver('payment-value');
 
@@ -19,12 +20,10 @@ $(function () {
     // });
 
 
-    // $(document).onload(function () {
     if($('#payment_type').val() != 'monthly')
         $('#div_month').css('display','none');
     else
         $('#div_month').removeAttr('style');
-    // });
 
 
 
@@ -37,9 +36,21 @@ $(function () {
 
     });
 
+    sumSubtotal ('.payment-price');
+    sumSubtotal ('.payment-discount');
+    set_total_in_table();
 
-    _payment_total = get_payment_total_value('.payment-value');
-    var _payment_remaining_total = $('#remaining_total') != undefined ? $('#remaining_total').val() : 0;
+    _payment_total = get_payment_total_value('.payment-total');
+    _payment_total_discount =get_payment_total_value_discount('.payment-discount');
+    
+
+    getCurrency(_payment_total, $('#payment-sum-total'), 'text');
+    getCurrency(_payment_total_discount, $('#payment-sum-discount'), 'text');
+
+    
+
+    //$('#payment-sum-discount').text(_payment_total_discount);
+
 
     // $(document).on("click", '#save-payment-value',function () {
     //     pop_save();
@@ -138,8 +149,50 @@ function get_payment_total_value(_class) {
     var total = 0;
     $('#table-payment-modality').find('.payment-modality').each(function () {
         total += parseFloat($(this).find(_class).attr('data-value'));
+       // console.log(total);
+    });
+    //console.log(total);
+    return total;
+}
+
+function get_payment_total_value_discount(_class) {
+    var price = 0;
+    var total = 0;
+    var discoutnt  = 0;
+    $('#table-payment-modality').find('.payment-modality').each(function (e,d) {       
+        price = parseFloat($(this).find('.t-payment-price').attr('data-value'));
+        discount =  parseFloat($(this).find('.payment-discount').val());
+        
+        total += price - ((price*discount)/100);
+    });
+    getCurrency(total, $(this).find('.payment-sum-discount'), 'text');
+    return total;
+}
+
+function set_total_in_table() {
+    var price = 0;
+    var total = 0;
+    var discoutnt  = 0;
+    $('#table-payment-modality').find('.payment-modality').each(function (e,d) {       
+        total = parseFloat($(this).find('.t-payment-price').attr('data-value'));
+        discount =  parseFloat($(this).find('.payment-discount').val());
+        total = total - ((total*discount)/100);
+        $(this).find('.payment-total').attr('data-value', total);
+        getCurrency(total, $(this).find('.payment-total'), 'text');
     });
     return total;
+}
+
+function sumSubtotal (_class){
+    $('#table-payment-modality tbody').on('keyup',_class,function(e,d){
+       $('.t-payment-price').attr('data-value', parseFloat($('.payment-price').val()));
+       set_total_in_table();
+       _payment_total = get_payment_total_value('.payment-total');
+       _payment_total_discount = get_payment_total_value_discount('.payment-discount');    
+
+        getCurrency(_payment_total, $('#payment-sum-total'), 'text');
+        getCurrency(_payment_total_discount, $('#payment-sum-discount'), 'text');     
+    });   
 }
 
 //GET DATA FROM PAYMENT PROCEDURE TABLE
@@ -248,3 +301,4 @@ function clear_payment_table() {
     // $('#payment-sum-total').attr('data-value', total);
     // getCurrency(total, $('#payment-sum-total'), 'text');
 }
+
