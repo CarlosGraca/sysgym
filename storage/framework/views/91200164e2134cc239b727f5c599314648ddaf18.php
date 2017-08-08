@@ -1,4 +1,7 @@
+
 <?php $Defaults = app('App\Http\Controllers\Defaults'); ?>
+
+
 
 <div class="row">
     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
@@ -57,93 +60,18 @@
 
                 </div>
             </div>
-
-                <div class="col-lg-3 col-md-4 col-sm-6">
-                    <div class="form-group form-group-sm">
-                        <?php echo Form::label('value_pay',trans('adminlte_lang::message.value_pay')); ?>
-
-                        <?php echo Form::number('value_pay', ($type == 'update' ? $payment->client->name : $client->name ) , ['class'=>'form-control']); ?>
-
-                    </div>
-                </div>
-
-                <div class="col-lg-3 col-md-4 col-sm-6">
-                    <div class="form-group form-group-sm">
-                        <?php echo Form::label('discount',trans('adminlte_lang::message.discount')); ?>
-
-                        <?php echo Form::number('discount', ($type == 'update' ? $payment->discount : $client->name ) , ['class'=>'form-control']); ?>
-
-                    </div>
-                </div>
-
-
-                <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
-                    <div class="form-group form-group-sm">
-                        <?php echo Form::label('free',trans('adminlte_lang::message.free')); ?>
-
-                        <?php echo Form::select('free', [ 0 => trans('adminlte_lang::message.not'),1 =>trans('adminlte_lang::message.yes')],($type == 'update' ? $payment->payment_method : 0), ['class'=>'form-control','placeholder' => trans('adminlte_lang::message.select_free')]); ?>
-
-                    </div>
-                </div>
-
-                <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
-                <div class="form-group form-group-sm">
-                    <?php echo Form::label('start_date',trans('adminlte_lang::message.start_date') ); ?>
-
-                    <?php echo Form::date('start_date', ($type == 'update' ? $payment->created_at : \Carbon\Carbon::now()->subDay(0)->format('Y-m-d')) , ['class'=>'form-control']); ?>
-
-                </div>
-            </div>
-             <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
-                <div class="form-group form-group-sm">
-                    <?php echo Form::label('end_date',trans('adminlte_lang::message.end_date') ); ?>
-
-                    <?php echo Form::date('end_date', ($type == 'update' ? $payment->created_at : null) , ['class'=>'form-control']); ?>
-
-                </div>
-            </div>
-           
-
-            <div class="col-lg-12">
-                <div class="form-group form-group-sm">
-                    <?php echo Form::label('note',trans('adminlte_lang::message.note') ); ?>
-
-                    <?php echo Form::textarea('note', ($type == 'update' ? $payment->note : null) , ['class'=>'form-control']); ?>
-
-                </div>
-            </div>
-
-            
-                
-                    
-                    
-                
-            
-
-                
-                    
-                        
-                        
-                            
-                        
-                    
-                
         </div>
 
         <div class="row">
-            <span ><strong class="title"><?php echo e(trans('adminlte_lang::message.modalities')); ?></strong></span>
-            <hr class="h-divider" >
+           
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                <div class="box box-default">
+                <div class="box box-primary">
                     <div class="box-header with-border">
-                        <h3 class="box-title"><?php echo e(trans('adminlte_lang::message.list_modality')); ?></h3>
+                        <h3 class="box-title"><?php echo e(trans('adminlte_lang::message.list_pay')); ?></h3>
                         <div class="pull-right">
-							<span style="margin-right: 20px;">
-								<b><?php echo e(trans('adminlte_lang::message.total_with_desc')); ?>: </b><span id="payment-sum-discount" data-value="<?php echo e(($type == 'update' ? ( $payment->total_discount != null ? $payment->total_discount : 0 ) : 0)); ?>"> <?php echo e(($type == 'update' ? ( $payment->total_discount != null ? $Defaults->currency( $payment->total_discount ) : $Defaults->currency(0) )   : $Defaults->currency(0))); ?> </span>
-							</span>
-							<span>
-								<b><?php echo e(trans('adminlte_lang::message.total')); ?>: </b><span id="payment-sum-total" data-value="<?php echo e(($type == 'update' ? ( $payment->total != null ? $payment->total : 0 ) : 0)); ?>"> <?php echo e(($type == 'update' ? ( $payment->total != null ? $Defaults->currency( $payment->total ) : $Defaults->currency(0) )   : $Defaults->currency(0))); ?> </span>
-							</span>
+							
+                           
+                            <span><b><?php echo e(trans('adminlte_lang::message.total')); ?>: <span id="payment-sum-total"></span></b></span>
                         </div>
                     </div><!-- /.box-header --> 
 
@@ -152,24 +80,38 @@
                         <table id="table-payment-modality" class="table table-bordered table-striped">
                             <thead>
                                 <tr>
-                                    <th class="col-md-3"><?php echo e(trans('adminlte_lang::message.modality')); ?></th>
-                                    <th class="col-md-2 text-center"><?php echo e(trans('adminlte_lang::message.price_with_iva')); ?></th>
-                                    <th class="col-md-1 text-center"><?php echo e(trans('adminlte_lang::message.iva')); ?> (%)</th>
+                                    <th><input type="checkbox" name="check[]" /></th>
+                                    <th class="col-md-2"><?php echo e(trans('adminlte_lang::message.modality')); ?></th>
+                                    <th class="col-md-2 text-center"><?php echo e(trans('adminlte_lang::message.value_pay')); ?></th>
+                                    <th class="col-md-2 text-center"><?php echo e(trans('adminlte_lang::message.end_date')); ?></th>
+                                    <th class="col-md-2 text-center"><?php echo e(trans('adminlte_lang::message.start_date')); ?></th>
                                     <th class="col-md-2 text-center"><?php echo e(trans('adminlte_lang::message.discount')); ?></th>
-                                    <th class="col-md-2 text-center"><?php echo e(trans('adminlte_lang::message.value_total')); ?></th>
-        
+                                    <th class="col-md-1 text-center"><?php echo e(trans('adminlte_lang::message.total')); ?></th>
+                                    <th class="col-md-1 text-center"><?php echo e(trans('adminlte_lang::message.free')); ?></th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <?php if(isset($payment)): ?>
-                                    <?php $__currentLoopData = $payment->matriculation->modality->where('status',1); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $modality): $__env->incrementLoopIndices(); $loop = $__env->getFirstLoop(); ?>
-                                        <tr class="payment-modality" data-key="<?php echo e($modality->id); ?>">
-                                            <td><?php echo e($modality->modality->name); ?></td>
-                                            <td class="text-right payment-price" data-value="<?php echo e($modality->total); ?>"><?php echo e($Defaults->currency($modality->total)); ?></td>
-                                            <td class="text-right payment-iva" data-value="<?php echo e($modality->value_pay); ?>"><?php echo e($Defaults->currency($modality->value_pay)); ?></td>
-                                            <td class="text-right payment-discount" data-value="<?php echo e($modality->remaining); ?>"><?php echo e($Defaults->currency($modality->remaining)); ?></td>
-                                            <td class="text-right payment-total" data-value="0"><?php echo e($Defaults->currency(0)); ?></td>
+                                <?php if(isset($payments)): ?>
+                                    <?php $__currentLoopData = $payments; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $payment): $__env->incrementLoopIndices(); $loop = $__env->getFirstLoop(); ?>
+                                        <tr class="payment-modality" data-key="<?php echo e($payment->idpayment); ?>">
+                                            <td><input type="checkbox" name="check[]" /></td>
+                                            <td><?php echo e($payment->name); ?></td>
+                                            <td class="text-right t-payment-price" data-value="<?php echo e($payment->price); ?>">
+                                                <input type="text" name="" id="payment-price" class="form-control  payment-price" value="<?php echo e($Defaults->currency($payment->price)); ?>" style="height: 25px;">
+                                            </td>
+                                            <td class="text-right" data-value="0"> 
+                                                <input type="date" name="" id="payment-start-date" class="form-control  payment-start-date" style="height: 25px;">
+                                            </td>
+                                            <td class="text-right" data-value="0"> 
+                                                <input type="date" name="" id="payment-start-end" class="form-control  payment-start-end" style="height: 25px;">
+                                            </td>
                                             
+                                            <td class="text-right t-payment-discount" data-value="<?php echo e($payment->discount != null ? $payment->discount : 0); ?>">
+                                                <input type="number" name="" id="payment-discount" class="form-control  payment-discount" value="<?php echo e($payment->discount != null ? $payment->discount : 0); ?>" style="height: 25px;">
+                                            </td>
+                                            <td class="text-right payment-total" data-value=""></td>
+                                            <td class="text-right payment-free" data-value="0"><input type="checkbox" name="check[]" /></td>
+
                                         </tr>
                                     <?php endforeach; $__env->popLoop(); $loop = $__env->getFirstLoop(); ?>
                                 <?php endif; ?>
@@ -185,6 +127,14 @@
                     
                 
             
+            <div class="col-lg-12">
+                <div class="form-group form-group-sm">
+                    <?php echo Form::label('note',trans('adminlte_lang::message.note') ); ?>
+
+                    <?php echo Form::textarea('note', ($type == 'update' ? $payment->note : null) , ['class'=>'form-control']); ?>
+
+                </div>
+            </div>
         </div>
     </div>
 </div>

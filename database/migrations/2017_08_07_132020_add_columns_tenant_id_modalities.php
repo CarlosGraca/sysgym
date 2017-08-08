@@ -14,8 +14,8 @@ class AddColumnsTenantIdModalities extends Migration
     public function up()
     {
         Schema::table('modalities', function (Blueprint $table) {
-           $table->integer('tenant_id')->unsigned()->index();
-            $table->foreign('tenant_id')->references('id')->on('tenants');
+//           $table->integer('tenant_id')->unsigned()->index();
+//            $table->foreign('tenant_id')->references('id')->on('tenants');
         });
     }
 

@@ -26,6 +26,7 @@ class CreatePaymentsTable extends Migration
             $table->integer('user_id')->unsigned()->index();
             $table->foreign('user_id')->references('id')->on('users');
             $table->integer('tenant_id')->unsigned()->index();
+            $table->foreign('tenant_id')->references('id')->on('tenants');
             $table->text('type','50');
             $table->integer('status')->default(1);
             $table->integer('month_id')->nullable();
