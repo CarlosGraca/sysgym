@@ -18,7 +18,7 @@
 
 	<div class="row">
 	    <div class="col-lg-12">
-	        <div class="box box-default">
+	        <div class="box box-primary">
 	            <div class="box-header with-border">
 	              <h3 class="box-title">
 					  <a href="<?php echo e(\Illuminate\Support\Facades\URL::previous()); ?>" class="btn btn-primary btn-sm" role="button" data-toggle="tooltip" title="<?php echo e(trans('adminlte_lang::message.back')); ?>">
@@ -28,20 +28,18 @@
 	              	 <span><?php echo e(trans('adminlte_lang::message.new_matriculation')); ?></span>
 	              </h3>
 				<div class="pull-right box-tools">
-
-						<a href="#" class="btn btn-primary btn-sm" role="button" data-toggle="tooltip" title="<?php echo e(trans('adminlte_lang::message.reset')); ?>" id="reset-matriculation">
-							<i class="fa fa-repeat"></i> <?php echo e(trans('adminlte_lang::message.reset')); ?>
-
-						</a>
-
-						<a href="#" class="btn btn-primary btn-sm" role="button" data-toggle="tooltip" title="<?php echo e(trans('adminlte_lang::message.save')); ?>" id="add-matriculation">
-							 <i class="fa fa-save"></i> <?php echo e(trans('adminlte_lang::message.save')); ?>
-
-						</a>
-
+					
 						
-							
-						
+					
+					<a href="#" class="btn btn-primary btn-sm"  data-toggle="tooltip" title="<?php echo e(trans('adminlte_lang::message.save')); ?>" id="add-matriculation">
+						 <i class="fa fa-save"></i> <?php echo e(trans('adminlte_lang::message.save')); ?>
+
+					</a>
+
+					<a href="#" class="btn btn-primary btn-sm"  data-toggle="tooltip" title="<?php echo e(trans('adminlte_lang::message.payments')); ?>" id="next-step-payment">
+                        <i class="fa fa-money"></i> <?php echo e(trans('adminlte_lang::message.payments')); ?> <i class="fa fa-arrow-right"></i>
+					</a>
+
 				</div><!-- /. tools -->
 
 	            </div><!-- /.box-header -->

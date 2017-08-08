@@ -34,7 +34,7 @@
             <!-- END -->
             
 
-            <a class="btn btn-app" href="<?php echo e(url('matriculation')); ?>" data-toggle="tooltip" title="<?php echo e(trans('adminlte_lang::message.matriculation')); ?>">
+            <a class="btn btn-app" href="<?php echo e(url('matriculation/create')); ?>" data-toggle="tooltip" title="<?php echo e(trans('adminlte_lang::message.matriculation')); ?>">
                <i class="fa fa-cube"> </i>  <?php echo e(trans('adminlte_lang::message.matriculation')); ?>
 
             </a>

@@ -67,7 +67,7 @@
 							<span>
 								<b>{{ trans('adminlte_lang::message.total') }}: </b><span id="payment-sum-total" data-value="{{ ($type == 'update' ? ( $payment->total != null ? $payment->total : 0 ) : 0) }}"> {{ ($type == 'update' ? ( $payment->total != null ? $Defaults->currency( $payment->total ) : $Defaults->currency(0) )   : $Defaults->currency(0)) }} </span>
 							</span> --}}
-                            <span style="margin-right: 20px;"><b>{{ trans('adminlte_lang::message.total_with_desc') }}: <span id="payment-sum-discount"></span></b></span>
+                           {{--  <span style="margin-right: 20px;"><b>{{ trans('adminlte_lang::message.total_with_desc') }}: <span id="payment-sum-discount"></span></b></span> --}}
                             <span><b>{{ trans('adminlte_lang::message.total') }}: <span id="payment-sum-total"></span></b></span>
                         </div>
                     </div><!-- /.box-header --> 
@@ -103,7 +103,7 @@
                                                 <input type="date" name="" id="payment-start-end" class="form-control  payment-start-end" style="height: 25px;">
                                             </td>
                                             
-                                            <td class="text-right" data-value="{{ $payment->discount != null ? $payment->discount : 0 }}">
+                                            <td class="text-right t-payment-discount" data-value="{{ $payment->discount != null ? $payment->discount : 0 }}">
                                                 <input type="number" name="" id="payment-discount" class="form-control  payment-discount" value="{{ $payment->discount != null ? $payment->discount : 0 }}" style="height: 25px;">
                                             </td>
                                             <td class="text-right payment-total" data-value=""></td>

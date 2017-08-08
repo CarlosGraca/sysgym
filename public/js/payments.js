@@ -36,8 +36,8 @@ $(function () {
 
     });
 
-    sumSubtotal ('.payment-price');
-    sumSubtotal ('.payment-discount');
+    sumSubtotal ('.payment-price','.t-payment-price');
+    sumSubtotal ('.payment-discount','.t-payment-discount');
     set_total_in_table();
 
     _payment_total = get_payment_total_value('.payment-total');
@@ -183,15 +183,22 @@ function set_total_in_table() {
     return total;
 }
 
-function sumSubtotal (_class){
-    $('#table-payment-modality tbody').on('keyup',_class,function(e,d){
-       $('.t-payment-price').attr('data-value', parseFloat($('.payment-price').val()));
-       set_total_in_table();
-       _payment_total = get_payment_total_value('.payment-total');
-       _payment_total_discount = get_payment_total_value_discount('.payment-discount');    
+function sumSubtotal (_class_input,_class_data_value){
+    $('#table-payment-modality .payment-modality').on('keyup',_class_input,function(e,d){
+        e.preventDefault();
+        
+        var  new_price = $(e.currentTarget).val();
+             new_price = new_price.replace('.','');
+             $(e.delegateTarget).find(_class_data_value).attr('data-value', new_price);
+
+        set_total_in_table();
+
+        _payment_total = get_payment_total_value('.payment-total');
+        _payment_total_discount = get_payment_total_value_discount('.payment-discount');    
 
         getCurrency(_payment_total, $('#payment-sum-total'), 'text');
-        getCurrency(_payment_total_discount, $('#payment-sum-discount'), 'text');     
+        getCurrency(_payment_total_discount, $('#payment-sum-discount'), 'text');    
+        
     });   
 }
 

@@ -70,7 +70,7 @@
                         <h3 class="box-title"><?php echo e(trans('adminlte_lang::message.list_pay')); ?></h3>
                         <div class="pull-right">
 							
-                            <span style="margin-right: 20px;"><b><?php echo e(trans('adminlte_lang::message.total_with_desc')); ?>: <span id="payment-sum-discount"></span></b></span>
+                           
                             <span><b><?php echo e(trans('adminlte_lang::message.total')); ?>: <span id="payment-sum-total"></span></b></span>
                         </div>
                     </div><!-- /.box-header --> 
@@ -106,7 +106,7 @@
                                                 <input type="date" name="" id="payment-start-end" class="form-control  payment-start-end" style="height: 25px;">
                                             </td>
                                             
-                                            <td class="text-right" data-value="<?php echo e($payment->discount != null ? $payment->discount : 0); ?>">
+                                            <td class="text-right t-payment-discount" data-value="<?php echo e($payment->discount != null ? $payment->discount : 0); ?>">
                                                 <input type="number" name="" id="payment-discount" class="form-control  payment-discount" value="<?php echo e($payment->discount != null ? $payment->discount : 0); ?>" style="height: 25px;">
                                             </td>
                                             <td class="text-right payment-total" data-value=""></td>
