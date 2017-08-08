@@ -349,23 +349,21 @@ function save(_form,_form_data,form_type) {
                 case 'modality':
                     if(data.type=='success') {
                         if (form_type == 'create') {
+
                             $('#modality_id').val(data.id);
                             $('#item_id').val(data.id);
                             $('#add-modality').css('display', 'none');
                             field_status_change('disable', $('#modality-form'));
                             schedule_button_action('disable');
                             $('#edit-modality-button').removeAttr('style');
-                            schedule_save();
-                            _deleted_id = [];
-                            all_data = [];
+                            matriculation_modality_save();
+
                         } else {
                             $('#update-modality').css('display', 'none');
                             field_status_change('disable', $('#modality-form'));
                             schedule_button_action('disable');
                             $('#edit-modality-button').removeAttr('style');
-                            schedule_save();
-                            _deleted_id = [];
-                            all_data = [];
+                            matriculation_modality_save()
                         }
                     }
 
@@ -432,7 +430,7 @@ function save(_form,_form_data,form_type) {
                             $('#add-matriculation_consult').addClass('disabled');
                             $('#edit-matriculation-button').removeAttr('style');
                             $('#update-matriculation').css('display', 'none');
-                            matriculation_modality_save();
+                            // matriculation_modality_save();
                             schedule_button_action('disable');
                         }
                     }
