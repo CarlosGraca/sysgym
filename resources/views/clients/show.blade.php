@@ -83,7 +83,7 @@ $status_color = $defaults->getStatusColor();
                                 {{--<li><a href="#agenda" data-toggle="tab"><i class="fa fa-calendar"></i> {{ trans('adminlte_lang::message.agenda') }}</a></li>--}}
                                 {{--<li><a href="#consult" data-toggle="tab"><i class="fa fa-heartbeat"></i> {{ trans('adminlte_lang::message.consult') }}</a></li>--}}
                                 {{--<li><a href="#odontograma" data-toggle="tab"><img src="{{ asset('/img/icon/odontograma_teeth.png') }}" > {{ trans('adminlte_lang::message.odontograma') }}</a></li>--}}
-                                {{--<li><a href="#matriculation" data-toggle="tab"><img src="{{ asset('/img/icon/matriculation-calculator-20.png') }}" width="14"> {{ trans('adminlte_lang::message.matriculation') }}</a></li>--}}
+                                <li><a href="#matriculation" data-toggle="tab"><i class="fa fa-cube"></i> {{ trans('adminlte_lang::message.matriculation') }}</a></li>
                                 {{--<li><a href="#payments" data-toggle="tab"><img src="{{ asset('/img/icon/credit-card-swipe-20.png') }}" width="14"> {{ trans('adminlte_lang::message.payments') }}</a></li>--}}
                                 {{--<li><a href="#settings" data-toggle="tab"> <i class="fa fa-gear"></i> Settings</a></li>--}}
                             </ul>
@@ -224,44 +224,45 @@ $status_color = $defaults->getStatusColor();
                                 {{--</div>--}}
                                 <!-- /.tab-pane -->
 
-                                {{--<!-- BUDGET -->--}}
-                                {{--<div class="tab-pane" id="matriculation">--}}
+                                <!-- BUDGET -->
+                                <div class="tab-pane" id="matriculation">
 
                                    <?php
-                                   $matriculation_status = [trans('adminlte_lang::message.canceled'),trans('adminlte_lang::message.draft'),trans('adminlte_lang::message.published'),trans('adminlte_lang::message.approved'),trans('adminlte_lang::message.rejected')];
-                                   $matriculation_status_color = ['danger','default','info','success','warning'];
+                                   $matriculation_status = [trans('adminlte_lang::message.inactive'),trans('adminlte_lang::message.active'),trans('adminlte_lang::message.published'),trans('adminlte_lang::message.approved'),trans('adminlte_lang::message.rejected')];
+                                   $matriculation_status_color = ['danger','success'];
                                    ?>
 
-                                    {{--<table id="table-matriculation" class="table table-hover table-design">--}}
-                                        {{--<thead>--}}
-                                        {{--<tr>--}}
-                                            {{--<th class="col-md-2 text-center">{{ trans('adminlte_lang::message.date') }}</th>--}}
-                                            {{--<th class="col-md-5" style="text-align: center">{{ trans('adminlte_lang::message.doctor') }}</th>--}}
-                                            {{--<th class="col-md-2" style="text-align: center">{{ trans('adminlte_lang::message.status') }}</th>--}}
-                                            {{--<th class="col-md-1" style="text-align: center">{{ trans('adminlte_lang::message.total') }}</th>--}}
-                                            {{--<th class="col-md-1" style="text-align: center">{{ trans('adminlte_lang::message.total_with_desc') }}</th>--}}
-                                            {{--<th class="col-md-1"></th>--}}
-                                        {{--</tr>--}}
-                                        {{--</thead>--}}
-                                        {{--<tbody>--}}
-                                        {{--@foreach ($client->matriculation as $item)--}}
-                                            {{--<tr class="bg-{{ $matriculation_status_color[$item->status] }}">--}}
-                                                {{--<td class="date text-center">{{ \Carbon\Carbon::parse( $item->created_at )->format('d/m/Y') }}</td>--}}
-                                                {{--<td class="doctor">{{ $item->doctor->name }}</td>--}}
-                                                {{--<td class="status text-center"> {{ $matriculation_status[$item->status] }} </td>--}}
-                                                {{--<td class="total">{{ $Defaults->currency($item->total) }}</td>--}}
-                                                {{--<td class="total_with_desc">{{ $Defaults->currency($item->total_discount) }}</td>--}}
-                                                {{--<td class="text-center">--}}
-                                                    {{--<a href="{{ route('matriculation.show',$item->id) }}" target="_blank" data-toggle="tooltip" title="{{ trans('adminlte_lang::message.view') }}">--}}
-                                                        {{--<i class="fa fa-eye"></i>--}}
-                                                    {{--</a>--}}
-                                                {{--</td>--}}
-                                            {{--</tr>--}}
-                                        {{--@endforeach--}}
-                                        {{--</tbody>--}}
-                                    {{--</table>--}}
-                                {{--</div>--}}
-                                {{--<!-- /.tab-pane -->--}}
+                                    <table id="table-matriculation" class="table table-hover table-design">
+                                        <thead>
+                                        <tr>
+                                            <th class="col-md-2 text-center">{{ trans('adminlte_lang::message.date') }}</th>
+                                            <th class="col-md-5" style="text-align: center">{{ trans('adminlte_lang::message.modality') }}</th>
+                                            <th class="col-md-1" style="text-align: center">{{ trans('adminlte_lang::message.price') }}</th>
+                                            <th class="col-md-2" style="text-align: center">{{ trans('adminlte_lang::message.status') }}</th>
+                                            <th class="col-md-1"></th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        @foreach ($client->matriculation as $item)
+                                            <tr class="bg-{{ $matriculation_status_color[$item->status] }}">
+                                                <td class="date text-center">{{ \Carbon\Carbon::parse( $item->created_at )->format('d/m/Y') }}</td>
+                                                <td>{{ $item->modality->name }}</td>
+                                                <td>{{ $defaults->currency($item->modality->price) }}</td>
+                                                <td class="status text-center"> <span class="label label-{{ $matriculation_status_color[$item->status] }}">{{ $matriculation_status[$item->status] }}</span>  </td>
+                                                <td class="text-center">
+                                                    <a href="{{ route('matriculation.show',$item->id) }}" target="_blank" data-toggle="tooltip" title="{{ trans('adminlte_lang::message.view') }}">
+                                                        <i class="fa fa-eye"></i>
+                                                    </a>
+                                                    <a href="{{ route('payments.create','idCliente='.$client->id) }}"  title='{{ trans('adminlte_lang::message.payment') }}' >
+                                                        <i class="fa fa-money"></i>
+                                                    </a>
+                                                </td>
+                                            </tr>
+                                        @endforeach
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <!-- /.tab-pane -->
 
                                 {{--<!-- PAYMENTS -->--}}
                                 {{--<div class="tab-pane" id="payments">--}}

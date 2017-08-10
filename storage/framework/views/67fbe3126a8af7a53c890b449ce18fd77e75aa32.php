@@ -88,7 +88,7 @@ $status_color = $defaults->getStatusColor();
                                 
                                 
                                 
-                                
+                                <li><a href="#matriculation" data-toggle="tab"><i class="fa fa-cube"></i> <?php echo e(trans('adminlte_lang::message.matriculation')); ?></a></li>
                                 
                                 
                             </ul>
@@ -233,44 +233,45 @@ $status_color = $defaults->getStatusColor();
                                 
                                 <!-- /.tab-pane -->
 
-                                
-                                
+                                <!-- BUDGET -->
+                                <div class="tab-pane" id="matriculation">
 
                                    <?php
-                                   $matriculation_status = [trans('adminlte_lang::message.canceled'),trans('adminlte_lang::message.draft'),trans('adminlte_lang::message.published'),trans('adminlte_lang::message.approved'),trans('adminlte_lang::message.rejected')];
-                                   $matriculation_status_color = ['danger','default','info','success','warning'];
+                                   $matriculation_status = [trans('adminlte_lang::message.inactive'),trans('adminlte_lang::message.active'),trans('adminlte_lang::message.published'),trans('adminlte_lang::message.approved'),trans('adminlte_lang::message.rejected')];
+                                   $matriculation_status_color = ['danger','success'];
                                    ?>
 
-                                    
-                                        
-                                        
-                                            
-                                            
-                                            
-                                            
-                                            
-                                            
-                                        
-                                        
-                                        
-                                        
-                                            
-                                                
-                                                
-                                                
-                                                
-                                                
-                                                
-                                                    
-                                                        
-                                                    
-                                                
-                                            
-                                        
-                                        
-                                    
-                                
-                                
+                                    <table id="table-matriculation" class="table table-hover table-design">
+                                        <thead>
+                                        <tr>
+                                            <th class="col-md-2 text-center"><?php echo e(trans('adminlte_lang::message.date')); ?></th>
+                                            <th class="col-md-5" style="text-align: center"><?php echo e(trans('adminlte_lang::message.modality')); ?></th>
+                                            <th class="col-md-1" style="text-align: center"><?php echo e(trans('adminlte_lang::message.price')); ?></th>
+                                            <th class="col-md-2" style="text-align: center"><?php echo e(trans('adminlte_lang::message.status')); ?></th>
+                                            <th class="col-md-1"></th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        <?php $__currentLoopData = $client->matriculation; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $item): $__env->incrementLoopIndices(); $loop = $__env->getFirstLoop(); ?>
+                                            <tr class="bg-<?php echo e($matriculation_status_color[$item->status]); ?>">
+                                                <td class="date text-center"><?php echo e(\Carbon\Carbon::parse( $item->created_at )->format('d/m/Y')); ?></td>
+                                                <td><?php echo e($item->modality->name); ?></td>
+                                                <td><?php echo e($defaults->currency($item->modality->price)); ?></td>
+                                                <td class="status text-center"> <span class="label label-<?php echo e($matriculation_status_color[$item->status]); ?>"><?php echo e($matriculation_status[$item->status]); ?></span>  </td>
+                                                <td class="text-center">
+                                                    <a href="<?php echo e(route('matriculation.show',$item->id)); ?>" target="_blank" data-toggle="tooltip" title="<?php echo e(trans('adminlte_lang::message.view')); ?>">
+                                                        <i class="fa fa-eye"></i>
+                                                    </a>
+                                                    <a href="<?php echo e(route('payments.create','idCliente='.$client->id)); ?>"  title='<?php echo e(trans('adminlte_lang::message.payment')); ?>' >
+                                                        <i class="fa fa-money"></i>
+                                                    </a>
+                                                </td>
+                                            </tr>
+                                        <?php endforeach; $__env->popLoop(); $loop = $__env->getFirstLoop(); ?>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <!-- /.tab-pane -->
 
                                 
                                 
