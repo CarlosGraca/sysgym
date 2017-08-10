@@ -37,8 +37,7 @@
 							  <th class="col-md-1">{{ trans('adminlte_lang::message.date') }}</th>
 							  <th class="col-md-2">{{ trans('adminlte_lang::message.client') }}</th>
 							  <th class="col-md-2">{{ trans('adminlte_lang::message.payment_method') }}</th>
-							  <th class="col-md-3">{{ trans('adminlte_lang::message.note') }}</th>
-							  <th class="col-md-1">{{ trans('adminlte_lang::message.amount_paid') }}</th>
+							  <th class="col-md-1">{{ trans('adminlte_lang::message.value_pay') }}</th>
 							  <th class="col-md-1">{{ trans('adminlte_lang::message.total') }}</th>
 							  <th class="col-md-1">{{ trans('adminlte_lang::message.status') }}</th>
 							  <th class="col-md-1"></th>
@@ -48,23 +47,22 @@
                           @foreach ($payments as $payment)
                                 <tr data-key="{{ $payment->id }}">
 									<td class="date text-center">{{ \Carbon\Carbon::parse($payment->created_at)->format('d/m/Y') }}</td>
-									<td class="name">{{ $payment->matriculation->client->name }}</td>
+									<td class="name">{{ $payment->client_id }}</td>
 									<td class="payment_method">{{ trans('adminlte_lang::message.'.($payment->payment_method != null ? $payment->payment_method : 'none'))  }}</td>
-									<td class="note">{{ $payment->note }}</td>
 									<td class="paid">{{ $Defaults->currency($payment->value_pay) }}</td>
 									<td class="total">{{ $Defaults->currency($payment->total) }}</td>
 									<td class="status">{{ $payment->status }}</td>
 									<td>
-										@can('edit_payment')
+										{{-- @can('edit_payment') --}}
 										<a href="{{ route('payments.edit',$payment->id) }}"  data-toggle="tooltip" title="{{ trans('adminlte_lang::message.edit') }}" id="edit-payments">
 											<i class="fa fa-edit"></i>
 										</a>
-										@endcan
-										@can('cancel_payment')
+										{{-- @endcan
+										@can('cancel_payment') --}}
 										<a href="#"  data-toggle="tooltip" title="{{ trans('adminlte_lang::message.cancel') }}" data-key="{{ $payment->id }}" data-name="{{ $payment->note }}">
 											<i class="fa fa-ban"></i>
 										</a>
-										@endcan
+										{{-- @endcan --}}
                                     </td>
                                 </tr>
                             @endforeach

@@ -25,8 +25,6 @@ $(function () {
     else
         $('#div_month').removeAttr('style');
 
-
-
     $(document).on('change','#payment_type',function (e) {
         e.preventDefault();
         if($(this).val() != 'monthly')
@@ -47,15 +45,23 @@ $(function () {
     getCurrency(_payment_total, $('#payment-sum-total'), 'text');
     getCurrency(_payment_total_discount, $('#payment-sum-discount'), 'text');
 
+
+    $(".h-check-payment").change(function () {
+        console.log('oopp');
+        //$("input[name='check-payment']").prop('checked', $(this).prop("checked"));
+        $('.check-payment').prop('checked', $(this).prop("checked"));
+    });
     
+    /*$(".payment-free").change(function () {        
+        console.log($(this));
+        $(this).prop('checked', $(this).prop("checked"));
+    });*/
 
-    //$('#payment-sum-discount').text(_payment_total_discount);
 
-
-    // $(document).on("click", '#save-payment-value',function () {
-    //     pop_save();
-    // });
-    //
+    $(document).on("click", '#add-payment',function () {
+        save_payment();
+    });
+    
     // $(document).on('keydown','#payment-value',function (e) {
     //     if(e.keyCode == 13) {
     //         pop_save();
@@ -73,14 +79,7 @@ $(function () {
     //         getCurrency(0 , $(this).find('.payment-remaining'), 'text' );
     //
     //     });
-    //
-    //     _payment_total = get_payment_total_value('.payment-value');
-    //     var _remaining_total = parseFloat(_payment_remaining_total - _payment_total);
-    //
-    //     $('#payment-sum-total').attr('data-value',_payment_total);
-    //
-    //     getCurrency(_payment_total,$('#payment-sum-total'),'text');
-    //     getCurrency(_remaining_total,$('#remaining_value'),'val');
+  
     // });
 
     $(document).on('click','#update-payment',function (e) {
@@ -94,7 +93,66 @@ $(function () {
         $(this).css('display','none');
         field_status_change('enable',$('#payment-form'));
     });
+    
+    //////SAVE_PAGAMENTO
+    function save_payment() {
+        var requestData = [];
+        var url = '/payments';
+        _client_id      = $('#client_id').val();
+        _payment_method = $('#payment_method').val();
+        _note           = $('#note').val();
+        _item_type      = 'MUSCULATION';
+        _type           = $('#payment_type').val();
+        //$.ajaxSetup({ headers: { 'csrftoken' : '{{ csrf_token() }}' } });
+        $('#table-payment-modality').find('.payment-modality').each(function (e,d) {     
+            var data = [];
+           // var requestData = [];
+            _item_id        = $(this).find('.payment-id-matricula').attr('data-value');
+            _value_pay      = parseFloat($(this).find('.t-payment-price').attr('data-value'));
+            _start_date      = $(this).find('.payment-start-date').val();
+            _end_date       = $(this).find('.payment-end-date').val();
+            _discount       = $(this).find('.payment-discount').val();
+            _free           = $(this).find('.payment-free').val();
+            
+            _free = _free != null ?_free:0;
+            
+            data = {item_id:_item_id,item_type:_item_type,client_id:_client_id,payment_method:_payment_method,
+                    value_pay:_value_pay,start_date:_start_date,
+                    end_date:_end_date,discount:_discount,free:_free,note:_note,type:_type};
+            requestData.push(data);
+            
+        });       
+        requestData=JSON.stringify(requestData);
+        console.log(requestData);
+        $.ajax({
+            url: url,
+            type: 'POST',
+            contentType: 'application/json',
+            data: requestData,
+            success: function (data) {
+                $('.loader-name').css('display', 'none');
+                 console.log(data.message);
+                if (data.type === 'success') {
+                    toastr.success(data.message, {timeOut: 5000}).css("width", "300px");
+                }
 
+                if (data.type === 'error') {
+
+                    toastr.error(data.message, {timeOut: 5000}).css("width", "300px");
+                }
+            },
+            error: function(data){
+                if( data.responseJSON ) {          
+                    $errors = data.responseJSON; 
+                    var errorsHtml= '';
+                    $.each( $errors, function( key, value ) {
+                        errorsHtml += '<li>' + value[0] + '</li>'; //showing only the first error.
+                    });
+                    toastr.error(errorsHtml,{timeOut: 5000} ).css("width","500px");                    
+                }
+            }
+        });
+    }
 
     //SAVE VALUE FROM EDIT POPUP
     function pop_save() {
@@ -186,7 +244,7 @@ function set_total_in_table() {
 function sumSubtotal (_class_input,_class_data_value){
     $('#table-payment-modality .payment-modality').on('keyup',_class_input,function(e,d){
         e.preventDefault();
-        
+
         var  new_price = $(e.currentTarget).val();
              new_price = new_price.replace('.','');
              $(e.delegateTarget).find(_class_data_value).attr('data-value', new_price);

@@ -27,9 +27,9 @@
 	              </h3>
 
 				<div class="pull-right box-tools">
-					<a href="#" class="btn btn-primary btn-sm" role="button" data-toggle="tooltip" title="{{ trans('adminlte_lang::message.save') }}" id="add-payment">
+					<button class="btn btn-primary btn-sm" data-toggle="tooltip" title="{{ trans('adminlte_lang::message.save') }}" id="add-payment">
 						 <i class="fa fa-save"></i>  {{ trans('adminlte_lang::message.save') }}
-					</a>
+					</button>
 				</div><!-- /. tools -->
 	            </div><!-- /.box-header -->
 
