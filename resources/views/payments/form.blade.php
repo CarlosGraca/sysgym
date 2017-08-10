@@ -88,7 +88,7 @@
                                                 <input type="number" name="" id="payment-discount" class="form-control  payment-discount" value="{{ $payment->discount != null ? $payment->discount : 0 }}" style="height: 25px;">
                                             </td>
                                             <td class="text-right payment-total" data-value=""></td>
-                                            <td class="text-right t-payment-free" data-value="{{$payment->free != null ? $payment->free : 0}}"><input type="checkbox" class="payment-free" value="{{$payment->free != null ? $payment->free : 0}} " /></td>
+                                            <td class="text-right t-payment-free" data-value="{{ $payment->idmatricula }}"><input type="checkbox" class="payment-free" value="{{$payment->free != null ? $payment->free : 0}} " /></td>
 
                                         </tr>
                                     @endforeach

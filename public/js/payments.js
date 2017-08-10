@@ -34,6 +34,24 @@ $(function () {
 
     });
 
+
+    //reset
+    $(".payment-free").prop("checked", false);
+    $(".payment-free").click(function () {
+
+        if ($(this).is(":checked")) {
+
+            //checked
+            $(this).addClass("selected");
+            $(this).val(1);
+        } else {
+            //unchecked
+            $(this).removeClass("selected");
+            $(this).val(0);
+        }
+
+    });
+
     sumSubtotal ('.payment-price','.t-payment-price');
     sumSubtotal ('.payment-discount','.t-payment-discount');
     set_total_in_table();
@@ -115,7 +133,7 @@ $(function () {
             _free           = $(this).find('.payment-free').val();
             
             _free = _free != null ?_free:0;
-            
+
             data = {item_id:_item_id,item_type:_item_type,client_id:_client_id,payment_method:_payment_method,
                     value_pay:_value_pay,start_date:_start_date,
                     end_date:_end_date,discount:_discount,free:_free,note:_note,type:_type};
@@ -123,7 +141,6 @@ $(function () {
             
         });       
         requestData=JSON.stringify(requestData);
-        console.log(requestData);
         $.ajax({
             url: url,
             type: 'POST',
@@ -131,7 +148,7 @@ $(function () {
             data: requestData,
             success: function (data) {
                 $('.loader-name').css('display', 'none');
-                 console.log(data.message);
+                 console.log('da:'+data);
                 if (data.type === 'success') {
                     toastr.success(data.message, {timeOut: 5000}).css("width", "300px");
                 }

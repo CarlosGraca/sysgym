@@ -61,8 +61,7 @@ class PaymentController extends Controller
                                 $join->on('a.id', '=', 'c.item_id');                                 
                             })
                    ->where('a.client_id', '=', $idCliente)
-                   ->select('b.name','b.price','a.id as idmatricula','c.id as idpayment','c.discount','c.start_date','c.end_date',
-                            'c.free')
+                   ->select('b.name','b.price','a.id as idmatricula','c.id as idpayment','c.discount','c.start_date','c.end_date','c.payment_method','c.free')
                     ->get();
          
 
@@ -111,9 +110,9 @@ class PaymentController extends Controller
         $client->save();
          
         if ($request->ajax()){            
-            return response(['message' => trans('adminlte_lang::message.msg_success_payment'), 'type' =>'success' ]);
+            return Response::json(['message' => trans('adminlte_lang::message.msg_success_payment'), 'type' =>'success' ]);
         }
-        return response(['message' => 'Failed saved the mesa', 'type' => 'failed']);
+        return Response::json(['message' => 'Failed saved the mesa', 'type' => 'failed']);
     }
 
     /**

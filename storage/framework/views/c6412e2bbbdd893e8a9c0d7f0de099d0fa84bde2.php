@@ -97,7 +97,7 @@
                                                 <input type="number" name="" id="payment-discount" class="form-control  payment-discount" value="<?php echo e($payment->discount != null ? $payment->discount : 0); ?>" style="height: 25px;">
                                             </td>
                                             <td class="text-right payment-total" data-value=""></td>
-                                            <td class="text-right t-payment-free" data-value="<?php echo e($payment->free != null ? $payment->free : 0); ?>"><input type="checkbox" class="payment-free" value="<?php echo e($payment->free != null ? $payment->free : 0); ?> " /></td>
+                                            <td class="text-right t-payment-free" data-value="<?php echo e($payment->idmatricula); ?>"><input type="checkbox" class="payment-free" value="<?php echo e($payment->free != null ? $payment->free : 0); ?> " /></td>
 
                                         </tr>
                                     <?php endforeach; $__env->popLoop(); $loop = $__env->getFirstLoop(); ?>
@@ -105,7 +105,6 @@
                             </tbody>
                         </table>
                     </div>
-
                 </div>
 
             </div>
