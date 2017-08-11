@@ -6,18 +6,7 @@ $(function () {
     var clicked_payment = null;
     var _payment_total = 0;
     var _payment_total_discount = 0;
-
-    // setPopOver('payment-value');
-
-    //POPOVER CHANGE BUDGET TEETH
-    // $(document).on('show.bs.popover','.payment-value',function () {
-    //     clicked_payment = $(this);
-    //     var _val = $(this).attr('data-value');
-    //     $.post('/edit/payment-value/field',{val: _val },function (data) {
-    //         $('.popover-payment-value').html(data);
-    //         $('.popover-payment-value').find('#payment-value').focus();
-    //     });
-    // });
+    var message_error = null;
 
 
     if($('#payment_type').val() != 'monthly')
@@ -25,22 +14,27 @@ $(function () {
     else
         $('#div_month').removeAttr('style');
 
-    $(document).on('change','#payment_type',function (e) {
-        e.preventDefault();
-        if($(this).val() != 'monthly')
-            $('#div_month').css('display','none');
-        else
-            $('#div_month').removeAttr('style');
+    //reset
+    $(".check-payment").prop("checked", false);
+    $(".check-payment").click(function () {
+
+        if ($(this).is(":checked")) {
+            //checked
+            $(this).addClass("selected");
+            $(this).parent().attr('data-value',$(this).val());
+        } else {
+            //unchecked
+            $(this).removeClass("selected");
+            $(this).parent().attr('data-value','');
+        }
 
     });
-
 
     //reset
     $(".payment-free").prop("checked", false);
     $(".payment-free").click(function () {
 
         if ($(this).is(":checked")) {
-
             //checked
             $(this).addClass("selected");
             $(this).val(1);
@@ -50,11 +44,11 @@ $(function () {
             $(this).val(0);
         }
 
-    });
+    }); 
 
     sumSubtotal ('.payment-price','.t-payment-price');
     sumSubtotal ('.payment-discount','.t-payment-discount');
-    set_total_in_table();
+    get_payment_end_date('.payment-type','payment-end-date');
 
     _payment_total = get_payment_total_value('.payment-total');
     _payment_total_discount =get_payment_total_value_discount('.payment-discount');
@@ -65,41 +59,28 @@ $(function () {
 
 
     $(".h-check-payment").change(function () {
-        console.log('oopp');
-        //$("input[name='check-payment']").prop('checked', $(this).prop("checked"));
-        $('.check-payment').prop('checked', $(this).prop("checked"));
+        $('.check-payment').prop('checked',$(this).prop("checked"));
+        //$('.check-payment').prop('checked', $(this).prop("checked"));
+        if ($('.check-payment').is(":checked")) {
+            //checked
+            $('.check-payment').addClass("selected");
+            $('.check-payment').parent().attr('data-value',$('.check-payment').val());
+        } else {
+            //unchecked
+            $('.check-payment').removeClass("selected");
+            $('.check-payment').parent().attr('data-value','');
+        }
     });
-    
-    /*$(".payment-free").change(function () {        
-        console.log($(this));
-        $(this).prop('checked', $(this).prop("checked"));
-    });*/
-
-
+   
     $(document).on("click", '#add-payment',function () {
-        save_payment();
+        if (valide_payment())
+           save_payment();
+        else
+            toastr.error(message_error,{timeOut: 5000} ).css("width","500px");    
+            message_error  = null; 
     });
     
-    // $(document).on('keydown','#payment-value',function (e) {
-    //     if(e.keyCode == 13) {
-    //         pop_save();
-    //     }
-    // });
-
-    // $(document).on('click','#pay-all',function (e) {
-    //     e.preventDefault();
-    //
-    //     $('#table-payment-procedure').find('.payment-procedure').each(function () {
-    //         var total = parseFloat($(this).find('.payment-total').attr('data-value') - $(this).find('.payment-value-paid').attr('data-value'));
-    //         $(this).find('.payment-remaining').attr('data-value',0);
-    //         $(this).find('.payment-value').attr('data-value', total);
-    //         getCurrency(total , $(this).find('.payment-value'), 'text' );
-    //         getCurrency(0 , $(this).find('.payment-remaining'), 'text' );
-    //
-    //     });
-  
-    // });
-
+    
     $(document).on('click','#update-payment',function (e) {
         e.preventDefault();
         save($('#payment-form'),$('#payment-form')[0],'update');
@@ -112,6 +93,22 @@ $(function () {
         field_status_change('enable',$('#payment-form'));
     });
     
+    function valide_payment(){
+        var status = 0;
+        $('#table-payment-modality').find('.payment-modality').each(function (e,d) { 
+            _t_payment_check = $(this).find('.t-check-payment').attr('data-value');
+            if (_t_payment_check){
+               status = 1;  
+            }
+        });
+        if (status === 0){
+            message_error = 'Selecione pelo menos uma matricula, por favor.';
+            return false;
+        }else{
+            return true;
+        }
+        
+    }
     //////SAVE_PAGAMENTO
     function save_payment() {
         var requestData = [];
@@ -120,23 +117,24 @@ $(function () {
         _payment_method = $('#payment_method').val();
         _note           = $('#note').val();
         _item_type      = 'MUSCULATION';
-        _type           = $('#payment_type').val();
+        
         //$.ajaxSetup({ headers: { 'csrftoken' : '{{ csrf_token() }}' } });
         $('#table-payment-modality').find('.payment-modality').each(function (e,d) {     
             var data = [];
-           // var requestData = [];
-            _item_id        = $(this).find('.payment-id-matricula').attr('data-value');
-            _value_pay      = parseFloat($(this).find('.t-payment-price').attr('data-value'));
+            _t_payment_check = $(this).find('.t-check-payment').attr('data-value');
+            _item_id         = _t_payment_check;//$(this).find('.payment-id-matricula').attr('data-value');
+            _value_pay       = parseFloat($(this).find('.t-payment-price').attr('data-value'));
             _start_date      = $(this).find('.payment-start-date').val();
-            _end_date       = $(this).find('.payment-end-date').val();
-            _discount       = $(this).find('.payment-discount').val();
-            _free           = $(this).find('.payment-free').val();
-            
+            _end_date        = $(this).find('.payment-end-date').val();
+            _discount        = $(this).find('.payment-discount').val();
+            _free            = $(this).find('.payment-free').val();
+            _payment_type    = $(this).find('.payment-type').val();
+            _payment_id      = $(this).find('.payment-id').val();
             _free = _free != null ?_free:0;
 
             data = {item_id:_item_id,item_type:_item_type,client_id:_client_id,payment_method:_payment_method,
                     value_pay:_value_pay,start_date:_start_date,
-                    end_date:_end_date,discount:_discount,free:_free,note:_note,type:_type};
+                    end_date:_end_date,discount:_discount,free:_free,note:_note,type:_payment_type,payment_id:_payment_id};
             requestData.push(data);
             
         });       
@@ -277,6 +275,33 @@ function sumSubtotal (_class_input,_class_data_value){
     });   
 }
 
+function adicionarDiasData(dias,start_date){  
+  var start_date   = new Date(start_date);
+  var end_date    = new Date(start_date.getTime() + (dias * 24 * 60 * 60 * 1000));
+  var day = end_date.getDate() > 9 ? end_date.getDate() : '0'+end_date.getDate();
+  var month = (end_date.getMonth() + 1) > 9 ? (end_date.getMonth() + 1) : '0'+(end_date.getMonth() + 1);
+  return end_date.getFullYear() + "-" + month + "-" +  day;
+}
+
+function get_payment_end_date (_class_input,_class_data_value){
+    
+    $('#table-payment-modality .payment-modality').on('change',_class_input,function(e,d){
+        e.preventDefault();
+        var _payment_start_date = $(e.delegateTarget).find('.payment-start-date').val();
+        var  _payment_type = $(this).val();
+        if (_payment_type === 'monthly'){
+            _payment_end_date= adicionarDiasData(30,_payment_start_date);
+            $(e.delegateTarget).find('.payment-end-date').val(_payment_end_date);
+        }else if (_payment_type === 'daily'){
+            _payment_end_date= adicionarDiasData(1,_payment_start_date);
+            $(e.delegateTarget).find('.payment-end-date').val(_payment_end_date);
+        }else if (_payment_type === 'weekly'){
+            _payment_end_date= adicionarDiasData(7,_payment_start_date);
+            $(e.delegateTarget).find('.payment-end-date').val(_payment_end_date);
+        }
+    });   
+}
+
 //GET DATA FROM PAYMENT PROCEDURE TABLE
 function getTablePaymentProcedureData(_table) {
     var data =  {};
@@ -378,9 +403,5 @@ function clear_payment_table() {
     _table.find('.payment-modality').each(function () {
        $(this).remove() ;
     });
-
-    // var total = 0;
-    // $('#payment-sum-total').attr('data-value', total);
-    // getCurrency(total, $('#payment-sum-total'), 'text');
 }
 

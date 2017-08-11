@@ -50,21 +50,38 @@ class PaymentController extends Controller
     public function create()
     {
         $idCliente = Input::get('idCliente');
-        
-        $payments = DB::table('matriculation as a')
+        $idMatricula = Input::get('idMatriculation');
+        if($idMatricula){
+            $payments = DB::table('matriculation as a')
+                      ->join('modalities as b', function($join) 
+                                {
+                                    $join->on('a.modality_id', '=', 'b.id') ;                                   
+                                })
+                       ->leftjoin('payments as c', function($join) 
+                                {
+                                    $join->on('a.id', '=', 'c.item_id')
+                                    ->where('c.status','=',1);                                 
+                                })
+                       ->where('a.client_id', '=', $idCliente)
+                       ->where('a.id','=',$idMatricula)
+                       ->select('b.name','b.price','a.id as idmatricula','c.id as idpayment',DB::raw('b.price-((b.price*c.discount)/100) as subtotal'),'c.discount','c.start_date','c.end_date','c.payment_method','c.free','c.type as payment_type')
+                        ->get();
+        }else{
+            $payments = DB::table('matriculation as a')
                   ->join('modalities as b', function($join) 
                             {
-                                $join->on('a.modality_id', '=', 'b.id') ;                                   
+                                $join->on('a.modality_id', '=', 'b.id')
+                                ->where('c.status','=',1) ;                                   
                             })
                    ->leftjoin('payments as c', function($join) 
                             {
                                 $join->on('a.id', '=', 'c.item_id');                                 
                             })
                    ->where('a.client_id', '=', $idCliente)
-                   ->select('b.name','b.price','a.id as idmatricula','c.id as idpayment','c.discount','c.start_date','c.end_date','c.payment_method','c.free')
+                   
+                   ->select('b.name','b.price','a.id as idmatricula','c.id as idpayment',DB::raw('b.price-((b.price*c.discount)/100) as subtotal'),'c.discount','c.start_date','c.end_date','c.payment_method','c.free','c.type as payment_type')
                     ->get();
-         
-
+        }
        
         $client = Client::findorfail( $idCliente );
         $meses = Domain::where('dominio','MES')->pluck('significado','id')->all();  
@@ -83,26 +100,32 @@ class PaymentController extends Controller
         $user_id   = Auth::user()->id;
         $branch_id = Auth::user()->branch_id;
         foreach(Input::get($request->all) as $req){
-            $payment = new Payment();
-            $payment->tenant_id      = $tenant_id;
-            $payment->user_id        = $tenant_id;
-            $payment->branch_id      = $branch_id;
-            $payment->tenant_id      = $tenant_id;
-            $payment->client_id      = (string)$req['client_id'];
-            $payment->item_id        = (string)$req['item_id'];
-            $payment->item_type      = (string)$req['item_type'];
-            $payment->start_date     = (string)$req['start_date'];
-            $payment->end_date       = (string)$req['end_date'];
-            $payment->payment_method = (string)$req['payment_method'];
-            $payment->type           = (string)$req['type'];
-            $payment->note           = (string)$req['note'];
-            $payment->discount       = (string)$req['discount'];
-            $payment->free           = (string)$req['free'];
-            $payment->status         = 1;
-            $payment->value_pay      = (string)$req['value_pay'];
-            $payment->save();
+            if ((string)$req['payment_id']==null) {
+                $payment = new Payment();
+            }else{
+                $payment = Payment::findorfail((string)$req['payment_id']);
+            }
+            if ((string)$req['item_id'] != null){
+                $payment->tenant_id      = $tenant_id;
+                $payment->user_id        = $tenant_id;
+                $payment->branch_id      = $branch_id;
+                $payment->tenant_id      = $tenant_id;
+                $payment->client_id      = (string)$req['client_id'];
+                $payment->item_id        = (string)$req['item_id'];
+                $payment->item_type      = (string)$req['item_type'];
+                $payment->start_date     = (string)$req['start_date'];
+                $payment->end_date       = (string)$req['end_date'];
+                $payment->payment_method = (string)$req['payment_method'];
+                $payment->type           = (string)$req['type'];
+                $payment->note           = (string)$req['note'];
+                $payment->discount       = (string)$req['discount'];
+                $payment->free           = (string)$req['free'];
+                $payment->status         = 1;
+                $payment->value_pay      = (string)$req['value_pay'];
+                $payment->save();
 
-            $client_id = (string)$req['client_id'];
+                $client_id = (string)$req['client_id'];
+            }
         }        
 
         $client = Client::findorfail( $client_id );
