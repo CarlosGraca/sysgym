@@ -25,7 +25,7 @@ class BranchRequest extends FormRequest
     {
         return [
             'name' => 'required',
-            'email' => 'required',
+//            'email' => 'required',
             'phone' => 'required',
             'address' => 'required',
             'city' => 'required',

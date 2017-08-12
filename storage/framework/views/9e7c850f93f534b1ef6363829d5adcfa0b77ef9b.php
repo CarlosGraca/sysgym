@@ -37,12 +37,13 @@
                         <i class="fa  fa-list"></i> <?php echo e(trans('adminlte_lang::message.list_matriculation')); ?>
 
                     </a>
+                        <?php if($matriculation->status != 1): ?>
                         <a href="<?php echo e(route('matriculation.edit',$matriculation->id)); ?>" class="btn btn-primary btn-sm" role="button" data-toggle="tooltip" title="<?php echo e(trans('adminlte_lang::message.edit')); ?>">
                             <i class="fa  fa-edit"></i> <?php echo e(trans('adminlte_lang::message.edit')); ?>
 
                         </a>
-
-                        <a href="<?php echo e(url('payments/create?idCliente='.$matriculation->client_id)); ?>" class="btn btn-primary btn-sm" target="_blank" role="button" data-toggle="tooltip" title="<?php echo e(trans('adminlte_lang::message.payments')); ?>">
+                        <?php endif; ?>
+                        <a href="<?php echo e(url('payments/create?idCliente='.$matriculation->client_id.'&idMatriculation='.$matriculation->id)); ?>" class="btn btn-primary btn-sm" target="_blank" role="button" data-toggle="tooltip" title="<?php echo e(trans('adminlte_lang::message.payments')); ?>">
                             <i class="fa fa-money"></i> <?php echo e(trans('adminlte_lang::message.payments')); ?>
 
                         </a>

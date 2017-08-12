@@ -34,11 +34,12 @@
                     <a href="{{ url('matriculation') }}" class="btn btn-primary btn-sm" role="button" data-toggle="tooltip" title="{{ trans('adminlte_lang::message.list_matriculation') }}">
                         <i class="fa  fa-list"></i> {{ trans('adminlte_lang::message.list_matriculation') }}
                     </a>
+                        @if($matriculation->status != 1)
                         <a href="{{ route('matriculation.edit',$matriculation->id) }}" class="btn btn-primary btn-sm" role="button" data-toggle="tooltip" title="{{ trans('adminlte_lang::message.edit') }}">
                             <i class="fa  fa-edit"></i> {{ trans('adminlte_lang::message.edit') }}
                         </a>
-
-                        <a href="{{url('payments/create?idCliente='.$matriculation->client_id) }}" class="btn btn-primary btn-sm" target="_blank" role="button" data-toggle="tooltip" title="{{ trans('adminlte_lang::message.payments') }}">
+                        @endif
+                        <a href="{{url('payments/create?idCliente='.$matriculation->client_id.'&idMatriculation='.$matriculation->id) }}" class="btn btn-primary btn-sm" target="_blank" role="button" data-toggle="tooltip" title="{{ trans('adminlte_lang::message.payments') }}">
                             <i class="fa fa-money"></i> {{ trans('adminlte_lang::message.payments') }}
                         </a>
 

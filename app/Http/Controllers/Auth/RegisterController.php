@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers\Auth;
 
+use App\Models\Branch;
+use App\Models\System;
 use App\User;
 use Validator;
 use App\Http\Controllers\Controller;
@@ -118,11 +120,39 @@ class RegisterController extends Controller
                 $data['role_id'] = $role->id;
                 $data['token'] = str_random(25);
 
+
+
                 $user = User::find($data['id']);
                 $user->tenant_id = $data['tenant_id'];
                 $user->role_id   = $data['role_id'];
                 $user->token     = $data['token'];
                 $user->save();
+
+                //CREATE BRANCH
+                $branch = new Branch();
+                $branch->name = $tenant->subdomain_name;
+//                $branch->email = $tenant->email;
+                $branch->address = $tenant->address_1;
+                $branch->phone = $tenant->phone;
+                $branch->fax = $tenant->fax;
+//                $branch->manager = $tenant->manager;
+                $branch->city = $tenant->city;
+                $branch->tenant_id = $tenant->id;
+                $branch->user_id = $user->id;
+                $branch->save();
+
+                //CREATE SYSTEM CONFIG
+                $system = new System();
+                $system->name = config('app.name');
+                $system->theme = config('app.theme');
+                $system->lang = config('app.locale');
+                $system->layout = config('app.layout');
+                $system->currency = config('app.currency');
+                $system->background_image = config('app.background');
+                $system->timezone = config('app.timezone');
+                $system->branch_id = $branch->id;
+                $system->tenant_id = $user->tenant_id;
+                $system->save();
 
                 Mail::send('auth.mails.confirmation', $data, function($message) use($data) {
                      $message->to($data['email']);
