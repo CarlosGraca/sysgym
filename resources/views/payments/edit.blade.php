@@ -20,25 +20,22 @@
 	        <div class="box box-default">
 	            <div class="box-header with-border">
 	              <h3 class="box-title">
-	              	 <strong>{{ trans('adminlte_lang::message.payments') }}: </strong><span>{{ $payment->matriculation->client->name }}</span>
-	              </h3>
-	              <div class="pull-right box-tools">
-						<a href="{{ url('payments') }}" class="btn btn-primary btn-sm" role="button" data-toggle="tooltip" title="{{ trans('adminlte_lang::message.back') }}">
-							 <i class="fa  fa-arrow-left"></i>
-						</a>
-
-					  <a href="#" class="btn btn-primary btn-sm" role="button" data-toggle="tooltip" title="{{ trans('adminlte_lang::message.edit') }}" id="edit-payment-button" style="display: none;">
-						  <i class="fa fa-edit"></i>
+					  <a href="{{ url('payments') }}" class="btn btn-primary btn-sm" role="button" data-toggle="tooltip" title="{{ trans('adminlte_lang::message.back') }}">
+						  <i class="fa  fa-arrow-left"></i>  {{ trans('adminlte_lang::message.back') }}
 					  </a>
+	              	{{--  <strong>{{ trans('adminlte_lang::message.system_user') }}: </strong><span>{{ \Auth::user()->name }}</span> --}}
+	              </h3>
 
-						<a href="#" class="btn btn-primary btn-sm" role="button" data-toggle="tooltip" title="{{ trans('adminlte_lang::message.save') }}" id="update-payment">
-							 <i class="fa fa-save"></i>
-						</a>
-					</div><!-- /. tools -->
+				<div class="pull-right box-tools">
+					<button class="btn btn-primary btn-sm" data-toggle="tooltip" title="{{ trans('adminlte_lang::message.save') }}" id="update-payment">
+						 <i class="fa fa-save"></i>  {{ trans('adminlte_lang::message.save') }}
+					</button>
+				</div><!-- /. tools -->
 	            </div><!-- /.box-header -->
+
 	            <div class="box-body">
-					{!! Form::model($payment, ['method'=>'PATCH','route'=>['payments.update', $payment->id],'id'=>'payment-form','files'=>true])!!}
-						@include('payments.form', ['type'=>'update','payment'=>$payment])
+					{!! Form::model($payments, ['method'=>'PATCH','route'=>['payments.update', 1],'id'=>'payment-form','files'=>true])!!}
+	                 	@include('payments.form', ['type'=>'create'])
 					{!! Form::close() !!}
 				</div>
 	        </div>

@@ -58,6 +58,7 @@ Route::group(['middleware' => ['web','auth']], function(){
     Route::resource('backups','BackupController');
 });
 
+Route::get('updatePaymentOption','PaymentController@updatePaymentOption');
 
 Route::get('/login-activity', 'LoginActivityController@index')->middleware('auth');
 

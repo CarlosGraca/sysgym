@@ -60,29 +60,35 @@ class PaymentController extends Controller
                        ->leftjoin('payments as c', function($join) 
                                 {
                                     $join->on('a.id', '=', 'c.item_id')
-                                    ->where('c.status','=',1);                                 
+                                    ->where('c.status','=',1)
+                                    ->where('c.id','=',0);                                 
                                 })
                        ->where('a.client_id', '=', $idCliente)
                        ->where('a.id','=',$idMatricula)
+                       ->where('a.status','=',1) 
                        ->select('b.name','b.price','a.id as idmatricula','c.id as idpayment',DB::raw('b.price-((b.price*c.discount)/100) as subtotal'),'c.discount','c.start_date','c.end_date','c.payment_method','c.free','c.type as payment_type')
                         ->get();
         }else{
             $payments = DB::table('matriculation as a')
                   ->join('modalities as b', function($join) 
                             {
-                                $join->on('a.modality_id', '=', 'b.id')
-                                ->where('c.status','=',1) ;                                   
+                                $join->on('a.modality_id', '=', 'b.id');                          
                             })
                    ->leftjoin('payments as c', function($join) 
                             {
-                                $join->on('a.id', '=', 'c.item_id');                                 
+                                $join->on('a.id', '=', 'c.item_id')
+                                ->where('c.status','=',1) 
+                                ->where('c.id','=',0);                                  
                             })
                    ->where('a.client_id', '=', $idCliente)
-                   
+                   ->where('a.status','=',1) 
                    ->select('b.name','b.price','a.id as idmatricula','c.id as idpayment',DB::raw('b.price-((b.price*c.discount)/100) as subtotal'),'c.discount','c.start_date','c.end_date','c.payment_method','c.free','c.type as payment_type')
                     ->get();
         }
-       
+        if (\App::environment('local')) {
+                // The environment is local
+                DB::enableQueryLog();
+            }
         $client = Client::findorfail( $idCliente );
         $meses = Domain::where('dominio','MES')->pluck('significado','id')->all();  
         return view('payments.create',compact('client','meses','payments'));
@@ -100,11 +106,9 @@ class PaymentController extends Controller
         $user_id   = Auth::user()->id;
         $branch_id = Auth::user()->branch_id;
         foreach(Input::get($request->all) as $req){
-            if ((string)$req['payment_id']==null) {
-                $payment = new Payment();
-            }else{
-                $payment = Payment::findorfail((string)$req['payment_id']);
-            }
+
+            $payment = new Payment();
+           
             if ((string)$req['item_id'] != null){
                 $payment->tenant_id      = $tenant_id;
                 $payment->user_id        = $tenant_id;
@@ -132,10 +136,16 @@ class PaymentController extends Controller
         $client->status = 1;
         $client->save();
          
-        if ($request->ajax()){            
-            return Response::json(['message' => trans('adminlte_lang::message.msg_success_payment'), 'type' =>'success' ]);
+        if ($request->ajax()){
+            /*$url ='payments/edit'.'?idCliente='.$client->id;
+            $message = trans('adminlte_lang::message.msg_success_client');
+            return ['id'=>$client->id,'message'=>$message,'form'=>'client','type'=>'success','url'=>$url];
+           // return redirect('payments/create'.'?idCliente='.$client->id);*/
+
+            return redirect('payments/1/edit'.'?idCliente='.$client->id)->with('message', 'Payment created!');
+        }else{
+            return view('payments.index');
         }
-        return Response::json(['message' => 'Failed saved the mesa', 'type' => 'failed']);
     }
 
     /**
@@ -144,7 +154,7 @@ class PaymentController extends Controller
      * @param  Payment $payment
      * @return \Illuminate\Http\Response
      */
-    public function show(Payment $payment)
+    public function show( $payment)
     {
         //
         return view('payments.show',compact('payment'));
@@ -156,11 +166,47 @@ class PaymentController extends Controller
      * @param  Payment $payment
      * @return \Illuminate\Http\Response
      */
-    public function edit(Payment $payment)
+    public function edit()
     {
-        return view('payments.edit',compact('payment'));
+       
+        $idCliente = Input::get('idCliente');
+        $idMatricula = Input::get('idMatriculation');
+        if($idMatricula){
+            $payments = DB::table('matriculation as a')
+                      ->join('modalities as b', function($join) 
+                                {
+                                    $join->on('a.modality_id', '=', 'b.id') ;                                   
+                                })
+                       ->join('payments as c', function($join) 
+                                {
+                                    $join->on('a.id', '=', 'c.item_id')
+                                    ->where('c.status','=',1);                                 
+                                })
+                       ->where('a.client_id', '=', $idCliente)
+                       ->where('a.id','=',$idMatricula)
+                       ->select('b.name','c.value_pay','a.id as idmatricula','c.id as idpayment',DB::raw('c.value_pay-((c.value_pay*c.discount)/100) as subtotal'),'c.discount','c.start_date','c.end_date','c.payment_method','c.free','c.type as payment_type')
+                        ->get();
+        }else{
+            $payments = DB::table('matriculation as a')
+                  ->join('modalities as b', function($join) 
+                            {
+                                $join->on('a.modality_id', '=', 'b.id');                          
+                            })
+                   ->join('payments as c', function($join) 
+                            {
+                                $join->on('a.id', '=', 'c.item_id')
+                                ->where('c.status','=',1) ;                                  
+                            })
+                   ->where('a.client_id', '=', $idCliente)
+                   
+                   ->select('b.name','c.value_pay as price','a.id as idmatricula','c.id as idpayment',DB::raw('c.value_pay-((c.value_pay*c.discount)/100) as subtotal'),'c.discount','c.start_date','c.end_date','c.payment_method','c.free','c.type as payment_type')
+                    ->get();
+        }
+       
+        $client = Client::findorfail( $idCliente );
+        $meses = Domain::where('dominio','MES')->pluck('significado','id')->all();  
+        return view('payments.edit',compact('client','meses','payments'));
     }
-
     /**
      * Update the specified resource in storage.
      *
@@ -168,20 +214,53 @@ class PaymentController extends Controller
      * @param  Payment $payment
      * @return \Illuminate\Http\Response
      */
-    public function update(\Illuminate\Http\Request $request, Payment $payment)
+    public function update(PaymentRequest $request, $payment=null)
     {
-        //
-        $payment->note = $request->note;
-        $payment->payment_method = $request->payment_method;
+       
+    }
+    
+    public function updatePaymentOption(PaymentRequest $request)
+    {
+        $tenant_id = Auth::user()->tenant_id; 
+        $user_id   = Auth::user()->id;
+        $branch_id = Auth::user()->branch_id;
+        foreach(Input::get($request->all) as $req){
+                   
+            if ((string)$req['item_id'] != null){
+                $payment = Payment::find((string)$req['payment_id']);  
+                return    $payment;
+                $payment->tenant_id      = $tenant_id;
+                $payment->user_id        = $tenant_id;
+                $payment->branch_id      = $branch_id;
+                $payment->tenant_id      = $tenant_id;
+                $payment->client_id      = (string)$req['client_id'];
+                $payment->item_id        = (string)$req['item_id'];
+                $payment->item_type      = (string)$req['item_type'];
+                $payment->start_date     = (string)$req['start_date'];
+                $payment->end_date       = (string)$req['end_date'];
+                $payment->payment_method = (string)$req['payment_method'];
+                $payment->type           = (string)$req['type'];
+                $payment->note           = (string)$req['note'];
+                $payment->discount       = (string)$req['discount'];
+                $payment->free           = (string)$req['free'];
+                $payment->status         = 1;
+                $payment->value_pay      = (string)$req['value_pay'];
+                $payment->save();
+            }
+        }        
 
-        if (Request::wantsJson() && $payment->save()){
-            $message = trans('adminlte_lang::message.msg_update_payment_matriculation');
-            return ['id'=>$payment->id,'message'=>$message,'form'=>'payment','type'=>'success'];
+        if ($request->ajax()){
+            /*$url ='payments/edit'.'?idCliente='.$client->id;
+            $message = trans('adminlte_lang::message.msg_success_client');
+            return ['id'=>$client->id,'message'=>$message,'form'=>'client','type'=>'success','url'=>$url];
+           // return redirect('payments/create'.'?idCliente='.$client->id);*/
+
+            return redirect('payments/create'.'?idCliente='.$client->id)->with('status', 'Profile updated!');
         }else{
-            return redirect('payments');
+            $payments = Payment::all();
+            return view('payments.index',compact('payments'));
         }
     }
-
     /**
      * Remove the specified resource from storage.
      *
