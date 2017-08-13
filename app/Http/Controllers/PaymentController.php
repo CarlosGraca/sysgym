@@ -66,7 +66,7 @@ class PaymentController extends Controller
                        ->where('a.client_id', '=', $idCliente)
                        ->where('a.id','=',$idMatricula)
                        ->where('a.status','=',1) 
-                       ->select('b.name','b.price','a.id as idmatricula','c.id as idpayment',DB::raw('b.price-((b.price*c.discount)/100) as subtotal'),'c.discount','c.start_date','c.end_date','c.payment_method','c.free','c.type as payment_type')
+                       ->select('b.name','b.price','a.id as idmatricula','c.id as idpayment',DB::raw('b.price as subtotal'),'c.discount','c.start_date','c.end_date','c.payment_method','c.free','c.type as payment_type')
                         ->get();
         }else{
             $payments = DB::table('matriculation as a')
@@ -82,7 +82,7 @@ class PaymentController extends Controller
                             })
                    ->where('a.client_id', '=', $idCliente)
                    ->where('a.status','=',1) 
-                   ->select('b.name','b.price','a.id as idmatricula','c.id as idpayment',DB::raw('b.price-((b.price*c.discount)/100) as subtotal'),'c.discount','c.start_date','c.end_date','c.payment_method','c.free','c.type as payment_type')
+                   ->select('b.name','b.price','a.id as idmatricula','c.id as idpayment',DB::raw('b.price as subtotal'),'c.discount','c.start_date','c.end_date','c.payment_method','c.free','c.type as payment_type')
                     ->get();
         }
         if (\App::environment('local')) {
@@ -136,16 +136,14 @@ class PaymentController extends Controller
         $client->status = 1;
         $client->save();
          
-        if ($request->ajax()){
-            /*$url ='payments/edit'.'?idCliente='.$client->id;
-            $message = trans('adminlte_lang::message.msg_success_client');
-            return ['id'=>$client->id,'message'=>$message,'form'=>'client','type'=>'success','url'=>$url];
-           // return redirect('payments/create'.'?idCliente='.$client->id);*/
-
-            return redirect('payments/1/edit'.'?idCliente='.$client->id)->with('message', 'Payment created!');
+       if ($request->ajax()){
+            $message = trans('adminlte_lang::message.msg_success_created_payment');
+            return response ()->json(['message'=>$message,'type'=>'success']);
         }else{
-            return view('payments.index');
+            $payments = Payment::all();
+            return view('payments.index',compact('payments'));
         }
+        return response ()->json(['message'=>'Ops.','type'=>'error']);
     }
 
     /**
@@ -184,7 +182,7 @@ class PaymentController extends Controller
                                 })
                        ->where('a.client_id', '=', $idCliente)
                        ->where('a.id','=',$idMatricula)
-                       ->select('b.name','c.value_pay','a.id as idmatricula','c.id as idpayment',DB::raw('c.value_pay-((c.value_pay*c.discount)/100) as subtotal'),'c.discount','c.start_date','c.end_date','c.payment_method','c.free','c.type as payment_type')
+                       ->select('b.name','c.value_pay as price' ,'a.id as idmatricula','c.id as idpayment',DB::raw('c.value_pay-((c.value_pay*c.discount)/100) as subtotal'),'c.discount','c.start_date','c.end_date','c.payment_method','c.free','c.type as payment_type')
                         ->get();
         }else{
             $payments = DB::table('matriculation as a')
@@ -228,7 +226,7 @@ class PaymentController extends Controller
                    
             if ((string)$req['item_id'] != null){
                 $payment = Payment::find((string)$req['payment_id']);  
-                return    $payment;
+               
                 $payment->tenant_id      = $tenant_id;
                 $payment->user_id        = $tenant_id;
                 $payment->branch_id      = $branch_id;
@@ -250,16 +248,13 @@ class PaymentController extends Controller
         }        
 
         if ($request->ajax()){
-            /*$url ='payments/edit'.'?idCliente='.$client->id;
-            $message = trans('adminlte_lang::message.msg_success_client');
-            return ['id'=>$client->id,'message'=>$message,'form'=>'client','type'=>'success','url'=>$url];
-           // return redirect('payments/create'.'?idCliente='.$client->id);*/
-
-            return redirect('payments/create'.'?idCliente='.$client->id)->with('status', 'Profile updated!');
+            $message = trans('adminlte_lang::message.msg_success_updated_payment');
+            return response ()->json(['message'=>$message,'type'=>'success']);
         }else{
             $payments = Payment::all();
             return view('payments.index',compact('payments'));
         }
+        return response ()->json(['message'=>'Ops.','type'=>'error']);
     }
     /**
      * Remove the specified resource from storage.

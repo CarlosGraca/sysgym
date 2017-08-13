@@ -91,7 +91,7 @@
                                             <td class="text-right t-payment-discount" data-value="{{ $payment->discount != null ? $payment->discount : 0 }}">
                                                 <input type="number" name="" id="payment-discount" class="form-control  payment-discount" value="{{ $payment->discount != null ? $payment->discount : 0 }}" style="height: 25px;">
                                             </td>
-                                            <td class="text-right payment-total" data-value="{{ $payment->subtotal }}">{{ $payment->subtotal  }}</td>
+                                            <td class="text-right payment-total" data-value="{{ $payment->subtotal }}">{{ $Defaults->currency($payment->subtotal)  }}</td>
                                             <td class="text-right t-payment-free" data-value="{{ $payment->free }}"  ><input type="checkbox" class="payment-free" value="{{$payment->free != null ? $payment->free : 0}} " /></td>
 
                                         </tr>

@@ -290,6 +290,8 @@ return [
     'msg_update_error_consult_agenda'   => 'Cannot Agenda a Consult at this time',
     'msg_success_client'               => 'Client updated with success',
     'msg_update_success_branches'       => 'Branch updated with success',
+    'msg_success_created_payment'=> 'Payment stored with success',
+    'msg_success_updated_payment'=>  'Payment updated with success',
     'back'                      => 'Back',
     'save'                      => 'Save',
     'delete'                    => 'Delete',

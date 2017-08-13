@@ -85,7 +85,7 @@
                                             <td class="text-right t-payment-discount" data-value="<?php echo e($payment->discount != null ? $payment->discount : 0); ?>">
                                                 <input type="number" name="" id="payment-discount" class="form-control  payment-discount" value="<?php echo e($payment->discount != null ? $payment->discount : 0); ?>" style="height: 25px;">
                                             </td>
-                                            <td class="text-right payment-total" data-value="<?php echo e($payment->subtotal); ?>"><?php echo e($payment->subtotal); ?></td>
+                                            <td class="text-right payment-total" data-value="<?php echo e($payment->subtotal); ?>"><?php echo e($Defaults->currency($payment->subtotal)); ?></td>
                                             <td class="text-right t-payment-free" data-value="<?php echo e($payment->free); ?>"  ><input type="checkbox" class="payment-free" value="<?php echo e($payment->free != null ? $payment->free : 0); ?> " /></td>
 
                                         </tr>

@@ -1,9 +1,11 @@
+ var message_error = null;
+
 $(function () {
 
     var clicked_payment = null;
     var _payment_total = 0;
     var _payment_total_discount = 0;
-    var message_error = null;
+   
      
      
     if($('#payment_type').val() != 'monthly')
@@ -75,7 +77,7 @@ $(function () {
            save_payment('payments/1/edit','/payments');
         else
             toastr.error(message_error,{timeOut: 5000} ).css("width","500px");    
-            message_error  = null; 
+        message_error  = null; 
     });
 
     $(document).on("click", '#update-payment',function (e) {
@@ -84,20 +86,18 @@ $(function () {
            save_payment('payments/1/edit','/updatePaymentOption');
         else
             toastr.error(message_error,{timeOut: 5000} ).css("width","500px");    
-            message_error  = null; 
-    });
-    
-    $(document).on('click','#edit-payment-button',function(e){
-        e.preventDefault();
-        $('#update-payment').removeAttr('style');
-        $(this).css('display','none');
-        field_status_change('enable',$('#payment-form'));
-    });    
+        message_error  = null; 
+    });       
     
 });    
 
 function valide_payment(){
+        
         var status = 0;
+        if(!($('#payment_method').val())){
+            message_error = 'Field Payment Method is required.';
+            return false;
+        }
         $('#table-payment-modality').find('.payment-modality').each(function (e,d) { 
             _t_payment_check = $(this).find('.t-check-payment').attr('data-value');
             if (_t_payment_check){
@@ -107,10 +107,8 @@ function valide_payment(){
         if (status === 0){
             message_error = 'Selecione pelo menos uma matricula, por favor.';
             return false;
-        }else{
-            return true;
         }
-        
+        return true;
     }
     //////SAVE_PAGAMENTO
     function save_payment(redirect,url_stored) {
@@ -120,8 +118,8 @@ function valide_payment(){
         _payment_method = $('#payment_method').val();
         _note           = $('#note').val();
         _item_type      = 'MUSCULATION';
-        
-        //$.ajaxSetup({ headers: { 'csrftoken' : '{{ csrf_token() }}' } });
+        _token           = $('input[name=_token]').val()
+       // $.ajaxSetup({ headers: { 'csrftoken' : '{{ csrf_token() }}' } });
         $('#table-payment-modality').find('.payment-modality').each(function (e,d) {     
             var data = [];
             _t_payment_check = $(this).find('.t-check-payment').attr('data-value');
@@ -142,19 +140,26 @@ function valide_payment(){
             
         });       
         requestData=JSON.stringify(requestData);
-        console.log(requestData);
         $.ajax({
             url: url,
-            mtype: 'post',
-            contentType: 'application/json',
+            type: 'post',
+            dataType: 'json',
+            //contentType: 'application/json',
             data: requestData,
             success: function (data) {
                 $('.loader-name').css('display', 'none');
-                toastr.success('Payment stored with success', {timeOut: 5000}).css("width", "300px");
-               // window.location = load_newurl(redirect);              
+                if(data.type=='success') {
+                    toastr.success(data.message, {timeOut: 5000}).css("width", "300px");
+                }else{
+                    toastr.error(data.message, {timeOut: 5000}).css("width", "300px");
+                } 
+                window.location = load_newurl(redirect);              
             },
             error: function(data){
-                if( data.responseJSON ) {          
+                if(data.status === 500){
+                    toastr.error(data.statusText,{timeOut: 5000} ).css("width","500px");  
+                }else if( data.responseJSON ) {
+                console.log('asd');          
                     $errors = data.responseJSON; 
                     var errorsHtml= '';
                     $.each( $errors, function( key, value ) {
@@ -234,6 +239,22 @@ function adicionarDiasData(dias,start_date){
 function get_payment_end_date (_class_input,_class_data_value){
     
     $('#table-payment-modality .payment-modality').on('change',_class_input,function(e,d){
+        e.preventDefault();
+        var _payment_start_date = $(e.delegateTarget).find('.payment-start-date').val();
+        var  _payment_type = $(this).val();
+        if (_payment_type === 'monthly'){
+            _payment_end_date= adicionarDiasData(30,_payment_start_date);
+            $(e.delegateTarget).find('.payment-end-date').val(_payment_end_date);
+        }else if (_payment_type === 'daily'){
+            _payment_end_date= adicionarDiasData(1,_payment_start_date);
+            $(e.delegateTarget).find('.payment-end-date').val(_payment_end_date);
+        }else if (_payment_type === 'weekly'){
+            _payment_end_date= adicionarDiasData(7,_payment_start_date);
+            $(e.delegateTarget).find('.payment-end-date').val(_payment_end_date);
+        }
+    });   
+
+    $('#table-payment-modality .payment-modality').on('load',_class_input,function(e,d){
         e.preventDefault();
         var _payment_start_date = $(e.delegateTarget).find('.payment-start-date').val();
         var  _payment_type = $(this).val();
