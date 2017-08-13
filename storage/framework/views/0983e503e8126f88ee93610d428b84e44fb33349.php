@@ -29,10 +29,10 @@
 	              </h3>
 
 				<div class="pull-right box-tools">
-					<a href="#" class="btn btn-primary btn-sm" role="button" data-toggle="tooltip" title="<?php echo e(trans('adminlte_lang::message.save')); ?>" id="add-payment">
+					<button class="btn btn-primary btn-sm" data-toggle="tooltip" title="<?php echo e(trans('adminlte_lang::message.save')); ?>" id="add-payment">
 						 <i class="fa fa-save"></i>  <?php echo e(trans('adminlte_lang::message.save')); ?>
 
-					</a>
+					</button>
 				</div><!-- /. tools -->
 	            </div><!-- /.box-header -->
 

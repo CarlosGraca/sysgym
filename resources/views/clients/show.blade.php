@@ -253,7 +253,7 @@ $status_color = $defaults->getStatusColor();
                                                     <a href="{{ route('matriculation.show',$item->id) }}" target="_blank" data-toggle="tooltip" title="{{ trans('adminlte_lang::message.view') }}">
                                                         <i class="fa fa-eye"></i>
                                                     </a>
-                                                    <a href="{{ route('payments.create','idCliente='.$client->id) }}"  title='{{ trans('adminlte_lang::message.payment') }}' >
+                                                    <a href="{{ route('payments.create','idCliente='.$client->id.'&idMatriculation='.$item->id) }}"  title='{{ trans('adminlte_lang::message.payment') }}' target="_blank" >
                                                         <i class="fa fa-money"></i>
                                                     </a>
                                                 </td>

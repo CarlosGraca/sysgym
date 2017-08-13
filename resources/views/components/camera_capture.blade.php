@@ -39,6 +39,8 @@
     Webcam.set({
         width: 250,
         height: 250,
+        dest_width: 250,
+        dest_height: 250,
         image_format: 'png',
         jpeg_quality: 90,
     });
@@ -63,6 +65,7 @@
                 $(".avatar-crop").attr('src',photo.attr('src'));
                 $('#avatar_crop').val(photo.attr('src'));
                 $('#avatar_type').val('capture');
+                Webcam.reset();
                 $('#modal-md').modal('hide');
             }else{
                 alert('no photo captured');

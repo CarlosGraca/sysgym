@@ -32,7 +32,7 @@ class UserController extends Controller
      */
     public function index()
     {
-        $users = User::all();
+        $users = User::where(['tenant_id'=>\Auth::user()->tenant_id])->get();
 
         if (\Request::wantsJson()) {
             return $users;

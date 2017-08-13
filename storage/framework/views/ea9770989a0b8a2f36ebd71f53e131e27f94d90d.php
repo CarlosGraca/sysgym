@@ -62,12 +62,12 @@ $status_color = ['danger','success'];
                                     </a>
                                     
 
-                                    
+                                    <?php if($item->status != 1): ?>
                                         
                                         <a href="<?php echo e(route('matriculation.edit',$item->id)); ?>"  data-toggle="tooltip" title="<?php echo e(trans('adminlte_lang::message.edit')); ?>" id="update-procedure">
                                             <i class="fa fa-edit"></i>
                                         </a>
-                                        
+                                        <?php endif; ?>
 
                                         
                                         
@@ -97,7 +97,7 @@ $status_color = ['danger','success'];
 
 
                                         
-                                        <a href="<?php echo e(url('payments/create?idCliente='.$item->client_id)); ?>" target="_blank" role="button" data-toggle="tooltip" title="<?php echo e(trans('adminlte_lang::message.payments')); ?>">
+                                        <a href="<?php echo e(url('payments/create?idCliente='.$item->client_id.'&idMatriculation='.$item->id)); ?>" target="_blank" role="button" data-toggle="tooltip" title="<?php echo e(trans('adminlte_lang::message.payments')); ?>">
                                             <i class="fa fa-money"></i>
                                         </a>
                                         

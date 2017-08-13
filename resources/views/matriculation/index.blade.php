@@ -60,12 +60,12 @@ $status_color = ['danger','success'];
                                     </a>
                                     {{--@endcan--}}
 
-                                    {{--@if($item->status == 1)--}}
+                                    @if($item->status != 1)
                                         {{--@can('edit_matriculation')--}}
                                         <a href="{{ route('matriculation.edit',$item->id) }}"  data-toggle="tooltip" title="{{ trans('adminlte_lang::message.edit') }}" id="update-procedure">
                                             <i class="fa fa-edit"></i>
                                         </a>
-                                        {{--@endcan--}}
+                                        @endcan
 {{----}}
                                         {{--@can('publish_matriculation')--}}
                                         {{--<a href="#publish" data-toggle="tooltip" id="publish-matriculation" title="{{ trans('adminlte_lang::message.publish_matriculation') }}" data-key="{{ $item->id }}" data-name="{{ trans('adminlte_lang::message.of').' '.$item->client->name }}">--}}
@@ -95,7 +95,7 @@ $status_color = ['danger','success'];
 
 {{--                                    @if($item->status == 3)--}}
                                         {{--@can('edit_payment')--}}
-                                        <a href="{{url('payments/create?idCliente='.$item->client_id) }}" target="_blank" role="button" data-toggle="tooltip" title="{{ trans('adminlte_lang::message.payments') }}">
+                                        <a href="{{url('payments/create?idCliente='.$item->client_id.'&idMatriculation='.$item->id) }}" target="_blank" role="button" data-toggle="tooltip" title="{{ trans('adminlte_lang::message.payments') }}">
                                             <i class="fa fa-money"></i>
                                         </a>
                                         {{--@endcan--}}

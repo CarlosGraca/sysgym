@@ -262,7 +262,7 @@ $status_color = $defaults->getStatusColor();
                                                     <a href="<?php echo e(route('matriculation.show',$item->id)); ?>" target="_blank" data-toggle="tooltip" title="<?php echo e(trans('adminlte_lang::message.view')); ?>">
                                                         <i class="fa fa-eye"></i>
                                                     </a>
-                                                    <a href="<?php echo e(route('payments.create','idCliente='.$client->id)); ?>"  title='<?php echo e(trans('adminlte_lang::message.payment')); ?>' >
+                                                    <a href="<?php echo e(route('payments.create','idCliente='.$client->id.'&idMatriculation='.$item->id)); ?>"  title='<?php echo e(trans('adminlte_lang::message.payment')); ?>' target="_blank" >
                                                         <i class="fa fa-money"></i>
                                                     </a>
                                                 </td>

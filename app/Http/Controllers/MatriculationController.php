@@ -32,7 +32,7 @@ class MatriculationController extends Controller
      */
     public function index()
     {
-        $matriculation = Matriculation::all();
+        $matriculation = Matriculation::where(['branch_id'=>\Auth::user()->branch_id,'tenant_id'=>\Auth::user()->tenant_id])->get();
         return view('matriculation.index',compact('matriculation'));
     }
 

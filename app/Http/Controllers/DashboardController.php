@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Matriculation;
 use App\Models\Modality;
+use App\Models\Payment;
 use Illuminate\Http\Request;
 use App\Models\Client;
 use Auth;
@@ -31,8 +32,10 @@ class DashboardController extends Controller
         $total_i = Client::where('status', 0)->where(['branch_id'=>Auth::user()->branch_id,'tenant_id'=>Auth::user()->tenant_id])->count();
         $total_m = Modality::where(['branch_id'=>Auth::user()->branch_id,'tenant_id'=>Auth::user()->tenant_id])->count();
         $total_mt = Matriculation::where(['branch_id'=>Auth::user()->branch_id,'tenant_id'=>Auth::user()->tenant_id])->count();
+        $total_p = Payment::where(['branch_id'=>Auth::user()->branch_id,'tenant_id'=>Auth::user()->tenant_id])->count();
 
-        return view('dashboard.index',compact('total_a','total_i','total_m','total_mt'));
+
+        return view('dashboard.index',compact('total_a','total_i','total_m','total_mt','total_p'));
     }
 
     /**
