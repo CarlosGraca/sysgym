@@ -15,7 +15,7 @@ class TenantMenu extends Model
     }
 
     public function permissions(){
-    	return $this->belongsTo('App\Models\permission','id','tenant_menu_id');
+    	return $this->belongsTo('App\Models\Permission','id','tenant_menu_id');
     }
 
 

@@ -35,7 +35,7 @@
 		                    
 		                    <th class=""><?php echo e(trans('adminlte_lang::message.title')); ?></th>
 		                    <th class=""><?php echo e(trans('adminlte_lang::message.type')); ?></th>
-		                    <th class=""><?php echo e(trans('adminlte_lang::message.profile')); ?></th>
+		                    <th class=""><?php echo e(trans('adminlte_lang::message.role')); ?></th>
 		                    <th class=""></th>
 		                  </tr>
 		                </thead>

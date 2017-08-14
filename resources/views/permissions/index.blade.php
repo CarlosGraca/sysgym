@@ -33,7 +33,7 @@
 		                    {{--<th style="width: 10px" class="col-md-1">#</th>--}}
 		                    <th class="">{{ trans('adminlte_lang::message.title') }}</th>
 		                    <th class="">{{ trans('adminlte_lang::message.type') }}</th>
-		                    <th class="">{{ trans('adminlte_lang::message.profile') }}</th>
+		                    <th class="">{{ trans('adminlte_lang::message.role') }}</th>
 		                    <th class=""></th>
 		                  </tr>
 		                </thead>
