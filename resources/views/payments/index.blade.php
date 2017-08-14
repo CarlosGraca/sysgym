@@ -13,7 +13,11 @@
 @endsection
 
 @inject('Defaults', 'App\Http\Controllers\Defaults')
-
+@include('layouts.shared.color_status')
+<?php
+	$status = [trans('adminlte_lang::message.inactive'),trans('adminlte_lang::message.active'),trans('adminlte_lang::message.expired')];
+	$status_color = ['danger','success','info'];
+?>
 @section('main-content')
 	<div class="row">
 	    <div class="col-lg-12">
@@ -33,12 +37,14 @@
 	                <table id="table-payments" class="table table-bordered table-striped table-design">
 		                <thead>
 		                  <tr>
-		                    {{--<th style="width: 10px" class="col-md-1">#</th>--}}
-							  <th class="col-md-1">{{ trans('adminlte_lang::message.date') }}</th>
+		                    {{--<th style="width: 10px" class="col-md-1">#</th>
+							  <th class="col-md-1">{{ trans('adminlte_lang::message.date') }}</th>--}}
 							  <th class="col-md-2">{{ trans('adminlte_lang::message.client') }}</th>
-							  <th class="col-md-2">{{ trans('adminlte_lang::message.payment_method') }}</th>
-							  <th class="col-md-1">{{ trans('adminlte_lang::message.value_pay') }}</th>
-							  <th class="col-md-1">{{ trans('adminlte_lang::message.total') }}</th>
+							  <th class="col-md-2">{{ trans('adminlte_lang::message.modality') }}</th>
+							  <th class="col-md-2">{{ trans('adminlte_lang::message.value_pay') }}</th>
+							  <th class="col-md-2 text-center">{{ trans('adminlte_lang::message.start_date') }}</th>
+                              <th class="col-md-2 text-center">{{ trans('adminlte_lang::message.end_date') }}</th>
+							  
 							  <th class="col-md-1">{{ trans('adminlte_lang::message.status') }}</th>
 							  <th class="col-md-1"></th>
 		                  </tr>
@@ -46,12 +52,13 @@
 		                <tbody class="payments_table">
                           @foreach ($payments as $payment)
                                 <tr data-key="{{ $payment->id }}">
-									<td class="date text-center">{{ \Carbon\Carbon::parse($payment->created_at)->format('d/m/Y') }}</td>
-									<td class="name">{{ $payment->client_id }}</td>
-									<td class="payment_method">{{ trans('adminlte_lang::message.'.($payment->payment_method != null ? $payment->payment_method : 'none'))  }}</td>
-									<td class="paid">{{ $Defaults->currency($payment->value_pay) }}</td>
-									<td class="total">{{ $Defaults->currency($payment->total) }}</td>
-									<td class="status">{{ $payment->status }}</td>
+									{{-- <td class="date text-center">{{ \Carbon\Carbon::parse($payment->created_at)->format('d/m/Y') }}</td> --}}
+									<td class="name">{{ $payment->client->name }}</td>
+									<td>{{$payment->matriculation->modality->name}}</td>
+									<td class="total">{{ $Defaults->currency($payment->value_pay) }}</td>
+									<td>{{ \Carbon\Carbon::parse($payment->start_date)->format('d/m/Y') }}</td>
+									<td>{{ \Carbon\Carbon::parse($payment->end_date)->format('d/m/Y') }}</td>
+									<td><span class="label label-{{ $status_color[$payment->status] }}">{{ $status[$payment->status] }}</span></td>
 									<td>
 										{{-- @can('edit_payment') --}}
 										<a href="{{ route('payments.edit',$payment->id) }}"  data-toggle="tooltip" title="{{ trans('adminlte_lang::message.edit') }}" id="edit-payments">

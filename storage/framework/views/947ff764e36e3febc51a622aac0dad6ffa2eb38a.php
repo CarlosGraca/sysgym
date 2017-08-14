@@ -14,7 +14,11 @@
 <?php $__env->stopSection(); ?>
 
 <?php $Defaults = app('App\Http\Controllers\Defaults'); ?>
-
+<?php echo $__env->make('layouts.shared.color_status', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+<?php
+	$status = [trans('adminlte_lang::message.inactive'),trans('adminlte_lang::message.active'),trans('adminlte_lang::message.expired')];
+	$status_color = ['danger','success','info'];
+?>
 <?php $__env->startSection('main-content'); ?>
 	<div class="row">
 	    <div class="col-lg-12">
@@ -36,11 +40,12 @@
 		                <thead>
 		                  <tr>
 		                    
-							  <th class="col-md-1"><?php echo e(trans('adminlte_lang::message.date')); ?></th>
 							  <th class="col-md-2"><?php echo e(trans('adminlte_lang::message.client')); ?></th>
-							  <th class="col-md-2"><?php echo e(trans('adminlte_lang::message.payment_method')); ?></th>
-							  <th class="col-md-1"><?php echo e(trans('adminlte_lang::message.value_pay')); ?></th>
-							  <th class="col-md-1"><?php echo e(trans('adminlte_lang::message.total')); ?></th>
+							  <th class="col-md-2"><?php echo e(trans('adminlte_lang::message.modality')); ?></th>
+							  <th class="col-md-2"><?php echo e(trans('adminlte_lang::message.value_pay')); ?></th>
+							  <th class="col-md-2 text-center"><?php echo e(trans('adminlte_lang::message.start_date')); ?></th>
+                              <th class="col-md-2 text-center"><?php echo e(trans('adminlte_lang::message.end_date')); ?></th>
+							  
 							  <th class="col-md-1"><?php echo e(trans('adminlte_lang::message.status')); ?></th>
 							  <th class="col-md-1"></th>
 		                  </tr>
@@ -48,12 +53,13 @@
 		                <tbody class="payments_table">
                           <?php $__currentLoopData = $payments; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $payment): $__env->incrementLoopIndices(); $loop = $__env->getFirstLoop(); ?>
                                 <tr data-key="<?php echo e($payment->id); ?>">
-									<td class="date text-center"><?php echo e(\Carbon\Carbon::parse($payment->created_at)->format('d/m/Y')); ?></td>
-									<td class="name"><?php echo e($payment->client_id); ?></td>
-									<td class="payment_method"><?php echo e(trans('adminlte_lang::message.'.($payment->payment_method != null ? $payment->payment_method : 'none'))); ?></td>
-									<td class="paid"><?php echo e($Defaults->currency($payment->value_pay)); ?></td>
-									<td class="total"><?php echo e($Defaults->currency($payment->total)); ?></td>
-									<td class="status"><?php echo e($payment->status); ?></td>
+									
+									<td class="name"><?php echo e($payment->client->name); ?></td>
+									<td><?php echo e($payment->matriculation->modality->name); ?></td>
+									<td class="total"><?php echo e($Defaults->currency($payment->value_pay)); ?></td>
+									<td><?php echo e(\Carbon\Carbon::parse($payment->start_date)->format('d/m/Y')); ?></td>
+									<td><?php echo e(\Carbon\Carbon::parse($payment->end_date)->format('d/m/Y')); ?></td>
+									<td><span class="label label-<?php echo e($status_color[$payment->status]); ?>"><?php echo e($status[$payment->status]); ?></span></td>
 									<td>
 										
 										<a href="<?php echo e(route('payments.edit',$payment->id)); ?>"  data-toggle="tooltip" title="<?php echo e(trans('adminlte_lang::message.edit')); ?>" id="edit-payments">
