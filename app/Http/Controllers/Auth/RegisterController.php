@@ -172,7 +172,7 @@ class RegisterController extends Controller
 
     public function saveMenu($user){        
 
-        $menus = Menu::where('status',1)->get();
+        $menus = Menu::where('status',1)->where('defualt_menu',1)->get();
         foreach ($menus  as $key => $menu) {
             $tenant_menu = new TenantMenu();
             $tenant_menu->menu_id = $menu->id;

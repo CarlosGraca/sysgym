@@ -17,29 +17,28 @@
 
 	<div class="row">
 	    <div class="col-lg-12">
-	        <div class="box box-default">
-	            <div class="box-header with-border">
-				  <h3 class="box-title">
-					 <strong>{{ trans('adminlte_lang::message.system_user') }}: </strong><span>{{ \Auth::user()->name }}</span>
-				  </h3>
+	        {!! Form::open(['route'=>'permissions.store', 'id'=>'permissions-form']) !!}
+		        <div class="box box-default">
+		            <div class="box-header with-border">
+					  <h3 class="box-title">
+						<a href="{{ url('permissions') }}" class="btn btn-primary btn-sm" role="button" data-toggle="tooltip" title="{{ trans('adminlte_lang::message.back') }}">
+									 <i class="fa  fa-arrow-left"></i>
+								</a>
+					  </h3>
 
-					<div class="pull-right box-tools">
-							<a href="{{ url('permissions') }}" class="btn btn-primary btn-sm" role="button" data-toggle="tooltip" title="{{ trans('adminlte_lang::message.back') }}">
-								 <i class="fa  fa-arrow-left"></i>
-							</a>
+						<div class="pull-right box-tools">						
+                            <button type="submit" class="btn btn-primary btn-sm" data-toggle="tooltip" title="{{ trans('adminlte_lang::message.save') }}" ><i class="fa fa-save"></i></button>
+						</div><!-- /. tools -->
+		            </div><!-- /.box-header -->
 
-							<a href="#" class="btn btn-primary btn-sm" role="button" data-toggle="tooltip" title="{{ trans('adminlte_lang::message.save') }}" id="add-permission">
-								 <i class="fa fa-save"></i>
-							</a>
-					</div><!-- /. tools -->
-	            </div><!-- /.box-header -->
-
-	            <div class="box-body">
-					{!! Form::open(['route'=>'permissions.store', 'id'=>'permission-form','files'=>true]) !!}
-	                 	@include('permissions.form', ['type'=>'create'])
-					{!! Form::close() !!}
-				</div>
-	        </div>
+		            <div class="box-body">
+						
+					  
+		                 	@include('permissions.form')
+						
+			  		</div>
+	             </div>
+	        {!! Form::close() !!}
 	    </div>
 	</div>
 @endsection

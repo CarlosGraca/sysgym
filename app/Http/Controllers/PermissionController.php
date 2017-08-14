@@ -6,6 +6,10 @@ use App\Http\Requests\PermissionRequest;
 use App\Models\Permission;
 //use Illuminate\Http\Request;
 use Request;
+use Auth;
+use App\Models\Role;
+use App\Models\TenantMenu;
+use Input;
 
 class PermissionController extends Controller
 {
@@ -17,7 +21,8 @@ class PermissionController extends Controller
     public function index()
     {
         //
-        $permissions = Permission::all();
+       // $permissions = Permission::where('tenant_id'=>Auth::user()->tenant_id)->get();
+         $permissions = Permission::all();
         return view('permissions.index',compact('permissions'));
     }
 
@@ -28,24 +33,42 @@ class PermissionController extends Controller
      */
     public function create()
     {
-        return view('permissions.create');
+        $profiles = Role::where('tenant_id',Auth::user()->tenant_id)->pluck('display_name','id')->all();
+        $menus = TenantMenu::with('menus')->get()->where('tenant_id',Auth::user()->tenant_id)->pluck('menus.title','id');
+
+        $m_menus = TenantMenu::with('menus')->with('permissions')->get()->where('tenant_id',Auth::user()->tenant_id)
+                              ->where('permissions.role_id',Auth::user()->role_id)
+                              ->pluck('menus.title','id');
+
+        return view('permissions.create',compact('profiles','menus','m_menus'));
     }
 
-    /**
+    /**[]
      * Store a newly created resource in storage.
      *
      * @param  PermissionRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(PermissionRequest $request)
+      public function store(PermissionRequest $request)
     {
-        $permissions = Permission::create($request->all());
-
-        if (\Request::wantsJson()){
-            $message = trans('adminlte_lang::message.msg_add_success_permissions');
-            return ['id'=>$permissions->id,'name'=>$permissions->name,'message'=>$message,'form'=>'permissions','type'=>'success'];
-        }else{
-            return view('permissions.create');
+        
+        foreach(Input::get('permissions_menus') as $selected_id){
+            $exist = Permission::where('type','MENU')->
+                    where('tenant_menu_id',$selected_id)->
+                    where('role_id',Input::get('role_id'))->first();
+            if (!empty($exist)){                 
+                $permission = new Permission;                      
+                $permission->type = 'MENU';
+                $permission->tenant_menu_id=$selected_id;
+                $permission->role_id=Input::get('role_id');
+                $permission->save();            }
+        }
+      
+        session()->flash('flash_message',trans('adminlte_lang::message.msg_add_success_permissions'));
+        if (Request::wantsJson()){
+            return $permission;
+        }else{  
+            return redirect('permissions');
         }
     }
 
@@ -68,7 +91,13 @@ class PermissionController extends Controller
      */
     public function edit(Permission $permission)
     {
-        return view('permissions.edit',compact('permission'));
+        $profiles = Role::where('tenant_id',Auth::user()->tenant_id)->pluck('display_name','id')->all();
+        $menus = TenantMenu::with('menus')->get()->where('tenant_id',Auth::user()->tenant_id)->pluck('menus.title','id');
+
+        $m_menus = TenantMenu::with('menus')->with('permissions')->get()->where('tenant_id',Auth::user()->tenant_id)
+                              ->where('permissions.role_id',Auth::user()->role_id)
+                              ->pluck('menus.title','id');
+        return view('permissions.edit',compact('permission','profiles','menus','m_menus'));
     }
 
     /**

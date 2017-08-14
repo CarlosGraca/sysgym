@@ -7,8 +7,8 @@ $baseDir = dirname($vendorDir);
 
 return array(
     'AddColumnsBranchIdModalities' => $baseDir . '/database/migrations/2017_08_07_131627_add_columns_branch_id_modalities.php',
-    'AddColumnsPayements' => $baseDir . '/database/migrations/2017_08_07_224057_add_columns_payements.php',
     'AddColumnsTenantIdModalities' => $baseDir . '/database/migrations/2017_08_07_132020_add_columns_tenant_id_modalities.php',
+    'AddColumsDefaultMenu' => $baseDir . '/database/migrations/2017_08_14_044036_add_colums_default_menu.php',
     'ChangeTanantToUsersTable' => $baseDir . '/database/migrations/2017_04_04_145926_change_tanant_to_users_table.php',
     'Cpdf' => $vendorDir . '/dompdf/dompdf/lib/Cpdf.php',
     'CreateBranchPermissionTable' => $baseDir . '/database/migrations/2017_10_14_115234_create_branch_permission_table.php',

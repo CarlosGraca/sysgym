@@ -40,10 +40,11 @@ $status_color = ['danger','success','info'];
 		                <thead>
 		                  <tr>
 		                    
-		                    <th class="col-md-3"><?php echo e(trans('adminlte_lang::message.name')); ?></th>
+		                    <th class="col-md-2"><?php echo e(trans('adminlte_lang::message.name')); ?></th>
 		                    <th class="col-md-3"><?php echo e(trans('adminlte_lang::message.email')); ?></th>
 		                    <th class="col-md-2"><?php echo e(trans('adminlte_lang::message.contacts')); ?></th>
-		                    <th class="col-md-3"><?php echo e(trans('adminlte_lang::message.address')); ?></th>
+							  <th class="col-md-3"><?php echo e(trans('adminlte_lang::message.address')); ?></th>
+							  <th class="col-md-1"><?php echo e(trans('adminlte_lang::message.status')); ?></th>
 		                    <th class="col-md-1"></th>
 		                  </tr>
 		                </thead>
@@ -55,7 +56,8 @@ $status_color = ['danger','success','info'];
                                     <td><?php echo e($branch->email); ?></td>
                                     <td><?php echo e($branch->phone); ?> / <?php echo e($branch->fax); ?></td>
                                     <td><?php echo e($branch->address); ?>, <?php echo e($branch->city); ?></td>
-                                    <td>
+									<td><span class="label label-<?php echo e($status_color[$branch->status]); ?>"><?php echo e($status[$branch->status]); ?></span></td>
+									<td>
 										
 										<a href="<?php echo e(route('branches.show',$branch->id)); ?>" data-toggle="tooltip" title="<?php echo e(trans('adminlte_lang::message.show_details')); ?>">
 											<i class="fa fa-eye"></i>

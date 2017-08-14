@@ -33,6 +33,7 @@ class TenantMenuController extends Controller
         $menu_id = Input::get('id');
         $menus = Menu::where('status',1)->pluck('title','id')->all();
         $tenants = Tenant::pluck('company_name','id')->all();
+        
         return view('tenant_menu.create',compact('menus','tenants','menu_id'));
     }
 

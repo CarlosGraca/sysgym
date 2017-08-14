@@ -31,9 +31,10 @@
 		                <thead>
 		                  <tr>
 		                    {{--<th style="width: 10px" class="col-md-1">#</th>--}}
-		                    <th class="col-md-3">{{ trans('adminlte_lang::message.title') }}</th>
-		                    <th class="col-md-8">{{ trans('adminlte_lang::message.description') }}</th>
-		                    <th class="col-md-1"></th>
+		                    <th class="">{{ trans('adminlte_lang::message.title') }}</th>
+		                    <th class="">{{ trans('adminlte_lang::message.type') }}</th>
+		                    <th class="">{{ trans('adminlte_lang::message.profile') }}</th>
+		                    <th class=""></th>
 		                  </tr>
 		                </thead>
 		                <tbody class="permissions_table">
@@ -41,7 +42,8 @@
                                 <tr data-key="{{ $permission->id }}">
                                     {{--<td>{{ $permission->id }}</td>--}}
                                     <td>{{ $permission->tenant_menu->menus->title }}</td>
-                                    <td>{{ $permission->label }}</td>
+                                    <td>{{$permission->type}}</td>
+                                    <td>{{ $permission->role->display_name }}</td>
                                     <td>
 										<a href="#disable" style="display: {{ $permission->status == 1 ? 'initial' : 'none' }};" data-toggle="tooltip" id="disable-permission" title="{{ trans('adminlte_lang::message.disable') }}" data-key="{{ $permission->id }}" data-name="{{ $permission->name }}">
 											<i class="fa fa-user-o"></i>
