@@ -40,6 +40,7 @@
 		                </thead>
 		                <tbody class="permissions_table">
                           <?php $__currentLoopData = $permissions; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $permission): $__env->incrementLoopIndices(); $loop = $__env->getFirstLoop(); ?>
+							  <?php if($permission->tenant_menu->tenant_id === \Auth::user()->tenant_id ): ?>
                                 <tr data-key="<?php echo e($permission->id); ?>">
                                     
                                     <td><?php echo e($permission->tenant_menu->menus->title); ?></td>
@@ -57,6 +58,7 @@
 										</a>
                                     </td>
                                 </tr>
+							  <?php endif; ?>
                             <?php endforeach; $__env->popLoop(); $loop = $__env->getFirstLoop(); ?>
 		                <tbody>
                     </table>

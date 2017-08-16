@@ -20,22 +20,21 @@
 	        <div class="box box-default">
 	            <div class="box-header with-border">
 	              <h3 class="box-title">
-	              	 <strong>{{ trans('adminlte_lang::message.system_user') }}: </strong><span>{{ Auth::user()->name }}</span>
+					  <a href="{{ url('users') }}" class="btn btn-primary btn-sm" role="button" data-toggle="tooltip" title="Voltar">
+						  <i class="fa  fa-arrow-left"></i> {{ trans('adminlte_lang::message.back') }}
+					  </a>
+	              	 <span>{{ trans('adminlte_lang::message.new_user') }}</span>
 	              </h3>
 					<div class="pull-right box-tools">
-							<a href="{{ url('users') }}" class="btn btn-primary btn-sm" role="button" data-toggle="tooltip" title="Voltar">
-								 <i class="fa  fa-arrow-left"></i> {{ trans('adminlte_lang::message.back') }}
-							</a>
-
-							<a href="#" class="btn btn-primary btn-sm" role="button" data-toggle="tooltip" title="Save" id="add-user">
-								 <i class="fa fa-save"></i> {{ trans('adminlte_lang::message.save') }}
-							</a>
+						<a href="#" class="btn btn-primary btn-sm" data-toggle="tooltip" title="Save" id="add-user">
+							 <i class="fa fa-save"></i> {{ trans('adminlte_lang::message.save') }}
+						</a>
 					</div><!-- /. tools -->
 	            </div><!-- /.box-header -->
 
 	            <div class="box-body">
 					{!! Form::open(['route'=>'users.store', 'id'=>'user-form','files'=>true]) !!}
-	                 	@include('users.form', ['type'=>'build'])
+	                 	@include('users.form', ['type'=>'create'])
 					{!! Form::close() !!}
 				</div>
 	        </div>

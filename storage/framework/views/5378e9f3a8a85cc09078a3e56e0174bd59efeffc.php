@@ -57,7 +57,7 @@
                 </a>
             </li>
             <li class="user user-menu">
-                <a style="cursor: pointer;" data-toggle="tooltip" data-key="<?php echo e(\Auth::user()->branch_id); ?>" class="branch-select" title="<?php echo e(trans('adminlte_lang::message.branch_select_title')); ?>">
+                <a style="cursor: pointer;" data-toggle="tooltip" data-key="<?php echo e(\Auth::user()->branch_id); ?>" <?php if(count(\auth::user()->branch_permission) > 1): ?> class="branch-select" <?php endif; ?> title="<?php echo e(trans('adminlte_lang::message.branch_select_title')); ?>">
                     <span class="hidden-xs"> <span> <i class="fa fa-building"></i> <?php echo e(\Auth::user()->branch_id != 0 ? \Auth::user()->branch->name : trans('adminlte_lang::message.all_branch')); ?></span>  <span id="clock"></span></span>
                 </a>
             </li>

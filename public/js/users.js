@@ -121,6 +121,11 @@ $(function(){
         change_status($(this).attr('data-key'), 'enable', $(this).attr('data-name'), $(this), 'users/enable', 'bg-danger', 'user');
     });
 
+    //EDIT role GROUP
+    $(document).on('click','#add-user',function (e) {
+        e.preventDefault();
+        save($('#user-form'), $('#user-form')[0], 'create');
+    });
 
     //EDIT role GROUP
     $(document).on('click','#update-user',function (e) {

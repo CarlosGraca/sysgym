@@ -38,13 +38,8 @@
 					<h3 class="box-title">{{ trans('adminlte_lang::message.user_profile') }}</h3>
 					<div class="pull-right box-tools">
 						<a href="{{ url('users') }}" class="btn btn-primary btn-sm" role="button" data-toggle="tooltip" title="{{ trans('adminlte_lang::message.user_list') }}">
-							<i class="fa fa-list"></i>
+							<i class="fa fa-list"></i> {{ trans('adminlte_lang::message.user_list') }}
 						</a>
-						@if($user->employee_id != 0)
-							<a href="{{ route('employees.show',$user->employee_id) }}" class="btn btn-primary btn-sm" role="button" data-toggle="tooltip" title="{{ trans('adminlte_lang::message.show_details') }}">
-								<i class="fa fa-user-md"></i>
-							</a>
-						@endif
 					</div>
 				</div>
 	            <div class="box-body">
@@ -64,17 +59,16 @@
 					        		<div class="col-lg-12">
 					        			<ul class="list-group list-group-unbordered">
 						                    <li class="list-group-item">
-						                      <b>{{ trans('adminlte_lang::message.name') }}: </b><span class="user-name">{{ $user->name }}</span>
+						                      <b>{{ trans('adminlte_lang::message.name') }}: </b><a>{{ $user->name }}</a>
 						                    </li>
 						                    <li class="list-group-item">
-						                      <b>{{ trans('adminlte_lang::message.email') }}: </b>{{$user->email}}
+						                      <b>{{ trans('adminlte_lang::message.email') }}: </b><a>{{$user->email}}</a>
 						                    </li>
-											<?php $role =  $user->roles->first(); ?>
 											<li class="list-group-item">
-												<b>{{ trans('adminlte_lang::message.role') }}: </b>{{ $role['name'] }}
+												<b>{{ trans('adminlte_lang::message.role') }}: </b> <a>{{ $user->role->display_name}}</a>
 											</li>
 						                    <li class="list-group-item">
-						                      <b>{{ trans('adminlte_lang::message.create_date') }}: </b> {{ \Carbon\Carbon::parse($user->created_at)->format('d/m/Y') }}
+						                      <b>{{ trans('adminlte_lang::message.create_date') }}: </b> <a>{{ \Carbon\Carbon::parse($user->created_at)->format('d/m/Y') }}</a>
 						                    </li>
 						                </ul>
 					        		</div>
@@ -85,15 +79,16 @@
 								<table id="table-documents" class="table table-bordered table-striped table-design">
 									<thead>
 										<tr>
-											<th class="col-md-2">{{ trans('adminlte_lang::message.name') }}</th>
-											<th class="col-md-10">{{ trans('adminlte_lang::message.description') }}</th>
+											<th class="col-md-2">{{ trans('adminlte_lang::message.type') }}</th>
+											<th class="col-md-10">{{ trans('adminlte_lang::message.name') }}</th>
 										</tr>
 									</thead>
 									<tbody>
-									@foreach ($role->permission as $permission)
+									{{--{{$user->role->permission}}--}}
+									@foreach ($user->role->permission as $permission)
 										<tr>
-											<td class="name">{{$permission->name}} </td>
-											<td class="description">{{$permission->label}} </td>
+											<td>{{$permission->type}} </td>
+											<td>{{$permission->tenant_menu->menus->title}} </td>
 										</tr>
 									@endforeach
 									</tbody>

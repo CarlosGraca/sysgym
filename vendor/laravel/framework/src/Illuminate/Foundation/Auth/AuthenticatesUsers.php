@@ -114,7 +114,13 @@ trait AuthenticatesUsers
     protected function authenticated(Request $request, $user)
     {
         //
-        $user->branch_id = $user->branch_default_id;
+        if(count($user->branch_permission) == 1)
+            $user->branch_id = $user->branch_permission->first()->branch_id;
+        else if(count($user->branch_permission) > 1)
+            $user->branch_id = $user->branch_default_id;
+        else
+            $user->branch_id = 0;
+
         $user->save();
     }
 
