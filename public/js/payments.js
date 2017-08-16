@@ -100,13 +100,21 @@ function valide_payment(){
         }
         $('#table-payment-modality').find('.payment-modality').each(function (e,d) { 
             _t_payment_check = $(this).find('.t-check-payment').attr('data-value');
-            if (_t_payment_check){
+            _end_date        = $(this).find('.payment-end-date').val();
+            if(!_end_date && _t_payment_check){
+                status = 2;      
+                return;          
+            }
+            else if (_t_payment_check){
                status = 1;  
             }
         });
         if (status === 0){
             message_error = 'Selecione pelo menos uma matricula, por favor.';
             return false;
+        }else if(status===2){
+            message_error = 'Field End Date is required.';
+                return false;
         }
         return true;
     }
@@ -140,11 +148,12 @@ function valide_payment(){
             
         });       
         requestData=JSON.stringify(requestData);
+        console.log(requestData);
         $.ajax({
             url: url,
             type: 'post',
             dataType: 'json',
-            //contentType: 'application/json',
+            contentType: 'application/json',
             data: requestData,
             success: function (data) {
                 $('.loader-name').css('display', 'none');

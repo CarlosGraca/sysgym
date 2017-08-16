@@ -35,6 +35,7 @@
 
 	            <div class="box-body">
 					{!! Form::open(['route'=>'payments.store', 'id'=>'payment-form','files'=>true]) !!}
+					    {{ csrf_field() }}
 	                 	@include('payments.form', ['type'=>'create'])
 					{!! Form::close() !!}
 				</div>

@@ -63,7 +63,7 @@
 
 						<div class="col-md-4 col-sm-6 col-xs-12">
 							<div class="form-group form-group-sm">
-								<?php echo Form::label('email','(*) '.trans('adminlte_lang::message.email')); ?>
+								<?php echo Form::label('email',trans('adminlte_lang::message.email')); ?>
 
 								<?php echo Form::email('email', ($type == 'update' ? $branch->email : null), ['class'=>'form-control']); ?>
 

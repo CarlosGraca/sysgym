@@ -213,7 +213,7 @@
 <script src="{{ asset('/js/modalities.js')}}" type="text/javascript"></script>
 <script src="{{ asset('/js/payments.js')}}" type="text/javascript"></script>
 <script src="{{ asset('/js/roles.js')}}" type="text/javascript"></script>
-<script src="{{ asset('/js/permissions.js')}}" type="text/javascript"></script>
+{{-- <script src="{{ asset('/js/permissions.js')}}" type="text/javascript"></script> --}}
 <script src="{{ asset('/js/menus.js')}}" type="text/javascript"></script>
 <script src="{{ asset('/js/backups.js')}}" type="text/javascript"></script>
 <script src="{{ asset('/js/accounts.js')}}" type="text/javascript"></script>

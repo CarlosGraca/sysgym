@@ -379,8 +379,8 @@ class ComposerStaticInitb3e45640c40c94e17d0549a401be79a6
 
     public static $classMap = array (
         'AddColumnsBranchIdModalities' => __DIR__ . '/../..' . '/database/migrations/2017_08_07_131627_add_columns_branch_id_modalities.php',
-        'AddColumnsPayements' => __DIR__ . '/../..' . '/database/migrations/2017_08_07_224057_add_columns_payements.php',
         'AddColumnsTenantIdModalities' => __DIR__ . '/../..' . '/database/migrations/2017_08_07_132020_add_columns_tenant_id_modalities.php',
+        'AddColumsDefaultMenu' => __DIR__ . '/../..' . '/database/migrations/2017_08_14_044036_add_colums_default_menu.php',
         'ChangeTanantToUsersTable' => __DIR__ . '/../..' . '/database/migrations/2017_04_04_145926_change_tanant_to_users_table.php',
         'Cpdf' => __DIR__ . '/..' . '/dompdf/dompdf/lib/Cpdf.php',
         'CreateBranchPermissionTable' => __DIR__ . '/../..' . '/database/migrations/2017_10_14_115234_create_branch_permission_table.php',

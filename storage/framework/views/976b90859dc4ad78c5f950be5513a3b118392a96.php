@@ -16,7 +16,7 @@
 		<div class="form-group form-group-sm">
 			<?php echo Form::label('tenants',trans('adminlte_lang::message.company') ); ?>
 
-			<?php echo Form::select('tenants[]',  [''=>'Escolha a opcão']+ $tenants,null, ['class'=>'form-control select2','multiple'=>true,'style'=>'width: 100%;' ]); ?>
+			<?php echo Form::select('tenants[]',$tenants,null, ['class'=>'form-control select2','multiple'=>'multiple', 'style'=>'width: 100%;']); ?>
 
 		</div>
 	</div> 

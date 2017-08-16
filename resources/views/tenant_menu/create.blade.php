@@ -34,12 +34,12 @@
 	              </div><!-- /. tools -->
 	             
 					<div class="pull-right box-tools">
-						<a href="#!" class="btn btn-primary btn-sm" role="button" data-toggle="tooltip" title="Edit" id="edit-menu-button" style="display: none;" >
+						<a href="#!" class="btn btn-primary btn-sm" role="button" data-toggle="tooltip" title="Edit" id="edit-menu-tenant-button" style="display: none;" >
 							<i class="fa fa-edit"></i>
 						</a>
 
 
-						<button class="btn btn-primary btn-sm" role="button" data-toggle="tooltip" title="Save" id="add-menu" type="submit">
+						<button class="btn btn-primary btn-sm" role="button" data-toggle="tooltip" title="Save" id="add-menu-tenant" type="submit">
 							 <i class="fa fa-save"></i>
 						</button>
 					</div><!-- /. tools -->

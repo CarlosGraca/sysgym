@@ -33,9 +33,10 @@
 		                <thead>
 		                  <tr>
 		                    
-		                    <th class="col-md-3"><?php echo e(trans('adminlte_lang::message.title')); ?></th>
-		                    <th class="col-md-8"><?php echo e(trans('adminlte_lang::message.description')); ?></th>
-		                    <th class="col-md-1"></th>
+		                    <th class=""><?php echo e(trans('adminlte_lang::message.title')); ?></th>
+		                    <th class=""><?php echo e(trans('adminlte_lang::message.type')); ?></th>
+		                    <th class=""><?php echo e(trans('adminlte_lang::message.role')); ?></th>
+		                    <th class=""></th>
 		                  </tr>
 		                </thead>
 		                <tbody class="permissions_table">
@@ -43,7 +44,8 @@
                                 <tr data-key="<?php echo e($permission->id); ?>">
                                     
                                     <td><?php echo e($permission->tenant_menu->menus->title); ?></td>
-                                    <td><?php echo e($permission->label); ?></td>
+                                    <td><?php echo e($permission->type); ?></td>
+                                    <td><?php echo e($permission->role->display_name); ?></td>
                                     <td>
 										<a href="#disable" style="display: <?php echo e($permission->status == 1 ? 'initial' : 'none'); ?>;" data-toggle="tooltip" id="disable-permission" title="<?php echo e(trans('adminlte_lang::message.disable')); ?>" data-key="<?php echo e($permission->id); ?>" data-name="<?php echo e($permission->name); ?>">
 											<i class="fa fa-user-o"></i>

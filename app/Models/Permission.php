@@ -10,7 +10,7 @@ class Permission extends Model
     protected $fillable = ['tenant_menu_id', 'role_id', 'active', 'type'];
 
     public function role(){
-        return $this->belongsTo('App\Models\Role');
+        return $this->belongsTo('App\Models\Role','role_id');
     }
 
     public function tenant_menu(){

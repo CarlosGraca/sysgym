@@ -105,6 +105,7 @@ class PaymentController extends Controller
         $tenant_id = Auth::user()->tenant_id; 
         $user_id   = Auth::user()->id;
         $branch_id = Auth::user()->branch_id;
+       
         foreach(Input::get($request->all) as $req){
 
             $payment = new Payment();

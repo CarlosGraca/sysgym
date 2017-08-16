@@ -43,12 +43,12 @@ $status_color = ['danger','success','info'];
 	                <table id="table-menus" class="table table-hover table-design">
 		                <thead>
 		                  <tr>
-							<th class="col-md-4"><?php echo e(trans('adminlte_lang::message.title')); ?></th>
-							<th class="col-md-3"><?php echo e(trans('adminlte_lang::message.url')); ?></th>
-							<th class="col-md-2"><?php echo e(trans('adminlte_lang::message.icon')); ?></th>
-                            <th  class="col-md-2"><?php echo e(trans('adminlte_lang::message.menu_order')); ?></th>
-							<th class="col-md-2"><?php echo e(trans('adminlte_lang::message.status')); ?></th>
-							<th class="col-md-1"></th>
+							<th ><?php echo e(trans('adminlte_lang::message.title')); ?></th>
+							<th ><?php echo e(trans('adminlte_lang::message.url')); ?></th>
+							<th ><?php echo e(trans('adminlte_lang::message.icon')); ?></th>
+                            <th  ><?php echo e(trans('adminlte_lang::message.menu_order')); ?></th>
+							<th><?php echo e(trans('adminlte_lang::message.status')); ?></th>
+							<th ></th>
 		                  </tr>
 		                </thead>
 		                <tbody class="menus_table">

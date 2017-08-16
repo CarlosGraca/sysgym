@@ -39,6 +39,8 @@
 	            <div class="box-body">
 					<?php echo Form::open(['route'=>'payments.store', 'id'=>'payment-form','files'=>true]); ?>
 
+					    <?php echo e(csrf_field()); ?>
+
 	                 	<?php echo $__env->make('payments.form', ['type'=>'create'], array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
 					<?php echo Form::close(); ?>
 
