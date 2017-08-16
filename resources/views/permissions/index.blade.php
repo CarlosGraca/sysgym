@@ -39,6 +39,7 @@
 		                </thead>
 		                <tbody class="permissions_table">
                           @foreach ($permissions as $permission)
+							  @if($permission->tenant_menu->tenant_id === \Auth::user()->tenant_id )
                                 <tr data-key="{{ $permission->id }}">
                                     {{--<td>{{ $permission->id }}</td>--}}
                                     <td>{{ $permission->tenant_menu->menus->title }}</td>
@@ -57,6 +58,7 @@
 										</a>
                                     </td>
                                 </tr>
+							  @endif
                             @endforeach
 		                <tbody>
                     </table>

@@ -2,16 +2,19 @@
 
 namespace App\Http\Controllers\Auth;
 
-//use App\Models\Employee;
+
 use App\Http\Controllers\Defaults;
 use App\Http\Controllers\SendMailController;
+use App\Http\Requests\UserRequest;
 use App\Models\BranchPermission;
+use App\Models\Employee;
 use App\Models\Role;
 use App\User;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
-use \Illuminate\Http\Request;
-use Image;
+//use \Illuminate\Http\Request;
+//use Image;
+use Request;
 
 class UserController extends Controller
 {
@@ -48,27 +51,32 @@ class UserController extends Controller
      */
     public function create()
     {
-        $employees = Employee::pluck('name','id');
-        return view('users.create',compact('employees'));
+        $roles = Role::where(['tenant_id'=>\Auth::user()->tenant_id])->pluck('display_name','id');
+        return view('users.create',compact('roles'));
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  UserRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(UserRequest $request)
     {
         $user = new User();
         $default = new Defaults();
         $user->name = $request->name;
         $user->email = $request->email;
+        $user->role_id = $request->role;
         $user->password = bcrypt($request->password);
-        $user->employee_id = 0;
 
-        if ($request->hasFile('avatar')){
+        $data = $this->create($request->all())->toArray();
+        $data['token'] = str_random(25);
 
+        $branches = $request->get('branches');
+
+
+        if ($request->hasFile('avatar') || $request->avatar_type == 'capture'){
             $img_base64 = $request->avatar_crop;
             $filename = 'uploads/' .time().'.png';
             $default->base64_to_png($img_base64, $filename);
@@ -76,24 +84,24 @@ class UserController extends Controller
             $user->avatar = $filename;
         }
 
-//        if ($request->hasFile('avatar')){
-//
-//            $image = $request->file('avatar');
-//            $filename  = time() . '.' . $image->getClientOriginalExtension();
-//
-//            $path = public_path('uploads/' . $filename);
-//
-//            Image::make($image->getRealPath())->resize(300, 150)->save($path);
-//
-//            $user->avatar = 'uploads/' . $filename;
-//        }
 
-        $user->status = 1;
+        if(\Request::wantsJson()  && $user->save()){
 
-        if($user->save()){
-            \Auth::login($user, true);
-            $message = trans('adminlte_lang::message.msg_add_success_build_user');
-            return ['values'=>$user->name,'message'=>$message,'form'=>'build_user'];
+            if(count($branches) > 0){
+                foreach ($branches as $branch) {
+                    BranchPermission::create(['branch_id'=>$branch,'user_id'=>$user->id,'tenant_id' =>$user->tenant_id]);
+                }
+            }
+
+
+            Mail::send('auth.mails.confirmation', $data, function($message) use($data) {
+                $message->to($data['email']);
+                $message->subject('Registration Confirmation');
+            });
+
+//            \Auth::login($user, true);
+            $message = trans('adminlte_lang::message.msg_add_success_user');
+            return ['values'=>$user->name,'message'=>$message,'form'=>'user','type'=>'success'];
         }
     }
 
@@ -117,27 +125,24 @@ class UserController extends Controller
     public function edit(User $user)
     {
         //
-        $roles = Role::pluck('display_name','id');
+        $roles = Role::where(['tenant_id'=>\Auth::user()->tenant_id])->pluck('display_name','id');
         return view('users.edit',compact('user','roles'));
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  UserRequest  $request
      * @param   User $user
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request,  User $user)
+    public function update(UserRequest $request,  User $user)
     {
         $default = new Defaults();
 
         $branches = $request->get('branches');
 
         $branchPermission = BranchPermission::where(['user_id'=>$user->id,'tenant_id'=>$user->tenant_id])->get();
-
-//        echo $user->tenant_id;
-//        die();
 
         if(count($branchPermission) > 0){
             foreach ($branchPermission as $item) {
@@ -180,11 +185,9 @@ class UserController extends Controller
 
     /**
      * Disable the specified resource from storage.
-     *
-     * @param  Request $request
      * @return \Illuminate\Http\Response
      */
-    public function disable(Request $request)
+    public function disable()
     {
 
         if(\Input::get('id') == Auth::user()->id){
@@ -205,11 +208,9 @@ class UserController extends Controller
 
     /**
      * Enable the specified resource from storage.
-     *
-     * @param  Request $request
      * @return \Illuminate\Http\Response
      */
-    public function enable(Request $request)
+    public function enable()
     {
         $user = User::where('id',\Input::get('id'))->first();
         $user->status = 1;
@@ -269,7 +270,7 @@ class UserController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function setup_password(Request $request){
+    public function setup_password(\Illuminate\Http\Request $request){
         $user = \Auth::user();
         
         if($request->password != $request->password_confirmation){

@@ -39,13 +39,9 @@
 					<h3 class="box-title"><?php echo e(trans('adminlte_lang::message.user_profile')); ?></h3>
 					<div class="pull-right box-tools">
 						<a href="<?php echo e(url('users')); ?>" class="btn btn-primary btn-sm" role="button" data-toggle="tooltip" title="<?php echo e(trans('adminlte_lang::message.user_list')); ?>">
-							<i class="fa fa-list"></i>
+							<i class="fa fa-list"></i> <?php echo e(trans('adminlte_lang::message.user_list')); ?>
+
 						</a>
-						<?php if($user->employee_id != 0): ?>
-							<a href="<?php echo e(route('employees.show',$user->employee_id)); ?>" class="btn btn-primary btn-sm" role="button" data-toggle="tooltip" title="<?php echo e(trans('adminlte_lang::message.show_details')); ?>">
-								<i class="fa fa-user-md"></i>
-							</a>
-						<?php endif; ?>
 					</div>
 				</div>
 	            <div class="box-body">
@@ -65,20 +61,16 @@
 					        		<div class="col-lg-12">
 					        			<ul class="list-group list-group-unbordered">
 						                    <li class="list-group-item">
-						                      <b><?php echo e(trans('adminlte_lang::message.name')); ?>: </b><span class="user-name"><?php echo e($user->name); ?></span>
+						                      <b><?php echo e(trans('adminlte_lang::message.name')); ?>: </b><a><?php echo e($user->name); ?></a>
 						                    </li>
 						                    <li class="list-group-item">
-						                      <b><?php echo e(trans('adminlte_lang::message.email')); ?>: </b><?php echo e($user->email); ?>
-
+						                      <b><?php echo e(trans('adminlte_lang::message.email')); ?>: </b><a><?php echo e($user->email); ?></a>
 						                    </li>
-											<?php $role =  $user->roles->first(); ?>
 											<li class="list-group-item">
-												<b><?php echo e(trans('adminlte_lang::message.role')); ?>: </b><?php echo e($role['name']); ?>
-
+												<b><?php echo e(trans('adminlte_lang::message.role')); ?>: </b> <a><?php echo e($user->role->display_name); ?></a>
 											</li>
 						                    <li class="list-group-item">
-						                      <b><?php echo e(trans('adminlte_lang::message.create_date')); ?>: </b> <?php echo e(\Carbon\Carbon::parse($user->created_at)->format('d/m/Y')); ?>
-
+						                      <b><?php echo e(trans('adminlte_lang::message.create_date')); ?>: </b> <a><?php echo e(\Carbon\Carbon::parse($user->created_at)->format('d/m/Y')); ?></a>
 						                    </li>
 						                </ul>
 					        		</div>
@@ -89,15 +81,16 @@
 								<table id="table-documents" class="table table-bordered table-striped table-design">
 									<thead>
 										<tr>
-											<th class="col-md-2"><?php echo e(trans('adminlte_lang::message.name')); ?></th>
-											<th class="col-md-10"><?php echo e(trans('adminlte_lang::message.description')); ?></th>
+											<th class="col-md-2"><?php echo e(trans('adminlte_lang::message.type')); ?></th>
+											<th class="col-md-10"><?php echo e(trans('adminlte_lang::message.name')); ?></th>
 										</tr>
 									</thead>
 									<tbody>
-									<?php $__currentLoopData = $role->permission; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $permission): $__env->incrementLoopIndices(); $loop = $__env->getFirstLoop(); ?>
+									
+									<?php $__currentLoopData = $user->role->permission; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $permission): $__env->incrementLoopIndices(); $loop = $__env->getFirstLoop(); ?>
 										<tr>
-											<td class="name"><?php echo e($permission->name); ?> </td>
-											<td class="description"><?php echo e($permission->label); ?> </td>
+											<td><?php echo e($permission->type); ?> </td>
+											<td><?php echo e($permission->tenant_menu->menus->title); ?> </td>
 										</tr>
 									<?php endforeach; $__env->popLoop(); $loop = $__env->getFirstLoop(); ?>
 									</tbody>

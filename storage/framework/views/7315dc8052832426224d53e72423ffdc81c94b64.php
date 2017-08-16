@@ -26,12 +26,12 @@ $status_color = ['danger','success','info'];
 	              <h3 class="box-title"><?php echo e(trans('adminlte_lang::message.user_list')); ?> </h3>
 
 					<div class="pull-left box-tools">
-						<?php if (app('Illuminate\Contracts\Auth\Access\Gate')->check('add_user')): ?>
-							<a href="<?php echo e(url('users/create')); ?>" class="btn btn-primary btn-sm" role="button" data-toggle="tooltip" title="<?php echo e(trans('adminlte_lang::message.new_user')); ?>">
+						
+							<a href="<?php echo e(url('users/create')); ?>" class="btn btn-primary btn-sm" data-toggle="tooltip" title="<?php echo e(trans('adminlte_lang::message.new_user')); ?>">
 								<i class="fa fa-plus"></i> <?php echo e(trans('adminlte_lang::message.new_user')); ?>
 
 							</a>
-						<?php endif; ?>
+						
 					</div><!-- /. tools -->
 	            </div><!-- /.box-header -->
 

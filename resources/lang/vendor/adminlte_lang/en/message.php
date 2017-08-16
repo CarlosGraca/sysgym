@@ -612,5 +612,6 @@ return [
     'free' => 'Free',
     'value_pay' => 'Value Pay',
     'select_free' => ' (SELECT FREE) ',
+    'new_user' => 'New User',
 ];
 
