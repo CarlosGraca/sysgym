@@ -12,6 +12,10 @@ return [
     | these language lines according to your application's requirements.
     |
     */
+    'total_payment'=>'Total Payments',
+    'amount_per_modality'=>'Amount Per Modality',
+    'amount_per_month'=>'Amount Per Month',
+    'amount_received'=>'Amount Received',
     'list_pay' =>'List of Pay',
 //    'start_date' =>'Start Date',
 //    'end_date' =>'End Date',
@@ -106,7 +110,10 @@ return [
     'sales'                   => 'Sales',
     'friends'                 => 'Friends',
     'profile'                 => 'My Profile',
+    'profile_settings'        => 'My Profile Settings...',
     'signout'                 => 'Sign out',
+    'lockscreen_entrer_password'=>'Enter your password to retrieve your session',
+    'lockscreen_sign_in'=>'Or sign in as a different user',
     'landingdescription'      => 'Laravel 5 package that switchs default Laravel scaffolding/boilerplate to AdminLTE template with Bootstrap 3.0 and Pratt Landing page',
     'landingdescriptionpratt' => 'Acacha AdminLTE Laravel package template Landing page - Using Pratt',
     'description'             => 'Description',

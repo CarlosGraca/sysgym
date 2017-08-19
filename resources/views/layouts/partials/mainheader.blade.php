@@ -127,57 +127,59 @@
                 @if (Auth::guest())
                     <li><a href="{{ url('/login') }}">{{ trans('adminlte_lang::message.login') }}</a></li>
                 @else
-                    <!-- NOTIFICATION MENU -->
 
-
-                    <!-- MESSAGE MENU -->
-
-                    <!-- User Account Menu
+                        <!-- User Account Menu -->
                     <li class="dropdown user user-menu">
-                        <!- Menu Toggle Button ->
+                        <!-- Menu Toggle Button -->
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                            <!- The user image in the navbar->
-                            <img src='/uploads/{{Auth::user()->avatar}}' class="user-image" alt="User Image"/>
-                            <!- hidden-xs hides the username on small devices so only the image appears. ->
-                            <span class="hidden-xs">{{ Auth::user()->name }}</span>
+                            <!-- The user image in the navbar-->
+                            <img src="{{ url('/') }}/{{Auth::user()->avatar}}" class="user-image" alt="User Image"/>
+                            <!-- hidden-xs hides the username on small devices so only the image appears. -->
+                          <span class="hidden-xs">
+                                <span class="users-list-name" style="color: #fff; display: table-cell; max-width: 100px;">{{ Auth::user()->name }}</span> 
+                                </span>
+                            </span> 
                         </a>
                         <ul class="dropdown-menu">
-                            <!- The user image in the menu ->
+                            <!-- The user image in the menu -->
                             <li class="user-header">
-                                <img src='/uploads/{{Auth::user()->avatar}}' class="img-circle" alt="User Image" />
-                               <p>
+                                <img src="{{ url('/') }}/{{Auth::user()->avatar}}" class="img-circle" alt="User Image" />
+                                <p>
                                     {{ Auth::user()->name }}
-                                    <!- <small>{{ trans('adminlte_lang::message.login') }} Nov. 2012</small>->
+                                    <small>{{  Auth::user()->role->display_name }} </small>
                                 </p>
                             </li>
-                            <!- Menu Body ->
+                            <!-- Menu Body -->
                             <li class="user-body">
-                            <a href="{{ url('auth/profile') }}"><i class="fa fa-user"></i> {{ trans('adminlte_lang::message.profile') }}</a>
-                                <!-<div class="col-xs-4 text-center">
-                                    <a href="#">{{ trans('adminlte_lang::message.profile') }}</a>
-                                </div>
-                                <div class="col-xs-4 text-center">
-                                    <a href="#">{{ trans('adminlte_lang::message.sales') }}</a>
-                                </div>
-                                <div class="col-xs-4 text-center">
-                                    <a href="#">{{ trans('adminlte_lang::message.friends') }}</a>
-                                </div>
+                                <a href="{{ url('accounts') }}"><i class="fa fa-user"></i>{{ trans('adminlte_lang::message.profile_settings') }}</a>
+                                {{-- <a href="{{ url('settings') }}"><i class="fa fa-gears"></i>{{ trans('adminlte_lang::message.account_settings') }}</a> --}}
+                                <a href="{{ url('/login-activity') }}"><i class="fa fa-btn fa-list"></i>Login Activity</a>
                             </li>
-                             Menu Footer
                             <li class="user-footer">
                                 <div class="pull-left">
-                                    <a href="#" class="btn btn-default btn-flat"><i class="fa fa-lock"></i> {{ trans('adminlte_lang::message.lock') }}</a>
+                                    <a href="{{ url('/lockscreen') }}">
+                                    <i class="fa fa-lock"></i> {{ trans('adminlte_lang::message.lockscreen') }}</a>
                                 </div>
                                 <div class="pull-right">
-                                    <a href="{{ url('/logout') }}" class="btn btn-default btn-flat"><i class="fa fa-sign-out"></i> {{ trans('adminlte_lang::message.signout') }}</a>
+
+                                    <a href="{{ url('/logout') }}" {{-- class="btn btn-default btn-flat" --}}
+                                       onclick="event.preventDefault();
+                                                 document.getElementById('logout-form').submit();">
+                                        <i class="fa fa-sign-out"></i> {{ trans('adminlte_lang::message.signout') }}
+                                    </a>
+
+                                    <form id="logout-form" action="{{ url('/logout') }}" method="POST" style="display: none;">
+                                        {{ csrf_field() }}
+                                        <input type="submit" value="logout" style="display: none;">
+                                    </form>
+
                                 </div>
                             </li>
                         </ul>
                     </li>
-                  -->
-
-
-                <li class="user user-menu">
+                @endif
+                  
+                {{-- <li class="user user-menu">
                   <a href="{{ url('accounts') }}" data-toggle="tooltip" title="{{ trans('adminlte_lang::message.profile') }}">
                     <img  src="{{ url('/') }}/{{Auth::user()->avatar}}" class="user-image" alt="Cinque Terre" >
                               <!-- hidden-xs hides the username on small devices so only the image appears. -->
@@ -197,12 +199,8 @@
                     @endif
                 </li>
 
-                  @endif
+                  @endif --}}
 
-                <!-- Control Sidebar Toggle Button
-                <li>
-                    <a href="#" data-toggle="control-sidebar"><i class="fa fa-gears"></i></a>
-                </li>-->
             </ul>
         </div>
     </nav>
