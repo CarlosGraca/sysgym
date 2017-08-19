@@ -154,17 +154,17 @@
                                         </thead>
                                         <tbody>
 
-                                        
-                                            
-                                            
-                                                
-                                                
-                                                
-                                                
-                                                
-                                            
-                                            
-                                        
+                                        <?php if(isset($modality->matriculation)): ?>
+                                            <?php $__currentLoopData = $modality->matriculation; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $student): $__env->incrementLoopIndices(); $loop = $__env->getFirstLoop(); ?>
+                                            <tr>
+                                                <td><a href="#show" data-url="<?php echo e(route('clients.show',$student->client_id)); ?>" id="people_show_popup" data-title="<?php echo e(trans('adminlte_lang::message.client_details')); ?>"><?php echo e($student->client->name); ?></a> </td>
+                                                <td class="text-center"> <?php echo e($Defaults->currency($student->price)); ?> </td>
+                                                <td class="text-center"> <?php echo e($student->iva); ?> % </td>
+                                                <td class="text-center"> <?php echo e($Defaults->currency($student->discount)); ?> </td>
+                                                <td class="text-center"> <?php echo e($Defaults->currency($student->total)); ?> </td>
+                                            </tr>
+                                            <?php endforeach; $__env->popLoop(); $loop = $__env->getFirstLoop(); ?>
+                                        <?php endif; ?>
 
 
                                         </tbody>

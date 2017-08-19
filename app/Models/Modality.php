@@ -14,7 +14,7 @@ class Modality extends Model
         return $this->belongsTo('App\User');
     }
 
-    public function matriculation_modality(){
-        return $this->hasMany('App\MatriculationModality');
+    public function matriculation(){
+        return $this->hasMany('App\Models\Matriculation');
     }
 }

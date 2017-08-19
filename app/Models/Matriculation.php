@@ -15,10 +15,6 @@ class Matriculation extends Model
         return $this->belongsTo('App\Models\Modality');
     }
 
-    public function matriculation(){
-        return $this->belongsTo('App\Models\Matriculation');
-    }
-
     public function user(){
         return $this->belongsTo('App\User');
     }

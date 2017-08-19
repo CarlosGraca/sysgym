@@ -43,12 +43,18 @@ class MatriculationController extends Controller
      */
     public function create()
     {
+        $idCliente = \Input::get('idCliente');
+        $client = null;
+        if($idCliente){
+            $client = Client::find($idCliente);
+        }
+
         //CONSULT TYPE ARRAY DATA TO SELECT
         $modality = Modality::pluck('name', 'id');
 
         $last_modality = Matriculation::select(['id'])->orderby('id','desc')->first();
 
-        return view('matriculation.create', compact('modality','last_modality'));
+        return view('matriculation.create', compact('modality','last_modality','client'));
     }
 
     /**
@@ -271,7 +277,7 @@ class MatriculationController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function report($id){
-        $company = Company::first();
+        $company = \Auth::user()->tenant;
         $matriculation = Matriculation::where('id',$id)->first();
         return view('matriculation.report',compact('matriculation','company'));
     }

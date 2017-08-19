@@ -2,20 +2,23 @@ var form = $('.invoice'), cache_width = form.width(), a4 = [793.92, 1122.24];  /
 
 $(function () {
 
-    $(document).on('click', '#btn-download', function () {
+    $(document).on('click', '#btn-download', function (e) {
+        e.preventDefault();
         $('.loader').css('display', 'block');
-        $('body').scrollTop(0);
+        // $('body').scrollTop(0);
 
         //VERIFICAR SE O TIPO DE RELATORIO É Sheet ou Test
         var type_report = $(this).attr('type');
 
-        if (type_report == 'sheets') {
-            pdfExport('download');
+        if (type_report == 'invoice') {
+            createPDF('download');
+            // pdfExport('download');
+            // alert('invoice');
         }
 
-        if (type_report == 'tests') {
-            createPDF('download');
-        }
+        // if (type_report == 'invouce') {
+        //     createPDF('download');
+        // }
         return false;
     });
 
@@ -24,11 +27,11 @@ $(function () {
 //PDF EXPORT TO TESTS
 function createPDF(type){
 
-  console.log(type);
-  $('.no-print').css('display','none');
-  $('.invoice').css('border','none');
-  form.width(a4[0] - 80);
-  html2canvas($("#download-content"), {
+  // console.log(type);
+  // $('.no-print').css('display','none');
+  // $('.invoice').css('border','none');
+  // form.width(a4[0] - 80);
+  html2canvas($(".sheet"), {
      useCORS: true,
      allowTaint: true,
      imageTimeout : 2000,
@@ -37,14 +40,16 @@ function createPDF(type){
             canvas.webkitImageSmoothingEnabled = false;
             canvas.mozImageSmoothingEnabled = false;
             canvas.imageSmoothingEnabled = false;
-            var img = canvas.toDataURL("image/jpeg");
+            var img = canvas.toDataURL("image/png");
           //  var img = canvas.toDataURL("image/jpeg");
           //  $('.invoice').append('<img src=\''+img+'\' />');
             //console.log(img);
-            doc = new jsPDF('portrait','mm','a4');
-            //doc.addImage(img, 'JPEG', 15, 40, 180, 160);
+            // doc = new jsPDF('portrait','mm','a4');
+          doc = new jsPDF('portrait','mm','a5');
+
+          //doc.addImage(img, 'JPEG', 15, 40, 180, 160);
             //doc.addImage(img, 'JPEG', 5, 10, 0, 0);
-            doc.addImage(img, 'JPEG', 5, 10, 0, 0);
+            doc.addImage(img, 'PNG', 0, 0, 0, 0);
 
             if(type === 'download'){
               doc.save(''+$('.report').find('title').text()+'.pdf');
@@ -66,9 +71,9 @@ function createPDF(type){
 
             }
 
-            $('.no-print').css('display','block');
-            $('.invoice').css('border','1px solid #f4f4f4');
-            form.width(cache_width);
+            // $('.no-print').css('display','block');
+            // $('.invoice').css('border','1px solid #f4f4f4');
+            // form.width(cache_width);
            }
        });
  }
@@ -76,10 +81,10 @@ function createPDF(type){
 //PDF EXPORT TO SHEETS
 function pdfExport(type) {
 
-  $('.no-print').css('display','none');
-  $('.invoice').css('border','none');
-  var pdf = new jsPDF('p','pt','a4'),
-      source = $('#download-content')[0];
+  // $('.no-print').css('display','none');
+  // $('.invoice').css('border','none');
+  var pdf = new jsPDF('p','pt','a5'),
+      source = $('.sheet')[0];
 /* pdf.addHTML (element, x, y, options, callback ); */
 var options = {
             pagesplit: true
@@ -110,7 +115,7 @@ var options = {
               data.append("document", documents);
               sendMail(data);
           }
-          $('.no-print').css('display','block');
+          // $('.no-print').css('display','block');
         }
     );
 }

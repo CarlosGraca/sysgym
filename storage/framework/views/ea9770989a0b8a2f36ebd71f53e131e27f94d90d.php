@@ -97,7 +97,7 @@ $status_color = ['danger','success'];
 
 
                                         
-                                        <a href="<?php echo e(url('payments/create?idCliente='.$item->client_id.'&idMatriculation='.$item->id)); ?>" target="_blank" role="button" data-toggle="tooltip" title="<?php echo e(trans('adminlte_lang::message.payments')); ?>">
+                                        <a href="<?php echo e(url('payments/create?idCliente='.$item->client_id.'&idMatriculation='.$item->id)); ?>" data-toggle="tooltip" title="<?php echo e(trans('adminlte_lang::message.payments')); ?>">
                                             <i class="fa fa-money"></i>
                                         </a>
                                         

@@ -213,7 +213,7 @@
 <script src="<?php echo e(asset('/js/modalities.js')); ?>" type="text/javascript"></script>
 <script src="<?php echo e(asset('/js/payments.js')); ?>" type="text/javascript"></script>
 <script src="<?php echo e(asset('/js/roles.js')); ?>" type="text/javascript"></script>
-<script src="<?php echo e(asset('/js/permissions.js')); ?>" type="text/javascript"></script>
+ <script src="<?php echo e(asset('/js/document.js')); ?>" type="text/javascript"></script>
 <script src="<?php echo e(asset('/js/menus.js')); ?>" type="text/javascript"></script>
 <script src="<?php echo e(asset('/js/backups.js')); ?>" type="text/javascript"></script>
 <script src="<?php echo e(asset('/js/accounts.js')); ?>" type="text/javascript"></script>

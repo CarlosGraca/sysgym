@@ -20,7 +20,7 @@
 	        <div class="box box-default">
 	            <div class="box-header with-border">
 				  	<h3 class="box-title">
-						<a href="{{ url('matriculation') }}" class="btn btn-primary btn-sm" role="button" data-toggle="tooltip" title="{{ trans('adminlte_lang::message.back') }}">
+						<a href="{{ URL::previous() }}" class="btn btn-primary btn-sm" role="button" data-toggle="tooltip" title="{{ trans('adminlte_lang::message.back') }}">
 							<i class="fa  fa-arrow-left"></i> {{ trans('adminlte_lang::message.back') }}
 						</a>
 					 	<strong>{{ trans('adminlte_lang::message.matriculation') }} {{ trans('adminlte_lang::message.of') }} </strong><span>{{ $matriculation->client->name }}</span>

@@ -150,18 +150,17 @@
                                         </thead>
                                         <tbody>
 
-                                        {{--@if(isset($modality->matriculation_modality))--}}
-                                            {{--@foreach($modality->matriculation_modality as $student)--}}
-                                            {{--<tr>--}}
-                                                {{--<td><a href="#show" data-url="{{ route('clients.show',$student->client_id) }}" id="people_show_popup" data-title="{{ trans('adminlte_lang::message.client_details') }}">{{ $student->client->name }}</a> </td>--}}
-                                                {{--<td class="text-center"> {{ $Defaults->currency($student->price) }} </td>--}}
-                                                {{--<td class="text-center"> {{ $student->iva}} % </td>--}}
-                                                {{--<td class="text-center"> {{ $Defaults->currency($student->discount) }} </td>--}}
-                                                {{--<td class="text-center"> {{ $Defaults->currency($student->total) }} </td>--}}
-                                            {{--</tr>--}}
-                                            {{--@endforeach--}}
-                                        {{--@endif--}}
-
+                                        @if(isset($modality->matriculation))
+                                            @foreach($modality->matriculation as $student)
+                                            <tr>
+                                                <td><a href="#show" data-url="{{ route('clients.show',$student->client_id) }}" id="people_show_popup" data-title="{{ trans('adminlte_lang::message.client_details') }}">{{ $student->client->name }}</a> </td>
+                                                <td class="text-center"> {{ $Defaults->currency($student->price) }} </td>
+                                                <td class="text-center"> {{ $student->iva}} % </td>
+                                                <td class="text-center"> {{ $Defaults->currency($student->discount) }} </td>
+                                                <td class="text-center"> {{ $Defaults->currency($student->total) }} </td>
+                                            </tr>
+                                            @endforeach
+                                        @endif
 
                                         </tbody>
                                     </table>

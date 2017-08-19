@@ -205,3 +205,11 @@ Route::post('croppie',function(\Illuminate\Http\Request $request){
 Route::get('camera',function (){
     return view('components.camera_capture');
 });
+
+
+Route::get('payments/{id}/invoice','PaymentController@invoice')->name('payments.invoice');
+
+//REPORT INVOICE
+Route::get('/invoice',function (){
+    return view('report.invoice');
+});

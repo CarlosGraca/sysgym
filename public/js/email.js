@@ -1,7 +1,7 @@
 function sendMail(data) {
   $('.loader').css('display','block');
   var url = "/pdf/sendMail";
-  $('body').scrollTop(0);
+  // $('body').scrollTop(0);
 
   $.ajax({
     url: url,

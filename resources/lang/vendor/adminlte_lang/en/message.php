@@ -13,8 +13,8 @@ return [
     |
     */
     'list_pay' =>'List of Pay',
-    'start_date' =>'Start Date',
-    'start_date' =>'End Date',
+//    'start_date' =>'Start Date',
+//    'end_date' =>'End Date',
     'alter_status'=>'Alter Status',
     'associate_tenant'=>'Associate to companies',
     'edit'                   => 'Edit',
@@ -606,5 +606,6 @@ return [
     'value_pay' => 'Value Pay',
     'select_free' => ' (SELECT FREE) ',
     'new_user' => 'New User',
+    'invoice' => 'Invoice',
 ];
 

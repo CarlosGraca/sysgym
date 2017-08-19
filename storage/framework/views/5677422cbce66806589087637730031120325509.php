@@ -95,8 +95,6 @@
                                     <td><?php echo e($client->address); ?></td>
 									<td><span class="label label-<?php echo e($status_color[$client->status]); ?>"><?php echo e($status[$client->status]); ?></span></td>
 									<td>
-									     <a href="<?php echo e(route('payments.create','idCliente='.$client->id)); ?>"  title='<?php echo e(trans('adminlte_lang::message.payment')); ?>' > <i class="fa fa-money"></i>
-					                        </a>
                                         
 										<a href="<?php echo e(route('clients.show',$client->id)); ?>" data-toggle="tooltip" title="<?php echo e(trans('adminlte_lang::message.view')); ?>">
                                             <i class="fa fa-eye"></i>
@@ -121,6 +119,13 @@
                                             <i class="fa fa-user"></i>
                                         </a>
                                         
+
+										<a href="<?php echo e(route('matriculation.create','idCliente='.$client->id)); ?>"  title='<?php echo e(trans('adminlte_lang::message.matriculation')); ?>' > <i class="fa fa-cube"></i>
+										</a>
+
+
+										<a href="<?php echo e(route('payments.create','idCliente='.$client->id)); ?>"  title='<?php echo e(trans('adminlte_lang::message.payment')); ?>' > <i class="fa fa-money"></i>
+										</a>
 
                                     </td>
                                 </tr>

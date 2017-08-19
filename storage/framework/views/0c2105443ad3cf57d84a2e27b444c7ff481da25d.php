@@ -21,7 +21,7 @@
 	        <div class="box box-primary">
 	            <div class="box-header with-border">
 	              <h3 class="box-title">
-					  <a href="<?php echo e(\Illuminate\Support\Facades\URL::previous()); ?>" class="btn btn-primary btn-sm" role="button" data-toggle="tooltip" title="<?php echo e(trans('adminlte_lang::message.back')); ?>">
+					  <a href="<?php echo e(URL::previous()); ?>" class="btn btn-primary btn-sm" role="button" data-toggle="tooltip" title="<?php echo e(trans('adminlte_lang::message.back')); ?>">
 						  <i class="fa fa-arrow-left"></i> <?php echo e(trans('adminlte_lang::message.back')); ?>
 
 					  </a>

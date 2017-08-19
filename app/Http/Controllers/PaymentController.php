@@ -33,7 +33,7 @@ class PaymentController extends Controller
      */
     public function index()
     {
-        $payments = Payment::all();
+        $payments = Payment::where(['tenant_id'=>\Auth::user()->tenant_id,'branch_id'=>\Auth::user()->branch_id])->get();
 
         if (Request::wantsJson()) {
             return $payments;
@@ -266,6 +266,22 @@ class PaymentController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    /**
+     * Print Invoice of the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function invoice($id)
+    {
+        $payment = Payment::find($id);
+        $url = route('payments.invoice',$id);
+        if(\Request::ajax())
+            return view('report.invoice_ajax',compact('url'));
+        else
+            return view('report.invoice',compact('payment'));
     }
 
 //    /**

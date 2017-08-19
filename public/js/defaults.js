@@ -841,3 +841,8 @@ function action_button(_action) {
     }
 }
 
+function popitup(url,windowName) {
+    newwindow = window.open(url,windowName,'fullscreen=yes,top=0');
+    if (window.focus) {newwindow.focus()}
+    return false;
+}

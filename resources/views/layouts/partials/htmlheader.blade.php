@@ -76,6 +76,12 @@
     <!-- JQUERY CONTEXT MENU PLUGIN -->
     <link rel="stylesheet" href="{{asset('/plugins/jquery-contextmenu/dist/jquery.contextMenu.min.css')}}" type="text/css" />
 
+    <!-- Normalize or reset CSS with your favorite library -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/3.0.3/normalize.css">
+
+    <!-- Load paper.css for happy printing -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/paper-css/0.2.3/paper.css">
+
     <!-- DEVELOPMENT STYLE SHEETS -->
     <link href="{{ asset('/css/search.css') }}" rel="stylesheet" type="text/css" />
     <link href="{{ asset('/css/default.css') }}" rel="stylesheet" type="text/css" />
@@ -88,7 +94,7 @@
     <![endif]-->
 
 
-
+    @yield('invoice',null)
 
     <style type="text/css">
       .tabela > thead > tr > th, .table > tbody > tr > th, .table > tfoot > tr > th, .table > thead > tr > td, .table > tbody > tr > td, .table > tfoot > tr > td{
@@ -121,5 +127,7 @@
 
 
     </style>
+
+
 
 </head>

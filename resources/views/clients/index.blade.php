@@ -87,8 +87,6 @@
                                     <td>{{$client->address }}</td>
 									<td><span class="label label-{{ $status_color[$client->status] }}">{{ $status[$client->status] }}</span></td>
 									<td>
-									     <a href="{{ route('payments.create','idCliente='.$client->id) }}"  title='{{ trans('adminlte_lang::message.payment') }}' > <i class="fa fa-money"></i>
-					                        </a>
                                         {{--@can('view_client')--}}
 										<a href="{{ route('clients.show',$client->id) }}" data-toggle="tooltip" title="{{ trans('adminlte_lang::message.view') }}">
                                             <i class="fa fa-eye"></i>
@@ -113,6 +111,13 @@
                                             <i class="fa fa-user"></i>
                                         </a>
                                         {{--@endcan--}}
+
+										<a href="{{ route('matriculation.create','idCliente='.$client->id) }}"  title='{{ trans('adminlte_lang::message.matriculation') }}' > <i class="fa fa-cube"></i>
+										</a>
+
+
+										<a href="{{ route('payments.create','idCliente='.$client->id) }}"  title='{{ trans('adminlte_lang::message.payment') }}' > <i class="fa fa-money"></i>
+										</a>
 
                                     </td>
                                 </tr>

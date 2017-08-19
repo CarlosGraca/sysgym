@@ -7,8 +7,7 @@
 
 <div class="row">
 	<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-{{--		{!! Form::hidden('matriculation_id', ($type == 'update' ? $matriculation->id : null), ['class'=>'form-control','id'=>'matriculation_id']) !!}--}}
-		{!! Form::hidden('client_id',($type == 'update' ? $matriculation->client->id : null), ['class'=>'form-control','id'=>'client_id']) !!}
+		{!! Form::hidden('client_id',($type == 'update' ? $matriculation->client->id : $client === null ? null : $client->id), ['class'=>'form-control','id'=>'client_id']) !!}
 		{!! Form::hidden('user_id', \Auth::user()->id, ['class'=>'form-control','id'=>'user_id']) !!}
         {!! Form::hidden('modality_id', '', ['class'=>'form-control','id'=>'modality_id']) !!}
         {!! Form::hidden('total', ($type == 'update' ? ( $matriculation->total != null ? $matriculation->total : 0 ) : 0), ['class'=>'form-control','id'=>'total']) !!}
@@ -20,12 +19,12 @@
 			<hr class="h-divider" >
 			<div class="col-lg-3 col-md-4 col-sm-6 text-center col-xs-12">
 				<div class="form-group form-group-sm">
-					<img  src="{{ asset( ($type == 'update' ? $matriculation->client->avatar : 'img/avatar.png') ) }}" class="img-thumbnail avatar-client" alt="Cinque Terre" width="200" id="client_avatar">
+					<img  src="{{ asset( ($type == 'update' ? $matriculation->client->avatar : $client === null ?  'img/avatar.png' : $client->avatar) ) }}" class="img-thumbnail avatar-client" alt="Cinque Terre" width="200" id="client_avatar">
 				</div>
 			</div>
 			<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
 
-				@if($type == 'create')
+				@if($type == 'create' && $client === null)
 					<div class="input-group input-group-sm">
 						{!! Form::label('client','(*) '.trans('adminlte_lang::message.client')) !!}
 						{!! Form::text('client', ($type == 'update' ? $matriculation->client->name : null) , ['class'=>'form-control','onfocus'=>'onfocus','placeholder'=>trans('adminlte_lang::message.type_client_name'), ($type == 'update' ? 'readonly' : '')]) !!}
@@ -37,7 +36,7 @@
 				@else
 					<div class="form-group form-group-sm">
 						{!! Form::label('client','(*) '.trans('adminlte_lang::message.client')) !!}
-						{!! Form::text('client', ($type == 'update' ? $matriculation->client->name : null) , ['class'=>'form-control','onfocus'=>'onfocus','placeholder'=>trans('adminlte_lang::message.type_client_name'), ($type == 'update' ? 'readonly' : '')]) !!}
+						{!! Form::text('client', ($type == 'update' ? $matriculation->client->name : $client === null ? null : $client->name) , ['class'=>'form-control','onfocus'=>'onfocus','placeholder'=>trans('adminlte_lang::message.type_client_name'), ($type == 'update' ? 'readonly' : '')]) !!}
 					</div>
 				@endif
 			</div>
@@ -45,21 +44,21 @@
 			<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
 				<div class="form-group form-group-sm">
 					{!! Form::label('email',trans('adminlte_lang::message.email') ) !!}
-					{!! Form::email('email', ($type == 'update' ? $matriculation->client->email : null) , ['class'=>'form-control','readonly'=>'readonly']) !!}
+					{!! Form::email('email', ($type == 'update' ? $matriculation->client->email : $client === null ? null : $client->email) , ['class'=>'form-control','readonly'=>'readonly']) !!}
 				</div>
 			</div>
 
 			<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
 				<div class="form-group form-group-sm">
 					{!! Form::label('mobile',trans('adminlte_lang::message.mobile') ) !!}
-					{!! Form::text('mobile', ($type == 'update' ? $matriculation->client->mobile : null) , ['class'=>'form-control','readonly'=>'readonly']) !!}
+					{!! Form::text('mobile', ($type == 'update' ? $matriculation->client->mobile : $client === null ? null : $client->mobile) , ['class'=>'form-control','readonly'=>'readonly']) !!}
 				</div>
 			</div>
 
 			<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
 				<div class="form-group form-group-sm">
 					{!! Form::label('phone',trans('adminlte_lang::message.phone') ) !!}
-					{!! Form::text('phone', ($type == 'update' ? $matriculation->client->phone : null) , ['class'=>'form-control','readonly'=>'readonly']) !!}
+					{!! Form::text('phone', ($type == 'update' ? $matriculation->client->phone : $client === null ? null : $client->phone) , ['class'=>'form-control','readonly'=>'readonly']) !!}
 				</div>
 			</div>
 

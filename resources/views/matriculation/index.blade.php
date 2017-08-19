@@ -95,7 +95,7 @@ $status_color = ['danger','success'];
 
 {{--                                    @if($item->status == 3)--}}
                                         {{--@can('edit_payment')--}}
-                                        <a href="{{url('payments/create?idCliente='.$item->client_id.'&idMatriculation='.$item->id) }}" target="_blank" role="button" data-toggle="tooltip" title="{{ trans('adminlte_lang::message.payments') }}">
+                                        <a href="{{url('payments/create?idCliente='.$item->client_id.'&idMatriculation='.$item->id) }}" data-toggle="tooltip" title="{{ trans('adminlte_lang::message.payments') }}">
                                             <i class="fa fa-money"></i>
                                         </a>
                                         {{--@endcan--}}

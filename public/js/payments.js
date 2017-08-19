@@ -5,6 +5,17 @@ $(function () {
     var clicked_payment = null;
     var _payment_total = 0;
     var _payment_total_discount = 0;
+
+    //POPUP TOOLBAR
+    $(document).on('click','#payment-invoice',function (e) {
+        e.preventDefault();
+        popitup($(this).attr('data-url'),$(this).attr('data-title'));
+        // $('#myModalLabel').text($(this).attr('data-title'));
+        // $('#modal-ajax').modal('show')
+        //     .find('.modal-body')
+        //     .load($(this).attr('data-url'));
+        // $('#modal-ajax').css('overflow','auto');
+    });
    
      
      
