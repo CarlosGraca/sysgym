@@ -13,7 +13,7 @@
 @endsection
 
 
-@section('main-content')
+@section('main-content') 
 
 	<div class="row">
 	    <div class="col-lg-12">

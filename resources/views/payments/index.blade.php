@@ -74,8 +74,8 @@
                                             {{--<i class="fa fa-print"></i>--}}
                                         {{--</a>--}}
 
-										<a href="#invoice" id="pop-new-window" data-url="{{ route('payments.invoice',$payment->id) }}"  data-toggle="tooltip" title="{{ trans('adminlte_lang::message.pdf') }}" data-title="{{ trans('adminlte_lang::message.print') }}">
-											<i class="fa fa-file-pdf-o"></i>
+										<a href="#invoice" id="payment-invoice" data-url="{{ route('payments.invoice',$payment->payment_id) }}"  data-toggle="tooltip" title="{{ trans('adminlte_lang::message.invoice') }}" data-title="{{ trans('adminlte_lang::message.print') }}">
+											<i class="fa fa-ticket"></i>
 										</a>
 										{{-- @endcan --}}
                                     </td>

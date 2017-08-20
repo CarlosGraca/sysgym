@@ -105,6 +105,7 @@ class PaymentController extends Controller
         $tenant_id = Auth::user()->tenant_id; 
         $user_id   = Auth::user()->id;
         $branch_id = Auth::user()->branch_id;
+        $payment_id = DB::table('payments')->max('id') + 1;
        
         foreach(Input::get($request->all) as $req){
 
@@ -127,7 +128,9 @@ class PaymentController extends Controller
                 $payment->free           = (string)$req['free'];
                 $payment->status         = 1;
                 $payment->value_pay      = (string)$req['value_pay'];
-                $payment->save();
+                $payment->payment_id = $payment_id ;
+
+                $payment->save();                 
 
                 $client_id = (string)$req['client_id'];
             }
@@ -139,7 +142,7 @@ class PaymentController extends Controller
          
        if ($request->ajax()){
             $message = trans('adminlte_lang::message.msg_success_created_payment');
-            return response ()->json(['message'=>$message,'type'=>'success']);
+            return response ()->json(['message'=>$message,'type'=>'success','payment_id'=>$payment_id]);
         }else{
             $payments = Payment::all();
             return view('payments.index',compact('payments'));
@@ -165,7 +168,7 @@ class PaymentController extends Controller
      * @param  Payment $payment
      * @return \Illuminate\Http\Response
      */
-    public function edit()
+    public function edit($payment)
     {
        
         $idCliente = Input::get('idCliente');
@@ -176,10 +179,11 @@ class PaymentController extends Controller
                                 {
                                     $join->on('a.modality_id', '=', 'b.id') ;                                   
                                 })
-                       ->join('payments as c', function($join) 
+                       ->join('payments as c', function($join) use ($payment)
                                 {
                                     $join->on('a.id', '=', 'c.item_id')
-                                    ->where('c.status','=',1);                                 
+                                    ->where('c.status','=',1)
+                                    ->where ('c.payment_id','=',$payment) ;                           
                                 })
                        ->where('a.client_id', '=', $idCliente)
                        ->where('a.id','=',$idMatricula)
@@ -191,10 +195,11 @@ class PaymentController extends Controller
                             {
                                 $join->on('a.modality_id', '=', 'b.id');                          
                             })
-                   ->join('payments as c', function($join) 
+                   ->join('payments as c', function($join) use ($payment)
                             {
                                 $join->on('a.id', '=', 'c.item_id')
-                                ->where('c.status','=',1) ;                                  
+                                ->where('c.status','=',1)
+                                ->where ('c.payment_id','=',$payment) ;                                  
                             })
                    ->where('a.client_id', '=', $idCliente)
                    

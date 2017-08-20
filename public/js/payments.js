@@ -5,6 +5,28 @@ $(function () {
     var clicked_payment = null;
     var _payment_total = 0;
     var _payment_total_discount = 0;
+
+    //POPUP TOOLBAR
+    $(document).on('click','#payment-invoice',function (e) {
+        e.preventDefault();
+        //popitup($(this).attr('data-url'),$(this).attr('data-title'));
+         $.colorbox({iframe:true,title:$(this).attr('data-title'), width:"50%", height:"90%", opacity:0,href:$(this).attr('data-url')});
+    });
+   
+
+    $('#confirm-modal').on('show.bs.modal', function(e) {
+        $(this).find('#confirm-modal-title').text('Invoice');
+
+        $(this).find('.btn-ok').attr('href', $(e.relatedTarget).data('href'));
+
+    });
+    
+    $('#confirm-modal').on('click', '.btn-ok', function(e) {
+       $('#confirm-modal').modal('hide');
+      var payment_id = window.location.pathname.split('/')[2];
+      href = "/payments/"+payment_id+"/invoice";
+      $.colorbox({iframe:true,title:"Invoice", width:"50%", height:"90%",opacity:0, href:href});
+    });
      
     if($('#payment_type').val() != 'monthly')
         $('#div_month').css('display','none');
@@ -72,7 +94,7 @@ $(function () {
     $(document).on("click", '#add-payment',function (e) {
         e.preventDefault();
         if (valide_payment())
-           save_payment('payments/1/edit','/payments');
+           save_payment('/payments','invoice=1');
         else
             toastr.error(message_error,{timeOut: 5000} ).css("width","500px");    
         message_error  = null; 
@@ -81,11 +103,13 @@ $(function () {
     $(document).on("click", '#update-payment',function (e) {
         e.preventDefault();
         if (valide_payment())
-           save_payment('payments/1/edit','/updatePaymentOption');
+           save_payment('/updatePaymentOption');
         else
             toastr.error(message_error,{timeOut: 5000} ).css("width","500px");    
         message_error  = null; 
-    });       
+    });   
+
+    permission_invoice();    
     
 });    
 
@@ -117,7 +141,7 @@ function valide_payment(){
         return true;
     }
     //////SAVE_PAGAMENTO
-    function save_payment(redirect,url_stored) {
+    function save_payment(url_stored,invoice) {
         var requestData = [];
         var url = url_stored;
         _client_id      = $('#client_id').val();
@@ -157,10 +181,13 @@ function valide_payment(){
                 $('.loader-name').css('display', 'none');
                 if(data.type=='success') {
                     toastr.success(data.message, {timeOut: 5000}).css("width", "300px");
+                    redirect = 'payments/'+ data.payment_id  +'/edit';
+                      console.log(redirect);
+                    window.location = load_newurl(redirect,invoice);                    
                 }else{
                     toastr.error(data.message, {timeOut: 5000}).css("width", "300px");
                 } 
-                window.location = load_newurl(redirect);              
+                            
             },
             error: function(data){
                 if(data.status === 500){
@@ -331,11 +358,23 @@ function clear_payment_table() {
     });
 }
 
-function load_newurl(pathname) {
+function load_newurl(pathname,invoice) {
     var url_origin = window.location.origin;
     var url_search = window.location.search;
-    url = url_origin+'/'+pathname+''+url_search;
+    if (invoice)
+        url = url_origin+'/'+pathname+''+url_search+'&'+invoice;
+    else
+        url = url_origin+'/'+pathname+''+url_search;
     return url;
+}
+
+
+function permission_invoice(){
+    var url_string  = window.location;
+    var url = new URL(url_string);
+    var invoice = url.searchParams.get('invoice');
+    if (invoice==1)
+        $('#confirm-modal').modal('show');
 }
 
 
