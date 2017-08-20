@@ -102,7 +102,7 @@ $status_color = ['danger','success'];
                                         {{--@endif--}}
 
                                     {{--@can('add_matriculation')--}}
-                                    <a href="{{ url('matriculation') }}/{{$item->id}}/report" target="_blank" role="button" data-toggle="tooltip" title="{{ trans('adminlte_lang::message.print') }}">
+                                    <a href="#print" data-url="{{ url('matriculation') }}/{{$item->id}}/report" id="pop-new-window" data-toggle="tooltip" title="{{ trans('adminlte_lang::message.print') }}" data-title="{{ trans('adminlte_lang::message.print') }}">
                                         <i class="fa fa-print"></i>
                                     </a>
 

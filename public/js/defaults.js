@@ -140,6 +140,8 @@ $(function () {
         $('#modal-ajax').css('overflow','auto');
     });
 
+
+
     $('#modal-ajax').on('show.bs.modal', function (e) {
         $(document.body).css('overflow','hidden');
         $(this).find('.modal-body').css({
@@ -159,6 +161,11 @@ $(function () {
         $(document.body).css('overflow','auto');
     });
 
+    //POPUP TOOLBAR
+    $(document).on('click','#pop-new-window',function (e) {
+        e.preventDefault();
+        popitup($(this).attr('data-url'),$(this).attr('data-title'));
+    });
 });
 
 
@@ -403,6 +410,8 @@ function save(_form,_form_data,form_type) {
                             $('#edit-user-button').removeAttr('style');
                             $('#update-user').css('display', 'none');
                             reloadPage();
+                        }else{
+                            window.location = data.url;
                         }
                     }
                     break;
@@ -842,7 +851,7 @@ function action_button(_action) {
 }
 
 function popitup(url,windowName) {
-    newwindow = window.open(url,windowName,'fullscreen=yes,top=0');
+    newwindow = window.open(url,windowName,'fullscreen=yes,top=0,location=no');
     if (window.focus) {newwindow.focus()}
     return false;
 }

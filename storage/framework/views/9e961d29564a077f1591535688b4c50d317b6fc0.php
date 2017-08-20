@@ -76,11 +76,6 @@
     <!-- JQUERY CONTEXT MENU PLUGIN -->
     <link rel="stylesheet" href="<?php echo e(asset('/plugins/jquery-contextmenu/dist/jquery.contextMenu.min.css')); ?>" type="text/css" />
 
-    <!-- Normalize or reset CSS with your favorite library -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/3.0.3/normalize.css">
-
-    <!-- Load paper.css for happy printing -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/paper-css/0.2.3/paper.css">
 
     <!-- DEVELOPMENT STYLE SHEETS -->
     <link href="<?php echo e(asset('/css/search.css')); ?>" rel="stylesheet" type="text/css" />

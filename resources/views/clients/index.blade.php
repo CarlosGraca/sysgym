@@ -25,9 +25,12 @@
 	            <div class="box-header with-border">
 	              <h3 class="box-title">  {{ trans('adminlte_lang::message.clients_list') }} </h3>
 	              <div class="pull-left box-tools">
+					  <a href="{{ url('clients/create') }}" class="btn btn-primary btn-sm" data-toggle="tooltip" title="{{ trans('adminlte_lang::message.new_client') }}">
+						  <i class="fa fa-plus"></i> {{ trans('adminlte_lang::message.new_client') }}
+					  </a>
                       {{--@can('add_client')--}}
-                          <a href="{{ url('clients/create') }}" class="btn btn-primary btn-sm" data-toggle="tooltip" title="{{ trans('adminlte_lang::message.new_client') }}">
-                              <i class="fa fa-plus"></i> {{ trans('adminlte_lang::message.new_client') }}
+                          <a href="{{ url('clients/create') }}" class="btn btn-primary btn-sm" data-toggle="tooltip" title="{{ trans('adminlte_lang::message.print') }}">
+                              <i class="fa fa-print"></i> {{ trans('adminlte_lang::message.print') }}
                           </a>
                     {{--@endcan--}}
 	              </div><!-- /. tools -->
@@ -116,8 +119,8 @@
 										</a>
 
 
-										<a href="{{ route('payments.create','idCliente='.$client->id) }}"  title='{{ trans('adminlte_lang::message.payment') }}' > <i class="fa fa-money"></i>
-										</a>
+										{{--<a href="{{ route('payments.create','idCliente='.$client->id) }}"  title='{{ trans('adminlte_lang::message.payment') }}' > <i class="fa fa-money"></i>--}}
+										{{--</a>--}}
 
                                     </td>
                                 </tr>

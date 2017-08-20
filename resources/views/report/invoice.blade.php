@@ -1,7 +1,9 @@
+@inject('defaults', 'App\Http\Controllers\Defaults')
+
 @extends('layouts.report')
 
 @section('htmlheader_title')
-    {{ trans('adminlte_lang::message.client_profile') }}
+{{ trans('adminlte_lang::message.invoice') }}#{{ $defaults->getNumberFormat($payment->id) }}
 @endsection
 
 @section('invoice')
@@ -12,7 +14,6 @@
 A5
 @endsection
 
-@inject('defaults', 'App\Http\Controllers\Defaults')
 
 
 @section('main-content')
@@ -22,7 +23,8 @@ A5
 
 <!-- Each sheet element should have the class "sheet" -->
 <!-- "padding-**mm" is optional: you can set 10, 15, 20 or 25 style="margin:0 auto;"-->
-<section class="sheet padding-10mm" style="margin:0 auto;">
+@for($i=0; $i<2; $i++)
+<section class="sheet padding-10mm">
 
         <!-- Write HTML just like a web page -->
         <div>
@@ -41,7 +43,9 @@ A5
                         </address>
                     </td>
                     <td width="57%">
-                        <p class="text-center" style="margin-bottom: 0;"> <strong>FATURA Nº 001/2017</strong></p>
+                        <p class="text-center" style="margin-bottom: 0;"> <strong>FATURA Nº {{ $defaults->getNumberFormat($payment->id) }} / {{ \Carbon\Carbon::parse($payment->created_at)->format('Y') }}
+
+                            </strong></p>
                         <address style="border: 1px solid #0f0f0f; padding: 5px 10px; border-radius: 5px;">
                             <strong>Exmo.(s) Sr.(s)</strong> <br>
                             <strong>{{ $payment->client->name }}</strong> <br>
@@ -83,14 +87,22 @@ A5
                             <tr>
                                 <td>{{ $payment->modality->name }}</td>
                                 <td class="text-center">1</td>
-                                <td class="text-right">{{ $payment->value_pay }}</td>
+                                <td class="text-right">{{ number_format($payment->value_pay, 2, ',', '') }}</td>
                                 <td class="text-center">{{ number_format($payment->discount, 1, ',', '').'%' }}</td>
                                 <td class="text-center">{{ number_format($payment->iva, 1, ',', '').'%' }}</td>
                                 <td class="text-right">{{ number_format(floatval( $payment->value_pay -(($payment->value_pay*$payment->discount)/100) ), 2, ',', '')  }}</td>
                             </tr>
+
+                            <tr>
+                                <td colspan="6" style="border-top: none; white-space: nowrap;" >
+                                    <hr align="center" width="100%" style="border: 1px dotted #000; margin-bottom: 0px;">
+                                    <p style="font-size: 12px; font-weight: bold;">{{ trans('adminlte_lang::message.note').': '.$payment->note }}</p>
+                                </td>
+                            </tr>
                         </table>
                     </td>
                 </tr>
+
 
 
             </table>
@@ -105,7 +117,7 @@ A5
                 <tr>
 
                     <td colspan="2">
-                        <hr align="center" width="100%" size="1">
+                        <hr align="center" width="100%" size="1" style="border: 1px solid #000;">
 
                         <table width="100%" border="0">
                             <tr>
@@ -189,7 +201,7 @@ A5
             	Documento Processado por Computador
                 </span>
                         <span class="pull-right">
-             	Original
+             	{{ $i == 1 ? 'Copy' : 'Original' }}
                 </span>
                     </td>
                 </tr>
@@ -199,5 +211,6 @@ A5
         </div>
 
 </section>
+@endfor
 
 @endsection

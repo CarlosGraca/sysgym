@@ -176,7 +176,7 @@ Route::get('setup/system',function()
     $timezone = $default->getTimezone();
     $roles = \App\Models\Role::pluck('name','id');
 
-    return view('system.setup',compact('island','system','theme','lang','currency','layout','timezone','roles'));
+    return view('system.setup',compact('system','theme','lang','currency','layout','timezone','roles'));
 });
 
 //SCHEDULE

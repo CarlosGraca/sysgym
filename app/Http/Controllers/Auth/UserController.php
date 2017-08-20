@@ -69,9 +69,16 @@ class UserController extends Controller
         $user->email = $request->email;
         $user->role_id = $request->role;
         $user->password = bcrypt($request->password);
+        $user->tenant_id = \Auth::user()->tenant_id;
+        $user->token = str_random(25);
 
-        $data = $this->create($request->all())->toArray();
-        $data['token'] = str_random(25);
+
+        //$data = $this->create_user($request->all())->toArray();
+        $data = [];
+        $data['token'] = $user->token;
+        $data['name'] = $user->name;
+        $data['email'] = $user->email;
+
 
         $branches = $request->get('branches');
 
@@ -94,14 +101,16 @@ class UserController extends Controller
             }
 
 
-            Mail::send('auth.mails.confirmation', $data, function($message) use($data) {
+            \Mail::send('auth.mails.confirmation', $data, function($message) use($data) {
                 $message->to($data['email']);
                 $message->subject('Registration Confirmation');
             });
 
+            $url = route('users.edit',$user->id);
+
 //            \Auth::login($user, true);
             $message = trans('adminlte_lang::message.msg_add_success_user');
-            return ['values'=>$user->name,'message'=>$message,'form'=>'user','type'=>'success'];
+            return ['values'=>$user->name,'message'=>$message,'form'=>'user','type'=>'success', 'url' => $url];
         }
     }
 
@@ -338,9 +347,6 @@ class UserController extends Controller
             }
         }
     }
-
-
-
 
 
 }

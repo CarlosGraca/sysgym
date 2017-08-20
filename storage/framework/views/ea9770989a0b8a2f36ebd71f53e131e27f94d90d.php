@@ -104,7 +104,7 @@ $status_color = ['danger','success'];
                                         
 
                                     
-                                    <a href="<?php echo e(url('matriculation')); ?>/<?php echo e($item->id); ?>/report" target="_blank" role="button" data-toggle="tooltip" title="<?php echo e(trans('adminlte_lang::message.print')); ?>">
+                                    <a href="#print" data-url="<?php echo e(url('matriculation')); ?>/<?php echo e($item->id); ?>/report" id="pop-new-window" data-toggle="tooltip" title="<?php echo e(trans('adminlte_lang::message.print')); ?>" data-title="<?php echo e(trans('adminlte_lang::message.print')); ?>">
                                         <i class="fa fa-print"></i>
                                     </a>
 

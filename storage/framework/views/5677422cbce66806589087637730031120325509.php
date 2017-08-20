@@ -26,9 +26,13 @@
 	            <div class="box-header with-border">
 	              <h3 class="box-title">  <?php echo e(trans('adminlte_lang::message.clients_list')); ?> </h3>
 	              <div class="pull-left box-tools">
+					  <a href="<?php echo e(url('clients/create')); ?>" class="btn btn-primary btn-sm" data-toggle="tooltip" title="<?php echo e(trans('adminlte_lang::message.new_client')); ?>">
+						  <i class="fa fa-plus"></i> <?php echo e(trans('adminlte_lang::message.new_client')); ?>
+
+					  </a>
                       
-                          <a href="<?php echo e(url('clients/create')); ?>" class="btn btn-primary btn-sm" data-toggle="tooltip" title="<?php echo e(trans('adminlte_lang::message.new_client')); ?>">
-                              <i class="fa fa-plus"></i> <?php echo e(trans('adminlte_lang::message.new_client')); ?>
+                          <a href="<?php echo e(url('clients/create')); ?>" class="btn btn-primary btn-sm" data-toggle="tooltip" title="<?php echo e(trans('adminlte_lang::message.print')); ?>">
+                              <i class="fa fa-print"></i> <?php echo e(trans('adminlte_lang::message.print')); ?>
 
                           </a>
                     
@@ -124,8 +128,8 @@
 										</a>
 
 
-										<a href="<?php echo e(route('payments.create','idCliente='.$client->id)); ?>"  title='<?php echo e(trans('adminlte_lang::message.payment')); ?>' > <i class="fa fa-money"></i>
-										</a>
+										
+										
 
                                     </td>
                                 </tr>

@@ -4,13 +4,22 @@
     {{ trans('adminlte_lang::message.report') }}
 @endsection
 
+@section('invoice')
+    <style>@page { size: A4 }</style>
+@endsection
+
+@section('invoice-body-class')
+A4
+@endsection
+
+
 @inject('Defaults', 'App\Http\Controllers\Defaults')
 <?php
 $status = [trans('adminlte_lang::message.canceled'),trans('adminlte_lang::message.draft'),trans('adminlte_lang::message.published'),trans('adminlte_lang::message.approved'),trans('adminlte_lang::message.rejected')];
 $status_color = ['danger','default','info','success','warning'];
 ?>
 @section('main-content')
-    <section class="invoice" id="download-content">
+    <section class="sheet padding-10mm">
         <!-- title row -->
         <div class="row" style="margin-top:0;">
             <div class="col-lg-12">

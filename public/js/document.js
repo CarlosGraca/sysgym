@@ -83,7 +83,8 @@ function pdfExport(type) {
 
   // $('.no-print').css('display','none');
   // $('.invoice').css('border','none');
-  var pdf = new jsPDF('p','pt','a5'),
+  //   jsPDF(orientation, unit, format, compressPdf)
+  var pdf = new jsPDF('portrait','mm','a5'),
       source = $('.sheet')[0];
 /* pdf.addHTML (element, x, y, options, callback ); */
 var options = {
@@ -92,6 +93,7 @@ var options = {
 
   pdf.addHTML(
         source,
+        0,0,
         options,
         function(){
 

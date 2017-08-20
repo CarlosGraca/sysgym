@@ -74,8 +74,8 @@
                                             
                                         
 
-										<a href="#invoice" id="payment-invoice" data-url="<?php echo e(route('payments.invoice',$payment->id)); ?>"  data-toggle="tooltip" title="<?php echo e(trans('adminlte_lang::message.invoice')); ?>" data-title="<?php echo e(trans('adminlte_lang::message.print')); ?>">
-											<i class="fa fa-ticket"></i>
+										<a href="#invoice" id="pop-new-window" data-url="<?php echo e(route('payments.invoice',$payment->id)); ?>"  data-toggle="tooltip" title="<?php echo e(trans('adminlte_lang::message.pdf')); ?>" data-title="<?php echo e(trans('adminlte_lang::message.print')); ?>">
+											<i class="fa fa-file-pdf-o"></i>
 										</a>
 										
                                     </td>

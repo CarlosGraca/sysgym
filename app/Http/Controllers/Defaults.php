@@ -736,6 +736,20 @@ class Defaults extends Controller
         return $string;
     }
 
+    public function getNumberFormat($number){
+        $format = '';
+        if($number > 0 && $number < 9) {
+            $format = '000'.$number;
+        }elseif($number > 9 && $number < 99) {
+            $format = '00'.$number;
+        }elseif($number > 99 && $number < 999){
+            $format = '0'.$number;
+        } else{
+            $format = $number;
+        }
+        return $format;
+    }
+
 
     /**
      * Show the form for creating a new resource.
