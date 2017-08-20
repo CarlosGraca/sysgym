@@ -1,6 +1,3 @@
-<?php
-$system = \App\Models\System::where(['branch_id'=>\Auth::user()->branch_id,'tenant_id'=>\Auth::user()->tenant_id])->first();
-?>
 <!DOCTYPE html>
 <!--
 This is a starter template page. Use this page to start your new project from
@@ -12,46 +9,62 @@ scratch. This page gets rid of all links and provides the needed markup only.
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
         <?php echo $__env->make('layouts.partials.htmlheader', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
         <style>
-            .content-wrapper-login {
-                background: url('<?php echo e(asset( $system->background_image )); ?>') no-repeat center center fixed;
+           .content-wrapper-login {
+                /*background: url('<?php echo e(asset( \Auth::user()->branch->system->background_image )); ?>') no-repeat center center fixed;*/
+                 background: white;
                 -webkit-background-size: cover;
                 -moz-background-size: cover;
                 -o-background-size: cover;
                 background-size: cover;
             }
+            .layout-boxed {
+                 background: white;
+            }
         </style>
     <?php echo $__env->yieldSection(); ?>
 
-    <body class="layout-boxed content-wrapper-login">
+    <body class="layout-boxed content-wrapper-login  <?php echo $__env->yieldContent('invoice-body-class',''); ?>">
         <!-- Main content -->
-        <div class="container">
+        
             <!-- Portfolio Item Heading -->
-
 
             <!-- /.row -->
             <!-- Your Page Content Here -->
 
-            <section class="invoice">
-                <div class="row no-print">
-                    <div class="col-xs-6 pull-left">
-                        <img  src="<?php echo e(url('/img/clinic/logo.png')); ?>" class="img-circle" alt="Cinque Terre" style="float: left; width: 30px; height: 30px; margin-right: 10px;  margin-top: -2px;">
-                        <h4><?php echo e(\Auth::user()->tenant->company_name); ?> - Report</h4>
-                    </div>
-                    <div class="col-xs-6 pull-right">
-                        <a href="#" id="close-page" onclick="window.close();" class="btn btn-default pull-right"><i class="fa fa-close"></i> Close</a>
-                        <a href="#" id="print-page" onclick="window.print();" class="btn btn-default pull-right" style="margin-right: 5px;"><i class="fa fa-print"></i> Print</a>
-                        <!--
-                            <a href="#" id="btn-download" type='tests' class="btn btn-default pull-right" style="margin-right: 5px;"><i class="fa fa-cloud-download"></i> Download</a>
-                        -->
-                        <a href="#" id="btn-email" class="btn btn-default pull-right" style="margin-right: 5px;"><i class="fa fa-envelope"></i> Email</a>
-                    </div>
-                </div>
-            </section>
-
-            <?php echo $__env->yieldContent('main-content'); ?>
 
 
-        </div><!-- /.content -->
+        <section class="invoice no-border no-padding" style="background-color: rgba(110,255,110,0);">
+                <?php echo $__env->yieldContent('main-content'); ?>
+                
+        </section>
+
+
+
+        <section class="invoice col-lg-3 col-md-3 col-sm-3 col-xs-12 pull-right text-center" style="position:fixed; top: 0; right: -25px; border-radius: 5px;background: transparent;border: 0;">
+            <div class="no-print">
+                
+                
+                
+                
+                
+                    
+                    <a href="#" id="print-page" onclick="window.print();" class="btn btn-default btn-sm" style="margin-right: 5px;"><i class="fa fa-print"></i> Print</a>
+                    <a href="#" id="btn-download" type='invoice' class="btn btn-default btn-sm" style="margin-right: 5px;"><i class="fa fa-cloud-download"></i> Download</a>
+                    <a href="#" id="btn-email" class="btn btn-default btn-sm" style="margin-right: 5px;"><i class="fa fa-envelope"></i> Email</a>
+                
+            </div>
+        </section>
+            
+                
+                        
+                            
+                        
+                    
+                            
+                        
+                
+            
+        
 
         <div class="loader" style="display:none; position:fixed; right:0; bottom:0; top: 0;">
             <img src="<?php echo e(asset('img/gears.gif')); ?>" />

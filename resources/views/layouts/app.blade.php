@@ -104,6 +104,8 @@ desired effect
     {{--@include('layouts.shared.modal_del')--}}
 
     @include('layouts.shared.croppie_modal')
+    
+    @include('layouts.shared.confirm_modal')
 
     @include('layouts.partials.footer')
 

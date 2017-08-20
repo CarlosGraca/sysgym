@@ -22,7 +22,7 @@
 <?php $__env->startSection('main-content'); ?>
 	<div class="row">
 	    <div class="col-lg-12">
-	        <div class="box box-default">
+	        <div class="box box-primary">
 	            <div class="box-header with-border">
 	              <h3 class="box-title"></h3>
 	              <div class="pull-left box-tools">
@@ -68,6 +68,14 @@
 										
 										<a href="#"  data-toggle="tooltip" title="<?php echo e(trans('adminlte_lang::message.cancel')); ?>" data-key="<?php echo e($payment->id); ?>" data-name="<?php echo e($payment->note); ?>">
 											<i class="fa fa-ban"></i>
+										</a>
+
+                                        
+                                            
+                                        
+
+										<a href="#invoice" id="payment-invoice" data-url="<?php echo e(route('payments.invoice',$payment->payment_id)); ?>"  data-toggle="tooltip" title="<?php echo e(trans('adminlte_lang::message.invoice')); ?>" data-title="<?php echo e(trans('adminlte_lang::message.print')); ?>">
+											<i class="fa fa-ticket"></i>
 										</a>
 										
                                     </td>

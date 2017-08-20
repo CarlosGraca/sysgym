@@ -245,6 +245,7 @@ return [
     'end_time'                => 'End Time',
     'yes'                     => 'Yes',
     'not'                     => 'Not',
+    'no'                     => 'No',
     'tools_bar'               => 'Tools Bar',
     'shop'                    => 'Shop',
     'payments'                 => 'Payments',
@@ -614,5 +615,7 @@ return [
     'select_free' => ' (SELECT FREE) ',
     'new_user' => 'New User',
     'invoice' => 'Invoice',
+
+    'message_print_invoice'=>'You want to print the receipt?'
 ];
 

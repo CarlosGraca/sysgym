@@ -33,6 +33,8 @@
     <!-- iONICONS PLUGIN -->
     <link href="<?php echo e(asset('/plugins/ionicons/css/ionicons.min.css')); ?>" rel="stylesheet" type="text/css" />
 
+    <link rel="stylesheet" type="text/css" href="<?php echo e(asset('/css/colorbox.css')); ?>">
+
     <!-- DATA TABLES PLUGIN -->
     <link rel="stylesheet" href="<?php echo e(asset('/plugins/datatables/dataTables.bootstrap.css')); ?>"/>
     <link rel="stylesheet" href="<?php echo e(asset('/plugins/datatables/extensions/ColVis/css/dataTables.colVis.css')); ?>"/>
@@ -76,6 +78,12 @@
     <!-- JQUERY CONTEXT MENU PLUGIN -->
     <link rel="stylesheet" href="<?php echo e(asset('/plugins/jquery-contextmenu/dist/jquery.contextMenu.min.css')); ?>" type="text/css" />
 
+    <!-- Normalize or reset CSS with your favorite library -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/3.0.3/normalize.css">
+
+    <!-- Load paper.css for happy printing -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/paper-css/0.2.3/paper.css">
+
     <!-- DEVELOPMENT STYLE SHEETS -->
     <link href="<?php echo e(asset('/css/search.css')); ?>" rel="stylesheet" type="text/css" />
     <link href="<?php echo e(asset('/css/default.css')); ?>" rel="stylesheet" type="text/css" />
@@ -88,7 +96,7 @@
     <![endif]-->
 
 
-
+    <?php echo $__env->yieldContent('invoice',null); ?>
 
     <style type="text/css">
       .tabela > thead > tr > th, .table > tbody > tr > th, .table > tfoot > tr > th, .table > thead > tr > td, .table > tbody > tr > td, .table > tfoot > tr > td{
@@ -121,5 +129,7 @@
 
 
     </style>
+
+
 
 </head>

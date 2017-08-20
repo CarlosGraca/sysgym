@@ -33,6 +33,8 @@
     <!-- iONICONS PLUGIN -->
     <link href="{{ asset('/plugins/ionicons/css/ionicons.min.css') }}" rel="stylesheet" type="text/css" />
 
+    <link rel="stylesheet" type="text/css" href="{{asset('/css/colorbox.css')}}">
+
     <!-- DATA TABLES PLUGIN -->
     <link rel="stylesheet" href="{{ asset('/plugins/datatables/dataTables.bootstrap.css')}}"/>
     <link rel="stylesheet" href="{{ asset('/plugins/datatables/extensions/ColVis/css/dataTables.colVis.css')}}"/>
