@@ -12,9 +12,11 @@ return [
     | these language lines according to your application's requirements.
     |
     */
+    'total_client'=>'Total Clients',
     'total_payment'=>'Total Payments',
     'amount_per_modality'=>'Amount Per Modality',
-    'amount_per_month'=>'Amount Per Month',
+    'client_per_modality'=>'Client Per Modality',
+    'amount_per_month'=>'Amount Per Date',
     'amount_received'=>'Amount Received',
     'list_pay' =>'List of Pay',
 //    'start_date' =>'Start Date',

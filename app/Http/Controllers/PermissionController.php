@@ -56,7 +56,7 @@ class PermissionController extends Controller
             $exist = Permission::where('type','MENU')->
                     where('tenant_menu_id',$selected_id)->
                     where('role_id',Input::get('role_id'))->first();
-            if (!empty($exist)){                 
+            if (empty($exist)){                 
                 $permission = new Permission;                      
                 $permission->type = 'MENU';
                 $permission->tenant_menu_id=$selected_id;

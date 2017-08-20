@@ -1,5 +1,4 @@
-<!-- Main content -->
-<section class="content">
+
     <div class="row">
         <div class="col-md-4 col-sm-6 col-xs-12">
             <div class="info-box">
@@ -21,7 +20,7 @@
                 </span>
                 <div class="info-box-content">
                     <span class="info-box-text"><?php echo e(trans('adminlte_lang::message.amount_received')); ?></span>
-                    <span class="info-box-number">15.000</span>
+                    <span class="info-box-number"><?php echo e($Defaults->currency($amounts[0]->total_payments)); ?></span>
                 </div>
                 <!-- /.info-box-content -->
             </div>
@@ -34,7 +33,7 @@
                 </span>
                 <div class="info-box-content">
                     <span class="info-box-text"><?php echo e(trans('adminlte_lang::message.free')); ?></span>
-                    <span class="info-box-number">0</span>
+                    <span class="info-box-number"><?php echo e($free); ?></span>
                 </div>
                 <!-- /.info-box-content -->
             </div>
@@ -44,7 +43,7 @@
     <div class="row">
         <div class="col-md-8">
             <!-- DONUT CHART -->
-            <div class="box box-danger">
+            <div class="box box-success">
                 <div class="box-header with-border">
                     <h3 class="box-title"><?php echo e(trans('adminlte_lang::message.amount_per_month')); ?></h3>
                     <div class="box-tools pull-right">
@@ -57,7 +56,8 @@
                     </div>
                 </div>
                 <div class="box-body">
-                    <canvas id="pieChart" style="height:250px"></canvas>
+                    <div id="dash-payement-month"></div>
+                    <?= $lava->render('ColumnChart', 'AmountMonth', 'dash-payement-month'); ?>
                 </div>
                 <!-- /.box-body -->
             </div>
@@ -78,10 +78,15 @@
                         </button>
                     </div>
                 </div>
-                <div class="box-body">
-                    <div class="chart">
-                        <canvas id="barChart" style="height:230px"></canvas>
+                <div class="box-body">     
+                    <div id="dash-modality">
+                        <div id="chart">
+                        </div>
+                        <div id="control">
+                        </div>
                     </div>
+         
+                    <?= $lava->render('Dashboard', 'AmountModality', 'dash-modality'); ?>
                 </div>
                 <!-- /.box-body -->
             </div>
@@ -89,5 +94,3 @@
         </div>
         <!-- /.col (RIGHT) -->
     </div>
-    <!-- /.row -->
-</section>

@@ -3888,7 +3888,7 @@ die in wolken onderging.
 "Hij kijkt me maar aan, wij begrijpen geen van beiden wat we van
 elkaar moeten." Verder kwam-i niet.
 
-Hij is nu in een gesticht voor zenuwclienten. Hij is heel rustig. Hij
+Hij is nu in een gesticht voor zenuwpatienten. Hij is heel rustig. Hij
 kijkt maar naar boven, naar de lucht of tuurt naar den horizon of
 zit in de zon te staren tot z'n oogen pijn doen. Dat mag-i niet,
 maar ze kunnen niets met 'm beginnen. Aan 't praten kunnen ze 'm niet

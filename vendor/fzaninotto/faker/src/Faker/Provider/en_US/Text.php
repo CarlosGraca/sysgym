@@ -652,7 +652,7 @@ The Mouse only growled in reply.
 
 'Please come back and finish your story!' Alice called after it; and the
 others all joined in chorus, 'Yes, please do!' but the Mouse only shook
-its head imcliently, and walked a little quicker.
+its head impatiently, and walked a little quicker.
 
 'What a pity it wouldn't stay!' sighed the Lory, as soon as it was quite
 out of sight; and an old Crab took the opportunity of saying to her
@@ -1107,7 +1107,7 @@ offended!'
 'You'll get used to it in time,' said the Caterpillar; and it put the
 hookah into its mouth and began smoking again.
 
-This time Alice waited cliently until it chose to speak again. In
+This time Alice waited patiently until it chose to speak again. In
 a minute or two the Caterpillar took the hookah out of its mouth
 and yawned once or twice, and shook itself. Then it got down off the
 mushroom, and crawled away in the grass, merely remarking as it went,
@@ -1669,7 +1669,7 @@ understand you,' she said, as politely as she could.
 'The Dormouse is asleep again,' said the Hatter, and he poured a little
 hot tea upon its nose.
 
-The Dormouse shook its head imcliently, and said, without opening its
+The Dormouse shook its head impatiently, and said, without opening its
 eyes, 'Of course, of course; just what I was going to remark myself.'
 
 'Have you guessed the riddle yet?' the Hatter said, turning to Alice
@@ -1970,7 +1970,7 @@ When the procession came opposite to Alice, they all stopped and looked
 at her, and the Queen said severely 'Who is this?' She said it to the
 Knave of Hearts, who only bowed and smiled in reply.
 
-'Idiot!' said the Queen, tossing her head imcliently; and, turning to
+'Idiot!' said the Queen, tossing her head impatiently; and, turning to
 Alice, she went on, 'What's your name, child?'
 
 'My name is Alice, so please your Majesty,' said Alice very politely;
@@ -2400,7 +2400,7 @@ down, both of you, and don't speak a word till I've finished.'
 
 So they sat down, and nobody spoke for some minutes. Alice thought to
 herself, 'I don't see how he can EVEN finish, if he doesn't begin.' But
-she waited cliently.
+she waited patiently.
 
 'Once,' said the Mock Turtle at last, with a deep sigh, 'I was a real
 Turtle.'
@@ -2665,7 +2665,7 @@ answer. 'They're done with blacking, I believe.'
 
 'And what are they made of?' Alice asked in a tone of great curiosity.
 
-'Soles and eels, of course,' the Gryphon replied rather imcliently:
+'Soles and eels, of course,' the Gryphon replied rather impatiently:
 'any shrimp could have told you that.'
 
 'If I'd been the whiting,' said Alice, whose thoughts were still running
@@ -2691,7 +2691,7 @@ because I was a different person then.'
 
 'Explain all that,' said the Mock Turtle.
 
-'No, no! The adventures first,' said the Gryphon in an imclient tone:
+'No, no! The adventures first,' said the Gryphon in an impatient tone:
 'explanations take such a dreadful time.'
 
 So Alice began telling them her adventures from the time when she first
@@ -2750,7 +2750,7 @@ out with his nose, you know?'
 'It's the first position in dancing.' Alice said; but was dreadfully
 puzzled by the whole thing, and longed to change the subject.
 
-'Go on with the next verse,' the Gryphon repeated imcliently: 'it
+'Go on with the next verse,' the Gryphon repeated impatiently: 'it
 begins "I passed by his garden."'
 
 Alice did not dare to disobey, though she felt sure it would all come
