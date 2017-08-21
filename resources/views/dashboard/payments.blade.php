@@ -43,7 +43,7 @@
     <div class="row">
         <div class="col-md-8">
             <!-- DONUT CHART -->
-            <div class="box box-success">
+            <div class="box box-default">
                 <div class="box-header with-border">
                     <h3 class="box-title">{{ trans('adminlte_lang::message.amount_per_month') }}</h3>
                     <div class="box-tools pull-right">
@@ -66,7 +66,7 @@
         <!-- /.col (LEFT) -->
         <div class="col-md-4">
             <!-- BAR CHART -->
-            <div class="box box-success">
+            <div class="box box-default">
                 <div class="box-header with-border">
                     <h3 class="box-title">{{ trans('adminlte_lang::message.amount_per_modality') }}</h3>
                     <div class="box-tools pull-right">
