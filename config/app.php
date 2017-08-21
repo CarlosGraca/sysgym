@@ -213,6 +213,8 @@ return [
         Barryvdh\DomPDF\ServiceProvider::class,
         Intervention\Image\ImageServiceProvider::class,
 
+        Khill\Lavacharts\Laravel\LavachartsServiceProvider::class,
+
         /*
          * Package Service Providers...
          */
@@ -283,7 +285,9 @@ return [
         'Input'     => Illuminate\Support\Facades\Input::class,
         'PDF' => Barryvdh\DomPDF\Facade::class,
         'Image' => Intervention\Image\Facades\Image::class,
-        'Helpers' => App\Helpers::class
+        'Helpers' => App\Helpers::class,
+
+        'Lava' => Khill\Lavacharts\Laravel\LavachartsFacade::class
     ],
 
 ];

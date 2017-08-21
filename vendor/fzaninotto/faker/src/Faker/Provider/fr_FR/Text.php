@@ -536,14 +536,14 @@ il faisait depuis douze heures, il se prit à geindre faiblement.
 La fracture était simple, sans complication d'aucune espèce.
 Charles n'eût osé en souhaiter de plus facile. Alors, se rappelant
 les allures de ses maîtres auprès du lit des blessés, il
-réconforta le clients avec toutes sortes de bons mots; caresses
+réconforta le patient avec toutes sortes de bons mots; caresses
 chirurgicales qui sont comme l'huile dont on graisse les
 bistouris. Afin d'avoir des attelles, on alla chercher, sous la
 charreterie, un paquet de lattes. Charles en choisit une, la coupa
 en morceaux et la polit avec un éclat de vitre, tandis que la
 servante déchirait des draps pour faire des bandes, et que
 mademoiselle Emma tâchait à coudre des coussinets. Comme elle fut
-longtemps avant de trouver son étui, son père s'imclienta; elle
+longtemps avant de trouver son étui, son père s'impatienta; elle
 ne répondit rien; mais, tout en cousant, elle se piquait les
 doigts, qu'elle portait ensuite à sa bouche pour les sucer.
 
@@ -7771,7 +7771,7 @@ pour lui dire qu'elle s'ennuyait, que son mari était odieux et son
 existence affreuse!
 
 -- Est-ce que j'y peux quelque chose? s'écria-t-il un jour,
-imclienté.
+impatienté.
 
 -- Ah! si tu voulais! ...
 
@@ -7831,7 +7831,7 @@ Et il ajoutait d'un ton méditatif:
 
 -- Est-ce que c'est une dame comme Madame?
 
-Mais Félicité s'imclientait de le voir tourner ainsi tout autour
+Mais Félicité s'impatientait de le voir tourner ainsi tout autour
 d'elle. Elle avait six ans de plus, et Théodore, le domestique de
 M. Guillaumin, commençait à lui faire la cour.
 
@@ -8074,7 +8074,7 @@ parenthèses si abondamment qu'il n'y comprenait rien.
 
 -- Allons, mon pauvre ange, du courage, console-toi, patience!
 
--- Mais voilà quatre ans que je cliente et que je souffre!... Un
+-- Mais voilà quatre ans que je patiente et que je souffre!... Un
 amour comme le nôtre devrait s'avouer à la face du ciel! Ils sont
 à me torturer. Je n'y tiens plus! Sauve-moi!
 
@@ -9179,7 +9179,7 @@ Et, sur un geste d'irritation que faisait M. Bournisien:
 les mains d'une jeune personne, et je serais fâché qu'Athalie...
 
 -- Mais ce sont les protestants, et non pas nous, s'écria l'autre
-imclienté, qui recommandent la Bible!
+impatienté, qui recommandent la Bible!
 
 -- N'importe! dit Homais, je m'étonne que, de nos jours, en un
 siècle de lumières, on s'obstine encore à proscrire un délassement
@@ -9432,7 +9432,7 @@ qui nuisait beaucoup aux paroles.
 -- C'est que j'aime, reprit-il en se penchant sur son épaule, à me
 rendre compte, tu sais bien.
 
--- Tais-toi! tais-toi! fit-elle imclientée.
+-- Tais-toi! tais-toi! fit-elle impatientée.
 
 Lucie s'avançait, à demi soutenue par ses femmes, une couronne
 d'oranger dans les cheveux, et plus pâle que le satin blanc de sa
@@ -11302,7 +11302,7 @@ le bal masqué.
 Puis elle s'en allait! Elle remontait les rues; elle arrivait à la
 Croix rouge; elle reprenait ses socques, qu'elle avait cachés le
 matin sous une banquette, et se tassait à sa place parmi les
-voyageurs imclientés. Quelques-uns descendaient au bas de la
+voyageurs impatientés. Quelques-uns descendaient au bas de la
 côte. Elle restait seule dans la voiture.
 
 À chaque tournant, on apercevait de plus en plus tous les
@@ -11947,7 +11947,7 @@ vaporeuse, la Française libertine, l'Italienne passionnée.
 -- C'est un goût d'artiste, dit Homais. -- Garçon! deux demi-
 tasses!
 
--- Partons-nous? reprit à la fin Léon s'imclientant.
+-- Partons-nous? reprit à la fin Léon s'impatientant.
 
 -- _Yes_.
 
@@ -13569,7 +13569,7 @@ Puis, d'un air indifférent:
 Elle entra dans le corridor où s'ouvrait la porte du laboratoire.
 Il y avait contre la muraille une clef étiquetée capharnaüm.
 
--- Justin! cria l'apothicaire, qui s'imclientait.
+-- Justin! cria l'apothicaire, qui s'impatientait.
 
 -- Montons!
 
