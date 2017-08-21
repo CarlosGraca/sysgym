@@ -47,7 +47,7 @@ class DashboardController extends Controller
                                  ->get();
 
         
-        $amoutmodalitys =  DB::table('modalities as a ')
+        $amountmodalities =  DB::table('modalities as a ')
                            ->leftjoin('matriculation as b' , function($join){
                               $join->on('a.id', '=', 'b.modality_id') ;  
                            }) 
@@ -55,7 +55,7 @@ class DashboardController extends Controller
                              $join->on('b.id', '=', 'c.item_id')
                               ->where('c.free',0);  
                            }) 
-                           ->where(['a.status'=>1])
+                           ->where(['a.status'=>1,'a.tenant_id'=>Auth::user()->tenant_id])
                            ->select('a.name', DB::raw('SUM(value_pay-((value_pay*discount)/100)) as total_payments'))
                            ->groupby('a.name')
                            ->get();
@@ -68,94 +68,100 @@ class DashboardController extends Controller
                              $join->on('b.client_id', '=', 'c.id')
                               ->where('c.status',1);  
                            }) 
-                           ->where(['a.status'=>1])
+                           ->where(['a.status'=>1,'a.tenant_id'=>Auth::user()->tenant_id])
                            ->select('a.name', DB::raw('count(a.id) as total_clients'))
                            ->groupby('a.name')
                            ->get();
 
-        $amountmonths = DB::table('payments as a')
+        $paymentsperdates = DB::table('payments as a')
                         ->groupBy(DB::raw("DATE_FORMAT(created_at, '%Y-%m-%d')"))
                         ->select(DB::raw("DATE_FORMAT(created_at, '%Y-%m-%d') as date"),  DB::raw('SUM(value_pay-((value_pay*discount)/100)) as total_payments'))
-                        ->where('a.free',0)
+                        ->where(['a.free'=>0,'tenant_id'=>Auth::user()->tenant_id])
+                        ->get();     
+
+        $clientsperdates = DB::table('clients as a')
+                        ->groupBy(DB::raw("DATE_FORMAT(created_at, '%Y-%m-%d')"))
+                        ->select(DB::raw("DATE_FORMAT(created_at, '%Y-%m-%d') as date"),   DB::raw('count(a.id) as total_clients'))
+                        ->where(['a.status'=>1,'tenant_id'=>Auth::user()->tenant_id])
                         ->get();            
 
-        $data = array();
+        
         $lava = new Lavacharts;
 
         $amountpermodalities = $lava->DataTable();
         $amountmonth = $lava->DataTable();
         $clientmodality = $lava->DataTable();
-
+        $clientDates = $lava->DataTable();
+        
+        ////////////////////////////////////////////////////////
+        $data = array();
         $amountpermodalities->addStringColumn('Name');
-        $amountpermodalities->addNumberColumn('Amounts');
-
-        $clientmodality->addStringColumn('Name');
-        $clientmodality->addNumberColumn('Amounts');
+        $amountpermodalities->addNumberColumn('Amounts');       
        
-
-        foreach ($amoutmodalitys as $key => $value) {
+        foreach ($amountmodalities as $key => $value) {
            array_push($data, [$value->name,$value->total_payments]);
         }   
 
         $amountpermodalities->addRows($data);
 
-        $pieChart = $lava->PieChart('AmountModality', $amountpermodalities, [
+        $lava->PieChart('PaymentPerModality', $amountpermodalities, [
             //'width' => 400,
             'pieSliceText' => 'value'
         ]);
-        $filter  = $lava->NumberRangeFilter(1, [
-            'ui' => [
-                'labelStacking' => 'vertical'
-            ]
-        ]);
-        $control = $lava->ControlWrapper($filter, 'control');
-        $chart   = $lava->ChartWrapper($pieChart, 'chart');
 
-        $lava->Dashboard('AmountModality')->bind($control, $chart);
-
-
+        ////////////////////////////////////////////////////////
         $data = array();
-        foreach ($amountmonths as $key => $value) {
+        foreach ($paymentsperdates as $key => $value) {
            array_push($data, [$value->date,$value->total_payments]);
         }  
         $amountmonth->addDateColumn('Date')
-                    ->addNumberColumn('Payment')
+                    ->addNumberColumn('Total')
                     ->setDateTimeFormat('Y-m-d');
 
         $amountmonth->addRows($data);
 
-        $lava->ColumnChart('AmountMonth', $amountmonth, [
+        $lava->ColumnChart('PaymentPerDate', $amountmonth, [
             'title' => 'Payment Performance',
             'titleTextStyle' => [
                 'color'    => '#eb6b2c',
                 'fontSize' => 14
             ]
         ]);
+        ////////////////////////////////////////////////////////
 
-
-       /* $clientmodality->addStringColumn('Name');
-        $clientmodality->addNumberColumn('Amounts');
+        $clientmodality->addStringColumn('Name');
+        $clientmodality->addNumberColumn('Total');
        
-
-        foreach ($amoutmodalitys as $key => $value) {
-           array_push($data, [$value->name,$value->total_payments]);
+        $data = array();
+        foreach ($clientmodalities as $key => $value) {
+           array_push($data, [$value->name,$value->total_clients]);
         }   
 
-        $amountpermodalities->addRows($data);
+        $clientmodality->addRows($data);
 
-        $pieChart = $lava->PieChart('AmountModality', $amountpermodalities, [
+        $lava->PieChart('ClientModality', $clientmodality, [
             //'width' => 400,
             'pieSliceText' => 'value'
         ]);
-        $filter  = $lava->NumberRangeFilter(1, [
-            'ui' => [
-                'labelStacking' => 'vertical'
+
+        ////////////////////////////////////////////////////////
+        $data = array();
+        foreach ($clientsperdates as $key => $value) {
+           array_push($data, [$value->date,$value->total_clients]);
+        }  
+        $clientDates->addDateColumn('Date')
+                    ->addNumberColumn('Total')
+                    ->setDateTimeFormat('Y-m-d');
+
+        $clientDates->addRows($data);
+
+        $lava->ColumnChart('ClientPerDate', $clientDates, [
+            'title' => 'Clients Performance',
+            'titleTextStyle' => [
+                'color'    => '#eb6b2c',
+                'fontSize' => 14
             ]
         ]);
-        $control = $lava->ControlWrapper($filter, 'control');
-        $chart   = $lava->ChartWrapper($pieChart, 'chart');
-
-        $lava->Dashboard('AmountModality')->bind($control, $chart);*/
 
         return view('dashboard.index',compact('total_a','total_i','total_m','total_mt','total_p','amounts','free','lava'));
     }

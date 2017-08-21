@@ -16,6 +16,7 @@ return [
     'total_payment'=>'Total Payments',
     'amount_per_modality'=>'Amount Per Modality',
     'client_per_modality'=>'Client Per Modality',
+    'client_per_date'=>'Client Per Date',
     'amount_per_month'=>'Amount Per Date',
     'amount_received'=>'Amount Received',
     'list_pay' =>'List of Pay',

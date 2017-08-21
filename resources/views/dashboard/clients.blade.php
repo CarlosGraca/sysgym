@@ -43,9 +43,9 @@
 <div class="row">
         <div class="col-md-8">
             <!-- DONUT CHART -->
-            <div class="box box-success">
+            <div class="box box-default">
                 <div class="box-header with-border">
-                    <h3 class="box-title">{{ trans('adminlte_lang::message.amount_per_month') }}</h3>
+                    <h3 class="box-title">{{ trans('adminlte_lang::message.client_per_date') }}</h3>
                     <div class="box-tools pull-right">
                         <button class="btn btn-box-tool" data-widget="collapse">
                             <i class="fa fa-minus"></i>
@@ -56,8 +56,8 @@
                     </div>
                 </div>
                 <div class="box-body">
-                    <div id="dash-payement-month"></div>
-                    <?= $lava->render('ColumnChart', 'AmountMonth', 'dash-payement-month'); ?>
+                    <div id="dash-client-date"></div>
+                    <?= $lava->render('ColumnChart', 'ClientPerDate', 'dash-client-date'); ?>
                 </div>
                 <!-- /.box-body -->
             </div>
@@ -66,7 +66,7 @@
         <!-- /.col (LEFT) -->
         <div class="col-md-4">
             <!-- BAR CHART -->
-            <div class="box box-success">
+            <div class="box box-default">
                 <div class="box-header with-border">
                     <h3 class="box-title">{{ trans('adminlte_lang::message.client_per_modality') }}</h3>
                     <div class="box-tools pull-right">
@@ -79,14 +79,14 @@
                     </div>
                 </div>
                 <div class="box-body">     
-                    <div id="dash-modality">
+                    <div id="dash-client">
                         <div id="chart">
                         </div>
                         <div id="control">
                         </div>
                     </div>
          
-                    <?= $lava->render('Dashboard', 'AmountModality', 'dash-modality'); ?>
+                    <?= $lava->render('PieChart', 'ClientModality', 'dash-client'); ?>
                 </div>
                 <!-- /.box-body -->
             </div>

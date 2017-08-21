@@ -19,9 +19,26 @@
         .info-box-number{
             font-size: 30px;
         }
+        .h-divider {
+            margin-top: 5px;
+            margin-bottom: 5px;
+            height: 1px;
+            border-top: 3px solid #3C8DBC;
+            size: 30px;
+            /* margin-left: 15px; */
+            /* margin-right: 15px; */
+        }
     </style>
 
-    <div class="nav-tabs-custom">
+    <span ><strong class="title">{{ trans('adminlte_lang::message.clients') }}</strong></span>
+    <hr class="h-divider" style="margin-left: 0px;margin-right: 0px">
+    @include('dashboard.clients') 
+
+    <span ><strong class="title">{{ trans('adminlte_lang::message.payments') }}</strong></span>
+    <hr class="h-divider" style="margin-left: 0px;margin-right: 0px">
+    @include('dashboard.payments')
+
+    <!-- <div class="nav-tabs-custom">
         <ul class="nav nav-tabs">
             <li >
                  <a href="#clients" data-toggle="tab"><i class="fa fa-users"></i> {{ trans('adminlte_lang::message.clients') }}</a>
@@ -31,16 +48,16 @@
             </li>
         </ul>
         <div class="tab-content">
-            <!-- profile -->
+           
             <div class="tab-pane " id="clients">
-               @include('dashboard.clients') 
+               
             </div>
-             <!-- Reset Password -->
+           
             <div class="tab-pane active" id="payments">
-               @include('dashboard.payments')
+              
             </div>
         </div>
     </div>
-
+ -->
  
 @endsection

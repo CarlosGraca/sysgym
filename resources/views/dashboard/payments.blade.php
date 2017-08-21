@@ -57,7 +57,7 @@
                 </div>
                 <div class="box-body">
                     <div id="dash-payement-month"></div>
-                    <?= $lava->render('ColumnChart', 'AmountMonth', 'dash-payement-month'); ?>
+                    <?= $lava->render('ColumnChart', 'PaymentPerDate', 'dash-payement-month'); ?>
                 </div>
                 <!-- /.box-body -->
             </div>
@@ -86,7 +86,7 @@
                         </div>
                     </div>
          
-                    <?= $lava->render('Dashboard', 'AmountModality', 'dash-modality'); ?>
+                    <?= $lava->render('PieChart', 'PaymentPerModality', 'dash-modality'); ?>
                 </div>
                 <!-- /.box-body -->
             </div>
