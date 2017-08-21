@@ -1,5 +1,8 @@
 @inject('defaults', 'App\Http\Controllers\Defaults')
-
+<?php
+    $total = 0;
+    $total_discount = 0;
+?>
 @extends('layouts.report')
 
 @section('htmlheader_title')
@@ -23,7 +26,7 @@ A5
 
 <!-- Each sheet element should have the class "sheet" -->
 <!-- "padding-**mm" is optional: you can set 10, 15, 20 or 25 style="margin:0 auto;"-->
-@for($i=0; $i<2; $i++)
+{{--@for($i=0; $i<2; $i++)--}}
 <section class="sheet padding-10mm">
 
         <!-- Write HTML just like a web page -->
@@ -84,14 +87,23 @@ A5
                                 <th width="11%" class="text-center" scope="col">%IVA</th>
                                 <th width="11%" class="text-right" scope="col">Valor</th>
                             </tr>
-                            <tr>
-                                <td>{{ $payment->modality->name }}</td>
-                                <td class="text-center">1</td>
-                                <td class="text-right">{{ number_format($payment->value_pay, 2, ',', '') }}</td>
-                                <td class="text-center">{{ number_format($payment->discount, 1, ',', '').'%' }}</td>
-                                <td class="text-center">{{ number_format($payment->iva, 1, ',', '').'%' }}</td>
-                                <td class="text-right">{{ number_format(floatval( $payment->value_pay -(($payment->value_pay*$payment->discount)/100) ), 2, ',', '')  }}</td>
-                            </tr>
+
+                            @foreach($payment->parent as $p)
+
+                                <tr>
+                                    <td>{{ $p->modality->name }}</td>
+                                    <td class="text-center">1</td>
+                                    <td class="text-right">{{ number_format($p->value_pay, 2, ',', '') }}</td>
+                                    <td class="text-center">{{ number_format($p->discount, 1, ',', '').'%' }}</td>
+                                    <td class="text-center">{{ number_format($p->iva, 1, ',', '').'%' }}</td>
+                                    <td class="text-right">{{ number_format(floatval( $p->value_pay -(($p->value_pay*$p->discount)/100) ), 2, ',', '')  }}</td>
+                                </tr>
+                            <?php
+                                $total += floatval( $p->value_pay -(($p->value_pay*$p->discount)/100) );
+                                $total_discount += floatval( ($p->value_pay*$p->discount) /100 );
+                                ?>
+
+                            @endforeach
 
                             <tr>
                                 <td colspan="6" style="border-top: none; white-space: nowrap;" >
@@ -137,7 +149,7 @@ A5
                                         </tr>
                                         <tr>
                                             <td>{{ number_format($payment->iva, 1, ',', '') }}</td>
-                                            <td>{{ number_format(floatval( $payment->value_pay -(($payment->value_pay*$payment->discount)/100) ), 2, ',', '')  }}</td>
+                                            <td>{{ number_format( $total , 2, ',', '')  }}</td>
                                             <td>{{ number_format($payment->iva, 2, ',', '') }}</td>
                                         </tr>
                                     </table>
@@ -157,23 +169,23 @@ A5
                                         </tr>
                                         <tr>
                                             <td align="right">Total Mercadoria s/ IVA:</td>
-                                            <td align="right">{{ $defaults->currency( $payment->value_pay -(($payment->value_pay*$payment->discount)/100) ) }}</td>
+                                            <td align="right">{{ $defaults->currency( $total ) }}</td>
                                         </tr>
                                         <tr>
                                             <td align="right">Desconto Global:</td>
-                                            <td align="right">{{ $defaults->currency($payment->discount) }}</td>
+                                            <td align="right">{{ $defaults->currency( $total_discount ) }}</td>
                                         </tr>
                                         <tr>
                                             <td align="right">Total Liquido:</td>
-                                            <td align="right">{{ $defaults->currency(floatval( $payment->value_pay -(($payment->value_pay*$payment->discount)/100) )) }}</td>
+                                            <td align="right">{{ $defaults->currency( $total ) }}</td>
                                         </tr>
                                         <tr>
                                             <td align="right">Total IVA:</td>
-                                            <td align="right">{{ $defaults->currency($payment->iva ) }}</td>
+                                            <td align="right">{{ $defaults->currency( $payment->iva ) }}</td>
                                         </tr>
                                         <tr style="border: 1px solid #000; border-left: none; border-right: none; font-size: 18px; font-weight: bold;">
                                             <td align="right">A Pagar:</td>
-                                            <td align="right">{{ $defaults->currency(floatval( $payment->value_pay -(($payment->value_pay*$payment->discount)/100) )) }}</td>
+                                            <td align="right">{{ $defaults->currency( floatval( $total )) }}</td>
                                         </tr>
                                     </table>
                                     <!-- FIM TABLE TOTAL A PAGAR -->
@@ -190,7 +202,7 @@ A5
                 <tr>
                     <td colspan="2">
                         <p class="text-center" style="border: 1px solid #000; border-left:none; border-right:none; margin-top:10px; white-space: normal; width: 483px;">
-                            {{ $defaults->translateToWords( intval( $payment->value_pay -(($payment->value_pay*$payment->discount)/100) ) ).' '.strtolower(\Auth::user()->branch->system->currency) }}
+                            {{ $defaults->translateToWords( intval($total) ).' '.strtolower(\Auth::user()->branch->system->currency) }}
                         </p>
                     </td>
                 </tr>
@@ -201,7 +213,8 @@ A5
             	Documento Processado por Computador
                 </span>
                         <span class="pull-right">
-             	{{ $i == 1 ? 'Copy' : 'Original' }}
+                            Original
+             	{{--{{ $i == 1 ? 'Copy' : '' }}--}}
                 </span>
                     </td>
                 </tr>
@@ -211,6 +224,6 @@ A5
         </div>
 
 </section>
-@endfor
+{{--@endfor--}}
 
 @endsection

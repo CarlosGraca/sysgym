@@ -104,6 +104,8 @@ desired effect
     
 
     <?php echo $__env->make('layouts.shared.croppie_modal', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+    
+    <?php echo $__env->make('layouts.shared.confirm_modal', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
 
     <?php echo $__env->make('layouts.partials.footer', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
 

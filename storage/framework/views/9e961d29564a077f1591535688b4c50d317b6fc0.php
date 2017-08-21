@@ -33,6 +33,8 @@
     <!-- iONICONS PLUGIN -->
     <link href="<?php echo e(asset('/plugins/ionicons/css/ionicons.min.css')); ?>" rel="stylesheet" type="text/css" />
 
+    <link rel="stylesheet" type="text/css" href="<?php echo e(asset('/css/colorbox.css')); ?>">
+
     <!-- DATA TABLES PLUGIN -->
     <link rel="stylesheet" href="<?php echo e(asset('/plugins/datatables/dataTables.bootstrap.css')); ?>"/>
     <link rel="stylesheet" href="<?php echo e(asset('/plugins/datatables/extensions/ColVis/css/dataTables.colVis.css')); ?>"/>

@@ -166,7 +166,6 @@
                                             <?php endforeach; $__env->popLoop(); $loop = $__env->getFirstLoop(); ?>
                                         <?php endif; ?>
 
-
                                         </tbody>
                                     </table>
 

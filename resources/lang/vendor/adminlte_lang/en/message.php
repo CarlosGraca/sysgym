@@ -614,5 +614,6 @@ return [
     'select_free' => ' (SELECT FREE) ',
     'new_user' => 'New User',
     'invoice' => 'Invoice',
+    'print_invoice' => 'Invoice Print',
 ];
 

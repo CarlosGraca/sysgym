@@ -1,7 +1,3 @@
-<?php
-    $system = \App\Models\System::where(['branch_id'=>\Auth::user()->branch_id,'tenant_id'=>\Auth::user()->tenant_id])->first();
-?>
-
 <!-- REQUIRED JS SCRIPTS -->
 
 <!-- JQUERY 2.1.4 -->
@@ -41,6 +37,9 @@
 
 <!-- CHART GRAPHICS PLUGIN-->
 <script src="<?php echo e(asset('/plugins/chartjs/Chart.min.js')); ?>" type="text/javascript"></script>
+
+
+<script src="<?php echo e(asset('/js/jquery.colorbox.js')); ?>" type="text/javascript"></script>
 
 
 <!-- Optionally, you can add Slimscroll and FastClick plugins.
@@ -161,7 +160,7 @@
     var _no_text = '<?php echo e(trans('adminlte_lang::message.not')); ?>';
     var _disable_text = '<?php echo e(trans('adminlte_lang::message.disable')); ?>';
 
-    var timezone = '<?php echo count($system) > 0 ? $system->timezone : config('app.timezone'); ?>';
+    var timezone = '<?php echo !\Auth::guest() ? \Auth::user()->branch->system->timezone : config('app.timezone'); ?>';
 
     function update() {
         var time = moment().tz(timezone).format('- DD/MM/YYYY HH:mm:ss');

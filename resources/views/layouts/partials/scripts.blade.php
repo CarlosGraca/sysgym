@@ -1,7 +1,3 @@
-<?php
-    $system = \App\Models\System::where(['branch_id'=>\Auth::user()->branch_id,'tenant_id'=>\Auth::user()->tenant_id])->first();
-?>
-
 <!-- REQUIRED JS SCRIPTS -->
 
 <!-- JQUERY 2.1.4 -->
@@ -164,7 +160,7 @@
     var _no_text = '{{ trans('adminlte_lang::message.not') }}';
     var _disable_text = '{{ trans('adminlte_lang::message.disable') }}';
 
-    var timezone = '{!! count($system) > 0 ? $system->timezone : config('app.timezone') !!}';
+    var timezone = '{!! !\Auth::guest() ? \Auth::user()->branch->system->timezone : config('app.timezone') !!}';
 
     function update() {
         var time = moment().tz(timezone).format('- DD/MM/YYYY HH:mm:ss');

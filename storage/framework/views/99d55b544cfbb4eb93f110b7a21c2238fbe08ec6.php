@@ -14,7 +14,7 @@
 <?php $__env->stopSection(); ?>
 
 
-<?php $__env->startSection('main-content'); ?>
+<?php $__env->startSection('main-content'); ?> 
 
 	<div class="row">
 	    <div class="col-lg-12">

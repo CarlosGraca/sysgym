@@ -28,4 +28,8 @@ class Payment extends Model
     public function client(){
         return $this->belongsTo('App\Models\Client','client_id');
     }
+
+    public function parent(){
+        return $this->hasMany('App\Models\Payment','payment_id');
+    }
 }
