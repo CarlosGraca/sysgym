@@ -83,6 +83,11 @@ Route::group(['middleware' => ['license']], function() {
 Route::get('/clients/{id}/print','ClientController@_print');
 Route::get('/employees/{id}/print','EmployeeController@_print');
 
+Route::get('/clients/report/list','ClientController@report')->name('clients.report');
+Route::get('/employees/report','EmployeeController@report');
+
+
+
 //PATIENT CHANGE STATUS
 Route::post('clients/enable','ClientController@enable');
 Route::post('clients/disable','ClientController@disable');

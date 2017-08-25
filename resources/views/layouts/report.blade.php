@@ -44,7 +44,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
 
 
-        <section class="invoice col-lg-3 col-md-3 col-sm-3 col-xs-6 pull-right text-center" style="position:fixed; top: 0; right: 0; border-radius: 5px;background: transparent;border: 0;">
+        <section class="invoice col-lg-4 col-md-4 col-sm-4 col-xs-6 pull-right text-center" style="position:fixed; top: 0; right: 0; border-radius: 5px;background: transparent;border: 0;">
             <div class="no-print">
                 {{--<div class="col-xs-6 pull-left">--}}
                 {{--<img  src="{{ url('/img/clinic/logo.png') }}" class="img-circle" alt="Cinque Terre" style="float: left; width: 30px; height: 30px; margin-right: 10px;  margin-top: -2px;">--}}

@@ -29,7 +29,7 @@
 						  <i class="fa fa-plus"></i> {{ trans('adminlte_lang::message.new_client') }}
 					  </a>
                       {{--@can('add_client')--}}
-                          <a href="{{ url('clients/create') }}" class="btn btn-primary btn-sm" data-toggle="tooltip" title="{{ trans('adminlte_lang::message.print') }}">
+                          <a id="pop-new-window" data-url="{{ route('clients.report') }}" class="btn btn-primary btn-sm" data-toggle="tooltip" title="{{ trans('adminlte_lang::message.print') }}" data-title="{{ trans('adminlte_lang::message.client_report') }}">
                               <i class="fa fa-print"></i> {{ trans('adminlte_lang::message.print') }}
                           </a>
                     {{--@endcan--}}

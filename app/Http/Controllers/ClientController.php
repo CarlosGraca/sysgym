@@ -244,7 +244,7 @@ class ClientController extends Controller
     {
         $client = Client::where('id',$id)->first();
         $company = Tenant::where('id',\Auth::user()->tenant_id)->first();
-        return view('report.profile_print',['people'=>$client, 'company'=> $company , 'type_people' => 'client']);
+        return view('report.profile',['people'=>$client, 'company'=> $company , 'type_people' => 'client']);
     }
 
     private function can_disable($id){
@@ -258,6 +258,20 @@ class ClientController extends Controller
         return true;
 
     }
+
+
+    /**
+     * Show the form for print PDF the specified resource.
+     * @return \Illuminate\Http\Response
+     */
+    public function report()
+    {
+        $clients = Client::where(['branch_id'=>\Auth::user()->branch_id,'tenant_id'=>\Auth::user()->tenant_id])->get();
+        $company = Tenant::where('id',\Auth::user()->tenant_id)->first();
+        return view('report.list_report',['people'=>$clients, 'company'=> $company , 'type_people' => 'client']);
+    }
+
+
 
     
 
