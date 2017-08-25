@@ -66,7 +66,7 @@
 
 					</div>
 
-	                <table id="table-client" class="table table-hover table-design">
+	                <table id="table-client" class="table-design display" cellspacing="0" width="100%">
 		                <thead>
 		                  <tr>
 		                    {{--<th style="width: 10px" class="col-md-1">#</th>--}}

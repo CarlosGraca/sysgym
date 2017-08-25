@@ -34,7 +34,7 @@ $status_color = ['danger','success','info'];
 	            </div><!-- /.box-header -->
 
 	            <div class="box-body">
-	                <table id="table-modality" class="table table-hover table-design">
+	                <table id="table-modality" class="table-design display" cellspacing="0" width="100%">
 		                <thead>
 		                  <tr>
 							  <th class="col-md-7">{{ trans('adminlte_lang::message.name') }}</th>

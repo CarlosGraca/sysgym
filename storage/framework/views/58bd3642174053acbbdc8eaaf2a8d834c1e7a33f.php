@@ -14,7 +14,7 @@
 <?php $__env->stopSection(); ?>
 
 <?php
-$status = [trans('adminlte_lang::message.deleted'),trans('adminlte_lang::message.active'),trans('adminlte_lang::message.expired')];
+$status = [trans('adminlte_lang::message.inactive'),trans('adminlte_lang::message.active'),trans('adminlte_lang::message.expired')];
 $status_color = ['danger','success','info'];
 ?>
 
@@ -26,23 +26,24 @@ $status_color = ['danger','success','info'];
 	              <h3 class="box-title"><?php echo e(trans('adminlte_lang::message.user_list')); ?> </h3>
 
 					<div class="pull-left box-tools">
-						<?php if (app('Illuminate\Contracts\Auth\Access\Gate')->check('add_user')): ?>
-							<a href="<?php echo e(url('users/create')); ?>" class="btn btn-primary btn-sm" role="button" data-toggle="tooltip" title="<?php echo e(trans('adminlte_lang::message.new_user')); ?>">
+						
+							<a href="<?php echo e(url('users/create')); ?>" class="btn btn-primary btn-sm" data-toggle="tooltip" title="<?php echo e(trans('adminlte_lang::message.new_user')); ?>">
 								<i class="fa fa-plus"></i> <?php echo e(trans('adminlte_lang::message.new_user')); ?>
 
 							</a>
-						<?php endif; ?>
+						
 					</div><!-- /. tools -->
 	            </div><!-- /.box-header -->
 
 	            <div class="box-body">
-	                <table id="table-users" class="table table-hover table-design">
+	                <table id="table-users" class="table-design display" cellspacing="0" width="100%">
 		                <thead>
 		                  <tr>
 		                    
 							  <th class="col-md-4"><?php echo e(trans('adminlte_lang::message.name')); ?></th>
-							  <th class="col-md-4"><?php echo e(trans('adminlte_lang::message.email')); ?></th>
+							  <th class="col-md-3"><?php echo e(trans('adminlte_lang::message.email')); ?></th>
 							  <th class="col-md-3"><?php echo e(trans('adminlte_lang::message.role')); ?></th>
+							  <th class="col-md-1"><?php echo e(trans('adminlte_lang::message.status')); ?></th>
 		                    <th class="col-md-1"></th>
 		                  </tr>
 		                </thead>
@@ -53,7 +54,8 @@ $status_color = ['danger','success','info'];
 									<td><?php echo e($user->name); ?></td>
 									<td><?php echo e($user->email); ?></td>
 									<td> <?php echo e($user->role->display_name); ?> </td>
-                                    <td>
+									<td><span class="label label-<?php echo e($status_color[$user->status]); ?>"><?php echo e($status[$user->status]); ?></span></td>
+									<td>
 										
 										<a href="<?php echo e(route('users.show',$user->id)); ?>" data-toggle="tooltip" title="<?php echo e(trans('adminlte_lang::message.view')); ?>">
 											<i class="fa fa-eye"></i>

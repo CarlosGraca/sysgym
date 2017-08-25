@@ -34,7 +34,7 @@ $status_color = ['danger','success','info'];
 	            </div><!-- /.box-header -->
 
 	            <div class="box-body">
-	                <table id="table-users" class="table table-hover table-design">
+	                <table id="table-users" class="table-design display" cellspacing="0" width="100%">
 		                <thead>
 		                  <tr>
 		                    {{--<th style="width: 10px" class="col-md-1">#</th>--}}

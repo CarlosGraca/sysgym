@@ -34,7 +34,7 @@
 	            </div><!-- /.box-header -->
 
 	            <div class="box-body">
-	                <table id="table-payments" class="table table-bordered table-striped table-design">
+	                <table id="table-payments" class="table-design display" cellspacing="0" width="100%">
 		                <thead>
 		                  <tr>
 		                    {{--<th style="width: 10px" class="col-md-1">#</th>

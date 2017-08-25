@@ -8,7 +8,9 @@
 <?php $__env->stopSection(); ?>
 
 <?php $__env->startSection('contentheader_description'); ?>
-  domains
+
+	<?php echo e(trans('adminlte_lang::message.domains')); ?>
+
 <?php $__env->stopSection(); ?>
 
 
@@ -21,15 +23,18 @@
 	              <h3 class="box-title"></h3>
 	               <div class="pull-left box-tools">
 	                  <a href="<?php echo e(url('domains/create')); ?>"  class="btn btn-primary btn-sm" role="button" data-toggle="tooltip" title="">
-	                       <i class="fa fa-plus"></i>
+
+	                       <i class="fa fa-plus"></i> <?php echo e(trans('adminlte_lang::message.new_domain')); ?>
+
+
 	                  </a>
 	                  
 	              </div><!-- /. tools -->
 	            </div><!-- /.box-header -->
 	  
 	            <div class="box-body">
-		            <div class="box-body table-responsive no-padding">
-                        <table class="table table-hover table-design">  
+		            <div class="box-body">
+                        <table class="table-design display" cellspacing="0" width="100%">  
 			                <thead>
 			                    <tr>		                        
 			                        <th >Dominio</th>

@@ -36,7 +36,7 @@
 	            </div><!-- /.box-header -->
 
 	            <div class="box-body">
-	                <table id="table-payments" class="table table-bordered table-striped table-design">
+	                <table id="table-payments" class="table-design display" cellspacing="0" width="100%">
 		                <thead>
 		                  <tr>
 		                    
@@ -74,7 +74,7 @@
                                             
                                         
 
-										<a href="#invoice" id="payment-invoice" data-url="<?php echo e(route('payments.invoice',$payment->payment_id)); ?>"  data-toggle="tooltip" title="<?php echo e(trans('adminlte_lang::message.invoice')); ?>" data-title="<?php echo e(trans('adminlte_lang::message.print')); ?>">
+										<a href="#invoice" id="payment-invoice" data-url="<?php echo e(route('payments.invoice',$payment->payment_id)); ?>"  data-toggle="tooltip" title="<?php echo e(trans('adminlte_lang::message.invoice')); ?>" data-title="<?php echo e(trans('adminlte_lang::message.print_invoice')); ?>">
 											<i class="fa fa-ticket"></i>
 										</a>
 										

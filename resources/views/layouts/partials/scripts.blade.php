@@ -19,11 +19,16 @@
 <script src="{{ asset('/plugins/select2/select2.full.min.js')}}" type="text/javascript"></script>
 
 <!-- DATA TABLES PLUGIN -->
-<script src="{{ asset('/plugins/datatables/jquery.dataTables.min.js') }}" type="text/javascript"></script>
-<script src="{{ asset('/plugins/datatables/dataTables.bootstrap.min.js') }}" type="text/javascript"></script>
+<!-- 
+<script src="{{ asset('/plugins/datatables/dataTables.bootstrap.min.js') }}" type="text/javascript"></script>-->
+<!-- 
+ -->
 
-<script src="{{ asset('/plugins/datatables/extensions/ColVis/js/dataTables.colVis.min.js') }}" type="text/javascript"></script>
-<script src="{{ asset('/plugins/datatables/extensions/TableTools/js/dataTables.tableTools.min.js') }}" type="text/javascript"></script>
+<!-- <script src="{{ asset('/plugins/datatables/extensions/ColVis/js/dataTables.colVis.min.js') }}" type="text/javascript"></script>
+<script src="{{ asset('/plugins/datatables/extensions/TableTools/js/dataTables.tableTools.min.js') }}" type="text/javascript"></script> -->
+
+<script src="{{ asset('/plugins/datatables/jquery.dataTables.min.js') }}" type="text/javascript"></script> 
+<script src="{{ asset('/plugins/datatables/extensions/responsive/js/dataTables.responsive.min.js') }}" type="text/javascript"></script>
 
 <!-- DATE RANGE PICKER PLUGIN -->
 <script src="{{ asset('/plugins/moment.js/moment-with-locales.js') }}" type="text/javascript"></script>
@@ -98,7 +103,7 @@
 <!-- SCRIPT IN DEVELOPMENT MODE -->
 
 <script type="text/javascript">
-    {{--var localName = '{{ count($system) > 0 ? $system->lang : config('app.locale') }}';--}}
+  /*var localName = '{{ count($system) > 0 ? $system->lang : config('app.locale') }}';*/
 
 
     $(":file").filestyle({
@@ -118,23 +123,39 @@
         }
     });
 
-
     $('.table-design').DataTable({
-        "colVis": {
-            "buttonText": "Columns",
-            "overlayFade": 0,
-            "align": "right"
+        responsive: {
+            details: {
+                renderer: function ( api, rowIdx ) {
+                var data = api.cells( rowIdx, ':hidden' ).eq(0).map( function ( cell ) {
+                    var header = $( api.column( cell.column ).header() );
+                    return  '<p style="color:#00A">'+header.text()+' : '+api.cell( cell ).data()+'</p>';  // changing details mark up.
+                } ).toArray().join('');
+     
+                return data ?    $('<table/>').append( data ) :    false;
+                }
+            }
         },
-        "language": {
-            "lengthMenu": '_MENU_ {{  trans('adminlte_lang::message.entries_per_page') }} ',
-            "search": '{{  trans('adminlte_lang::message.search') }}',
-            "paginate": {
-                "previous": '<i class="fa fa-angle-left"></i>',
-                "next": '<i class="fa fa-angle-right"></i>'
-            },
-            "emptyTable": "{{  trans('adminlte_lang::message.no_data_available') }}",
-        }
+        processing: true
     });
+
+    // $('.table-design').DataTable({
+    //     "colVis": {
+    //         "buttonText": "Columns",
+    //         "overlayFade": 0,
+    //         "align": "right"
+    //     },
+    //     "language": {
+    //         "lengthMenu": '_MENU_ {{  trans('adminlte_lang::message.entries_per_page') }} ',
+    //         "search": '{{  trans('adminlte_lang::message.search') }}',
+    //         "paginate": {
+    //             "previous": '<i class="fa fa-angle-left"></i>',
+    //             "next": '<i class="fa fa-angle-right"></i>'
+    //         },
+    //         "emptyTable": "{{  trans('adminlte_lang::message.no_data_available') }}",
+    //     },
+    //     "responsive": true
+    // });
 
     $("#compose-textarea").wysihtml5();
 

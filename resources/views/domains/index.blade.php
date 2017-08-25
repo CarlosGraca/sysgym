@@ -32,8 +32,8 @@
 	            </div><!-- /.box-header -->
 	  
 	            <div class="box-body">
-		            <div class="box-body table-responsive no-padding">
-                        <table class="table table-hover table-design">  
+		            <div class="box-body">
+                        <table class="table-design display" cellspacing="0" width="100%">  
 			                <thead>
 			                    <tr>		                        
 			                        <th >Dominio</th>

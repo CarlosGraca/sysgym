@@ -1,4 +1,4 @@
-<head>
+dathead>
     <meta charset="UTF-8">
     <title> <?php echo e(trans('adminlte_lang::message.app_name')); ?> - <?php echo $__env->yieldContent('htmlheader_title', 'Your title here'); ?> </title>
     <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
@@ -36,11 +36,14 @@
     <link rel="stylesheet" type="text/css" href="<?php echo e(asset('/css/colorbox.css')); ?>">
 
     <!-- DATA TABLES PLUGIN -->
-    <link rel="stylesheet" href="<?php echo e(asset('/plugins/datatables/dataTables.bootstrap.css')); ?>"/>
-    <link rel="stylesheet" href="<?php echo e(asset('/plugins/datatables/extensions/ColVis/css/dataTables.colVis.css')); ?>"/>
-    <link rel="stylesheet" href="<?php echo e(asset('/plugins/datatables/extensions/TableTools/css/dataTables.tableTools.css')); ?>"/>
+    <!-- <link rel="stylesheet" href="<?php echo e(asset('/plugins/datatables/dataTables.bootstrap.css')); ?>"/> -->
+  
+    <!-- <link rel="stylesheet" href="<?php echo e(asset('/plugins/datatables/extensions/ColVis/css/dataTables.colVis.css')); ?>"/>
+    <link rel="stylesheet" href="<?php echo e(asset('/plugins/datatables/extensions/TableTools/css/dataTables.tableTools.css')); ?>"/> -->
 
-    <!--<link href="https://cdn.datatables.net/1.10.12/css/jquery.dataTables.min.css" rel="stylesheet" type="text/css" />-->
+    <link href="/plugins/datatables/jquery.dataTables.min.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="<?php echo e(asset('/plugins/datatables/extensions/responsive/css/dataTables.responsive.css')); ?>"/> 
+
 
     <!-- bootstrap wysihtml5 - text editor -->
     <link rel="stylesheet" href="<?php echo e(asset('/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css')); ?>">
@@ -94,9 +97,9 @@
     <?php echo $__env->yieldContent('invoice',null); ?>
 
     <style type="text/css">
-      .tabela > thead > tr > th, .table > tbody > tr > th, .table > tfoot > tr > th, .table > thead > tr > td, .table > tbody > tr > td, .table > tfoot > tr > td{
+      /*.tabela > thead > tr > th, .table > tbody > tr > th, .table > tfoot > tr > th, .table > thead > tr > td, .table > tbody > tr > td, .table > tfoot > tr > td{
           padding: 1px 1px 1px 8px;
-      }
+      }*/
 
       .h-divider{
           margin-top:5px;

@@ -35,7 +35,7 @@ $status_color = ['danger','success'];
                 </div><!-- /.box-header -->
 
                 <div class="box-body">
-                    <table id="table-matriculation" class="table table-hover table-design">
+                    <table id="table-matriculation" class="table-design display" cellspacing="0" width="100%">
                         <thead>
                         <tr>
                             
@@ -97,14 +97,14 @@ $status_color = ['danger','success'];
 
 
                                         
-                                        <a href="<?php echo e(url('payments/create?idCliente='.$item->client_id.'&idMatriculation='.$item->id)); ?>" target="_blank" role="button" data-toggle="tooltip" title="<?php echo e(trans('adminlte_lang::message.payments')); ?>">
+                                        <a href="<?php echo e(url('payments/create?idCliente='.$item->client_id.'&idMatriculation='.$item->id)); ?>" data-toggle="tooltip" title="<?php echo e(trans('adminlte_lang::message.payments')); ?>">
                                             <i class="fa fa-money"></i>
                                         </a>
                                         
                                         
 
                                     
-                                    <a href="<?php echo e(url('matriculation')); ?>/<?php echo e($item->id); ?>/report" target="_blank" role="button" data-toggle="tooltip" title="<?php echo e(trans('adminlte_lang::message.print')); ?>">
+                                    <a href="#print" data-url="<?php echo e(url('matriculation')); ?>/<?php echo e($item->id); ?>/report" id="pop-new-window" data-toggle="tooltip" title="<?php echo e(trans('adminlte_lang::message.print')); ?>" data-title="<?php echo e(trans('adminlte_lang::message.print')); ?>">
                                         <i class="fa fa-print"></i>
                                     </a>
 
