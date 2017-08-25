@@ -213,7 +213,8 @@ A5
             	Documento Processado por Computador
                 </span>
                         <span class="pull-right">
-                            Original
+                           &copy; 2017 SysGym
+                            {{--Original--}}
              	{{--{{ $i == 1 ? 'Copy' : '' }}--}}
                 </span>
                     </td>

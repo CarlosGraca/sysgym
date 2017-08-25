@@ -851,7 +851,8 @@ function action_button(_action) {
 }
 
 function popitup(url,windowName) {
-    newwindow = window.open(url,windowName,'fullscreen=yes,top=0,location=no');
-    if (window.focus) {newwindow.focus()}
+    $.colorbox({iframe:true,title:windowName, width:"70%", height:"90%", opacity:0,href:url});
+    // newwindow = window.open(url,windowName,'fullscreen=yes,top=0,location=no');
+    // if (window.focus) {newwindow.focus()}
     return false;
 }
