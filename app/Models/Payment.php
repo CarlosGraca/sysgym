@@ -15,7 +15,7 @@ class Payment extends Model
         return $this->belongsTo('App\Models\Matriculation','item_id');
     }
     public function modality(){
-        return $this->belongsTo('App\Models\modality','item_id');
+        return $this->belongsTo('App\Models\Modality','item_id');
     }
     public function user(){
         return $this->belongsTo('App\User');
