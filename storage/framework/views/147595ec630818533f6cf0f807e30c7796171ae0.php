@@ -8,6 +8,10 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <?php $__env->startSection('htmlheader'); ?>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
         <?php echo $__env->make('layouts.partials.htmlheader', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+
+        <link href="<?php echo e(asset('/plugins/normalize/css/normalize.css')); ?>" rel="stylesheet" type="text/css" />
+        <link href="<?php echo e(asset('/plugins/paper/css/paper.css')); ?>" rel="stylesheet" type="text/css" />
+
         <style>
            .content-wrapper-login {
                 /*background: url('<?php echo e(asset( \Auth::user()->branch->system->background_image )); ?>') no-repeat center center fixed;*/
@@ -40,7 +44,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
 
 
-        <section class="invoice col-lg-3 col-md-3 col-sm-3 col-xs-12 pull-right text-center" style="position:fixed; top: 0; right: -25px; border-radius: 5px;background: transparent;border: 0;">
+        <section class="invoice col-lg-4 col-md-4 col-sm-4 col-xs-6 pull-right text-center" style="position:fixed; top: 0; right: 0; border-radius: 5px;background: transparent;border: 0;">
             <div class="no-print">
                 
                 

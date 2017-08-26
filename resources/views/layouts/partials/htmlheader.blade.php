@@ -124,8 +124,19 @@ dathead>
         .avatar{
             border: 2px solid #e4e4e4;
         }
+        
 
+        @media (max-width: 767px) {
+            .fixed .content-wrapper, .fixed .right-side {
+                padding-top: 30px;
+            }
+        }
 
+        @media (max-width: 767px){
+            .main-sidebar, .left-side {
+                padding-top: 45px;
+            }
+        }
     </style>
 
 

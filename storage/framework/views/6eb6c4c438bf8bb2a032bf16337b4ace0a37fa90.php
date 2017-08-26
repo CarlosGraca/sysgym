@@ -1,5 +1,12 @@
+<?php $defaults = app('App\Http\Controllers\Defaults'); ?>
+<?php
+    $total = 0;
+    $total_discount = 0;
+?>
+
+
 <?php $__env->startSection('htmlheader_title'); ?>
-    <?php echo e(trans('adminlte_lang::message.client_profile')); ?>
+<?php echo e(trans('adminlte_lang::message.invoice')); ?>#<?php echo e($defaults->getNumberFormat($payment->id)); ?>
 
 <?php $__env->stopSection(); ?>
 
@@ -11,7 +18,6 @@
 A5
 <?php $__env->stopSection(); ?>
 
-<?php $defaults = app('App\Http\Controllers\Defaults'); ?>
 
 
 <?php $__env->startSection('main-content'); ?>
@@ -21,7 +27,8 @@ A5
 
 <!-- Each sheet element should have the class "sheet" -->
 <!-- "padding-**mm" is optional: you can set 10, 15, 20 or 25 style="margin:0 auto;"-->
-<section class="sheet padding-10mm" style="margin:0 auto;">
+
+<section class="sheet padding-10mm">
 
         <!-- Write HTML just like a web page -->
         <div>
@@ -41,7 +48,10 @@ A5
                         </address>
                     </td>
                     <td width="57%">
-                        <p class="text-center" style="margin-bottom: 0;"> <strong>FATURA Nº 001/2017</strong></p>
+                        <p class="text-center" style="margin-bottom: 0;"> <strong>FATURA Nº <?php echo e($defaults->getNumberFormat($payment->id)); ?> / <?php echo e(\Carbon\Carbon::parse($payment->created_at)->format('Y')); ?>
+
+
+                            </strong></p>
                         <address style="border: 1px solid #0f0f0f; padding: 5px 10px; border-radius: 5px;">
                             <strong>Exmo.(s) Sr.(s)</strong> <br>
                             <strong><?php echo e($payment->client->name); ?></strong> <br>
@@ -80,17 +90,34 @@ A5
                                 <th width="11%" class="text-center" scope="col">%IVA</th>
                                 <th width="11%" class="text-right" scope="col">Valor</th>
                             </tr>
+
+                            <?php $__currentLoopData = $payment->parent; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $p): $__env->incrementLoopIndices(); $loop = $__env->getFirstLoop(); ?>
+
+                                <tr>
+                                    <td><?php echo e($p->modality->name); ?></td>
+                                    <td class="text-center">1</td>
+                                    <td class="text-right"><?php echo e(number_format($p->value_pay, 2, ',', '')); ?></td>
+                                    <td class="text-center"><?php echo e(number_format($p->discount, 1, ',', '').'%'); ?></td>
+                                    <td class="text-center"><?php echo e(number_format($p->iva, 1, ',', '').'%'); ?></td>
+                                    <td class="text-right"><?php echo e(number_format(floatval( $p->value_pay -(($p->value_pay*$p->discount)/100) ), 2, ',', '')); ?></td>
+                                </tr>
+                            <?php
+                                $total += floatval( $p->value_pay -(($p->value_pay*$p->discount)/100) );
+                                $total_discount += floatval( ($p->value_pay*$p->discount) /100 );
+                                ?>
+
+                            <?php endforeach; $__env->popLoop(); $loop = $__env->getFirstLoop(); ?>
+
                             <tr>
-                                <td><?php echo e($payment->modality->name); ?></td>
-                                <td class="text-center">1</td>
-                                <td class="text-right"><?php echo e($payment->value_pay); ?></td>
-                                <td class="text-center"><?php echo e(number_format($payment->discount, 1, ',', '').'%'); ?></td>
-                                <td class="text-center"><?php echo e(number_format($payment->iva, 1, ',', '').'%'); ?></td>
-                                <td class="text-right"><?php echo e(number_format(floatval( $payment->value_pay -(($payment->value_pay*$payment->discount)/100) ), 2, ',', '')); ?></td>
+                                <td colspan="6" style="border-top: none; white-space: nowrap;" >
+                                    <hr align="center" width="100%" style="border: 1px dotted #000; margin-bottom: 0px;">
+                                    <p style="font-size: 12px; font-weight: bold;"><?php echo e(trans('adminlte_lang::message.note').': '.$payment->note); ?></p>
+                                </td>
                             </tr>
                         </table>
                     </td>
                 </tr>
+
 
 
             </table>
@@ -105,7 +132,7 @@ A5
                 <tr>
 
                     <td colspan="2">
-                        <hr align="center" width="100%" size="1">
+                        <hr align="center" width="100%" size="1" style="border: 1px solid #000;">
 
                         <table width="100%" border="0">
                             <tr>
@@ -125,7 +152,7 @@ A5
                                         </tr>
                                         <tr>
                                             <td><?php echo e(number_format($payment->iva, 1, ',', '')); ?></td>
-                                            <td><?php echo e(number_format(floatval( $payment->value_pay -(($payment->value_pay*$payment->discount)/100) ), 2, ',', '')); ?></td>
+                                            <td><?php echo e(number_format( $total , 2, ',', '')); ?></td>
                                             <td><?php echo e(number_format($payment->iva, 2, ',', '')); ?></td>
                                         </tr>
                                     </table>
@@ -145,23 +172,23 @@ A5
                                         </tr>
                                         <tr>
                                             <td align="right">Total Mercadoria s/ IVA:</td>
-                                            <td align="right"><?php echo e($defaults->currency( $payment->value_pay -(($payment->value_pay*$payment->discount)/100) )); ?></td>
+                                            <td align="right"><?php echo e($defaults->currency( $total )); ?></td>
                                         </tr>
                                         <tr>
                                             <td align="right">Desconto Global:</td>
-                                            <td align="right"><?php echo e($defaults->currency($payment->discount)); ?></td>
+                                            <td align="right"><?php echo e($defaults->currency( $total_discount )); ?></td>
                                         </tr>
                                         <tr>
                                             <td align="right">Total Liquido:</td>
-                                            <td align="right"><?php echo e($defaults->currency(floatval( $payment->value_pay -(($payment->value_pay*$payment->discount)/100) ))); ?></td>
+                                            <td align="right"><?php echo e($defaults->currency( $total )); ?></td>
                                         </tr>
                                         <tr>
                                             <td align="right">Total IVA:</td>
-                                            <td align="right"><?php echo e($defaults->currency($payment->iva )); ?></td>
+                                            <td align="right"><?php echo e($defaults->currency( $payment->iva )); ?></td>
                                         </tr>
                                         <tr style="border: 1px solid #000; border-left: none; border-right: none; font-size: 18px; font-weight: bold;">
                                             <td align="right">A Pagar:</td>
-                                            <td align="right"><?php echo e($defaults->currency(floatval( $payment->value_pay -(($payment->value_pay*$payment->discount)/100) ))); ?></td>
+                                            <td align="right"><?php echo e($defaults->currency( floatval( $total ))); ?></td>
                                         </tr>
                                     </table>
                                     <!-- FIM TABLE TOTAL A PAGAR -->
@@ -178,7 +205,7 @@ A5
                 <tr>
                     <td colspan="2">
                         <p class="text-center" style="border: 1px solid #000; border-left:none; border-right:none; margin-top:10px; white-space: normal; width: 483px;">
-                            <?php echo e($defaults->translateToWords( intval( $payment->value_pay -(($payment->value_pay*$payment->discount)/100) ) ).' '.strtolower(\Auth::user()->branch->system->currency)); ?>
+                            <?php echo e($defaults->translateToWords( intval($total) ).' '.strtolower(\Auth::user()->branch->system->currency)); ?>
 
                         </p>
                     </td>
@@ -190,7 +217,9 @@ A5
             	Documento Processado por Computador
                 </span>
                         <span class="pull-right">
-             	Original
+                           &copy; 2017 SysGym
+                            
+             	
                 </span>
                     </td>
                 </tr>
@@ -200,6 +229,7 @@ A5
         </div>
 
 </section>
+
 
 <?php $__env->stopSection(); ?>
 

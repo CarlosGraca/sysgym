@@ -20,6 +20,7 @@ return [
     'amount_per_month'=>'Amount Per Date',
     'amount_received'=>'Amount Received',
     'list_pay' =>'List of Pay',
+    'list_payments' =>'List Payments',
 //    'start_date' =>'Start Date',
 //    'end_date' =>'End Date',
     'alter_status'=>'Alter Status',

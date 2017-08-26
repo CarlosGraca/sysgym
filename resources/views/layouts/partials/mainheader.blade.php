@@ -10,7 +10,7 @@
 </style>
 
     <!-- Logo -->
-    <a href="{{ url('/home') }}" class="logo">
+    <a href="{{ url('/home') }}" class="logo hidden-xs">
         <!-- mini logo for sidebar mini 50x50 pixels -->
         <span class="logo-mini">
             <div class="user-panel">
@@ -48,7 +48,7 @@
                 <a href="{{ url('company') }}" data-toggle="tooltip" title="{{ trans('adminlte_lang::message.company') }} - {{ \Auth::user()->tenant->name }}">
                     <img  src="{{ url('/') }}/{{\Auth::user()->tenant->logo}}" class="user-image" alt="Cinque Terre" >
                     <!-- hidden-xs hides the username on small devices so only the image appears. -->
-                    <span class="hidden-xs"><span class="name_company">{{ \Auth::user()->tenant->company_name }}</span></span>
+                    <span ><span class="name_company">{{ \Auth::user()->tenant->company_name }}</span></span>
                 </a>
             </li>
             <li class="user user-menu">
@@ -58,7 +58,11 @@
             </li>
             <li class="user user-menu">
                 <a style="cursor: pointer;" data-toggle="tooltip" data-key="{{ \Auth::user()->branch_id }}" @if(count(\auth::user()->branch_permission) > 1) class="branch-select" @endif title="{{ trans('adminlte_lang::message.branch_select_title') }}">
-                    <span class="hidden-xs"> <span> <i class="fa fa-building"></i> {{ \Auth::user()->branch_id != 0 ? \Auth::user()->branch->name : trans('adminlte_lang::message.all_branch') }}</span>  <span id="clock"></span></span>
+                    <span class="hidden-xs"> 
+                        {{-- <span> <i class="fa fa-building"></i> {{ \Auth::user()->branch_id != 0 ? \Auth::user()->branch->name : trans('adminlte_lang::message.all_branch') }}
+                        </span> -  --}}
+                        <span id="clock"></span>
+                    </span>
                 </a>
             </li>
         </ul>

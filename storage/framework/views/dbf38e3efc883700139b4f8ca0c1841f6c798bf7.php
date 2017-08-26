@@ -31,7 +31,7 @@
 
 					  </a>
                       
-                          <a href="<?php echo e(url('clients/create')); ?>" class="btn btn-primary btn-sm" data-toggle="tooltip" title="<?php echo e(trans('adminlte_lang::message.print')); ?>">
+                          <a id="pop-new-window" data-url="<?php echo e(route('clients.report')); ?>" class="btn btn-primary btn-sm" data-toggle="tooltip" title="<?php echo e(trans('adminlte_lang::message.print')); ?>" data-title="<?php echo e(trans('adminlte_lang::message.client_report')); ?>">
                               <i class="fa fa-print"></i> <?php echo e(trans('adminlte_lang::message.print')); ?>
 
                           </a>

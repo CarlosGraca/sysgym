@@ -136,6 +136,15 @@
                 }
             }
         },
+        language: {
+            "lengthMenu": '_MENU_ <?php echo e(trans('adminlte_lang::message.entries_per_page')); ?> ',
+            "search": '<?php echo e(trans('adminlte_lang::message.search')); ?>',
+            "paginate": {
+                "previous": '<i class="fa fa-angle-left"></i>',
+                "next": '<i class="fa fa-angle-right"></i>'
+            },
+            "emptyTable": "<?php echo e(trans('adminlte_lang::message.no_data_available')); ?>",
+        },
         processing: true
     });
 
@@ -145,15 +154,15 @@
     //         "overlayFade": 0,
     //         "align": "right"
     //     },
-    //     "language": {
-    //         "lengthMenu": '_MENU_ <?php echo e(trans('adminlte_lang::message.entries_per_page')); ?> ',
-    //         "search": '<?php echo e(trans('adminlte_lang::message.search')); ?>',
-    //         "paginate": {
-    //             "previous": '<i class="fa fa-angle-left"></i>',
-    //             "next": '<i class="fa fa-angle-right"></i>'
-    //         },
-    //         "emptyTable": "<?php echo e(trans('adminlte_lang::message.no_data_available')); ?>",
-    //     },
+       /* "language": {
+            "lengthMenu": '_MENU_ <?php echo e(trans('adminlte_lang::message.entries_per_page')); ?> ',
+            "search": '<?php echo e(trans('adminlte_lang::message.search')); ?>',
+            "paginate": {
+                "previous": '<i class="fa fa-angle-left"></i>',
+                "next": '<i class="fa fa-angle-right"></i>'
+            },
+            "emptyTable": "<?php echo e(trans('adminlte_lang::message.no_data_available')); ?>",
+        },*/
     //     "responsive": true
     // });
 
@@ -184,7 +193,7 @@
     var timezone = '<?php echo !\Auth::guest() ? \Auth::user()->branch->system->timezone : config('app.timezone'); ?>';
 
     function update() {
-        var time = moment().tz(timezone).format('- DD/MM/YYYY HH:mm:ss');
+        var time = moment().tz(timezone).format('DD/MM/YYYY HH:mm:ss');
         $('#clock').html(time);
     }
     $(function () {

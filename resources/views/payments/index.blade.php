@@ -23,7 +23,7 @@
 	    <div class="col-lg-12">
 	        <div class="box box-primary">
 	            <div class="box-header with-border">
-	              <h3 class="box-title"></h3>
+	              <h3 class="box-title">{{ trans('adminlte_lang::message.list_payments') }}</h3>
 	              <div class="pull-left box-tools">
 					  @can('add_payment')
 					  <a href="{{ url('payments/create') }}" class="btn btn-primary btn-sm" role="button" data-toggle="tooltip" title="{{ trans('adminlte_lang::message.new_payment') }}">
