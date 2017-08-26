@@ -28,7 +28,7 @@ $status_color = ['danger','success','info'];
 
 					  {{--@can('add_role')--}}
 						  <a href="{{ url('roles/create') }}" class="btn btn-primary btn-sm" role="button" data-toggle="tooltip" title="{{ trans('adminlte_lang::message.new_role') }}">
-							   <i class="fa fa-plus"></i> {{ trans('adminlte_lang::message.new_role') }}
+							   <i class="fa fa-plus"></i><span class="hidden-xs"> {{ trans('adminlte_lang::message.new_role') }}</span>
 						  </a>
 					  {{--@endcan--}}
 

@@ -27,13 +27,11 @@
 	              <h3 class="box-title">  <?php echo e(trans('adminlte_lang::message.clients_list')); ?> </h3>
 	              <div class="pull-left box-tools">
 					  <a href="<?php echo e(url('clients/create')); ?>" class="btn btn-primary btn-sm" data-toggle="tooltip" title="<?php echo e(trans('adminlte_lang::message.new_client')); ?>">
-						  <i class="fa fa-plus"></i> <?php echo e(trans('adminlte_lang::message.new_client')); ?>
-
+						  <i class="fa fa-plus"></i> <span class="hidden-xs"><?php echo e(trans('adminlte_lang::message.new_client')); ?></span>
 					  </a>
                       
                           <a id="pop-new-window" data-url="<?php echo e(route('clients.report')); ?>" class="btn btn-primary btn-sm" data-toggle="tooltip" title="<?php echo e(trans('adminlte_lang::message.print')); ?>" data-title="<?php echo e(trans('adminlte_lang::message.client_report')); ?>">
-                              <i class="fa fa-print"></i> <?php echo e(trans('adminlte_lang::message.print')); ?>
-
+                              <i class="fa fa-print"></i><span class="hidden-xs"> <?php echo e(trans('adminlte_lang::message.print')); ?></span>
                           </a>
                     
 	              </div><!-- /. tools -->

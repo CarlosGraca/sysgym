@@ -1,7 +1,7 @@
-@extends('adminlte::layouts.app')
+@extends('layouts.app')
 
 @section('htmlheader_title')
-	Lista
+	{{ trans('adminlte_lang::message.domains') }}
 @endsection
 
 @section('contentheader_title')
@@ -20,11 +20,11 @@
 	    <div class="col-lg-12">
 	        <div class="box box-primary">
 	            <div class="box-header with-border">
-	              <h3 class="box-title"></h3>
+	              <h3 class="box-title">{{ trans('adminlte_lang::message.list_domains') }}</h3>
 	               <div class="pull-left box-tools">
 	                  <a href="{{ url('domains/create') }}"  class="btn btn-primary btn-sm" role="button" data-toggle="tooltip" title="">
 
-	                       <i class="fa fa-plus"></i> {{ trans('adminlte_lang::message.new_domain') }}
+	                       <i class="fa fa-plus"></i> <span class="hidden-xs">{{ trans('adminlte_lang::message.new_domain') }}</span>
 
 	                  </a>
 	                  

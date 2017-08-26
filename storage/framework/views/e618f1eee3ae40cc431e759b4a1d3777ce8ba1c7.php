@@ -1,5 +1,6 @@
 <?php $__env->startSection('htmlheader_title'); ?>
-	Lista
+	<?php echo e(trans('adminlte_lang::message.domains')); ?>
+
 <?php $__env->stopSection(); ?>
 
 <?php $__env->startSection('contentheader_title'); ?>
@@ -20,12 +21,11 @@
 	    <div class="col-lg-12">
 	        <div class="box box-primary">
 	            <div class="box-header with-border">
-	              <h3 class="box-title"></h3>
+	              <h3 class="box-title"><?php echo e(trans('adminlte_lang::message.list_domains')); ?></h3>
 	               <div class="pull-left box-tools">
 	                  <a href="<?php echo e(url('domains/create')); ?>"  class="btn btn-primary btn-sm" role="button" data-toggle="tooltip" title="">
 
-	                       <i class="fa fa-plus"></i> <?php echo e(trans('adminlte_lang::message.new_domain')); ?>
-
+	                       <i class="fa fa-plus"></i> <span class="hidden-xs"><?php echo e(trans('adminlte_lang::message.new_domain')); ?></span>
 
 	                  </a>
 	                  
@@ -67,4 +67,4 @@
 	</div>
 <?php $__env->stopSection(); ?>
 
-<?php echo $__env->make('adminlte::layouts.app', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+<?php echo $__env->make('layouts.app', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

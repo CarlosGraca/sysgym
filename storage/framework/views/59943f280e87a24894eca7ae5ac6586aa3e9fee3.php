@@ -28,8 +28,7 @@ $status_color = ['danger','success','info'];
 	              <div class="pull-left box-tools">
 					  
 						  <a href="<?php echo e(url('branches/create')); ?>" class="btn btn-primary btn-sm" data-toggle="tooltip" title="<?php echo e(trans('adminlte_lang::message.new_branch')); ?>">
-							   <i class="fa fa-plus"></i> <?php echo e(trans('adminlte_lang::message.new_branch')); ?>
-
+							   <i class="fa fa-plus"></i> <span class="hidden-xs"><?php echo e(trans('adminlte_lang::message.new_branch')); ?></span>
 						  </a>
 					  
 	              </div><!-- /. tools -->

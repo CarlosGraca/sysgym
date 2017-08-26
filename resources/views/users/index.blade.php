@@ -27,7 +27,7 @@ $status_color = ['danger','success','info'];
 					<div class="pull-left box-tools">
 						{{--@can('add_user')--}}
 							<a href="{{ url('users/create') }}" class="btn btn-primary btn-sm" data-toggle="tooltip" title="{{ trans('adminlte_lang::message.new_user') }}">
-								<i class="fa fa-plus"></i> {{ trans('adminlte_lang::message.new_user') }}
+								<i class="fa fa-plus"></i> <span class="hidden-xs">{{ trans('adminlte_lang::message.new_user') }}</span>
 							</a>
 						{{--@endcan--}}
 					</div><!-- /. tools -->

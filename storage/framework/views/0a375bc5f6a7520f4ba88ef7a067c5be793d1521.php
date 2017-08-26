@@ -29,8 +29,7 @@ $status_color = ['danger','success','info'];
 
 					  
 						  <a href="<?php echo e(url('roles/create')); ?>" class="btn btn-primary btn-sm" role="button" data-toggle="tooltip" title="<?php echo e(trans('adminlte_lang::message.new_role')); ?>">
-							   <i class="fa fa-plus"></i> <?php echo e(trans('adminlte_lang::message.new_role')); ?>
-
+							   <i class="fa fa-plus"></i><span class="hidden-xs"> <?php echo e(trans('adminlte_lang::message.new_role')); ?></span>
 						  </a>
 					  
 
@@ -38,7 +37,7 @@ $status_color = ['danger','success','info'];
 	            </div><!-- /.box-header -->
 
 	            <div class="box-body">
-	                <table id="table-roles" class="table table-hover table-design">
+	                <table id="table-roles" class="table-design display" cellspacing="0" width="100%">
 		                <thead>
 		                  <tr>
 		                    

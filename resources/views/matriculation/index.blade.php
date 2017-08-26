@@ -27,7 +27,7 @@ $status_color = ['danger','success'];
                     <h3 class="box-title"> {{ trans('adminlte_lang::message.list_matriculation') }} </h3>
                     <div class="pull-left box-tools">
                         <a href="{{ url('matriculation/create') }}" class="btn btn-primary btn-sm" role="button" data-toggle="tooltip" title="{{ trans('adminlte_lang::message.new_matriculation') }}" >
-                            <i class="fa fa-plus"></i> {{ trans('adminlte_lang::message.new_matriculation') }}
+                            <i class="fa fa-plus"></i> <span class="hidden-xs">{{ trans('adminlte_lang::message.new_matriculation') }}</span>
                         </a>
                     </div><!-- /. tools -->
                 </div><!-- /.box-header -->

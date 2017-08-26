@@ -137,7 +137,7 @@
             }
         },
         language: {
-            "lengthMenu": '_MENU_ <?php echo e(trans('adminlte_lang::message.entries_per_page')); ?> ',
+            /*"lengthMenu": '_MENU_ <?php echo e(trans('adminlte_lang::message.entries_per_page')); ?> ',*/
             "search": '<?php echo e(trans('adminlte_lang::message.search')); ?>',
             "paginate": {
                 "previous": '<i class="fa fa-angle-left"></i>',
@@ -145,7 +145,10 @@
             },
             "emptyTable": "<?php echo e(trans('adminlte_lang::message.no_data_available')); ?>",
         },
-        processing: true
+        processing: true,
+        "search": {
+            "smart": true
+        }
     });
 
     // $('.table-design').DataTable({

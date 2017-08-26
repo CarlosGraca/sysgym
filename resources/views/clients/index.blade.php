@@ -26,11 +26,11 @@
 	              <h3 class="box-title">  {{ trans('adminlte_lang::message.clients_list') }} </h3>
 	              <div class="pull-left box-tools">
 					  <a href="{{ url('clients/create') }}" class="btn btn-primary btn-sm" data-toggle="tooltip" title="{{ trans('adminlte_lang::message.new_client') }}">
-						  <i class="fa fa-plus"></i> {{ trans('adminlte_lang::message.new_client') }}
+						  <i class="fa fa-plus"></i> <span class="hidden-xs">{{ trans('adminlte_lang::message.new_client') }}</span>
 					  </a>
                       {{--@can('add_client')--}}
                           <a id="pop-new-window" data-url="{{ route('clients.report') }}" class="btn btn-primary btn-sm" data-toggle="tooltip" title="{{ trans('adminlte_lang::message.print') }}" data-title="{{ trans('adminlte_lang::message.client_report') }}">
-                              <i class="fa fa-print"></i> {{ trans('adminlte_lang::message.print') }}
+                              <i class="fa fa-print"></i><span class="hidden-xs"> {{ trans('adminlte_lang::message.print') }}</span>
                           </a>
                     {{--@endcan--}}
 	              </div><!-- /. tools -->

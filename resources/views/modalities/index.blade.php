@@ -27,7 +27,7 @@ $status_color = ['danger','success','info'];
 	              <h3 class="box-title"> {{ trans('adminlte_lang::message.list_modality') }} </h3>
 	              <div class="pull-left box-tools">
 	                  <a href="{{ url('modalities/create') }}" class="btn btn-primary btn-sm" role="button" data-toggle="tooltip" title="{{ trans('adminlte_lang::message.new_modality') }}">
-	                       <i class="fa fa-plus"></i> {{ trans('adminlte_lang::message.new_modality') }}
+	                       <i class="fa fa-plus"></i> <span class="hidden-xs">{{ trans('adminlte_lang::message.new_modality') }}</span>
 	                  </a>
 
 	              </div><!-- /. tools -->
