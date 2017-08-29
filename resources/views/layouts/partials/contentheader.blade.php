@@ -1,5 +1,5 @@
 <!-- Content Header (Page header) -->
-<section class="content-header hidden-xs">
+<section class="content-header hidden">
     <h1>
         @yield('contentheader_title', 'Page Header here')
         <small>@yield('contentheader_description')</small>

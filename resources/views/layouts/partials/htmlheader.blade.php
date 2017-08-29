@@ -137,6 +137,20 @@ dathead>
                 padding-top: 45px;
             }
         }
+
+        .fixed .content-wrapper, .fixed .right-side {
+            padding-top: 28px;
+        }
+
+        .navbar-nav > .user-menu > .dropdown-menu > .user-footer {
+            background-color: #3c8dbc;
+            padding: 10px;
+            
+        }
+
+        .navbar-nav > .user-menu > .dropdown-menu > .user-footer a{
+            color: #ffffff;
+        }
     </style>
 
 
